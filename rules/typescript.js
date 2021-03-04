@@ -18,4 +18,6 @@ module.exports = {
   '@typescript-eslint/explicit-module-boundary-types': 0,
   // 首选使用简洁的可选链表达式，而不是链式逻辑与
   '@typescript-eslint/prefer-optional-chain': 2,
+  // 每个函数后面都要显式返回类型
+  '@typescript-eslint/explicit-module-boundary-types': 0,
 };
