@@ -1,3 +1,11 @@
+/*
+ * @Author: Mr.Mao
+ * @Date: 2021-01-07 10:12:14
+ * @LastEditTime: 2021-06-08 14:29:22
+ * @Description: 
+ * @LastEditors: Mr.Mao
+ * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
+ */
 module.exports = {
   'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -19,4 +27,6 @@ module.exports = {
   'no-else-return': 1,
   // 禁止超过三层的回调调用
   'max-nested-callbacks': ['error', 3],
+  // 允许任意全局变量
+  'no-undef': 0
 };

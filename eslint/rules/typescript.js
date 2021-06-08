@@ -12,7 +12,7 @@ module.exports = {
   '@typescript-eslint/camelcase': 0,
   // 允许空方法的产生(兼容构建工具)
   '@typescript-eslint/no-empty-function': [0],
-  // 是否禁止使用any
+  // 是否禁止使用 any
   '@typescript-eslint/no-explicit-any': 0,
   // 允许函数不存在返回值
   '@typescript-eslint/explicit-module-boundary-types': 0,
