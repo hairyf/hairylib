@@ -2,7 +2,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-18 14:00:57
- * @LastEditTime: 2021-06-18 15:21:58
+ * @LastEditTime: 2021-06-18 17:06:46
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -41,7 +41,7 @@ exports.defaults = lodash_1.merge(preset_1.default, {
             xs: { min: '0' },
             sm: { min: '576px' },
             md: { min: '768px' },
-            lg: { min: '922px' },
+            lg: { min: '992px' },
             xl: { min: '1200px' },
             xxl: { min: '1600px' },
             xxxl: { min: '1920px' }
