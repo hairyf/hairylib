@@ -1,5 +1,5 @@
 const colors = require('tailwindcss/colors')
-module.exports = {
+export default {
   purge: [],
   presets: [],
   darkMode: false, // or 'media' or 'class'
@@ -69,16 +69,16 @@ module.exports = {
       pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       bounce: 'bounce 1s infinite'
     },
-    backdropBlur: (theme) => theme('blur'),
-    backdropBrightness: (theme) => theme('brightness'),
-    backdropContrast: (theme) => theme('contrast'),
-    backdropGrayscale: (theme) => theme('grayscale'),
-    backdropHueRotate: (theme) => theme('hueRotate'),
-    backdropInvert: (theme) => theme('invert'),
-    backdropOpacity: (theme) => theme('opacity'),
-    backdropSaturate: (theme) => theme('saturate'),
-    backdropSepia: (theme) => theme('sepia'),
-    backgroundColor: (theme) => theme('colors'),
+    backdropBlur: (theme:any) => theme('blur'),
+    backdropBrightness: (theme:any) => theme('brightness'),
+    backdropContrast: (theme:any) => theme('contrast'),
+    backdropGrayscale: (theme:any) => theme('grayscale'),
+    backdropHueRotate: (theme:any) => theme('hueRotate'),
+    backdropInvert: (theme:any) => theme('invert'),
+    backdropOpacity: (theme:any) => theme('opacity'),
+    backdropSaturate: (theme:any) => theme('saturate'),
+    backdropSepia: (theme:any) => theme('sepia'),
+    backgroundColor: (theme:any) => theme('colors'),
     backgroundImage: {
       none: 'none',
       'gradient-to-t': 'linear-gradient(to top, var(--gradient-stops))',
@@ -90,7 +90,7 @@ module.exports = {
       'gradient-to-l': 'linear-gradient(to left, var(--gradient-stops))',
       'gradient-to-tl': 'linear-gradient(to top left, var(--gradient-stops))'
     },
-    backgroundOpacity: (theme) => theme('opacity'),
+    backgroundOpacity: (theme:any) => theme('opacity'),
     backgroundPosition: {
       bottom: 'bottom',
       center: 'center',
@@ -130,11 +130,11 @@ module.exports = {
       150: '1.5',
       200: '2'
     },
-    borderColor: (theme) => ({
+    borderColor: (theme:any) => ({
       ...theme('colors'),
       DEFAULT: theme('colors.gray.200', 'currentColor')
     }),
-    borderOpacity: (theme) => theme('opacity'),
+    borderOpacity: (theme:any) => theme('opacity'),
     borderRadius: {
       none: '0px',
       sm: '0.125rem',
@@ -183,9 +183,9 @@ module.exports = {
       help: 'help',
       'not-allowed': 'not-allowed'
     },
-    divideColor: (theme) => theme('borderColor'),
-    divideOpacity: (theme) => theme('borderOpacity'),
-    divideWidth: (theme) => theme('borderWidth'),
+    divideColor: (theme:any) => theme('borderColor'),
+    divideOpacity: (theme:any) => theme('borderOpacity'),
+    divideWidth: (theme:any) => theme('borderWidth'),
     dropShadow: {
       sm: '0 1px 1px rgba(0,0,0,0.05)',
       DEFAULT: ['0 1px 2px rgba(0, 0, 0, 0.1)', '0 1px 1px rgba(0, 0, 0, 0.06)'],
@@ -286,8 +286,8 @@ module.exports = {
       extrabold: '800',
       black: '900'
     },
-    gap: (theme) => theme('spacing'),
-    gradientColorStops: (theme) => theme('colors'),
+    gap: (theme:any) => theme('spacing'),
+    gradientColorStops: (theme:any) => theme('colors'),
     gridAutoColumns: {
       auto: 'auto',
       min: 'min-content',
@@ -402,7 +402,7 @@ module.exports = {
       5: 'repeat(5, minmax(0, 1fr))',
       6: 'repeat(6, minmax(0, 1fr))'
     },
-    height: (theme) => ({
+    height: (theme:any) => ({
       auto: 'auto',
       ...theme('spacing'),
       '1/2': '50%',
@@ -423,7 +423,7 @@ module.exports = {
       full: '100%',
       screen: '100vh'
     }),
-    inset: (theme, { negative }) => ({
+    inset: (theme:any, { negative }:any) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
@@ -499,17 +499,17 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal'
     },
-    margin: (theme, { negative }) => ({
+    margin: (theme:any, { negative }:any) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing'))
     }),
-    maxHeight: (theme) => ({
+    maxHeight: (theme:any) => ({
       ...theme('spacing'),
       full: '100%',
       screen: '100vh'
     }),
-    maxWidth: (theme, { breakpoints }) => ({
+    maxWidth: (theme:any, { breakpoints }:any) => ({
       none: 'none',
       0: '0rem',
       xs: '20rem',
@@ -590,14 +590,14 @@ module.exports = {
       white: ['2px dotted white', '2px'],
       black: ['2px dotted black', '2px']
     },
-    padding: (theme) => theme('spacing'),
-    placeholderColor: (theme) => theme('colors'),
-    placeholderOpacity: (theme) => theme('opacity'),
-    ringColor: (theme) => ({
+    padding: (theme:any) => theme('spacing'),
+    placeholderColor: (theme:any) => theme('colors'),
+    placeholderOpacity: (theme:any) => theme('opacity'),
+    ringColor: (theme:any) => ({
       DEFAULT: theme('colors.blue.500', '#3b82f6'),
       ...theme('colors')
     }),
-    ringOffsetColor: (theme) => theme('colors'),
+    ringOffsetColor: (theme:any) => theme('colors'),
     ringOffsetWidth: {
       0: '0px',
       1: '1px',
@@ -605,7 +605,7 @@ module.exports = {
       4: '4px',
       8: '8px'
     },
-    ringOpacity: (theme) => ({
+    ringOpacity: (theme:any) => ({
       DEFAULT: '0.5',
       ...theme('opacity')
     }),
@@ -672,7 +672,7 @@ module.exports = {
       6: '6deg',
       12: '12deg'
     },
-    space: (theme, { negative }) => ({
+    space: (theme:any, { negative }:any) => ({
       ...theme('spacing'),
       ...negative(theme('spacing'))
     }),
@@ -684,8 +684,8 @@ module.exports = {
       1: '1',
       2: '2'
     },
-    textColor: (theme) => theme('colors'),
-    textOpacity: (theme) => theme('opacity'),
+    textColor: (theme:any) => theme('colors'),
+    textOpacity: (theme:any) => theme('opacity'),
     transformOrigin: {
       center: 'center',
       top: 'top',
@@ -735,7 +735,7 @@ module.exports = {
       out: 'cubic-bezier(0, 0, 0.2, 1)',
       'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)'
     },
-    translate: (theme, { negative }) => ({
+    translate: (theme:any, { negative }:any) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
       '1/2': '50%',
@@ -753,7 +753,7 @@ module.exports = {
       '-3/4': '-75%',
       '-full': '-100%'
     }),
-    width: (theme) => ({
+    width: (theme:any) => ({
       auto: 'auto',
       ...theme('spacing'),
       '1/2': '50%',

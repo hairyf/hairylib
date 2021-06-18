@@ -2,16 +2,18 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-18 14:00:57
- * @LastEditTime: 2021-06-18 14:54:26
+ * @LastEditTime: 2021-06-18 15:21:58
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.defaults = void 0;
+const lodash_1 = require("lodash");
 const utils_1 = require("./utils");
+const preset_1 = require("./preset");
 /** 默认配置 */
-exports.defaults = {
+exports.defaults = lodash_1.merge(preset_1.default, {
     /** 生产环境下, 需清除样式的文件列表 */
     purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     /** 前缀 */
@@ -72,4 +74,4 @@ exports.defaults = {
         extend: {}
     },
     plugins: [],
-};
+});

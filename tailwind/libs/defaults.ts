@@ -1,17 +1,19 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-18 14:00:57
- * @LastEditTime: 2021-06-18 14:54:26
+ * @LastEditTime: 2021-06-18 15:21:58
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
+import { merge } from "lodash";
 import { TailwindConfig } from "tailwindcss/tailwind-config";
 import { getPercentage, getSpacing } from './utils'
+import presets from './preset'
 
 /** 默认配置 */
-export const defaults = {
+export const defaults = merge(presets, {
   /** 生产环境下, 需清除样式的文件列表 */
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   /** 前缀 */
@@ -44,13 +46,10 @@ export const defaults = {
       xxl: { min: '1600px' },
       xxxl: { min: '1920px' }
     },
-    
     boxShadow: {
       DEFAULT: '0px 0px 10px rgba(0, 0, 0, 0.05), 0px 0px 20px rgba(0, 0, 0, 0.02)'
     },
-
     spacing: getSpacing(2000),
-
     minWidth: ((theme: any) => ({
       ...theme('spacing'),
       ...getPercentage(),
@@ -75,5 +74,5 @@ export const defaults = {
     extend: {}
   },
   plugins: [],
-} as any as Partial<TailwindConfig>
+}) as any as Partial<TailwindConfig>
 
