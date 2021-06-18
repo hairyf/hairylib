@@ -1,10 +1,10 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/TuiMao233/eslint-config-craftsman/issues"
   },
-  "homepage": "https://github.com/TuiMao233/eslint-config-craftsman#readme"
+  "homepage": "https://github.com/TuiMao233/eslint-config-craftsman#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.170",
+    "@types/tailwindcss": "^2.0.6"
+  }
 }
