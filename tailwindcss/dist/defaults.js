@@ -50,21 +50,9 @@ exports.defaults = lodash_1.merge(preset_1.default, {
             DEFAULT: '0px 0px 10px rgba(0, 0, 0, 0.05), 0px 0px 20px rgba(0, 0, 0, 0.02)'
         },
         spacing: utils_1.getSpacing(2000),
-        minWidth: ((theme) => ({
-            ...theme('spacing'),
-            ...utils_1.getPercentage(),
-            screen: '100vw'
-        })),
-        maxWidth: ((theme) => ({
-            ...theme('spacing'),
-            ...utils_1.getPercentage(),
-            screen: '100vw'
-        })),
-        minHeight: ((theme) => ({
-            ...theme('spacing'),
-            ...utils_1.getPercentage(),
-            screen: '100vh'
-        })),
+        minWidth: ((theme) => (Object.assign(Object.assign(Object.assign({}, theme('spacing')), utils_1.getPercentage()), { screen: '100vw' }))),
+        maxWidth: ((theme) => (Object.assign(Object.assign(Object.assign({}, theme('spacing')), utils_1.getPercentage()), { screen: '100vw' }))),
+        minHeight: ((theme) => (Object.assign(Object.assign(Object.assign({}, theme('spacing')), utils_1.getPercentage()), { screen: '100vh' }))),
     },
     /**
      * 自定义 theme 中的变体顺序
