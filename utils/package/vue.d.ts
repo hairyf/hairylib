@@ -50,4 +50,4 @@ export declare const setDefaultHomeRoute: (routes?: RouteRecordRaw[]) => false |
  * @param props 组件参数
  * @returns 组件实例
  */
-export declare const renderInstance: <T = Component<any, any, any, Record<string, import("@vue/reactivity").ComputedGetter<any> | import("vue").WritableComputedOptions<any>>, import("vue").MethodOptions>>(Constructor: T, props: Record<string, any>) => import("vue").ComponentInternalInstance | null;
+export declare const renderInstance: <T = Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions>>(Constructor: T, props: Record<string, any>) => import("vue").ComponentInternalInstance | null;
