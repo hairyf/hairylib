@@ -23,6 +23,14 @@ export const removeStrCode = (str: string) => {
   return str.replace(/<[\/\!]*[^<>]*>/ig, "")
 }
 /**
+ * 如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上px单位
+ * @param unit 单元
+ * @returns string
+ */
+export const analyUnit = (unit: string | number) => {
+  return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px'
+}
+/**
  * 过滤字符串为数值
  * @param str 字符串
  * @returns 数值

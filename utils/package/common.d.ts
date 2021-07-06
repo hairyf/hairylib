@@ -11,6 +11,12 @@ export declare const checkedTypeof: (target: any) => string;
  */
 export declare const removeStrCode: (str: string) => string;
 /**
+ * 如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上px单位
+ * @param unit 单元
+ * @returns string
+ */
+export declare const analyUnit: (unit: string | number) => string;
+/**
  * 过滤字符串为数值
  * @param str 字符串
  * @returns 数值
