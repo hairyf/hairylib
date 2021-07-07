@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -17,11 +17,7 @@
   },
   "homepage": "https://github.com/TuiMao233/eslint-config-craftsman#readme",
   "dependencies": {
-    "@tailwindcss/postcss7-compat": "^2.2.4",
-    "autoprefixer": "^9",
-    "lodash": "^4.17.21",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.170",
