@@ -6,7 +6,6 @@
  * @Description:
  * @任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-import { StoreOptions, Store } from 'vuex'
 import { RouteRecordRaw } from 'vue-router'
 import { Component, h, render } from 'vue'
 /** 定义 RouteMeta 类型 */
@@ -18,12 +17,6 @@ declare module 'vue-router' {
     pathMaps?: string[]
   }
 }
-/**
- * 新增动态类型的vuex模块
- * @param store
- * @returns store
- */
-export const createModule = <S>(store: StoreOptions<S>) => store as Store<S>
 
 /**
  * 递归处理路由高亮信息

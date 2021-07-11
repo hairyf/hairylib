@@ -23,15 +23,6 @@ export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = UA && UA.match(/firefox\/(\d+)/)
 
 /**
- * 判断该类名存不存在
- * @param el 判断元素
- * @param className 类名
- * @returns 是否存在
- */
-export const isClassName = (el: HTMLElement, className: string) => {
-  return el.className.indexOf(className) !== -1;
-}
-/**
  * 跳转到新的页面
  * @param url 跳转url
  */
@@ -40,18 +31,6 @@ export const ejectWindow = (url: string) => {
   a.href = url
   a.target = "_blank"
   a.click()
-}
-/**
- * 动态设置HTML标签图标
- * @param path 图标路径
- */
-export const setHtmlIconLink = (path: string) => {
-  const link = document.querySelector<HTMLLinkElement>('#icon-link')
-  if (!link) return false
-  link.type = 'image/x-icon'
-  link.rel = 'shortcut icon'
-  link.href = path
-  document.getElementsByTagName('head')[0].appendChild(link)
 }
 /**
  * 选择多个图片

@@ -31,16 +31,6 @@ export const analyUnit = (unit: string | number) => {
   return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px'
 }
 /**
- * 过滤字符串为数值
- * @param str 字符串
- * @returns 数值
- */
-export const filterNumber = (str: string) => {
-  const filterStr = str.replace(/[^0-9]/g, '')
-  const outCount = filterStr !== '' ? Number(filterStr) : filterStr
-  return outCount
-}
-/**
  * 过滤为价格(两位小数点)
  * @param value 传入字符
  */

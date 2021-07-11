@@ -18,5 +18,15 @@
     "vue-composable": "^1.0.0-beta.23",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@types/jest": "^26.0.24",
+    "babel-loader": "^8.2.2",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.5"
   }
 }

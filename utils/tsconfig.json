@@ -9,7 +9,14 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "outDir": "package"
-  }
+  },
+  "exclude": [
+    "**/__tests__/*.ts",
+    "**/__test__/*.ts"
+  ]
 }

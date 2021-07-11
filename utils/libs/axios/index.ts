@@ -6,8 +6,8 @@
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-import { AxiosStatic, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
-import { debounce, DebounceSettings } from "lodash"
+import { AxiosStatic,AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
+
 declare module 'axios' {
   interface AxiosRequestConfig {
     loading?: boolean
@@ -23,10 +23,12 @@ interface AxiosLoadingOpts {
 
 interface AxiosValidateOpts {
   /** 自定义校验器 */
-  validate: (config: AxiosRequestConfig, result: [AxiosResponse?, AxiosError?]) => boolean | void
+  validate: (response: AxiosResponse) => boolean | void
   /** 错误处理 */
   rejected: (error: AxiosError) => void
 }
+
+type HttpInstance = AxiosStatic | AxiosInstance
 
 /**
  * axios 全局加载提示
@@ -34,23 +36,27 @@ interface AxiosValidateOpts {
  * @param show 展示逻辑钩子
  * @param clone 关闭逻辑钩子
  */
-export const axiosLoading = (axios: AxiosStatic, show: AxiosLoadingOpts['show'], clone: AxiosLoadingOpts['clone']) => {
+export const axiosLoading = (axios: HttpInstance, show: AxiosLoadingOpts['show'], clone: AxiosLoadingOpts['clone']) => {
+  let requestCount = 0
   axios.interceptors.request.use((config) => {
     if (config.loading) {
-      show(config)
+      !requestCount && show(config)
+      requestCount++
     }
     return config
   })
   axios.interceptors.response.use(
     (response) => {
       if (response.config.loading) {
-        clone(response.config, [response])
+        requestCount--
+        !requestCount && clone(response.config, [response])
       }
       return response
     },
     (error) => {
       if (error.config?.loading) {
-        clone(error.config, [, error])
+        requestCount--
+        !requestCount && clone(error.config, [, error])
       }
       return error
     }
@@ -63,9 +69,10 @@ export const axiosLoading = (axios: AxiosStatic, show: AxiosLoadingOpts['show'],
  * @param validate 校验器
  * @param rejected 错误处理
  */
-export const axiosValidate = (axios: AxiosStatic, validate: AxiosValidateOpts['validate'], rejected: AxiosValidateOpts['rejected']) => {
+export const axiosValidate = (axios: HttpInstance, validate: AxiosValidateOpts['validate'], rejected: AxiosValidateOpts['rejected']) => {
+
   const onFulfilled = (response: AxiosResponse) => {
-    const validateResult = validate(response.config, [response])
+    const validateResult = validate(response)
     const isError = typeof validateResult == 'boolean' && !validateResult
     if (isError) {
       rejected({
@@ -89,23 +96,3 @@ export const axiosValidate = (axios: AxiosStatic, validate: AxiosValidateOpts['v
   )
 }
 
-/**
- * 创建防抖错误处理函数
- * @param wait 
- * @param option 
- */
-export const createDebounceErr = (wait?: number, option?: DebounceSettings) => {
-  const debounceFun = debounce(
-    (cb: any) => cb(),
-    wait || 500,
-    option || { leading: true, trailing: false }
-  )
-
-  const debounceErr = <T extends Function>(callback: T) => {
-    const deb = (...args: any[]) => {
-      debounceFun(() => callback(...args))
-    }
-    return deb as any as T
-  }
-  return debounceErr
-}
