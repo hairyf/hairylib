@@ -17,12 +17,6 @@ export declare const removeStrCode: (str: string) => string;
  */
 export declare const analyUnit: (unit: string | number) => string;
 /**
- * 过滤字符串为数值
- * @param str 字符串
- * @returns 数值
- */
-export declare const filterNumber: (str: string) => number | "";
-/**
  * 过滤为价格(两位小数点)
  * @param value 传入字符
  */

@@ -7,8 +7,8 @@
  * @任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import { ref, watch } from "vue";
-export const useHistorys = (historyStore) => {
-    const historys = ref(historyStore.get());
+export const useHistorys = (store) => {
+    const historys = ref(store.get());
     // 添加历史记录
     const unshiftHistory = (searchText) => {
         const oldIndex = historys.value.indexOf(searchText);
@@ -24,7 +24,7 @@ export const useHistorys = (historyStore) => {
         historys.value = [];
     };
     // 监听记录
-    watch(historys, (values) => historyStore.set(values));
+    watch(historys, (values) => store.set(values));
     // 返回钩子
     return { unshiftHistory, removeHistory, list: historys };
 };

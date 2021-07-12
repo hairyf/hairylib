@@ -1,11 +1,5 @@
 import { h, render } from 'vue';
 /**
- * 新增动态类型的vuex模块
- * @param store
- * @returns store
- */
-export const createModule = (store) => store;
-/**
  * 递归处理路由高亮信息
  * @param routes 当前路由列表
  * @param upperPath 上层路由路径
@@ -138,4 +132,4 @@ export const renderInstance = (Constructor, props) => {
     // 因为调用 render(null, container) 为我们完成了这项工作
     return vnode.component;
 };
-//# sourceMappingURL=vue.js.map
+//# sourceMappingURL=route.js.map

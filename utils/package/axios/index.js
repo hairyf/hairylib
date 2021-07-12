@@ -1,4 +1,3 @@
-import { debounce } from "lodash";
 /**
  * axios 全局加载提示
  * @param axios 实例
@@ -6,21 +5,25 @@ import { debounce } from "lodash";
  * @param clone 关闭逻辑钩子
  */
 export const axiosLoading = (axios, show, clone) => {
+    let requestCount = 0;
     axios.interceptors.request.use((config) => {
         if (config.loading) {
-            show(config);
+            !requestCount && show(config);
+            requestCount++;
         }
         return config;
     });
     axios.interceptors.response.use((response) => {
         if (response.config.loading) {
-            clone(response.config, [response]);
+            requestCount--;
+            !requestCount && clone(response.config, [response]);
         }
         return response;
     }, (error) => {
         var _a;
         if ((_a = error.config) === null || _a === void 0 ? void 0 : _a.loading) {
-            clone(error.config, [, error]);
+            requestCount--;
+            !requestCount && clone(error.config, [, error]);
         }
         return error;
     });
@@ -33,7 +36,7 @@ export const axiosLoading = (axios, show, clone) => {
  */
 export const axiosValidate = (axios, validate, rejected) => {
     const onFulfilled = (response) => {
-        const validateResult = validate(response.config, [response]);
+        const validateResult = validate(response);
         const isError = typeof validateResult == 'boolean' && !validateResult;
         if (isError) {
             rejected(Object.assign(Object.assign(Object.assign({}, response), { response: response, isAxiosError: false, toJSON: () => ({}) }), new Error()));
@@ -47,19 +50,4 @@ export const axiosValidate = (axios, validate, rejected) => {
     };
     axios.interceptors.response.use(onFulfilled, onRejected);
 };
-/**
- * 创建防抖错误处理函数
- * @param wait
- * @param option
- */
-export const createDebounceErr = (wait, option) => {
-    const debounceFun = debounce((cb) => cb(), wait || 500, option || { leading: true, trailing: false });
-    const debounceErr = (callback) => {
-        const deb = (...args) => {
-            debounceFun(() => callback(...args));
-        };
-        return deb;
-    };
-    return debounceErr;
-};
-//# sourceMappingURL=axios.js.map
+//# sourceMappingURL=index.js.map

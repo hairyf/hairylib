@@ -1,4 +1,3 @@
-import { StoreOptions, Store } from 'vuex';
 import { RouteRecordRaw } from 'vue-router';
 import { Component } from 'vue';
 /** 定义 RouteMeta 类型 */
@@ -10,12 +9,6 @@ declare module 'vue-router' {
         pathMaps?: string[];
     }
 }
-/**
- * 新增动态类型的vuex模块
- * @param store
- * @returns store
- */
-export declare const createModule: <S>(store: StoreOptions<S>) => Store<S>;
 /**
  * 递归处理路由高亮信息
  * @param routes 当前路由列表
