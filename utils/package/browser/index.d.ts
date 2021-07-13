@@ -28,3 +28,42 @@ export declare const selectImages: () => Promise<File[]>;
  * @param fileName 文件名称
  */
 export declare const downloadFile: (url: string, fileName?: string | undefined) => void;
+/**
+ * 根据颜色融合出黑色与白色, 透明度色
+ * @param color
+ * @returns
+ */
+export declare const fuseThemeColor: (color: string) => {
+    "primaryColorLight-2": string;
+    "primaryColorLight-4": string;
+    "primaryColorLight-6": string;
+    "primaryColorLight-8": string;
+    "primaryColorDark-2": string;
+    "primaryColorDark-4": string;
+    "primaryColorDark-6": string;
+    "primaryColorDark-8": string;
+    "primaryColorOpacity-2": {
+        red: number;
+        green: number;
+        blue: number;
+        rgba: string;
+    };
+    "primaryColorOpacity-4": {
+        red: number;
+        green: number;
+        blue: number;
+        rgba: string;
+    };
+    "primaryColorOpacity-6": {
+        red: number;
+        green: number;
+        blue: number;
+        rgba: string;
+    };
+    "primaryColorOpacity-8": {
+        red: number;
+        green: number;
+        blue: number;
+        rgba: string;
+    };
+};

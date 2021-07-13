@@ -40,3 +40,23 @@ export declare const paramsAnaly: (url: string, params: Record<string, any>) => 
  * @returns 递进的数组
  */
 export declare const generateArray: (start: number, end: number) => number[];
+/**
+ * 颜色混合器
+ * @param colorOne 颜色值
+ * @param colorTwo 颜色值
+ * @param ratio 根据 colorTwo 混合比例, 0~1 区间, 1 则是完全的 colorTwo
+ * @returns 混合颜色
+ */
+export declare const blendColor: (colorOne: string, colorTwo: string, ratio: number) => string;
+/**
+ * 将 hex 颜色转成 rgb
+ * @param hex
+ * @param opacity
+ * @returns rgba String
+ */
+export declare const hexToRgba: (hex: string, opacity: number) => {
+    red: number;
+    green: number;
+    blue: number;
+    rgba: string;
+};

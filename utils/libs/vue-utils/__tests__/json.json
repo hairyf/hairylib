@@ -1,0 +1,64 @@
+[
+  {
+    "path": "/A0",
+    "component": {},
+    "children": [
+      {
+        "path": "A1",
+        "component": {},
+        "children": [
+          {
+            "path": "A2",
+            "component": {},
+            "meta": {
+              "pathMaps": [
+                "/A0",
+                "/A0/A1",
+                "/A0/A1/A2"
+              ],
+              "completePath": "/A0/A1/A2"
+            }
+          }
+        ],
+        "meta": {
+          "pathMaps": [
+            "/A0",
+            "/A0/A1"
+          ],
+          "completePath": "/A0/A1"
+        }
+      },
+      {
+        "path": "B1",
+        "component": {},
+        "children": [
+          {
+            "path": "A2",
+            "component": {},
+            "meta": {
+              "pathMaps": [
+                "/A0",
+                "/A0/B1",
+                "/A0/B1/A2"
+              ],
+              "completePath": "/A0/B1/A2"
+            }
+          }
+        ],
+        "meta": {
+          "pathMaps": [
+            "/A0",
+            "/A0/B1"
+          ],
+          "completePath": "/A0/B1"
+        }
+      }
+    ],
+    "meta": {
+      "pathMaps": [
+        "/A0"
+      ],
+      "completePath": "/A0"
+    }
+  }
+]

@@ -7,6 +7,7 @@ import { h, render } from 'vue';
 export const calculRouterActive = (routes, upperPath) => {
     let pathMaps = [];
     const recursion = (routes, upperPath) => {
+        typeof upperPath !== 'string' && (pathMaps = []);
         for (const i in routes) {
             const route = routes[i];
             // 拼接路由绝对路径
@@ -17,18 +18,16 @@ export const calculRouterActive = (routes, upperPath) => {
             pathMaps.push(completePath);
             // 添加路由路径信息
             if (route.meta) {
-                route.meta.pathMaps = pathMaps;
+                route.meta.pathMaps = [...pathMaps];
                 route.meta.completePath = completePath;
             }
             else {
-                route.meta = { pathMaps, completePath };
+                route.meta = { pathMaps: [...pathMaps], completePath };
             }
             // 再次递归
             if (Array.isArray(route.children)) {
                 recursion(route.children, completePath);
-            }
-            else {
-                pathMaps = [];
+                pathMaps = pathMaps.slice(0, pathMaps.indexOf(completePath));
             }
         }
     };

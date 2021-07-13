@@ -2,7 +2,7 @@
  * @Author: Mr.Mao
  * @LastEditors: Mr.Mao
  * @Date: 2021-02-24 18:18:59
- * @LastEditTime: 2021-06-28 18:16:21
+ * @LastEditTime: 2021-07-13 15:07:22
  * @Description:
  * @任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
@@ -26,6 +26,7 @@ declare module 'vue-router' {
  export const calculRouterActive = (routes: RouteRecordRaw[], upperPath?: string) => {
   let pathMaps: string[] = []
   const recursion = (routes: RouteRecordRaw[], upperPath?: string) => {
+    typeof upperPath !== 'string' && (pathMaps = [])
     for (const i in routes) {
       const route = routes[i]
       // 拼接路由绝对路径
@@ -36,16 +37,15 @@ declare module 'vue-router' {
       pathMaps.push(completePath)
       // 添加路由路径信息
       if (route.meta) {
-        route.meta.pathMaps = pathMaps
+        route.meta.pathMaps = [...pathMaps]
         route.meta.completePath = completePath
       } else {
-        route.meta = { pathMaps, completePath }
+        route.meta = { pathMaps:[...pathMaps], completePath }
       }
       // 再次递归
       if (Array.isArray(route.children)) {
         recursion(route.children, completePath)
-      } else {
-        pathMaps = []
+        pathMaps = pathMaps.slice(0, pathMaps.indexOf(completePath))
       }
     }
   }
