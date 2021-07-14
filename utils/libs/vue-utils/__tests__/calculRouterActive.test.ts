@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-13 13:55:57
- * @LastEditTime: 2021-07-13 15:04:46
+ * @LastEditTime: 2021-07-14 14:54:49
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -17,7 +17,7 @@
 import { cloneDeep } from 'lodash'
 import { RouteRecordRaw } from 'vue-router'
 import { calculRouterActive } from '..'
-
+import baseRoutes from '../mock'
 describe('calculRouterActive', () => {
   
   it('completePath Integrity', () => {
@@ -60,4 +60,12 @@ describe('calculRouterActive', () => {
     expect(deepLevelRoute.meta.pathMaps).toEqual(equalValue)
   })
 
+  it('pathMaps complex Integrity', () => {
+    const routes = cloneDeep(baseRoutes)
+    calculRouterActive(routes)
+    const deepLevelRoute = routes[0].children[2].children[0]
+    const equalValue = ['/shop', '/shop/materialCenter', '/shop/materialCenter/material']
+    expect(deepLevelRoute.meta.pathMaps).toEqual(equalValue)
+  })
+  
 })

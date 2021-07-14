@@ -27,8 +27,8 @@ export const calculRouterActive = (routes, upperPath) => {
             // 再次递归
             if (Array.isArray(route.children)) {
                 recursion(route.children, completePath);
-                pathMaps = pathMaps.slice(0, pathMaps.indexOf(completePath));
             }
+            pathMaps = pathMaps.slice(0, pathMaps.indexOf(completePath));
         }
     };
     recursion(routes, upperPath);
