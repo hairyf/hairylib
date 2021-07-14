@@ -1,4 +1,3 @@
-import { h, render } from 'vue';
 /**
  * 递归处理路由高亮信息
  * @param routes 当前路由列表
@@ -107,28 +106,5 @@ export const setDefaultHomeRoute = (routes = []) => {
     if (existHomeRoute)
         return false;
     routes.unshift({ path: '/', redirect: routes[0].path });
-};
-/**
- * 渲染组件实例
- * @param Constructor 组件
- * @param props 组件参数
- * @returns 组件实例
- */
-export const renderInstance = (Constructor, props) => {
-    // 组件消失时, 移除当前实例
-    props.onVanish = () => {
-        render(null, container);
-    };
-    // 创建虚拟节点
-    const container = document.createElement('div');
-    const vnode = h(Constructor, props);
-    // 渲染组件
-    render(vnode, container);
-    if (container.firstElementChild) {
-        document.body.appendChild(container.firstElementChild);
-    }
-    // 这里不需要调用 document.body.removeChild(container.firstElementChild)
-    // 因为调用 render(null, container) 为我们完成了这项工作
-    return vnode.component;
 };
 //# sourceMappingURL=route.js.map

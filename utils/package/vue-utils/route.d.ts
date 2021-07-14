@@ -1,5 +1,4 @@
 import { RouteRecordRaw } from 'vue-router';
-import { Component } from 'vue';
 /** 定义 RouteMeta 类型 */
 declare module 'vue-router' {
     interface RouteMeta {
@@ -37,10 +36,3 @@ export declare const setDefaultRoutes: (routes?: RouteRecordRaw[], upperPath?: s
  * 设置当前路由表默认路由路径 / => 第一路径
  */
 export declare const setDefaultHomeRoute: (routes?: RouteRecordRaw[]) => false | undefined;
-/**
- * 渲染组件实例
- * @param Constructor 组件
- * @param props 组件参数
- * @returns 组件实例
- */
-export declare const renderInstance: <T = Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions>>(Constructor: T, props: Record<string, any>) => import("vue").ComponentInternalInstance | null;
