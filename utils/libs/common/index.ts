@@ -1,11 +1,14 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-13 11:47:36
+ * @LastEditTime: 2021-07-16 11:48:59
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
+
+import dayjs from "dayjs"
+
 /**
  * 获取数据类型
  * @param target 检测对象
@@ -29,6 +32,15 @@ export const removeStrCode = (str: string) => {
  */
 export const analyUnit = (unit: string | number) => {
   return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px'
+}
+/**
+ * 时间戳格式化(秒)
+ * @param timestamp 格式化时间戳(秒)
+ * @param format 格式化时间格式
+ * @returns 格式时间字符串
+ */
+ export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') => {
+  return dayjs.unix(timestamp).format(format)
 }
 /**
  * 过滤为价格(两位小数点)
@@ -124,4 +136,12 @@ export const hexToRgba = (hex: string, opacity: number) => {
     blue: parseInt('0x' + hex.slice(5, 7)),
     rgba: RGBA
   }
+}
+
+/**
+ * 自定义 Promise 等待
+ * @param code 等待时间
+ */
+ export const awaitPromise = (code = 1000) => {
+  return new Promise((resolve) => setTimeout(resolve, code))
 }

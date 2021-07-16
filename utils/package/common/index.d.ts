@@ -17,6 +17,13 @@ export declare const removeStrCode: (str: string) => string;
  */
 export declare const analyUnit: (unit: string | number) => string;
 /**
+ * 时间戳格式化(秒)
+ * @param timestamp 格式化时间戳(秒)
+ * @param format 格式化时间格式
+ * @returns 格式时间字符串
+ */
+export declare const formatUnix: (timestamp: number, format?: string) => string;
+/**
  * 过滤为价格(两位小数点)
  * @param value 传入字符
  */
@@ -60,3 +67,8 @@ export declare const hexToRgba: (hex: string, opacity: number) => {
     blue: number;
     rgba: string;
 };
+/**
+ * 自定义 Promise 等待
+ * @param code 等待时间
+ */
+export declare const awaitPromise: (code?: number) => Promise<unknown>;
