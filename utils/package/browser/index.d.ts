@@ -29,6 +29,12 @@ export declare const selectImages: () => Promise<File[]>;
  */
 export declare const downloadFile: (url: string, fileName?: string | undefined) => void;
 /**
+ * 下载 blob 文件
+ * @param data blob 数据
+ * @param name 文件名称
+ */
+export declare const downloadBlobFile: (data: Blob, name: string) => void;
+/**
  * 根据颜色融合出黑色与白色, 透明度色
  * @param color
  * @returns

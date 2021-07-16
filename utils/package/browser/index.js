@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:37:00
- * @LastEditTime: 2021-07-13 11:57:19
+ * @LastEditTime: 2021-07-16 16:51:43
  * @Description: 浏览器工具
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -61,6 +61,21 @@ export const downloadFile = (url, fileName) => {
     fileName && (a.download = fileName);
     a.href = url;
     a.click();
+};
+/**
+ * 下载 blob 文件
+ * @param data blob 数据
+ * @param name 文件名称
+ */
+export const downloadBlobFile = (data, name) => {
+    const blob = new Blob([data]);
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = url;
+    link.setAttribute('download', name);
+    document.body.appendChild(link);
+    link.click();
 };
 /**
  * 根据颜色融合出黑色与白色, 透明度色

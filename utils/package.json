@@ -1,9 +1,10 @@
 {
   "name": "@tuimao/utils",
-  "version": "1.0.92",
+  "version": "1.0.93",
   "description": "",
   "main": "package/index.js",
   "scripts": {
+    "release": "npm run build && npm pub",
     "build": "npm run clean && tsc",
     "clean": "rimraf ./package"
   },
