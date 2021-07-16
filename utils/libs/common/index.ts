@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-16 11:48:59
+ * @LastEditTime: 2021-07-16 21:00:15
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -39,7 +39,7 @@ export const analyUnit = (unit: string | number) => {
  * @param format 格式化时间格式
  * @returns 格式时间字符串
  */
- export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') => {
+export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') => {
   return dayjs.unix(timestamp).format(format)
 }
 /**
@@ -60,7 +60,7 @@ export const filterPrice = (value: string) => {
  * 过滤为正整数
  * @param value 传入字符
  */
- export const filterInteger = (value: string) => {
+export const filterInteger = (value: string) => {
   return value.replace(/^(0+)|[^\d]+/g, '')
 }
 /**
@@ -82,7 +82,7 @@ export const paramsAnaly = (url: string, params: Record<string, any>) => {
  * @param end 结束数值
  * @returns 递进的数组
  */
- export const generateArray = (start: number, end: number) => {
+export const generateArray = (start: number, end: number) => {
   start = Number(start)
   end = Number(end)
   end = end > start ? end : start
@@ -96,7 +96,7 @@ export const paramsAnaly = (url: string, params: Record<string, any>) => {
  * @param ratio 根据 colorTwo 混合比例, 0~1 区间, 1 则是完全的 colorTwo
  * @returns 混合颜色
  */
- export const blendColor = (colorOne: string, colorTwo: string, ratio: number) => {
+export const blendColor = (colorOne: string, colorTwo: string, ratio: number) => {
   ratio = Math.max(Math.min(Number(ratio), 1), 0)
   const r1 = parseInt(colorOne.substring(1, 3), 16)
   const g1 = parseInt(colorOne.substring(3, 5), 16)
@@ -142,6 +142,34 @@ export const hexToRgba = (hex: string, opacity: number) => {
  * 自定义 Promise 等待
  * @param code 等待时间
  */
- export const awaitPromise = (code = 1000) => {
+export const awaitPromise = (code = 1000) => {
   return new Promise((resolve) => setTimeout(resolve, code))
 }
+
+/**
+ * 替换 html string 中任意 tag 内任意 attr 值
+ * @param option 
+ * @returns html string
+ */
+export const setHtmlStrTagAttr = (option: { html: string, tag: string, attr: string, value: string }) => {
+  if ([option.html, option.tag, option.attr, option.value].findIndex(v => typeof v !== 'string') !== -1) {
+    throw new Error("option params error");
+  }
+  const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](\\w*%?)[\'\"])?[^>]*>', 'gi');
+  return option.html.replace(reg, function (match) {
+    if (match.indexOf(option.attr) > 0) {
+      //包含option.attr属性,替换option.attr
+      const subReg = new RegExp(`${option.attr}=[\'\"](\\w*%?)[\'\"]`, 'gi');
+      return match.replace(subReg, `${option.attr}=${option.value}`);
+    } else {
+      //不包含option.attr属性,添加option.attr
+      return `${match.substr(0, option.tag.length + 1)} ${option.attr}=${option.value} ${match.substr(option.tag.length + 2, match.length)}`
+    }
+  });
+}
+setHtmlStrTagAttr({
+  html: '<div></div>',
+  tag: 'div',
+  attr: 'name',
+  value: 'Mr.Mao'
+})
