@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-18 14:00:57
- * @LastEditTime: 2021-06-18 17:06:46
+ * @LastEditTime: 2021-07-16 15:06:29
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -49,6 +49,13 @@ export const defaults = merge(presets, {
     boxShadow: {
       DEFAULT: '0px 0px 10px rgba(0, 0, 0, 0.05), 0px 0px 20px rgba(0, 0, 0, 0.02)'
     },
+    height: (theme: any) => ({
+      ...theme('spacing'),
+      ...getPercentage(),
+      min: 'min-content',
+      max: 'max-content',
+      screen: '100vh',
+    }),
     spacing: getSpacing(2000),
     minWidth: ((theme: any) => ({
       ...theme('spacing'),
