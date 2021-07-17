@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-17 12:04:06
+ * @LastEditTime: 2021-07-17 14:32:39
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -155,8 +155,8 @@ export const setHtmlStrTagAttr = (option: { html: string, tag: string, attr: str
   if ([option.html, option.tag, option.attr, option.value].findIndex(v => typeof v !== 'string') !== -1) {
     throw new Error("option params error");
   }
-  const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](\\w*%?)[\'\"])?[^>]*>', 'gi');
-  const subReg = new RegExp(`${option.attr}=[\'\"](\\w*%?)[\'\"]`, 'gi');
+  const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](.*?)[\'\"])?[^>]*>', 'gi');
+  const subReg = new RegExp(`${option.attr}=[\'\"](.*?)[\'\"]`, 'gis');
   const setHtmlStr = option.html.replace(reg, function (match) {
     if (match.indexOf(option.attr) > 0) {
       //包含option.attr属性,替换option.attr
@@ -173,9 +173,3 @@ export const setHtmlStrTagAttr = (option: { html: string, tag: string, attr: str
     return setHtmlStr
   }
 }
-setHtmlStrTagAttr({
-  html: '<div></div>',
-  tag: 'div',
-  attr: 'name',
-  value: 'Mr.Mao'
-})

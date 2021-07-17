@@ -1,50 +1,60 @@
+"use strict";
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-17 12:04:06
+ * @LastEditTime: 2021-07-17 14:32:39
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-import dayjs from "dayjs";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
+const dayjs_1 = __importDefault(require("dayjs"));
 /**
  * 获取数据类型
  * @param target 检测对象
  * @returns 返回字符串
  */
-export const checkedTypeof = (target) => {
+const checkedTypeof = (target) => {
     return Object.prototype.toString.call(target).slice(8, -1);
 };
+exports.checkedTypeof = checkedTypeof;
 /**
  * 剔除字符串代码字段
  * @param str 字符串
  * @returns 剔除字符串
  */
-export const removeStrCode = (str) => {
+const removeStrCode = (str) => {
     return str.replace(/<[\/\!]*[^<>]*>/ig, "");
 };
+exports.removeStrCode = removeStrCode;
 /**
  * 如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上px单位
  * @param unit 单元
  * @returns string
  */
-export const analyUnit = (unit) => {
+const analyUnit = (unit) => {
     return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px';
 };
+exports.analyUnit = analyUnit;
 /**
  * 时间戳格式化(秒)
  * @param timestamp 格式化时间戳(秒)
  * @param format 格式化时间格式
  * @returns 格式时间字符串
  */
-export const formatUnix = (timestamp, format = 'YYYY-MM-DD HH:mm:ss') => {
-    return dayjs.unix(timestamp).format(format);
+const formatUnix = (timestamp, format = 'YYYY-MM-DD HH:mm:ss') => {
+    return dayjs_1.default.unix(timestamp).format(format);
 };
+exports.formatUnix = formatUnix;
 /**
  * 过滤为价格(两位小数点)
  * @param value 传入字符
  */
-export const filterPrice = (value) => {
+const filterPrice = (value) => {
     return value
         .replace(/^[^\d+]/, '')
         .replace(/[^\d{1,}.\d{1,}|\d{1,}]/g, '')
@@ -54,38 +64,42 @@ export const filterPrice = (value) => {
         .replace(/\.{2,}/g, '.')
         .replace(/^(-)*(\d+)\.(\d\d).*$/, '$1$2.$3');
 };
+exports.filterPrice = filterPrice;
 /**
  * 过滤为正整数
  * @param value 传入字符
  */
-export const filterInteger = (value) => {
+const filterInteger = (value) => {
     return value.replace(/^(0+)|[^\d]+/g, '');
 };
+exports.filterInteger = filterInteger;
 /**
  * 地址参数计算
  * @param url 传入url
  * @param params 请求参数
  * @returns 拼接url
  */
-export const paramsAnaly = (url, params) => {
+const paramsAnaly = (url, params) => {
     const queryStr = Object.keys(params).map((key) => `${key}=${params[key]}`);
     if (queryStr.length > 0) {
         url += '?' + queryStr.join('&');
     }
     return url;
 };
+exports.paramsAnaly = paramsAnaly;
 /**
  * 生成递进的数组
  * @param start 开始数值
  * @param end 结束数值
  * @returns 递进的数组
  */
-export const generateArray = (start, end) => {
+const generateArray = (start, end) => {
     start = Number(start);
     end = Number(end);
     end = end > start ? end : start;
     return [...Array(end + 1).keys()].slice(start);
 };
+exports.generateArray = generateArray;
 /**
  * 颜色混合器
  * @param colorOne 颜色值
@@ -93,7 +107,7 @@ export const generateArray = (start, end) => {
  * @param ratio 根据 colorTwo 混合比例, 0~1 区间, 1 则是完全的 colorTwo
  * @returns 混合颜色
  */
-export const blendColor = (colorOne, colorTwo, ratio) => {
+const blendColor = (colorOne, colorTwo, ratio) => {
     ratio = Math.max(Math.min(Number(ratio), 1), 0);
     const r1 = parseInt(colorOne.substring(1, 3), 16);
     const g1 = parseInt(colorOne.substring(3, 5), 16);
@@ -109,13 +123,14 @@ export const blendColor = (colorOne, colorTwo, ratio) => {
     b = ('0' + (b || 0).toString(16)).slice(-2);
     return '#' + r + g + b;
 };
+exports.blendColor = blendColor;
 /**
  * 将 hex 颜色转成 rgb
  * @param hex
  * @param opacity
  * @returns rgba String
  */
-export const hexToRgba = (hex, opacity) => {
+const hexToRgba = (hex, opacity) => {
     const RGBA = 'rgba(' +
         parseInt('0x' + hex.slice(1, 3)) +
         ',' +
@@ -132,24 +147,26 @@ export const hexToRgba = (hex, opacity) => {
         rgba: RGBA
     };
 };
+exports.hexToRgba = hexToRgba;
 /**
  * 自定义 Promise 等待
  * @param code 等待时间
  */
-export const awaitPromise = (code = 1000) => {
+const awaitPromise = (code = 1000) => {
     return new Promise((resolve) => setTimeout(resolve, code));
 };
+exports.awaitPromise = awaitPromise;
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
  * @param option
  * @returns html string
  */
-export const setHtmlStrTagAttr = (option) => {
+const setHtmlStrTagAttr = (option) => {
     if ([option.html, option.tag, option.attr, option.value].findIndex(v => typeof v !== 'string') !== -1) {
         throw new Error("option params error");
     }
-    const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](\\w*%?)[\'\"])?[^>]*>', 'gi');
-    const subReg = new RegExp(`${option.attr}=[\'\"](\\w*%?)[\'\"]`, 'gi');
+    const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](.*?)[\'\"])?[^>]*>', 'gi');
+    const subReg = new RegExp(`${option.attr}=[\'\"](.*?)[\'\"]`, 'gis');
     const setHtmlStr = option.html.replace(reg, function (match) {
         if (match.indexOf(option.attr) > 0) {
             //包含option.attr属性,替换option.attr
@@ -168,10 +185,5 @@ export const setHtmlStrTagAttr = (option) => {
         return setHtmlStr;
     }
 };
-setHtmlStrTagAttr({
-    html: '<div></div>',
-    tag: 'div',
-    attr: 'name',
-    value: 'Mr.Mao'
-});
+exports.setHtmlStrTagAttr = setHtmlStrTagAttr;
 //# sourceMappingURL=index.js.map

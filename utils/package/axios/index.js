@@ -1,10 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.axiosValidate = exports.axiosLoading = void 0;
 /**
  * axios 全局加载提示
  * @param axios 实例
  * @param show 展示逻辑钩子
  * @param clone 关闭逻辑钩子
  */
-export const axiosLoading = (axios, show, clone) => {
+const axiosLoading = (axios, show, clone) => {
     let requestCount = 0;
     axios.interceptors.request.use((config) => {
         if (config.loading) {
@@ -28,13 +31,14 @@ export const axiosLoading = (axios, show, clone) => {
         return error;
     });
 };
+exports.axiosLoading = axiosLoading;
 /**
  * axios 校验器
  * @param axios 实例
  * @param validate 校验器
  * @param rejected 错误处理
  */
-export const axiosValidate = (axios, validate, rejected) => {
+const axiosValidate = (axios, validate, rejected) => {
     const onFulfilled = (response) => {
         const validateResult = validate(response);
         const isError = typeof validateResult == 'boolean' && !validateResult;
@@ -50,4 +54,5 @@ export const axiosValidate = (axios, validate, rejected) => {
     };
     axios.interceptors.response.use(onFulfilled, onRejected);
 };
+exports.axiosValidate = axiosValidate;
 //# sourceMappingURL=index.js.map
