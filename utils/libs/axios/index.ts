@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:53:00
- * @LastEditTime: 2021-06-28 18:13:00
+ * @LastEditTime: 2021-07-17 18:00:48
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -11,6 +11,7 @@ import { AxiosStatic,AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosErro
 declare module 'axios' {
   interface AxiosRequestConfig {
     loading?: boolean
+    preventError?: boolean
   }
 }
 
@@ -87,7 +88,7 @@ export const axiosValidate = (axios: HttpInstance, validate: AxiosValidateOpts['
     return response
   }
   const onRejected = (error: AxiosError) => {
-    rejected(error)
+    !error.config.preventError && rejected(error)
     return Promise.reject(error)
   }
   axios.interceptors.response.use(

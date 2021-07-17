@@ -49,7 +49,7 @@ const axiosValidate = (axios, validate, rejected) => {
         return response;
     };
     const onRejected = (error) => {
-        rejected(error);
+        !error.config.preventError && rejected(error);
         return Promise.reject(error);
     };
     axios.interceptors.response.use(onFulfilled, onRejected);

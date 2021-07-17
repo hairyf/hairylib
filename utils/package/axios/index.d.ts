@@ -2,6 +2,7 @@ import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosErr
 declare module 'axios' {
     interface AxiosRequestConfig {
         loading?: boolean;
+        preventError?: boolean;
     }
 }
 interface AxiosLoadingOpts {
