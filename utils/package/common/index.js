@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-16 11:48:59
+ * @LastEditTime: 2021-07-17 12:04:06
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -139,4 +139,39 @@ export const hexToRgba = (hex, opacity) => {
 export const awaitPromise = (code = 1000) => {
     return new Promise((resolve) => setTimeout(resolve, code));
 };
+/**
+ * 替换 html string 中任意 tag 内任意 attr 值
+ * @param option
+ * @returns html string
+ */
+export const setHtmlStrTagAttr = (option) => {
+    if ([option.html, option.tag, option.attr, option.value].findIndex(v => typeof v !== 'string') !== -1) {
+        throw new Error("option params error");
+    }
+    const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](\\w*%?)[\'\"])?[^>]*>', 'gi');
+    const subReg = new RegExp(`${option.attr}=[\'\"](\\w*%?)[\'\"]`, 'gi');
+    const setHtmlStr = option.html.replace(reg, function (match) {
+        if (match.indexOf(option.attr) > 0) {
+            //包含option.attr属性,替换option.attr
+            return match.replace(subReg, `${option.attr}="${option.value}"`);
+        }
+        else {
+            //不包含option.attr属性,添加option.attr
+            const surplus = match.substr(option.tag.length + 2, match.length);
+            return `${match.substr(0, option.tag.length + 1)} ${option.attr}="${option.value}"${surplus ? ` ${surplus}` : ''}`;
+        }
+    });
+    if (!option.value) {
+        return setHtmlStr.replace(subReg, '');
+    }
+    else {
+        return setHtmlStr;
+    }
+};
+setHtmlStrTagAttr({
+    html: '<div></div>',
+    tag: 'div',
+    attr: 'name',
+    value: 'Mr.Mao'
+});
 //# sourceMappingURL=index.js.map

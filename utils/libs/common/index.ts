@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-16 21:00:15
+ * @LastEditTime: 2021-07-17 12:04:06
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -156,16 +156,22 @@ export const setHtmlStrTagAttr = (option: { html: string, tag: string, attr: str
     throw new Error("option params error");
   }
   const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](\\w*%?)[\'\"])?[^>]*>', 'gi');
-  return option.html.replace(reg, function (match) {
+  const subReg = new RegExp(`${option.attr}=[\'\"](\\w*%?)[\'\"]`, 'gi');
+  const setHtmlStr = option.html.replace(reg, function (match) {
     if (match.indexOf(option.attr) > 0) {
       //包含option.attr属性,替换option.attr
-      const subReg = new RegExp(`${option.attr}=[\'\"](\\w*%?)[\'\"]`, 'gi');
-      return match.replace(subReg, `${option.attr}=${option.value}`);
+      return match.replace(subReg, `${option.attr}="${option.value}"`);
     } else {
       //不包含option.attr属性,添加option.attr
-      return `${match.substr(0, option.tag.length + 1)} ${option.attr}=${option.value} ${match.substr(option.tag.length + 2, match.length)}`
+      const surplus = match.substr(option.tag.length + 2, match.length)
+      return `${match.substr(0, option.tag.length + 1)} ${option.attr}="${option.value}"${surplus ? ` ${surplus}` : ''}`
     }
   });
+  if (!option.value) {
+    return setHtmlStr.replace(subReg, '')
+  }else {
+    return setHtmlStr
+  }
 }
 setHtmlStrTagAttr({
   html: '<div></div>',

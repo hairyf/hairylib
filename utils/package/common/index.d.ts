@@ -72,3 +72,14 @@ export declare const hexToRgba: (hex: string, opacity: number) => {
  * @param code 等待时间
  */
 export declare const awaitPromise: (code?: number) => Promise<unknown>;
+/**
+ * 替换 html string 中任意 tag 内任意 attr 值
+ * @param option
+ * @returns html string
+ */
+export declare const setHtmlStrTagAttr: (option: {
+    html: string;
+    tag: string;
+    attr: string;
+    value: string;
+}) => string;
