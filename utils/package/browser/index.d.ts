@@ -18,10 +18,18 @@ export declare const isFF: false | "" | RegExpMatchArray | null;
 export declare const ejectWindow: (url: string) => void;
 /**
  * 选择多个图片
- * @param option
- * @returns FileList
+ * @returns {FileList}
  */
 export declare const selectImages: () => Promise<File[]>;
+/**
+ * 选择多个文件
+ * @param option
+ * @returns {FileList}
+ */
+export declare const selectFiles: (option?: {
+    multiple?: boolean;
+    accept?: string;
+}) => Promise<File[]>;
 /**
  * 下载文件
  * @param url 下载地址

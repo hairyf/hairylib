@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:37:00
- * @LastEditTime: 2021-07-16 16:51:43
+ * @LastEditTime: 2021-07-18 14:05:50
  * @Description: 浏览器工具
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -36,8 +36,7 @@ export const ejectWindow = (url: string) => {
 }
 /**
  * 选择多个图片
- * @param option
- * @returns FileList
+ * @returns {FileList}
  */
 export const selectImages = () => {
   return new Promise<File[]>((resolve, reject) => {
@@ -45,6 +44,29 @@ export const selectImages = () => {
     inputEl.type = 'file'
     inputEl.multiple = true
     inputEl.accept = 'image/jpeg,image/x-png,image/gif'
+    inputEl.click()
+    const timer = setTimeout(reject, 20 * 1000)
+    inputEl.addEventListener('change', function () {
+      if (this.files) {
+        resolve(Object.values(this.files))
+        clearTimeout(timer)
+      }
+    })
+  })
+}
+
+/**
+ * 选择多个文件
+ * @param option 
+ * @returns {FileList}
+ */
+export const selectFiles = (option: {multiple?: boolean, accept?: string} = {}) => {
+  const {multiple = true, accept} = option
+  return new Promise<File[]>((resolve, reject) => {
+    const inputEl = document.createElement('input')
+    inputEl.type = 'file'
+    inputEl.multiple = multiple
+    accept && (inputEl.accept = accept)
     inputEl.click()
     const timer = setTimeout(reject, 20 * 1000)
     inputEl.addEventListener('change', function () {

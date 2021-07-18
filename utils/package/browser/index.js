@@ -2,13 +2,13 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:37:00
- * @LastEditTime: 2021-07-16 16:51:43
+ * @LastEditTime: 2021-07-18 14:05:50
  * @Description: 浏览器工具
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fuseThemeColor = exports.downloadBlobFile = exports.downloadFile = exports.selectImages = exports.ejectWindow = exports.isFF = exports.isPhantomJS = exports.isChrome = exports.isIOS = exports.isAndroid = exports.isEdge = exports.isIE11 = exports.isIE9 = exports.isIE = exports.UA = exports.weexPlatform = exports.isWeex = exports.isBrowser = void 0;
+exports.fuseThemeColor = exports.downloadBlobFile = exports.downloadFile = exports.selectFiles = exports.selectImages = exports.ejectWindow = exports.isFF = exports.isPhantomJS = exports.isChrome = exports.isIOS = exports.isAndroid = exports.isEdge = exports.isIE11 = exports.isIE9 = exports.isIE = exports.UA = exports.weexPlatform = exports.isWeex = exports.isBrowser = void 0;
 const common_1 = require("../common");
 exports.isBrowser = typeof window !== 'undefined';
 exports.isWeex = typeof WXEnvironment !== 'undefined' && !!WXEnvironment.platform;
@@ -36,8 +36,7 @@ const ejectWindow = (url) => {
 exports.ejectWindow = ejectWindow;
 /**
  * 选择多个图片
- * @param option
- * @returns FileList
+ * @returns {FileList}
  */
 const selectImages = () => {
     return new Promise((resolve, reject) => {
@@ -56,6 +55,29 @@ const selectImages = () => {
     });
 };
 exports.selectImages = selectImages;
+/**
+ * 选择多个文件
+ * @param option
+ * @returns {FileList}
+ */
+const selectFiles = (option = {}) => {
+    const { multiple = true, accept } = option;
+    return new Promise((resolve, reject) => {
+        const inputEl = document.createElement('input');
+        inputEl.type = 'file';
+        inputEl.multiple = multiple;
+        accept && (inputEl.accept = accept);
+        inputEl.click();
+        const timer = setTimeout(reject, 20 * 1000);
+        inputEl.addEventListener('change', function () {
+            if (this.files) {
+                resolve(Object.values(this.files));
+                clearTimeout(timer);
+            }
+        });
+    });
+};
+exports.selectFiles = selectFiles;
 /**
  * 下载文件
  * @param url 下载地址
