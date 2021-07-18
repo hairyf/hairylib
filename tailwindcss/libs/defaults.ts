@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-18 14:00:57
- * @LastEditTime: 2021-07-16 15:06:29
+ * @LastEditTime: 2021-07-18 11:08:57
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -72,6 +72,22 @@ export const defaults = merge(presets, {
       ...getPercentage(),
       screen: '100vh'
     })),
+    colors: {
+      pink: { DEFAULT: 'pink' },
+      fuchsia: { DEFAULT: 'fuchsia' },
+      purple: { DEFAULT: 'purple' },
+      violet: { DEFAULT: 'violet' },
+      blue: { DEFAULT: 'blue' },
+      lightBlue: { DEFAULT: 'lightblue' },
+      sky: { DEFAULT: 'sky' },
+      cyan: { DEFAULT: 'cyan' },
+      green: { DEFAULT: 'green' },
+      lime: { DEFAULT: 'lime' },
+      yellow: { DEFAULT: 'yellow' },
+      orange: { DEFAULT: 'orange' },
+      red: { DEFAULT: 'red' },
+      gray: { DEFAULT: 'gray' },
+    }
   },
   /**
    * 自定义 theme 中的变体顺序
