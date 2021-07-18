@@ -2,7 +2,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-17 14:32:39
+ * @LastEditTime: 2021-07-18 09:37:53
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -11,8 +11,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
+exports.pickByParams = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
 const dayjs_1 = __importDefault(require("dayjs"));
+const lodash_1 = require("lodash");
 /**
  * 获取数据类型
  * @param target 检测对象
@@ -186,4 +187,22 @@ const setHtmlStrTagAttr = (option) => {
     }
 };
 exports.setHtmlStrTagAttr = setHtmlStrTagAttr;
+/**
+ * 根据过滤返回对应数据
+ * @param params
+ * @param filters
+ * @returns params
+ */
+const pickByParams = (params, filters) => {
+    const pickValue = lodash_1.pickBy(params, (value) => {
+        return !filters.some(v => value === v);
+    });
+    if (Array.isArray(params)) {
+        return Object.values(pickValue);
+    }
+    else {
+        return pickValue;
+    }
+};
+exports.pickByParams = pickByParams;
 //# sourceMappingURL=index.js.map

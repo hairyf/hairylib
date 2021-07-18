@@ -1,13 +1,14 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-17 14:32:39
+ * @LastEditTime: 2021-07-18 09:37:53
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
 import dayjs from "dayjs"
+import { pickBy } from "lodash"
 
 /**
  * 获取数据类型
@@ -171,5 +172,22 @@ export const setHtmlStrTagAttr = (option: { html: string, tag: string, attr: str
     return setHtmlStr.replace(subReg, '')
   }else {
     return setHtmlStr
+  }
+}
+
+/**
+ * 根据过滤返回对应数据
+ * @param params 
+ * @param filters 
+ * @returns params
+ */
+export const pickByParams = <T extends object>(params: T, filters: any[]) => {
+  const pickValue = pickBy(params, (value) => {
+    return !filters.some(v => value === v)
+  })
+  if (Array.isArray(params)) {
+    return Object.values(pickValue) as any[]
+  }else {
+    return pickValue as Record<string, any>
   }
 }

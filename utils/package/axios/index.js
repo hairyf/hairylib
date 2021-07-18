@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.axiosValidate = exports.axiosLoading = void 0;
+exports.axiosPickByParams = exports.axiosValidate = exports.axiosLoading = void 0;
+const common_1 = require("../common");
 /**
  * axios 全局加载提示
  * @param axios 实例
@@ -55,4 +56,21 @@ const axiosValidate = (axios, validate, rejected) => {
     axios.interceptors.response.use(onFulfilled, onRejected);
 };
 exports.axiosValidate = axiosValidate;
+/**
+ * 根据过滤器, 过滤 body|params 参数
+ * @param axios 实例
+ * @param filters 过滤参数
+ */
+const axiosPickByParams = (axios, filters) => {
+    axios.interceptors.request.use((config) => {
+        if (config.data) {
+            config.data = common_1.pickByParams(config.data, filters);
+        }
+        if (config.params) {
+            config.params = common_1.pickByParams(config.params, filters);
+        }
+        return config;
+    });
+};
+exports.axiosPickByParams = axiosPickByParams;
 //# sourceMappingURL=index.js.map

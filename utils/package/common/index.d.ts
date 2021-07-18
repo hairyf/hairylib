@@ -83,3 +83,10 @@ export declare const setHtmlStrTagAttr: (option: {
     attr: string;
     value: string;
 }) => string;
+/**
+ * 根据过滤返回对应数据
+ * @param params
+ * @param filters
+ * @returns params
+ */
+export declare const pickByParams: <T extends object>(params: T, filters: any[]) => Record<string, any>;

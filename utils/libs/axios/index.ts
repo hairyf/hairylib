@@ -1,12 +1,13 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:53:00
- * @LastEditTime: 2021-07-17 18:37:23
+ * @LastEditTime: 2021-07-18 09:41:16
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import { AxiosStatic,AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
+import { pickByParams } from "../common"
 
 declare module 'axios' {
   interface AxiosRequestConfig {
@@ -96,14 +97,15 @@ export const axiosValidate = (axios: HttpInstance, validate: AxiosValidateOpts['
   )
 }
 
-export const axiosFilterParams = (axios: HttpInstance, filters: any[]) => {
+/**
+ * 根据过滤器, 过滤 body|params 参数
+ * @param axios 实例
+ * @param filters 过滤参数
+ */
+export const axiosPickByParams = (axios: HttpInstance, filters: any[]) => {
   axios.interceptors.request.use((config) => {
-    if (config.data) {
-      
-    }
-    if (config.params) {
-
-    }
+    if (config.data) { config.data = pickByParams(config.data, filters) }
+    if (config.params) { config.params = pickByParams(config.params, filters) }
     return config
   })
 }
