@@ -63,10 +63,11 @@ exports.axiosValidate = axiosValidate;
  */
 const axiosPickByParams = (axios, filters) => {
     axios.interceptors.request.use((config) => {
-        if (config.data) {
+        var _a, _b;
+        if (((_a = config.data) === null || _a === void 0 ? void 0 : _a.constructor) === Object) {
             config.data = common_1.pickByParams(config.data, filters);
         }
-        if (config.params) {
+        if (((_b = config.params) === null || _b === void 0 ? void 0 : _b.constructor) === Object) {
             config.params = common_1.pickByParams(config.params, filters);
         }
         return config;

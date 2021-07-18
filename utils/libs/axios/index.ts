@@ -1,12 +1,12 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:53:00
- * @LastEditTime: 2021-07-18 09:41:16
+ * @LastEditTime: 2021-07-18 15:00:53
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-import { AxiosStatic,AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
+import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
 import { pickByParams } from "../common"
 
 declare module 'axios' {
@@ -104,8 +104,12 @@ export const axiosValidate = (axios: HttpInstance, validate: AxiosValidateOpts['
  */
 export const axiosPickByParams = (axios: HttpInstance, filters: any[]) => {
   axios.interceptors.request.use((config) => {
-    if (config.data) { config.data = pickByParams(config.data, filters) }
-    if (config.params) { config.params = pickByParams(config.params, filters) }
+    if (config.data?.constructor === Object) {
+      config.data = pickByParams(config.data, filters)
+    }
+    if (config.params?.constructor === Object) {
+      config.params = pickByParams(config.params, filters)
+    }
     return config
   })
 }
