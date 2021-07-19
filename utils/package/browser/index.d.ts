@@ -56,28 +56,8 @@ export declare const fuseThemeColor: (color: string) => {
     "primaryColorDark-4": string;
     "primaryColorDark-6": string;
     "primaryColorDark-8": string;
-    "primaryColorOpacity-2": {
-        red: number;
-        green: number;
-        blue: number;
-        rgba: string;
-    };
-    "primaryColorOpacity-4": {
-        red: number;
-        green: number;
-        blue: number;
-        rgba: string;
-    };
-    "primaryColorOpacity-6": {
-        red: number;
-        green: number;
-        blue: number;
-        rgba: string;
-    };
-    "primaryColorOpacity-8": {
-        red: number;
-        green: number;
-        blue: number;
-        rgba: string;
-    };
+    "primaryColorOpacity-2": string;
+    "primaryColorOpacity-4": string;
+    "primaryColorOpacity-6": string;
+    "primaryColorOpacity-8": string;
 };

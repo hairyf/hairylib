@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.axiosPickByParams = exports.axiosValidate = exports.axiosLoading = void 0;
-const common_1 = require("../common");
+import { pickByParams } from "../common";
 /**
  * axios 全局加载提示
  * @param axios 实例
  * @param show 展示逻辑钩子
  * @param clone 关闭逻辑钩子
  */
-const axiosLoading = (axios, show, clone) => {
+export const axiosLoading = (axios, show, clone) => {
     let requestCount = 0;
     axios.interceptors.request.use((config) => {
         if (config.loading) {
@@ -32,14 +29,13 @@ const axiosLoading = (axios, show, clone) => {
         return error;
     });
 };
-exports.axiosLoading = axiosLoading;
 /**
  * axios 校验器
  * @param axios 实例
  * @param validate 校验器
  * @param rejected 错误处理
  */
-const axiosValidate = (axios, validate, rejected) => {
+export const axiosValidate = (axios, validate, rejected) => {
     const onFulfilled = (response) => {
         const validateResult = validate(response);
         const isError = typeof validateResult == 'boolean' && !validateResult;
@@ -55,23 +51,21 @@ const axiosValidate = (axios, validate, rejected) => {
     };
     axios.interceptors.response.use(onFulfilled, onRejected);
 };
-exports.axiosValidate = axiosValidate;
 /**
  * 根据过滤器, 过滤 body|params 参数
  * @param axios 实例
  * @param filters 过滤参数
  */
-const axiosPickByParams = (axios, filters) => {
+export const axiosPickByParams = (axios, filters) => {
     axios.interceptors.request.use((config) => {
         var _a, _b;
         if (((_a = config.data) === null || _a === void 0 ? void 0 : _a.constructor) === Object) {
-            config.data = common_1.pickByParams(config.data, filters);
+            config.data = pickByParams(config.data, filters);
         }
         if (((_b = config.params) === null || _b === void 0 ? void 0 : _b.constructor) === Object) {
-            config.params = common_1.pickByParams(config.params, filters);
+            config.params = pickByParams(config.params, filters);
         }
         return config;
     });
 };
-exports.axiosPickByParams = axiosPickByParams;
 //# sourceMappingURL=index.js.map

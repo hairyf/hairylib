@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-14 14:47:27
@@ -71,5 +69,5 @@ const routes = [
         ]
     }
 ];
-exports.default = routes;
+export default routes;
 //# sourceMappingURL=index.js.map

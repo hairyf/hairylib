@@ -1,4 +1,3 @@
-"use strict";
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
@@ -7,82 +6,72 @@
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.pickByParams = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analySize = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
-const dayjs_1 = __importDefault(require("dayjs"));
-const lodash_1 = require("lodash");
+import dayjs from "dayjs";
+import { pickBy } from "lodash";
 /**
  * 获取数据类型
  * @param target 检测对象
  * @returns 返回字符串
  */
-const checkedTypeof = (target) => {
+export const checkedTypeof = (target) => {
     return Object.prototype.toString.call(target).slice(8, -1);
 };
-exports.checkedTypeof = checkedTypeof;
 /**
  * 剔除字符串代码字段
  * @param str 字符串
  * @returns 剔除字符串
  */
-const removeStrCode = (str) => {
+export const removeStrCode = (str) => {
     return str.replace(/<[\/\!]*[^<>]*>/ig, "");
 };
-exports.removeStrCode = removeStrCode;
 /**
  * 如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上px单位
  * @param unit 单元
  * @returns string
  */
-const analyUnit = (unit) => {
+export const analyUnit = (unit) => {
     return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px';
 };
-exports.analyUnit = analyUnit;
 /**
  * 将 size 转换为宽高
  * @param size { AnalySizeOption }
  * @returns
  */
-const analySize = (size) => {
+export const analySize = (size) => {
     // 单数值正方形
     if (typeof size === 'string' || typeof size === 'number') {
-        return { width: exports.analyUnit(size), height: exports.analyUnit(size) };
+        return { width: analyUnit(size), height: analyUnit(size) };
     }
     // 数组形式尺寸
     if (Array.isArray(size)) {
         return {
-            width: exports.analyUnit(size[0]),
-            height: exports.analyUnit(size[1])
+            width: analyUnit(size[0]),
+            height: analyUnit(size[1])
         };
     }
     // 对象形式尺寸
     if (typeof size === 'object') {
         return {
-            width: exports.analyUnit(size.width),
-            height: exports.analyUnit(size.height)
+            width: analyUnit(size.width),
+            height: analyUnit(size.height)
         };
     }
     return { width: '', height: '' };
 };
-exports.analySize = analySize;
 /**
  * 时间戳格式化(秒)
  * @param timestamp 格式化时间戳(秒)
  * @param format 格式化时间格式
  * @returns 格式时间字符串
  */
-const formatUnix = (timestamp, format = 'YYYY-MM-DD HH:mm:ss') => {
-    return dayjs_1.default.unix(timestamp).format(format);
+export const formatUnix = (timestamp, format = 'YYYY-MM-DD HH:mm:ss') => {
+    return dayjs.unix(timestamp).format(format);
 };
-exports.formatUnix = formatUnix;
 /**
  * 过滤为价格(两位小数点)
  * @param value 传入字符
  */
-const filterPrice = (value) => {
+export const filterPrice = (value) => {
     return value
         .replace(/^[^\d+]/, '')
         .replace(/[^\d{1,}.\d{1,}|\d{1,}]/g, '')
@@ -92,42 +81,38 @@ const filterPrice = (value) => {
         .replace(/\.{2,}/g, '.')
         .replace(/^(-)*(\d+)\.(\d\d).*$/, '$1$2.$3');
 };
-exports.filterPrice = filterPrice;
 /**
  * 过滤为正整数
  * @param value 传入字符
  */
-const filterInteger = (value) => {
+export const filterInteger = (value) => {
     return value.replace(/^(0+)|[^\d]+/g, '');
 };
-exports.filterInteger = filterInteger;
 /**
  * 地址参数计算
  * @param url 传入url
  * @param params 请求参数
  * @returns 拼接url
  */
-const paramsAnaly = (url, params) => {
+export const paramsAnaly = (url, params) => {
     const queryStr = Object.keys(params).map((key) => `${key}=${params[key]}`);
     if (queryStr.length > 0) {
         url += '?' + queryStr.join('&');
     }
     return url;
 };
-exports.paramsAnaly = paramsAnaly;
 /**
  * 生成递进的数组
  * @param start 开始数值
  * @param end 结束数值
  * @returns 递进的数组
  */
-const generateArray = (start, end) => {
+export const generateArray = (start, end) => {
     start = Number(start);
     end = Number(end);
     end = end > start ? end : start;
     return [...Array(end + 1).keys()].slice(start);
 };
-exports.generateArray = generateArray;
 /**
  * 颜色混合器
  * @param colorOne 颜色值
@@ -135,7 +120,7 @@ exports.generateArray = generateArray;
  * @param ratio 根据 colorTwo 混合比例, 0~1 区间, 1 则是完全的 colorTwo
  * @returns 混合颜色
  */
-const blendColor = (colorOne, colorTwo, ratio) => {
+export const blendColor = (colorOne, colorTwo, ratio) => {
     ratio = Math.max(Math.min(Number(ratio), 1), 0);
     const r1 = parseInt(colorOne.substring(1, 3), 16);
     const g1 = parseInt(colorOne.substring(3, 5), 16);
@@ -151,14 +136,13 @@ const blendColor = (colorOne, colorTwo, ratio) => {
     b = ('0' + (b || 0).toString(16)).slice(-2);
     return '#' + r + g + b;
 };
-exports.blendColor = blendColor;
 /**
  * 将 hex 颜色转成 rgb
  * @param hex
  * @param opacity
  * @returns rgba String
  */
-const hexToRgba = (hex, opacity) => {
+export const hexToRgba = (hex, opacity) => {
     const RGBA = 'rgba(' +
         parseInt('0x' + hex.slice(1, 3)) +
         ',' +
@@ -175,21 +159,19 @@ const hexToRgba = (hex, opacity) => {
         rgba: RGBA
     };
 };
-exports.hexToRgba = hexToRgba;
 /**
  * 自定义 Promise 等待
  * @param code 等待时间
  */
-const awaitPromise = (code = 1000) => {
+export const awaitPromise = (code = 1000) => {
     return new Promise((resolve) => setTimeout(resolve, code));
 };
-exports.awaitPromise = awaitPromise;
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
  * @param option
  * @returns html string
  */
-const setHtmlStrTagAttr = (option) => {
+export const setHtmlStrTagAttr = (option) => {
     if ([option.html, option.tag, option.attr, option.value].findIndex(v => typeof v !== 'string') !== -1) {
         throw new Error("option params error");
     }
@@ -213,15 +195,14 @@ const setHtmlStrTagAttr = (option) => {
         return setHtmlStr;
     }
 };
-exports.setHtmlStrTagAttr = setHtmlStrTagAttr;
 /**
  * 根据过滤返回对应数据
  * @param params
  * @param filters
  * @returns params
  */
-const pickByParams = (params, filters) => {
-    const pickValue = lodash_1.pickBy(params, (value) => {
+export const pickByParams = (params, filters) => {
+    const pickValue = pickBy(params, (value) => {
         return !filters.some(v => value === v);
     });
     if (Array.isArray(params)) {
@@ -231,5 +212,4 @@ const pickByParams = (params, filters) => {
         return pickValue;
     }
 };
-exports.pickByParams = pickByParams;
 //# sourceMappingURL=index.js.map
