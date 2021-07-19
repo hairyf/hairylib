@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-18 09:37:53
+ * @LastEditTime: 2021-07-19 15:11:42
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -33,6 +33,34 @@ export const removeStrCode = (str: string) => {
  */
 export const analyUnit = (unit: string | number) => {
   return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px'
+}
+/** size 转换配置 */
+export type AnalySizeOption = string | number | { width: string | number; height: string | number } | [number | string, number | string]
+/**
+ * 将 size 转换为宽高
+ * @param size { AnalySizeOption }
+ * @returns 
+ */
+export const analySize = (size: AnalySizeOption) => {
+  // 单数值正方形
+  if (typeof size === 'string' || typeof size === 'number') {
+    return { width: analyUnit(size), height: analyUnit(size) }
+  }
+  // 数组形式尺寸
+  if (Array.isArray(size)) {
+    return {
+      width: analyUnit(size[0]),
+      height: analyUnit(size[1])
+    }
+  }
+  // 对象形式尺寸
+  if (typeof size === 'object') {
+    return {
+      width: analyUnit(size.width),
+      height: analyUnit(size.height)
+    }
+  }
+  return { width: '', height: '' }
 }
 /**
  * 时间戳格式化(秒)
@@ -170,7 +198,7 @@ export const setHtmlStrTagAttr = (option: { html: string, tag: string, attr: str
   });
   if (!option.value) {
     return setHtmlStr.replace(subReg, '')
-  }else {
+  } else {
     return setHtmlStr
   }
 }
@@ -187,7 +215,7 @@ export const pickByParams = <T extends object>(params: T, filters: any[]) => {
   })
   if (Array.isArray(params)) {
     return Object.values(pickValue) as any[]
-  }else {
+  } else {
     return pickValue as Record<string, any>
   }
 }

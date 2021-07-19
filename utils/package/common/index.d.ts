@@ -16,6 +16,20 @@ export declare const removeStrCode: (str: string) => string;
  * @returns string
  */
 export declare const analyUnit: (unit: string | number) => string;
+/** size 转换配置 */
+export declare type AnalySizeOption = string | number | {
+    width: string | number;
+    height: string | number;
+} | [number | string, number | string];
+/**
+ * 将 size 转换为宽高
+ * @param size { AnalySizeOption }
+ * @returns
+ */
+export declare const analySize: (size: AnalySizeOption) => {
+    width: string;
+    height: string;
+};
 /**
  * 时间戳格式化(秒)
  * @param timestamp 格式化时间戳(秒)

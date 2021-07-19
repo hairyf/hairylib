@@ -2,7 +2,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-18 09:37:53
+ * @LastEditTime: 2021-07-19 15:11:42
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -11,7 +11,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pickByParams = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
+exports.pickByParams = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analySize = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
 const dayjs_1 = __importDefault(require("dayjs"));
 const lodash_1 = require("lodash");
 /**
@@ -41,6 +41,33 @@ const analyUnit = (unit) => {
     return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px';
 };
 exports.analyUnit = analyUnit;
+/**
+ * 将 size 转换为宽高
+ * @param size { AnalySizeOption }
+ * @returns
+ */
+const analySize = (size) => {
+    // 单数值正方形
+    if (typeof size === 'string' || typeof size === 'number') {
+        return { width: exports.analyUnit(size), height: exports.analyUnit(size) };
+    }
+    // 数组形式尺寸
+    if (Array.isArray(size)) {
+        return {
+            width: exports.analyUnit(size[0]),
+            height: exports.analyUnit(size[1])
+        };
+    }
+    // 对象形式尺寸
+    if (typeof size === 'object') {
+        return {
+            width: exports.analyUnit(size.width),
+            height: exports.analyUnit(size.height)
+        };
+    }
+    return { width: '', height: '' };
+};
+exports.analySize = analySize;
 /**
  * 时间戳格式化(秒)
  * @param timestamp 格式化时间戳(秒)
