@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:37:00
- * @LastEditTime: 2021-07-18 14:05:50
+ * @LastEditTime: 2021-07-19 16:52:37
  * @Description: 浏览器工具
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -121,8 +121,8 @@ export const fuseThemeColor = (color: string) => ({
   "primaryColorDark-6": blendColor('#000000', color, 0.4),
   "primaryColorDark-8": blendColor('#000000', color, 0.2),
 
-  "primaryColorOpacity-2": hexToRgba(color, 0.8),
-  "primaryColorOpacity-4": hexToRgba(color, 0.6),
-  "primaryColorOpacity-6": hexToRgba(color, 0.4),
-  "primaryColorOpacity-8": hexToRgba(color, 0.2),
+  "primaryColorOpacity-2": hexToRgba(color, 0.8).rgba,
+  "primaryColorOpacity-4": hexToRgba(color, 0.6).rgba,
+  "primaryColorOpacity-6": hexToRgba(color, 0.4).rgba,
+  "primaryColorOpacity-8": hexToRgba(color, 0.2).rgba,
 })
