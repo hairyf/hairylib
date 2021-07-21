@@ -5,7 +5,7 @@ import { ref, Ref, watch } from 'vue'
 /*
  * @Author: Mr.Mao
  * @Date: 2021-05-29 14:02:00
- * @LastEditTime: 2021-06-28 16:16:22
+ * @LastEditTime: 2021-07-21 17:43:04
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -46,6 +46,7 @@ export const defaultOption = {
 export const useListPagination = <T extends any[]>(opts: UseListPaginationOpts<T>) => {
   const pageOption = cloneDeep({ ...defaultOption, ...opts })
   const list = pageOption.list as Ref<T>
+  const loading = ref(false)
   const pagination = usePagination({
     pageSize: pageOption.pageSize,
     total: pageOption.total,
@@ -56,14 +57,17 @@ export const useListPagination = <T extends any[]>(opts: UseListPaginationOpts<T
     try {
       return await pageOption.getList(result)
     } catch (error) {
+      console.log(error)
       return [] as any as T
     }
   }
   /** 重置列表选项与数据 */
   const resetList = async () => {
+    loading.value = true
     list.value = await asyncGetList()
+    loading.value = false
   }
-  const result = { list, resetList, ...pagination }
+  const result = { list, resetList, ...pagination, loading }
   /** 监视属性, 刷新列表 */
   setTimeout(() => {
     watch([pagination.currentPage, pagination.pageSize, ...pageOption.sources], resetList, {
