@@ -31,6 +31,7 @@ export declare const defaultOption: {
  * list, resetList, ...PaginationResult
  */
 export declare const useListPagination: <T extends any[]>(opts: UseListPaginationOpts<T>) => {
+    loading: Ref<boolean>;
     pageSize: Ref<number>;
     total: Ref<number>;
     currentPage: Ref<number>;
