@@ -1,14 +1,14 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-23 09:16:55
- * @LastEditTime: 2021-07-23 09:33:23
+ * @LastEditTime: 2021-07-23 09:41:51
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import { useStorage, StorageLike } from '@vueuse/core'
-import { computed } from 'vue'
-import { publish, subscribe } from 'pubsub-js'
+import { computed, onUnmounted } from 'vue'
+import { publish, subscribe, unsubscribe } from 'pubsub-js'
 
 /**
  * 引入具有跨层级响应式缓存 Ref
@@ -26,11 +26,12 @@ export const useWatchStorage = <T = null>(key: string, defaultValue: T, options?
       source.value = value
     }
   })
-  subscribe(`watch-store__${key}`, (_: string, value: [symbol,T]) => {
+  const token = subscribe(`watch-store__${key}`, (_: string, value: [symbol,T]) => {
     if (value[0] === compare) return undefined
     compare = value[0]
     source.value = value[1]
   })
+  onUnmounted(() => unsubscribe(token))
   return target
 }
 useWatchStorage.option = undefined as StorageLike | undefined
