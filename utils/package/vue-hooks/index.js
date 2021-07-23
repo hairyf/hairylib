@@ -21,4 +21,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./use-historys"), exports);
 __exportStar(require("./use-multiple-select"), exports);
 __exportStar(require("./use-list-pagination"), exports);
+__exportStar(require("./use-watch-storage"), exports);
 //# sourceMappingURL=index.js.map
