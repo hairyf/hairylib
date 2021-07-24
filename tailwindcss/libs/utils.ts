@@ -43,22 +43,47 @@ const generateArray = (start: number, end: number) => {
   return [...Array(end + 1).keys()].slice(start)
 }
 
+interface GetSpacingOpts {
+  /** 步进值, 0 则不进行步进; @default 2 */
+  step?: number
+  /** 步进翻倍节点 @default [16, 48, 80, 256, 320, 384] */
+  nodes?: number[]
+  /** 步进极限值 @default 50 */
+  stepMax?: number
+  /**
+   * 单位计算(默认以得出px > rem 单位)
+   * @default (num: number) => num / 16
+   */
+  compute?: (num: number) => number
+  /** 单位 @default 'rem' */
+  unit?: string
+}
 /** 获取 0 ~ max 尺寸 */
-export const getSpacing = (end: number, progressiveMax = 50) => {
-  let progressive = 2
-  const powerRatios = [16, 48, 80, 256, 320, 384]
-  const generates = generateArray(0, end).filter((v) => {
-    if (powerRatios.some((n) => v === n)) {
-      progressive = progressive * 2
+export const getSpacing = (max: number, option?: GetSpacingOpts) => {
+  const nodes = option?.nodes ?? [16, 48, 80, 256, 320, 384]
+  const stepMax = option?.stepMax ?? 50
+  const compute = option?.compute ?? ((num: number) => num / 16)
+  const unit = option?.unit ?? 'rem'
+  let step = option?.step ?? 2
+
+  /** 生成数值数据 */
+  const generates = generateArray(0, max).filter((v) => {
+    if (nodes.some((n) => v === n)) {
+      step = step * 2
     } else if (v === 400) {
-      progressive = progressiveMax
+      step = stepMax
     }
-    return v % progressive === 0
+    return v % step === 0
   })
+
+  /** 拼接单位 */
   const spacing = generates.reduce((total, current) => {
-    total[current] = `${current / 16}rem`
+    total[current] = `${compute(current)}${unit}`
     return total
-  }, {} as Record<string, string>)
+  }, <Record<string, string>>{})
+
   spacing['px'] = '1px'
+  spacing[unit] = '1' + unit
+
   return spacing
 }

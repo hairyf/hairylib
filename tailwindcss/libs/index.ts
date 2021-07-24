@@ -9,7 +9,8 @@
 
 import { merge } from 'lodash'
 import { TailwindConfig } from 'tailwindcss/tailwind-config'
-import { defaults } from './defaults'
+import defaults from './defaults'
+
 /**
  * 初始化返回预设
  * @param config 深层合并预设
@@ -20,3 +21,6 @@ const mergePresets = (config: Partial<TailwindConfig> = {}) => {
 }
 
 export default mergePresets
+export { default as preset } from './preset'
+export { default as defaults } from './defaults'
+export * from './utils'

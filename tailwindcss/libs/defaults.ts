@@ -13,7 +13,7 @@ import { getPercentage, getSpacing } from './utils'
 import presets from './preset'
 
 /** 默认配置 */
-export const defaults = merge(presets, {
+const defaults = merge(presets, {
   /** 生产环境下, 需清除样式的文件列表 */
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   /** 前缀 */
@@ -60,16 +60,22 @@ export const defaults = merge(presets, {
     minWidth: (theme: any) => ({
       ...theme('spacing'),
       ...getPercentage(),
+      min: 'min-content',
+      max: 'max-content',
       screen: '100vw'
     }),
     maxWidth: (theme: any) => ({
       ...theme('spacing'),
       ...getPercentage(),
+      min: 'min-content',
+      max: 'max-content',
       screen: '100vw'
     }),
     minHeight: (theme: any) => ({
       ...theme('spacing'),
       ...getPercentage(),
+      min: 'min-content',
+      max: 'max-content',
       screen: '100vh'
     }),
     colors: {
@@ -97,4 +103,6 @@ export const defaults = merge(presets, {
     extend: {}
   },
   plugins: []
-}) as any as Partial<TailwindConfig>
+})
+
+export default defaults as Partial<TailwindConfig>
