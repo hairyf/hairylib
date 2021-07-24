@@ -35,26 +35,6 @@ export const ejectWindow = (url: string) => {
   a.target = '_blank'
   a.click()
 }
-/**
- * 选择多个图片
- * @returns {FileList}
- */
-export const selectImages = () => {
-  return new Promise<File[]>((resolve, reject) => {
-    const inputEl = document.createElement('input')
-    inputEl.type = 'file'
-    inputEl.multiple = true
-    inputEl.accept = 'image/jpeg,image/x-png,image/gif'
-    inputEl.click()
-    const timer = setTimeout(reject, 20 * 1000)
-    inputEl.addEventListener('change', function () {
-      if (this.files) {
-        resolve(Object.values(this.files))
-        clearTimeout(timer)
-      }
-    })
-  })
-}
 
 /**
  * 选择多个文件
@@ -78,6 +58,15 @@ export const selectFiles = (option: { multiple?: boolean; accept?: string } = {}
     })
   })
 }
+
+/**
+ * 选择多个图片
+ * @returns {FileList}
+ */
+export const selectImages = () => {
+  return selectFiles({ multiple: true, accept: 'image/jpeg,image/x-png,image/gif' })
+}
+
 /**
  * 下载文件
  * @param url 下载地址
