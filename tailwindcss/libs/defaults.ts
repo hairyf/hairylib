@@ -2,13 +2,13 @@
  * @Author: Mr.Mao
  * @Date: 2021-06-18 14:00:57
  * @LastEditTime: 2021-07-18 11:08:57
- * @Description: 
+ * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
-import { merge } from "lodash";
-import { TailwindConfig } from "tailwindcss/tailwind-config";
+import { merge } from 'lodash'
+import { TailwindConfig } from 'tailwindcss/tailwind-config'
 import { getPercentage, getSpacing } from './utils'
 import presets from './preset'
 
@@ -33,10 +33,10 @@ export const defaults = merge(presets, {
    */
   theme: {
     /**
-   * 断点配置 class="sm:text-center"
-   * @template {sm: '640px'}
-   * @link https://www.tailwindcss.cn/docs/breakpoints
-   */
+     * 断点配置 class="sm:text-center"
+     * @template {sm: '640px'}
+     * @link https://www.tailwindcss.cn/docs/breakpoints
+     */
     screens: {
       xs: { min: '0' },
       sm: { min: '576px' },
@@ -54,24 +54,24 @@ export const defaults = merge(presets, {
       ...getPercentage(),
       min: 'min-content',
       max: 'max-content',
-      screen: '100vh',
+      screen: '100vh'
     }),
     spacing: getSpacing(2000),
-    minWidth: ((theme: any) => ({
+    minWidth: (theme: any) => ({
       ...theme('spacing'),
       ...getPercentage(),
       screen: '100vw'
-    })),
-    maxWidth: ((theme: any) => ({
+    }),
+    maxWidth: (theme: any) => ({
       ...theme('spacing'),
       ...getPercentage(),
       screen: '100vw'
-    })),
-    minHeight: ((theme: any) => ({
+    }),
+    minHeight: (theme: any) => ({
       ...theme('spacing'),
       ...getPercentage(),
       screen: '100vh'
-    })),
+    }),
     colors: {
       pink: { DEFAULT: 'pink' },
       fuchsia: { DEFAULT: 'fuchsia' },
@@ -86,7 +86,7 @@ export const defaults = merge(presets, {
       yellow: { DEFAULT: 'yellow' },
       orange: { DEFAULT: 'orange' },
       red: { DEFAULT: 'red' },
-      gray: { DEFAULT: 'gray' },
+      gray: { DEFAULT: 'gray' }
     }
   },
   /**
@@ -96,6 +96,5 @@ export const defaults = merge(presets, {
   variants: {
     extend: {}
   },
-  plugins: [],
+  plugins: []
 }) as any as Partial<TailwindConfig>
-

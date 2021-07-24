@@ -1,11 +1,3 @@
-/*
- * @Author: Mr.Mao
- * @LastEditors: Mr.Mao
- * @Date: 2021-02-24 09:54:52
- * @LastEditTime: 2021-05-17 19:10:03
- * @Description:
- * @任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
- */
 module.exports = {
   printWidth: 100,
   tabWidth: 2,

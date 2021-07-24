@@ -2,13 +2,13 @@
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
  * @LastEditTime: 2021-07-19 15:11:42
- * @Description: 
+ * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
-import dayjs from "dayjs"
-import { pickBy } from "lodash"
+import dayjs from 'dayjs'
+import { pickBy } from 'lodash'
 
 /**
  * 获取数据类型
@@ -24,7 +24,7 @@ export const checkedTypeof = (target: any): string => {
  * @returns 剔除字符串
  */
 export const removeStrCode = (str: string) => {
-  return str.replace(/<[\/\!]*[^<>]*>/ig, "")
+  return str.replace(/<[\/\!]*[^<>]*>/gi, '')
 }
 /**
  * 如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上px单位
@@ -35,11 +35,15 @@ export const analyUnit = (unit: string | number) => {
   return typeof unit === 'string' && /[^0-9]/g.test(unit) ? unit : unit + 'px'
 }
 /** size 转换配置 */
-export type AnalySizeOption = string | number | { width: string | number; height: string | number } | [number | string, number | string]
+export type AnalySizeOption =
+  | string
+  | number
+  | { width: string | number; height: string | number }
+  | [number | string, number | string]
 /**
  * 将 size 转换为宽高
  * @param size { AnalySizeOption }
- * @returns 
+ * @returns
  */
 export const analySize = (size: AnalySizeOption) => {
   // 单数值正方形
@@ -177,45 +181,55 @@ export const awaitPromise = (code = 1000) => {
 
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
- * @param option 
+ * @param option
  * @returns html string
  */
-export const setHtmlStrTagAttr = (option: { html: string, tag: string, attr: string, value: string }) => {
-  if ([option.html, option.tag, option.attr, option.value].findIndex(v => typeof v !== 'string') !== -1) {
-    throw new Error("option params error");
+export const setHtmlStrTagAttr = (option: {
+  html: string
+  tag: string
+  attr: string
+  value: string
+}) => {
+  if (
+    [option.html, option.tag, option.attr, option.value].findIndex((v) => typeof v !== 'string') !==
+    -1
+  ) {
+    throw new Error('option params error')
   }
-  const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](.*?)[\'\"])?[^>]*>', 'gi');
-  const subReg = new RegExp(`${option.attr}=[\'\"](.*?)[\'\"]`, 'gis');
-  const setHtmlStr = option.html.replace(reg, function (match) {
+  const reg = new RegExp(
+    '<' + option.tag + '[^>]*(' + option.attr + '=[\'"](.*?)[\'"])?[^>]*>',
+    'gi'
+  )
+  const subReg = new RegExp(`${option.attr}=[\'\"](.*?)[\'\"]`, 'gis')
+  const setHtmlStr = option.html.replace(reg, (match) => {
     if (match.indexOf(option.attr) > 0) {
       //包含option.attr属性,替换option.attr
-      return match.replace(subReg, `${option.attr}="${option.value}"`);
-    } else {
-      //不包含option.attr属性,添加option.attr
-      const surplus = match.substr(option.tag.length + 2, match.length)
-      return `${match.substr(0, option.tag.length + 1)} ${option.attr}="${option.value}"${surplus ? ` ${surplus}` : ''}`
+      return match.replace(subReg, `${option.attr}="${option.value}"`)
     }
-  });
+    //不包含option.attr属性,添加option.attr
+    const surplus = match.substr(option.tag.length + 2, match.length)
+    return `${match.substr(0, option.tag.length + 1)} ${option.attr}="${option.value}"${
+      surplus ? ` ${surplus}` : ''
+    }`
+  })
   if (!option.value) {
     return setHtmlStr.replace(subReg, '')
-  } else {
-    return setHtmlStr
   }
+  return setHtmlStr
 }
 
 /**
  * 根据过滤返回对应数据
- * @param params 
- * @param filters 
+ * @param params
+ * @param filters
  * @returns params
  */
 export const pickByParams = <T extends object>(params: T, filters: any[]) => {
   const pickValue = pickBy(params, (value) => {
-    return !filters.some(v => value === v)
+    return !filters.some((v) => value === v)
   })
   if (Array.isArray(params)) {
     return Object.values(pickValue) as any[]
-  } else {
-    return pickValue as Record<string, any>
   }
+  return pickValue as Record<string, any>
 }

@@ -1,0 +1,37 @@
+{
+  "name": "tuimao-config",
+  "version": "0.0.0",
+  "description": "目前包含 Vue3 Eslint 预设，tailwind 预设。\r 使用文档暂未开发，请自行运量使用。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rimraf:modules": "rimraf ./node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/tuimao-config.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TuiMao233/tuimao-config/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "devDependencies": {
+    "@tuimao/eslint-config-preset": "^1.1.0",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
+    "prettier": "^2.3.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@tuimao/eslint-config-preset/vue3-typescript"
+    ]
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.24",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.0-next.12",
+    "typescript": "^4.3.5"
+  }
+}

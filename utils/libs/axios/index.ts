@@ -2,12 +2,12 @@
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:53:00
  * @LastEditTime: 2021-07-18 15:00:53
- * @Description: 
+ * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
-import { pickByParams } from "../common"
+import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
+import { pickByParams } from '../common'
 
 declare module 'axios' {
   interface AxiosRequestConfig {
@@ -38,7 +38,11 @@ type HttpInstance = AxiosStatic | AxiosInstance
  * @param show 展示逻辑钩子
  * @param clone 关闭逻辑钩子
  */
-export const axiosLoading = (axios: HttpInstance, show: AxiosLoadingOpts['show'], clone: AxiosLoadingOpts['clone']) => {
+export const axiosLoading = (
+  axios: HttpInstance,
+  show: AxiosLoadingOpts['show'],
+  clone: AxiosLoadingOpts['clone']
+) => {
   let requestCount = 0
   axios.interceptors.request.use((config) => {
     if (config.loading) {
@@ -67,18 +71,22 @@ export const axiosLoading = (axios: HttpInstance, show: AxiosLoadingOpts['show']
 
 /**
  * axios 校验器
- * @param axios 实例 
+ * @param axios 实例
  * @param validate 校验器
  * @param rejected 错误处理
  */
-export const axiosValidate = (axios: HttpInstance, validate: AxiosValidateOpts['validate'], rejected: AxiosValidateOpts['rejected']) => {
+export const axiosValidate = (
+  axios: HttpInstance,
+  validate: AxiosValidateOpts['validate'],
+  rejected: AxiosValidateOpts['rejected']
+) => {
   const onFulfilled = (response: AxiosResponse) => {
     const validateResult = validate(response)
     const isError = typeof validateResult == 'boolean' && !validateResult
     if (isError) {
       rejected({
         ...response,
-        response: response,
+        response,
         isAxiosError: false,
         toJSON: () => ({}),
         ...new Error()
@@ -91,10 +99,7 @@ export const axiosValidate = (axios: HttpInstance, validate: AxiosValidateOpts['
     !error.config.preventError && rejected(error)
     return Promise.reject(error)
   }
-  axios.interceptors.response.use(
-    onFulfilled,
-    onRejected
-  )
+  axios.interceptors.response.use(onFulfilled, onRejected)
 }
 
 /**

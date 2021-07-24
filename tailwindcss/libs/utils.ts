@@ -2,11 +2,10 @@
  * @Author: Mr.Mao
  * @Date: 2021-06-18 14:03:19
  * @LastEditTime: 2021-06-21 10:31:39
- * @Description: 
+ * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-
 
 /** 获取百分比尺寸 */
 export const getPercentage = () => {
@@ -27,7 +26,7 @@ export const getPercentage = () => {
     '2/6': '33.333333%',
     '3/6': '50%',
     '4/6': '66.666667%',
-    '5/6': '83.333333%',
+    '5/6': '83.333333%'
   }
 }
 
@@ -48,15 +47,14 @@ const generateArray = (start: number, end: number) => {
 export const getSpacing = (end: number, progressiveMax = 50) => {
   let progressive = 2
   const powerRatios = [16, 48, 80, 256, 320, 384]
-  const generates = generateArray(0, end).
-    filter(v => {
-      if (powerRatios.some(n => v === n)) {
-        progressive = progressive * 2
-      } else if (v === 400) {
-        progressive = progressiveMax
-      }
-      return v % progressive === 0
-    })
+  const generates = generateArray(0, end).filter((v) => {
+    if (powerRatios.some((n) => v === n)) {
+      progressive = progressive * 2
+    } else if (v === 400) {
+      progressive = progressiveMax
+    }
+    return v % progressive === 0
+  })
   const spacing = generates.reduce((total, current) => {
     total[current] = `${current / 16}rem`
     return total
