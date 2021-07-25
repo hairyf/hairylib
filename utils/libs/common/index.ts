@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-25 11:04:01
+ * @LastEditTime: 2021-07-25 11:10:45
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -181,8 +181,9 @@ export const awaitPromise = (code = 1000) => {
 
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
+ * @param html html string
  * @param option
- * @returns html string
+ * @returns
  */
 export const setHtmlStrTagAttr = (
   html: string,
@@ -219,6 +220,16 @@ export const setHtmlStrTagAttr = (
     return setHtmlStr
   }
   return tags.reduce((total, tag) => transform(total, tag), html)
+}
+
+/**
+ * 移除所有标签的一个属性
+ * @param html html string
+ * @param attr attr string
+ * @returns html
+ */
+export const removeHtmlStrTagAttr = (html: string, attr: string) => {
+  return html.replace(new RegExp(`${attr}=['"](.*?)['"]`, 'gis'), '')
 }
 
 /**

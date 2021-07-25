@@ -88,14 +88,22 @@ export declare const hexToRgba: (hex: string, opacity: number) => {
 export declare const awaitPromise: (code?: number) => Promise<unknown>;
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
+ * @param html html string
  * @param option
- * @returns html string
+ * @returns
  */
 export declare const setHtmlStrTagAttr: (html: string, option: {
     tag: string | string[];
     attr: string;
     value: string;
 }) => string;
+/**
+ * 移除所有标签的一个属性
+ * @param html html string
+ * @param attr attr string
+ * @returns html
+ */
+export declare const removeHtmlStrTagAttr: (html: string, attr: string) => string;
 /**
  * 根据过滤返回对应数据
  * @param params

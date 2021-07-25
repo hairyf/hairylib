@@ -2,7 +2,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-25 11:04:01
+ * @LastEditTime: 2021-07-25 11:10:45
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -11,7 +11,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pickByParams = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analySize = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
+exports.pickByParams = exports.removeHtmlStrTagAttr = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analySize = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
 const dayjs_1 = __importDefault(require("dayjs"));
 const lodash_1 = require("lodash");
 /**
@@ -186,8 +186,9 @@ const awaitPromise = (code = 1000) => {
 exports.awaitPromise = awaitPromise;
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
+ * @param html html string
  * @param option
- * @returns html string
+ * @returns
  */
 const setHtmlStrTagAttr = (html, option) => {
     if (typeof html !== 'string') {
@@ -216,6 +217,16 @@ const setHtmlStrTagAttr = (html, option) => {
     return tags.reduce((total, tag) => transform(total, tag), html);
 };
 exports.setHtmlStrTagAttr = setHtmlStrTagAttr;
+/**
+ * 移除所有标签的一个属性
+ * @param html html string
+ * @param attr attr string
+ * @returns html
+ */
+const removeHtmlStrTagAttr = (html, attr) => {
+    return html.replace(new RegExp(`${attr}=['"](.*?)['"]`, 'gis'), '');
+};
+exports.removeHtmlStrTagAttr = removeHtmlStrTagAttr;
 /**
  * 根据过滤返回对应数据
  * @param params
