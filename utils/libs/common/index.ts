@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-19 15:11:42
+ * @LastEditTime: 2021-07-25 11:04:01
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -184,38 +184,41 @@ export const awaitPromise = (code = 1000) => {
  * @param option
  * @returns html string
  */
-export const setHtmlStrTagAttr = (option: {
-  html: string
-  tag: string
-  attr: string
-  value: string
-}) => {
-  if (
-    [option.html, option.tag, option.attr, option.value].findIndex((v) => typeof v !== 'string') !==
-    -1
-  ) {
-    throw new Error('option params error')
+export const setHtmlStrTagAttr = (
+  html: string,
+  option: {
+    tag: string | string[]
+    attr: string
+    value: string
   }
-  const reg = new RegExp(
-    '<' + option.tag + '[^>]*(' + option.attr + '=[\'"](.*?)[\'"])?[^>]*>',
-    'gi'
-  )
-  const subReg = new RegExp(`${option.attr}=[\'\"](.*?)[\'\"]`, 'gis')
-  const setHtmlStr = option.html.replace(reg, (match) => {
-    if (match.indexOf(option.attr) > 0) {
+) => {
+  if (typeof html !== 'string') {
+    throw new Error('error: html is not string')
+  }
+  const tags = Array.isArray(option.tag) ? option.tag : [option.tag]
+  const transform = (html: string, tag: string) => {
+    const replaceReg = new RegExp(
+      '<' + tag + '[^>]*(' + option.attr + '=[\'"](.*?)[\'"])?[^>]*>',
+      'gi'
+    )
+    const subReg = new RegExp(`${option.attr}=['"](.*?)['"]`, 'gis')
+    const setHtmlStr = html.replace(replaceReg, (match) => {
       //包含option.attr属性,替换option.attr
-      return match.replace(subReg, `${option.attr}="${option.value}"`)
+      if (match.indexOf(option.attr) > 0) {
+        return match.replace(subReg, `${option.attr}="${option.value}"`)
+      }
+      //不包含option.attr属性,添加option.attr
+      const prefix = match.substr(0, tag.length + 1)
+      let suffix = match.substr(tag.length + 2, match.length)
+      suffix = suffix ? ` ${suffix}` : '>'
+      return `${prefix} ${option.attr}="${option.value}"${suffix}`
+    })
+    if (!option.value) {
+      return setHtmlStr.replace(subReg, '')
     }
-    //不包含option.attr属性,添加option.attr
-    const surplus = match.substr(option.tag.length + 2, match.length)
-    return `${match.substr(0, option.tag.length + 1)} ${option.attr}="${option.value}"${
-      surplus ? ` ${surplus}` : ''
-    }`
-  })
-  if (!option.value) {
-    return setHtmlStr.replace(subReg, '')
+    return setHtmlStr
   }
-  return setHtmlStr
+  return tags.reduce((total, tag) => transform(total, tag), html)
 }
 
 /**

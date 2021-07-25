@@ -10,17 +10,12 @@ export declare const isAndroid: boolean;
 export declare const isIOS: boolean;
 export declare const isChrome: boolean | "";
 export declare const isPhantomJS: boolean | "";
-export declare const isFF: false | "" | RegExpMatchArray | null;
+export declare const isFF: false | RegExpMatchArray | null;
 /**
  * 跳转到新的页面
  * @param url 跳转url
  */
 export declare const ejectWindow: (url: string) => void;
-/**
- * 选择多个图片
- * @returns {FileList}
- */
-export declare const selectImages: () => Promise<File[]>;
 /**
  * 选择多个文件
  * @param option
@@ -30,6 +25,11 @@ export declare const selectFiles: (option?: {
     multiple?: boolean;
     accept?: string;
 }) => Promise<File[]>;
+/**
+ * 选择多个图片
+ * @returns {FileList}
+ */
+export declare const selectImages: () => Promise<File[]>;
 /**
  * 下载文件
  * @param url 下载地址
@@ -48,16 +48,16 @@ export declare const downloadBlobFile: (data: Blob, name: string) => void;
  * @returns
  */
 export declare const fuseThemeColor: (color: string) => {
-    "primaryColorLight-2": string;
-    "primaryColorLight-4": string;
-    "primaryColorLight-6": string;
-    "primaryColorLight-8": string;
-    "primaryColorDark-2": string;
-    "primaryColorDark-4": string;
-    "primaryColorDark-6": string;
-    "primaryColorDark-8": string;
-    "primaryColorOpacity-2": string;
-    "primaryColorOpacity-4": string;
-    "primaryColorOpacity-6": string;
-    "primaryColorOpacity-8": string;
+    'primaryColorLight-2': string;
+    'primaryColorLight-4': string;
+    'primaryColorLight-6': string;
+    'primaryColorLight-8': string;
+    'primaryColorDark-2': string;
+    'primaryColorDark-4': string;
+    'primaryColorDark-6': string;
+    'primaryColorDark-8': string;
+    'primaryColorOpacity-2': string;
+    'primaryColorOpacity-4': string;
+    'primaryColorOpacity-6': string;
+    'primaryColorOpacity-8': string;
 };

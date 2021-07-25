@@ -4,7 +4,7 @@ exports.useWatchSessionStorage = exports.useWatchLocalStorage = exports.useWatch
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-23 09:16:55
- * @LastEditTime: 2021-07-23 09:33:23
+ * @LastEditTime: 2021-07-23 09:41:51
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -28,12 +28,13 @@ const useWatchStorage = (key, defaultValue, options) => {
             source.value = value;
         }
     });
-    pubsub_js_1.subscribe(`watch-store__${key}`, (_, value) => {
+    const token = pubsub_js_1.subscribe(`watch-store__${key}`, (_, value) => {
         if (value[0] === compare)
             return undefined;
         compare = value[0];
         source.value = value[1];
     });
+    vue_1.onUnmounted(() => pubsub_js_1.unsubscribe(token));
     return target;
 };
 exports.useWatchStorage = useWatchStorage;

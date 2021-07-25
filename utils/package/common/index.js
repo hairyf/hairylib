@@ -2,7 +2,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-19 15:11:42
+ * @LastEditTime: 2021-07-25 11:04:01
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -29,7 +29,7 @@ exports.checkedTypeof = checkedTypeof;
  * @returns 剔除字符串
  */
 const removeStrCode = (str) => {
-    return str.replace(/<[\/\!]*[^<>]*>/ig, "");
+    return str.replace(/<[\/\!]*[^<>]*>/gi, '');
 };
 exports.removeStrCode = removeStrCode;
 /**
@@ -189,29 +189,31 @@ exports.awaitPromise = awaitPromise;
  * @param option
  * @returns html string
  */
-const setHtmlStrTagAttr = (option) => {
-    if ([option.html, option.tag, option.attr, option.value].findIndex(v => typeof v !== 'string') !== -1) {
-        throw new Error("option params error");
+const setHtmlStrTagAttr = (html, option) => {
+    if (typeof html !== 'string') {
+        throw new Error('error: html is not string');
     }
-    const reg = new RegExp('<' + option.tag + '[^>]*(' + option.attr + '=[\'\"](.*?)[\'\"])?[^>]*>', 'gi');
-    const subReg = new RegExp(`${option.attr}=[\'\"](.*?)[\'\"]`, 'gis');
-    const setHtmlStr = option.html.replace(reg, function (match) {
-        if (match.indexOf(option.attr) > 0) {
+    const tags = Array.isArray(option.tag) ? option.tag : [option.tag];
+    const transform = (html, tag) => {
+        const replaceReg = new RegExp('<' + tag + '[^>]*(' + option.attr + '=[\'"](.*?)[\'"])?[^>]*>', 'gi');
+        const subReg = new RegExp(`${option.attr}=['"](.*?)['"]`, 'gis');
+        const setHtmlStr = html.replace(replaceReg, (match) => {
             //包含option.attr属性,替换option.attr
-            return match.replace(subReg, `${option.attr}="${option.value}"`);
-        }
-        else {
+            if (match.indexOf(option.attr) > 0) {
+                return match.replace(subReg, `${option.attr}="${option.value}"`);
+            }
             //不包含option.attr属性,添加option.attr
-            const surplus = match.substr(option.tag.length + 2, match.length);
-            return `${match.substr(0, option.tag.length + 1)} ${option.attr}="${option.value}"${surplus ? ` ${surplus}` : ''}`;
+            const prefix = match.substr(0, tag.length + 1);
+            let suffix = match.substr(tag.length + 2, match.length);
+            suffix = suffix ? ` ${suffix}` : '>';
+            return `${prefix} ${option.attr}="${option.value}"${suffix}`;
+        });
+        if (!option.value) {
+            return setHtmlStr.replace(subReg, '');
         }
-    });
-    if (!option.value) {
-        return setHtmlStr.replace(subReg, '');
-    }
-    else {
         return setHtmlStr;
-    }
+    };
+    return tags.reduce((total, tag) => transform(total, tag), html);
 };
 exports.setHtmlStrTagAttr = setHtmlStrTagAttr;
 /**
@@ -222,14 +224,12 @@ exports.setHtmlStrTagAttr = setHtmlStrTagAttr;
  */
 const pickByParams = (params, filters) => {
     const pickValue = lodash_1.pickBy(params, (value) => {
-        return !filters.some(v => value === v);
+        return !filters.some((v) => value === v);
     });
     if (Array.isArray(params)) {
         return Object.values(pickValue);
     }
-    else {
-        return pickValue;
-    }
+    return pickValue;
 };
 exports.pickByParams = pickByParams;
 //# sourceMappingURL=index.js.map

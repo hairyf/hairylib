@@ -91,9 +91,8 @@ export declare const awaitPromise: (code?: number) => Promise<unknown>;
  * @param option
  * @returns html string
  */
-export declare const setHtmlStrTagAttr: (option: {
-    html: string;
-    tag: string;
+export declare const setHtmlStrTagAttr: (html: string, option: {
+    tag: string | string[];
     attr: string;
     value: string;
 }) => string;

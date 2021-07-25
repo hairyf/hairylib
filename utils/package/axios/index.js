@@ -44,7 +44,7 @@ const axiosValidate = (axios, validate, rejected) => {
         const validateResult = validate(response);
         const isError = typeof validateResult == 'boolean' && !validateResult;
         if (isError) {
-            rejected(Object.assign(Object.assign(Object.assign({}, response), { response: response, isAxiosError: false, toJSON: () => ({}) }), new Error()));
+            rejected(Object.assign(Object.assign(Object.assign({}, response), { response, isAxiosError: false, toJSON: () => ({}) }), new Error()));
             return Promise.reject(response);
         }
         return response;

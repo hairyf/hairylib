@@ -1,4 +1,4 @@
-import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
+import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 declare module 'axios' {
     interface AxiosRequestConfig {
         loading?: boolean;
