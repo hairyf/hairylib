@@ -2,7 +2,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-25 11:10:45
+ * @LastEditTime: 2021-07-25 11:18:46
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -218,13 +218,14 @@ const setHtmlStrTagAttr = (html, option) => {
 };
 exports.setHtmlStrTagAttr = setHtmlStrTagAttr;
 /**
- * 移除所有标签的一个属性
+ * 移除所有标签的一个或多个属性
  * @param html html string
  * @param attr attr string
  * @returns html
  */
 const removeHtmlStrTagAttr = (html, attr) => {
-    return html.replace(new RegExp(`${attr}=['"](.*?)['"]`, 'gis'), '');
+    const attrs = Array.isArray(attr) ? attr : [attr];
+    return attrs.reduce((total, attr) => total.replace(new RegExp(`${attr}=['"](.*?)['"]`, 'gis'), ''), html);
 };
 exports.removeHtmlStrTagAttr = removeHtmlStrTagAttr;
 /**

@@ -98,12 +98,12 @@ export declare const setHtmlStrTagAttr: (html: string, option: {
     value: string;
 }) => string;
 /**
- * 移除所有标签的一个属性
+ * 移除所有标签的一个或多个属性
  * @param html html string
  * @param attr attr string
  * @returns html
  */
-export declare const removeHtmlStrTagAttr: (html: string, attr: string) => string;
+export declare const removeHtmlStrTagAttr: (html: string, attr: string | string[]) => string;
 /**
  * 根据过滤返回对应数据
  * @param params
