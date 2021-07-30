@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:37:00
- * @LastEditTime: 2021-07-19 16:52:37
+ * @LastEditTime: 2021-07-30 15:31:58
  * @Description: 浏览器工具
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -80,21 +80,18 @@ export const downloadFile = (url: string, fileName?: string) => {
 }
 
 /**
- * 下载 blob 文件
- * @param data blob 数据
+ * 生成 blob 文件，并下载
+ * @param data blob 数据，或者字符串
  * @param name 文件名称
  */
-export const downloadBlobFile = (data: Blob, name: string) => {
+export const downloadBlobFile = (data: Blob | string, name: string) => {
   const blob = new Blob([data])
-  const url = window.URL.createObjectURL(blob)
   const link = document.createElement('a')
-  link.style.display = 'none'
+  const url = window.URL.createObjectURL(blob)
   link.href = url
-  link.setAttribute('download', name)
-  document.body.appendChild(link)
+  link.download = name
   link.click()
 }
-
 /**
  * 根据颜色融合出黑色与白色, 透明度色
  * @param color

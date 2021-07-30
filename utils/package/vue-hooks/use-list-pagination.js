@@ -1,9 +1,12 @@
-import { cloneDeep } from 'lodash';
-import { usePagination } from 'vue-composable';
-import { ref, watch } from 'vue';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useListPagination = exports.defaultOption = void 0;
+const lodash_1 = require("lodash");
+const vue_composable_1 = require("vue-composable");
+const vue_1 = require("vue");
 /** 默认配置 */
-export const defaultOption = {
-    list: ref([]),
+exports.defaultOption = {
+    list: vue_1.ref([]),
     init: true,
     pageSize: 10,
     total: 1,
@@ -16,11 +19,11 @@ export const defaultOption = {
  * @returns
  * list, resetList, ...PaginationResult
  */
-export const useListPagination = (opts) => {
-    const pageOption = cloneDeep(Object.assign(Object.assign({}, defaultOption), opts));
+const useListPagination = (opts) => {
+    const pageOption = lodash_1.cloneDeep(Object.assign(Object.assign({}, exports.defaultOption), opts));
     const list = pageOption.list;
-    const loading = ref(false);
-    const pagination = usePagination({
+    const loading = vue_1.ref(false);
+    const pagination = vue_composable_1.usePagination({
         pageSize: pageOption.pageSize,
         total: pageOption.total,
         currentPage: pageOption.currentPage
@@ -44,10 +47,11 @@ export const useListPagination = (opts) => {
     const result = Object.assign(Object.assign({ list, resetList }, pagination), { loading });
     /** 监视属性, 刷新列表 */
     setTimeout(() => {
-        watch([pagination.currentPage, pagination.pageSize, ...pageOption.sources], resetList, {
+        vue_1.watch([pagination.currentPage, pagination.pageSize, ...pageOption.sources], resetList, {
             immediate: pageOption.init
         });
     });
     return result;
 };
+exports.useListPagination = useListPagination;
 //# sourceMappingURL=use-list-pagination.js.map
