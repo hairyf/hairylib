@@ -1,12 +1,13 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:53:00
- * @LastEditTime: 2021-07-18 15:00:53
+ * @LastEditTime: 2021-07-30 17:55:29
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
+import { isPlainObject } from 'lodash'
 import { pickByParams } from '../common'
 
 declare module 'axios' {
