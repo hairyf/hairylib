@@ -2,27 +2,29 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-25 11:18:46
+ * @LastEditTime: 2021-07-30 17:50:47
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pickByParams = exports.removeHtmlStrTagAttr = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analySize = exports.analyUnit = exports.removeStrCode = exports.checkedTypeof = void 0;
+exports.pickByParams = exports.removeHtmlStrTagAttr = exports.setHtmlStrTagAttr = exports.awaitPromise = exports.hexToRgba = exports.blendColor = exports.generateArray = exports.paramsAnaly = exports.filterInteger = exports.filterPrice = exports.formatUnix = exports.analySize = exports.analyUnit = exports.removeStrCode = void 0;
 const dayjs_1 = __importDefault(require("dayjs"));
 const lodash_1 = require("lodash");
-/**
- * 获取数据类型
- * @param target 检测对象
- * @returns 返回字符串
- */
-const checkedTypeof = (target) => {
-    return Object.prototype.toString.call(target).slice(8, -1);
-};
-exports.checkedTypeof = checkedTypeof;
+__exportStar(require("./is"), exports);
 /**
  * 剔除字符串代码字段
  * @param str 字符串
@@ -232,7 +234,6 @@ exports.removeHtmlStrTagAttr = removeHtmlStrTagAttr;
  * 根据过滤返回对应数据
  * @param params
  * @param filters
- * @returns params
  */
 const pickByParams = (params, filters) => {
     const pickValue = lodash_1.pickBy(params, (value) => {
