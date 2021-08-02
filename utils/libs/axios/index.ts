@@ -54,15 +54,19 @@ export const axiosLoading = (
   axios.interceptors.response.use(
     (response) => {
       if (response.config.loading) {
-        requestCount--
-        !requestCount && clone(response.config, [response])
+        setTimeout(() => {
+          requestCount--
+          !requestCount && clone(response.config, [response])
+        }, 100)
       }
       return response
     },
     (error) => {
       if (error.config?.loading) {
-        requestCount--
-        !requestCount && clone(error.config, [, error])
+        setTimeout(() => {
+          requestCount--
+          !requestCount && clone(error.config, [undefined, error])
+        }, 100)
       }
       return error
     }
