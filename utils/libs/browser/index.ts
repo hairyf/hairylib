@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:37:00
- * @LastEditTime: 2021-07-19 16:52:37
+ * @LastEditTime: 2021-07-31 15:15:26
  * @Description: 浏览器工具
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -25,6 +25,7 @@ export const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
 export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = typeof UA == 'string' && UA.match(/firefox\/(\d+)/)
 
+export * from './files'
 /**
  * 跳转到新的页面
  * @param url 跳转url
@@ -35,66 +36,6 @@ export const ejectWindow = (url: string) => {
   a.target = '_blank'
   a.click()
 }
-
-/**
- * 选择多个文件
- * @param option
- * @returns {FileList}
- */
-export const selectFiles = (option: { multiple?: boolean; accept?: string } = {}) => {
-  const { multiple = true, accept } = option
-  return new Promise<File[]>((resolve, reject) => {
-    const inputEl = document.createElement('input')
-    inputEl.type = 'file'
-    inputEl.multiple = multiple
-    accept && (inputEl.accept = accept)
-    inputEl.click()
-    const timer = setTimeout(reject, 20 * 1000)
-    inputEl.addEventListener('change', function () {
-      if (this.files) {
-        resolve(Object.values(this.files))
-        clearTimeout(timer)
-      }
-    })
-  })
-}
-
-/**
- * 选择多个图片
- * @returns {FileList}
- */
-export const selectImages = () => {
-  return selectFiles({ multiple: true, accept: 'image/jpeg,image/x-png,image/gif' })
-}
-
-/**
- * 下载文件
- * @param url 下载地址
- * @param fileName 文件名称
- */
-export const downloadFile = (url: string, fileName?: string) => {
-  const a = document.createElement('a')
-  fileName && (a.download = fileName)
-  a.href = url
-  a.click()
-}
-
-/**
- * 下载 blob 文件
- * @param data blob 数据
- * @param name 文件名称
- */
-export const downloadBlobFile = (data: Blob, name: string) => {
-  const blob = new Blob([data])
-  const url = window.URL.createObjectURL(blob)
-  const link = document.createElement('a')
-  link.style.display = 'none'
-  link.href = url
-  link.setAttribute('download', name)
-  document.body.appendChild(link)
-  link.click()
-}
-
 /**
  * 根据颜色融合出黑色与白色, 透明度色
  * @param color

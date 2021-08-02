@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-06-28 16:47:04
- * @LastEditTime: 2021-07-25 11:18:46
+ * @LastEditTime: 2021-07-30 17:50:47
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -10,14 +10,8 @@
 import dayjs from 'dayjs'
 import { pickBy } from 'lodash'
 
-/**
- * 获取数据类型
- * @param target 检测对象
- * @returns 返回字符串
- */
-export const checkedTypeof = (target: any): string => {
-  return Object.prototype.toString.call(target).slice(8, -1)
-}
+export * from './is'
+
 /**
  * 剔除字符串代码字段
  * @param str 字符串
@@ -240,14 +234,13 @@ export const removeHtmlStrTagAttr = (html: string, attr: string | string[]) => {
  * 根据过滤返回对应数据
  * @param params
  * @param filters
- * @returns params
  */
 export const pickByParams = <T extends object>(params: T, filters: any[]) => {
   const pickValue = pickBy(params, (value) => {
     return !filters.some((v) => value === v)
   })
   if (Array.isArray(params)) {
-    return Object.values(pickValue) as any[]
+    return Object.values(pickValue) as any as Partial<T>
   }
-  return pickValue as Record<string, any>
+  return pickValue
 }

@@ -1,9 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setDefaultHomeRoute = exports.setDefaultRoutes = exports.compareRoutes = exports.outputRoutes = exports.calculRouterActive = void 0;
 /**
  * 递归处理路由高亮信息
  * @param routes 当前路由列表
  * @param upperPath 上层路由路径
  */
-export const calculRouterActive = (routes, upperPath) => {
+const calculRouterActive = (routes, upperPath) => {
     let pathMaps = [];
     const recursion = (routes, upperPath) => {
         typeof upperPath !== 'string' && (pathMaps = []);
@@ -32,11 +35,12 @@ export const calculRouterActive = (routes, upperPath) => {
     };
     recursion(routes, upperPath);
 };
+exports.calculRouterActive = calculRouterActive;
 /**
  * 递归输出当前路由权限表
  * @param routes 当前路由列表
  */
-export const outputRoutes = (routes) => {
+const outputRoutes = (routes) => {
     const recursion = (rs) => {
         return rs.map((route) => {
             var _a;
@@ -51,29 +55,31 @@ export const outputRoutes = (routes) => {
     };
     console.log(JSON.stringify(recursion(routes)));
 };
+exports.outputRoutes = outputRoutes;
 /**
  * 递归对比路由权限表, 返回路由列表
  * @param baseRoutes 基本路由
  * @param surfaceRoutes 对比路由信息
  * @returns 比较路由列表
  */
-export const compareRoutes = (baseRoutes = [], surfaceRoutes = []) => {
+const compareRoutes = (baseRoutes = [], surfaceRoutes = []) => {
     const filterRoutes = baseRoutes.filter((brte) => {
         var _a;
         const srte = surfaceRoutes.find((v) => { var _a; return ((_a = brte.meta) === null || _a === void 0 ? void 0 : _a.title) === v.title; });
         if (brte.children && ((_a = brte.children) === null || _a === void 0 ? void 0 : _a.length) > 0) {
-            brte.children = compareRoutes(brte.children, srte === null || srte === void 0 ? void 0 : srte.children);
+            brte.children = exports.compareRoutes(brte.children, srte === null || srte === void 0 ? void 0 : srte.children);
         }
         return srte;
     });
     return filterRoutes;
 };
+exports.compareRoutes = compareRoutes;
 /**
  * 递归设置默认重定向地址
  * @param routes 当前路由表
  * @param upperPath 上层路由路径
  */
-export const setDefaultRoutes = (routes = [], upperPath) => {
+const setDefaultRoutes = (routes = [], upperPath) => {
     // 二层递归获取子项拼接路径
     const getChildrenCompletePath = (route) => {
         if (route === null || route === void 0 ? void 0 : route.children) {
@@ -95,16 +101,18 @@ export const setDefaultRoutes = (routes = [], upperPath) => {
         const splic = route.path === '/' ? '' : '/';
         route.redirect = `${completePath}${splic}${getChildrenCompletePath(route.children[0])}`;
         // 再次递归设置重定向地址
-        setDefaultRoutes(route.children, completePath);
+        exports.setDefaultRoutes(route.children, completePath);
     });
 };
+exports.setDefaultRoutes = setDefaultRoutes;
 /**
  * 设置当前路由表默认路由路径 / => 第一路径
  */
-export const setDefaultHomeRoute = (routes = []) => {
+const setDefaultHomeRoute = (routes = []) => {
     const existHomeRoute = routes.some((v) => v.path === '/');
     if (existHomeRoute)
         return false;
     routes.unshift({ path: '/', redirect: routes[0].path });
 };
+exports.setDefaultHomeRoute = setDefaultHomeRoute;
 //# sourceMappingURL=route.js.map

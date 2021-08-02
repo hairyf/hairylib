@@ -1,9 +1,4 @@
-/**
- * 获取数据类型
- * @param target 检测对象
- * @returns 返回字符串
- */
-export declare const checkedTypeof: (target: any) => string;
+export * from './is';
 /**
  * 剔除字符串代码字段
  * @param str 字符串
@@ -108,6 +103,5 @@ export declare const removeHtmlStrTagAttr: (html: string, attr: string | string[
  * 根据过滤返回对应数据
  * @param params
  * @param filters
- * @returns params
  */
-export declare const pickByParams: <T extends object>(params: T, filters: any[]) => Record<string, any>;
+export declare const pickByParams: <T extends object>(params: T, filters: any[]) => Partial<T>;

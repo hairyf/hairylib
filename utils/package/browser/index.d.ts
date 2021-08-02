@@ -11,37 +11,12 @@ export declare const isIOS: boolean;
 export declare const isChrome: boolean | "";
 export declare const isPhantomJS: boolean | "";
 export declare const isFF: false | RegExpMatchArray | null;
+export * from './files';
 /**
  * 跳转到新的页面
  * @param url 跳转url
  */
 export declare const ejectWindow: (url: string) => void;
-/**
- * 选择多个文件
- * @param option
- * @returns {FileList}
- */
-export declare const selectFiles: (option?: {
-    multiple?: boolean;
-    accept?: string;
-}) => Promise<File[]>;
-/**
- * 选择多个图片
- * @returns {FileList}
- */
-export declare const selectImages: () => Promise<File[]>;
-/**
- * 下载文件
- * @param url 下载地址
- * @param fileName 文件名称
- */
-export declare const downloadFile: (url: string, fileName?: string | undefined) => void;
-/**
- * 下载 blob 文件
- * @param data blob 数据
- * @param name 文件名称
- */
-export declare const downloadBlobFile: (data: Blob, name: string) => void;
 /**
  * 根据颜色融合出黑色与白色, 透明度色
  * @param color
