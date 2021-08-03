@@ -32,10 +32,20 @@ export declare const axiosLoading: (axios: HttpInstance, show: AxiosLoadingOpts[
  * @param rejected 错误处理
  */
 export declare const axiosValidate: (axios: HttpInstance, validate: AxiosValidateOpts['validate'], rejected: AxiosValidateOpts['rejected']) => void;
+interface AxiosPickByParamsOptions {
+    /** 是否过滤请求头, 默认 false */
+    header?: boolean;
+    /** 是否过滤请求体, 默认 true */
+    data?: boolean;
+    /** 是否过滤请求参数, 默认 true */
+    params?: boolean;
+    /** 是否深层过滤, 默认 false */
+    deep?: boolean;
+}
 /**
  * 根据过滤器, 过滤 body|params 参数
  * @param axios 实例
  * @param filters 过滤参数
  */
-export declare const axiosPickByParams: (axios: HttpInstance, filters: any[]) => void;
+export declare const axiosPickByParams: (axios: HttpInstance, filters: any[], option?: AxiosPickByParamsOptions) => void;
 export {};

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.axiosPickByParams = exports.axiosValidate = exports.axiosLoading = void 0;
+const lodash_1 = require("lodash");
 const common_1 = require("../common");
 /**
  * axios 全局加载提示
@@ -61,14 +62,25 @@ exports.axiosValidate = axiosValidate;
  * @param axios 实例
  * @param filters 过滤参数
  */
-const axiosPickByParams = (axios, filters) => {
+const axiosPickByParams = (axios, filters, option = {}) => {
+    const { header = false, data = true, params = true, deep = false } = option;
     axios.interceptors.request.use((config) => {
-        var _a, _b;
-        if (((_a = config.data) === null || _a === void 0 ? void 0 : _a.constructor) === Object) {
-            config.data = common_1.pickByParams(config.data, filters);
+        if (header) {
+            if (lodash_1.isPlainObject(config.headers))
+                config.headers = common_1.pickByParams(config.headers, filters, deep);
         }
-        if (((_b = config.params) === null || _b === void 0 ? void 0 : _b.constructor) === Object) {
-            config.params = common_1.pickByParams(config.params, filters);
+        if (params) {
+            if (lodash_1.isPlainObject(config.params))
+                config.params = common_1.pickByParams(config.params, filters, deep);
+        }
+        if (data) {
+            if (lodash_1.isPlainObject(config.data))
+                config.data = common_1.pickByParams(config.data, filters, deep);
+            if (config.data instanceof FormData) {
+                const transformObject = common_1.formDataToObject(config.data);
+                const pickByObject = common_1.pickByParams(transformObject, filters);
+                config.data = common_1.objectToFormData(pickByObject);
+            }
         }
         return config;
     });
