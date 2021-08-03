@@ -20,15 +20,19 @@ const axiosLoading = (axios, show, clone) => {
     });
     axios.interceptors.response.use((response) => {
         if (response.config.loading) {
-            requestCount--;
-            !requestCount && clone(response.config, [response]);
+            setTimeout(() => {
+                requestCount--;
+                !requestCount && clone(response.config, [response]);
+            }, 100);
         }
         return response;
     }, (error) => {
         var _a;
         if ((_a = error.config) === null || _a === void 0 ? void 0 : _a.loading) {
-            requestCount--;
-            !requestCount && clone(error.config, [, error]);
+            setTimeout(() => {
+                requestCount--;
+                !requestCount && clone(error.config, [undefined, error]);
+            }, 100);
         }
         return error;
     });
