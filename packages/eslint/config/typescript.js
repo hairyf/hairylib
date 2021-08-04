@@ -29,6 +29,10 @@ module.exports = {
     // 首选使用简洁的可选链表达式，而不是链式逻辑与
     // '@typescript-eslint/prefer-optional-chain': 2,
     // 阻止使用 ! 运算符
-    '@typescript-eslint/no-non-null-assertion': 0
+    '@typescript-eslint/no-non-null-assertion': 0,
+    // 允许使用 @ts-ignore
+    '@typescript-eslint/ban-ts-comment': 0,
+    // 允许使用 ojbect 类型
+    '@typescript-eslint/ban-types': 0
   }
 }

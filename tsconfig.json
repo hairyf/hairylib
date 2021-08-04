@@ -1,6 +1,20 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true
+    "target": "ES2017",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "outDir": "package"
   },
   "exclude": [
     "**/__tests__/*.ts",
