@@ -35,7 +35,7 @@ export const packages: PackageManifest[] = [
       '@tuimao/vue-use',
       '@tuimao/vue-utils'
     ],
-    build: false
+    iife: false
   },
   {
     name: 'vue-use',

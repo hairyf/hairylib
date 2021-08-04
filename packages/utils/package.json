@@ -24,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-config#readme"
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "dependencies": {
+    "@tuimao/axios": "^0.0.1-alpha.0",
+    "@tuimao/browser": "^0.0.1-alpha.0",
+    "@tuimao/core": "^0.0.1-alpha.0",
+    "@tuimao/vue-use": "^0.0.1-alpha.0",
+    "@tuimao/vue-utils": "^0.0.1-alpha.0"
+  }
 }
