@@ -1,8 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+/*
+ * @Author: Mr.Mao
+ * @Date: 2021-08-03 15:23:37
+ * @LastEditTime: 2021-08-04 15:38:17
+ * @Description: 
+ * @LastEditors: Mr.Mao
+ * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
+ */
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.axiosPickByParams = exports.axiosValidate = exports.axiosLoading = void 0;
-const lodash_1 = require("lodash");
-const common_1 = require("../common");
+const lodash_1 = require('lodash');
+const common_1 = require('../common');
 /**
  * axios 全局加载提示
  * @param axios 实例
@@ -27,7 +35,7 @@ const axiosLoading = (axios, show, clone) => {
         }
         return response;
     }, (error) => {
-        var _a;
+        let _a;
         if ((_a = error.config) === null || _a === void 0 ? void 0 : _a.loading) {
             setTimeout(() => {
                 requestCount--;

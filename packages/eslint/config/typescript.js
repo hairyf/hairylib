@@ -1,12 +1,13 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-01-07 10:12:14
- * @LastEditTime: 2021-07-25 10:43:28
+ * @LastEditTime: 2021-08-04 16:15:54
  * @Description: typescript 基础配置
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 module.exports = {
+  extends: ['plugin:@typescript-eslint/recommended'],
   rules: {
     // 限制相关语法
     'no-restricted-syntax': [
@@ -26,7 +27,7 @@ module.exports = {
     // 允许函数不存在返回值
     '@typescript-eslint/explicit-module-boundary-types': 0,
     // 首选使用简洁的可选链表达式，而不是链式逻辑与
-    '@typescript-eslint/prefer-optional-chain': 2,
+    // '@typescript-eslint/prefer-optional-chain': 2,
     // 阻止使用 ! 运算符
     '@typescript-eslint/no-non-null-assertion': 0
   }

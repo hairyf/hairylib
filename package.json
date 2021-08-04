@@ -1,8 +1,11 @@
 {
   "name": "tuimao-config",
   "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "目前包含 Vue3 Eslint 预设，tailwind 预设。\r 使用文档暂未开发，请自行运量使用。",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rimraf:modules": "rimraf ./node_modules"
@@ -25,7 +28,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "@tuimao/eslint-config-preset/vue3-typescript"
+      "./packages/eslint/ts-vue@3.js"
     ]
   },
   "dependencies": {

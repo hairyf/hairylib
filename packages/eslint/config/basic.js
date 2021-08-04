@@ -1,12 +1,11 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-01-07 10:12:14
- * @LastEditTime: 2021-06-08 11:30:39
+ * @LastEditTime: 2021-08-04 15:42:44
  * @Description: 基础配置
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-const defaultRules = require('./rules/javascript')
 module.exports = {
   root: true,
   env: {
