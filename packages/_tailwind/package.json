@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "0.0.2-alpha.0",
+  "version": "1.2.1",
   "description": "",
   "scripts": {
     "build": "tsc"
