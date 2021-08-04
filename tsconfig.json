@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "CommonJS",
+    "target": "es2017",
+    "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "declaration": true,
@@ -19,5 +19,13 @@
   "exclude": [
     "**/__tests__/*.ts",
     "**/__test__/*.ts"
+  ],
+  "include": [
+    "./**/*.ts",
+    "./**/*.d.ts",
+    "./**/*.tsx",
+    "./**/*.vue",
+    "types/**.d.ts",
+    "types/**/**.d.ts",
   ]
 }

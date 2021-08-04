@@ -1,11 +1,15 @@
 {
-  "name": "@tuimao/core",
+  "name": "@tuimao/vue-use",
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
-    "dayjs": "^1.10.6",
-    "@types/lodash-es": "^4.17.4",
-    "lodash-es": "^4.17.21"
+    "@types/pubsub-js": "^1.8.2",
+    "@vueuse/core": "^5.2.0",
+    "lodash-es": "^4.17.21",
+    "pubsub-js": "^1.9.3",
+    "vue": "^3.1.5",
+    "vue-composable": "^1.0.0-beta.23",
+    "vue-demi": "^0.11.2"
   },
   "exports": {
     ".": {

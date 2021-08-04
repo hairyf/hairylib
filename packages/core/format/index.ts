@@ -7,6 +7,7 @@
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import dayjs from 'dayjs'
+import { isArray } from 'lodash-es'
 
 /**
  * 剔除字符串代码字段
@@ -98,8 +99,7 @@ export const setHtmlStrTagAttr = (
  * @returns html
  */
 export const removeHtmlStrTagAttr = (html: string, attr: string | string[]) => {
-  const attrs = Array.isArray(attr) ? attr : [attr]
-  return attrs.reduce(
+  return (isArray(attr) ? attr : [attr]).reduce(
     (total, attr) => total.replace(new RegExp(`${attr}=['"](.*?)['"]`, 'gis'), ''),
     html
   )

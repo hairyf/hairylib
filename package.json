@@ -7,8 +7,9 @@
   ],
   "description": "目前包含 Vue3 Eslint 预设，tailwind 预设。\r 使用文档暂未开发，请自行运量使用。",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "rimraf:modules": "rimraf ./node_modules"
+    "build": "esno scripts/rollup.config.ts",
+    "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
+    "publish": "lerna publish"
   },
   "repository": {
     "type": "git",
@@ -22,18 +23,28 @@
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "devDependencies": {
     "@tuimao/eslint-config-preset": "^1.1.0",
+    "@types/jest": "^26.0.24",
     "@typescript-eslint/parser": "^4.28.4",
     "eslint": "^7.31.0",
     "prettier": "^2.3.2"
   },
   "eslintConfig": {
     "extends": [
-      "./packages/eslint/ts-vue@3.js"
+      "./packages/_eslint/ts-vue@3.js"
     ]
   },
   "dependencies": {
-    "@types/jest": "^26.0.24",
+    "cross-env": "^7.0.3",
+    "esbuild-register": "^2.6.0",
+    "esno": "^0.8.0",
+    "fast-glob": "^3.2.7",
     "jest": "^27.0.6",
+    "lerna": "^4.0.0",
+    "rollup": "^2.55.1",
+    "rollup-plugin-dts": "^3.0.2",
+    "rollup-plugin-esbuild": "^4.5.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
     "ts-jest": "^27.0.0-next.12",
     "typescript": "^4.3.5"
   }

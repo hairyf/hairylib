@@ -1,18 +1,12 @@
 {
-  "name": "@tuimao/core",
+  "name": "@tuimao/vue-utils",
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
-    "dayjs": "^1.10.6",
-    "@types/lodash-es": "^4.17.4",
-    "lodash-es": "^4.17.21"
-  },
-  "exports": {
-    ".": {
-      "import": "./index.esm.js",
-      "require": "./index.cjs.js"
-    },
-    "./*": "./*"
+    "vue": "^3.1.5",
+    "vue-demi": "^0.11.2",
+    "vue-router": "^4.0.10",
+    "vuex": "^4.0.2"
   },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",

@@ -1,0 +1,31 @@
+{
+  "name": "@tuimao/eslint-config-preset",
+  "version": "1.1.0",
+  "description": "前端eslint代码规则，默认为javascript配置，共有4个配置。\r javasciprt(默认)，typescript，uni-javascript，uni-typescript。",
+  "main": "config/basic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.29.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.10.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.171"
+  },
+  "author": "Mr.Mao Fu<https://github.com/TuiMao233>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/tuimao-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/tuimao-config/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme"
+}

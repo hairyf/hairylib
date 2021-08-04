@@ -1,11 +1,17 @@
 {
-  "name": "@tuimao/core",
-  "version": "0.0.1",
-  "license": "MIT",
+  "name": "@tuimao/tailwind-config-preset",
+  "version": "1.2.1",
+  "description": "",
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.10.6",
-    "@types/lodash-es": "^4.17.4",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "@types/tailwindcss": "2.0.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.170"
   },
   "exports": {
     ".": {
