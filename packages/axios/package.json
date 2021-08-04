@@ -1,9 +1,9 @@
 {
   "name": "@tuimao/axios",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "license": "MIT",
   "dependencies": {
-    "@tuimao/core": "^0.0.1",
+    "@tuimao/core": "^0.0.2-alpha.0",
     "axios": "^0.21.1",
     "lodash-es": "^4.17.21"
   },

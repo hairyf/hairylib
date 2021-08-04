@@ -1,10 +1,10 @@
 {
   "name": "@tuimao/core",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "license": "MIT",
   "dependencies": {
-    "dayjs": "^1.10.6",
     "@types/lodash-es": "^4.17.4",
+    "dayjs": "^1.10.6",
     "lodash-es": "^4.17.21"
   },
   "exports": {

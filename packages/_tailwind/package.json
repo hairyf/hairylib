@@ -1,14 +1,14 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "1.2.1",
+  "version": "0.0.2-alpha.0",
   "description": "",
   "scripts": {
     "build": "tsc"
   },
   "license": "ISC",
   "dependencies": {
-    "lodash-es": "^4.17.21",
-    "@types/tailwindcss": "2.0.0"
+    "@types/tailwindcss": "2.0.0",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.170"
