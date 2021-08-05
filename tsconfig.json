@@ -14,7 +14,16 @@
       "esnext",
       "dom"
     ],
-    "outDir": "package"
+    "outDir": "package",
+    "paths": {
+      "@tuimao/axios": ["./packages/axios/*"],
+      "@tuimao/browser": ["./packages/browser/*"],
+      "@tuimao/core": ["./packages/core/index.ts"],
+      "@tuimao/uni-utils": ["./packages/uni-utils/*"],
+      "@tuimao/utils": ["./packages/utils/*"],
+      "@tuimao/vue-use": ["./packages/vue-use/*"],
+      "@tuimao/vue-utils": ["./packages/vue-utils/*"]
+    }
   },
   "exclude": [
     "**/__tests__/*.ts",
