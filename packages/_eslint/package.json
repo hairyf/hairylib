@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/eslint-config-preset",
-  "version": "1.1.3-alpha.0",
+  "version": "1.1.3",
   "description": "前端eslint代码规则，默认为javascript配置，共有4个配置。\r javasciprt(默认)，typescript，uni-javascript，uni-typescript。",
   "main": "config/basic.js",
   "scripts": {
