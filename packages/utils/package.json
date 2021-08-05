@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/utils",
-  "version": "2.0.3",
+  "version": "2.0.4-alpha.0",
   "description": "",
   "scripts": {},
   "license": "ISC",
@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "dependencies": {
-    "@tuimao/axios": "^0.0.2-alpha.0",
-    "@tuimao/browser": "^0.0.2-alpha.0",
-    "@tuimao/core": "^0.0.2-alpha.0",
-    "@tuimao/vue-use": "^0.0.3-alpha.0",
-    "@tuimao/vue-utils": "^0.0.3-alpha.0"
+    "@tuimao/axios": "^0.0.3-alpha.0",
+    "@tuimao/browser": "^0.0.3-alpha.0",
+    "@tuimao/core": "^0.0.3-alpha.0",
+    "@tuimao/vue-use": "^0.0.4-alpha.0",
+    "@tuimao/vue-utils": "^0.0.4-alpha.0"
   }
 }
