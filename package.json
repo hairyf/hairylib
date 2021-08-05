@@ -7,9 +7,10 @@
   ],
   "description": "目前包含 Vue3 Eslint 预设，tailwind 预设。\r 使用文档暂未开发，请自行运量使用。",
   "scripts": {
-    "build": "esno scripts/rollup.config.ts",
+    "build": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
-    "publish": "lerna publish"
+    "publish:ci": "esno scripts/publish.ts",
+    "clean": "rimraf dist packages/*/dist"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "devDependencies": {
     "@tuimao/eslint-config-preset": "^1.1.0",
+    "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.24",
     "@typescript-eslint/parser": "^4.28.4",
     "eslint": "^7.31.0",
@@ -34,12 +36,15 @@
     ]
   },
   "dependencies": {
+    "consola": "^2.15.3",
     "cross-env": "^7.0.3",
     "esbuild-register": "^2.6.0",
     "esno": "^0.8.0",
     "fast-glob": "^3.2.7",
+    "fs-extra": "^10.0.0",
     "jest": "^27.0.6",
     "lerna": "^4.0.0",
+    "rimraf": "^3.0.2",
     "rollup": "^2.55.1",
     "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-esbuild": "^4.5.0",

@@ -5,7 +5,7 @@ export const packages: PackageManifest[] = [
     iife: false
   },
   {
-    name: 'eslint',
+    name: '_eslint',
     display: 'Eslint preset',
     build: false
   },
@@ -39,7 +39,7 @@ export const packages: PackageManifest[] = [
   },
   {
     name: 'vue-use',
-    display: 'vue combination-api function',
+    display: 'Vue combination-api function',
     external: ['@vueuse/core', 'pubsub-js', 'vue', 'vue-composable'],
     globals: {
       'pubsub-js': 'pubsubJs',
@@ -48,7 +48,11 @@ export const packages: PackageManifest[] = [
   },
   {
     name: 'vue-utils',
-    display: 'vue utilities',
+    display: 'Vue utilities',
     external: ['vue-router', 'vue-demi']
+  },
+  {
+    name: 'uni-utils',
+    display: 'Uni utilities'
   }
 ]

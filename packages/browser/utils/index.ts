@@ -17,3 +17,15 @@ export const ejectWindow = (url: string) => {
   a.target = '_blank'
   a.click()
 }
+
+/**
+ * 拨打手机号
+ * @param phoneNumber 手机号码
+ */
+export const makePhoneCall = (phoneNumber: string) => {
+  const link = document.createElement('a')
+  link.style.display = 'none'
+  link.href = `tel:${phoneNumber}`
+  document.body.appendChild(link)
+  link.click()
+}

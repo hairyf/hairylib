@@ -1,0 +1,29 @@
+{
+  "name": "@tuimao/uni-utils",
+  "version": "0.0.2-alpha.0",
+  "license": "MIT",
+  "main": "./dist/index.cjs.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.esm.js",
+  "unpkg": "./dist/index.iife.min.js",
+  "jsdelivr": "./dist/index.iife.min.js",
+  "author": "Mr.Mao Fu<https://github.com/TuiMao233>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/tuimao-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/tuimao-config/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "dependencies": {
+    "@tuimao/browser": "^0.0.2-alpha.0",
+    "@tuimao/core": "^0.0.2-alpha.0",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "^2.4.5",
+    "@types/node": "^16.4.12",
+    "miniprogram-api-typings": "^3.4.2"
+  }
+}
