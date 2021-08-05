@@ -33,7 +33,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "./packages/_eslint/ts-vue@3.js"
+      "./packages/_eslint/ts-uni-vue@2.js"
     ]
   },
   "dependencies": {
