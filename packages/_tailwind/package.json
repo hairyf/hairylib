@@ -1,7 +1,7 @@
 {
   "name": "@tuimao/tailwind-config-preset",
   "version": "1.2.6-alpha.0",
-  "description": "",
+  "description": "Tailwind config for Mr.Mao",
   "scripts": {
     "build": "tsc"
   },
@@ -13,12 +13,12 @@
   "devDependencies": {
     "@types/lodash": "^4.14.170"
   },
-  "main": "./dist/index.cjs.js",
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.esm.js",
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
-  "author": "Mr.Mao Fu<https://github.com/TuiMao233>",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TuiMao233/tuimao-config.git"
@@ -26,5 +26,12 @@
   "bugs": {
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-config#readme"
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  }
 }

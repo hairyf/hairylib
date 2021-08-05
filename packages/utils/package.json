@@ -1,15 +1,15 @@
 {
   "name": "@tuimao/utils",
   "version": "2.0.6-alpha.0",
-  "description": "",
+  "description": "Collection of Mr.mao Utils",
   "scripts": {},
   "license": "ISC",
-  "main": "./dist/index.cjs.js",
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.esm.js",
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
-  "author": "Mr.Mao Fu<https://github.com/TuiMao233>",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TuiMao233/tuimao-config.git"
@@ -24,5 +24,12 @@
     "@tuimao/core": "^0.0.5-alpha.0",
     "@tuimao/vue-use": "^0.0.6-alpha.0",
     "@tuimao/vue-utils": "^0.0.6-alpha.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
   }
 }

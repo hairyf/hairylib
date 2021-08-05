@@ -1,6 +1,7 @@
 {
   "packages": [
-    "packages/*"
+    "packages/_eslint",
+    "packages/**/dist"
   ],
   "npmClient": "npm",
   "version": "independent"

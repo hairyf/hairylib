@@ -7,12 +7,12 @@
     "axios": "^0.21.1",
     "lodash-es": "^4.17.21"
   },
-  "main": "./dist/index.cjs.js",
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.esm.js",
-  "unpkg": "./dist/index.iife.min.js",
-  "jsdelivr": "./dist/index.iife.min.js",
-  "author": "Mr.Mao Fu<https://github.com/TuiMao233>",
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TuiMao233/tuimao-config.git"
@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-config#readme"
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "description": "Utilities for axios",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  }
 }

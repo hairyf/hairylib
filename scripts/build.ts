@@ -4,6 +4,7 @@ import consola from 'consola'
 import fs from 'fs-extra'
 import { execSync as exec } from 'child_process'
 import { packages } from '../meta/packages'
+import { updateImport } from './utils'
 
 const rootDir = path.resolve(__dirname, '..')
 
@@ -30,14 +31,13 @@ const build = async () => {
   consola.info('Clean up')
   exec('yarn clean', { stdio: 'inherit' })
 
-  // 暂时先不进行生成 import
-  // consola.info('Generate Imports')
+  consola.info('Generate Imports')
+  await updateImport(packages)
 
   consola.info('Rollup')
   exec('yarn build:rollup', { stdio: 'inherit' })
 
-  // 暂时先不以 dist 目录为发布目录
-  // await buildMetaFiles()
+  await buildMetaFiles()
 }
 
 async function cli() {

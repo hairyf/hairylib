@@ -7,12 +7,12 @@
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"
   },
-  "main": "./dist/index.cjs.js",
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.esm.js",
-  "unpkg": "./dist/index.iife.min.js",
-  "jsdelivr": "./dist/index.iife.min.js",
-  "author": "Mr.Mao Fu<https://github.com/TuiMao233>",
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TuiMao233/tuimao-config.git"
@@ -23,5 +23,13 @@
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "devDependencies": {
     "vue": "^3.1.5"
+  },
+  "description": "Collection of essential Vue Utilities",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
   }
 }

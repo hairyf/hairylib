@@ -36,4 +36,8 @@ interface PackageManifest {
    * 是否列入打包，默认为 true
    */
   build?: boolean
+  /**
+   * 是否手动导入
+   */
+  manualImport?: boolean
 }
