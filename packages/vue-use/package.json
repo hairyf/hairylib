@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/vue-use",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.2-alpha.0",
   "license": "MIT",
   "dependencies": {
     "@types/pubsub-js": "^1.8.2",
@@ -11,7 +11,6 @@
     "vue-composable": "^1.0.0-beta.23",
     "vue-demi": "^0.11.2"
   },
- 
   "main": "./dist/index.cjs.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.esm.js",

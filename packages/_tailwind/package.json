@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "scripts": {
     "build": "tsc"
@@ -13,7 +13,6 @@
   "devDependencies": {
     "@types/lodash": "^4.14.170"
   },
- 
   "main": "./dist/index.cjs.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.esm.js",
