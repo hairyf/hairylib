@@ -10,6 +10,7 @@
     "build": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
     "publish:ci": "esno scripts/publish.ts",
+    "publish:lerna": "yarn build && lerna publish",
     "clean": "rimraf dist packages/*/dist"
   },
   "repository": {
