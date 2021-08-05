@@ -58,7 +58,7 @@ for (const { name, external, iife, globals, build } of packages) {
     input,
     output,
     plugins: [esbuild()],
-    external: ['lodash-es', ...(external || [])]
+    external: ['vue-demi', 'lodash-es', ...(external || [])]
   })
 
   configs.push({
@@ -68,7 +68,7 @@ for (const { name, external, iife, globals, build } of packages) {
       format: 'es'
     },
     plugins: [dts()],
-    external: ['vue-demi', '@vueuse/shared', ...(external || [])]
+    external: ['vue-demi', 'lodash-es', ...(external || [])]
   })
 }
 export default configs

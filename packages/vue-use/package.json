@@ -7,7 +7,6 @@
     "@vueuse/core": "^5.2.0",
     "lodash-es": "^4.17.21",
     "pubsub-js": "^1.9.3",
-    "vue": "^3.1.5",
     "vue-composable": "^1.0.0-beta.23",
     "vue-demi": "^0.11.2"
   },
@@ -24,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-config#readme"
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "devDependencies": {
+    "vue": "^3.1.5"
+  }
 }
