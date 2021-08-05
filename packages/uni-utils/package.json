@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/uni-utils",
-  "version": "0.0.3-alpha.0",
+  "version": "0.0.4-alpha.0",
   "license": "MIT",
   "main": "./dist/index.cjs.js",
   "types": "./dist/index.d.ts",
@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "dependencies": {
-    "@tuimao/browser": "^0.0.3-alpha.0",
-    "@tuimao/core": "^0.0.3-alpha.0",
+    "@tuimao/browser": "^0.0.4-alpha.0",
+    "@tuimao/core": "^0.0.4-alpha.0",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
@@ -27,4 +27,3 @@
     "miniprogram-api-typings": "^3.4.2"
   }
 }
-
