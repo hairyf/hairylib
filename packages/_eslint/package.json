@@ -3,9 +3,6 @@
   "version": "1.4.4",
   "description": "Eslint config for Mr.Mao",
   "main": "./index.cjs.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "license": "ISC",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.26.1",
