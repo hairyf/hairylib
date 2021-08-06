@@ -13,7 +13,7 @@
     "publish:lerna": "lerna publish --contents dist",
     "update": "esno scripts/update.ts",
     "clean": "rimraf dist packages/*/dist",
-    "prepublishOnly": "update"
+    "prepublishOnly": "build"
   },
   "repository": {
     "type": "git",
