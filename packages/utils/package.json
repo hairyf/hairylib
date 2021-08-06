@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/utils",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Collection of Mr.mao Utils",
   "scripts": {},
   "license": "ISC",
@@ -32,4 +32,3 @@
     "./*": "./*"
   }
 }
-
