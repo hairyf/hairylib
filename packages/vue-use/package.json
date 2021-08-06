@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/vue-use",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "dependencies": {
     "@types/pubsub-js": "^1.8.2",

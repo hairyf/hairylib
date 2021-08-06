@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/axios",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "dependencies": {
     "@tuimao/core": "^0.0.8",
