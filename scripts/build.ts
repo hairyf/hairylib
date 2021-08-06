@@ -46,7 +46,8 @@ export const buildMetaFiles = async () => {
 
 export const build = async () => {
   consola.info('Clean up')
-  exec('yarn clean', { stdio: 'inherit' })
+  // 暂时不清除项目打包文件（兼容 hash 对比）
+  // exec('yarn clean', { stdio: 'inherit' })
 
   consola.info('Generate Imports')
   await updateImport(packages)
