@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "dependencies": {
-    "@tuimao/browser": "^0.0.5-alpha.0",
-    "@tuimao/core": "^0.0.5-alpha.0",
+    "@tuimao/browser": "^0.0.6-alpha.0",
+    "@tuimao/core": "^0.0.8-alpha.0",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
