@@ -3,7 +3,7 @@
   "version": "0.1.5",
   "license": "MIT",
   "dependencies": {
-    "@tuimao/core": "^0.0.8",
+    "@tuimao/core": "^0.1.5",
     "axios": "^0.21.1",
     "lodash-es": "^4.17.21"
   },

@@ -1,3 +1,6 @@
+/**
+ * 该命令已被弃用，使用 lerna --contents 进行发布&打包
+ */
 import { execSync } from 'child_process'
 import path from 'path'
 import { packages } from '../meta/packages'
