@@ -52,7 +52,11 @@ export const build = async () => {
   await updateImport(packages)
 
   consola.info('Rollup')
-  exec('yarn build:rollup', { stdio: 'inherit' })
+  try {
+    exec('yarn build:rollup', { stdio: 'inherit' })
+  } catch (error) {
+    consola.warn(error)
+  }
 
   await buildMetaFiles()
 }
