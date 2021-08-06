@@ -33,5 +33,6 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  }
+  },
+  "gitHead": "281bb95b82e245068dded2b1876401bf07ca320b"
 }
