@@ -25,7 +25,6 @@
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
-  "gitHead": "587a8fefed9c2f1e254ceb12fd3c49196e64c148",
   "types": "./index.d.ts",
   "module": "./index.esm.js",
   "unpkg": "./index.iife.min.js",

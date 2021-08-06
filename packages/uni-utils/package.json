@@ -26,7 +26,6 @@
     "@types/node": "^16.4.12",
     "miniprogram-api-typings": "^3.4.2"
   },
-  "gitHead": "d57519d4b65c51782245a823bbe883a03b0a4ef0",
   "description": "Collection of essential Uni Utilities",
   "exports": {
     ".": {
