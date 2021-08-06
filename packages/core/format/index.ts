@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 13:57:13
- * @LastEditTime: 2021-08-06 10:32:59
+ * @LastEditTime: 2021-08-06 11:54:45
  * @Description:
  * @LastEditors: Zhilong
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -74,15 +74,18 @@ export const setHtmlStrTagAttr = (
   }
   const tags = Array.isArray(option.tag) ? option.tag : [option.tag]
   const transform = (html: string, tag: string) => {
+    // 需找带指定属性的标签 > 一行代码
     const replaceReg = new RegExp(
       '<' + tag + '[^>]*(' + option.attr + '=[\'"](.*?)[\'"])?[^>]*>',
       'gi'
     )
+    // 选择对应属性的字符  attr='***' | attr="***"
     const subReg = new RegExp(`${option.attr}=['"](.*?)['"]`, 'gis')
     const setHtmlStr = html.replace(replaceReg, (match) => {
       //包含option.attr属性,替换option.attr
       if (match.indexOf(option.attr as string) > 0) {
-        return match.replace(subReg, `${option.attr}="${option.value}"`)
+        // 如果值为空 则将整条属性替换为 ''
+        return match.replace(subReg, option.value ? `${option.attr}="${option.value}"` : '')
       }
       //不包含option.attr属性,添加option.attr
       const prefix = match.substr(0, tag.length + 1)
@@ -90,9 +93,7 @@ export const setHtmlStrTagAttr = (
       suffix = suffix ? ` ${suffix}` : '>'
       return `${prefix} ${option.attr}="${option.value}"${suffix}`
     })
-    if (!option.value) {
-      return setHtmlStr.replace(subReg, '')
-    }
+
     return setHtmlStr
   }
   return tags.reduce((total, tag) => transform(total, tag), html)
