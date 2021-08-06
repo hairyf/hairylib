@@ -4,7 +4,7 @@ import consola from 'consola'
 import fs from 'fs-extra'
 import { execSync as exec } from 'child_process'
 import { packages } from '../meta/packages'
-import { updateImport } from './utils'
+import { readPackageLernaGitHash, updateImport } from './utils'
 import fg from 'fast-glob'
 
 const rootDir = path.resolve(__dirname, '..')
@@ -28,11 +28,18 @@ export const buildMetaFiles = async () => {
   for (const { name, build } of packages) {
     const packageRoot = path.resolve(__dirname, '..', 'packages', name)
     const packageDist = path.resolve(packageRoot, 'dist')
+
+    // 判断与打包后 hash 相同则跳过编译
+    const packageHash = readPackageLernaGitHash(packageDist)
+    const distHash = readPackageLernaGitHash(packageDist)
+    if (packageHash === distHash) continue
+
     // 不需要打包的将源文件移植到 dist 文件夹
     if (build === false) {
       await buildTransferDist(packageRoot)
       continue
     }
+
     // 向打包后的 dist 添加包的源信息
     for (const file of FILES_COPY_ROOT)
       await fs.copyFile(path.join(rootDir, file), path.join(packageDist, file))

@@ -74,3 +74,15 @@ export const updatePackageJSON = async (packages: PackageManifest[]) => {
     fs.writeJSON(packageJSONPath, packageJSON, { spaces: 2 })
   }
 }
+
+/**
+ * 读取扩展包中 lerna 自动生成的 hash 字段
+ * @param cwd
+ */
+export const readPackageLernaGitHash = (cwd: string) => {
+  try {
+    return fs.readJSONSync(join(cwd, 'package.json'))?.gitHead || ''
+  } catch (error) {
+    return ''
+  }
+}
