@@ -1,9 +1,9 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 13:57:13
- * @LastEditTime: 2021-08-03 13:58:47
+ * @LastEditTime: 2021-08-06 10:10:56
  * @Description:
- * @LastEditors: Mr.Mao
+ * @LastEditors: Zhilong
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import dayjs from 'dayjs'
@@ -59,12 +59,18 @@ export const setHtmlStrTagAttr = (
   html: string,
   option: {
     tag: string | string[]
-    attr: string
+    attr: string | string[]
     value: string
   }
 ) => {
   if (typeof html !== 'string') {
     throw new Error('error: html is not string')
+  }
+  if (Array.isArray(option.attr)) {
+    const str: string = option.attr.reduce((old, item) => {
+      return setHtmlStrTagAttr(old, { ...option, attr: item })
+    }, html)
+    return str
   }
   const tags = Array.isArray(option.tag) ? option.tag : [option.tag]
   const transform = (html: string, tag: string) => {
@@ -75,7 +81,7 @@ export const setHtmlStrTagAttr = (
     const subReg = new RegExp(`${option.attr}=['"](.*?)['"]`, 'gis')
     const setHtmlStr = html.replace(replaceReg, (match) => {
       //包含option.attr属性,替换option.attr
-      if (match.indexOf(option.attr) > 0) {
+      if (match.indexOf(option.attr as string) > 0) {
         return match.replace(subReg, `${option.attr}="${option.value}"`)
       }
       //不包含option.attr属性,添加option.attr
