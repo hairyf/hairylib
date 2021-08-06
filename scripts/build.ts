@@ -26,13 +26,9 @@ export const buildTransferDist = async (cwd: string) => {
 
 export const buildMetaFiles = async () => {
   for (const { name, build } of packages) {
+    // 判断与打包后 hash 相同则跳过编译
     const packageRoot = path.resolve(__dirname, '..', 'packages', name)
     const packageDist = path.resolve(packageRoot, 'dist')
-
-    // 判断与打包后 hash 相同则跳过编译
-    const packageHash = readPackageLernaGitHash(packageDist)
-    const distHash = readPackageLernaGitHash(packageDist)
-    if (packageHash === distHash) continue
 
     // 不需要打包的将源文件移植到 dist 文件夹
     if (build === false) {
