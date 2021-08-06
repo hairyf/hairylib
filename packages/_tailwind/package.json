@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "1.2.7-alpha.0",
+  "version": "1.2.7",
   "description": "Tailwind config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
