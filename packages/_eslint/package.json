@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/eslint-config-preset",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Eslint config for Mr.Mao",
   "main": "./index.cjs.js",
   "license": "ISC",
@@ -38,4 +38,3 @@
   },
   "gitHead": "2bbe18a458aed6ee43388c5bd39e971d50b4d73c"
 }
-
