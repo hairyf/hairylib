@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/uni-utils",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
