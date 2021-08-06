@@ -1,4 +1,4 @@
-import { toNumber } from 'lodash-es'
+import { toNumber } from 'lodash'
 import { makePhoneCall as h5MakePhoneCall } from '@tuimao/browser'
 import { promisify, UNI_PLATFORM } from '../utils'
 

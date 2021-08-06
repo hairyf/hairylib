@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-17 11:51:00
- * @LastEditTime: 2021-08-06 10:12:27
+ * @LastEditTime: 2021-08-06 10:32:25
  * @Description:
  * @LastEditors: Zhilong
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -41,7 +41,7 @@ describe('setHtmlStrTagAttr', () => {
     })
     expect(value).toContain('<div class="123"><span class="123"></span></div>')
   })
-  it('increase all tag class attr', () => {
+  it('increase tag more attr', () => {
     const value = setHtmlStrTagAttr('<div><span></span></div>', {
       tag: ['div', 'span'],
       attr: ['class', 'style'],

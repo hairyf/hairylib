@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es'
+import { cloneDeep } from 'lodash'
 import { usePagination } from 'vue-composable'
 import { ref, Ref, watch } from 'vue-demi'
 /*

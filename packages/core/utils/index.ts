@@ -8,7 +8,7 @@
  */
 
 export * from './is'
-import { forIn, isObject, pickBy } from 'lodash-es'
+import { forIn, isObject, pickBy } from 'lodash'
 
 /**
  * 地址参数计算

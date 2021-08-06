@@ -1,5 +1,5 @@
 import { AxiosStatic, AxiosInstance } from 'axios'
-import { isPlainObject } from 'lodash-es'
+import { isPlainObject } from 'lodash'
 import { formDataToObject, isFormData, objectToFormData, pickByParams } from '@tuimao/core'
 
 interface AxiosPickByParamsOptions {

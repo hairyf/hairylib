@@ -7,7 +7,7 @@
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
-import { isString } from 'lodash-es'
+import { isString } from 'lodash'
 
 /**
  * 如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上px单位

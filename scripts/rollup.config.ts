@@ -11,7 +11,7 @@ for (const { name, external, iife, globals, build } of packages) {
     'vue-demi': 'VueDemi',
     '@vueuse/core': 'VueUse',
     '@tuimao/core': 'TuiMaoCore',
-    'lodash-es': '_',
+    lodash: '_',
     ...(globals || {})
   }
 
@@ -58,7 +58,7 @@ for (const { name, external, iife, globals, build } of packages) {
     input,
     output,
     plugins: [esbuild()],
-    external: ['vue-demi', 'lodash-es', ...(external || [])]
+    external: ['vue-demi', 'lodash', ...(external || [])]
   })
 
   configs.push({
@@ -68,7 +68,7 @@ for (const { name, external, iife, globals, build } of packages) {
       format: 'es'
     },
     plugins: [dts()],
-    external: ['vue-demi', 'lodash-es', ...(external || [])]
+    external: ['vue-demi', 'lodash', ...(external || [])]
   })
 }
 export default configs

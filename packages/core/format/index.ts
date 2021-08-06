@@ -1,13 +1,13 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 13:57:13
- * @LastEditTime: 2021-08-06 10:10:56
+ * @LastEditTime: 2021-08-06 10:32:59
  * @Description:
  * @LastEditors: Zhilong
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import dayjs from 'dayjs'
-import { isArray } from 'lodash-es'
+import { isArray } from 'lodash'
 
 /**
  * 剔除字符串代码字段
@@ -67,7 +67,7 @@ export const setHtmlStrTagAttr = (
     throw new Error('error: html is not string')
   }
   if (Array.isArray(option.attr)) {
-    const str: string = option.attr.reduce((old, item) => {
+    const str: string = option.attr.reverse().reduce((old, item) => {
       return setHtmlStrTagAttr(old, { ...option, attr: item })
     }, html)
     return str

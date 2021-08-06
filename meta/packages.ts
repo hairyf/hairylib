@@ -17,7 +17,7 @@ export const packages: PackageManifest[] = [
     name: 'axios',
     display: 'Axios utilities',
     description: 'Utilities for axios',
-    external: ['lodash-es', '@tuimao/core', 'axios']
+    external: ['lodash', '@tuimao/core', 'axios']
   },
   {
     name: 'browser',
