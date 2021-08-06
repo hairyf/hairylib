@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 13:57:13
- * @LastEditTime: 2021-08-06 11:54:45
+ * @LastEditTime: 2021-08-06 11:56:53
  * @Description:
  * @LastEditors: Zhilong
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -81,7 +81,7 @@ export const setHtmlStrTagAttr = (
     )
     // 选择对应属性的字符  attr='***' | attr="***"
     const subReg = new RegExp(`${option.attr}=['"](.*?)['"]`, 'gis')
-    const setHtmlStr = html.replace(replaceReg, (match) => {
+    return html.replace(replaceReg, (match) => {
       //包含option.attr属性,替换option.attr
       if (match.indexOf(option.attr as string) > 0) {
         // 如果值为空 则将整条属性替换为 ''
@@ -93,8 +93,6 @@ export const setHtmlStrTagAttr = (
       suffix = suffix ? ` ${suffix}` : '>'
       return `${prefix} ${option.attr}="${option.value}"${suffix}`
     })
-
-    return setHtmlStr
   }
   return tags.reduce((total, tag) => transform(total, tag), html)
 }
