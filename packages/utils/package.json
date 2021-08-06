@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/utils",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "description": "Collection of Mr.mao Utils",
   "scripts": {},
   "license": "ISC",
@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "dependencies": {
-    "@tuimao/axios": "^0.1.6",
-    "@tuimao/browser": "^0.1.5",
-    "@tuimao/core": "^0.1.5",
-    "@tuimao/vue-utils": "^0.1.6"
+    "@tuimao/axios": "^0.2.0",
+    "@tuimao/browser": "^0.2.0",
+    "@tuimao/core": "^0.2.0",
+    "@tuimao/vue-utils": "^0.2.0"
   },
   "exports": {
     ".": {
@@ -33,4 +33,3 @@
   },
   "gitHead": "281bb95b82e245068dded2b1876401bf07ca320b"
 }
-

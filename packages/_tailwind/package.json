@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "1.3.5",
+  "version": "1.4.0",
   "description": "Tailwind config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
@@ -33,4 +33,3 @@
   },
   "gitHead": "281bb95b82e245068dded2b1876401bf07ca320b"
 }
-
