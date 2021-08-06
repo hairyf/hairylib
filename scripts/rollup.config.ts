@@ -13,7 +13,7 @@ for (const { name, external, iife, globals, build } of packages) {
   // 判断与打包后 hash 相同则跳过编译
   const packageRoot = resolve(__dirname, '..', 'packages', name)
   const packageDist = resolve(packageRoot, 'dist')
-  const packageHash = readPackageLernaGitHash(packageDist)
+  const packageHash = readPackageLernaGitHash(packageRoot)
   const distHash = readPackageLernaGitHash(packageDist)
   if (packageHash === distHash) continue
 
