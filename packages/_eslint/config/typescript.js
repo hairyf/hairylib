@@ -10,14 +10,14 @@ module.exports = {
   extends: ['plugin:@typescript-eslint/recommended'],
   rules: {
     // 限制相关语法
-    'no-restricted-syntax': [
-      'error',
-      {
-        selector:
-          'AssignmentPattern[left.typeAnnotation.type != TSTypeAnnotation] > ObjectExpression[properties.length = 0].right',
-        message: '参数默认值不能为空对象, 这将会有类型丢失的风险'
-      }
-    ],
+    // 'no-restricted-syntax': [
+    //   'error',
+    //   {
+    //     selector:
+    //       'AssignmentPattern[left.typeAnnotation.type != TSTypeAnnotation] > ObjectExpression[properties.length = 0].right',
+    //     message: '参数默认值不能为空对象, 这将会有类型丢失的风险'
+    //   }
+    // ],
     // 允许不驼峰命名
     '@typescript-eslint/camelcase': 0,
     // 允许空方法的产生(兼容构建工具)

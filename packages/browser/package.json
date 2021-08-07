@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/browser",
-  "version": "0.0.6-alpha.0",
+  "version": "0.2.1",
   "license": "MIT",
   "dependencies": {
     "lodash-es": "^4.17.21"
@@ -26,5 +26,6 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  }
+  },
+  "gitHead": "e20a2c3214981acf545e58c26baa3f19c540b425"
 }

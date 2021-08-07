@@ -95,6 +95,7 @@ const defaults = merge(presets, {
       gray: { DEFAULT: 'gray' }
     }
   },
+
   /**
    * 自定义 theme 中的变体顺序
    * @link https://www.tailwindcss.cn/docs/configuration#variant-order

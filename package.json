@@ -9,10 +9,10 @@
   "scripts": {
     "build": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
-    "publish:ci": "esno scripts/publish.ts",
-    "publish:lerna": "yarn build && lerna publish",
+    "publish:lerna": "lerna publish --contents dist",
     "update": "esno scripts/update.ts",
-    "clean": "rimraf dist packages/*/dist"
+    "clean": "rimraf dist packages/*/dist",
+    "prepublishOnly": "yarn build"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "cross-env": "^7.0.3",
     "esbuild-register": "^2.6.0",
     "esno": "^0.8.0",
+    "execa": "^5.1.1",
     "fast-glob": "^3.2.7",
     "fs-extra": "^10.0.0",
     "jest": "^27.0.6",

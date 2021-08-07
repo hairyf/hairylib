@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/eslint-config-preset",
-  "version": "1.4.4",
+  "version": "1.6.2",
   "description": "Eslint config for Mr.Mao",
   "main": "./index.cjs.js",
   "license": "ISC",
@@ -25,7 +25,6 @@
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
-  "gitHead": "d57519d4b65c51782245a823bbe883a03b0a4ef0",
   "types": "./index.d.ts",
   "module": "./index.esm.js",
   "unpkg": "./index.iife.min.js",
@@ -36,5 +35,6 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  }
+  },
+  "gitHead": "e20a2c3214981acf545e58c26baa3f19c540b425"
 }

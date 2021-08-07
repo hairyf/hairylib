@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/tailwind-config-preset",
-  "version": "1.2.7-alpha.0",
+  "version": "1.4.2",
   "description": "Tailwind config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
@@ -30,5 +30,6 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  }
+  },
+  "gitHead": "e20a2c3214981acf545e58c26baa3f19c540b425"
 }
