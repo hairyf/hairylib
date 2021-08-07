@@ -1,0 +1,40 @@
+{
+  "name": "@tuimao/uni-use",
+  "version": "0.0.0",
+  "description": "Collection of essential Uni Composition Utilities",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "license": "ISC",
+  "main": "./index.cjs.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/tuimao-config.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/tuimao-config/issues"
+  },
+  "dependencies": {
+    "@vue/composition-api": "^1.0.5"
+  },
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  }
+}

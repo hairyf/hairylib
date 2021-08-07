@@ -66,5 +66,10 @@ export const packages: PackageManifest[] = [
     name: 'uni-utils',
     description: 'Collection of essential Uni Utilities',
     display: 'Uni utilities'
+  },
+  {
+    name: 'uni-use',
+    display: 'Vue composition-api function',
+    description: 'Collection of essential Uni Composition Utilities'
   }
 ]
