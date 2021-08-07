@@ -40,4 +40,8 @@ interface PackageManifest {
    * 是否手动导入
    */
   manualImport?: boolean
+  /**
+   * 自定义导入文件
+   */
+  importFile?: string
 }
