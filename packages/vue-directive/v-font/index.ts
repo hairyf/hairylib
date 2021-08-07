@@ -1,4 +1,4 @@
-import { analyUnit } from '@tuimao/utils'
+import { analyUnit } from '@tuimao/core'
 import { Directive } from 'vue-demi'
 import { directiveUnit } from '../unit'
 

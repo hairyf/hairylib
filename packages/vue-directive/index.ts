@@ -14,6 +14,6 @@ const install = (app: App) => {
     app.directive(_k, _d)
   }
 }
-
+console.log(directives)
 export default install
 export { install, directives }
