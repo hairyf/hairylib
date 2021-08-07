@@ -1,0 +1,30 @@
+{
+  "name": "@tuimao/vue-directive",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "TuiMao233 <wwu710632@gmail.com>",
+  "homepage": "https://github.com/TuiMao233/tuimao-config/tree/main/packages/vue-directive#readme",
+  "license": "ISC",
+  "main": "lib/vue-directive.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/tuimao-config.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/tuimao-config/issues"
+  },
+  "dependencies": {
+    "@tuimao/core": "^0.2.2",
+    "vue-demi": "^0.11.2"
+  }
+}
