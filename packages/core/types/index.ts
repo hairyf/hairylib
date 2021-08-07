@@ -18,6 +18,6 @@ export type DeepPartial<T> = {
 
 export type DeepKeyof<T> = T extends object ? keyof T | DeepKeyof<T[keyof T]> : never
 
-export type DeepReplace<T, K extends DeepKeyof<T>, V = unknown> = {
+export type DeepReplace<T, K = unknown, V = unknown> = {
   [P in keyof T]: K extends P ? V : DeepReplace<T[P], K, V>
 }
