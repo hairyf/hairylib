@@ -21,7 +21,7 @@ type CorePlugins =
 
 type PartialConfig = DeepPartial<TailwindConfig>
 type FixCorePlugins = DeepReplace<PartialConfig, 'corePlugins', CorePlugins>
-type DefineConfig = FixCorePlugins
+export type DefineConfig = FixCorePlugins
 /** 修复 CorePlugins 类型 end */
 
 /**
