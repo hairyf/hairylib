@@ -17,10 +17,11 @@ assert(process.cwd() !== __dirname)
 
 export const buildTransferDist = async (cwd: string) => {
   const files = await fg('*', { cwd, ignore: ['_*', 'dist', 'node_modules'] })
+  const dirs = await fg('*', { cwd, onlyDirectories: true, ignore: ['_*', 'dist', 'node_modules'] })
   const packageDist = path.resolve(cwd, 'dist')
   await fs.emptyDir(packageDist)
-  for (const file of files) {
-    await fs.copyFile(path.join(cwd, file), path.join(packageDist, file))
+  for (const file of [...files, ...dirs]) {
+    await fs.copy(path.join(cwd, file), path.join(packageDist, file))
   }
 }
 
