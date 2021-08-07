@@ -10,16 +10,29 @@
 import { merge } from 'lodash'
 import { TailwindConfig } from 'tailwindcss/tailwind-config'
 import defaults from './config/defaults'
+import { DeepPartial, DeepReplace } from '@tuimao/core'
+
+/** 修复 CorePlugins 类型 start */
+type CorePlugins =
+  | {
+      [key in TailwindConfig['corePlugins'][number]]?: boolean
+    }
+  | TailwindConfig['corePlugins']
+
+type PartialConfig = DeepPartial<TailwindConfig>
+type FixCorePlugins = DeepReplace<PartialConfig, 'corePlugins', CorePlugins>
+type DefineConfig = FixCorePlugins
+/** 修复 CorePlugins 类型 end */
 
 /**
  * 初始化返回预设
  * @param config 深层合并预设
  * @returns 预设
  */
-const mergePresets = (config: Partial<TailwindConfig> = {}) => {
+const mergePresets = (config: DefineConfig = {}) => {
   return merge(defaults, config)
 }
-
+mergePresets({})
 export default mergePresets
 export { default as preset } from './config/preset'
 export { default as defaults } from './config/defaults'
