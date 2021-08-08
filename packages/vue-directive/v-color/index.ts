@@ -1,5 +1,7 @@
-import { directiveArgValue } from '../unit'
+import { directiveArgValue, DirectiveElements } from '../utils'
 
-export const vColor = { color: directiveArgValue('color') }
-export const vBgColor = { bg: directiveArgValue('background') }
-export const vBorderColor = { bg: directiveArgValue('borderColor') }
+export const vColor: DirectiveElements = {
+  color: directiveArgValue('color'),
+  bg: directiveArgValue('background'),
+  borderColor: directiveArgValue('borderColor')
+}

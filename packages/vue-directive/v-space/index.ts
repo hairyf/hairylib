@@ -1,17 +1,18 @@
-import { directiveUnit } from '../unit'
+import { DirectiveElements, directiveUnit } from '../utils'
 
-export const vP = { p: directiveUnit('padding') }
-export const vPt = { pt: directiveUnit('paddingTop') }
-export const vPr = { pr: directiveUnit('paddingRight') }
-export const vPb = { pb: directiveUnit('paddingBottom') }
-export const vPl = { pl: directiveUnit('paddingLeft') }
-export const vPx = { px: directiveUnit('paddingLeft', 'paddingRight') }
-export const vPy = { py: directiveUnit('paddingTop', 'paddingBottom') }
-
-export const vM = { m: directiveUnit('margin') }
-export const vMt = { mt: directiveUnit('marginTop') }
-export const vMr = { mr: directiveUnit('marginRight') }
-export const vMb = { mb: directiveUnit('marginBottom') }
-export const vMl = { ml: directiveUnit('marginLeft') }
-export const vMx = { mx: directiveUnit('marginLeft', 'marginRight') }
-export const vMy = { my: directiveUnit('marginTop', 'marginBottom') }
+export const vSpace: DirectiveElements = {
+  p: directiveUnit('padding'),
+  pt: directiveUnit('paddingTop'),
+  pr: directiveUnit('paddingRight'),
+  pb: directiveUnit('paddingBottom'),
+  pl: directiveUnit('paddingLeft'),
+  px: directiveUnit('paddingLeft', 'paddingRight'),
+  py: directiveUnit('paddingTop', 'paddingBottom'),
+  m: directiveUnit('margin'),
+  mt: directiveUnit('marginTop'),
+  mr: directiveUnit('marginRight'),
+  mb: directiveUnit('marginBottom'),
+  ml: directiveUnit('marginLeft'),
+  mx: directiveUnit('marginLeft', 'marginRight'),
+  my: directiveUnit('marginTop', 'marginBottom')
+}

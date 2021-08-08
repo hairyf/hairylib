@@ -1,9 +1,8 @@
 import { analyUnit } from '@tuimao/core'
-import { Directive } from 'vue-demi'
-import { directiveUnit } from '../unit'
+import { DirectiveElements, directiveUnit } from '../utils'
 
-export const vFont = {
-  font: <Directive<HTMLElement>>((el, { arg, value }) => {
+export const vFont: DirectiveElements = {
+  font: (el, { arg, value }) => {
     if (!arg?.length || arg.length > 1) {
       throw Error('font directive args > 2')
     }
@@ -18,9 +17,7 @@ export const vFont = {
     if (arg[0] === 'weight') {
       el.style.fontWeight = analyUnit(value || '')
     }
-  })
+  },
+  leading: directiveUnit('lineHeight'),
+  tracking: directiveUnit('letterSpacing')
 }
-
-export const vLeading = { leading: directiveUnit('lineHeight') }
-
-export const vTracking = { tracking: directiveUnit('letterSpacing') }

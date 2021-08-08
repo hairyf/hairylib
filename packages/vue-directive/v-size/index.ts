@@ -1,15 +1,11 @@
-import { directiveSize, directiveUnit } from '../unit'
+import { DirectiveElements, directiveSize, directiveUnit } from '../utils'
 
-export const vSize = { size: directiveSize() }
-
-export const vWidth = { w: directiveUnit('width') }
-
-export const vHeight = { h: directiveUnit('height') }
-
-export const vMinWidth = { 'min-w': directiveUnit('minWidth') }
-
-export const vMinHeight = { 'min-h': directiveUnit('minHeight') }
-
-export const vMaxWidth = { 'max-w': directiveUnit('maxWidth') }
-
-export const vMaxHeight = { 'max-h': directiveUnit('maxHeight') }
+export const vSize: DirectiveElements = {
+  size: directiveSize(),
+  w: directiveUnit('width'),
+  h: directiveUnit('height'),
+  'min-w': directiveUnit('minWidth'),
+  'min-h': directiveUnit('minHeight'),
+  'max-w': directiveUnit('maxWidth'),
+  'max-h': directiveUnit('maxHeight')
+}

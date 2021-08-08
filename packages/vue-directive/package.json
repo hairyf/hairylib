@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@tuimao/core": "^0.2.2",
+    "lodash": "^4.17.21",
     "vue-demi": "^0.11.2"
   }
 }

@@ -1,5 +1,7 @@
-import { directiveUnit } from '../unit'
+import { DirectiveElements, directiveUnit } from '../utils'
 
-export const vGap = { gap: directiveUnit('gap') }
-export const vGapX = { 'gap-x': directiveUnit('columnGap') }
-export const vGapY = { 'gap-y': directiveUnit('rowGap') }
+export const vGap: DirectiveElements = {
+  gap: directiveUnit('gap'),
+  'gap-x': directiveUnit('columnGap'),
+  'gap-y': directiveUnit('rowGap')
+}

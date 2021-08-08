@@ -66,7 +66,7 @@ export const packages: PackageManifest[] = [
     name: 'vue-directive',
     display: 'Vue directives',
     description: 'Collection of essential Vue directives',
-    importFile: 'directives.ts',
+    importFile: 'imports.ts',
     external: ['vue-demi']
   },
   {
