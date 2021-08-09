@@ -1,4 +1,4 @@
-import { defaultPresets, percentage } from "../config-base"
+import { defaultPresets, defaultPercentage } from "../config-base"
 import { DefineConfig } from "../dist"
 import { generateSpacing, negative } from "../utils"
 import { spacingPx2rpx } from "./utils"
@@ -36,7 +36,7 @@ const defaults: DefineConfig = {
     inset: (theme: any) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
-      ...percentage
+      ...defaultPercentage
     }),
   }
 }

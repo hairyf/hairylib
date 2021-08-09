@@ -1,5 +1,5 @@
 import { merge } from 'lodash'
-import { DefineConfig } from '../dist'
+import { DefineConfig } from '../utils/types'
 import defaults from './defaults'
 
 /**

@@ -9,7 +9,7 @@
 
 import { merge } from 'lodash'
 import { TailwindConfig } from 'tailwindcss/tailwind-config'
-import { defaultPresets, percentage } from '../config-base'
+import { defaultPresets } from '../config-base'
 import { generateSpacing } from '../utils'
 
 /** 默认配置 */

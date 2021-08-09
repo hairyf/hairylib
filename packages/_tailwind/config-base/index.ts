@@ -1,9 +1,8 @@
 import { merge } from 'lodash'
-import { DefineConfig } from '../dist'
+import { DefineConfig } from '../utils/types'
 
 const tailwindPresets: DefineConfig = require('tailwindcss/stubs/defaultConfig.stub.js')
 ;(tailwindPresets as any).theme.spacing = {}
-tailwindPresets
 
 export const defaultPresets = merge(tailwindPresets, <DefineConfig>{
   theme: {
@@ -28,35 +27,35 @@ export const defaultPresets = merge(tailwindPresets, <DefineConfig>{
     },
     height: (theme: any) => ({
       ...theme('spacing'),
-      ...percentage,
+      ...defaultPercentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vh'
     }),
     minWidth: (theme: any) => ({
       ...theme('spacing'),
-      ...percentage,
+      ...defaultPercentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vw'
     }),
     maxWidth: (theme: any) => ({
       ...theme('spacing'),
-      ...percentage,
+      ...defaultPercentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vw'
     }),
     minHeight: (theme: any) => ({
       ...theme('spacing'),
-      ...percentage,
+      ...defaultPercentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vh'
     }),
     maxHeight: (theme: any) => ({
       ...theme('spacing'),
-      ...percentage,
+      ...defaultPercentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vh'
@@ -64,7 +63,7 @@ export const defaultPresets = merge(tailwindPresets, <DefineConfig>{
   }
 })
 /** 百分比尺寸 */
-export const percentage = {
+export const defaultPercentage = {
   full: '100%',
   auto: 'auto',
   '1/2': '50%',
