@@ -4,17 +4,17 @@ hello 这里是腿毛，@tuimao/config 代表我的配置，是使用 lerna 管�
 
 目前已有模块包：
 
-- [@tuimao/eslint](./packages/eslint)
-- [@tuimao/tailwind](./packages/tailwind)
-- [@tuimao/axios](./packages/axios)
-- [@tuimao/borwser](./packages/borwser)
-- [@tuimao/core](./packages/core)
-- [@tuimao/utils](./packages/utils)
-- [@tuimao/uni-use](./packages/uni-use)
-- [@tuimao/uni-utils](./packages/uni-utils)
-- [@tuimao/vue-directive](./packages/vue-directive)
-- [@tuimao/vue-use](./packages/vue-use)
-- [@tuimao/vue-utils](./packages/vue-utils)
+- [@tuimao/eslint](./packages/eslint#readme)
+- [@tuimao/tailwind](./packages/tailwind#readme)
+- [@tuimao/axios](./packages/axios#readme)
+- [@tuimao/borwser](./packages/borwser#readme)
+- [@tuimao/core](./packages/core#readme)
+- [@tuimao/utils](./packages/utils#readme)
+- [@tuimao/uni-use](./packages/uni-use#readme)
+- [@tuimao/uni-utils](./packages/uni-utils#readme)
+- [@tuimao/vue-directive](./packages/vue-directive#readme)
+- [@tuimao/vue-use](./packages/vue-use#readme)
+- [@tuimao/vue-utils](./packages/vue-utils#readme)
 
 ## 项目逻辑图
 
