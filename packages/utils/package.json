@@ -21,7 +21,7 @@
   "dependencies": {
     "@tuimao/axios": "^0.2.2",
     "@tuimao/browser": "^0.2.2",
-    "@tuimao/core": "^0.2.2",
+    "@tuimao/core": "^0.2.3",
     "@tuimao/vue-utils": "^0.2.2"
   },
   "exports": {
