@@ -1,9 +1,10 @@
 {
-  "name": "@tuimao/tailwind-config-preset",
-  "version": "1.4.3",
+  "name": "@tuimao/tailwind",
+  "version": "1.0.6",
   "description": "Tailwind config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
+    "@tuimao/core": "^0.2.2",
     "@types/tailwindcss": "2.0.0",
     "lodash-es": "^4.17.21"
   },

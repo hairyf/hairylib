@@ -33,3 +33,23 @@ export const promisify = <V extends UniApiVal>(api: V) => {
     return error ? Promise.reject(error) : Promise.resolve(result)
   }
 }
+
+/**
+ * 将 rpx 转换为 px
+ * @param rpx
+ */
+export const rpx2px = (rpx: number) => {
+  const info = uni.getSystemInfoSync()
+  const rate = 750 / info.windowWidth
+  return rate * rpx
+}
+
+/**
+ * 将 px 转换为 rpx
+ * @param px
+ */
+export const px2rpx = (px: number) => {
+  const info = uni.getSystemInfoSync()
+  const rate = info.windowWidth / 750
+  return rate * px
+}

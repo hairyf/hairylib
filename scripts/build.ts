@@ -7,6 +7,7 @@ import { packages } from '../meta/packages'
 import { readPackageLernaGitHash, updateImport } from './utils'
 import fg from 'fast-glob'
 
+
 const rootDir = path.resolve(__dirname, '..')
 
 const FILES_COPY_ROOT = ['LICENSE']

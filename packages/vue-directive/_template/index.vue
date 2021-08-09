@@ -2,6 +2,7 @@
   <div>
     <!-- 命令工具 start -->
     <input v-focus />
+    <input v-permission="['user']" />
     <!-- 命令工具 start -->
 
     <!-- 不属于 tailwind 的变体命令 start -->

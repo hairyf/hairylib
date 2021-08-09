@@ -3,7 +3,6 @@ export const packages: PackageManifest[] = [
     name: '_tailwind',
     display: 'Tailwind preset',
     description: 'Tailwind config for Mr.Mao',
-    manualImport: true,
     iife: false
   },
   {

@@ -1,12 +1,7 @@
 {
-  "name": "@tuimao/core",
-  "version": "0.2.3",
+  "name": "@tuimao/uni-component",
+  "version": "0.0.0",
   "license": "MIT",
-  "dependencies": {
-    "@types/lodash-es": "^4.17.4",
-    "dayjs": "^1.10.6",
-    "lodash-es": "^4.17.21"
-  },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
   "module": "./index.esm.js",
@@ -21,7 +16,12 @@
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
-  "description": "Utilities core for Mr.Mao",
+  "devDependencies": {
+    "@dcloudio/types": "^2.4.5",
+    "@types/node": "^16.4.12",
+    "miniprogram-api-typings": "^3.4.2"
+  },
+  "description": "Collection of essential Uni Utilities",
   "exports": {
     ".": {
       "import": "./index.esm.js",

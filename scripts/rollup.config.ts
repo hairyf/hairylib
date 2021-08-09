@@ -10,7 +10,7 @@ const configs: RollupOptions[] = []
 for (const { name, external, iife, globals, build } of packages) {
   if (build === false) continue
 
-  // 判断与打包后 hash 相同则跳过编译
+  // 判断与打包后 hash 相同则跳过编译 (在公司环境无法使用 lerna 暂时跳过)
   // const packageRoot = resolve(__dirname, '..', 'packages', name)
   // const packageDist = resolve(packageRoot, 'dist')
   // const packageHash = readPackageLernaGitHash(packageRoot)
