@@ -11,7 +11,6 @@ const configs: RollupOptions[] = []
 
 for (const { name, external, iife, globals, build, tsc } of packages) {
   if (tsc === true) {
-    execa.sync('rimraf', { cwd: join('packages', name) })
     execa.sync('tsc', { cwd: join('packages', name) })
     continue
   }
