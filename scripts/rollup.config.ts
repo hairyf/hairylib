@@ -3,19 +3,28 @@ import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import { packages } from '../meta/packages'
 import { terser } from 'rollup-plugin-terser'
-// import { resolve } from 'path'
-// import { readPackageLernaGitHash } from './utils'
+import execa from 'execa'
+import { resolve, join } from 'path'
+import { readPackageLernaGitHash } from './utils'
+import consola from 'consola'
 const configs: RollupOptions[] = []
 
-for (const { name, external, iife, globals, build } of packages) {
+for (const { name, external, iife, globals, build, tsc } of packages) {
+  if (tsc === true) {
+    execa.sync('rimraf', { cwd: join('packages', name) })
+    execa.sync('tsc', { cwd: join('packages', name) })
+    continue
+  }
   if (build === false) continue
 
   // 判断与打包后 hash 相同则跳过编译 (在公司环境无法使用 lerna 暂时跳过)
-  // const packageRoot = resolve(__dirname, '..', 'packages', name)
-  // const packageDist = resolve(packageRoot, 'dist')
-  // const packageHash = readPackageLernaGitHash(packageRoot)
-  // const distHash = readPackageLernaGitHash(packageDist)
-  // if (packageHash === distHash) continue
+  const packageRoot = resolve(__dirname, '..', 'packages', name)
+  const packageDist = resolve(packageRoot, 'dist')
+  const packageHash = readPackageLernaGitHash(packageRoot)
+  const distHash = readPackageLernaGitHash(packageDist)
+  if (packageHash === distHash) {
+    consola.info('-- hash identical to close build --')
+  }
 
   const iifeGlobals = {
     'vue-demi': 'VueDemi',

@@ -11,13 +11,9 @@ export const vueBasic: Linter.Config = {
 }
 
 export const vue2: Linter.Config = {
-  globals: {
-    uni: true,
-    wx: true,
-    plus: true,
-    getApp: true,
-    UniApp: true
-  }
+  extends: [
+    'plugin:vue/essential' // eslint-plugin-vue
+  ]
 }
 
 export const vue3: Linter.Config = {

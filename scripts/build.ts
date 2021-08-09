@@ -4,9 +4,8 @@ import consola from 'consola'
 import fs from 'fs-extra'
 import { execSync as exec } from 'child_process'
 import { packages } from '../meta/packages'
-import { readPackageLernaGitHash, updateImport } from './utils'
+import { updateImport } from './utils'
 import fg from 'fast-glob'
-
 
 const rootDir = path.resolve(__dirname, '..')
 

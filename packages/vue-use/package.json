@@ -34,6 +34,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "d87257353aadc28516d5ff363f880ee90e88ac9e"
+  }
 }
