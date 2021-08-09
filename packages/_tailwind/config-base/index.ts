@@ -1,10 +1,12 @@
 import { merge } from 'lodash'
+import { lineClampPlugin } from '../plugins'
 import { DefineConfig } from '../utils/types'
 
 const tailwindPresets: DefineConfig = require('tailwindcss/stubs/defaultConfig.stub.js')
 ;(tailwindPresets as any).theme.spacing = {}
 
 export const defaultConfig = merge(tailwindPresets, <DefineConfig>{
+  plugins: <any>[lineClampPlugin()],
   theme: {
     colors: {
       pink: { DEFAULT: 'pink' },
