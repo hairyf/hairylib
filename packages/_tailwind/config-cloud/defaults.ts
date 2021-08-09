@@ -1,4 +1,4 @@
-import { defaultPresets, defaultPercentage } from "../config-base"
+import { defaultConfig, defaultPercentage } from "../config-base"
 import { DefineConfig } from "../dist"
 import { generateSpacing, negative } from "../utils"
 import { spacingPx2rpx } from "./utils"
@@ -12,22 +12,23 @@ const spacingOption = {
 }
 /** 默认配置 */
 const defaults: DefineConfig = {
-  ...defaultPresets,
+  ...defaultConfig,
+  darkMode: false,
   theme: <any>{
     spacing: <any>generateSpacing(375, spacingOption),
     lineHeight: generateSpacing(20, spacingOption),
-    blur: spacingPx2rpx((defaultPresets as any).theme.blur),
-    colors: defaultPresets.theme?.colors,
+    blur: spacingPx2rpx((defaultConfig as any).theme.blur),
+    colors: defaultConfig.theme?.colors,
     borderRadius: generateSpacing(30, spacingOption),
     borderWidth: generateSpacing(10, spacingOption),
-    boxShadow: spacingPx2rpx(defaultPresets.theme?.boxShadow as any),
+    boxShadow: spacingPx2rpx(defaultConfig.theme?.boxShadow as any),
     fontSize: generateSpacing(35, spacingOption),
     letterSpacing: generateSpacing(10, spacingOption),
-    height: defaultPresets.theme?.height,
-    minWidth: defaultPresets.theme?.minWidth,
-    maxWidth: defaultPresets.theme?.maxWidth,
-    minHeight: defaultPresets.theme?.minHeight,
-    maxHeight: defaultPresets.theme?.maxHeight,
+    height: defaultConfig.theme?.height,
+    minWidth: defaultConfig.theme?.minWidth,
+    maxWidth: defaultConfig.theme?.maxWidth,
+    minHeight: defaultConfig.theme?.minHeight,
+    maxHeight: defaultConfig.theme?.maxHeight,
     margin: (theme: any) => ({
       auto: 'auto',
       ...theme('spacing'),
@@ -38,6 +39,15 @@ const defaults: DefineConfig = {
       ...negative(theme('spacing')),
       ...defaultPercentage
     }),
+  },
+  variants: {},
+  plugins: [],
+  corePlugins: {
+    space: false,
+    divideWidth: false,
+    divideColor: false,
+    divideStyle: false,
+    divideOpacity: false,
   }
 }
 

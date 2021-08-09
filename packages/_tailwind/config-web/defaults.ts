@@ -9,11 +9,11 @@
 
 import { merge } from 'lodash'
 import { TailwindConfig } from 'tailwindcss/tailwind-config'
-import { defaultPresets } from '../config-base'
+import { defaultConfig } from '../config-base'
 import { generateSpacing } from '../utils'
 
 /** 默认配置 */
-const defaults = merge(defaultPresets, {
+const defaults = merge(defaultConfig, {
   /** 生产环境下, 需清除样式的文件列表 */
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   /** 前缀 */

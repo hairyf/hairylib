@@ -3,6 +3,6 @@ import { DefineConfig } from '../utils/types'
 import defaults from './defaults'
 
 
-export const defineCloudMergePreset = (config: DefineConfig = {}) => {
+export const defineCloudMergeConfig = (config: DefineConfig = {}) => {
   return merge(defaults, config)
 }
