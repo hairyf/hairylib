@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/vue-directive",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Collection of essential Vue directives",
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
@@ -14,7 +14,7 @@
     "url": "https://github.com/TuiMao233/tuimao-config/issues"
   },
   "dependencies": {
-    "@tuimao/core": "^0.2.2",
+    "@tuimao/core": "^0.2.3",
     "lodash": "^4.17.21",
     "vue-demi": "^0.11.2"
   },
