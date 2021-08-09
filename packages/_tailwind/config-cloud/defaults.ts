@@ -3,6 +3,10 @@ import { DefineConfig } from "../dist"
 import { generateSpacing, negative } from "../utils"
 import { spacingPx2rpx } from "./utils"
 
+delete (defaultConfig as any).purge
+delete (defaultConfig as any).variantOrder
+delete (defaultConfig as any).variants
+
 const spacingOption = {
   compute: (v: number) => v * 2,
   step: 1,
@@ -10,11 +14,13 @@ const spacingOption = {
   stepMax: 1,
   unit: 'rpx'
 }
+
 /** 默认配置 */
 const defaults: DefineConfig = {
   ...defaultConfig,
   darkMode: false,
   theme: <any>{
+    screens: {},
     spacing: <any>generateSpacing(375, spacingOption),
     lineHeight: generateSpacing(20, spacingOption),
     blur: spacingPx2rpx((defaultConfig as any).theme.blur),

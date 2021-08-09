@@ -81,7 +81,7 @@ export const compareRoutes = (
   surfaceRoutes: RouteRecordRaw[] = []
 ) => {
   const filterRoutes = baseRoutes.filter((brte) => {
-    const srte = surfaceRoutes.find((v) => brte.meta?.title === (v as any).title)
+    const srte = surfaceRoutes.find((v) => brte.name === v.name)
     if (brte.children && brte.children?.length > 0) {
       brte.children = compareRoutes(brte.children, srte?.children)
     }
