@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/eslint",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Eslint config for Mr.Mao",
   "main": "./index.cjs.js",
   "license": "ISC",
