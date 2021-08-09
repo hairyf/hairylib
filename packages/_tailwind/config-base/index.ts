@@ -22,7 +22,45 @@ export const defaultPresets = merge(tailwindPresets, <DefineConfig>{
       orange: { DEFAULT: 'orange' },
       red: { DEFAULT: 'red' },
       gray: { DEFAULT: 'gray' }
-    }
+    },
+    boxShadow: {
+      DEFAULT: '0px 0px 10px rgba(0, 0, 0, 0.05), 0px 0px 20px rgba(0, 0, 0, 0.02)'
+    },
+    height: (theme: any) => ({
+      ...theme('spacing'),
+      ...percentage,
+      min: 'min-content',
+      max: 'max-content',
+      screen: '100vh'
+    }),
+    minWidth: (theme: any) => ({
+      ...theme('spacing'),
+      ...percentage,
+      min: 'min-content',
+      max: 'max-content',
+      screen: '100vw'
+    }),
+    maxWidth: (theme: any) => ({
+      ...theme('spacing'),
+      ...percentage,
+      min: 'min-content',
+      max: 'max-content',
+      screen: '100vw'
+    }),
+    minHeight: (theme: any) => ({
+      ...theme('spacing'),
+      ...percentage,
+      min: 'min-content',
+      max: 'max-content',
+      screen: '100vh'
+    }),
+    maxHeight: (theme: any) => ({
+      ...theme('spacing'),
+      ...percentage,
+      min: 'min-content',
+      max: 'max-content',
+      screen: '100vh'
+    })
   }
 })
 /** 百分比尺寸 */

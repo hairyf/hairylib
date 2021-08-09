@@ -46,38 +46,7 @@ const defaults = merge(defaultPresets, {
       xxl: { min: '1600px' },
       xxxl: { min: '1920px' }
     },
-    boxShadow: {
-      DEFAULT: '0px 0px 10px rgba(0, 0, 0, 0.05), 0px 0px 20px rgba(0, 0, 0, 0.02)'
-    },
-    height: (theme: any) => ({
-      ...theme('spacing'),
-      ...percentage,
-      min: 'min-content',
-      max: 'max-content',
-      screen: '100vh'
-    }),
     spacing: generateSpacing(2000),
-    minWidth: (theme: any) => ({
-      ...theme('spacing'),
-      ...percentage,
-      min: 'min-content',
-      max: 'max-content',
-      screen: '100vw'
-    }),
-    maxWidth: (theme: any) => ({
-      ...theme('spacing'),
-      ...percentage,
-      min: 'min-content',
-      max: 'max-content',
-      screen: '100vw'
-    }),
-    minHeight: (theme: any) => ({
-      ...theme('spacing'),
-      ...percentage,
-      min: 'min-content',
-      max: 'max-content',
-      screen: '100vh'
-    })
   },
 
   /**

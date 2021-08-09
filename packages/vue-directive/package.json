@@ -1,11 +1,11 @@
 {
   "name": "@tuimao/vue-directive",
   "version": "0.0.0",
-  "description": "> TODO: description",
-  "author": "TuiMao233 <wwu710632@gmail.com>",
-  "homepage": "https://github.com/TuiMao233/tuimao-config/tree/main/packages/vue-directive#readme",
+  "description": "Collection of essential Vue directives",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "license": "ISC",
-  "main": "lib/vue-directive.js",
+  "main": "./index.cjs.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -27,5 +27,16 @@
     "@tuimao/core": "^0.2.2",
     "lodash": "^4.17.21",
     "vue-demi": "^0.11.2"
+  },
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
   }
 }
