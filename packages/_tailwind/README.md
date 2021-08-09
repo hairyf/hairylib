@@ -42,7 +42,7 @@ const webConifg = defineWebMergeConfig({
 
 ## utils
 
-~~~js
+~~~ts
 // 用于生成间距信息的工具
 import { generateSpacing } from '@tuimao/tailwind'
 generateSpacing(2000)
