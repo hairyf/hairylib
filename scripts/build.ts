@@ -27,7 +27,6 @@ export const buildTransferDist = async (cwd: string) => {
 
 export const buildMetaFiles = async () => {
   for (const { name, build } of packages) {
-    // 判断与打包后 hash 相同则跳过编译
     const packageRoot = path.resolve(__dirname, '..', 'packages', name)
     const packageDist = path.resolve(packageRoot, 'dist')
 
@@ -47,8 +46,7 @@ export const buildMetaFiles = async () => {
 
 export const build = async () => {
   consola.info('Clean up')
-  // 暂时不清除项目打包文件（兼容 hash 对比）
-  // exec('yarn clean', { stdio: 'inherit' })
+  exec('yarn clean', { stdio: 'inherit' })
 
   consola.info('Generate Imports')
   await updateImport(packages)

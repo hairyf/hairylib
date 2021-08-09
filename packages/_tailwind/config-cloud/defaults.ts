@@ -1,6 +1,5 @@
 import { defaultConfig, defaultPercentage } from '../config-base'
-import { DefineConfig } from '../dist'
-import { generateSpacing, negative } from '../utils'
+import { generateSpacing, negative, DefineConfig } from '../utils'
 import { spacingPx2rpx } from './utils'
 
 const spacingOption = {

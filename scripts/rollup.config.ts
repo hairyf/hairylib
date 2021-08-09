@@ -22,7 +22,7 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
   const packageDist = resolve(packageRoot, 'dist')
   const packageHash = readPackageLernaGitHash(packageRoot)
   const distHash = readPackageLernaGitHash(packageDist)
-  if (packageHash === distHash) {
+  if (packageHash !== '' && packageHash === distHash) {
     consola.info('-- hash identical to close build --')
   }
 
