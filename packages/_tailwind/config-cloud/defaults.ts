@@ -22,7 +22,10 @@ const defaults: DefineConfig = {
     lineHeight: generateSpacing(20, spacingOption),
     blur: spacingPx2rpx((defaultConfig as any).theme.blur),
     colors: defaultConfig.theme?.colors,
-    borderRadius: generateSpacing(30, spacingOption),
+    borderRadius: {
+      ...generateSpacing(30, spacingOption),
+      full: '9999rpx'
+    },
     borderWidth: generateSpacing(10, spacingOption),
     boxShadow: spacingPx2rpx(defaultConfig.theme?.boxShadow as any),
     fontSize: generateSpacing(35, spacingOption),
