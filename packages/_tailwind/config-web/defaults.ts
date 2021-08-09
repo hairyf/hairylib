@@ -9,11 +9,11 @@
 
 import { merge } from 'lodash'
 import { TailwindConfig } from 'tailwindcss/tailwind-config'
-import { getPercentage, getSpacing } from './utils'
-import presets from './preset'
+import { defaultPresets, percentage } from '../config-base'
+import { generateSpacing } from '../utils'
 
 /** 默认配置 */
-const defaults = merge(presets, {
+const defaults = merge(defaultPresets, {
   /** 生产环境下, 需清除样式的文件列表 */
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   /** 前缀 */
@@ -51,49 +51,33 @@ const defaults = merge(presets, {
     },
     height: (theme: any) => ({
       ...theme('spacing'),
-      ...getPercentage(),
+      ...percentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vh'
     }),
-    spacing: getSpacing(2000),
+    spacing: generateSpacing(2000),
     minWidth: (theme: any) => ({
       ...theme('spacing'),
-      ...getPercentage(),
+      ...percentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vw'
     }),
     maxWidth: (theme: any) => ({
       ...theme('spacing'),
-      ...getPercentage(),
+      ...percentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vw'
     }),
     minHeight: (theme: any) => ({
       ...theme('spacing'),
-      ...getPercentage(),
+      ...percentage,
       min: 'min-content',
       max: 'max-content',
       screen: '100vh'
-    }),
-    colors: {
-      pink: { DEFAULT: 'pink' },
-      fuchsia: { DEFAULT: 'fuchsia' },
-      purple: { DEFAULT: 'purple' },
-      violet: { DEFAULT: 'violet' },
-      blue: { DEFAULT: 'blue' },
-      lightBlue: { DEFAULT: 'lightblue' },
-      sky: { DEFAULT: 'sky' },
-      cyan: { DEFAULT: 'cyan' },
-      green: { DEFAULT: 'green' },
-      lime: { DEFAULT: 'lime' },
-      yellow: { DEFAULT: 'yellow' },
-      orange: { DEFAULT: 'orange' },
-      red: { DEFAULT: 'red' },
-      gray: { DEFAULT: 'gray' }
-    }
+    })
   },
 
   /**

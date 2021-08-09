@@ -7,6 +7,8 @@ import { packages } from '../meta/packages'
 import { readPackageLernaGitHash, updateImport } from './utils'
 import fg from 'fast-glob'
 
+const fsUtils = require("nodejs-fs-utils");
+
 const rootDir = path.resolve(__dirname, '..')
 
 const FILES_COPY_ROOT = ['LICENSE']
@@ -16,11 +18,21 @@ const FILES_COPY_LOCAL = ['package.json', 'README.md']
 assert(process.cwd() !== __dirname)
 
 export const buildTransferDist = async (cwd: string) => {
-  const files = await fg('*', { cwd, ignore: ['_*', 'dist', 'node_modules'] })
+  const [files, dirs] = await Promise.all([
+    await fg('*', {
+      onlyDirectories: false,
+      cwd,
+      ignore: ['_*', 'dist', 'node_modules']
+    }),
+    await fg('*', { onlyDirectories: true, cwd, ignore: ['_*', 'dist', 'node_modules'] })
+  ])
   const packageDist = path.resolve(cwd, 'dist')
   await fs.emptyDir(packageDist)
   for (const file of files) {
     await fs.copyFile(path.join(cwd, file), path.join(packageDist, file))
+  }
+  for (const file of dirs) {
+    fsUtils.copySync(path.join(cwd, file), path.join(packageDist, file), () =>{})
   }
 }
 

@@ -7,49 +7,17 @@
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
-/** 获取百分比尺寸 */
-export const getPercentage = () => {
-  return {
-    full: '100%',
-    auto: 'auto',
-    '1/2': '50%',
-    '1/3': '33.333333%',
-    '2/3': '66.666667%',
-    '1/4': '25%',
-    '2/4': '50%',
-    '3/4': '75%',
-    '1/5': '20%',
-    '2/5': '40%',
-    '3/5': '60%',
-    '4/5': '80%',
-    '1/6': '16.666667%',
-    '2/6': '33.333333%',
-    '3/6': '50%',
-    '4/6': '66.666667%',
-    '5/6': '83.333333%'
-  }
-}
+import { generateArray } from '@tuimao/core'
 
-/**
- * 生成递进的数组
- * @param start 开始数值
- * @param end 结束数值
- * @returns 递进的数组
- */
-const generateArray = (start: number, end: number) => {
-  start = Number(start)
-  end = Number(end)
-  end = end > start ? end : start
-  return [...Array(end + 1).keys()].slice(start)
-}
+export * from './types'
 
-interface GetSpacingOpts {
-  /** 步进值, 0 则不进行步进; @default 2 */
+interface GenerateSpacingOpts {
+  /** 步进值, step与stepMax设置为 1 则不进行步进; @default 2 */
   step?: number
+  /** 步进极限值, 到达步进翻倍节点之后, 将以极限值步进 @default 50 */
+  stepMax?: number
   /** 步进翻倍节点 @default [16, 48, 80, 256, 320, 384] */
   nodes?: number[]
-  /** 步进极限值 @default 50 */
-  stepMax?: number
   /**
    * 单位计算(默认以得出px > rem 单位)
    * @default (num: number) => num / 16
@@ -58,8 +26,9 @@ interface GetSpacingOpts {
   /** 单位 @default 'rem' */
   unit?: string
 }
-/** 获取 0 ~ max 尺寸 */
-export const getSpacing = (max: number, option?: GetSpacingOpts) => {
+
+/** 生成 0 ~ max Spacing 尺寸 */
+export const generateSpacing = (max: number, option?: GenerateSpacingOpts) => {
   const nodes = option?.nodes ?? [16, 48, 80, 256, 320, 384]
   const stepMax = option?.stepMax ?? 50
   const compute = option?.compute ?? ((num: number) => num / 16)
@@ -86,4 +55,13 @@ export const getSpacing = (max: number, option?: GetSpacingOpts) => {
   spacing[unit] = '1' + unit
 
   return spacing
+}
+
+/** 将尺寸进行反转 */
+export const negative = (spacing: Record<string, string>) => {
+  const _spacing: Record<string, string> = {}
+  for (const [key, val] of Object.entries(spacing)) {
+    _spacing[`-${key}`] = `-${val}`
+  }
+  return _spacing
 }
