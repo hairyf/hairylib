@@ -9,8 +9,7 @@
   "scripts": {
     "build": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
-    "publish": "lerna publish --contents dist",
-    "bootstrap": "lerna bootstrap",
+    "publish:lerna": "lerna publish --contents dist",
     "update": "esno scripts/update.ts",
     "clean": "rimraf dist packages/*/dist/**/*.[jt]s",
     "prepublishOnly": "yarn build"
@@ -26,29 +25,36 @@
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "devDependencies": {
-    "@dcloudio/types": "^2.4.5",
     "@tuimao/eslint-config-preset": "^1.1.0",
     "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.24",
-    "@types/lodash": "^4.14.170",
-    "@types/node": "^16.4.12",
     "@typescript-eslint/parser": "^4.28.4",
     "eslint": "^7.31.0",
-    "miniprogram-api-typings": "^3.4.2",
-    "prettier": "^2.3.2",
-    "vue": "^3.1.5"
+    "prettier": "^2.3.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./packages/_eslint/ts-uni-vue@2.js"
+    ]
   },
   "dependencies": {
-    "@tuimao/axios": "file:packages\\axios",
-    "@tuimao/browser": "file:packages\\browser",
-    "@tuimao/core": "file:packages\\core",
-    "@tuimao/eslint": "file:packages\\_eslint",
-    "@tuimao/tailwind": "file:packages\\_tailwind",
-    "@tuimao/uni-use": "file:packages\\uni-use",
-    "@tuimao/uni-utils": "file:packages\\uni-utils",
-    "@tuimao/utils": "file:packages\\utils",
-    "@tuimao/vue-directive": "file:packages\\vue-directive",
-    "@tuimao/vue-use": "file:packages\\vue-use",
-    "@tuimao/vue-utils": "file:packages\\vue-utils"
+    "consola": "^2.15.3",
+    "cross-env": "^7.0.3",
+    "esbuild-register": "^2.6.0",
+    "esno": "^0.8.0",
+    "execa": "^5.1.1",
+    "fast-glob": "^3.2.7",
+    "fs-extra": "^10.0.0",
+    "jest": "^27.0.6",
+    "lerna": "^4.0.0",
+    "nodejs-fs-utils": "^1.2.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.55.1",
+    "rollup-plugin-dts": "^3.0.2",
+    "rollup-plugin-esbuild": "^4.5.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.0-next.12",
+    "typescript": "^4.3.5"
   }
 }
