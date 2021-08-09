@@ -8,6 +8,6 @@ import defaults from './defaults'
  * @param config 深层合并预设
  * @returns 预设
  */
-export const defineWebMergePresets = (config: DefineConfig = {}) => {
+export const defineWebMergePreset = (config: DefineConfig = {}) => {
   return merge(defaults, config)
 }
