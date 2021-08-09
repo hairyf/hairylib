@@ -1,23 +1,38 @@
-# @tuimao/eslint-config-preset
+# @tuimao/eslint
 
-前端eslint代码规则，默认为javascript配置，共有4个配置。
-javasciprt(默认)，typescript，uni-javascript，uni-typescript。
+eslint 的规则集，包含了 vue | ts | uni 的规则。
+
+## install
+
+`npm install eslint @tuimao/eslint -D`
 
 ## use
 
-安装：`npm i @tuimao/eslint-config-preset -D`
+创建 eslint 规则文件，.eslintrc.js | .eslintrc
 
-### ts-vue
-~~~json
-{ "extends": [ "@tuimao/eslint-config-preset/ts-vue" ] }
+~~~js
+module.exports = {
+  "extends": []
+}
 ~~~
 
-### ts-uni
+### ts-uni-vue@2
 ~~~json
-{ "extends": [ "@tuimao/eslint-config-preset/ts-uni" ] }
+"extends": [ "@tuimao/eslint/ts-uni-vue@2" ]
 ~~~
 ### ts-vue@2
 ~~~json
-{ "extends": [ "@tuimao/eslint-config-preset/ts-vue@2" ] }
+"extends": [ "@tuimao/eslint/ts-vue@2" ]
 ~~~
-### 
+### ts-vue@3
+~~~json
+"extends": [ "@tuimao/eslint/ts-vue@3" ]
+~~~
+### typescript
+~~~json
+"extends": [ "@tuimao/eslint/typescript" ]
+~~~
+### all rules
+~~~json
+"extends": [ "@tuimao/eslint/all" ]
+~~~
