@@ -11,7 +11,7 @@ export const packages: PackageManifest[] = [
     display: 'Eslint preset',
     description: 'Eslint config for Mr.Mao',
     manualImport: true,
-    build: false
+    tsc: true
   },
   {
     name: 'axios',

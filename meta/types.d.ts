@@ -44,4 +44,8 @@ interface PackageManifest {
    * 自定义导入文件
    */
   importFile?: string
+  /**
+   * 是否使用 tsc 编译, 默认为 false
+   */
+  tsc?: boolean
 }
