@@ -25,10 +25,10 @@ export async function listFunctions(dir: string, ignore: string[] = []) {
  * @param packages
  */
 export const updateImport = async (packages: PackageManifest[]) => {
-  for (const { name, manualImport } of packages) {
+  for (const { name, manualImport, importFile } of packages) {
     if (manualImport) continue
     const packageDir = join(DIR_SRC, name)
-    const importPath = join(packageDir, 'index.ts')
+    const importPath = join(packageDir, importFile || 'index.ts')
     const functions = await listFunctions(packageDir)
     const content =
       functions

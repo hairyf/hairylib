@@ -63,6 +63,13 @@ export const packages: PackageManifest[] = [
     external: ['vue-router', 'vue-demi']
   },
   {
+    name: 'vue-directive',
+    display: 'Vue directives',
+    description: 'Collection of essential Vue directives',
+    importFile: 'imports.ts',
+    external: ['vue-demi']
+  },
+  {
     name: 'uni-utils',
     description: 'Collection of essential Uni Utilities',
     display: 'Uni utilities'

@@ -8,7 +8,7 @@
  */
 
 export * from './is'
-import { forIn, isObject, pickBy } from 'lodash'
+import { forIn, pickBy, isObject, isPlainObject } from 'lodash'
 
 /**
  * 地址参数计算
@@ -81,4 +81,24 @@ export const objectToFormData = (object: Record<string, string>) => {
     formData.append(key, value)
   }
   return formData
+}
+
+/**
+ * 对对象进行扁平化
+ * @param object 对象
+ * @param deep 深度
+ */
+export const objectFlat = (object: Record<string, any>, deep = 1) => {
+  const flatDeep = (object: Record<string, any>, deep = 1) => {
+    let _object: Record<string, any> = {}
+    for (const [key, value] of Object.entries(object)) {
+      if (isPlainObject(value)) {
+        _object = { ..._object, ...(deep > 0 ? flatDeep(value, deep - 1) : value) }
+        continue
+      }
+      _object[key] = value
+    }
+    return _object
+  }
+  return flatDeep(object, deep)
 }
