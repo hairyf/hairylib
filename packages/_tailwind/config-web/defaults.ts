@@ -46,7 +46,7 @@ const defaults = merge(defaultConfig, {
       xxl: { min: '1600px' },
       xxxl: { min: '1920px' }
     },
-    spacing: generateSpacing(2000),
+    spacing: generateSpacing(2000)
   },
 
   /**

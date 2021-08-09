@@ -1,11 +1,7 @@
-import { defaultConfig, defaultPercentage } from "../config-base"
-import { DefineConfig } from "../dist"
-import { generateSpacing, negative } from "../utils"
-import { spacingPx2rpx } from "./utils"
-
-delete (defaultConfig as any).purge
-delete (defaultConfig as any).variantOrder
-delete (defaultConfig as any).variants
+import { defaultConfig, defaultPercentage } from '../config-base'
+import { DefineConfig } from '../dist'
+import { generateSpacing, negative } from '../utils'
+import { spacingPx2rpx } from './utils'
 
 const spacingOption = {
   compute: (v: number) => v * 2,
@@ -18,6 +14,7 @@ const spacingOption = {
 /** 默认配置 */
 const defaults: DefineConfig = {
   ...defaultConfig,
+  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'] as any,
   darkMode: false,
   theme: <any>{
     screens: {},
@@ -38,13 +35,13 @@ const defaults: DefineConfig = {
     margin: (theme: any) => ({
       auto: 'auto',
       ...theme('spacing'),
-      ...negative(theme('spacing')),
+      ...negative(theme('spacing'))
     }),
     inset: (theme: any) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
       ...defaultPercentage
-    }),
+    })
   },
   variants: {},
   plugins: [],
@@ -53,8 +50,12 @@ const defaults: DefineConfig = {
     divideWidth: false,
     divideColor: false,
     divideStyle: false,
-    divideOpacity: false,
+    divideOpacity: false
   }
 }
+
+delete (defaults as any).presets
+delete (defaults as any).variantOrder
+delete (defaults as any).variants
 
 export default defaults
