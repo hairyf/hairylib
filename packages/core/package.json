@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/core",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "license": "MIT",
   "dependencies": {
     "@types/lodash-es": "^4.17.4",
