@@ -1,4 +1,4 @@
-export * from './useHistorys'
+export * from './useHistory'
 export * from './useListPagination'
-export * from './useMultipleSelect'
+export * from './useMultiple'
 export * from './useWatchStorage'
