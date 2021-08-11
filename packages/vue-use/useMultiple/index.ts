@@ -12,7 +12,7 @@ export interface MultipleSelectItem {
   [key: string]: any
   select?: boolean
 }
-export const useMultipleSelect = (list: Ref<MultipleSelectItem[]>) => {
+export const useMultiple = (list: Ref<MultipleSelectItem[]>) => {
   /** 当前是否为空 */
   const empty = computed(() => list.value.length === 0)
   /** 当前选中的项列表 */

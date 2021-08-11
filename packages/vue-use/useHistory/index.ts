@@ -14,7 +14,7 @@ interface HistorysStorage {
 export const useHistorys = (store: HistorysStorage) => {
   const historys = ref<string[]>(store.get())
   // 添加历史记录
-  const unshiftHistory = (searchText: string) => {
+  const unshift = (searchText: string) => {
     const oldIndex = historys.value.indexOf(searchText)
     if (oldIndex !== -1) historys.value.splice(oldIndex, 1)
     historys.value.unshift(searchText)
@@ -23,11 +23,11 @@ export const useHistorys = (store: HistorysStorage) => {
     }
   }
   // 移除历史记录
-  const removeHistory = () => {
+  const remove = () => {
     historys.value = []
   }
   // 监听记录
   watch(historys, (values) => store.set(values))
   // 返回钩子
-  return { unshiftHistory, removeHistory, historys }
+  return { unshift, remove, historys }
 }
