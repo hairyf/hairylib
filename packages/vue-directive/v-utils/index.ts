@@ -4,7 +4,7 @@ export const vUtils: DirectiveElements = {
     if (el.tagName === 'input') el.focus()
     else el.querySelector('input')?.focus()
   },
-  permission: (el, { value }) => {
+  has: (el, { value }) => {
     const { permissions } = directiveOptions
     if (value && permissions.includes(value)) {
       el.parentNode && el.parentNode.removeChild(el)
