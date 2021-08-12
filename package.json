@@ -12,6 +12,9 @@
     "publish:lerna": "lerna publish --contents dist",
     "update": "esno scripts/update.ts",
     "clean": "rimraf dist packages/*/dist",
+    "test": "cross-env NODE_ENV=test yarn clean && jest --collectCoverage=false",
+    "test:cov": "cross-env NODE_ENV=test yarn clean && jest",
+    "test:watch": "cross-env NODE_ENV=test yarn clean && jest ---watch --verbose --coverage",
     "prepublishOnly": "yarn build"
   },
   "repository": {

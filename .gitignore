@@ -5,3 +5,4 @@ dist-ssr
 .idea
 yarn.lock
 dist
+coverage
