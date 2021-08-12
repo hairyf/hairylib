@@ -79,5 +79,6 @@ export const usePaginationListSplic = <T extends Array<any>>(
     const watchTarget = [...(options.sources || [])]
     watch(watchTarget, reset, { immediate: true, ...options })
   })
+
   return { reset, next, loading, list, end }
 }
