@@ -1,6 +1,6 @@
 import { MaybeRef } from '@vueuse/core'
 import { get, merge, PropertyPath, set, toPath } from 'lodash'
-import { computed, ComputedRef, inject, InjectionKey, provide, unref, readonly } from 'vue-demi'
+import { computed, ComputedRef, inject, InjectionKey, provide, unref } from 'vue-demi'
 import { DeepPartial } from '@tuimao/core'
 import { DeepStrObject, transformTheme2CssVars } from './inside'
 
