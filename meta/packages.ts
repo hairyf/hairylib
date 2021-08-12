@@ -49,11 +49,8 @@ export const packages: PackageManifest[] = [
     name: 'vue-use',
     display: 'Vue composition-api function',
     description: 'Collection of essential Vue Composition Utilities',
-    external: ['@vueuse/core', 'pubsub-js', 'vue', 'vue-composable'],
-    globals: {
-      'pubsub-js': 'pubsubJs',
-      'vue-composable': 'vueComposable'
-    }
+    external: ['@vueuse/core', 'pubsub-js', 'vue'],
+    globals: { 'pubsub-js': 'pubsubJs' }
   },
   {
     name: 'vue-utils',
