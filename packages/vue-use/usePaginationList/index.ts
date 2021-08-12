@@ -1,9 +1,17 @@
+/*
+ * @Author: Mr.Mao
+ * @Date: 2021-08-12 08:57:49
+ * @LastEditTime: 2021-08-12 09:01:21
+ * @Description:
+ * @LastEditors: Mr.Mao
+ * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
+ */
 import { nextTick, reactive, Ref, ref, watch, WatchOptions } from 'vue-demi'
 import { PaginationOptions, PaginationResult, usePagination } from '../usePagination'
 import { UnwrapNestedRefs } from '@vue/reactivity'
 import { usePromise, UsePromiseResult } from '../usePromise'
 
-export interface PaginationOptionsList<T> extends PaginationOptions, WatchOptions {
+export interface PaginationListOptions<T> extends PaginationOptions, WatchOptions {
   /**
    * 获取列表方法
    */
@@ -14,15 +22,11 @@ export interface PaginationOptionsList<T> extends PaginationOptions, WatchOption
   sources?: any[]
 }
 
-export interface PaginationOptionsListResult<T> extends PaginationResult {
+export interface PaginationListOptionsResult<T> extends PaginationResult {
   /**
    * 当前是否在加载
    */
   loading: UsePromiseResult<any>['loading']
-  /**
-   * 请求发生错误
-   */
-  error: UsePromiseResult<any>['error']
   /**
    * 重置列表
    */
@@ -34,12 +38,12 @@ export interface PaginationOptionsListResult<T> extends PaginationResult {
 }
 
 export const usePaginationList = <T extends Array<any>>(
-  options: PaginationOptionsList<T>
-): PaginationOptionsListResult<T> => {
+  options: PaginationListOptions<T>
+): PaginationListOptionsResult<T> => {
   const pagination = usePagination(options)
   const list = ref<any>([]) as Ref<T>
 
-  const { exec, loading, error } = usePromise(async () => {
+  const { exec, loading } = usePromise(async () => {
     try {
       return await options.get(reactive(pagination))
     } catch (error) {
@@ -51,16 +55,11 @@ export const usePaginationList = <T extends Array<any>>(
   const reset = async () => {
     list.value = await exec()
   }
+
   nextTick(() => {
     const watchTarget = [pagination.currentPage, pagination.pageSize, ...(options.sources || [])]
     watch(watchTarget, reset, { immediate: true, ...options })
   })
 
-  return {
-    loading,
-    error,
-    reset,
-    ...pagination,
-    list
-  }
+  return { reset, loading, list, ...pagination }
 }

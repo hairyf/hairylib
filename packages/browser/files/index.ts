@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-31 14:52:36
- * @LastEditTime: 2021-07-31 15:11:06
+ * @LastEditTime: 2021-08-12 09:56:21
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -56,7 +56,7 @@ export const downloadNetWorkFile = (url: string, fileName?: string) => {
  */
 export const downloadWorkFile = downloadNetWorkFile
 /**
- * 生成 blob 文件，并下载
+ * 生成 blob|string 文件，并下载
  * @param data blob 数据，或者字符串
  * @param name 文件名称
  */
