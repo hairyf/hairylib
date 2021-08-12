@@ -1,7 +1,7 @@
 import { ref, Ref } from 'vue'
 
-export type Promisefactory = (...args: any[]) => any
-export interface UsePromiseResult<T extends Function> {
+export type Promisefactory = (...args: any[]) => Promise<any>
+export interface UsePromiseResult<T extends Promisefactory> {
   loading: Ref<boolean>
   error: Ref<any>
   exec: T

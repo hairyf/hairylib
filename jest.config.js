@@ -2,15 +2,11 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  roots: ['<rootDir>/packages/core'],
+  roots: ['<rootDir>/packages'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest'
   },
-  testMatch: [
-    '**/__test__/**/*.[jt]s?(x)',
-    '**/__tests__/**/*.[jt]s?(x)',
-    '**/?(*.)+(spec|test).[tj]s?(x)'
-  ],
+  testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testEnvironment: 'jsdom',
   coverageDirectory: 'coverage'

@@ -31,26 +31,26 @@ export const axiosLoading = (
   show: AxiosLoadingOpts['show'],
   clone: AxiosLoadingOpts['clone']
 ) => {
-  let requestCount = 0
+  let subscribers = 0
   axios.interceptors.request.use((config) => {
     if (config.loading) {
-      !requestCount && show(config)
-      requestCount++
+      !subscribers && show(config)
+      subscribers++
     }
     return config
   })
   axios.interceptors.response.use(
     (response) => {
       if (response.config.loading) {
-        requestCount--
-        !requestCount && clone(response.config, [response])
+        subscribers--
+        !subscribers && clone(response.config, [response])
       }
       return response
     },
     (error) => {
       if (error.config?.loading) {
-        requestCount--
-        !requestCount && clone(error.config, [undefined, error])
+        subscribers--
+        !subscribers && clone(error.config, [undefined, error])
       }
       return error
     }
