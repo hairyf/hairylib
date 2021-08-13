@@ -9,7 +9,11 @@ import * as rules from '../rules'
  */
 export const typescript: Linter.Config = {
   parserOptions: {
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
+    ecmaFeatures: {
+      jsx: true,
+      tsx: true
+    }
   },
   plugins: ['@typescript-eslint'],
   extends: [

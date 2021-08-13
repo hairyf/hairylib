@@ -1,2 +1,2 @@
 require('esbuild-register')
-module.exports = require('./packages/_eslint/libs/ts-vue@3')
+module.exports = require('./packages/_eslint/libs/all')

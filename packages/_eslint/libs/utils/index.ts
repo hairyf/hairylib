@@ -1,7 +1,7 @@
 import { isArray } from 'lodash'
 
-export const mergeCustomizer = (objValue, srcValue) => {
-  if (isArray(objValue)) {
-    return objValue.concat(srcValue)
+export const mergeCustomizer = (objectValue: any[], sourceValue: any[]) => {
+  if (isArray(objectValue)) {
+    return [...objectValue, ...sourceValue]
   }
 }

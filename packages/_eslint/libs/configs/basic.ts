@@ -21,7 +21,7 @@ export const basic: Linter.Config = {
     node: true
   },
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 6,
     sourceType: 'module'
   },
   plugins: [
