@@ -1,10 +1,10 @@
 <template>
-  <div ></div>
+  <div />
 </template>
 
 <script lang="ts" setup>
   import { defineProps } from 'vue-demi'
-  const props = defineProps({})
+  const properties = defineProps({})
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,7 +1,6 @@
-import { concat, merge } from 'lodash'
+import { mergeWith } from 'lodash'
 import { basic } from './configs/basic'
 import { typescript } from './configs/typescript'
+import { mergeCustomizer } from './utils'
 
-export = merge(basic, typescript, {
-  extends: concat(basic.extends, typescript.extends).reverse()
-})
+export = mergeWith(typescript, basic, mergeCustomizer)

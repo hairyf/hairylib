@@ -1,7 +1,8 @@
 import { mergeWith } from 'lodash'
 import { basic } from './configs/basic'
 import { typescript } from './configs/typescript'
-import { vue2, vueBasic } from './configs/vue'
+import { uni } from './configs/uni'
+import { vue2 } from './configs/vue'
 import { mergeCustomizer } from './utils'
 
-export = mergeWith(basic, typescript, vueBasic, vue2, mergeCustomizer)
+export = mergeWith(basic, typescript, vue2, uni, mergeCustomizer)

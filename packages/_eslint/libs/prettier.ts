@@ -1,4 +1,4 @@
-import { Options } from "prettier";
+import { Options } from 'prettier'
 
 const config: Options = {
   printWidth: 100,
@@ -7,17 +7,17 @@ const config: Options = {
   semi: false, // 未尾逗号
   vueIndentScriptAndStyle: true,
   singleQuote: true, // 单引号
-  quoteProps: "as-needed",
+  quoteProps: 'as-needed',
   bracketSpacing: true,
-  trailingComma: "none", // 未尾分号
+  trailingComma: 'none', // 未尾分号
   jsxBracketSameLine: false,
   jsxSingleQuote: false,
-  arrowParens: "always",
+  arrowParens: 'always',
   insertPragma: false,
   requirePragma: false,
-  proseWrap: "never",
-  htmlWhitespaceSensitivity: "strict",
-  endOfLine: "auto",
-};
+  proseWrap: 'never',
+  htmlWhitespaceSensitivity: 'strict',
+  endOfLine: 'auto'
+}
 
 export = config
