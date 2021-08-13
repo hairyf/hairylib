@@ -3,5 +3,5 @@ import { basic } from './configs/basic'
 import { typescript } from './configs/typescript'
 
 export = merge(basic, typescript, {
-  extends: concat(basic.extends, typescript.extends)
+  extends: concat(basic.extends, typescript.extends).reverse()
 })

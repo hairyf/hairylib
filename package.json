@@ -35,11 +35,6 @@
     "eslint": "^7.31.0",
     "prettier": "^2.3.2"
   },
-  "eslintConfig": {
-    "extends": [
-      "./packages/_eslint/ts-uni-vue@2.js"
-    ]
-  },
   "dependencies": {
     "consola": "^2.15.3",
     "cross-env": "^7.0.3",

@@ -1,6 +1,9 @@
 import { Linter } from 'eslint'
 export const typescript: Linter.Config = {
+  parser: '@typescript-eslint/parser',
   extends: ['plugin:@typescript-eslint/recommended'],
+  // extends: ['plugin:@typescript-eslint/recommended', 'plugin:import/typescript'],
+  plugins: ['@typescript-eslint'],
   rules: {
     // 限制相关语法
     // 'no-restricted-syntax': [
@@ -26,6 +29,8 @@ export const typescript: Linter.Config = {
     // 允许使用 @ts-ignore
     '@typescript-eslint/ban-ts-comment': 0,
     // 允许使用 ojbect 类型
-    '@typescript-eslint/ban-types': 0
+    '@typescript-eslint/ban-types': 0,
+    // 允许使用 require 模块
+    '@typescript-eslint/no-var-requires': 0
   }
 }
