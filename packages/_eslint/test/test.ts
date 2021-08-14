@@ -1,1 +1,1 @@
-const req = ''
+const w: object = {}

@@ -28,12 +28,8 @@
   },
   "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
   "devDependencies": {
-    "@tuimao/eslint-config-preset": "^1.1.0",
     "@types/fs-extra": "^9.0.12",
-    "@types/jest": "^26.0.24",
-    "@typescript-eslint/parser": "^4.28.4",
-    "eslint": "^7.31.0",
-    "prettier": "^2.3.2"
+    "@types/jest": "^26.0.24"
   },
   "dependencies": {
     "consola": "^2.15.3",
