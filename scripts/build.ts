@@ -64,8 +64,8 @@ export const build = async () => {
 async function cli() {
   try {
     await build()
-  } catch (e) {
-    console.error(e)
+  } catch (error) {
+    console.error(error)
     process.exit(1)
   }
 }
