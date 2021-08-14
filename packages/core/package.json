@@ -15,12 +15,12 @@
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/tuimao-config.git"
+    "url": "git+https://github.com/TuiMao233/tuimao-scope.git"
   },
   "bugs": {
-    "url": "https://github.com/TuiMao233/tuimao-config/issues"
+    "url": "https://github.com/TuiMao233/tuimao-scope/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
   "description": "Utilities core for Mr.Mao",
   "exports": {
     ".": {

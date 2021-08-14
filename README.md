@@ -7,7 +7,7 @@ hello 这里是腿毛，@tuimao/config 代表我的配置，是使用 lerna 管�
 - [@tuimao/eslint](./packages/_eslint#readme)
 - [@tuimao/tailwind](./packages/_tailwind#readme)
 - [@tuimao/axios](./packages/axios#readme)
-- [@tuimao/borwser](./packages/borwser#readme)
+- [@tuimao/browser](./packages/browser#readme)
 - [@tuimao/core](./packages/core#readme)
 - [@tuimao/utils](./packages/utils#readme)
 - [@tuimao/uni-use](./packages/uni-use#readme)
@@ -18,7 +18,7 @@ hello 这里是腿毛，@tuimao/config 代表我的配置，是使用 lerna 管�
 
 ## 项目逻辑图
 
-![steps](./meta/images/tuimao-config-steps.png)
+![steps](./meta/images/tuimao-scope-steps.png)
 
 ## 有点意思的小技巧
 

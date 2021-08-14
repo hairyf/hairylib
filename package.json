@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/tuimao-config.git"
+    "url": "git+https://github.com/TuiMao233/tuimao-scope.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TuiMao233/tuimao-config/issues"
+    "url": "https://github.com/TuiMao233/tuimao-scope/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-config#readme",
+  "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.24"

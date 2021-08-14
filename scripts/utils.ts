@@ -50,13 +50,13 @@ export const updatePackageJSON = async (packages: PackageManifest[]) => {
     packageJSON.description = description || packageJSON.description
     packageJSON.author = author || 'Anthony Fu<https://github.com/TuiMao233>'
     packageJSON.bugs = {
-      url: 'https://github.com/TuiMao233/tuimao-config/issues'
+      url: 'https://github.com/TuiMao233/tuimao-scope/issues'
     }
     packageJSON.repository = {
       type: 'git',
-      url: 'git+https://github.com/TuiMao233/tuimao-config.git'
+      url: 'git+https://github.com/TuiMao233/tuimao-scope.git'
     }
-    packageJSON.homepage = 'https://github.com/TuiMao233/tuimao-config#readme'
+    packageJSON.homepage = 'https://github.com/TuiMao233/tuimao-scope#readme'
     packageJSON.main = './index.cjs.js'
     packageJSON.types = './index.d.ts'
     packageJSON.module = './index.esm.js'
