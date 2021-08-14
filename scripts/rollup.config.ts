@@ -72,21 +72,22 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
     )
   }
 
-  configs.push({
-    input,
-    output,
-    plugins: [esbuild()],
-    external: ['vue-demi', 'lodash', ...(external || [])]
-  })
-
-  configs.push({
-    input,
-    output: {
-      file: `packages/${name}/dist/index.d.ts`,
-      format: 'es'
+  configs.push(
+    {
+      input,
+      output,
+      plugins: [esbuild()],
+      external: ['vue-demi', 'lodash', ...(external || [])]
     },
-    plugins: [dts()],
-    external: ['vue-demi', 'lodash', ...(external || [])]
-  })
+    {
+      input,
+      output: {
+        file: `packages/${name}/dist/index.d.ts`,
+        format: 'es'
+      },
+      plugins: [dts()],
+      external: ['vue-demi', 'lodash', ...(external || [])]
+    }
+  )
 }
 export default configs
