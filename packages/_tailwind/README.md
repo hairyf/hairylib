@@ -5,7 +5,7 @@ tailwind 的规则集，包含了 Web 端，小程序端等配置，小程序端
 
 ## create file
 
-`yarn add esbuild-register`
+`npm install esbuild-register -D`
 
 ~~~typescript
 // tailwind.config.ts
@@ -21,11 +21,11 @@ require('esbuild-register')
 module.exports = require('./tailwind.config.ts').default
 ~~~
 
-## install
+## Install
 
 `npm install eslint @tuimao/eslint -D`
 
-## use
+## Usage
 
 ~~~js
 // 小程序端的默认配置

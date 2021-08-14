@@ -84,7 +84,7 @@ export const objectToFormData = (object: Record<string, string>) => {
 }
 
 /**
- * 对对象进行扁平化
+ * 对象扁平化处理
  * @param object 对象
  * @param deep 深度
  */

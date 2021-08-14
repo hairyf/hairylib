@@ -7,7 +7,10 @@ import { Linter } from 'eslint'
  */
 export const vue2: Linter.Config = {
   parser: 'vue-eslint-parser',
-  extends: ['plugin:vue/recommended']
+  extends: ['plugin:vue/recommended'],
+  rules: {
+    'vue/html-self-closing': 'off'
+  }
 }
 /**
  * @author: Mr.Mao
@@ -17,5 +20,8 @@ export const vue2: Linter.Config = {
  */
 export const vue3: Linter.Config = {
   parser: 'vue-eslint-parser',
-  extends: ['plugin:vue/vue3-recommended']
+  extends: ['plugin:vue/vue3-recommended'],
+  rules: {
+    'vue/html-self-closing': 'off'
+  }
 }

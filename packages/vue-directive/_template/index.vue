@@ -2,7 +2,7 @@
   <div>
     <!-- 命令工具 start -->
     <input v-focus />
-    <input v-permission="['user']" />
+    <input v-has="['user']" />
     <!-- 命令工具 start -->
 
     <!-- 不属于 tailwind 的变体命令 start -->
@@ -31,3 +31,16 @@
     <!-- 属于 tailwind 的变体命令 end -->
   </div>
 </template>
+<template>
+  <div v-py="10"></div>
+  <div v-m="5"></div>
+</template>
+<script lang="ts">
+  import { defineComponent } from 'vue-demi'
+  import { vSpace } from '@tuimao/vue-directive'
+  export default defineComponent({
+    directives: {
+      ...vSpace
+    }
+  })
+</script>

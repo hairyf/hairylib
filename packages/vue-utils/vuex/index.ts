@@ -1,6 +1,6 @@
 import { StoreOptions, Store } from 'vuex'
 /**
- * 新增动态类型的vuex模块
+ * 创建包含动态类型的 vuex 模块
  * @param store
  * @returns store
  */

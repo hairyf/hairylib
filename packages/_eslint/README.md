@@ -1,12 +1,12 @@
 # @tuimao/eslint
 
-eslint 的规则集，包含了 vue | ts | uni 的规则。
+eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 
-## install
+## Install
 
 `npm install eslint @tuimao/eslint -D`
 
-## use
+## Usage
 
 
 1. 编写 `prettier` 规则 `package.json`（其余方式引入都可使用：`.prettierrc|prettier.config.js`） 
@@ -31,12 +31,12 @@ eslint 的规则集，包含了 vue | ts | uni 的规则。
 
 所有 eslint 的配置集
 
-- all			         ：`@tuimao/eslint/all`
-- typescript       ：`@tuimao/eslint/typescript`
-- ts-react           ：`@tuimao/eslint/ts-react`
-- ts-uni-vue@2 ：`@tuimao/eslint/ts-uni-vue@2`
-- ts-vue@2        ：`@tuimao/eslint/ts-vue@2`
-- ts-vue@3        ：`@tuimao/eslint/ts-vue@3`
+- all:			     `@tuimao/eslint/all`
+- typescript:    `@tuimao/eslint/typescript`
+- ts-react:      `@tuimao/eslint/ts-react`
+- ts-uni-vue@2:  `@tuimao/eslint/ts-uni-vue@2`
+- ts-vue@2:      `@tuimao/eslint/ts-vue@2`
+- ts-vue@3:      `@tuimao/eslint/ts-vue@3`
 
 ## modules
 

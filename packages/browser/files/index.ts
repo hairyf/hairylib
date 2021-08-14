@@ -11,8 +11,8 @@ import { isNull } from 'lodash'
 
 /**
  * 选择多个文件
- * @param option
- * @returns {FileList}
+ * @param option.multiple 是否多选
+ * @param option.accept 文件类型(accept)
  */
 export const selectFiles = (option: { multiple?: boolean; accept?: string } = {}) => {
   const { multiple = true, accept } = option
@@ -34,7 +34,6 @@ export const selectFiles = (option: { multiple?: boolean; accept?: string } = {}
 
 /**
  * 选择多个图片
- * @returns {FileList}
  */
 export const selectImages = () => {
   return selectFiles({ multiple: true, accept: 'image/jpeg,image/x-png,image/gif' })

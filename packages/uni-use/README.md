@@ -1,11 +1,12 @@
-# `uni-use`
+# @tuimao/uni-use
 
-> TODO: description
+uni 组合逻辑钩子
+
+## Install
+
+`yarn add @tuimao/uni-use`
 
 ## Usage
 
-```
-const uniUse = require('uni-use');
-
-// TODO: DEMONSTRATE API
-```
+- useVModel:     双向绑定 v-model
+- useVModels:    双向绑定多个 v-model
