@@ -64,22 +64,21 @@ export const unicorn: Linter.HasRules['rules'] = {
   // HACK: 使用可能需要查阅文档(https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/expiring-todo-comments.md)
   'unicorn/expiring-todo-comments': 'error',
   'unicorn/explicit-length-check': 'error',
-  'unicorn/filename-case': 'error',
+  'unicorn/filename-case': 'off',
   // TODO: 待测试(https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/import-index.md)
   'unicorn/import-index': 'error',
-  'unicorn/import-style': 'error',
+  'unicorn/import-style': 'off',
   'unicorn/new-for-builtins': 'error',
   // CONFLICT: eslint-plugin-import
   'unicorn/no-abusive-eslint-disable': 'off',
   // HACK: 可能需要调整(https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-callback-reference.md)
   'unicorn/no-array-callback-reference': 'error',
-  // HACK: 可能需要调整(https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-for-each.md)
-  'unicorn/no-array-for-each': 'error',
+  'unicorn/no-array-for-each': 'off',
   // HACK: 可能没这么重要
   'unicorn/no-array-method-this-argument': 'off',
   'unicorn/no-array-push-push': 'error',
   // HACK: 可能没这么重要
-  'unicorn/no-array-reduce': 'error',
+  'unicorn/no-array-reduce': 'off',
   // HACK: 可能没这么重要
   'unicorn/no-console-spaces': 'error',
   'unicorn/no-document-cookie': 'error',
@@ -127,7 +126,8 @@ export const unicorn: Linter.HasRules['rules'] = {
   'unicorn/prefer-modern-dom-apis': 'error',
   'unicorn/prefer-module': 'off',
   'unicorn/prefer-negative-index': 'error',
-  'unicorn/prefer-node-protocol': 'error',
+  // HACK：可能会造成影响
+  'unicorn/prefer-node-protocol': 'off',
   // HACK: 对简洁性产生了影响
   'unicorn/prefer-number-properties': 'off',
   'unicorn/prefer-object-from-entries': 'error',
@@ -149,8 +149,13 @@ export const unicorn: Linter.HasRules['rules'] = {
   'unicorn/prefer-top-level-await': 'off',
   // HACK: 可能没这么重要
   'unicorn/prefer-type-error': 'error',
-  // HACK: 可能没这么重要
-  'unicorn/prevent-abbreviations': 'error',
+  // HACK: 可能会造成影响
+  'unicorn/prevent-abbreviations': [
+    'off',
+    {
+      ignore: [/params/i, /props/i, /args/i, /prev/i, /ref/i, /dir/i]
+    }
+  ],
   'unicorn/require-array-join-separator': 'error',
   'unicorn/require-number-to-fixed-digits-argument': 'error',
   // HACK: 可能没这么重要
@@ -169,12 +174,12 @@ export const typescript: Linter.HasRules['rules'] = {
   'no-unused-vars': 'off',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
   '@typescript-eslint/camelcase': 'off',
-  // HACK: 可能需要调整
-  '@typescript-eslint/no-empty-function': 'warn',
+  '@typescript-eslint/no-empty-function': 'off',
   '@typescript-eslint/no-explicit-any': 'off',
   '@typescript-eslint/prefer-optional-chain': 'error',
   '@typescript-eslint/no-non-null-assertion': 'off',
   '@typescript-eslint/ban-ts-comment': 'off',
   '@typescript-eslint/ban-types': 'off',
-  '@typescript-eslint/no-var-requires': 'off'
+  '@typescript-eslint/no-var-requires': 'off',
+  '@typescript-eslint/no-extra-semi': 'off'
 }

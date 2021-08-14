@@ -82,7 +82,7 @@ export const updatePackageJSON = async (packages: PackageManifest[]) => {
 export const readPackageLernaGitHash = (cwd: string) => {
   try {
     return fs.readJSONSync(join(cwd, 'package.json'))?.gitHead || ''
-  } catch (error) {
+  } catch {
     return ''
   }
 }

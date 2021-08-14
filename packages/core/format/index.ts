@@ -14,7 +14,7 @@ import { isArray } from 'lodash'
  * @param str 字符串
  * @returns 剔除字符串
  */
-export const removeStrCode = (str: string) => str.replace(/<[\/\!]*[^<>]*>/gi, '')
+export const removeStringCode = (string_: string) => string_.replace(/<[!/]*[^<>]*>/gi, '')
 
 /**
  * 过滤为价格(两位小数点)
@@ -23,7 +23,7 @@ export const removeStrCode = (str: string) => str.replace(/<[\/\!]*[^<>]*>/gi, '
 export const filterPrice = (value: string) => {
   return value
     .replace(/^[^\d+]/, '')
-    .replace(/[^\d{1,}.\d{1,}|\d{1,}]/g, '')
+    .replace(/[^\d,.{|}]/g, '')
     .replace('.', '$#$')
     .replace(/\./g, '')
     .replace('$#$', '.')
@@ -36,7 +36,7 @@ export const filterPrice = (value: string) => {
  * @param value 传入字符
  */
 export const filterInteger = (value: string) => {
-  return value.replace(/^(0+)|[^\d]+/g, '')
+  return value.replace(/^(0+)|\D+/g, '')
 }
 
 /**
@@ -55,7 +55,7 @@ export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') =>
  * @param option
  * @returns
  */
-export const setHtmlStrTagAttr = (
+export const setInnerHTMLAttributes = (
   html: string,
   option: {
     tag: string | string[]
@@ -64,13 +64,13 @@ export const setHtmlStrTagAttr = (
   }
 ) => {
   if (typeof html !== 'string') {
-    throw new Error('error: html is not string')
+    throw new TypeError('error: html is not string')
   }
   if (Array.isArray(option.attr)) {
-    const str: string = option.attr.reverse().reduce((old, item) => {
-      return setHtmlStrTagAttr(old, { ...option, attr: item })
+    const string_: string = option.attr.reverse().reduce((old, item) => {
+      return setInnerHTMLAttributes(old, { ...option, attr: item })
     }, html)
-    return str
+    return string_
   }
   const tags = Array.isArray(option.tag) ? option.tag : [option.tag]
   const transform = (html: string, tag: string) => {
@@ -88,8 +88,8 @@ export const setHtmlStrTagAttr = (
         return match.replace(subReg, option.value ? `${option.attr}="${option.value}"` : '')
       }
       //不包含option.attr属性,添加option.attr
-      const prefix = match.substr(0, tag.length + 1)
-      let suffix = match.substr(tag.length + 2, match.length)
+      const prefix = match.slice(0, Math.max(0, tag.length + 1))
+      let suffix = match.slice(tag.length + 2, match.length)
       suffix = suffix ? ` ${suffix}` : '>'
       return `${prefix} ${option.attr}="${option.value}"${suffix}`
     })
@@ -103,9 +103,9 @@ export const setHtmlStrTagAttr = (
  * @param attr attr string
  * @returns html
  */
-export const removeHtmlStrTagAttr = (html: string, attr: string | string[]) => {
-  return (isArray(attr) ? attr : [attr]).reduce(
-    (total, attr) => total.replace(new RegExp(`${attr}=['"](.*?)['"]`, 'gis'), ''),
+export const removeInnerHTMLAttribute = (html: string, attribute: string | string[]) => {
+  return (isArray(attribute) ? attribute : [attribute]).reduce(
+    (total, attribute) => total.replace(new RegExp(`${attribute}=['"](.*?)['"]`, 'gis'), ''),
     html
   )
 }

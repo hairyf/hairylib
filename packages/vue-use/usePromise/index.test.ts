@@ -18,7 +18,7 @@ describe('usePromise', () => {
     })
     try {
       await exec()
-    } catch (_) {
+    } catch {
       expect(error.value).toBe(1)
       expect(loading.value).toBe(false)
     }

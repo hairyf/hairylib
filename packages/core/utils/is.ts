@@ -30,6 +30,7 @@ export const assert = (condition: boolean, ...infos: any[]) => {
 }
 
 export const isClient = typeof window !== 'undefined'
-export const isFormData = (val: any): val is FormData => isObject(val) && val instanceof FormData
-export const isWindow = (val: any): val is Window =>
-  typeof window !== 'undefined' && toString.call(val) === '[object Window]'
+export const isFormData = (value: any): value is FormData =>
+  isObject(value) && value instanceof FormData
+export const isWindow = (value: any): value is Window =>
+  typeof window !== 'undefined' && toString.call(value) === '[object Window]'

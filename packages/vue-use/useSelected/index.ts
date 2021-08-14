@@ -79,12 +79,12 @@ export const useSelected = <T extends SelectedArray, Mode extends SelectedMode>(
 
   /** 当前是否为全选状态 */
   const isSelectAll = computed({
-    get: () => !!unref(array).find((item) => item.select),
+    get: () => !!unref(array).some((item) => item.select),
     set: (value) => unref(array).forEach((item) => (item.select = value))
   })
 
   /** 当前是否已经选择 */
-  const isSelect = computed(() => !!unref(array).find((item) => item.select))
+  const isSelect = computed(() => !!unref(array).some((item) => item.select))
 
   /** 当前选中的项 */
   const seleteItem = computed(() => unref(array).find((v) => v[fieldName]))

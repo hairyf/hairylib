@@ -1,7 +1,7 @@
 import { MaybeRef } from '@vueuse/core'
 import { camelCase, get, set } from 'lodash'
 import { computed, reactive, unref } from 'vue'
-import { DeepStrObject } from './inside'
+import { DeepStringObject } from './inside'
 
 type DeepThemeConfigItem = { target: string[]; value: string; name: string; placeholder: string }
 
@@ -12,7 +12,7 @@ type DeepThemeConfigItem = { target: string[]; value: string; name: string; plac
  * @returns 编辑列表
  */
 export const useProvideThemeEditor = (
-  theme: MaybeRef<DeepStrObject>,
+  theme: MaybeRef<DeepStringObject>,
   themeOverrides: MaybeRef<any>
 ) => {
   const deepThemeConfig: Record<string, DeepThemeConfigItem[]> = {}
@@ -22,9 +22,9 @@ export const useProvideThemeEditor = (
         get: (): string => get(unref(themeOverrides), target),
         set: (value) => {
           if (!value) {
-            const sliceTarget = target.slice(0, target.length - 1)
+            const sliceTarget = target.slice(0, -1)
             const source = get(unref(themeOverrides), sliceTarget)
-            delete source[target[target.length - 1]]
+            delete source[target.at(-1)]
           } else {
             set(unref(themeOverrides), target, value)
           }

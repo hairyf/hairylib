@@ -1,7 +1,7 @@
 import { kebabCase, isObject } from 'lodash'
 
-export type DeepStrObject = { [key: string]: string | DeepStrObject }
-type StrObject = Record<string, string>
+export type DeepStringObject = { [key: string]: string | DeepStringObject }
+type StringObject = Record<string, string>
 
 let transformKeys: string[] = []
 
@@ -10,12 +10,12 @@ let transformKeys: string[] = []
  * @param theme 将要转换的对象
  * @param merge 内部合并参数
  */
-export const transformTheme2CssVars = (target: DeepStrObject, merge?: StrObject) => {
+export const transformTheme2CssVariables = (target: DeepStringObject, merge?: StringObject) => {
   const result: Record<string, string> = merge || {}
   for (const [key, value] of Object.entries(target)) {
     transformKeys.push(key)
     if (isObject(value)) {
-      transformTheme2CssVars(value, result)
+      transformTheme2CssVariables(value, result)
       transformKeys = []
     } else {
       const cssvarKey = kebabCase(
@@ -25,7 +25,7 @@ export const transformTheme2CssVars = (target: DeepStrObject, merge?: StrObject)
           .trim()
       )
       result[cssvarKey] = value
-      transformKeys.splice(transformKeys.length - 1, 1)
+      transformKeys.splice(-1, 1)
     }
   }
   return result

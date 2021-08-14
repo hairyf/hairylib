@@ -7,8 +7,8 @@
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
-export * from './is'
 import { forIn, pickBy, isObject, isPlainObject } from 'lodash'
+export * from './is'
 
 /**
  * 地址参数计算
@@ -17,9 +17,9 @@ import { forIn, pickBy, isObject, isPlainObject } from 'lodash'
  * @returns 拼接url
  */
 export const paramsAnaly = (url: string, params: Record<string, any>) => {
-  const queryStr = Object.keys(params).map((key) => `${key}=${params[key]}`)
-  if (queryStr.length > 0) {
-    url += '?' + queryStr.join('&')
+  const queryString = Object.keys(params).map((key) => `${key}=${params[key]}`)
+  if (queryString.length > 0) {
+    url += '?' + queryString.join('&')
   }
   return url
 }
@@ -42,7 +42,7 @@ export const generateArray = (start: number, end: number) => {
   start = Number(start)
   end = Number(end)
   end = end > start ? end : start
-  return [...Array(end + 1).keys()].slice(start)
+  return [...new Array(end + 1).keys()].slice(start)
 }
 
 /**
@@ -52,12 +52,12 @@ export const generateArray = (start: number, end: number) => {
  */
 export const pickByParams = <T extends object>(params: T, filters: any[], deep = false) => {
   deep &&
-    forIn(params, (val, key) => {
-      if (isObject(val))
+    forIn(params, (value, key) => {
+      if (isObject(value))
         // @ts-ignore
         params[key] = pickByParams(params[key], filters, deep)
     })
-  const pickValue = pickBy(params, (value) => !filters.some((v) => value === v))
+  const pickValue = pickBy(params, (value) => !filters.includes(value))
   if (Array.isArray(params)) {
     return Object.values(pickValue) as any as Partial<T>
   }

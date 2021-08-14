@@ -21,7 +21,7 @@ export const isIE = UA && /msie|trident/.test(UA)
 export const isIE9 = UA && UA.indexOf('msie 9.0') > 0
 
 export const isIE11 =
-  navigator.userAgent.indexOf('Trident') > -1 && navigator.userAgent.indexOf('rv:11.0') > -1
+  navigator.userAgent.includes('Trident') && navigator.userAgent.includes('rv:11.0')
 
 export const isEdge = UA && UA.indexOf('edge/') > 0
 

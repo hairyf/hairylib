@@ -16,12 +16,12 @@
  */
 export const blendColor = (colorOne: string, colorTwo: string, ratio: number) => {
   ratio = Math.max(Math.min(Number(ratio), 1), 0)
-  const r1 = parseInt(colorOne.substring(1, 3), 16)
-  const g1 = parseInt(colorOne.substring(3, 5), 16)
-  const b1 = parseInt(colorOne.substring(5, 7), 16)
-  const r2 = parseInt(colorTwo.substring(1, 3), 16)
-  const g2 = parseInt(colorTwo.substring(3, 5), 16)
-  const b2 = parseInt(colorTwo.substring(5, 7), 16)
+  const r1 = parseInt(colorOne.slice(1, 3), 16)
+  const g1 = parseInt(colorOne.slice(3, 5), 16)
+  const b1 = parseInt(colorOne.slice(5, 7), 16)
+  const r2 = parseInt(colorTwo.slice(1, 3), 16)
+  const g2 = parseInt(colorTwo.slice(3, 5), 16)
+  const b2 = parseInt(colorTwo.slice(5, 7), 16)
   let r: string | number = Math.round(r1 * (1 - ratio) + r2 * ratio)
   let g: string | number = Math.round(g1 * (1 - ratio) + g2 * ratio)
   let b: string | number = Math.round(b1 * (1 - ratio) + b2 * ratio)

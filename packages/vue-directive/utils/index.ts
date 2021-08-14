@@ -8,33 +8,33 @@ export type DirectiveElements<E = HTMLElement> = Record<string, Directive<E, any
 export type DirectiveConfig = Partial<typeof directiveOptions>
 
 export const directiveUnit = (...keys: (keyof CSSStyleDeclaration)[]) => {
-  return <DirectiveUnit>((el, _size) => {
+  return <DirectiveUnit>((element, _size) => {
     for (const key of keys) {
-      _size && (el.style[key as any] = analyUnit(_size.value || ''))
+      _size && (element.style[key as any] = analyUnit(_size.value || ''))
     }
   })
 }
 
 export const directiveSize = () => {
-  return <DirectiveSize>((el, _size) => {
+  return <DirectiveSize>((element, _size) => {
     const size = analySize(_size.value || '')
-    size.width && (el.style.width = size.width)
-    size.height && (el.style.height = size.height)
+    size.width && (element.style.width = size.width)
+    size.height && (element.style.height = size.height)
   })
 }
 
 export const directiveValue = (...keys: (keyof CSSStyleDeclaration)[]) => {
-  return <DirectiveUnit>((el, { value }) => {
+  return <DirectiveUnit>((element, { value }) => {
     for (const key of keys) {
-      ;(el.style as any)[key] = value
+      ;(element.style as any)[key] = value
     }
   })
 }
 
-export const directiveArgValue = (...keys: (keyof CSSStyleDeclaration)[]) => {
-  return <DirectiveUnit>((el, { arg, value }) => {
+export const directiveArgumentValue = (...keys: (keyof CSSStyleDeclaration)[]) => {
+  return <DirectiveUnit>((element, { arg, value }) => {
     for (const key of keys) {
-      ;(el.style as any)[key] = arg?.[0] || value
+      ;(element.style as any)[key] = arg?.[0] || value
     }
   })
 }

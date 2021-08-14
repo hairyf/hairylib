@@ -3,6 +3,7 @@
   "version": "0.2.4",
   "license": "MIT",
   "dependencies": {
+    "@tuimao/browser": "^0.2.3",
     "vue-demi": "^0.11.2",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"

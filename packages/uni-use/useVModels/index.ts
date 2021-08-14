@@ -13,8 +13,8 @@ export function useVModels<P extends object, Name extends string>(
   emit?: (name: Name, ...args: any[]) => void,
   options: VModelOptions = {}
 ): ToRefs<P> {
-  const ret: any = {}
+  const returnValue: any = {}
   // eslint-disable-next-line no-restricted-syntax
-  for (const key in props) ret[key] = useVModel(props, key, emit, options)
-  return ret
+  for (const key in props) returnValue[key] = useVModel(props, key, emit, options)
+  return returnValue
 }

@@ -5,7 +5,7 @@ declare module 'axios' {
     preventError?: boolean
   }
 }
-interface AxiosErrorInterceptOpts {
+interface AxiosErrorInterceptOptions {
   /** 自定义校验器 */
   validate: (response: AxiosResponse) => boolean | void
   /** 错误处理 */
@@ -19,8 +19,8 @@ interface AxiosErrorInterceptOpts {
  */
 export const axiosErrorIntercept = (
   axios: AxiosStatic | AxiosInstance,
-  validate: AxiosErrorInterceptOpts['validate'],
-  rejected: AxiosErrorInterceptOpts['rejected']
+  validate: AxiosErrorInterceptOptions['validate'],
+  rejected: AxiosErrorInterceptOptions['rejected']
 ) => {
   const onFulfilled = (response: AxiosResponse) => {
     const validateResult = validate(response)
@@ -31,7 +31,7 @@ export const axiosErrorIntercept = (
         response,
         isAxiosError: false,
         toJSON: () => ({}),
-        ...new Error()
+        ...new Error('__axiosErrorIntercept__')
       })
       return Promise.reject(response)
     }

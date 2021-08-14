@@ -16,7 +16,7 @@ import { isString } from 'lodash'
  * @returns string
  */
 export const analyUnit = (size: string | number, unit = 'px') => {
-  return isString(size) && /[^0-9]/g.test(size) ? size : size + unit
+  return isString(size) && /\D/g.test(size) ? size : size + unit
 }
 /** size 转换配置 */
 export type AnalySizeOption =

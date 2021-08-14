@@ -17,13 +17,13 @@ import { isNull } from 'lodash'
 export const selectFiles = (option: { multiple?: boolean; accept?: string } = {}) => {
   const { multiple = true, accept } = option
   return new Promise<File[]>((resolve, reject) => {
-    const inputEl = document.createElement('input')
-    inputEl.type = 'file'
-    inputEl.multiple = multiple
-    accept && (inputEl.accept = accept)
-    inputEl.click()
+    const inputel = document.createElement('input')
+    inputel.type = 'file'
+    inputel.multiple = multiple
+    accept && (inputel.accept = accept)
+    inputel.click()
     const timer = setTimeout(reject, 20 * 1000)
-    inputEl.addEventListener('change', function () {
+    inputel.addEventListener('change', function () {
       if (this.files) {
         resolve(Object.values(this.files))
         clearTimeout(timer)

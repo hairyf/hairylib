@@ -25,7 +25,7 @@ export const renderInstance = <T = Component>(Constructor: T, props: Record<stri
   const vnode = h(Constructor, props)
   render(vnode, container)
   if (container.firstElementChild) {
-    document.body.appendChild(container.firstElementChild)
+    document.body.append(container.firstElementChild)
   }
   // 这里不需要调用 document.body.removeChild(container.firstElementChild)
   // 因为调用 render(null, container) 为我们完成了这项工作

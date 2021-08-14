@@ -12,7 +12,7 @@ describe('axiosErrorIntercept', () => {
         done()
       }
     )
-    https.get('https://kr.juzishop.cn/api/order/pre').catch((v) => v)
+    https.get('https://kr.juzishop.cn/api/order/pre').catch((error) => error)
   })
   //   it('custom validate whether intercept.', (done) => {
   //     const https = axios.create()

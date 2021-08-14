@@ -26,6 +26,6 @@ export const makePhoneCall = (phoneNumber: string) => {
   const link = document.createElement('a')
   link.style.display = 'none'
   link.href = `tel:${phoneNumber}`
-  document.body.appendChild(link)
+  document.body.append(link)
   link.click()
 }

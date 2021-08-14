@@ -2,7 +2,7 @@ import { MaybeRef } from '@vueuse/core'
 import { get, merge, PropertyPath, set, toPath } from 'lodash'
 import { computed, ComputedRef, inject, InjectionKey, provide, unref } from 'vue-demi'
 import { DeepPartial } from '@tuimao/core'
-import { DeepStrObject, transformTheme2CssVars } from './inside'
+import { DeepStringObject, transformTheme2CssVariables } from './inside'
 
 interface CreateThemeResult<T, Overrides = MaybeRef<DeepPartial<T>>> {
   /**
@@ -50,10 +50,10 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
     const paths = toPath(target)
     const theme = useInjectTheme()
     return computed(() => {
-      const objective: DeepStrObject = {}
+      const objective: DeepStringObject = {}
       set(objective, paths, get(theme.value, paths))
       const transformTarget = target ? objective : theme.value
-      return transformTheme2CssVars(<any>transformTarget)
+      return transformTheme2CssVariables(<any>transformTarget)
     })
   }
 

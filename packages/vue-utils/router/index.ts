@@ -7,6 +7,7 @@
  * @任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import { RouteRecordRaw } from 'vue-router'
+import { downloadBlobFile } from '@tuimao/browser'
 /** 定义 RouteMeta 类型 */
 declare module 'vue-router' {
   interface RouteMeta {
@@ -26,8 +27,8 @@ export const calculRouterActive = (routes: RouteRecordRaw[], upperPath?: string)
   let pathMaps: string[] = []
   const recursion = (routes: RouteRecordRaw[], upperPath?: string) => {
     typeof upperPath !== 'string' && (pathMaps = [])
-    for (const i in routes) {
-      const route = routes[i]
+    for (const index in routes) {
+      const route = routes[index]
       // 拼接路由绝对路径
       const completePath = upperPath
         ? `${upperPath == '/' ? '/' : upperPath + '/'}${route.path}`
@@ -67,7 +68,7 @@ export const outputRoutes = (routes: RouteRecordRaw[]) => {
       return newRoute
     })
   }
-  console.log(JSON.stringify(recursion(routes)))
+  downloadBlobFile(JSON.stringify(recursion(routes)), 'routers.json')
 }
 
 /**

@@ -13,7 +13,7 @@ declare module 'axios' {
     loading?: boolean
   }
 }
-interface AxiosLoadingOpts {
+interface AxiosLoadingOptions {
   /** 加载调起 */
   show: (config: AxiosRequestConfig) => void
   /** 加载关闭 */
@@ -28,8 +28,8 @@ interface AxiosLoadingOpts {
  */
 export const axiosLoading = (
   axios: AxiosStatic | AxiosInstance,
-  show: AxiosLoadingOpts['show'],
-  clone: AxiosLoadingOpts['clone']
+  show: AxiosLoadingOptions['show'],
+  clone: AxiosLoadingOptions['clone']
 ) => {
   let subscribers = 0
   axios.interceptors.request.use((config) => {

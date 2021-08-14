@@ -17,7 +17,7 @@ for (const { name, build } of packages) {
       cwd: path.join('packages', name, 'dist')
     })
   } catch (error) {
-    console.log(JSON.stringify(error))
+    console.warn(JSON.stringify(error))
   }
   consola.success(`Published @tuimao/${name}`)
 }
