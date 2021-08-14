@@ -40,7 +40,7 @@ eslint 的规则集，包含了 vue | ts | uni 的规则。
 
 ## modules
 
-对应模块使用的依赖包和描述
+对应模块使用的描述信息和依赖包
 
 ### Basic eslint
 
