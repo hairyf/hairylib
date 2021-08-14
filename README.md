@@ -1,6 +1,6 @@
 ## 关于(About)
 
-hello 这里是腿毛，@tuimao/config 代表我的配置，是使用 lerna 管理的多个工具模块包的项目。
+hello 这里是腿毛，tuimao-scope 是我的工具代码库，是使用 lerna 管理的多个工具模块包的项目。
 
 目前已有模块包：
 
