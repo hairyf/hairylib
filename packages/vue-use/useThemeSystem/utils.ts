@@ -24,7 +24,7 @@ export const useProvideThemeEditor = (
           if (!value) {
             const sliceTarget = target.slice(0, -1)
             const source = get(unref(themeOverrides), sliceTarget)
-            delete source[target.at(-1)]
+            delete source[target[target.length - 1]]
           } else {
             set(unref(themeOverrides), target, value)
           }

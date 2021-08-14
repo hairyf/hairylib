@@ -113,7 +113,8 @@ export const unicorn: Linter.HasRules['rules'] = {
   'unicorn/prefer-array-flat-map': 'error',
   'unicorn/prefer-array-index-of': 'error',
   'unicorn/prefer-array-some': 'error',
-  'unicorn/prefer-at': 'error',
+  // HACK：API 还未升级
+  'unicorn/prefer-at': 'off',
   'unicorn/prefer-date-now': 'error',
   'unicorn/prefer-default-parameters': 'error',
   'unicorn/prefer-dom-node-append': 'error',
