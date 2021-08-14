@@ -1,9 +1,9 @@
 {
   "name": "@tuimao/vue-utils",
-  "version": "0.2.4",
+  "version": "0.3.0-bata.1",
   "license": "MIT",
   "dependencies": {
-    "@tuimao/browser": "^0.2.3",
+    "@tuimao/browser": "^0.3.0-bata.1",
     "vue-demi": "^0.11.2",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"

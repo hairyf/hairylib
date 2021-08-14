@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/browser",
-  "version": "0.2.3",
+  "version": "0.3.0-bata.1",
   "license": "MIT",
   "dependencies": {
     "lodash-es": "^4.17.21"
