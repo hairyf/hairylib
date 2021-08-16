@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 14:03:00
- * @LastEditTime: 2021-08-03 15:10:12
+ * @LastEditTime: 2021-08-16 14:07:42
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -16,7 +16,7 @@ export * from './is'
  * @param params 请求参数
  * @returns 拼接url
  */
-export const paramsAnaly = (url: string, params: Record<string, any>) => {
+export const urlParamsAnaly = (url: string, params: Record<string, any>) => {
   const queryString = Object.keys(params).map((key) => `${key}=${params[key]}`)
   if (queryString.length > 0) {
     url += '?' + queryString.join('&')

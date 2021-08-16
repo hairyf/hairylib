@@ -22,6 +22,7 @@
     "@tuimao/axios": "^0.3.0-bata.1",
     "@tuimao/browser": "^0.3.0-bata.1",
     "@tuimao/core": "^0.3.0-bata.1",
+    "@tuimao/vue-directive": "^0.3.0-bata.1",
     "@tuimao/vue-utils": "^0.3.0-bata.1"
   },
   "exports": {

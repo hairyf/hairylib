@@ -14,7 +14,7 @@
 - formatUnix:        时间戳格式化(秒)
 - analyUnit:         如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上单位
 - analySize:         将 size 转换为宽高
-- paramsAnaly:       urlParams 对象解析器
+- urlParamsAnaly:    urlParams 对象解析器
 - awaitPromise:      自定义等待时长的 promise
 - generateArray:     生成递进数组
 - pickByParams:      根据数组过滤对象或数组

@@ -1,12 +1,13 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-05-17 09:50:09
- * @LastEditTime: 2021-06-08 14:19:08
+ * @LastEditTime: 2021-08-16 11:03:09
  * @Description: Tailwind 配置
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const colors = require('tailwindcss/colors')
 module.exports = {
   /** 生产环境下, 需清除样式的文件列表 */
