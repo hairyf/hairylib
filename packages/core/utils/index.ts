@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 14:03:00
- * @LastEditTime: 2021-08-16 14:07:42
+ * @LastEditTime: 2021-08-16 14:58:19
  * @Description:
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -18,12 +18,13 @@ export * from './is'
  */
 export const urlParamsAnaly = (url: string, params: Record<string, any>) => {
   const queryString = Object.keys(params).map((key) => `${key}=${params[key]}`)
-  if (queryString.length > 0) {
-    url += '?' + queryString.join('&')
-  }
+  if (queryString.length > 0) url += '?' + queryString.join('&')
   return url
 }
-
+/**
+ * @deprecated 废弃, 使用 urlParamsAnaly
+ */
+export const paramsAnaly = urlParamsAnaly
 /**
  * 自定义 Promise 等待
  * @param code 等待时间
