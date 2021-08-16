@@ -1,9 +1,9 @@
 {
   "name": "@tuimao/vue-use",
-  "version": "0.3.0-bata.2",
+  "version": "0.3.0",
   "license": "MIT",
   "dependencies": {
-    "@tuimao/browser": "^0.3.0-bata.1",
+    "@tuimao/browser": "^0.3.0",
     "@types/pubsub-js": "^1.8.2",
     "@vueuse/core": "^5.2.0",
     "lodash": "^4.17.21",

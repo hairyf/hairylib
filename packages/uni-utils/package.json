@@ -1,6 +1,6 @@
 {
   "name": "@tuimao/uni-utils",
-  "version": "0.3.0-bata.1",
+  "version": "0.3.0",
   "license": "MIT",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
   "dependencies": {
-    "@tuimao/browser": "^0.3.0-bata.1",
-    "@tuimao/core": "^0.3.0-bata.1",
+    "@tuimao/browser": "^0.3.0",
+    "@tuimao/core": "^0.3.0",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
