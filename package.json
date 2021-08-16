@@ -10,6 +10,7 @@
     "build": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
     "publish:lerna": "lerna publish --contents dist",
+    "publish:cli": "esno scripts/publish.ts",
     "update": "esno scripts/update.ts",
     "clean": "rimraf dist packages/*/dist",
     "test": "cross-env NODE_ENV=test yarn clean && jest --collectCoverage=false",
