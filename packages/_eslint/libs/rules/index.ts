@@ -152,9 +152,9 @@ export const unicorn: Linter.HasRules['rules'] = {
   'unicorn/prefer-type-error': 'error',
   // HACK: 可能会造成影响
   'unicorn/prevent-abbreviations': [
-    'off',
+    'error',
     {
-      ignore: [/params/i, /props/i, /args/i, /prev/i, /ref/i, /dir/i]
+      ignore: [/param/i, /props/i, /args/i, /prev/i, /ref/i, /dir/i]
     }
   ],
   'unicorn/require-array-join-separator': 'error',
