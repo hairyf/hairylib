@@ -55,7 +55,8 @@ export const unicorn: Linter.HasRules['rules'] = {
   'unicorn/better-regex': 'error',
   'unicorn/catch-error-name': 'error',
   'unicorn/consistent-destructuring': 'error',
-  'unicorn/consistent-function-scoping': 'error',
+  // HACK: 规则会导致一些问题
+  'unicorn/consistent-function-scoping': 'off',
   'unicorn/custom-error-definition': 'off',
   'unicorn/empty-brace-spaces': 'off',
   // HACK: 可能没这么重要
