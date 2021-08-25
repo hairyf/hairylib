@@ -21,3 +21,9 @@ export type DeepKeyof<T> = T extends object ? keyof T | DeepKeyof<T[keyof T]> : 
 export type DeepReplace<T, K = unknown, V = unknown> = {
   [P in keyof T]: K extends P ? V : DeepReplace<T[P], K, V>
 }
+
+export type NonNullableCustom<T, N> = T extends N ? never : T
+
+export type NonPick<T, K extends keyof T> = {
+  [P in NonNullableCustom<keyof T, K>]: T[P]
+}
