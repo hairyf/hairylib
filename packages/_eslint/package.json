@@ -1,8 +1,7 @@
 {
   "name": "@tuimao/eslint",
-  "version": "1.2.0-bata.3",
+  "version": "1.2.0-bata.4",
   "description": "Eslint config for Mr.Mao",
-  "main": "./index.cjs.js",
   "license": "ISC",
   "dependencies": {
     "@types/eslint": "^7.28.0",
@@ -37,16 +36,5 @@
     "url": "https://github.com/TuiMao233/tuimao-scope/issues"
   },
   "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
-  "types": "./index.d.ts",
-  "module": "./index.esm.js",
-  "unpkg": "./index.iife.min.js",
-  "jsdelivr": "./index.iife.min.js",
-  "exports": {
-    ".": {
-      "import": "./index.esm.js",
-      "require": "./index.cjs.js"
-    },
-    "./*": "./*"
-  },
   "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
 }
