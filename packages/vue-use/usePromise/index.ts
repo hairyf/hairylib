@@ -16,7 +16,7 @@ export const usePromise = <T extends Promisefactory>(factory: T): UsePromiseResu
       const result = await factory(...args)
       loading.value = false
       return result
-    } catch (_error) {
+    } catch (_error: any) {
       loading.value = false
       error.value = _error
       throw _error
