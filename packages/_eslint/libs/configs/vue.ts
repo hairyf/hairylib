@@ -1,5 +1,5 @@
 import { Linter } from 'eslint'
-import { merge } from 'lodash-es'
+import { merge } from 'lodash'
 
 const basic: Linter.Config = {
   parser: 'vue-eslint-parser',

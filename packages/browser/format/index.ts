@@ -1,4 +1,4 @@
-import { isArray } from 'lodash-es'
+import { isArray } from 'lodash'
 
 /**
  * 替换 html string 中任意 tag 内任意 attr 值

@@ -2,9 +2,6 @@
   "name": "@tuimao/browser",
   "version": "1.2.0",
   "license": "MIT",
-  "dependencies": {
-    "lodash-es": "^4.17.21"
-  },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
   "module": "./index.esm.js",
@@ -27,5 +24,8 @@
     },
     "./*": "./*"
   },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }

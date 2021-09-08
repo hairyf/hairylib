@@ -29,6 +29,8 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
     'vue-demi': 'VueDemi',
     '@vueuse/core': 'VueUse',
     '@tuimao/core': 'TuiMaoCore',
+    '@tuimao/browser': 'TuiMaoBrowser',
+    dayjs: 'dayjs',
     lodash: '_',
     ...(globals || {})
   }
@@ -71,13 +73,13 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
       }
     )
   }
-
+  const baseExternals = ['vue-demi', 'lodash', '@tuimao/core']
   configs.push(
     {
       input,
       output,
       plugins: [esbuild()],
-      external: ['vue-demi', 'lodash', ...(external || [])]
+      external: [...baseExternals, ...(external || [])]
     },
     {
       input,
@@ -86,7 +88,7 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
         format: 'es'
       },
       plugins: [dts()],
-      external: ['vue-demi', 'lodash', ...(external || [])]
+      external: [...baseExternals, ...(external || [])]
     }
   )
 }

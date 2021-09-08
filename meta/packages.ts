@@ -16,7 +16,7 @@ export const packages: PackageManifest[] = [
     name: 'axios',
     display: 'Axios utilities',
     description: 'Utilities for axios',
-    external: ['lodash', '@tuimao/core', 'axios']
+    external: ['axios']
   },
   {
     name: 'browser',
@@ -27,9 +27,7 @@ export const packages: PackageManifest[] = [
     name: 'core',
     display: 'Tuimao utilities core',
     description: 'Utilities core for Mr.Mao',
-    globals: {
-      dayjs: 'dayjs'
-    }
+    external: ['dayjs']
   },
   {
     name: 'utils',
@@ -41,7 +39,8 @@ export const packages: PackageManifest[] = [
       '@tuimao/browser',
       '@tuimao/core',
       '@tuimao/vue-use',
-      '@tuimao/vue-utils'
+      '@tuimao/vue-utils',
+      '@tuimao/vue-directive'
     ],
     iife: false
   },
@@ -49,8 +48,7 @@ export const packages: PackageManifest[] = [
     name: 'vue-use',
     display: 'Vue composition-api function',
     description: 'Collection of essential Vue Composition Utilities',
-    external: ['@vueuse/core', 'pubsub-js', 'vue'],
-    globals: { 'pubsub-js': 'pubsubJs' }
+    external: ['@vueuse/core', 'pubsub-js', 'vue', '@vue/reactivity']
   },
   {
     name: 'vue-utils',
@@ -68,11 +66,13 @@ export const packages: PackageManifest[] = [
   {
     name: 'uni-utils',
     description: 'Collection of essential Uni Utilities',
-    display: 'Uni utilities'
+    display: 'Uni utilities',
+    external: ['@tuimao/browser']
   },
   {
     name: 'uni-use',
     display: 'Vue composition-api function',
-    description: 'Collection of essential Uni Composition Utilities'
+    description: 'Collection of essential Uni Composition Utilities',
+    external: ['@vue/composition-api']
   }
 ]
