@@ -1,12 +1,12 @@
 {
   "name": "@tuimao/vue-component",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.3-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "@simonwep/pickr": "^1.8.1",
     "@tinymce/tinymce-vue": "^4.0.4",
-    "@tuimao/core": "^0.4.0",
+    "@tuimao/core": "^1.0.0",
     "@types/tinymce": "^4.6.4",
     "@vueuse/core": "^6.0.0",
     "lodash-es": "^4.17.21",
