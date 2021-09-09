@@ -5,7 +5,9 @@ const basic: Linter.Config = {
   parser: 'vue-eslint-parser',
   rules: {
     'vue/html-self-closing': 'off',
-    'vue/max-attributes-per-line': 'off'
+    'vue/max-attributes-per-line': 'off',
+    'vue/html-indent': 'off',
+    'vue/singleline-html-element-content-newline': 'off'
   }
 }
 
@@ -26,8 +28,5 @@ export const vue2 = merge<Linter.Config, Linter.Config>(basic, {
  * @module eslint-plugin-vue
  */
 export const vue3 = merge<Linter.Config, Linter.Config>(basic, {
-  extends: ['plugin:vue/vue3-recommended'],
-  rules: {
-    'import/first': 'off'
-  }
+  extends: ['plugin:vue/vue3-recommended']
 })

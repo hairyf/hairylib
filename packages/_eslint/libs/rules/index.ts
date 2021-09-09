@@ -42,8 +42,9 @@ export const commons: Linter.HasRules['rules'] = {
  */
 export const imports: Linter.HasRules['rules'] = {
   'import/first': 'error',
-  'import/no-unresolved': 'error',
-  'import/no-absolute-path': 'error'
+  'import/no-absolute-path': 'error',
+  'import/no-unresolved': 'off',
+  'import/no-named-as-default': 'off'
 }
 
 /**
@@ -73,7 +74,7 @@ export const unicorn: Linter.HasRules['rules'] = {
   // CONFLICT: eslint-plugin-import
   'unicorn/no-abusive-eslint-disable': 'off',
   // HACK: 可能需要调整(https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-callback-reference.md)
-  'unicorn/no-array-callback-reference': 'error',
+  'unicorn/no-array-callback-reference': 'off',
   'unicorn/no-array-for-each': 'off',
   // HACK: 可能没这么重要
   'unicorn/no-array-method-this-argument': 'off',
