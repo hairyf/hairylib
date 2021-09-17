@@ -3,15 +3,15 @@
   "version": "1.2.0",
   "description": "Collection of essential Vue directives",
   "author": "Anthony Fu<https://github.com/TuiMao233>",
-  "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "license": "ISC",
   "main": "./index.cjs.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/tuimao-scope.git"
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
   },
   "bugs": {
-    "url": "https://github.com/TuiMao233/tuimao-scope/issues"
+    "url": "https://github.com/TuiMao233/hairylib/issues"
   },
   "dependencies": {
     "@tuimao/core": "^1.2.0",

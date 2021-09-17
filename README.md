@@ -1,6 +1,6 @@
 ## 关于(About)
 
-hello 这里是腿毛，tuimao-scope 是我的工具代码库，是使用 lerna 管理的多个工具模块包的项目。
+hello 这里是腿毛，hairylib 是我的工具代码库，是使用 lerna 管理的多个工具模块包的项目。
 
 目前已有模块包：
 
@@ -19,7 +19,7 @@ hello 这里是腿毛，tuimao-scope 是我的工具代码库，是使用 lerna 
 
 ## 项目流程图
 
-![steps](./meta/images/tuimao-scope-steps.png)
+![steps](./meta/images/hairylib-steps.png)
 
 ## 文档系统
 

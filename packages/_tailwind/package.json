@@ -19,12 +19,12 @@
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/tuimao-scope.git"
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
   },
   "bugs": {
-    "url": "https://github.com/TuiMao233/tuimao-scope/issues"
+    "url": "https://github.com/TuiMao233/hairylib/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "exports": {
     ".": {
       "import": "./index.esm.js",

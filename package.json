@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/tuimao-scope.git"
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TuiMao233/tuimao-scope/issues"
+    "url": "https://github.com/TuiMao233/hairylib/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.24"

@@ -30,11 +30,11 @@
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/tuimao-scope.git"
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
   },
   "bugs": {
-    "url": "https://github.com/TuiMao233/tuimao-scope/issues"
+    "url": "https://github.com/TuiMao233/hairylib/issues"
   },
-  "homepage": "https://github.com/TuiMao233/tuimao-scope#readme",
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
 }
