@@ -50,10 +50,7 @@ export const downloadNetWorkFile = (url: string, fileName?: string) => {
   a.href = url
   a.click()
 }
-/**
- * @deprecated 已废弃，名称更改为 downloadNetWorkFile
- */
-export const downloadWorkFile = downloadNetWorkFile
+
 /**
  * 生成 blob|string 文件，并下载
  * @param data blob 数据，或者字符串

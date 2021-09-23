@@ -43,8 +43,3 @@ export const axiosErrorIntercept = (
   }
   axios.interceptors.response.use(onFulfilled, onRejected)
 }
-
-/**
- * @deprecated 该方法已被弃用，名称替换为 axiosErrorIntercept
- */
-export const axiosValidate = axiosErrorIntercept

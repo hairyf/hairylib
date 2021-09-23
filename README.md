@@ -19,7 +19,7 @@ hello 这里是腿毛，hairylib 是我的工具代码库，是使用 lerna 管�
 
 ## 项目流程图
 
-![steps](./meta/images/hairylib-steps.png)
+![steps](./meta/images/steps.png)
 
 ## 文档系统
 

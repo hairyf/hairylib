@@ -11,7 +11,7 @@ import { generateArray } from '@hairy/core'
 
 export * from './types'
 
-interface GenerateSpacingOpts {
+interface GenerateSpacingOptions {
   /** 步进值, step与stepMax设置为 1 则不进行步进; @default 2 */
   step?: number
   /** 步进极限值, 到达步进翻倍节点之后, 将以极限值步进 @default 50 */
@@ -22,22 +22,22 @@ interface GenerateSpacingOpts {
    * 单位计算(默认以得出px > rem 单位)
    * @default (num: number) => num / 16
    */
-  compute?: (num: number) => number
+  compute?: (number_: number) => number
   /** 单位 @default 'rem' */
   unit?: string
 }
 
 /** 生成 0 ~ max Spacing 尺寸 */
-export const generateSpacing = (max: number, option?: GenerateSpacingOpts) => {
+export const generateSpacing = (max: number, option?: GenerateSpacingOptions) => {
   const nodes = option?.nodes ?? [16, 48, 80, 256, 320, 384]
   const stepMax = option?.stepMax ?? 50
-  const compute = option?.compute ?? ((num: number) => num / 16)
+  const compute = option?.compute ?? ((number_: number) => number_ / 16)
   const unit = option?.unit ?? 'rem'
   let step = option?.step ?? 2
 
   /** 生成数值数据 */
   const generates = generateArray(0, max).filter((v) => {
-    if (nodes.some((n) => v === n)) {
+    if (nodes.includes(v)) {
       step = step * 2
     } else if (v === 400) {
       step = stepMax
@@ -60,8 +60,8 @@ export const generateSpacing = (max: number, option?: GenerateSpacingOpts) => {
 /** 将尺寸进行反转 */
 export const negative = (spacing: Record<string, string>) => {
   const _spacing: Record<string, string> = {}
-  for (const [key, val] of Object.entries(spacing)) {
-    _spacing[`-${key}`] = `-${val}`
+  for (const [key, value] of Object.entries(spacing)) {
+    _spacing[`-${key}`] = `-${value}`
   }
   return _spacing
 }

@@ -64,7 +64,7 @@ generateSpacing(2000)
   "2000": 'xxxrem'
 }
 // 配置项
-interface GenerateSpacingOpts {
+interface GenerateSpacingOptions {
   /** 步进值, step与stepMax设置为 1 则不进行步进; @default 2 */
   step?: number
   /** 步进极限值, 到达步进翻倍节点之后, 将以极限值步进 @default 50 */

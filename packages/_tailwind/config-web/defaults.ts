@@ -8,7 +8,6 @@
  */
 
 import { merge } from 'lodash'
-import { TailwindConfig } from 'tailwindcss/tailwind-config'
 import { defaultConfig } from '../config-base'
 import { generateSpacing } from '../utils'
 
@@ -59,4 +58,4 @@ const defaults = merge(defaultConfig, {
   plugins: []
 })
 
-export default defaults as Partial<TailwindConfig>
+export default defaults

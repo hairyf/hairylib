@@ -41,8 +41,8 @@ export const commons: Linter.HasRules['rules'] = {
  * @module eslint-plugin-import
  */
 export const imports: Linter.HasRules['rules'] = {
-  'import/first': 'error',
   'import/no-absolute-path': 'error',
+  'import/first': 'off',
   'import/no-unresolved': 'off',
   'import/no-named-as-default': 'off'
 }

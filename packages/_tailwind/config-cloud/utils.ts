@@ -2,8 +2,8 @@ export const px2rpx = (size: string) => {
   return parseInt(size) ? `${parseInt(size) * 2}rpx` : size
 }
 
-export const replacePx2rpx = (str: string) => {
-  return str.replace(/\d{0,}px/g, (match) => px2rpx(match))
+export const replacePx2rpx = (string_: string) => {
+  return string_.replace(/\d*px/g, (match) => px2rpx(match))
 }
 
 export const spacingPx2rpx = (spacing: Record<string, string>) => {

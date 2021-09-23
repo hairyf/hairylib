@@ -30,21 +30,6 @@ export const packages: PackageManifest[] = [
     external: ['dayjs']
   },
   {
-    name: 'utils',
-    display: 'All utilities Collection',
-    description: 'Collection of Mr.mao Utils',
-    manualImport: true,
-    external: [
-      '@hairy/axios',
-      '@hairy/browser',
-      '@hairy/core',
-      '@hairy/vue-use',
-      '@hairy/vue-utils',
-      '@hairy/vue-directive'
-    ],
-    iife: false
-  },
-  {
     name: 'vue-use',
     display: 'Vue composition-api function',
     description: 'Collection of essential Vue Composition Utilities',
@@ -62,12 +47,6 @@ export const packages: PackageManifest[] = [
     description: 'Collection of essential Vue directives',
     importFile: 'imports.ts',
     external: ['vue-demi']
-  },
-  {
-    name: 'uni-utils',
-    description: 'Collection of essential Uni Utilities',
-    display: 'Uni utilities',
-    external: ['@hairy/browser']
   },
   {
     name: 'uni-use',

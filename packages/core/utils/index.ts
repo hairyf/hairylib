@@ -21,10 +21,7 @@ export const urlParamsAnaly = (url: string, params: Record<string, any>) => {
   if (queryString.length > 0) url += '?' + queryString.join('&')
   return url
 }
-/**
- * @deprecated 废弃, 使用 urlParamsAnaly
- */
-export const paramsAnaly = urlParamsAnaly
+
 /**
  * 自定义 Promise 等待
  * @param code 等待时间
