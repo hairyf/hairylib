@@ -5,7 +5,10 @@
   "dependencies": {
     "@hairy/core": "^0.0.0",
     "axios": "^0.21.1",
-    "lodash-es": "^4.17.21"
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.171"
   },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
