@@ -1,9 +1,9 @@
 {
-  "name": "@tuimao/vue-use",
-  "version": "1.2.0",
+  "name": "@hairy/vue-use",
+  "version": "0.0.0",
   "license": "MIT",
   "dependencies": {
-    "@tuimao/browser": "^1.2.0",
+    "@hairy/browser": "^0.0.0",
     "@types/pubsub-js": "^1.8.2",
     "@vueuse/core": "^5.2.0",
     "lodash": "^4.17.21",
@@ -35,6 +35,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  }
 }

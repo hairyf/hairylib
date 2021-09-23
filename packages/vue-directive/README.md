@@ -1,10 +1,10 @@
-# @tuimao/vue-directive
+# @hairy/vue-directive
 
 vue 自定义命令集
 
 ## Install
 
-`yarn add @tuimao/vue-directive`
+`yarn add @hairy/vue-directive`
 
 
 ## Rules
@@ -35,7 +35,7 @@ vue 自定义命令集
 
 ~~~typescript
 import { createApp } from 'vue'
-import directives from '@tuimao/vue-directive'
+import directives from '@hairy/vue-directive'
 
 const app = createApp(App)
 
@@ -62,7 +62,7 @@ app.mount()
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue-demi'
-  import { vSpace } from '@tuimao/vue-directive'
+  import { vSpace } from '@hairy/vue-directive'
   export default defineComponent({
     directives: {
       ...vSpace
@@ -175,7 +175,7 @@ app.mount()
 
 ~~~typescript
 
-import { defineDirectiveConfig } from '@tuimao/vue-directive'
+import { defineDirectiveConfig } from '@hairy/vue-directive'
 
 defineDirectiveConfig({
   permissions: ['edit', 'lock']

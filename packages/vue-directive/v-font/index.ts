@@ -1,4 +1,4 @@
-import { analyUnit } from '@tuimao/core'
+import { analyUnit } from '@hairy/core'
 import { DirectiveElements, directiveUnit } from '../utils'
 
 export const vFont: DirectiveElements = {

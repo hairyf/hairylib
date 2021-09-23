@@ -1,9 +1,9 @@
 {
-  "name": "@tuimao/axios",
-  "version": "1.2.0",
+  "name": "@hairy/axios",
+  "version": "0.0.0",
   "license": "MIT",
   "dependencies": {
-    "@tuimao/core": "^1.2.0",
+    "@hairy/core": "^0.0.0",
     "axios": "^0.21.1",
     "lodash-es": "^4.17.21"
   },
@@ -28,6 +28,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  }
 }

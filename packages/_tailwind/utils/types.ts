@@ -1,4 +1,4 @@
-import { DeepPartial, DeepReplace } from '@tuimao/core'
+import { DeepPartial, DeepReplace } from '@hairy/core'
 import { TailwindConfig } from 'tailwindcss/tailwind-config'
 /** 修复 CorePlugins 类型 start */
 type CorePlugins =

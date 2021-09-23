@@ -1,6 +1,6 @@
 {
-  "name": "@tuimao/eslint",
-  "version": "1.2.0",
+  "name": "@hairy/eslint",
+  "version": "0.0.0",
   "description": "Eslint config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
@@ -35,6 +35,5 @@
   "bugs": {
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
-  "homepage": "https://github.com/TuiMao233/hairylib#readme",
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  "homepage": "https://github.com/TuiMao233/hairylib#readme"
 }

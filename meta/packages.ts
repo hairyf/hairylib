@@ -35,12 +35,12 @@ export const packages: PackageManifest[] = [
     description: 'Collection of Mr.mao Utils',
     manualImport: true,
     external: [
-      '@tuimao/axios',
-      '@tuimao/browser',
-      '@tuimao/core',
-      '@tuimao/vue-use',
-      '@tuimao/vue-utils',
-      '@tuimao/vue-directive'
+      '@hairy/axios',
+      '@hairy/browser',
+      '@hairy/core',
+      '@hairy/vue-use',
+      '@hairy/vue-utils',
+      '@hairy/vue-directive'
     ],
     iife: false
   },
@@ -67,7 +67,7 @@ export const packages: PackageManifest[] = [
     name: 'uni-utils',
     description: 'Collection of essential Uni Utilities',
     display: 'Uni utilities',
-    external: ['@tuimao/browser']
+    external: ['@hairy/browser']
   },
   {
     name: 'uni-use',

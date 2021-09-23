@@ -1,9 +1,9 @@
 {
-  "name": "@tuimao/vue-utils",
-  "version": "1.2.0",
+  "name": "@hairy/vue-utils",
+  "version": "0.0.0",
   "license": "MIT",
   "dependencies": {
-    "@tuimao/browser": "^1.2.0",
+    "@hairy/browser": "^0.0.0",
     "vue-demi": "^0.11.2",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"
@@ -32,6 +32,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  }
 }

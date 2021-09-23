@@ -1,7 +1,7 @@
 import { MaybeRef } from '@vueuse/core'
 import { get, merge, PropertyPath, set, toPath } from 'lodash'
 import { computed, ComputedRef, inject, InjectionKey, provide, unref } from 'vue-demi'
-import { DeepPartial } from '@tuimao/core'
+import { DeepPartial } from '@hairy/core'
 import { DeepStringObject, transformTheme2CssVariables } from './inside'
 
 interface CreateThemeResult<T, Overrides = MaybeRef<DeepPartial<T>>> {

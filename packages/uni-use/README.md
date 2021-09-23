@@ -1,10 +1,10 @@
-# @tuimao/uni-use
+# @hairy/uni-use
 
 uni 组合逻辑钩子
 
 ## Install
 
-`yarn add @tuimao/uni-use`
+`yarn add @hairy/uni-use`
 
 ## Usage
 

@@ -1,5 +1,5 @@
 import { Directive } from 'vue-demi'
-import { analySize, AnalySizeOption, analyUnit } from '@tuimao/core'
+import { analySize, AnalySizeOption, analyUnit } from '@hairy/core'
 
 export type DirectiveSize = Directive<HTMLElement, AnalySizeOption>
 export type DirectiveUnit = Directive<HTMLElement, number | string>

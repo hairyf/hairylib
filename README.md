@@ -4,17 +4,17 @@ hello 这里是腿毛，hairylib 是我的工具代码库，是使用 lerna 管�
 
 目前已有模块包：
 
-- [@tuimao/eslint](./packages/_eslint#readme)
-- [@tuimao/tailwind](./packages/_tailwind#readme)
-- [@tuimao/axios](./packages/axios#readme)
-- [@tuimao/browser](./packages/browser#readme)
-- [@tuimao/core](./packages/core#readme)
-- [@tuimao/utils](./packages/utils#readme)
-- [@tuimao/uni-use](./packages/uni-use#readme)
-- [@tuimao/uni-utils](./packages/uni-utils#readme)
-- [@tuimao/vue-directive](./packages/vue-directive#readme)
-- [@tuimao/vue-use](./packages/vue-use#readme)
-- [@tuimao/vue-utils](./packages/vue-utils#readme)
+- [@hairy/eslint](./packages/_eslint#readme)
+- [@hairy/tailwind](./packages/_tailwind#readme)
+- [@hairy/axios](./packages/axios#readme)
+- [@hairy/browser](./packages/browser#readme)
+- [@hairy/core](./packages/core#readme)
+- [@hairy/utils](./packages/utils#readme)
+- [@hairy/uni-use](./packages/uni-use#readme)
+- [@hairy/uni-utils](./packages/uni-utils#readme)
+- [@hairy/vue-directive](./packages/vue-directive#readme)
+- [@hairy/vue-use](./packages/vue-use#readme)
+- [@hairy/vue-utils](./packages/vue-utils#readme)
 
 
 ## 项目流程图

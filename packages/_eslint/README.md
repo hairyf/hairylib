@@ -1,10 +1,10 @@
-# @tuimao/eslint
+# @hairy/eslint
 
 eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 
 ## Install
 
-`npm install eslint @tuimao/eslint -D`
+`npm install eslint @hairy/eslint -D`
 
 ## Usage
 
@@ -13,7 +13,7 @@ eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 
 ~~~js
 {
-    "prettier": "@tuimao/eslint/prettier"
+    "prettier": "@hairy/eslint/prettier"
 }
 ~~~
 
@@ -22,7 +22,7 @@ eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 ~~~js
 {
     "eslintConfig": {
-        "extends": ["@tuimao/eslint/ts-vue@2"]
+        "extends": ["@hairy/eslint/ts-vue@2"]
     }
 }
 ~~~
@@ -31,12 +31,12 @@ eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 
 所有 eslint 的配置集
 
-- all:			     `@tuimao/eslint/all`
-- typescript:    `@tuimao/eslint/typescript`
-- ts-react:      `@tuimao/eslint/ts-react`
-- ts-uni-vue@2:  `@tuimao/eslint/ts-uni-vue@2`
-- ts-vue@2:      `@tuimao/eslint/ts-vue@2`
-- ts-vue@3:      `@tuimao/eslint/ts-vue@3`
+- all:			     `@hairy/eslint/all`
+- typescript:    `@hairy/eslint/typescript`
+- ts-react:      `@hairy/eslint/ts-react`
+- ts-uni-vue@2:  `@hairy/eslint/ts-uni-vue@2`
+- ts-vue@2:      `@hairy/eslint/ts-vue@2`
+- ts-vue@3:      `@hairy/eslint/ts-vue@3`
 
 ## modules
 

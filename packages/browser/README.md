@@ -1,10 +1,10 @@
-# @tuimao/browser
+# @hairy/browser
 
 关于浏览器的 api 封装。
 
 ## Install
 
-`yarn add @tuimao/browser`
+`yarn add @hairy/browser`
 
 ## Usage apis
 

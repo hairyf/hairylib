@@ -1,4 +1,4 @@
-import { makePhoneCall as h5MakePhoneCall } from '@tuimao/browser'
+import { makePhoneCall as h5MakePhoneCall } from '@hairy/browser'
 import { UNI_PLATFORM } from '../utils'
 
 /**

@@ -1,4 +1,4 @@
-# @tuimao/tailwind
+# @hairy/tailwind
 
 tailwind 的规则集，包含了 Web 端，小程序端等配置，小程序端可以作用于 uniapp
 该配置由于打包后识别为 esm 模块，所以需要 esbuild-register 来读取 .ts 配置文件
@@ -9,7 +9,7 @@ tailwind 的规则集，包含了 Web 端，小程序端等配置，小程序端
 
 ~~~typescript
 // tailwind.config.ts
-import { defineWebMergeConfig } from '@tuimao/tailwind'
+import { defineWebMergeConfig } from '@hairy/tailwind'
 export default defineWebMergeConfig({
     // ... merge config
 })
@@ -23,18 +23,18 @@ module.exports = require('./tailwind.config.ts').default
 
 ## Install
 
-`npm install eslint @tuimao/eslint -D`
+`npm install eslint @hairy/eslint -D`
 
 ## Usage
 
 ~~~js
 // 小程序端的默认配置
-import { defineCloudMergeConfig } from '@tuimao/tailwind'
+import { defineCloudMergeConfig } from '@hairy/tailwind'
 const webConifg = defineCloudMergeConfig({
     // 这里的配置最终会进行深层合并
 })
 // web 端的默认配置
-import { defineWebMergeConfig } from '@tuimao/tailwind'
+import { defineWebMergeConfig } from '@hairy/tailwind'
 const webConifg = defineWebMergeConfig({
     // 这里的配置最终会进行深层合并
 })
@@ -44,7 +44,7 @@ const webConifg = defineWebMergeConfig({
 
 ~~~ts
 // 用于生成间距信息的工具
-import { generateSpacing } from '@tuimao/tailwind'
+import { generateSpacing } from '@hairy/tailwind'
 generateSpacing(2000)
 // 生成以下数据
 {
@@ -85,8 +85,8 @@ interface GenerateSpacingOpts {
 
 ~~~js
 // 默认统一的所有配置
-import { defaultConfig } from '@tuimao/taiwind'
+import { defaultConfig } from '@hairy/taiwind'
 // 百分比的所有尺寸, 例如 '1/2': '50%',
-import { defaultPercentage } from '@tuimao/taiwind'
+import { defaultPercentage } from '@hairy/taiwind'
 
 ~~~

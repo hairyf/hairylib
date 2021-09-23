@@ -1,6 +1,6 @@
 {
-  "name": "@tuimao/browser",
-  "version": "1.2.0",
+  "name": "@hairy/browser",
+  "version": "0.0.0",
   "license": "MIT",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
@@ -24,7 +24,6 @@
     },
     "./*": "./*"
   },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07",
   "dependencies": {
     "lodash": "^4.17.21"
   }

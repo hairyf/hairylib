@@ -1,6 +1,6 @@
 {
-  "name": "@tuimao/utils",
-  "version": "3.2.0",
+  "name": "@hairy/utils",
+  "version": "0.0.0",
   "description": "Collection of Mr.mao Utils",
   "scripts": {},
   "license": "ISC",
@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "dependencies": {
-    "@tuimao/axios": "^1.2.0",
-    "@tuimao/browser": "^1.2.0",
-    "@tuimao/core": "^1.2.0",
-    "@tuimao/vue-directive": "^1.2.0",
-    "@tuimao/vue-utils": "^1.2.0"
+    "@hairy/axios": "^0.0.0",
+    "@hairy/browser": "^0.0.0",
+    "@hairy/core": "^0.0.0",
+    "@hairy/vue-directive": "^0.0.0",
+    "@hairy/vue-utils": "^0.0.0"
   },
   "exports": {
     ".": {
@@ -31,6 +31,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  }
 }

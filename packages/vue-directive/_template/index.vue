@@ -37,7 +37,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue-demi'
-  import { vSpace } from '@tuimao/vue-directive'
+  import { vSpace } from '@hairy/vue-directive'
   export default defineComponent({
     directives: {
       ...vSpace

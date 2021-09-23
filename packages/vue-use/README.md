@@ -1,10 +1,10 @@
-# @tuimao/core
+# @hairy/core
 
 Vue 组合式 api 的逻辑钩子
 
 ## Install
 
-`yarn add @tuimao/vue-use`
+`yarn add @hairy/vue-use`
 
 ## Usage apis
 

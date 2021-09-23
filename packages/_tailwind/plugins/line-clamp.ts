@@ -1,4 +1,4 @@
-import { generateArray } from '@tuimao/core'
+import { generateArray } from '@hairy/core'
 const plugin = require('tailwindcss/plugin')
 
 export const lineClampPlugin = () => {

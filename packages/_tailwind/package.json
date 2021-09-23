@@ -1,10 +1,10 @@
 {
-  "name": "@tuimao/tailwind",
-  "version": "1.2.0",
+  "name": "@hairy/tailwind",
+  "version": "0.0.0",
   "description": "Tailwind config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
-    "@tuimao/core": "^1.2.0",
+    "@hairy/core": "0.0.0",
     "@types/tailwindcss": "2.0.0",
     "lodash-es": "^4.17.21"
   },
@@ -31,6 +31,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  }
 }

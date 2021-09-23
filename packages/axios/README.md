@@ -1,10 +1,10 @@
-# @tuimao/axios
+# @hairy/axios
 
 关于 axios 拦截器的封装与工具。
 
 ## Install
 
-`yarn add @tuimao/axios`
+`yarn add @hairy/axios`
 
 ## Usage
 
@@ -15,7 +15,7 @@
 ~~~typescript
 
 import axios from 'axios'
-import { axiosPickByParams } from '@tuimao/axios'
+import { axiosPickByParams } from '@hairy/axios'
 
 axiosPickByParams(axios, ['', undefined], {
   header: true,
@@ -46,7 +46,7 @@ interface AxiosPickByParamsOptions {
 
 ~~~typescript
 import axios from 'axios'
-import { axiosLoading } from '@tuimao/axios'
+import { axiosLoading } from '@hairy/axios'
 
 axiosLoading(
   axios,
@@ -82,7 +82,7 @@ axios 错误拦截处理，以及自定义拦截错误
 
 ~~~typescript
 import axios from 'axios'
-import { axiosErrorIntercept } from '@tuimao/axios'
+import { axiosErrorIntercept } from '@hairy/axios'
 
 /**
  * 初次调用拦截

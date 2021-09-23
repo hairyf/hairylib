@@ -1,10 +1,10 @@
-# @tuimao/core
+# @hairy/core
 
 通用的 api 逻辑。
 
 ## Install
 
-`yarn add @tuimao/core`
+`yarn add @hairy/core`
 
 ## Usage apis
 

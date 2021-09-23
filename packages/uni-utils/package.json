@@ -1,6 +1,6 @@
 {
-  "name": "@tuimao/uni-utils",
-  "version": "1.2.0",
+  "name": "@hairy/uni-utils",
+  "version": "0.0.0",
   "license": "MIT",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "dependencies": {
-    "@tuimao/browser": "^1.2.0",
-    "@tuimao/core": "^1.2.0",
+    "@hairy/browser": "^0.0.0",
+    "@hairy/core": "^0.0.0",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
@@ -33,6 +33,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  }
 }

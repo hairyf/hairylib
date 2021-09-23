@@ -1,5 +1,5 @@
 import { usePromise } from '.'
-import { awaitPromise } from '@tuimao/core'
+import { awaitPromise } from '@hairy/core'
 
 describe('usePromise', () => {
   it('loading', (done) => {

@@ -1,10 +1,10 @@
-# @tuimao/uni-use
+# @hairy/uni-use
 
 uni 工具库, 以及修复 h5 api 不能使用
 
 ## Install
 
-`yarn add @tuimao/uni-utils`
+`yarn add @hairy/uni-utils`
 
 ## Usage apis
 

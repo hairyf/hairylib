@@ -29,8 +29,8 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
   const iifeGlobals = {
     'vue-demi': 'VueDemi',
     '@vueuse/core': 'VueUse',
-    '@tuimao/core': 'TuiMaoCore',
-    '@tuimao/browser': 'TuiMaoBrowser',
+    '@hairy/core': 'TuiMaoCore',
+    '@hairy/browser': 'TuiMaoBrowser',
     dayjs: 'dayjs',
     lodash: '_',
     ...(globals || {})
@@ -74,7 +74,7 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
       }
     )
   }
-  const baseExternals = ['vue-demi', 'lodash', '@tuimao/core']
+  const baseExternals = ['vue-demi', 'lodash', '@hairy/core']
   configs.push(
     {
       input,

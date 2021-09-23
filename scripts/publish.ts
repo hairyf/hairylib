@@ -19,5 +19,5 @@ for (const { name, build } of packages) {
   } catch (error) {
     console.warn(JSON.stringify(error))
   }
-  consola.success(`Published @tuimao/${name}`)
+  consola.success(`Published @hairy/${name}`)
 }

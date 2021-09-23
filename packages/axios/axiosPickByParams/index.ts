@@ -1,6 +1,6 @@
 import { AxiosStatic, AxiosInstance } from 'axios'
 import { isPlainObject } from 'lodash'
-import { formDataToObject, isFormData, objectToFormData, pickByParams } from '@tuimao/core'
+import { formDataToObject, isFormData, objectToFormData, pickByParams } from '@hairy/core'
 
 interface AxiosPickByParamsOptions {
   /** 是否过滤请求头, 默认 false */

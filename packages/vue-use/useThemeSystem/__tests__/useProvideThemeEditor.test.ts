@@ -1,6 +1,6 @@
 import { ref } from 'vue-demi'
 import { useProvideThemeEditor } from '../utils'
-import { DeepPartial } from '@tuimao/core'
+import { DeepPartial } from '@hairy/core'
 
 describe('useProvideThemeEditor', () => {
   it('bind', () => {

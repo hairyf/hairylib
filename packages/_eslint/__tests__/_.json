@@ -1,5 +1,5 @@
 {
-  "name": "@tuimao/eslint",
+  "name": "@hairy/eslint",
   "version": "1.0.6",
   "description": "Eslint config for Mr.Mao",
   "main": "./index.cjs.js",

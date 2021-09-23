@@ -6,9 +6,9 @@
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-export * from '@tuimao/axios'
-export * from '@tuimao/browser'
-export * from '@tuimao/core'
-export * from '@tuimao/vue-use'
-export * from '@tuimao/vue-utils'
-export * from '@tuimao/vue-directive'
+export * from '@hairy/axios'
+export * from '@hairy/browser'
+export * from '@hairy/core'
+export * from '@hairy/vue-use'
+export * from '@hairy/vue-utils'
+export * from '@hairy/vue-directive'

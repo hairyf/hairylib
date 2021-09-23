@@ -1,18 +1,10 @@
 {
-  "name": "@tuimao/uni-use",
-  "version": "1.2.0",
+  "name": "@hairy/uni-use",
+  "version": "0.0.0",
   "description": "Collection of essential Uni Composition Utilities",
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "license": "ISC",
-  "main": "./index.cjs.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TuiMao233/hairylib.git"
@@ -23,6 +15,7 @@
   "dependencies": {
     "@vue/composition-api": "^1.0.5"
   },
+  "main": "./index.cjs.js",
   "types": "./index.d.ts",
   "module": "./index.esm.js",
   "unpkg": "./index.iife.min.js",
@@ -33,6 +26,5 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
-  },
-  "gitHead": "74d3f5a533256ebd1b525ff9e1c87c65180f8b07"
+  }
 }

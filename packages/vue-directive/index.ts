@@ -1,4 +1,4 @@
-import { objectFlat } from '@tuimao/core'
+import { objectFlat } from '@hairy/core'
 import { App } from 'vue'
 import { Directive } from 'vue-demi'
 import { pickBy } from 'lodash'

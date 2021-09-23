@@ -1,10 +1,10 @@
-# @tuimao/core
+# @hairy/core
 
 Vue 开发所使用到的工具函数
 
 ## Install
 
-`yarn add @tuimao/vue-utils`
+`yarn add @hairy/vue-utils`
 
 ## Usage Router api
 
