@@ -1,0 +1,39 @@
+{
+  "name": "@hairy/eslint",
+  "version": "1.0.0",
+  "description": "Eslint config for Mr.Mao",
+  "license": "ISC",
+  "dependencies": {
+    "@types/eslint": "^7.28.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jsonc": "^1.4.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-unicorn": "^35.0.0",
+    "eslint-plugin-vue": "^7.16.0",
+    "eslint-plugin-yml": "^0.10.0",
+    "lodash": "^4.17.21",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "typescript": "^4.3.5",
+    "vue-eslint-parser": "^7.10.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.171"
+  },
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/hairylib/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/hairylib#readme"
+}

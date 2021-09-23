@@ -1,0 +1,32 @@
+{
+  "name": "@hairy/vue-directive",
+  "version": "1.0.0",
+  "description": "Collection of essential Vue directives",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
+  "license": "ISC",
+  "main": "./index.cjs.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/hairylib/issues"
+  },
+  "dependencies": {
+    "@hairy/core": "^1.0.0",
+    "lodash": "^4.17.21",
+    "vue-demi": "^0.11.2"
+  },
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  }
+}

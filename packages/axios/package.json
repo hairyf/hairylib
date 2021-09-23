@@ -1,0 +1,35 @@
+{
+  "name": "@hairy/axios",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@hairy/core": "^1.0.0",
+    "axios": "^0.21.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.171"
+  },
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/hairylib/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
+  "description": "Utilities for axios",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  }
+}

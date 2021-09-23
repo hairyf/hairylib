@@ -1,0 +1,36 @@
+{
+  "name": "@hairy/vue-utils",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@hairy/browser": "^1.0.0",
+    "vue-demi": "^0.11.2",
+    "vue-router": "^4.0.10",
+    "vuex": "^4.0.2"
+  },
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/hairylib/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
+  "devDependencies": {
+    "vue": "^3.1.5"
+  },
+  "description": "Collection of essential Vue Utilities",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  }
+}
