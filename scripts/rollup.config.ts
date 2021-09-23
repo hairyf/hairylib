@@ -31,6 +31,9 @@ for (const { name, external, iife, globals, build, tsc } of packages) {
     '@vueuse/core': 'VueUse',
     '@hairy/core': 'TuiMaoCore',
     '@hairy/browser': 'TuiMaoBrowser',
+    '@vue/composition-api': 'compositionApi',
+    'pubsub-js': 'pubsubJs',
+    'vue': 'Vue',
     dayjs: 'dayjs',
     lodash: '_',
     ...(globals || {})
