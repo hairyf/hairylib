@@ -17,14 +17,12 @@ eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 }
 ~~~
 
-2. 编写 eslint 规则`package.json`（其余方式引入都可使用：`.eslintrc|.eslintrc.js`）
+2. 编写 eslint 规则`.eslintrc.js`（其余方式引入都可使用：`.eslintrc|.eslintrc.js`）
 
 ~~~js
-{
-    "eslintConfig": {
-        "extends": ["@hairy/eslint/ts-vue@2"]
-    }
-}
+const typescript = require('@hairy/eslint/typescript.js')
+
+module.exports = typescript
 ~~~
 
 ## Eslint extends options
