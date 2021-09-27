@@ -60,9 +60,10 @@ export const packages: PackageManifest[] = [
     description: 'Collection of essential Uni Utilities'
   },
   {
-    name: '_config',
-    display: 'Project All Config',
-    description: 'Project All Config',
-    manualImport: true
+    name: 'cli',
+    display: 'Project All cli',
+    description: 'Project All cli',
+    manualImport: true,
+    customBuild: true
   }
 ]

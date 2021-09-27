@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowJs": true,
+    "module": "CommonJS",
+    "target": "ES5",
+    "outDir": "./dist",
+    "rootDir": "./libs"
+  },
+  
+  "exclude": [
+    "**/__tests__/*.ts",
+    "**/__test__/*.ts",
+    "./libs/template/*.ts"
+  ],
+  "include": [
+    "./libs"
+  ]
+}

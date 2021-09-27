@@ -1,0 +1,23 @@
+{
+  "name": "@hairylib/cli",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc && esno ./scripts/transfer.ts"
+  },
+  "dependencies": {
+    "cac": "^6.7.3",
+    "consola": "^2.15.3",
+    "enquirer": "^2.3.6",
+    "templa-cli": "0.0.1"
+  },
+  "bin": {
+    "hairylib": "bin/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.1"
+  }
+}
