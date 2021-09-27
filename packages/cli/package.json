@@ -15,7 +15,7 @@
     "templa-cli": "0.0.1"
   },
   "bin": {
-    "hairylib": "bin/index.js"
+    "hairy": "bin/index.js"
   },
   "devDependencies": {
     "@types/node": "^16.10.1"
