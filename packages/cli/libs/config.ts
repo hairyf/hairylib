@@ -1,6 +1,7 @@
 import path from 'path'
 interface ProjectItem {
   input: string
+  output: string
   options?: Record<string, any>
   includes?: string[]
 }
@@ -10,8 +11,8 @@ interface ProjectOptions {
 
 export const projectOptions: ProjectOptions = {
   basic: async (output) => {
-    if (output == '.') {
-      output = process.cwd()
+    if (!path.isAbsolute(output)) {
+      output = path.resolve(process.cwd(), output)
     }
     return {
       output,
