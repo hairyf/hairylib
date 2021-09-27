@@ -9,12 +9,12 @@ interface ProjectOptions {
 }
 
 export const projectOptions: ProjectOptions = {
-  basic: async (outpath) => {
-    if (outpath == '.') {
-      outpath = process.cwd()
+  basic: async (output) => {
+    if (output == '.') {
+      output = process.cwd()
     }
     return {
-      outpath,
+      output,
       input: path.resolve(__dirname, './template/base')
     }
   }

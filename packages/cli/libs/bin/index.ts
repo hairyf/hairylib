@@ -6,7 +6,7 @@ import { createTemplate } from 'templa-cli'
 
 const cli = cac('templa-cli')
 
-cli.command('create <app-name>', 'create project to app-name dir').action(async (outpath) => {
+cli.command('create <app-name>', 'create project to app-name dir').action(async (output) => {
   const selectPrompt = new Select({
     name: 'template',
     message: '选择创建的模板',
@@ -16,11 +16,11 @@ cli.command('create <app-name>', 'create project to app-name dir').action(async 
     message: '确定要在当前目录创建吗?'
   })
   try {
-    if (/[./\\]/.test(outpath) && !(await confirmPrompt.run())) {
+    if (/[./\\]/.test(output) && !(await confirmPrompt.run())) {
       return
     }
     const type = await selectPrompt.run()
-    const config = await projectOptions[type](outpath)
+    const config = await projectOptions[type](output)
     createTemplate(config)
   } catch (error) {
     console.error(error)
