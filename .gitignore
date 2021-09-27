@@ -6,3 +6,4 @@ dist-ssr
 yarn.lock
 dist
 coverage
+output

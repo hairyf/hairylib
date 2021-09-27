@@ -13,7 +13,7 @@
     "consola": "^2.15.3",
     "enquirer": "^2.3.6",
     "execa": "^5.1.1",
-    "templa-cli": "0.0.1"
+    "templa-cli": "0.0.4"
   },
   "bin": {
     "hairy": "bin/index.js"
