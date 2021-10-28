@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@commitlint/config-conventional'],
+  extends: ['@commitlint/config-lerna-scopes', '@commitlint/config-conventional'],
   rules: {
     'type-enum': [
       2,
