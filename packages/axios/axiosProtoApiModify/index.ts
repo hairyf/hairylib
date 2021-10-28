@@ -4,22 +4,22 @@ declare module 'axios' {
   interface AxiosInstance {
     get<T = any, R = AxiosResponse<T>>(
       url: string,
-      data?: any,
+      params?: any,
       config?: AxiosRequestConfig
     ): Promise<R>
     delete<T = any, R = AxiosResponse<T>>(
       url: string,
-      data?: any,
+      params?: any,
       config?: AxiosRequestConfig
     ): Promise<R>
     head<T = any, R = AxiosResponse<T>>(
       url: string,
-      data?: any,
+      params?: any,
       config?: AxiosRequestConfig
     ): Promise<R>
     options<T = any, R = AxiosResponse<T>>(
       url: string,
-      data?: any,
+      params?: any,
       config?: AxiosRequestConfig
     ): Promise<R>
   }
@@ -33,11 +33,16 @@ declare module 'axios' {
  * 主要参数调整 (url, config) -> (url, params, config)
  * @param AxiosStatic
  */
-export const axiosProtoApiModify = (axios: AxiosStatic = _axios) => {
-  ;['delete', 'get', 'head', 'options'].forEach((method) => {
-    const origin = axios.prototype[method]
-    axios.prototype[method] = function (url: string, params?: any, config?: any) {
-      origin.call(this, url, { params, ...config })
-    }
-  })
+export const axiosProtoApiModify = (axios?: AxiosStatic) => {
+  const origin = axios || _axios
+  const dealWithOrigin = (origin: any) => {
+    if (typeof origin === 'undefined') return undefined
+    ;['delete', 'get', 'head', 'options'].forEach((method) => {
+      origin[method] = function (url: string, params?: any, config?: any) {
+        return origin.call(this, url, { params, ...config })
+      }
+    })
+  }
+  dealWithOrigin(origin)
+  dealWithOrigin((origin as any).Axios)
 }
