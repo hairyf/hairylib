@@ -30,7 +30,6 @@
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "devDependencies": {
-    "@commitlint/config-lerna-scopes": "^13.2.0",
     "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.24"
   },

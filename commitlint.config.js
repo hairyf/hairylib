@@ -1,10 +1,10 @@
 module.exports = {
-  extends: ['@commitlint/config-lerna-scopes', '@commitlint/config-conventional'],
+  extends: ['@commitlint/config-conventional'],
   rules: {
     'type-enum': [
       2,
       'always',
-      ['feat', 'fix', 'docs', 'chore', 'refactor', 'test', 'chore', 'issue']
+      ['feat', 'fix', 'docs', 'chore', 'refactor', 'test', 'chore', 'issue', '@hairy']
     ]
   }
 }
