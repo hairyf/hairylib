@@ -33,7 +33,7 @@ export interface SelectedMultipleResult<T extends SelectedArray> {
   /**
    * 当前选中项
    */
-  seleteItem: ComputedRef<UnwrapRef<T>[number] | undefined>
+  selectItem: ComputedRef<UnwrapRef<T>[number] | undefined>
   /**
    * 是否选择
    */
@@ -44,7 +44,7 @@ export interface SelectedMultipleResult<T extends SelectedArray> {
   select: (index: number) => void
 }
 
-export interface SelectedvSingleResult<T extends SelectedArray> {
+export interface SelectedSingleResult<T extends SelectedArray> {
   /**
    * 当前选中的所有项
    */
@@ -66,7 +66,7 @@ export interface SelectedvSingleResult<T extends SelectedArray> {
 export type SelectedResult<
   T extends SelectedArray,
   Mode extends SelectedMode = 'multiple'
-> = Mode extends 'single' ? SelectedMultipleResult<T> : SelectedvSingleResult<T>
+> = Mode extends 'single' ? SelectedMultipleResult<T> : SelectedSingleResult<T>
 
 export const useSelected = <T extends SelectedArray, Mode extends SelectedMode>(
   array: T,
@@ -87,7 +87,7 @@ export const useSelected = <T extends SelectedArray, Mode extends SelectedMode>(
   const isSelect = computed(() => !!unref(array).some((item) => item.select))
 
   /** 当前选中的项 */
-  const seleteItem = computed(() => unref(array).find((v) => v[fieldName]))
+  const selectItem = computed(() => unref(array).find((v) => v[fieldName]))
 
   /**
    * 选择项
@@ -104,7 +104,7 @@ export const useSelected = <T extends SelectedArray, Mode extends SelectedMode>(
     }
   }
   if (mode === 'single') {
-    return { seleteItem, isSelect, select } as any
+    return { selectItem, isSelect, select } as any
   }
   return { selectItems, isSelectAll, isSelect, select } as any
 }

@@ -41,6 +41,7 @@
   "dependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@types/mockjs": "^1.0.4",
     "consola": "^2.15.3",
     "cross-env": "^7.0.3",
     "esbuild-register": "^2.6.0",
@@ -51,6 +52,7 @@
     "husky": "^7.0.2",
     "jest": "^27.0.6",
     "lerna": "^4.0.0",
+    "mockjs": "^1.1.0",
     "nodejs-fs-utils": "^1.2.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.55.1",
