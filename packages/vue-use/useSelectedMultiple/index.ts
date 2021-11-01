@@ -1,7 +1,7 @@
 import { MaybeRef } from '@vueuse/core'
 import { computed, ComputedRef, Ref, unref, UnwrapRef } from 'vue-demi'
 
-export type SelectedArray = MaybeRef<{ [key: string]: any }[]>
+export type SelectedMultipleArray = MaybeRef<{ [key: string]: any }[]>
 
 export interface SelectedMultipleOptions {
   /**
@@ -12,7 +12,7 @@ export interface SelectedMultipleOptions {
   fieldName?: string
 }
 
-export interface SelectedMultipleResult<T extends SelectedArray> {
+export interface SelectedMultipleResult<T extends SelectedMultipleArray> {
   /**
    * 当前选中的所有项
    */
@@ -27,7 +27,7 @@ export interface SelectedMultipleResult<T extends SelectedArray> {
   isSelect: ComputedRef<boolean>
 }
 
-export const useSelectedMultiple = <T extends SelectedArray>(
+export const useSelectedMultiple = <T extends SelectedMultipleArray>(
   array: T,
   options: SelectedMultipleOptions = {}
 ): SelectedMultipleResult<T> => {

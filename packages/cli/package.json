@@ -1,9 +1,9 @@
 {
   "name": "@hairy/cli",
   "version": "0.0.6",
-  "description": "",
-  "main": "index.js",
-  "author": "",
+  "description": "Project All cli",
+  "main": "./index.cjs.js",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
   "license": "ISC",
   "scripts": {
     "build": "tsc && esno ./scripts/transfer.ts"
@@ -21,5 +21,24 @@
   "devDependencies": {
     "@types/node": "^16.10.1"
   },
-  "gitHead": "28a000a01f5260a226ef95926b2c818b1c73aaf2"
+  "gitHead": "28a000a01f5260a226ef95926b2c818b1c73aaf2",
+  "bugs": {
+    "url": "https://github.com/TuiMao233/hairylib/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
+  },
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  }
 }

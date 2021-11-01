@@ -1,9 +1,9 @@
 import { MaybeRef } from '@vueuse/core'
 
 import { computed, ComputedRef, ref, unref, UnwrapRef, watch } from 'vue-demi'
-export type SelectedArray = MaybeRef<{ [key: string]: any }[]>
+export type SelectedSingleArray = MaybeRef<{ [key: string]: any }[]>
 
-export interface SelectedMultipleOptions {
+export interface SelectedSingleOptions {
   /**
    * 选择字段
    *
@@ -18,17 +18,17 @@ export interface SelectedMultipleOptions {
   required?: boolean
 }
 
-export interface SelectedMultipleResult<T extends SelectedArray> {
+export interface SelectedSingleResult<T extends SelectedSingleArray> {
   /**
    * 当前选中项
    */
   selectItem: ComputedRef<UnwrapRef<T>[number] | undefined>
 }
 
-export const useSelectedSingle = <T extends SelectedArray>(
+export const useSelectedSingle = <T extends SelectedSingleArray>(
   array: T,
-  options: SelectedMultipleOptions = {}
-): SelectedMultipleResult<T> => {
+  options: SelectedSingleOptions = {}
+): SelectedSingleResult<T> => {
   const fieldName = options.fieldName ?? 'select'
   const required = options.required ?? false
 
