@@ -1,8 +1,18 @@
 import { MaybeRef } from '@vueuse/core'
 import { get, merge, PropertyPath, set, toPath } from 'lodash'
-import { computed, ComputedRef, inject, InjectionKey, provide, unref } from 'vue-demi'
+import {
+  computed,
+  ComputedRef,
+  inject,
+  InjectionKey,
+  provide,
+  unref,
+  readonly,
+  DeepReadonly
+} from 'vue-demi'
+import { UnwrapNestedRefs } from '@vue/reactivity'
 import { DeepPartial } from '@hairy/core'
-import { DeepStringObject, transformTheme2CssVariables } from './inside'
+import { DeepStringObject, transformTheme2CssVars } from './inside'
 
 interface CreateThemeResult<T, Overrides = MaybeRef<DeepPartial<T>>> {
   /**
@@ -10,13 +20,13 @@ interface CreateThemeResult<T, Overrides = MaybeRef<DeepPartial<T>>> {
    *
    * 获取注入主题配置
    */
-  useInjectTheme: () => ComputedRef<T>
+  injectTheme: () => ComputedRef<T>
   /**
    * 默认主题与注入主题合并
    *
    * 将主题配置注入
    */
-  useProvideTheme: (themeOverrides?: Overrides) => ComputedRef<T>
+  provideTheme: (themeOverrides?: Overrides) => void
   /**
    * 获取基于当前主题的 css 变量
    *
@@ -25,6 +35,10 @@ interface CreateThemeResult<T, Overrides = MaybeRef<DeepPartial<T>>> {
    * 不传则代表将所有配置转换
    */
   useTransformTheme: (target?: PropertyPath) => ComputedRef<Record<string, string>>
+  /**
+   * 默认配置，即传入配置，只读项
+   */
+  defaultTheme: DeepReadonly<UnwrapNestedRefs<T>>
 }
 
 /**
@@ -35,12 +49,12 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
   type Overrides = MaybeRef<DeepPartial<T>>
   const __THEME_KEY__: InjectionKey<MaybeRef<T>> = Symbol()
 
-  const useInjectTheme = () => {
+  const injectTheme = () => {
     return computed(() => merge(options, unref(inject(__THEME_KEY__))))
   }
 
-  const useProvideTheme = (themeOverrides?: Overrides) => {
-    const theme = useInjectTheme()
+  const provideTheme = (themeOverrides?: Overrides) => {
+    const theme = injectTheme()
     const themeMerge = computed(() => merge(unref(theme), unref(themeOverrides)))
     provide(__THEME_KEY__, themeMerge)
     return themeMerge
@@ -48,14 +62,14 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
 
   const useTransformTheme = (target?: PropertyPath) => {
     const paths = toPath(target)
-    const theme = useInjectTheme()
+    const theme = injectTheme()
     return computed(() => {
       const objective: DeepStringObject = {}
       set(objective, paths, get(theme.value, paths))
       const transformTarget = target ? objective : theme.value
-      return transformTheme2CssVariables(<any>transformTarget)
+      return transformTheme2CssVars(<any>transformTarget)
     })
   }
 
-  return { useInjectTheme, useProvideTheme, useTransformTheme }
+  return { injectTheme, provideTheme, useTransformTheme, defaultTheme: readonly(options) }
 }

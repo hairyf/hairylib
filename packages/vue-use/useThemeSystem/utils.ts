@@ -3,7 +3,26 @@ import { camelCase, get, set } from 'lodash'
 import { computed, reactive, unref } from 'vue'
 import { DeepStringObject } from './inside'
 
-type DeepThemeConfigItem = { target: string[]; value: string; name: string; placeholder: string }
+interface DeepThemeConfigItem {
+  /**
+   * 字段名称，以 - 分割
+   * @example { Sidebar: { color: '#001426' } } > "sidebar-color"
+   */
+  name: string
+  /**
+   * 字段路径
+   * @example { Sidebar: { color: '#001426' } } > ["Sidebar", "color"]
+   */
+  paths: string[]
+  /**
+   * 数据源，根据路径获取的值
+   */
+  source: string
+  /**
+   * 可编辑的值，更改后 themeOverrides 将发生变化
+   */
+  value: string
+}
 
 /**
  * 创建主题编辑器
@@ -16,26 +35,26 @@ export const useProvideThemeEditor = (
   themeOverrides: MaybeRef<any>
 ) => {
   const deepThemeConfig: Record<string, DeepThemeConfigItem[]> = {}
-  const generateComputed = (target: string[]): DeepThemeConfigItem => {
+  const generateComputed = (paths: string[]): DeepThemeConfigItem => {
     return reactive({
       value: computed({
-        get: (): string => get(unref(themeOverrides), target),
+        get: (): string => get(unref(themeOverrides), paths),
         set: (value) => {
           if (!value) {
-            const sliceTarget = target.slice(0, -1)
-            const source = get(unref(themeOverrides), sliceTarget)
-            delete source[target[target.length - 1]]
+            const slicePaths = paths.slice(0, -1)
+            const source = get(unref(themeOverrides), slicePaths)
+            delete source[paths[paths.length - 1]]
           } else {
-            set(unref(themeOverrides), target, value)
+            set(unref(themeOverrides), paths, value)
           }
         }
       }),
-      placeholder: computed((): string => get(unref(theme), target)),
-      name: camelCase(target.join('-')),
-      target
+      paths,
+      source: computed((): string => get(unref(theme), paths)),
+      name: camelCase(paths.join('-'))
     })
   }
-  const getThemeComputeds = (option: object, upperPath: string) => {
+  const getThemeComputed = (option: object, upperPath: string) => {
     const array: DeepThemeConfigItem[] = []
     let pathMaps: string[] = [upperPath]
     const deep = (option: object) => {
@@ -53,7 +72,7 @@ export const useProvideThemeEditor = (
     return array
   }
   for (const [k, v] of Object.entries(unref(theme))) {
-    deepThemeConfig[k] = getThemeComputeds(<object>v, k)
+    deepThemeConfig[k] = getThemeComputed(<object>v, k)
   }
   return deepThemeConfig
 }

@@ -156,7 +156,7 @@ export const unicorn: Linter.HasRules['rules'] = {
   'unicorn/prevent-abbreviations': [
     'error',
     {
-      ignore: [/param/i, /props/i, /args/i, /prev/i, /ref/i, /dir/i]
+      ignore: [/param/i, /props/i, /args/i, /prev/i, /ref/i, /dir/i, /var/i]
     }
   ],
   'unicorn/require-array-join-separator': 'error',

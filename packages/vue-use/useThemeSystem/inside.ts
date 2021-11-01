@@ -10,21 +10,21 @@ let transformKeys: string[] = []
  * @param theme 将要转换的对象
  * @param merge 内部合并参数
  */
-export const transformTheme2CssVariables = (target: DeepStringObject, merge?: StringObject) => {
+export const transformTheme2CssVars = (target: DeepStringObject, merge?: StringObject) => {
   const result: Record<string, string> = merge || {}
   for (const [key, value] of Object.entries(target)) {
     transformKeys.push(key)
     if (isObject(value)) {
-      transformTheme2CssVariables(value, result)
+      transformTheme2CssVars(value, result)
       transformKeys = []
     } else {
-      const cssvarKey = kebabCase(
+      const cssVarKey = kebabCase(
         transformKeys
           .map((v) => v[0].toUpperCase() + v.slice(1))
           .join('')
           .trim()
       )
-      result[cssvarKey] = value
+      result[cssVarKey] = value
       transformKeys.splice(-1, 1)
     }
   }

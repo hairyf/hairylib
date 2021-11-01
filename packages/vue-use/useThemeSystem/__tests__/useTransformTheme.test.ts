@@ -2,17 +2,17 @@ import { createThemeSystem } from '..'
 import { useInjectedSetup } from '../../../.test'
 
 describe('useTransformTheme', () => {
-  const { useTransformTheme, useProvideTheme } = createThemeSystem({
+  const { useTransformTheme, provideTheme } = createThemeSystem({
     layout: { slider: { textColor: 'red', bgColor: '' } }
   })
   it('transform all', () => {
     useInjectedSetup(
       () => {
-        useProvideTheme()
+        provideTheme()
       },
       () => {
-        const cssvars = useTransformTheme()
-        expect(cssvars.value).toEqual({
+        const cssVariables = useTransformTheme()
+        expect(cssVariables.value).toEqual({
           'layout-slider-text-color': 'red',
           'layout-slider-bg-color': ''
         })
@@ -22,11 +22,11 @@ describe('useTransformTheme', () => {
   it('transform deep path', () => {
     useInjectedSetup(
       () => {
-        useProvideTheme()
+        provideTheme()
       },
       () => {
-        const cssvars = useTransformTheme('layout.slider.textColor')
-        expect(cssvars.value).toEqual({
+        const cssVariables = useTransformTheme('layout.slider.textColor')
+        expect(cssVariables.value).toEqual({
           'layout-slider-text-color': 'red'
         })
       }

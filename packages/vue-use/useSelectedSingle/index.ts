@@ -76,11 +76,10 @@ export const useSelectedSingle = <T extends SelectedArray>(
     if (!target[SELECTED_SINGLE_KEY]) {
       watch(
         () => target[fieldName],
-        () => {
-          resetAllSelected(index)
-        },
+        () => resetAllSelected(index),
         { flush: 'sync' }
       )
+      return undefined
     }
     Object.defineProperty(target, SELECTED_SINGLE_KEY, { value: true })
   }
