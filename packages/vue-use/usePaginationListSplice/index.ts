@@ -9,7 +9,7 @@
 import { nextTick, Ref, ref, watch, WatchOptions } from 'vue-demi'
 import { usePromise, UsePromiseResult } from '../usePromise'
 
-export interface PaginationListSplicOptions<T> extends WatchOptions {
+export interface PaginationListSpliceOptions<T> extends WatchOptions {
   /**
    * 获取列表方法
    */
@@ -20,7 +20,7 @@ export interface PaginationListSplicOptions<T> extends WatchOptions {
   sources?: any[]
 }
 
-export interface PaginationListOptionSplicsResult<T> {
+export interface PaginationListOptionSpliceResult<T> {
   /**
    * 当前是否在加载
    */
@@ -42,10 +42,9 @@ export interface PaginationListOptionSplicsResult<T> {
    */
   end: Ref<boolean>
 }
-
-export const usePaginationListSplic = <T extends Array<any>>(
-  options: PaginationListSplicOptions<T>
-): PaginationListOptionSplicsResult<T> => {
+export const usePaginationListSplice = <T extends Array<any>>(
+  options: PaginationListSpliceOptions<T>
+): PaginationListOptionSpliceResult<T> => {
   const list = ref<any>([]) as Ref<T>
   const currentPage = ref(0)
   const end = ref(false)
@@ -67,12 +66,12 @@ export const usePaginationListSplic = <T extends Array<any>>(
   const next = async () => {
     if (end.value) return
     currentPage.value++
-    const splicList = await exec()
-    if (!splicList?.length) {
+    const splice = await exec()
+    if (!splice?.length) {
       end.value = true
       return
     }
-    list.value = [...list.value, ...splicList] as any
+    list.value = [...list.value, ...splice] as any
   }
 
   nextTick(() => {
