@@ -1,17 +1,25 @@
-import { ref } from 'vue-demi'
-import { useProvideThemeEditor } from '../utils'
-import { DeepPartial } from '@hairy/core'
+import { createThemeSystem } from '..'
+import { useInjectedSetup } from '../../../.test'
 
-describe('useProvideThemeEditor', () => {
+describe('useOverridesEditor', () => {
   it('bind', () => {
-    const theme = ref({
+    const { provideTheme, useThemeEditorConfig } = createThemeSystem({
       layout: { slider: { textColor: 'red', bgColor: '' } }
     })
-    const editTheme = ref<DeepPartial<typeof theme.value>>({})
-    const deepThemeConfig = useProvideThemeEditor(theme, editTheme)
-    deepThemeConfig['layout'][0].value = '#ffffff'
-    expect(editTheme.value?.layout?.slider?.textColor).toBe('#ffffff')
-    deepThemeConfig['layout'][0].value = 'red'
-    expect(editTheme.value?.layout?.slider?.textColor).toBe('red')
+    useInjectedSetup(
+      () => {
+        provideTheme()
+      },
+      () => {
+        const { config, overrides } = useThemeEditorConfig()
+
+        config['layout'][0].value = '#ffffff'
+        expect(overrides.value?.layout?.slider?.textColor).toBe('#ffffff')
+        config['layout'][0].value = 'red'
+        expect(overrides.value?.layout?.slider?.textColor).toBe('red')
+
+        provideTheme(overrides)
+      }
+    )
   })
 })
