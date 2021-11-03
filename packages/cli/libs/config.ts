@@ -16,7 +16,7 @@ export const projectOptions: ProjectOptions = {
     }
     return {
       output,
-      input: path.resolve(__dirname, './template/base')
+      input: path.resolve(__dirname, './template/basic')
     }
   }
 }

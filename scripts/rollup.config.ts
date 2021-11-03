@@ -9,12 +9,12 @@ import { readPackageLernaGitHash } from './utils'
 import consola from 'consola'
 const configs: RollupOptions[] = []
 
-for (const { name, external, iife, globals, build, tsc, customBuild } of packages) {
+for (const { name, external, iife, globals, build, tsc, scriptBuild } of packages) {
   if (tsc === true) {
     execa.sync('tsc', { cwd: join('packages', name) })
     continue
   }
-  if (customBuild === true) {
+  if (scriptBuild === true) {
     execa.sync('yarn build', { cwd: join('packages', name) })
     continue
   }

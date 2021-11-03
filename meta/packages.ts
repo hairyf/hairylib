@@ -64,6 +64,6 @@ export const packages: PackageManifest[] = [
     display: 'Project All cli',
     description: 'Project All cli',
     manualImport: true,
-    customBuild: true
+    scriptBuild: true
   }
 ]

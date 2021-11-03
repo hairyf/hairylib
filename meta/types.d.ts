@@ -39,7 +39,7 @@ interface PackageManifest {
   /**
    * 是否自定义打包规则 (使用包内部的打包命令)
    */
-  customBuild?: boolean
+  scriptBuild?: boolean
   /**
    * 是否手动导入
    */

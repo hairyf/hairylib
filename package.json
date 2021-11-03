@@ -44,6 +44,7 @@
     "@types/mockjs": "^1.0.4",
     "consola": "^2.15.3",
     "cross-env": "^7.0.3",
+    "esbuild-plugin-d.ts": "^1.0.6",
     "esbuild-register": "^2.6.0",
     "esno": "^0.8.0",
     "execa": "^5.1.1",
