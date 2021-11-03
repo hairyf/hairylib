@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 require('esbuild-register')
-require('../libs/bin/index.ts')
+require('../src/bin/index.ts')

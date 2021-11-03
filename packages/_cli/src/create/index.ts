@@ -1,13 +1,9 @@
-#!/usr/bin/env node
-import cac from 'cac'
 import { Select, Confirm } from 'enquirer'
-import { projectOptions } from '../config'
-import { createTemplate } from 'templa-cli'
 import execa from 'execa'
+import { createTemplate } from 'templa-cli'
+import { projectOptions } from './config'
 
-const cli = cac('templa-cli')
-
-cli.command('create <app-name>', 'create project to app-name dir').action(async (output) => {
+export const actionCreateTemplate = async (output: string) => {
   const selectPrompt = new Select({
     message: '选择创建的模板',
     choices: Object.keys(projectOptions)
@@ -42,7 +38,4 @@ cli.command('create <app-name>', 'create project to app-name dir').action(async 
     console.error(error)
     process.exit(1)
   }
-})
-
-cli.help()
-cli.parse()
+}

@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "module": "CommonJS",
-    "target": "ES5",
+    "target": "ES2016",
     "allowJs": true,
     "outDir": "./dist",
-    "rootDir": "./libs"
+    "rootDir": "src"
   },
   
   "exclude": [
@@ -12,6 +12,6 @@
     "**/__test__/*.ts"
   ],
   "include": [
-    "./libs"
+    "src"
   ]
 }
