@@ -28,10 +28,10 @@ export const reporterPlugin = (mode: string): Plugin => {
       let remaining = 0
       onResolve({ filter: /.*/ }, (options): any => {
         if (texts.length <= 2) {
-          texts.push(`transforming ${chalk.magenta(options.path)}`)
+          texts.push(`build ${chalk.magenta(options.path)}`)
         }
         if (texts.length >= 3) {
-          texts[3] = `transforming remaining ${chalk.cyan(remaining++)} files...`
+          texts[3] = `build remaining ${chalk.cyan(remaining++)} files...`
         }
         if (texts.length > 0) writeLogger(texts.join('\n') + '\n')
       })
