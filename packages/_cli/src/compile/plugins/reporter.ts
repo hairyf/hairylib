@@ -21,7 +21,7 @@ export const reporterPlugin = (mode: string): Plugin => {
       onEnd(() => {
         if (mode !== 'development') {
           const endTime = (Date.now() - startTime) / 1000
-          console.log(chalk.cyan(`sfe-library built in ${chalk.yellow(endTime + 's')}`))
+          console.log(chalk.cyan(`@hairy/cli built in ${chalk.yellow(endTime + 's')}`))
         }
       })
       const texts: string[] = []
