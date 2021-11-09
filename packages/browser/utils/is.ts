@@ -34,3 +34,5 @@ export const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
 export const isPhantomJS = UA && /phantomjs/.test(UA)
 
 export const isFF = typeof UA == 'string' && UA.match(/firefox\/(\d+)/)
+
+export const isMobile = navigator.userAgent.toLowerCase().includes('mobile')
