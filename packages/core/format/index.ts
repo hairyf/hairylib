@@ -47,3 +47,10 @@ export const filterInteger = (value: string) => {
 export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') => {
   return dayjs.unix(timestamp).format(format)
 }
+
+/**
+ * 数字位数不够，进行前补零
+ * @param num 数值
+ * @param lh 长度
+ */
+export const prefixZero = (num: number, lh = 2) => (Array(lh).join('0') + num).slice(lh)
