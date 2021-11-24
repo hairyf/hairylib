@@ -1,0 +1,6 @@
+{
+  "name": "@hairy/wechat-jssdk",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
