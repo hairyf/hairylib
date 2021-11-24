@@ -1,8 +1,8 @@
-export type AnyObject = {
+export type PlainObject = {
   [key: string]: any
 }
 
-export type Key = string | number
+export type LooseNumber = string | number
 
 export type DeepReadonly<T> = {
   readonly [P in keyof T]: T[P] extends object ? DeepReadonly<T[P]> : T[P]

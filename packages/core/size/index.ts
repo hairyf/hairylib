@@ -8,6 +8,7 @@
  */
 
 import { isString } from 'lodash'
+import { LooseNumber } from '@hairy/core'
 
 /**
  * 如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上px单位
@@ -15,15 +16,16 @@ import { isString } from 'lodash'
  * @param unit 单元
  * @returns string
  */
-export const analyUnit = (size: string | number, unit = 'px') => {
+export const analyUnit = (size: LooseNumber, unit = 'px') => {
   return isString(size) && /\D/g.test(size) ? size : size + unit
 }
+
 /** size 转换配置 */
 export type AnalySizeOption =
-  | string
-  | number
-  | { width: string | number; height: string | number }
-  | [number | string, number | string]
+  | LooseNumber
+  | [LooseNumber, LooseNumber]
+  | { width: LooseNumber; height: LooseNumber }
+
 /**
  * 将 size 转换为宽高
  * @param size { AnalySizeOption }

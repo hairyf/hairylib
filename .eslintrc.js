@@ -1,2 +1,2 @@
 require('esbuild-register')
-module.exports = require('./packages/_eslint/libs/all')
+module.exports = require('./packages/_eslint/src/all.ts')

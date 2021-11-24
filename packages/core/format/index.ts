@@ -9,17 +9,17 @@
 import dayjs from 'dayjs'
 
 /**
- * 剔除字符串代码字段
+ * 格式化剔除字符串代码字段
  * @param str 字符串
  * @returns 剔除字符串
  */
-export const removeStringCode = (string_: string) => string_.replace(/<[!/]*[^<>]*>/gi, '')
+export const formatClearHtml = (string_: string) => string_.replace(/<[!/]*[^<>]*>/gi, '')
 
 /**
- * 过滤为价格(两位小数点)
+ * 格式化为价格(两位小数点)
  * @param value 传入字符
  */
-export const filterPrice = (value: string) => {
+export const formatPrice = (value: string) => {
   return value
     .replace(/^[^\d+]/, '')
     .replace(/[^\d,.{|}]/g, '')
@@ -31,10 +31,10 @@ export const filterPrice = (value: string) => {
 }
 
 /**
- * 过滤为正整数
+ * 格式化为正整数
  * @param value 传入字符
  */
-export const filterInteger = (value: string) => {
+export const formatInteger = (value: string) => {
   return value.replace(/^(0+)|\D+/g, '')
 }
 
@@ -49,8 +49,16 @@ export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') =>
 }
 
 /**
+ * 隐藏手机号中间四位
+ */
+export const formatCoverPhone = (phone: string) => {
+  return phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
+}
+/**
  * 数字位数不够，进行前补零
  * @param num 数值
  * @param lh 长度
  */
-export const prefixZero = (num: number, lh = 2) => (Array(lh).join('0') + num).slice(lh)
+export const prefixZero = (number_: number, lh = 2) => {
+  return (new Array(lh).join('0') + number_).slice(-lh)
+}
