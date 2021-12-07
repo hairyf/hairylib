@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import cac from 'cac'
-import packageJson from '../../package.json'
 import { actionBuilder } from '../compile'
 import { actionCreateTemplate } from '../create'
+import { version } from '../config'
 
 const cli = cac('templa-cli')
 
@@ -22,5 +22,5 @@ cli
   .action((options) => actionBuilder({ ...options, mode: 'production' }))
 
 cli.help()
-cli.version(packageJson.version)
+cli.version(version)
 cli.parse()

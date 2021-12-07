@@ -4,7 +4,7 @@
 import { Plugin } from 'esbuild'
 import chalk from 'chalk'
 import logUpdate from 'log-update'
-import { version } from '../../../package.json'
+import { version } from '../../config'
 
 export const reporterPlugin = (mode: string): Plugin => {
   const writeLogger = logUpdate.create(process.stderr, { showCursor: true })

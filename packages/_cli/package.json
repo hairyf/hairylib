@@ -14,13 +14,15 @@
     "enquirer": "^2.3.6",
     "execa": "^5.1.1",
     "log-update": "4.0.0",
-    "templa-cli": "0.0.4"
+    "templa-cli": "0.0.4",
+    "fs-extra": "^10.0.0"
   },
   "bin": {
     "hairy": "bin/index.js"
   },
   "devDependencies": {
     "@types/log-update": "^3.1.0",
+    "@types/fs-extra": "^9.0.12",
     "@types/node": "^16.10.1"
   },
   "gitHead": "28a000a01f5260a226ef95926b2c818b1c73aaf2",

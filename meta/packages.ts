@@ -12,13 +12,13 @@ export const packages: PackageManifest[] = [
     manualImport: true,
     tsc: true
   },
-  // {
-  //   name: '_cli',
-  //   display: 'Project All cli',
-  //   description: 'Project All cli',
-  //   manualImport: true,
-  //   scriptBuild: true
-  // },
+  {
+    name: '_cli',
+    display: 'Project All cli',
+    description: 'Project All cli',
+    manualImport: true,
+    scriptBuild: true
+  },
   {
     name: 'axios',
     display: 'Axios utilities',
