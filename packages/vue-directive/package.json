@@ -1,6 +1,6 @@
 {
   "name": "@hairy/vue-directive",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Collection of essential Vue directives",
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
@@ -14,7 +14,7 @@
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
   "dependencies": {
-    "@hairy/core": "^1.0.3",
+    "@hairy/core": "^1.0.4",
     "lodash": "^4.17.21",
     "vue-demi": "^0.11.2"
   },
@@ -31,4 +31,3 @@
   },
   "gitHead": "28a000a01f5260a226ef95926b2c818b1c73aaf2"
 }
-
