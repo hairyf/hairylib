@@ -11,5 +11,6 @@
   "module": "./index.esm.js",
   "unpkg": "./index.iife.min.js",
   "jsdelivr": "./index.iife.min.js",
-  "author": "Anthony Fu<https://github.com/TuiMao233>"
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "gitHead": "d5b83d069dd7dfcd65aa6bcd07f1a33baceff00d"
 }
