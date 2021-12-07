@@ -1,6 +1,15 @@
 {
   "name": "@hairy/wechat-jssdk",
+  "version": "1.0.0",
+  "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.21"
-  }
+    "@types/jweixin": "^1.0.8",
+    "jweixin": "^1.0.0"
+  },
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "author": "Anthony Fu<https://github.com/TuiMao233>"
 }

@@ -1,4 +1,4 @@
-import { noop } from '../../common/utils'
+import { noop } from '@hairy/core'
 
 export interface LoadScriptOptions {
   /**
@@ -22,8 +22,8 @@ export interface LoadScriptOptions {
   defer?: boolean
 }
 export const loadScript = (
-  src: string,
-  onLoaded: (el: HTMLScriptElement) => void = noop,
+  source: string,
+  onLoaded: (element: HTMLScriptElement) => void = noop,
   options: LoadScriptOptions = {}
 ): Promise<HTMLScriptElement> => {
   const {
@@ -40,46 +40,47 @@ export const loadScript = (
     // Local variable defining if the <script> tag should be appended or not.
     let shouldAppend = false
 
-    let el = document.querySelector(`script[src="${src}"]`) as HTMLScriptElement
+    let element = document.querySelector(`script[src="${source}"]`) as HTMLScriptElement
 
     // Script tag not found, preparing the element for appending
-    if (!el) {
-      el = document.createElement('script')
-      el.type = type
-      el.async = async
-      el.src = src
+    if (!element) {
+      element = document.createElement('script')
+      element.type = type
+      element.async = async
+      element.src = source
 
       // Optional attributes
-      if (defer) el.defer = defer
-      if (crossOrigin) el.crossOrigin = crossOrigin
-      if (noModule) el.noModule = noModule
-      if (referrerPolicy) el.referrerPolicy = referrerPolicy
+      if (defer) element.defer = defer
+      if (crossOrigin) element.crossOrigin = crossOrigin
+      if (noModule) element.noModule = noModule
+      if (referrerPolicy) element.referrerPolicy = referrerPolicy
 
       // Enables shouldAppend
       shouldAppend = true
     }
     // Script tag already exists, resolve the loading Promise with it.
-    else if (el.hasAttribute('data-loaded')) {
-      resolve(el)
+    else if (element.hasAttribute('data-loaded')) {
+      resolve(element)
     }
 
     // Event listeners
-    el.addEventListener('error', (event) => reject(event))
-    el.addEventListener('abort', (event) => reject(event))
-    el.addEventListener('load', () => {
-      el.setAttribute('data-loaded', 'true')
-      onLoaded(el)
-      resolve(el)
+    element.addEventListener('error', (event) => reject(event))
+    element.addEventListener('abort', (event) => reject(event))
+    element.addEventListener('load', () => {
+      element.dataset.loaded = 'true'
+      onLoaded(element)
+      resolve(element)
     })
 
     // Append the <script> tag to head.
     if (shouldAppend) {
-      el = document.head.appendChild(el)
+      // eslint-disable-next-line unicorn/prefer-dom-node-append
+      element = document.head.appendChild(element)
     }
 
     // If script load awaiting isn't needed, we can resolve the Promise.
     if (!waitForScriptLoad) {
-      resolve(el)
+      resolve(element)
     }
   })
 }

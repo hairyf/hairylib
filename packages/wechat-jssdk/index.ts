@@ -1,16 +1,5 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-useless-constructor */
-
 import * as WxType from 'jweixin'
-import { noop } from '../common/utils'
 import { WechatJssdkHelper, WechatJssdkOptions } from './helper'
-
-export interface IShareInfo {
-  share_title: string
-  share_desc: string
-  share_icon: string
-  share_url?: string
-}
 
 /**
  * @description WechatJssdk Api 封装，与 [jssdk 文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 保持一致，主要以下改动
@@ -155,25 +144,6 @@ class WechatJssdk extends WechatJssdkHelper {
   uploadVoice(options: WxType.IupdownloadVoice) {
     return this.implement('uploadVoice', options)
   }
-  /** @deprecated 废弃 - 请直接使用 onMenuShareAppMessage 和 onMenuShareTimeline */
-  wxShare(info: IShareInfo, callback?: () => void) {
-    const shareInfo = {
-      title: info.share_title || '',
-      desc: info.share_desc || '',
-      link: info.share_url || '',
-      imgUrl: info.share_icon || ''
-    }
-    Promise.all([
-      this.onMenuShareAppMessage({ ...shareInfo, success: () => console.log('app share success'), cancel: noop }),
-      this.onMenuShareTimeline({ ...shareInfo, success: () => console.log('timeline share success'), cancel: noop })
-    ]).then(callback)
-  }
-  /** @deprecated 废弃 - 请直接使用 ready */
-  wxReady = this.ready
-  /** @deprecated 废弃 - 请直接使用 previewImage */
-  wxPreViewImage = this.previewImage
 }
 
 export { WechatJssdk }
-
-export default WechatJssdk

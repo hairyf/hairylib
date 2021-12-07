@@ -1,36 +1,30 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import axios from 'axios'
 import * as WxType from 'jweixin'
-import { DefineEnvMode } from '../common/define/types'
-import { envApiHostMap, envSourceAppidMap } from './internal/config'
 import { loadScript } from './internal/load_script'
 
 declare module 'jweixin' {
   type v4ApiMethod = 'updateTimelineShareData' | 'updateAppMessageShareData'
   type v4jsApiList = v4ApiMethod[]
-  export function config(conf: {
+  export function config(config_: {
     debug?: boolean | undefined // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
     appId: string // 必填，公众号的唯一标识
     timestamp: number // 必填，生成签名的时间戳
     nonceStr: string // 必填，生成签名的随机串
     signature: string // 必填，签名，见附录1
     jsApiList: jsApiList & v4jsApiList[] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-  })
+  }): void
 }
 
 declare const wx: typeof WxType
 
-/** 微信 jssdk wx.config 参数, 'timestamp' | 'nonceStr' | 'signature' 不需要传，由内置请求得出 */
-export type WechatJssdkConfig = Omit<Partial<Parameters<typeof wx.config>[0]>, 'timestamp' | 'nonceStr' | 'signature'>
+export type WechatJssdkConfig = Omit<Parameters<typeof wx.config>[0], 'catch' | 'finally' | 'then'>
+
+/** 初始化请求配置微信 jssdk wx.config 参数 */
+export type WechatJssdkConfigFunction = () => WechatJssdkConfig | Promise<WechatJssdkConfig>
 export interface WechatJssdkOptions {
   /**
-   * 开发环境
+   * 初始化请求配置
    */
-  env: keyof typeof DefineEnvMode
-  /**
-   * wx.config 基本参数, wx.config 调用时会合并参数
-   */
-  config?: WechatJssdkConfig
+  requestConfig: () => Promise<WechatJssdkConfig>
   /**
    * 是否立即加载 config
    *
@@ -55,11 +49,9 @@ export interface WechatJssdkOptions {
 export class WechatJssdkHelper {
   private version: string
 
-  private apiHost: string
-
   private isReady = false
 
-  private configParams: WechatJssdkConfig = {}
+  private requestConfig: () => Promise<WechatJssdkConfig>
 
   private loadPromise?: Promise<void>
   private configPromise?: Promise<void>
@@ -73,38 +65,24 @@ export class WechatJssdkHelper {
   }
 
   constructor(options: WechatJssdkOptions) {
-    const { immediate = true } = options
-    this.apiHost = envApiHostMap.get(options.env)!
-    this.configParams.appId = envSourceAppidMap.get(options.env)!
-    this.configParams = { ...this.configParams, ...options.config }
-    this.version = options.version || '1.3.0'
+    const { immediate = true, version, requestConfig } = options
+
+    this.version = version || '1.3.0'
+    this.requestConfig = requestConfig
 
     this.loadJssdk()
 
     if (immediate) this.config()
   }
 
-  async config(conf?: WechatJssdkConfig) {
+  async config() {
     if (this.configPromise) return this.configPromise
 
     if (this.loadPromise) await this.loadPromise
 
-    this.configParams = { ...this.configParams, ...conf }
-
-    this.configPromise = axios
-      .get('/api/v1/share/jssdk.config', {
-        baseURL: this.apiHost,
-        params: { appid: this.configParams.appId, url: location.href }
-      })
-      .then(async ({ data }) => {
-        wx.config({
-          ...(this.configParams as any),
-          timestamp: data.data.timestamp,
-          nonceStr: data.data.nonce_str,
-          signature: data.data.signature
-        })
-        this.configPromise = undefined
-      })
+    this.configPromise = (async () => {
+      wx.config(await this.requestConfig())
+    })()
 
     return this.configPromise
   }
@@ -131,7 +109,7 @@ export class WechatJssdkHelper {
     return this.readyPromise
   }
   async error() {
-    return this.ready().catch((v) => v)
+    return this.ready().catch((error) => error)
   }
 
   protected async implement<Key extends keyof typeof wx | string>(key: Key, options?: any) {

@@ -65,5 +65,12 @@ export const packages: PackageManifest[] = [
     description: 'Project All cli',
     manualImport: true,
     scriptBuild: true
+  },
+  {
+    name: 'wechat-jssdk',
+    display: 'Wechat Jssdk',
+    description: 'Wechat Jssdk',
+    external: ['jweixin'],
+    manualImport: true
   }
 ]

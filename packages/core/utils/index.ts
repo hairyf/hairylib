@@ -100,3 +100,6 @@ export const objectFlat = (object: Record<string, any>, deep = 1) => {
   }
   return flatDeep(object, deep)
 }
+
+/** 空的方法 */
+export const noop = () => {}
