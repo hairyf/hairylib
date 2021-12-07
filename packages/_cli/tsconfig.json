@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2016",
+    "allowJs": true,
+    "outDir": "./dist",
+    "rootDir": "src"
+  },
+  
+  "exclude": [
+    "**/__tests__/*.ts",
+    "**/__test__/*.ts"
+  ],
+  "include": [
+    "src"
+  ]
+}

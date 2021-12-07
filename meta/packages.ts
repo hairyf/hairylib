@@ -12,6 +12,13 @@ export const packages: PackageManifest[] = [
     manualImport: true,
     tsc: true
   },
+  // {
+  //   name: '_cli',
+  //   display: 'Project All cli',
+  //   description: 'Project All cli',
+  //   manualImport: true,
+  //   scriptBuild: true
+  // },
   {
     name: 'axios',
     display: 'Axios utilities',
@@ -58,13 +65,6 @@ export const packages: PackageManifest[] = [
     name: 'uni-utils',
     display: 'Uni utilities',
     description: 'Collection of essential Uni Utilities'
-  },
-  {
-    name: 'cli',
-    display: 'Project All cli',
-    description: 'Project All cli',
-    manualImport: true,
-    scriptBuild: true
   },
   {
     name: 'wechat-jssdk',

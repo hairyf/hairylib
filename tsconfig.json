@@ -17,7 +17,9 @@
   },
   "exclude": [
     "**/__tests__/*.ts",
-    "**/__test__/*.ts"
+    "**/__test__/*.ts",
+    "**/dist/*.ts",
+    "**/dist/*.d.ts",
   ],
   "include": [
     "./**/*.ts",

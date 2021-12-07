@@ -36,6 +36,8 @@ export const buildMetaFiles = async () => {
       continue
     }
 
+    await fs.ensureDir(packageDist)
+
     // 向打包后的 dist 添加包的源信息
     for (const file of FILES_COPY_ROOT)
       await fs.copyFile(path.join(rootDir, file), path.join(packageDist, file))
