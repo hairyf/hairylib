@@ -1,6 +1,6 @@
-# @hairy/eslint
+# @hairy/cli
 
-eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
+脚手架，提供创建模板与基库编译。
 
 ## Install
 
@@ -8,6 +8,24 @@ eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 
 ## Usage
 
+### 创建项目
+
+使用 hairy create 创建模板，目前可选择以下模板
+
+`basic`（基本模板，包含 eslint、prettier、lodash）
+`vue3`（TODO）
+`uniapp`（TODO）
+`react`（TODO）
+
 ~~~sh
 hairy create <project-path>
+~~~
+
+### 编译项目（esbuild）
+
+使用 dev | build 指令编译基库项目
+
+~~~sh
+hairy dev <path>
+hairy build <path>
 ~~~
