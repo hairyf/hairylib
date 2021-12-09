@@ -5,7 +5,6 @@
     "build": "esno scripts/build.ts",
     "bin": "esno src/bin/index.ts"
   },
-  "prettier": "@hairy/eslint/prettier",
   "dependencies": {
     "lodash": "^4.17.21"
   },

@@ -28,6 +28,6 @@ export const actionBuilder = async (options: ActionBuilderOptions = {}) => {
       '.ts': 'tsx',
       '.tsx': 'tsx'
     },
-    plugins: [dtsPlugin(), reporterPlugin(mode)]
+    plugins: [dtsPlugin() as any, reporterPlugin(mode)]
   })
 }
