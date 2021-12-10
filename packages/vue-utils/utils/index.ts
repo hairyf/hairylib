@@ -19,6 +19,7 @@ export const renderInstance = <T = Component>(Constructor: T, props: Record<stri
   // 组件消失时, 移除当前实例
   props.onVanish = () => {
     render(null, container)
+    container.firstElementChild?.remove()
   }
   // 创建虚拟节点, 渲染组件
   const container = document.createElement('div')
