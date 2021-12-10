@@ -17,7 +17,7 @@ import { Component, h, render } from 'vue-demi'
  */
 export const renderInstance = <T = Component>(Constructor: T, props: Record<string, any>) => {
   // 组件消失时, 移除当前实例
-  props.onVanish = () => {
+  props.vanish = () => {
     render(null, container)
     container.firstElementChild?.remove()
   }
