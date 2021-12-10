@@ -1,6 +1,6 @@
 {
   "name": "@hairy/wechat-jssdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "dependencies": {
     "@types/jweixin": "^1.0.8",
@@ -14,4 +14,3 @@
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "gitHead": "d5b83d069dd7dfcd65aa6bcd07f1a33baceff00d"
 }
-

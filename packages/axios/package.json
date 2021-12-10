@@ -1,9 +1,9 @@
 {
   "name": "@hairy/axios",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "dependencies": {
-    "@hairy/core": "^1.0.6",
+    "@hairy/core": "^1.0.7",
     "axios": "^0.21.1",
     "lodash": "^4.17.21"
   },
@@ -34,4 +34,3 @@
   },
   "gitHead": "d5b83d069dd7dfcd65aa6bcd07f1a33baceff00d"
 }
-

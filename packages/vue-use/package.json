@@ -1,9 +1,9 @@
 {
   "name": "@hairy/vue-use",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "MIT",
   "dependencies": {
-    "@hairy/browser": "^1.0.6",
+    "@hairy/browser": "^1.0.7",
     "@types/pubsub-js": "^1.8.2",
     "@vueuse/core": "^5.2.0",
     "lodash": "^4.17.21",
@@ -38,4 +38,3 @@
   },
   "gitHead": "d5b83d069dd7dfcd65aa6bcd07f1a33baceff00d"
 }
-

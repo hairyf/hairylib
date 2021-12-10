@@ -1,6 +1,6 @@
 {
   "name": "@hairy/browser",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "MIT",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
@@ -32,4 +32,3 @@
   },
   "gitHead": "d5b83d069dd7dfcd65aa6bcd07f1a33baceff00d"
 }
-
