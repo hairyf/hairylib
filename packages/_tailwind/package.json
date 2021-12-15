@@ -1,10 +1,10 @@
 {
   "name": "@hairy/tailwind",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Tailwind config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
-    "@hairy/core": "^1.0.7",
+    "@hairy/core": "^1.0.8",
     "@types/tailwindcss": "2.0.0",
     "lodash": "^4.17.21"
   },
