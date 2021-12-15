@@ -27,7 +27,7 @@ export const axiosPickByParams = (
   const { header = false, data = true, params = true, deep = false, formData = true } = option
   axios.interceptors.request.use((config) => {
     if (header && isPlainObject(config.headers)) {
-      config.headers = pickByParams(config.headers, filters, deep)
+      config.headers = pickByParams(config.headers as any, filters, deep)
     }
     if (params && isPlainObject(config.params)) {
       config.params = pickByParams(config.params, filters, deep)
