@@ -1,5 +1,4 @@
-import _axios, { AxiosStatic } from 'axios'
-
+import _axios, { AxiosStatic, AxiosInstance } from 'axios'
 declare module 'axios' {
   interface AxiosInstance {
     get<T = any, R = AxiosResponse<T>>(
@@ -33,7 +32,7 @@ declare module 'axios' {
  * 主要参数调整 (url, config) -> (url, params, config)
  * @param AxiosStatic
  */
-export const axiosProtoApiModify = (axios?: AxiosStatic) => {
+export const axiosProtoApiModify = (axios?: AxiosStatic | AxiosInstance) => {
   const origin = axios || _axios
   const dealWithOrigin = (origin: any) => {
     if (typeof origin === 'undefined') return undefined
