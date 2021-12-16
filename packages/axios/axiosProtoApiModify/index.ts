@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-16 10:44:32
+ * @LastEditTime: 2021-12-16 10:46:01
  */
 import _axios, { AxiosStatic, AxiosInstance } from 'axios'
 declare module 'axios' {
@@ -38,11 +38,14 @@ declare module 'axios' {
  * 主要参数调整 (url, config) -> (url, params, config)
  * @param AxiosStatic
  */
-export const axiosProtoApiModify = (axios?: AxiosStatic | AxiosInstance) => {
+export const axiosProtoApiModify = (
+  axios?: AxiosStatic | AxiosInstance,
+  functions?: ('delete' | 'get' | 'head' | 'options')[]
+) => {
   const origin = axios || _axios
   const dealWithOrigin = (origin: any) => {
     if (typeof origin === 'undefined') return undefined
-    ;['delete', 'get', 'head', 'options'].forEach((method) => {
+    ;(functions || ['delete', 'get', 'head', 'options']).forEach((method) => {
       origin[method] = function (url: string, params?: any, config?: any) {
         return origin.call(this, url, { params, ...config, method })
       }
