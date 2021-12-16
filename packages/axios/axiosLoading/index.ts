@@ -1,9 +1,9 @@
 /*
  * @Author: Zhilong
  * @Date: 2021-08-06 09:58:10
- * @LastEditTime: 2021-08-06 10:46:37
+ * @LastEditTime: 2021-12-16 10:50:19
  * @Description:
- * @LastEditors: Zhilong
+ * @LastEditors: Mr'Mao
  * @autograph: ⚠ warning!  ⚠ warning!  ⚠ warning!   ⚠野生的页面出现了!!
  */
 import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
@@ -52,7 +52,7 @@ export const axiosLoading = (
         subscribers--
         !subscribers && clone(error.config, [undefined, error])
       }
-      return error
+      return Promise.reject(error)
     }
   )
 }
