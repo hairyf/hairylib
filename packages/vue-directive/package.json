@@ -16,7 +16,7 @@
   "dependencies": {
     "@hairy/core": "^1.0.8",
     "lodash": "^4.17.21",
-    "vue-demi": "^0.11.2"
+    "vue-demi": "^0.12.1"
   },
   "types": "./index.d.ts",
   "module": "./index.esm.js",

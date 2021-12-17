@@ -8,7 +8,7 @@
     "@vueuse/core": "^5.2.0",
     "lodash": "^4.17.21",
     "pubsub-js": "^1.9.3",
-    "vue-demi": "^0.11.2"
+    "vue-demi": "^0.12.1"
   },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
