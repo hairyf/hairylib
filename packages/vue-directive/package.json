@@ -1,6 +1,6 @@
 {
   "name": "@hairy/vue-directive",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Collection of essential Vue directives",
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
