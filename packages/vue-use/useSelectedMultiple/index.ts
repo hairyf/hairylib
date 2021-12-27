@@ -47,7 +47,7 @@ export const useSelectedMultiple = <T extends SelectedMultipleArray>(
 
   /** 当前是否为全选状态 */
   const isSelectAll = computed({
-    get: () => !!unref(array).some((item) => item[fieldName]),
+    get: () => !unref(array).some((item) => !item[fieldName]),
     set: (value) => unref(array).forEach((item) => (item[fieldName] = value))
   })
 
