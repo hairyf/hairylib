@@ -1,3 +1,9 @@
+/*
+ * @Author: Mr'Mao https://github.com/TuiMao233
+ * @Date: 2021-12-06 18:13:53
+ * @LastEditors: Mr'Mao
+ * @LastEditTime: 2021-12-29 10:37:17
+ */
 export const packages: PackageManifest[] = [
   {
     name: '_tailwind',
@@ -71,6 +77,12 @@ export const packages: PackageManifest[] = [
     display: 'Wechat Jssdk',
     description: 'Wechat Jssdk',
     external: ['jweixin'],
+    manualImport: true
+  },
+  {
+    name: 'swagger',
+    display: 'Swagger api generate',
+    description: 'Swagger api generate',
     manualImport: true
   }
 ]
