@@ -1,9 +1,9 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 13:57:13
- * @LastEditTime: 2021-08-06 11:56:53
+ * @LastEditTime: 2021-12-29 14:15:08
  * @Description:
- * @LastEditors: Zhilong
+ * @LastEditors: Mr'Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import dayjs from 'dayjs'
@@ -39,6 +39,16 @@ export const formatInteger = (value: string) => {
 }
 
 /**
+ * 格式化数字千位分隔符
+ * @param number_
+ */
+export const formatThousandBitSeparator = (number_: number | string) => {
+  const string_ = number_.toString()
+  const regex = string_.includes('.') ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(\d{3}))/g
+  return string_.replace(regex, ($0, $1) => $1 + ',')
+}
+
+/**
  * 时间戳格式化(秒)
  * @param timestamp 格式化时间戳(秒)
  * @param format 格式化时间格式
@@ -54,6 +64,7 @@ export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') =>
 export const formatCoverPhone = (phone: string) => {
   return phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
 }
+
 /**
  * 数字位数不够，进行前补零
  * @param num 数值
