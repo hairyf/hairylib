@@ -8,7 +8,7 @@ import fs from 'fs-extra'
 import { toArray, merge } from 'lodash'
 
 import ora from 'ora'
-import { transformOutput } from './parser/output'
+import { parseOutput } from './parser/output'
 import { SwaggerBuildConfig } from './_types'
 
 export interface HairySwaggerType {
@@ -22,7 +22,7 @@ export const hairySwagger: HairySwaggerType = async (config) => {
   const configs: SwaggerBuildConfig[] = toArray(config)
   for (const iterator of configs) {
     const config = merge(hairySwagger.default, iterator)
-    const output = transformOutput(config)
+    const output = parseOutput(config)
     await fs.ensureDir(output.api.root)
     await fs.ensureDir(output.type.root)
   }

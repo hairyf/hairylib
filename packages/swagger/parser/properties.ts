@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-28 14:05:02
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-30 13:44:20
+ * @LastEditTime: 2021-12-30 13:46:57
  */
 
 import { SwaggerSourceProperties } from '../_types'
@@ -14,7 +14,7 @@ import { TYPE_MAPPING } from '../internal'
  * TODO 为无法复现的 swagger 结构场景。
  * @param propertie
  */
-export function parsePropertie(propertie: SwaggerSourceProperties): string {
+export function parseProperties(propertie: SwaggerSourceProperties): string {
   if (propertie.originalRef) {
     return varName(propertie.originalRef)
   }
@@ -23,7 +23,7 @@ export function parsePropertie(propertie: SwaggerSourceProperties): string {
   }
 
   if (propertie.type === 'array') {
-    return `${parsePropertie(propertie.items!)}[]`
+    return `${parseProperties(propertie.items!)}[]`
   }
 
   if (propertie.type === 'object') {

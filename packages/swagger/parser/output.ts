@@ -7,7 +7,7 @@
 import path from 'path'
 import { SwaggerBuildConfig, SwaggerOutput } from '../_types'
 
-export const transformOutput = (config: SwaggerBuildConfig) => {
+export const parseOutput = (config: SwaggerBuildConfig) => {
   const basePath = config.output?.cwd || process.cwd()
   const api = config.output?.api || 'src/api/index.ts'
   const type = config.output?.type || 'src/api/index.type.ts'

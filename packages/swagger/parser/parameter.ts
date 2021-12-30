@@ -6,7 +6,7 @@
  */
 
 import { SwaggerField, SwaggerSourceParameter } from '../_types'
-import { parsePropertie } from './properties'
+import { parseProperties } from './properties'
 
 /**
  * 根据 Apis parameter 不同的类型进行解析
@@ -14,7 +14,7 @@ import { parsePropertie } from './properties'
  */
 export function parseParameter(parameter: SwaggerSourceParameter): string | SwaggerField {
   if (parameter.in === 'body') {
-    return parsePropertie(parameter.schema)
+    return parseProperties(parameter.schema)
   }
   if (parameter.in === 'query') {
     const isQueryArray = parameter.type === 'array'
@@ -22,14 +22,14 @@ export function parseParameter(parameter: SwaggerSourceParameter): string | Swag
     const isQueryArrayDescription = `${description} ?${parameter.name}=a,b,c`
     return {
       name: parameter.name,
-      value: isQueryArray ? 'string' : parsePropertie(parameter),
+      value: isQueryArray ? 'string' : parseProperties(parameter),
       required: !!parameter.required,
       description: isQueryArray ? isQueryArrayDescription : description
     }
   }
   return {
     name: parameter.name,
-    value: parsePropertie(parameter),
+    value: parseProperties(parameter),
     required: !!parameter.required,
     description: parameter.description ?? ''
   }

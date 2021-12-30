@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:59
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-30 13:44:02
+ * @LastEditTime: 2021-12-30 13:45:57
  */
 
 import axios from 'axios'
@@ -17,9 +17,9 @@ import {
   SwaggerParseConfig
 } from '../_types'
 import { parseParameter } from './parameter'
-import { parsePropertie } from './properties'
+import { parseProperties } from './properties'
 
-export const parseSwaggerSource = async (config: SwaggerBuildConfig) => {
+export const parseSource = async (config: SwaggerBuildConfig) => {
   const { data } = await axios(config.uri, { method: 'get', responseType: 'json' })
 
   // #region 构造 swagger 相关描述性信息
@@ -47,7 +47,7 @@ export const parseSwaggerSource = async (config: SwaggerBuildConfig) => {
     for (const [fieldName, propertie] of entries<any>(definitionSource)) {
       const field: SwaggerField = {
         name: fieldName,
-        value: parsePropertie(propertie),
+        value: parseProperties(propertie),
         required: !!propertie.required,
         description: propertie.description ?? ''
       }
@@ -87,7 +87,7 @@ export const parseSwaggerSource = async (config: SwaggerBuildConfig) => {
       }
       // 响应的数据。默认去 200 的 HTTP状态码对应的数据
       const responsesSchema = config.responses['200'].schema
-      fetchApi.response = responsesSchema ? parsePropertie(responsesSchema) : null
+      fetchApi.response = responsesSchema ? parseProperties(responsesSchema) : null
       transformConfig.apis.push(fetchApi)
     }
   }
