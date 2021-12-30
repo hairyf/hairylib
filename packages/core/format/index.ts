@@ -1,12 +1,13 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 13:57:13
- * @LastEditTime: 2021-12-29 14:15:08
+ * @LastEditTime: 2021-12-30 09:43:40
  * @Description:
  * @LastEditors: Mr'Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import dayjs from 'dayjs'
+import { camelCase } from 'lodash'
 
 /**
  * 格式化剔除字符串代码字段
@@ -72,4 +73,13 @@ export const formatCoverPhone = (phone: string) => {
  */
 export const prefixZero = (number_: number, lh = 2) => {
   return (new Array(lh).join('0') + number_).slice(-lh)
+}
+/**
+ * 转换大写驼峰
+ * @param str
+ */
+export const capitalizeCamelCase = (string_: string) => {
+  let result = camelCase(string_)
+  result = result.slice(0, 1).toLocaleUpperCase() + result.slice(1)
+  return result
 }
