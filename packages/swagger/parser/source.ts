@@ -2,28 +2,27 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:59
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-30 13:45:57
+ * @LastEditTime: 2021-12-31 10:10:05
  */
 
 import axios from 'axios'
 import { entries } from 'lodash'
-import { varName } from '../utils'
+import { varName } from '../internal'
 import {
   SwaggerApi,
   SwaggerBuildConfig,
   SwaggerDefinition,
   SwaggerField,
   SwaggerSourceParameter,
-  SwaggerParseConfig
+  SwaggerAstConfig
 } from '../_types'
 import { parseParameter } from './parameter'
 import { parseProperties } from './properties'
 
 export const parseSource = async (config: SwaggerBuildConfig) => {
   const { data } = await axios(config.uri, { method: 'get', responseType: 'json' })
-
   // #region 构造 swagger 相关描述性信息
-  const transformConfig: SwaggerParseConfig = {
+  const astConfig: SwaggerAstConfig = {
     info: {
       swaggerVersion: data.swagger,
       apiVersion: data.info.version,
@@ -44,7 +43,7 @@ export const parseSource = async (config: SwaggerBuildConfig) => {
       description: definitionSource.description ?? '',
       value: []
     }
-    for (const [fieldName, propertie] of entries<any>(definitionSource)) {
+    for (const [fieldName, propertie] of entries<any>(definitionSource['properties'])) {
       const field: SwaggerField = {
         name: fieldName,
         value: parseProperties(propertie),
@@ -53,7 +52,7 @@ export const parseSource = async (config: SwaggerBuildConfig) => {
       }
       definition.value.push(field)
     }
-    transformConfig.definitions.push(definition)
+    astConfig.definitions.push(definition)
   }
   // #endregion
 
@@ -88,8 +87,10 @@ export const parseSource = async (config: SwaggerBuildConfig) => {
       // 响应的数据。默认去 200 的 HTTP状态码对应的数据
       const responsesSchema = config.responses['200'].schema
       fetchApi.response = responsesSchema ? parseProperties(responsesSchema) : null
-      transformConfig.apis.push(fetchApi)
+      astConfig.apis.push(fetchApi)
     }
   }
   // #endregion
+
+  return astConfig
 }

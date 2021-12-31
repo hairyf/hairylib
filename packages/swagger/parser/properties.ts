@@ -2,12 +2,11 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-28 14:05:02
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-30 13:46:57
+ * @LastEditTime: 2021-12-30 13:50:32
  */
 
 import { SwaggerSourceProperties } from '../_types'
-import { varName } from '../utils'
-import { TYPE_MAPPING } from '../internal'
+import { varName, TYPE_MAPPING } from '../internal'
 
 /**
  * 根据 Definitions 不同的类型进行解析 为 通用的类型结构

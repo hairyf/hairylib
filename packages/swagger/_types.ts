@@ -4,18 +4,14 @@ import { cwd } from 'process'
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:01:44
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-30 13:44:48
+ * @LastEditTime: 2021-12-31 11:30:59
  */
 cwd
 export interface SwaggerBuildConfig {
   /** @description 当前 Swagger 服务器配置地址 http://dev-ebg.com/api/ebg-order-app/v2/api-docs */
   uri: string
-  /** @description 当前接口地址域名对应的环境变量名称 'env config >> API_HOST_ADMIN */
-  env: string
-  /** @description {src/api/${name}.api.ts | src/types/${name}.api.type.ts} */
-  // name: string
-  /** @description 导入 axios 请求函数的别名地址 @default axios; */
-  httpLib?: string
+  /** @description 当前接口基础地址, 一般可用于环境变量的定义 */
+  baseURL?: string
   /** @description 输出路径配置, 暂时只支持 ts 路径 */
   output?: {
     /** @default 'src/api/index.ts' */
@@ -25,6 +21,19 @@ export interface SwaggerBuildConfig {
     /** Node.js 进程的当前工作目录。 */
     cwd?: string
   }
+  /** @description 生成文件的导入类型 */
+  import?: {
+    /** @description 导入 axios 请求函数的别名地址 @default axios; */
+    http?: string
+    /** @description 导入 types 生成类型的别名地址 @default output.type; */
+    type?: string
+  }
+  /**
+   * @description 响应体的类型转换
+   * @default T >>> type Response<T> = T >>> http.get<Response<Data>>('xxx')
+   * @template `T extends { data?: infer V } ? V : void`
+   */
+  responseType?: string
 }
 
 export interface SwaggerOutputOption {
@@ -65,8 +74,8 @@ export interface SwaggerApi {
   response: null | string
 }
 
-/** @Swagger转换配置 */
-export interface SwaggerParseConfig {
+/** @Swagger抽象语法描述信息 */
+export interface SwaggerAstConfig {
   info: {
     swaggerVersion: string
     apiVersion: string
@@ -84,11 +93,13 @@ export interface SwaggerSourceProperties {
   originalRef?: string
   $ref?: string
   required?: boolean
+  format?: string
+  description?: string
 }
 export interface SwaggerSourceParameter {
   name: string
   in: 'body' | 'header' | 'query' | 'path'
-  type: string
+  type?: string
   description: string
   required: boolean
   schema: SwaggerSourceProperties
