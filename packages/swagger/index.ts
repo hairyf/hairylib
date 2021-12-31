@@ -8,7 +8,7 @@ import { generate } from './generator'
 import fs from 'fs-extra'
 import { merge } from 'lodash'
 
-// import ora from 'ora'
+import ora from 'ora'
 import { parseOutput } from './parser/output'
 import { SwaggerBuildConfig } from './_types'
 import { parseSource } from './parser/source'
@@ -20,7 +20,7 @@ export interface HairySwaggerType {
 
 export const hairySwagger: HairySwaggerType = async (config) => {
   const writeOptions = { encoding: 'utf8' as const, flag: 'w' as const }
-  // const spinner = ora('Generate Interface ...\n').start()
+  const spinner = ora('Generate Interface ...\n').start()
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
 
   for (const iterator of configs) {
@@ -42,8 +42,8 @@ export const hairySwagger: HairySwaggerType = async (config) => {
       fs.writeFileSync(output.type.file, typeFileCode, writeOptions)
     ])
   }
-  // spinner.stop()
-  // spinner.clear()
+  spinner.stop()
+  spinner.clear()
 }
 
 export { parseSource, parseOutput }
