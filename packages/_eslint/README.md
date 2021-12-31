@@ -13,7 +13,7 @@ eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 
 ~~~js
 {
-    "prettier": "@hairy/eslint/prettier"
+    "prettier": "@hairy/eslint/prettier.js"
 }
 ~~~
 
