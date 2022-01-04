@@ -42,7 +42,7 @@ export const hairySwagger: HairySwaggerType = async (config) => {
       fs.writeFileSync(output.type.file, typeFileCode, writeOptions)
     ])
   }
-  spinner.stop()
+  spinner.succeed()
   spinner.clear()
 }
 
