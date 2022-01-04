@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:04:24
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-31 11:29:22
+ * @LastEditTime: 2022-01-04 10:46:31
  */
 
 import { format } from 'prettier'
@@ -97,7 +97,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
     // #endregion
 
     // #region 参数组合成代码, 添加一项 Api
-    const url = api.path.replace(/\${/, `\${query.`)
+    const url = api.path.replace(/\${/g, `\${query.`)
     const apiName = camelCase(`${api.method}/${api.path}`)
     const response = getNameSpaceType('Response') + `<${getNameSpaceType(api.response, 'void')}>`
 
