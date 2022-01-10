@@ -2,18 +2,29 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-28 14:05:02
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-30 13:50:32
+ * @LastEditTime: 2022-01-06 13:43:58
  */
 
-import { SwaggerSourceProperties } from '../_types'
-import { varName, TYPE_MAPPING } from '../internal'
+import { SwaggerDefinition, SwaggerField, SwaggerSourceProperties } from '../_types'
+import { varName, TYPE_MAPPING, unshiftDeDupDefinition } from '../internal'
+import { cloneDeep, isArray, isEmpty } from 'lodash'
+
+export interface ParsePropertiesOptions {
+  name?: string
+  method?: string
+  path?: string
+  type?: string[]
+}
 
 /**
  * 根据 Definitions 不同的类型进行解析 为 通用的类型结构
  * TODO 为无法复现的 swagger 结构场景。
  * @param propertie
  */
-export function parseProperties(propertie: SwaggerSourceProperties): string {
+export function parseProperties(
+  propertie: SwaggerSourceProperties,
+  options: ParsePropertiesOptions = {}
+): string {
   if (propertie.originalRef) {
     return varName(propertie.originalRef)
   }
@@ -22,14 +33,50 @@ export function parseProperties(propertie: SwaggerSourceProperties): string {
   }
 
   if (propertie.type === 'array') {
-    return `${parseProperties(propertie.items!)}[]`
+    const newOptions = { ...options }
+    return `${parseProperties(propertie.items!, newOptions)}[]`
   }
 
   if (propertie.type === 'object') {
-    return 'Record<string, any>'
+    const name = [
+      // 截取字符串路径后三位, 避免长度太长
+      varName(options.path?.split('/').slice(-3).join('/') || ''),
+      varName(options.method || ''),
+      varName(options.name || ''),
+      // 截取字符串路径后三位, 避免长度太长
+      options.type?.map((name) => varName(name)).join('') || ''
+    ]
+      .join('')
+      .trim()
+    if (!propertie.properties || isEmpty(propertie.properties)) {
+      return 'Record<string, any>'
+    }
+    const fields = Object.keys(propertie.properties).map((name) => {
+      const propertieItem = propertie.properties![name]
+      const newOptions = cloneDeep(options)
+      newOptions.type?.push(name)
+      const item: SwaggerField = {
+        name,
+        value: parseProperties(propertieItem, newOptions),
+        required: !!propertieItem.required,
+        description: propertieItem.description || ''
+      }
+      return item
+    })
+    unshiftDeDupDefinition(parseProperties.definitions, {
+      name,
+      description: '',
+      value: fields
+    })
+    return name
+  }
+  if (isArray(propertie.type)) {
+    return propertie.type.join(' | ')
   }
 
   if (propertie.type) return TYPE_MAPPING[propertie.type] || propertie.type
 
   return 'any'
 }
+
+parseProperties.definitions = [] as SwaggerDefinition[]

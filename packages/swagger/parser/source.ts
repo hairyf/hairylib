@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:59
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-31 10:10:05
+ * @LastEditTime: 2022-01-06 14:53:56
  */
 
 import axios from 'axios'
@@ -20,7 +20,11 @@ import { parseParameter } from './parameter'
 import { parseProperties } from './properties'
 
 export const parseSource = async (config: SwaggerBuildConfig) => {
-  const { data } = await axios(config.uri, { method: 'get', responseType: 'json' })
+  const { data } = await axios(config.uri, {
+    method: 'get',
+    responseType: 'json',
+    ...config.requestConfig
+  })
   // #region 构造 swagger 相关描述性信息
   const astConfig: SwaggerAstConfig = {
     info: {
@@ -33,6 +37,7 @@ export const parseSource = async (config: SwaggerBuildConfig) => {
     apis: [],
     definitions: []
   }
+  parseProperties.definitions = astConfig.definitions
   // #endregion
 
   // definitions 是 swagger 里面单独对 interface 进行描述的一个集合
@@ -79,14 +84,16 @@ export const parseSource = async (config: SwaggerBuildConfig) => {
       for (const parameter of parameters) {
         if (Array.isArray(fetchApi.request[parameter.in])) {
           const target = fetchApi.request[parameter.in] as any
-          target.push(parseParameter(parameter))
+          target.push(parseParameter(parameter, { method }))
         } else {
-          fetchApi.request[parameter.in] = parseParameter(parameter) as any
+          fetchApi.request[parameter.in] = parseParameter(parameter, { method }) as any
         }
       }
       // 响应的数据。默认去 200 的 HTTP状态码对应的数据
       const responsesSchema = config.responses['200'].schema
-      fetchApi.response = responsesSchema ? parseProperties(responsesSchema) : null
+      fetchApi.response = responsesSchema
+        ? parseProperties(responsesSchema, { method, path, type: ['Data'] })
+        : null
       astConfig.apis.push(fetchApi)
     }
   }

@@ -1,12 +1,11 @@
-import { cwd } from 'process'
+import { AxiosRequestConfig } from 'axios'
 
 /*
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:01:44
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-31 11:30:59
+ * @LastEditTime: 2022-01-06 14:54:28
  */
-cwd
 export interface SwaggerBuildConfig {
   /** @description 当前 Swagger 服务器配置地址 http://dev-ebg.com/api/ebg-order-app/v2/api-docs */
   uri: string
@@ -34,6 +33,8 @@ export interface SwaggerBuildConfig {
    * @template `T extends { data?: infer V } ? V : void`
    */
   responseType?: string
+  /** 请求参数 */
+  requestConfig?: AxiosRequestConfig
 }
 
 export interface SwaggerOutputOption {
@@ -88,13 +89,14 @@ export interface SwaggerAstConfig {
 }
 
 export interface SwaggerSourceProperties {
-  type?: string
+  type?: string | string[]
   items?: SwaggerSourceProperties
   originalRef?: string
   $ref?: string
   required?: boolean
   format?: string
   description?: string
+  properties?: Record<string, SwaggerSourceProperties>
 }
 export interface SwaggerSourceParameter {
   name: string

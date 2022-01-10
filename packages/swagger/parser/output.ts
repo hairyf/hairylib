@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-30 10:41:34
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-04 10:46:19
+ * @LastEditTime: 2022-01-06 14:49:22
  */
 import path from 'path'
 import { SwaggerBuildConfig, SwaggerOutput } from '../_types'

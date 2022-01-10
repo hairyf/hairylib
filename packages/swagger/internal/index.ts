@@ -4,7 +4,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:27
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-31 11:05:02
+ * @LastEditTime: 2022-01-06 11:54:43
  */
 
 import { PlainObject, capitalizeCamelCase } from '@hairy/core'
@@ -37,7 +37,7 @@ export function uselessString(string_: string) {
  */
 export function varName(string_: string) {
   if (!string_) {
-    console.trace('\n\nvarName inner is not defined\n')
+    // console.trace('\n\nvarName inner is not defined\n')
     return string_
   }
   // 过一遍中文转拼音，没有中文转化之后无变化
@@ -56,7 +56,15 @@ export function varName(string_: string) {
  */
 export function getNameSpaceType(type?: string | null, emptyType = 'void') {
   if (!type) return emptyType
-  const basicTyping = ['string', 'string[]', 'number', 'number[]']
+  const basicTyping = [
+    'string',
+    'string[]',
+    'number',
+    'number[]',
+    'Record<string, any>',
+    'Record<string, string>',
+    'any'
+  ]
   return basicTyping.includes(type) ? type : `${TS_TYPE_NAME_SPACE}.${type}`
 }
 

@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:04:24
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-04 10:46:31
+ * @LastEditTime: 2022-01-10 11:39:46
  */
 
 import { format } from 'prettier'
@@ -43,7 +43,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
 
   `
   if (build.baseURL) {
-    apiFileCode += `const BASE_URL = ${build.baseURL || "''"}\n`
+    apiFileCode += `const baseURL = ${build.baseURL || "''"}\n`
   }
   let typeFileCode = `
   ${commonHeaderCode}
@@ -87,6 +87,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
       apiArgumentsMap.body = `data: ${getNameSpaceType(api.request.body)}`
     }
     const apiConfigArgumentsMap = {
+      baseURL: 'baseURL',
       url: 'url',
       method: `method: '${api.method.toLocaleUpperCase()}'`,
       params: apiArgumentsMap.params ? 'params' : '',
@@ -97,7 +98,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
     // #endregion
 
     // #region 参数组合成代码, 添加一项 Api
-    const url = api.path.replace(/\${/g, `\${query.`)
+    const url = api.path.replace(/\${/g, '${query.')
     const apiName = camelCase(`${api.method}/${api.path}`)
     const response = getNameSpaceType('Response') + `<${getNameSpaceType(api.response, 'void')}>`
 
@@ -111,7 +112,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
      */
     export function ${apiName}(${apiFunctionArguments}) {
       type ResponseType = ${response}
-      const url = \`${build.baseURL ? `\${BASE_URL}${url}` : url}\`
+      const url = \`${url}\`
       return http.request<ResponseType>({ ${apiConfigArguments} })
     }
     `
@@ -120,11 +121,12 @@ export const generate = (config: SwaggerGenerateConfig) => {
 
   // codec types 生成特定规范和格式的 interface 类型
   for (const definition of ast.definitions) {
-    if (definition.description) {
-      typeFileCode += `/** @${definition.description} */\n`
-    }
+    if (definition.description) typeFileCode += `/** @${definition.description} */\n`
     const content = definition.value.map((field) => {
-      return field.required ? `${field.name}: ${field.value}` : `${field.name}?: ${field.value}`
+      let string_ = ''
+      if (field.description) string_ += `/** @${field.description} */\n`
+      string_ += field.required ? `${field.name}: ${field.value}` : `${field.name}?: ${field.value}`
+      return string_
     })
     typeFileCode += `\
     export type ${definition.name} = {

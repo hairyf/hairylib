@@ -2,14 +2,14 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-30 18:18:25
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-31 11:31:39
+ * @LastEditTime: 2022-01-06 14:49:36
  */
 import { hairySwagger, parseOutput, parseSource } from '.'
 import { parseParameter } from './parser/parameter'
 import { parseProperties } from './parser/properties'
 
 describe('hairySwagger', () => {
-  it('parseSourdce', async () => {
+  it('parseSource', async () => {
     const ast = await parseSource({
       uri: 'http://dev-ebg.com/api/ebg-order-app/v2/api-docs'
     })
@@ -25,13 +25,16 @@ describe('hairySwagger', () => {
     expect(output.api).toBeDefined()
   })
   it('parseParameter', () => {
-    const parameter = parseParameter({
-      in: 'body',
-      name: 'orderPriceDTO',
-      description: 'orderPriceDTO',
-      required: true,
-      schema: { originalRef: 'OrderPriceDTO', $ref: '#/definitions/OrderPriceDTO' }
-    })
+    const parameter = parseParameter(
+      {
+        in: 'body',
+        name: 'orderPriceDTO',
+        description: 'orderPriceDTO',
+        required: true,
+        schema: { originalRef: 'OrderPriceDTO', $ref: '#/definitions/OrderPriceDTO' }
+      },
+      { method: 'GET' }
+    )
     expect(parameter).toBeDefined()
   })
   it('parseProperties', () => {

@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 10:36:04
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-31 11:29:35
+ * @LastEditTime: 2022-01-06 14:49:11
  */
 import { generate } from './generator'
 import fs from 'fs-extra'
@@ -20,7 +20,7 @@ export interface HairySwaggerType {
 
 export const hairySwagger: HairySwaggerType = async (config) => {
   const writeOptions = { encoding: 'utf8' as const, flag: 'w' as const }
-  const spinner = ora('Generate Interface ...\n').start()
+  // const spinner = ora('Generate Interface ...\n').start()
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
 
   for (const iterator of configs) {
@@ -42,8 +42,8 @@ export const hairySwagger: HairySwaggerType = async (config) => {
       fs.writeFileSync(output.type.file, typeFileCode, writeOptions)
     ])
   }
-  spinner.succeed()
-  spinner.clear()
+  // spinner.succeed()
+  // spinner.clear()
 }
 
 export { parseSource, parseOutput }
