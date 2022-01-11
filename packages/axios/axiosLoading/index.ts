@@ -1,7 +1,7 @@
 /*
  * @Author: Zhilong
  * @Date: 2021-08-06 09:58:10
- * @LastEditTime: 2021-12-16 10:50:19
+ * @LastEditTime: 2022-01-11 11:16:16
  * @Description:
  * @LastEditors: Mr'Mao
  * @autograph: ⚠ warning!  ⚠ warning!  ⚠ warning!   ⚠野生的页面出现了!!
@@ -10,7 +10,7 @@ import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosErr
 
 declare module 'axios' {
   interface AxiosRequestConfig {
-    loading?: boolean
+    loading?: boolean | Record<string, any> | string | number
   }
 }
 interface AxiosLoadingOptions {

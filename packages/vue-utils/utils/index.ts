@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-14 16:09:31
- * @LastEditTime: 2021-12-17 19:00:16
+ * @LastEditTime: 2022-01-10 18:30:39
  * @Description:
  * @LastEditors: Mr'Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -52,3 +52,18 @@ export const renderInstance = <T = Component>(Constructor: T, props: Record<stri
  * @todo 待实现
  * @returns 组件实例
  */
+
+//  const BindDomainModal = defineDialogComponent({
+//   name: 'BindDomainModal',
+//   animation: 500,
+//   props: {
+//     title: String,
+//     modalValue: Boolean
+//   },
+//   setup: (props, context) => {
+//     const { visible, onClose, onConfirm } = useDialogParams()
+//     return () => <div>
+
+//     </div>
+//   }
+// })
