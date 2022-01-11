@@ -1,6 +1,6 @@
 {
   "name": "@hairy/vue-utils",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "license": "MIT",
   "dependencies": {
     "@hairy/browser": "^1.0.8",
