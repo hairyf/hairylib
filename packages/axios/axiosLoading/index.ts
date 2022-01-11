@@ -1,23 +1,17 @@
-/*
- * @Author: Zhilong
- * @Date: 2021-08-06 09:58:10
- * @LastEditTime: 2022-01-11 11:16:16
- * @Description:
- * @LastEditors: Mr'Mao
- * @autograph: ⚠ warning!  ⚠ warning!  ⚠ warning!   ⚠野生的页面出现了!!
- */
 import { AxiosStatic, AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 
-declare module 'axios' {
-  interface AxiosRequestConfig {
-    loading?: boolean | Record<string, any> | string | number
-  }
-}
+type AxiosLoadingShowCallback = (config: AxiosRequestConfig) => void
+type AxiosLoadingCloseCallback = (
+  config: AxiosRequestConfig,
+  result: [AxiosResponse?, AxiosError?]
+) => void
+
 interface AxiosLoadingOptions {
-  /** 加载调起 */
-  show: (config: AxiosRequestConfig) => void
-  /** 加载关闭 */
-  clone: (config: AxiosRequestConfig, result: [AxiosResponse?, AxiosError?]) => void
+  /**
+   * @description 当 config 某个字段的值存在时, 调用 loading 拦截
+   * @default loading
+   */
+  fieldName?: string
 }
 
 /**
@@ -28,12 +22,15 @@ interface AxiosLoadingOptions {
  */
 export const axiosLoading = (
   axios: AxiosStatic | AxiosInstance,
-  show: AxiosLoadingOptions['show'],
-  clone: AxiosLoadingOptions['clone']
+  show: AxiosLoadingShowCallback,
+  close: AxiosLoadingCloseCallback,
+  options: AxiosLoadingOptions = {}
 ) => {
   let subscribers = 0
+  const fieldName = options.fieldName || 'loading'
+  const isLoading = (config: any): boolean => !!config?.[fieldName]
   axios.interceptors.request.use((config) => {
-    if (config.loading) {
+    if (isLoading(config)) {
       !subscribers && show(config)
       subscribers++
     }
@@ -41,16 +38,16 @@ export const axiosLoading = (
   })
   axios.interceptors.response.use(
     (response) => {
-      if (response.config.loading) {
+      if (isLoading(response.config)) {
         subscribers--
-        !subscribers && clone(response.config, [response])
+        !subscribers && close(response.config, [response])
       }
       return response
     },
     (error) => {
-      if (error.config?.loading) {
+      if (isLoading(error.config)) {
         subscribers--
-        !subscribers && clone(error.config, [undefined, error])
+        !subscribers && close(error.config, [undefined, error])
       }
       return Promise.reject(error)
     }
