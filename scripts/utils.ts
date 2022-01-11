@@ -1,3 +1,9 @@
+/*
+ * @Author: Mr'Mao https://github.com/TuiMao233
+ * @Date: 2021-12-06 18:13:53
+ * @LastEditors: Mr'Mao
+ * @LastEditTime: 2022-01-11 14:13:03
+ */
 import { resolve, join } from 'path'
 import fs from 'fs-extra'
 import fg from 'fast-glob'
@@ -70,6 +76,9 @@ export const updatePackageJSON = async (packages: PackageManifest[]) => {
         require: './index.cjs.js'
       },
       './*': './*'
+    }
+    packageJSON.publishConfig = {
+      access: 'public'
     }
     fs.writeJSON(packageJSONPath, packageJSON, { spaces: 2 })
   }
