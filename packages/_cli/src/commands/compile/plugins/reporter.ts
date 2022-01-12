@@ -1,10 +1,16 @@
+/*
+ * @Author: Mr'Mao https://github.com/TuiMao233
+ * @Date: 2021-12-06 18:13:53
+ * @LastEditors: Mr'Mao
+ * @LastEditTime: 2022-01-11 22:04:08
+ */
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable no-console */
 
 import { Plugin } from 'esbuild'
 import chalk from 'chalk'
 import logUpdate from 'log-update'
-import { version } from '../../config'
+import { version } from '../../../config'
 
 export const reporterPlugin = (mode: string): Plugin => {
   const writeLogger = logUpdate.create(process.stderr, { showCursor: true })

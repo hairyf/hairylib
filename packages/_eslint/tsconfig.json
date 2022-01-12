@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES2016",
+    "declaration": true,
     "allowJs": true,
     "outDir": "./dist",
     "rootDir": "src"
