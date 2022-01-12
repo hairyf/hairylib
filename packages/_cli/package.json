@@ -9,6 +9,7 @@
     "build": "tsc && esno ./scripts/transfer.ts"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "cac": "^6.7.3",
     "consola": "^2.15.3",
     "enquirer": "^2.3.6",
@@ -17,6 +18,7 @@
     "execa": "^5.1.1",
     "fast-glob": "^3.2.7",
     "fs-extra": "^10.0.0",
+    "gitlog": "^4.0.4",
     "log-update": "4.0.0",
     "templa-cli": "0.0.4"
   },
