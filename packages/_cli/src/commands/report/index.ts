@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2022-01-12 09:34:14
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-12 11:37:35
+ * @LastEditTime: 2022-01-12 15:41:24
  */
 import gitlog, { GitlogOptions } from 'gitlog'
 import path from 'path'

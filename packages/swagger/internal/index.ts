@@ -4,7 +4,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:27
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-06 11:54:43
+ * @LastEditTime: 2022-01-12 17:22:08
  */
 
 import { PlainObject, capitalizeCamelCase } from '@hairy/core'
@@ -63,7 +63,8 @@ export function getNameSpaceType(type?: string | null, emptyType = 'void') {
     'number[]',
     'Record<string, any>',
     'Record<string, string>',
-    'any'
+    'any',
+    'boolean'
   ]
   return basicTyping.includes(type) ? type : `${TS_TYPE_NAME_SPACE}.${type}`
 }

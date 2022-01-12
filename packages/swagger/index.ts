@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 10:36:04
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-06 14:49:11
+ * @LastEditTime: 2022-01-12 17:02:06
  */
 import { generate } from './generator'
 import fs from 'fs-extra'
@@ -13,19 +13,24 @@ import { parseOutput } from './parser/output'
 import { SwaggerBuildConfig } from './_types'
 import { parseSource } from './parser/source'
 
-export interface HairySwaggerType {
+export interface SwaggerWebClientGeneratorType {
   (config: SwaggerBuildConfig | SwaggerBuildConfig[]): Promise<void>
   default: SwaggerBuildConfig
 }
 
-export const hairySwagger: HairySwaggerType = async (config) => {
+/**
+ * swagger Web 客户端代码生成器
+ * @description http 模块, 需类似 axios 结构调用
+ * @param config
+ */
+export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (config) => {
   const writeOptions = { encoding: 'utf8' as const, flag: 'w' as const }
-  // const spinner = ora('Generate Interface ...\n').start()
+  const spinner = ora('Generate Interface ...\n').start()
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
 
   for (const iterator of configs) {
     // 合并 default 构建 config
-    const config = merge(hairySwagger.default, iterator)
+    const config = merge(swaggerWebClientGenerator.default, iterator)
     // 解析 config  生成 output
     const output = parseOutput(config)
     // 解析 swagger 生成 swagger ast
@@ -42,13 +47,13 @@ export const hairySwagger: HairySwaggerType = async (config) => {
       fs.writeFileSync(output.type.file, typeFileCode, writeOptions)
     ])
   }
-  // spinner.succeed()
-  // spinner.clear()
+  spinner.succeed()
+  spinner.clear()
 }
 
 export { parseSource, parseOutput }
 
-hairySwagger.default = {
+swaggerWebClientGenerator.default = {
   output: { api: 'src/api/index.ts', type: 'src/api/index.type.ts', cwd: '' },
   baseURL: '',
   uri: '',
