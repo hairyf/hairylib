@@ -12,6 +12,7 @@
     "axios": "^0.24.0",
     "cac": "^6.7.3",
     "consola": "^2.15.3",
+    "dayjs": "^1.10.7",
     "enquirer": "^2.3.6",
     "esbuild": "^0.14.2",
     "esbuild-plugin-d.ts": "^1.1.0",

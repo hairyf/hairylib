@@ -15,6 +15,8 @@ cli
   .command('report', 'create daily or weekly message')
   .option('-i, --input <dir>', `bundle's entry`)
   .option('-o, --output <dir>', `bundle's output`)
+  .option('-t, --title <title>', `report title`)
+  .option('-a, --author <author>', `git logs author`)
   .action((options) => actionCreateReport(options))
 
 cli
