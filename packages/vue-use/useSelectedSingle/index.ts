@@ -34,7 +34,7 @@ export const useSelectedSingle = <T extends SelectedSingleArray>(
 
   const SELECTED_SINGLE_KEY = 'selected_single_key'
 
-  const isLock = ref(false)
+  const isLocked = ref(false)
 
   /** 当前是否已经选择 */
   const isSelect = computed(() => !!unref(array).some((item) => item.select))
@@ -53,8 +53,8 @@ export const useSelectedSingle = <T extends SelectedSingleArray>(
   }
 
   const resetAllSelected = (neglect: number) => {
-    if (isLock.value) return
-    isLock.value = true
+    if (isLocked.value) return
+    isLocked.value = true
 
     const _array = unref(array)
     const _value = !_array[neglect][fieldName]
@@ -69,7 +69,7 @@ export const useSelectedSingle = <T extends SelectedSingleArray>(
       target[fieldName] = false
     })
 
-    isLock.value = false
+    isLocked.value = false
   }
 
   const watchTargetEffect = (target: { [key: string]: any }, index: number) => {

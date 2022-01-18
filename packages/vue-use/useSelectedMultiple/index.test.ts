@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-17 16:56:12
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-27 15:11:36
+ * @LastEditTime: 2022-01-18 13:55:58
  */
 
 import { mock } from 'mockjs'
@@ -25,14 +25,14 @@ describe('useSelectedMultiple', () => {
 
     // 选择为 false 则所有项都应该取消选择
     isSelectAll.value = false
-    expect(!list.value.some((v) => v.select)).toBeTruthy()
-    expect(!isSelectAll.value).toBeTruthy()
+    expect(list.value.some((v) => v.select)).toBeFalsy()
+    expect(isSelectAll.value).toBeFalsy()
 
     // 没有全选都为 false
     list.value[0].select = true
-    expect(!isSelectAll.value).toBeTruthy()
+    expect(isSelectAll.value).toBeFalsy()
     list.value[0].select = false
-    expect(!isSelectAll.value).toBeTruthy()
+    expect(isSelectAll.value).toBeFalsy()
   })
   it('isSelect', () => {
     const list = ref(generateMockList())
@@ -40,7 +40,7 @@ describe('useSelectedMultiple', () => {
     list.value[0].select = true
     expect(isSelect.value).toBeTruthy()
     list.value[0].select = false
-    expect(!isSelect.value).toBeTruthy()
+    expect(isSelect.value).toBeFalsy()
   })
   it('isIndeterminate', () => {
     const list = ref(generateMockList())
@@ -48,6 +48,15 @@ describe('useSelectedMultiple', () => {
     list.value[0].select = true
     expect(isIndeterminate.value).toBeTruthy()
     isSelectAll.value = true
-    expect(!isIndeterminate.value).toBeTruthy()
+    expect(isIndeterminate.value).toBeFalsy()
+  })
+  it('disabled', () => {
+    const list = ref(generateMockList())
+    const { isSelectAll } = useSelectedMultiple(list, {
+      disabled: (item, index) => index === 1
+    })
+    isSelectAll.value = true
+    expect(!isSelectAll.value).toBeTruthy()
+    expect(list.value[1].select).toBeFalsy()
   })
 })

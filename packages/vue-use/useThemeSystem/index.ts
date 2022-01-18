@@ -10,7 +10,7 @@ import {
   readonly,
   DeepReadonly,
   ref,
-  ToRef
+  Ref
 } from 'vue-demi'
 import { UnwrapNestedRefs } from '@vue/reactivity'
 import { DeepPartial } from '@hairy/core'
@@ -48,7 +48,7 @@ interface CreateThemeResult<T, Overrides = DeepPartial<T>> {
    */
   useThemeEditorConfig: () => {
     config: Record<string, DeepConfigItem[]>
-    overrides: ToRef<Overrides>
+    overrides: Ref<Overrides>
   }
   /**
    * 默认配置，即传入配置，只读项
@@ -88,7 +88,7 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
 
   const useThemeEditorConfig = () => {
     const theme = injectTheme()
-    const overrides = ref<Overrides>({})
+    const overrides = ref<Overrides>({}) as any
     const config = useOverridesEditor(theme, overrides)
     return { config, overrides }
   }

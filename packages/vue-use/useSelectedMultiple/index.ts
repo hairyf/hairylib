@@ -2,20 +2,24 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-17 16:53:46
+ * @LastEditTime: 2022-01-18 13:57:31
  */
 import { MaybeRef } from '@vueuse/core'
 import { computed, ComputedRef, Ref, unref, UnwrapRef } from 'vue-demi'
 
 export type SelectedMultipleArray = MaybeRef<{ [key: string]: any }[]>
 
-export interface SelectedMultipleOptions {
+export interface SelectedMultipleOptions<T extends SelectedMultipleArray> {
   /**
    * 选择字段
    *
    * @default 'select'
    */
   fieldName?: string
+  /**
+   * 处理禁用, 在 isSelectAll 更改时生效
+   */
+  disabled?: (item: UnwrapRef<T>[number], index: number) => boolean | void
 }
 
 export interface SelectedMultipleResult<T extends SelectedMultipleArray> {
@@ -39,16 +43,19 @@ export interface SelectedMultipleResult<T extends SelectedMultipleArray> {
 
 export const useSelectedMultiple = <T extends SelectedMultipleArray>(
   array: T,
-  options: SelectedMultipleOptions = {}
+  options: SelectedMultipleOptions<T> = {}
 ): SelectedMultipleResult<T> => {
-  const { fieldName = 'select' } = options
+  const { fieldName = 'select', disabled } = options
   /** 当前选中的项列表 */
   const selectItems = computed<any>(() => unref(array).filter((item) => item[fieldName]))
 
   /** 当前是否为全选状态 */
   const isSelectAll = computed({
     get: () => !unref(array).some((item) => !item[fieldName]),
-    set: (value) => unref(array).forEach((item) => (item[fieldName] = value))
+    set: (value) =>
+      unref(array).forEach((item, index) => {
+        if (!disabled?.(item, index)) item[fieldName] = value
+      })
   })
 
   /** 当前是否已经选择 */

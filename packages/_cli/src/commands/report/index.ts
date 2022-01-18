@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2022-01-12 09:34:14
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-13 18:57:27
+ * @LastEditTime: 2022-01-14 13:50:11
  */
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
@@ -26,7 +26,7 @@ export const actionCreateReport = async (options?: ActionReportOptions) => {
     repo: input,
     author,
     fields: ['subject', 'authorName', 'committerDate', 'committerDateRel', 'body'],
-    number: 20
+    number: 30
   })
   const name = `${title || ''}-${dayjs().format('YYYY/MM/DD')}`
   const speech = await getVerse()
@@ -36,7 +36,7 @@ export const actionCreateReport = async (options?: ActionReportOptions) => {
     .map((item) => item.subject.replace(/chore:|fix:/, '').trim())
   const code = formatMdFile({ name, speech, today, tomorrow, problem })
 
-  const filePath = path.join(output, `report-${dayjs().format('YYYY-DD-MM')}.md`)
+  const filePath = path.join(output, `report-${dayjs().format('YYYY-DD-MM')}.txt`)
   await fs.writeFile(filePath, code, { flag: 'w' })
   return { file: filePath }
 }
