@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2021-12-29 10:37:17
+ * @LastEditTime: 2022-01-20 18:41:10
  */
 export const packages: PackageManifest[] = [
   {
@@ -29,7 +29,8 @@ export const packages: PackageManifest[] = [
     name: 'axios',
     display: 'Axios utilities',
     description: 'Utilities for axios',
-    external: ['axios']
+    external: ['axios'],
+    globals: { axios: 'axios' }
   },
   {
     name: 'browser',
@@ -52,7 +53,7 @@ export const packages: PackageManifest[] = [
     name: 'vue-utils',
     display: 'Vue utilities',
     description: 'Collection of essential Vue Utilities',
-    external: ['vue-router', 'vue-demi']
+    external: ['vue-router', 'vue-demi', '@hairy/browser']
   },
   {
     name: 'vue-directive',
@@ -70,6 +71,7 @@ export const packages: PackageManifest[] = [
   {
     name: 'uni-utils',
     display: 'Uni utilities',
+    external: ['@hairy/browser'],
     description: 'Collection of essential Uni Utilities'
   },
   {
@@ -83,6 +85,8 @@ export const packages: PackageManifest[] = [
     name: 'swagger',
     display: 'Swagger api generate',
     description: 'Swagger api generate',
+    external: ['fs-extra', 'ora', 'prettier', 'path', 'axios', 'transliteration'],
+    iife: false,
     manualImport: true
   }
 ]
