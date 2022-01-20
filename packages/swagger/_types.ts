@@ -4,7 +4,7 @@ import { AxiosRequestConfig } from 'axios'
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:01:44
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-06 14:54:28
+ * @LastEditTime: 2022-01-20 18:19:06
  */
 export interface SwaggerBuildConfig {
   /** @description 当前 Swagger 服务器配置地址 http://dev-ebg.com/api/ebg-order-app/v2/api-docs */
@@ -105,4 +105,7 @@ export interface SwaggerSourceParameter {
   description: string
   required: boolean
   schema: SwaggerSourceProperties
+}
+export interface SwaggerParserContext {
+  definitions: SwaggerDefinition[]
 }

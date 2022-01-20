@@ -2,11 +2,11 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 10:36:04
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-12 17:02:06
+ * @LastEditTime: 2022-01-20 18:33:08
  */
 import { generate } from './generator'
 import fs from 'fs-extra'
-import { merge } from 'lodash'
+import { cloneDeep, merge } from 'lodash'
 
 import ora from 'ora'
 import { parseOutput } from './parser/output'
@@ -28,13 +28,13 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
   const spinner = ora('Generate Interface ...\n').start()
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
 
-  for (const iterator of configs) {
+  const process = configs.map(async (iterator) => {
     // 合并 default 构建 config
     const config = merge(swaggerWebClientGenerator.default, iterator)
     // 解析 config  生成 output
     const output = parseOutput(config)
     // 解析 swagger 生成 swagger ast
-    const ast = await parseSource(config)
+    const ast = await parseSource.call({ definitions: [] }, config)
 
     // 使用 buildConfig, output, transform 生成代码
     const { apiFileCode, typeFileCode } = generate({ build: config, output, ast })
@@ -46,7 +46,9 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
       fs.writeFileSync(output.api.file, apiFileCode, writeOptions),
       fs.writeFileSync(output.type.file, typeFileCode, writeOptions)
     ])
-  }
+  })
+
+  await Promise.all(process)
   spinner.succeed()
   spinner.clear()
 }

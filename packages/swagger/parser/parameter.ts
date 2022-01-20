@@ -2,12 +2,12 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:42
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-06 13:23:10
+ * @LastEditTime: 2022-01-20 18:22:51
  */
 
 import { varName } from '../internal'
-import { SwaggerField, SwaggerSourceParameter } from '../_types'
-import { parseProperties } from './properties'
+import { SwaggerField, SwaggerParserContext, SwaggerSourceParameter } from '../_types'
+import { parseProperties as _parseProperties } from './properties'
 
 export interface ParseParameterOptions {
   method: string
@@ -18,6 +18,7 @@ export interface ParseParameterOptions {
  * @param parameter
  */
 export function parseParameter(
+  this: SwaggerParserContext,
   parameter: SwaggerSourceParameter,
   options: ParseParameterOptions
 ): string | SwaggerField {
@@ -26,6 +27,8 @@ export function parseParameter(
     name: parameter.name || '',
     ...options
   }
+  const parseProperties = _parseProperties.bind(this)
+
   if (parameter.in === 'body') {
     return parseProperties(parameter.schema, parseOptions)
   }

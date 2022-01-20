@@ -2,17 +2,20 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-30 18:18:25
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-06 14:49:36
+ * @LastEditTime: 2022-01-20 18:32:49
  */
-import { hairySwagger, parseOutput, parseSource } from '.'
+import { swaggerWebClientGenerator, parseOutput, parseSource } from '.'
 import { parseParameter } from './parser/parameter'
 import { parseProperties } from './parser/properties'
 
 describe('hairySwagger', () => {
   it('parseSource', async () => {
-    const ast = await parseSource({
-      uri: 'http://dev-ebg.com/api/ebg-order-app/v2/api-docs'
-    })
+    const ast = await parseSource.call(
+      { definitions: [] },
+      {
+        uri: 'http://dev-ebg.com/api/ebg-order-app/v2/api-docs'
+      }
+    )
     expect(ast.apis).toBeDefined()
     expect(ast.definitions).toBeDefined()
     expect(ast.info).toBeDefined()
@@ -25,7 +28,8 @@ describe('hairySwagger', () => {
     expect(output.api).toBeDefined()
   })
   it('parseParameter', () => {
-    const parameter = parseParameter(
+    const parameter = parseParameter.call(
+      { definitions: [] },
       {
         in: 'body',
         name: 'orderPriceDTO',
@@ -38,11 +42,14 @@ describe('hairySwagger', () => {
     expect(parameter).toBeDefined()
   })
   it('parseProperties', () => {
-    const propertie = parseProperties({ type: 'integer', format: 'int32', description: '版本号' })
+    const propertie = parseProperties.bind(
+      { definitions: [] },
+      { type: 'integer', format: 'int32', description: '版本号' }
+    )
     expect(propertie).toStrictEqual('number')
   })
   it('Swagger Generate', async () => {
-    await hairySwagger({
+    await swaggerWebClientGenerator({
       uri: 'http://dev-ebg.com/api/ebg-order-app/v2/api-docs',
       baseURL: 'xxxxxx',
       import: {

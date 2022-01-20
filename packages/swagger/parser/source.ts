@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:59
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-06 14:53:56
+ * @LastEditTime: 2022-01-20 18:20:36
  */
 
 import axios from 'axios'
@@ -14,12 +14,13 @@ import {
   SwaggerDefinition,
   SwaggerField,
   SwaggerSourceParameter,
-  SwaggerAstConfig
+  SwaggerAstConfig,
+  SwaggerParserContext
 } from '../_types'
-import { parseParameter } from './parameter'
-import { parseProperties } from './properties'
+import { parseParameter as _parseParameter } from './parameter'
+import { parseProperties as _parseProperties } from './properties'
 
-export const parseSource = async (config: SwaggerBuildConfig) => {
+export const parseSource = async function (this: SwaggerParserContext, config: SwaggerBuildConfig) {
   const { data } = await axios(config.uri, {
     method: 'get',
     responseType: 'json',
@@ -37,7 +38,11 @@ export const parseSource = async (config: SwaggerBuildConfig) => {
     apis: [],
     definitions: []
   }
-  parseProperties.definitions = astConfig.definitions
+
+  this.definitions = astConfig.definitions
+  const parseParameter = _parseParameter.bind(this)
+  const parseProperties = _parseProperties.bind(this)
+
   // #endregion
 
   // definitions 是 swagger 里面单独对 interface 进行描述的一个集合

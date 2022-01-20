@@ -2,10 +2,15 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-28 14:05:02
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-06 13:43:58
+ * @LastEditTime: 2022-01-20 18:21:24
  */
 
-import { SwaggerDefinition, SwaggerField, SwaggerSourceProperties } from '../_types'
+import {
+  SwaggerDefinition,
+  SwaggerField,
+  SwaggerParserContext,
+  SwaggerSourceProperties
+} from '../_types'
 import { varName, TYPE_MAPPING, unshiftDeDupDefinition } from '../internal'
 import { cloneDeep, isArray, isEmpty } from 'lodash'
 
@@ -22,9 +27,12 @@ export interface ParsePropertiesOptions {
  * @param propertie
  */
 export function parseProperties(
+  this: SwaggerParserContext,
   propertie: SwaggerSourceProperties,
   options: ParsePropertiesOptions = {}
 ): string {
+  const _parseProperties = parseProperties.bind(this)
+
   if (propertie.originalRef) {
     return varName(propertie.originalRef)
   }
@@ -34,7 +42,7 @@ export function parseProperties(
 
   if (propertie.type === 'array') {
     const newOptions = { ...options }
-    return `${parseProperties(propertie.items!, newOptions)}[]`
+    return `${_parseProperties(propertie.items!, newOptions)}[]`
   }
 
   if (propertie.type === 'object') {
@@ -57,13 +65,13 @@ export function parseProperties(
       newOptions.type?.push(name)
       const item: SwaggerField = {
         name,
-        value: parseProperties(propertieItem, newOptions),
+        value: _parseProperties(propertieItem, newOptions),
         required: !!propertieItem.required,
         description: propertieItem.description || ''
       }
       return item
     })
-    unshiftDeDupDefinition(parseProperties.definitions, {
+    unshiftDeDupDefinition(this.definitions, {
       name,
       description: '',
       value: fields
