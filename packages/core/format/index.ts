@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-08-03 13:57:13
- * @LastEditTime: 2021-12-30 09:43:40
+ * @LastEditTime: 2022-01-21 13:38:20
  * @Description:
  * @LastEditors: Mr'Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -41,12 +41,16 @@ export const formatInteger = (value: string) => {
 
 /**
  * 格式化数字千位分隔符
- * @param number_
+ * @param number_ 数值
+ * @param unit 单位
  */
-export const formatThousandBitSeparator = (number_: number | string) => {
-  const string_ = number_.toString()
-  const regex = string_.includes('.') ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(\d{3}))/g
-  return string_.replace(regex, ($0, $1) => $1 + ',')
+export const formatThousandBitSeparator = (target: number | string, unit = ',') => {
+  if (target === '') return ''
+  const part = String(target).split('.')
+  for (let index = 0; index < part.length; index++) {
+    part[index] = part[index].replace(new RegExp('(\\d)(?=(\\d{3})+$)', 'ig'), `$1${unit || ''}`)
+  }
+  return part.join('.')
 }
 
 /**
