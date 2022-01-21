@@ -9,5 +9,8 @@
     "version": {
       "message": "chore(release): publish %v"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
