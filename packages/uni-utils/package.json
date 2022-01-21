@@ -1,6 +1,6 @@
 {
   "name": "@hairy/uni-utils",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "license": "MIT",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "dependencies": {
-    "@hairy/browser": "^1.0.8",
-    "@hairy/core": "^1.0.12"
+    "@hairy/browser": "^1.0.9",
+    "@hairy/core": "^1.0.13"
   },
   "devDependencies": {
     "@dcloudio/types": "^2.4.5",
