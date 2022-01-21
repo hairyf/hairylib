@@ -66,7 +66,6 @@ export const buildPackageFiles = async () => {
     const packageHash = readPackageLernaGitHash(packageRoot)
     const distHash = readPackageLernaGitHash(packageDist)
     if (packageHash !== '' && packageHash === distHash) {
-      consola.info(`\n-- hash identical to close ${packageName} build`)
       continue
     }
 
