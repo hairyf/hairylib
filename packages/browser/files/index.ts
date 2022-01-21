@@ -1,9 +1,9 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-31 14:52:36
- * @LastEditTime: 2021-08-12 09:56:21
+ * @LastEditTime: 2022-01-21 11:50:06
  * @Description:
- * @LastEditors: Mr.Mao
+ * @LastEditors: Mr'Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 
@@ -17,13 +17,13 @@ import { isNull } from 'lodash'
 export const selectFiles = (option: { multiple?: boolean; accept?: string } = {}) => {
   const { multiple = true, accept } = option
   return new Promise<File[]>((resolve, reject) => {
-    const inputEl = document.createElement('input')
-    inputEl.type = 'file'
-    inputEl.multiple = multiple
-    accept && (inputEl.accept = accept)
-    inputEl.click()
+    const inputElement = document.createElement('input')
+    inputElement.type = 'file'
+    inputElement.multiple = multiple
+    accept && (inputElement.accept = accept)
+    inputElement.click()
     const timer = setTimeout(reject, 20 * 1000)
-    inputEl.addEventListener('change', function () {
+    inputElement.addEventListener('change', function () {
       if (this.files) {
         resolve(Object.values(this.files))
         clearTimeout(timer)

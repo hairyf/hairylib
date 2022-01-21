@@ -2,11 +2,11 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 10:36:04
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-20 18:33:08
+ * @LastEditTime: 2022-01-21 11:11:32
  */
 import { generate } from './generator'
 import fs from 'fs-extra'
-import { cloneDeep, merge } from 'lodash'
+import { merge } from 'lodash'
 
 import ora from 'ora'
 import { parseOutput } from './parser/output'
@@ -27,7 +27,6 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
   const writeOptions = { encoding: 'utf8' as const, flag: 'w' as const }
   const spinner = ora('Generate Interface ...\n').start()
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
-
   const process = configs.map(async (iterator) => {
     // 合并 default 构建 config
     const config = merge(swaggerWebClientGenerator.default, iterator)

@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-20 18:41:10
+ * @LastEditTime: 2022-01-21 10:47:52
  */
 export const packages: PackageManifest[] = [
   {
@@ -16,14 +16,14 @@ export const packages: PackageManifest[] = [
     display: 'Eslint preset',
     description: 'Eslint config for Mr.Mao',
     manualImport: true,
-    tsc: true
+    mergeBuild: false
   },
   {
     name: '_cli',
     display: 'Project All cli',
     description: 'Project All cli',
     manualImport: true,
-    scriptBuild: true
+    internalBuild: true
   },
   {
     name: 'axios',
@@ -59,7 +59,7 @@ export const packages: PackageManifest[] = [
     name: 'vue-directive',
     display: 'Vue directives',
     description: 'Collection of essential Vue directives',
-    importFile: 'imports.ts',
+    manualImport: true,
     external: ['vue-demi']
   },
   {

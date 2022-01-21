@@ -10,4 +10,5 @@ export const install = (app: App, options: DirectiveConfig) => {
 }
 
 export { vFocus, vHas }
+
 export default install

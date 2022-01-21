@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-21 10:36:03
+ * @LastEditTime: 2022-01-21 12:34:29
  */
 /** 扩展包清单 */
 interface PackageManifest {
@@ -58,4 +58,14 @@ interface PackageManifest {
    * 打包是否合并文件, 默认为 true
    */
   mergeBuild?: boolean
+}
+
+interface HairyFunction {
+  /** 方法名 */
+  name: string
+  /** 所属包 */
+  package: string
+  /** 更新时间 */
+  lastUpdated: number
+  /** 方法分类 */
 }

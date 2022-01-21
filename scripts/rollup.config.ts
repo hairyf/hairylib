@@ -1,55 +1,39 @@
-import { OutputOptions, RollupOptions } from 'rollup'
+/*
+ * @Author: Mr'Mao https://github.com/TuiMao233
+ * @Date: 2021-12-06 18:13:53
+ * @LastEditors: Mr'Mao
+ * @LastEditTime: 2022-01-21 10:57:30
+ */
+import { OutputOptions, RollupOptions, rollup } from 'rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
-import { packages } from '../meta/packages'
 import { terser } from 'rollup-plugin-terser'
-import execa from 'execa'
-import { resolve, join } from 'path'
-import { readPackageLernaGitHash } from './utils'
-import consola from 'consola'
-const configs: RollupOptions[] = []
+import { camelCase, isArray } from 'lodash'
 
-for (const { name, external, iife, globals, build, tsc, scriptBuild } of packages) {
-  if (tsc === true) {
-    execa.sync('tsc', { cwd: join('packages', name) })
-    continue
-  }
-  if (scriptBuild === true) {
-    execa.sync('yarn build', { cwd: join('packages', name) })
-    continue
-  }
-  if (build === false) continue
-
-  // 判断与打包后 hash 相同则跳过编译 (在公司环境无法使用 lerna 暂时跳过)
-  const packageRoot = resolve(__dirname, '..', 'packages', name)
-  const packageDist = resolve(packageRoot, 'dist')
-  const packageHash = readPackageLernaGitHash(packageRoot)
-  const distHash = readPackageLernaGitHash(packageDist)
-  if (packageHash !== '' && packageHash === distHash) {
-    consola.info('-- hash identical to close build --')
-    continue
-  }
-
+export const rollupBuildPackage = async (config: PackageManifest) => {
+  const { name, external, iife, globals } = config
+  const configs: RollupOptions[] = []
   const iifeGlobals = {
-    'vue-demi': 'VueDemi',
-    '@vueuse/core': 'VueUse',
-    '@hairy/core': 'TuiMaoCore',
-    '@hairy/browser': 'TuiMaoBrowser',
+    'vue-demi': 'vueDemi',
+    '@vueuse/core': 'vueUse',
+    '@hairy/core': 'hairyCore',
+    '@hairy/browser': 'hairyBrowser',
     '@vue/composition-api': 'compositionApi',
     'pubsub-js': 'pubsubJs',
-    vue: 'Vue',
+    vue: 'vue',
     dayjs: 'dayjs',
     lodash: '_',
     ...(globals || {})
   }
 
-  const iifeName = 'TuiMaoUtils'
+  const iifeName = camelCase(`hairy_${name}`)
 
   const input = `packages/${name}/index.ts`
   const output: OutputOptions[] = [
     {
       file: `packages/${name}/dist/index.cjs.js`,
-      format: 'cjs'
+      format: 'cjs',
+      exports: 'named'
     },
     {
       file: `packages/${name}/dist/index.esm.js`,
@@ -64,6 +48,7 @@ for (const { name, external, iife, globals, build, tsc, scriptBuild } of package
         file: `packages/${name}/dist/index.iife.js`,
         format: 'iife',
         name: iifeName,
+        exports: 'named',
         extend: true,
         globals: iifeGlobals
       },
@@ -71,6 +56,7 @@ for (const { name, external, iife, globals, build, tsc, scriptBuild } of package
         file: `packages/${name}/dist/index.iife.min.js`,
         format: 'iife',
         name: iifeName,
+        exports: 'named',
         extend: true,
         globals: iifeGlobals,
         plugins: [
@@ -81,6 +67,7 @@ for (const { name, external, iife, globals, build, tsc, scriptBuild } of package
       }
     )
   }
+
   const baseExternals = ['vue-demi', 'lodash', '@hairy/core']
   configs.push(
     {
@@ -99,5 +86,13 @@ for (const { name, external, iife, globals, build, tsc, scriptBuild } of package
       external: [...baseExternals, ...(external || [])]
     }
   )
+
+  const bundles = configs.map(async (config) => {
+    const bundle = await rollup({ ...config })
+    const outputs = isArray(config.output) ? config.output! : [config.output!]
+    await Promise.all(outputs.map(bundle.write))
+    return bundle
+  })
+
+  return await Promise.all(bundles)
 }
-export default configs

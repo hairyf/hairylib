@@ -1,11 +1,20 @@
+/*
+ * @Author: Mr'Mao https://github.com/TuiMao233
+ * @Date: 2021-12-06 18:13:53
+ * @LastEditors: Mr'Mao
+ * @LastEditTime: 2022-01-21 11:27:43
+ */
 import assert from 'assert'
 import path from 'path'
 import consola from 'consola'
 import fs from 'fs-extra'
 import { execSync as exec } from 'child_process'
 import { packages } from '../meta/packages'
-import { updateImport } from './utils'
+import { readPackageLernaGitHash, updateImport } from './utils'
 import fg from 'fast-glob'
+import { rollupBuildPackage } from './rollup.config'
+import execa from 'execa'
+import ora from 'ora'
 
 const rootDir = path.resolve(__dirname, '..')
 
@@ -26,15 +35,10 @@ export const buildTransferDist = async (cwd: string) => {
 }
 
 export const buildMetaFiles = async () => {
-  for (const { name, build } of packages) {
+  for (const config of packages) {
+    const { name } = config
     const packageRoot = path.resolve(__dirname, '..', 'packages', name)
     const packageDist = path.resolve(packageRoot, 'dist')
-
-    // 不需要打包的将源文件移植到 dist 文件夹
-    if (build === false) {
-      await buildTransferDist(packageRoot)
-      continue
-    }
 
     await fs.ensureDir(packageDist)
 
@@ -46,6 +50,50 @@ export const buildMetaFiles = async () => {
   }
 }
 
+export const buildPackageFiles = async () => {
+  const spinner = ora().start()
+
+  for (const config of packages) {
+    const { name, build, internalBuild, mergeBuild } = config
+    const packageRoot = path.resolve(__dirname, '..', 'packages', name)
+    const packageDist = path.resolve(packageRoot, 'dist')
+    const packageName = fs.readJSONSync(path.join(packageRoot, 'package.json')).name
+    spinner.text = `Build ${packageName}`
+
+    await fs.ensureDir(packageDist)
+
+    // 判断与打包后 hash 相同则跳过编译 (在公司环境无法使用 lerna 暂时跳过)
+    const packageHash = readPackageLernaGitHash(packageRoot)
+    const distHash = readPackageLernaGitHash(packageDist)
+    if (packageHash !== '' && packageHash === distHash) {
+      consola.info(`-- hash identical to close build | ${packageHash} | - | ${distHash} | --`)
+      continue
+    }
+
+    // 不需要打包的将源文件移植到 dist 文件夹
+    if (build === false) {
+      await buildTransferDist(packageRoot)
+      continue
+    }
+
+    // 编译不合并, 采用 hairy build 方式
+    if (mergeBuild === false) {
+      execa.sync('hairy build', { cwd: path.join('packages', name) })
+      continue
+    }
+
+    // 包内部编译
+    if (internalBuild === true) {
+      execa.sync('yarn build', { cwd: path.join('packages', name) })
+      continue
+    }
+
+    await rollupBuildPackage(config)
+  }
+  spinner.succeed('Packages Builder')
+  spinner.clear()
+}
+
 export const build = async () => {
   consola.info('Clean up')
   exec('yarn clean', { stdio: 'inherit' })
@@ -53,13 +101,13 @@ export const build = async () => {
   consola.info('Generate Imports')
   await updateImport(packages)
 
-  consola.info('Rollup')
   try {
-    exec('yarn build:rollup', { stdio: 'inherit' })
+    await buildPackageFiles()
   } catch (error) {
     consola.warn(error)
   }
 
+  consola.info('Meta Builder')
   await buildMetaFiles()
 }
 
@@ -72,5 +120,4 @@ async function cli() {
   }
 }
 
-// 这里用了个小技巧，判断当前执行环境是否是直接执行
 if (require.main === module) cli()
