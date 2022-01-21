@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2022-01-12 09:34:14
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-14 13:50:11
+ * @LastEditTime: 2022-01-21 13:15:01
  */
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
@@ -36,7 +36,7 @@ export const actionCreateReport = async (options?: ActionReportOptions) => {
     .map((item) => item.subject.replace(/chore:|fix:/, '').trim())
   const code = formatMdFile({ name, speech, today, tomorrow, problem })
 
-  const filePath = path.join(output, `report-${dayjs().format('YYYY-DD-MM')}.txt`)
+  const filePath = path.join(output, `report-${dayjs().format('YYYY-MM-DD')}.txt`)
   await fs.writeFile(filePath, code, { flag: 'w' })
   return { file: filePath }
 }
