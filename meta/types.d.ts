@@ -1,3 +1,9 @@
+/*
+ * @Author: Mr'Mao https://github.com/TuiMao233
+ * @Date: 2021-12-06 18:13:53
+ * @LastEditors: Mr'Mao
+ * @LastEditTime: 2022-01-21 10:36:03
+ */
 /** 扩展包清单 */
 interface PackageManifest {
   /**
@@ -39,7 +45,7 @@ interface PackageManifest {
   /**
    * 是否自定义打包规则 (使用包内部的打包命令)
    */
-  scriptBuild?: boolean
+  internalBuild?: boolean
   /**
    * 是否手动导入
    */
@@ -49,7 +55,7 @@ interface PackageManifest {
    */
   importFile?: string
   /**
-   * 是否使用 tsc 编译, 默认为 false
+   * 打包是否合并文件, 默认为 true
    */
-  tsc?: boolean
+  mergeBuild?: boolean
 }
