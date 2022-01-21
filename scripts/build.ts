@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-21 11:27:43
+ * @LastEditTime: 2022-01-21 14:44:21
  */
 import assert from 'assert'
 import path from 'path'
@@ -66,7 +66,7 @@ export const buildPackageFiles = async () => {
     const packageHash = readPackageLernaGitHash(packageRoot)
     const distHash = readPackageLernaGitHash(packageDist)
     if (packageHash !== '' && packageHash === distHash) {
-      consola.info(`-- hash identical to close build | ${packageHash} | - | ${distHash} | --`)
+      consola.info(`\n-- hash identical to close ${packageName} build`)
       continue
     }
 

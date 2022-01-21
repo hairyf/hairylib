@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-07-31 14:52:36
- * @LastEditTime: 2022-01-21 11:50:06
+ * @LastEditTime: 2022-01-21 13:51:55
  * @Description:
  * @LastEditors: Mr'Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -34,9 +34,10 @@ export const selectFiles = (option: { multiple?: boolean; accept?: string } = {}
 
 /**
  * 选择多个图片
+ * @param multiple 是否多选
  */
-export const selectImages = () => {
-  return selectFiles({ multiple: true, accept: 'image/jpeg,image/x-png,image/gif' })
+export const selectImages = (multiple = true) => {
+  return selectFiles({ multiple, accept: 'image/jpeg,image/x-png,image/gif' })
 }
 
 /**
