@@ -5,21 +5,16 @@
  * @LastEditTime: 2022-01-22 20:10:48
  */
 import { defineConfig } from 'vitepress'
+import indexes, { categories } from '../indexes.json'
 
 const Guide = [
   { text: 'Get Started', link: '/guide/' }
 ]
 
-const Engineering = [
-]
 
-const DefaultSideBars = [
-  { text: 'Guide', items: [] },
-  { text: 'Engineering', items: [] },
-  { text: 'Axios', items: [] },
-  { text: 'Utils', items: [] },
-  { text: 'Browser', items: [] },
-]
+const FunctionsSideBar = getFunctionsSideBar()
+
+
 
 const config = defineConfig({
   head: [
@@ -29,9 +24,7 @@ const config = defineConfig({
   description: 'Hairy Library',
   themeConfig: {
     logo: '/favicon.svg',
-    sidebar: {
-      '/guide/': DefaultSideBars
-    },
+    sidebar: FunctionsSideBar,
     nav: [
       {
         text: 'Guide',
@@ -52,5 +45,24 @@ const config = defineConfig({
     ]
   },
 })
+
+function getFunctionsSideBar() {
+  const links = []
+
+  for (const name of categories) {
+    console.log(name)
+    const functions = indexes.functions.filter(i => i.category === name)
+
+    links.push({
+      text: name,
+      children: functions.map(i => ({
+        text: i.name,
+        link: i.docs,
+      })),
+    })
+  }
+
+  return links
+}
 
 export default config

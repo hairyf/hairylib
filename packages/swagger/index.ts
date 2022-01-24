@@ -6,7 +6,7 @@
  */
 import { generate } from './generator'
 import fs from 'fs-extra'
-import { merge } from 'lodash'
+import { cloneDeep, merge } from 'lodash'
 
 import ora from 'ora'
 import { parseOutput } from './parser/output'
@@ -29,7 +29,7 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
   const process = configs.map(async (iterator) => {
     // 合并 default 构建 config
-    const config = merge(swaggerWebClientGenerator.default, iterator)
+    const config = merge(cloneDeep(swaggerWebClientGenerator.default), iterator)
     // 解析 config  生成 output
     const output = parseOutput(config)
     // 解析 swagger 生成 swagger ast

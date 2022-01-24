@@ -14,7 +14,7 @@ import matter from 'gray-matter'
 
 const git = Git()
 
-const DOCS_URL = 'http://localhost:3000/'
+const DOCS_URL = 'http://localhost:3000'
 const DIR_SRC = resolve(__dirname, '../packages')
 
 /**
@@ -134,19 +134,26 @@ export const updateIndexes = async () => {
         const mdPath = join(dir, indexMd)
 
         const absolutePath = join(dir, fnPath)
-        const relativePath = `${DOCS_URL}/${_package.name}/${fnPath}`
+        const relativePath = `/${_package.name}/${fnPath}/`
 
         const mdRaw = await fs.readFile(mdPath, 'utf-8')
         const { content: md, data: frontmatter } = matter(mdRaw)
-        console.log(frontmatter)
 
+        // TODO: 未获取 md 说明
+        const description = ''
         const fn: HairyFunction = {
-          name: relativePath,
+          name: fnPath || _package.name,
           package: _package.name,
           lastUpdated: +(await git.raw(['log', '-1', '--format=%at', absolutePath])) * 1000,
-          docs: relativePath
+          docs: relativePath,
+          category: frontmatter.category,
+          description
         }
+        indexes.functions.push(fn)
       })
     )
+    indexes.functions.sort((a, b) => a.name.localeCompare(b.name))
+    indexes.categories = [...new Set(indexes.functions.map((item) => item.category))]
   }
+  fs.writeJSON('packages/indexes.json', indexes)
 }
