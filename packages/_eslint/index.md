@@ -1,3 +1,8 @@
+---
+title: eslint
+category: 'Engineering'
+---
+
 # @hairy/eslint
 
 eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
@@ -100,4 +105,3 @@ module.exports = typescript
  * @description: UniApp eslint options
  */
 ~~~
-

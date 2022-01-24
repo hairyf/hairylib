@@ -20,7 +20,7 @@ const rootDir = path.resolve(__dirname, '..')
 
 const FILES_COPY_ROOT = ['LICENSE']
 
-const FILES_COPY_LOCAL = ['package.json', 'README.md']
+const FILES_COPY_LOCAL = ['package.json' /* , 'README.md' */]
 
 assert(process.cwd() !== __dirname)
 
@@ -45,8 +45,9 @@ export const buildMetaFiles = async () => {
     // 向打包后的 dist 添加包的源信息
     for (const file of FILES_COPY_ROOT)
       await fs.copyFile(path.join(rootDir, file), path.join(packageDist, file))
-    for (const file of FILES_COPY_LOCAL)
+    for (const file of FILES_COPY_LOCAL) {
       await fs.copyFile(path.join(packageRoot, file), path.join(packageDist, file))
+    }
   }
 }
 

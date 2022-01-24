@@ -1,56 +1,180 @@
 ---
-nav:
-  path: /guide
-  title: 指南
-group:
-  path: /wechat-jssdk
-  title: 微信公众号
 title: WechatJssdk
+category: 'Other'
 ---
 
-### 微信公众号 jssdk 基本使用
+### @hairy/wechat-jssdk
 
 WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 api 进行了 promise 处理，并且可直接调用，不需要执行 wx.ready 等待 jssdk 授权完毕。
 
-初始化不需要执行 wx.config，内部会根据传入的 env 环境，请求签名并自动调用 wx.config。
+初始化不需要执行 wx.config，内部会根据传入的 config request，请求签名并自动调用 wx.config。
 
-### 1. 初始化
+## Install
+
+~~~sh
+npm install @hairy/swagger
+~~~
+
+## Usage
 ```ts
-// service/common.ts
 import { WechatJssdk } from '@bbg/sfe-helper'
 
 export const wxJssdk = new WechatJssdk({
-  env: env.MODE,
-  // 该 config 最终会传入 调用 wx.config 当中
-  config: {
-    // 授权 api 列表
-    jsApiList: ['onMenuShareAppMessage']
+  requestConfig: async () => {
+    return { appId: '', jsApiList: ['onMenuShareAppMessage'], nonceStr: '', signature: '', timestamp: 13_123 }
   }
 })
 ```
 
-### 2. 页面使用
+## API 
 
-```ts
-// pages/xxx/xxx.tsx
-import { useMount } from 'ahooks'
-import { wxJssdk } from 'service/common.ts';
-const Com = () => {
-  // useMount() => {} 等同与 useEffect(() => {}, [])
-  useMount(() => {
-    wxJssdk.onMenuShareAppMessage({
-      title: '...',
-      link: '...',
-      desc: '...',
-      imgUrl: '...',
-      success: () => {/*  */},
-      cancel: () => {/*  */}
-    })
-  })
-  // ...
+api 与 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 保持一直，直接看 [官方文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 即可。
+
+## Types
+
+~~~typescript
+/**
+ * @description WechatJssdk Api 封装，与 [jssdk 文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 保持一致，主要以下改动
+ * @description 内置请求，读取 config 配置，初始化自动调用 wx.config
+ * @description 所有 api 的 promise 化处理（仅等待 wx.ready）
+ * @description 简易化初始化构建，config 处理
+ * @description 可指定加载 jssdk 版本（默认 1.3.0）
+ * @template `const wxJssdk = new WechatJssdk({env, config})`
+ */
+class WechatJssdk extends WechatJssdkHelper {
+  constructor(options: WechatJssdkOptions) {
+    super(options)
+  }
+  // --- 1.4.0 API start ---
+  updateAppMessageShareData(options: WxType.IonMenuShareAppMessage) {
+    return this.implement('updateAppMessageShareData', options)
+  }
+  updateTimelineShareData(options: WxType.IonMenuShareAppMessage) {
+    return this.implement('updateTimelineShareData', options)
+  }
+  // --- 1.4.0 API end ---
+  addCard() {
+    return this.implement('addCard')
+  }
+  checkJsApi(options: WxType.IcheckJsApi) {
+    return this.implement('checkJsApi', options)
+  }
+  chooseCard(options: WxType.IchooseCard) {
+    return this.implement('chooseCard', options)
+  }
+  chooseImage(options: WxType.IchooseImage) {
+    return this.implement('chooseImage', options)
+  }
+  chooseWXPay(options: WxType.IchooseWXPay) {
+    return this.implement('chooseWXPay', options)
+  }
+  closeWindow() {
+    return this.implement('closeWindow')
+  }
+  consumeAndShareCard(options: WxType.IconsumeAndShareCard) {
+    return this.implement('consumeAndShareCard', options)
+  }
+  downloadImage(options: WxType.IdownloadImage) {
+    return this.implement('downloadImage', options)
+  }
+  downloadVoice(options: WxType.IupdownloadVoice) {
+    return this.implement('downloadVoice', options)
+  }
+  getLocalImgData(options: WxType.IgetLocalImgData) {
+    return this.implement('getLocalImgData', options)
+  }
+  getLocation(options: WxType.IgetLocation) {
+    return this.implement('getLocation', options)
+  }
+  getNetworkType(options: WxType.IgetNetworkType) {
+    return this.implement('getNetworkType', options)
+  }
+  hideAllNonBaseMenuItem() {
+    return this.implement('hideAllNonBaseMenuItem')
+  }
+  hideMenuItems(options: WxType.IhideMenuItems) {
+    return this.implement('hideMenuItems', options)
+  }
+  hideOptionMenu() {
+    return this.implement('hideOptionMenu')
+  }
+  onMenuShareAppMessage(options: WxType.IonMenuShareAppMessage) {
+    return this.implement('onMenuShareAppMessage', options)
+  }
+  onMenuShareQQ(options: WxType.IonMenuShareQQ) {
+    return this.implement('onMenuShareQQ', options)
+  }
+  onMenuShareQZone(options: WxType.IonMenuShareQZone) {
+    return this.implement('onMenuShareQZone', options)
+  }
+  onMenuShareTimeline(options: WxType.IonMenuShareTimeline) {
+    return this.implement('onMenuShareTimeline', options)
+  }
+  onMenuShareWeibo(options: WxType.IonMenuShareWeibo) {
+    return this.implement('onMenuShareWeibo', options)
+  }
+  onSearchBeacons(options: WxType.IonSearchBeacons) {
+    return this.implement('onSearchBeacons', options)
+  }
+  onVoicePlayEnd(options: WxType.IonVoicePlayEnd) {
+    return this.implement('onVoicePlayEnd', options)
+  }
+  onVoiceRecordEnd(options: WxType.IonVoiceRecordEnd) {
+    return this.implement('onVoiceRecordEnd', options)
+  }
+  openCard(options: WxType.IopenCard) {
+    return this.implement('openCard', options)
+  }
+  openLocation(options: WxType.IopenLocation) {
+    return this.implement('openLocation', options)
+  }
+  openProductSpecificView(options: WxType.IopenProductSpecificView) {
+    return this.implement('openProductSpecificView', options)
+  }
+  pauseVoice(options: WxType.IplaypausestopVoice) {
+    return this.implement('pauseVoice', options)
+  }
+  playVoice(options: WxType.IplaypausestopVoice) {
+    return this.implement('playVoice', options)
+  }
+  previewImage(options: WxType.IpreviewImage) {
+    return this.implement('previewImage', options)
+  }
+  scanQRCode(options: WxType.IscanQRCode) {
+    return this.implement('scanQRCode', options)
+  }
+  showAllNonBaseMenuItem() {
+    return this.implement('showAllNonBaseMenuItem')
+  }
+  showMenuItems(options: WxType.IshowMenuItems) {
+    return this.implement('showMenuItems', options)
+  }
+  showOptionMenu() {
+    return this.implement('showOptionMenu')
+  }
+  startRecord() {
+    return this.implement('startRecord')
+  }
+  startSearchBeacons(options: WxType.IstartSearchBeacons) {
+    return this.implement('startSearchBeacons', options)
+  }
+  stopRecord(options: WxType.IstopRecord) {
+    return this.implement('stopRecord', options)
+  }
+  stopSearchBeacons(options: WxType.IstopSearchBeacons) {
+    return this.implement('stopSearchBeacons', options)
+  }
+  stopVoice(options: WxType.IplaypausestopVoice) {
+    return this.implement('stopVoice', options)
+  }
+  translateVoice(options: WxType.ItranslateVoice) {
+    return this.implement('translateVoice', options)
+  }
+  uploadImage(options: WxType.IuploadImage) {
+    return this.implement('uploadImage', options)
+  }
+  uploadVoice(options: WxType.IupdownloadVoice) {
+    return this.implement('uploadVoice', options)
+  }
 }
-```
-
-### API 
-
-api 与 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 保持一直，直接看[官方文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)即可。
+~~~

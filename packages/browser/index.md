@@ -1,3 +1,8 @@
+---
+title: browser
+category: 'Browser'
+---
+
 # @hairy/browser
 
 关于浏览器的 api 封装。
@@ -19,19 +24,3 @@
 
 - setInnerHTMLAttributes:     替换 html string 中任意 tag 内任意 attr 值
 - removeInnerHTMLAttribute:   移除 html string 所有标签的一个或多个属性
-
-## Usage judge
-
-- isBrowser
-- isWeex
-- weexPlatform
-- UA
-- isIE
-- isIE9
-- isIE11
-- isEdge
-- isAndroid
-- isIOS
-- isChrome
-- isPhantomJS
-- isFF

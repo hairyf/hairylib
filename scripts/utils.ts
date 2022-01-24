@@ -136,16 +136,16 @@ export const updateIndexes = async () => {
         const absolutePath = join(dir, fnPath)
         const relativePath = `${DOCS_URL}/${_package.name}/${fnPath}`
 
+        const mdRaw = await fs.readFile(mdPath, 'utf-8')
+        const { content: md, data: frontmatter } = matter(mdRaw)
+        console.log(frontmatter)
+
         const fn: HairyFunction = {
           name: relativePath,
           package: _package.name,
           lastUpdated: +(await git.raw(['log', '-1', '--format=%at', absolutePath])) * 1000,
           docs: relativePath
         }
-
-        const mdRaw = await fs.readFile(mdPath, 'utf-8')
-        const { content: md, data: frontmatter } = matter(mdRaw)
-        console.log(frontmatter)
       })
     )
   }

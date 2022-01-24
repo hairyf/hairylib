@@ -1,3 +1,8 @@
+---
+title: tailwind
+category: 'Engineering'
+---
+
 # @hairy/tailwind
 
 tailwind 的规则集，包含了 Web 端，小程序端等配置，小程序端可以作用于 uniapp
