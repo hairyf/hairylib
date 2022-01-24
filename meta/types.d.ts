@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-21 12:34:29
+ * @LastEditTime: 2022-01-22 20:35:19
  */
 /** 扩展包清单 */
 interface PackageManifest {
@@ -68,4 +68,22 @@ interface HairyFunction {
   /** 更新时间 */
   lastUpdated: number
   /** 方法分类 */
+  category: string
+  /** 方法文档 */
+  docs: string
+  /** 方法说明 */
+  description?: string
+  /** 是否弃用 */
+  deprecated?: boolean
+}
+
+interface HairyPackage extends PackageManifest {
+  dir: string
+  docs?: string
+}
+
+interface PackageIndexes {
+  packages: Record<string, HairyPackage>
+  categories: string[]
+  functions: HairyFunction[]
 }

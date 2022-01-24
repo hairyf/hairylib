@@ -1,6 +1,6 @@
 ## 关于(About)
 
-hello 这里是腿毛，hairylib 是工具代码库，使用 lerna 管理的多个工具模块包的项目。
+hairylib 是工具代码库，使用 lerna 管理的多个工具模块包的项目。
 
 目前已有模块包：
 
@@ -8,7 +8,6 @@ hello 这里是腿毛，hairylib 是工具代码库，使用 lerna 管理的多�
 - [@hairy/tailwind](./packages/_tailwind#readme)
 - [@hairy/axios](./packages/axios#readme)
 - [@hairy/browser](./packages/browser#readme)
-- [@hairy/core](./packages/core#readme)
 - [@hairy/utils](./packages/utils#readme)
 - [@hairy/uni-use](./packages/uni-use#readme)
 - [@hairy/uni-utils](./packages/uni-utils#readme)

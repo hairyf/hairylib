@@ -13,7 +13,7 @@ import {
   Ref
 } from 'vue-demi'
 import { UnwrapNestedRefs } from '@vue/reactivity'
-import { DeepPartial } from '@hairy/core'
+import { DeepPartial } from '@hairy/utils'
 import {
   DeepConfigItem,
   DeepStringObject,

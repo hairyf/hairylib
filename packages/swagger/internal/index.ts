@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-01-12 17:22:08
  */
 
-import { PlainObject, capitalizeCamelCase } from '@hairy/core'
+import { PlainObject, capitalizeCamelCase } from '@hairy/utils'
 import { transliterate } from 'transliteration'
 import { SwaggerDefinition } from '../_types'
 

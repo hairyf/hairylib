@@ -1,5 +1,5 @@
 {
-  "name": "@hairy/core",
+  "name": "@hairy/utils",
   "version": "1.0.13",
   "license": "MIT",
   "dependencies": {
@@ -31,5 +31,8 @@
     },
     "./*": "./*"
   },
-  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b"
+  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b",
+  "publishConfig": {
+    "access": "public"
+  }
 }

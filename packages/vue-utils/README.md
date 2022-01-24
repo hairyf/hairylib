@@ -1,4 +1,4 @@
-# @hairy/core
+# @hairy/utils
 
 Vue 开发所使用到的工具函数
 

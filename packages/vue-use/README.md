@@ -1,4 +1,4 @@
-# @hairy/core
+# @hairy/utils
 
 Vue 组合式 api 的逻辑钩子
 

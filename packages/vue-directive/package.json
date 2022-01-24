@@ -14,7 +14,7 @@
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
   "dependencies": {
-    "@hairy/core": "^1.0.13",
+    "@hairy/utils": "^1.0.13",
     "lodash": "^4.17.21",
     "vue-demi": "^0.12.1"
   },
@@ -29,5 +29,8 @@
     },
     "./*": "./*"
   },
-  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b"
+  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b",
+  "publishConfig": {
+    "access": "public"
+  }
 }

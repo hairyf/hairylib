@@ -63,11 +63,11 @@ export const buildPackageFiles = async () => {
     await fs.ensureDir(packageDist)
 
     // 判断与打包后 hash 相同则跳过编译 (在公司环境无法使用 lerna 暂时跳过)
-    const packageHash = readPackageLernaGitHash(packageRoot)
-    const distHash = readPackageLernaGitHash(packageDist)
-    if (packageHash !== '' && packageHash === distHash) {
-      continue
-    }
+    // const packageHash = readPackageLernaGitHash(packageRoot)
+    // const distHash = readPackageLernaGitHash(packageDist)
+    // if (packageHash !== '' && packageHash === distHash) {
+    //   continue
+    // }
 
     // 不需要打包的将源文件移植到 dist 文件夹
     if (build === false) {

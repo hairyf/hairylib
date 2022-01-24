@@ -2,9 +2,9 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-21 10:57:30
+ * @LastEditTime: 2022-01-24 14:01:13
  */
-import { OutputOptions, RollupOptions, rollup } from 'rollup'
+import { rollup, OutputOptions, RollupOptions } from 'rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import { terser } from 'rollup-plugin-terser'
@@ -16,7 +16,7 @@ export const rollupBuildPackage = async (config: PackageManifest) => {
   const iifeGlobals = {
     'vue-demi': 'vueDemi',
     '@vueuse/core': 'vueUse',
-    '@hairy/core': 'hairyCore',
+    '@hairy/utils': 'hairyUtils',
     '@hairy/browser': 'hairyBrowser',
     '@vue/composition-api': 'compositionApi',
     'pubsub-js': 'pubsubJs',
@@ -68,7 +68,7 @@ export const rollupBuildPackage = async (config: PackageManifest) => {
     )
   }
 
-  const baseExternals = ['vue-demi', 'lodash', '@hairy/core']
+  const baseExternals = ['vue-demi', 'lodash', '@hairy/utils']
   configs.push(
     {
       input,

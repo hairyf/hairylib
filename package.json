@@ -7,6 +7,9 @@
   ],
   "description": "目前包含 Vue3 Eslint 预设，tailwind 预设。\r 使用文档暂未开发，请自行运量使用。",
   "scripts": {
+    "docs:dev": "vitepress dev packages",
+    "docs:build": "vitepress build packages",
+    "docs:serve": "vitepress serve packages",
     "build": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
     "publish:lerna": "lerna publish --contents dist",
@@ -31,7 +34,8 @@
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
-    "@types/jest": "^26.0.24"
+    "@types/jest": "^26.0.24",
+    "vitepress": "^0.21.6"
   },
   "husky": {
     "hooks": {
@@ -50,6 +54,7 @@
     "execa": "^5.1.1",
     "fast-glob": "^3.2.7",
     "fs-extra": "^10.0.0",
+    "gray-matter": "^4.0.3",
     "husky": "^7.0.2",
     "jest": "^27.0.6",
     "lerna": "^4.0.0",
@@ -61,6 +66,7 @@
     "rollup-plugin-esbuild": "^4.5.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
+    "simple-git": "^3.0.3",
     "ts-jest": "^27.0.0-next.12",
     "typescript": "^4.3.5"
   }

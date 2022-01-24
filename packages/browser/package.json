@@ -30,5 +30,8 @@
   "devDependencies": {
     "@types/lodash": "^4.14.171"
   },
-  "gitHead": "271eb6ce512d6a925d91f9b210d0487e5dd794fe"
+  "gitHead": "271eb6ce512d6a925d91f9b210d0487e5dd794fe",
+  "publishConfig": {
+    "access": "public"
+  }
 }

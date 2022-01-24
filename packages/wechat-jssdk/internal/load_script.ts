@@ -1,4 +1,4 @@
-import { noop } from '@hairy/core'
+import { noop } from '@hairy/utils'
 
 export interface LoadScriptOptions {
   /**

@@ -1,4 +1,4 @@
-import { urlParamsAnaly } from '@hairy/core'
+import { urlParamsAnaly } from '@hairy/utils'
 /** uniapp 路由跳转封装 */
 export const navigateTo = (url: string, params: Record<string, any> = {}) => {
   uni.navigateTo({ url: urlParamsAnaly(url, params) })

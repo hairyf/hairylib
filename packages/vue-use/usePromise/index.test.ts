@@ -1,5 +1,5 @@
 import { usePromise } from '.'
-import { awaitPromise } from '@hairy/core'
+import { awaitPromise } from '@hairy/utils'
 
 describe('usePromise', () => {
   it('loading', (done) => {

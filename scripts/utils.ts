@@ -1,14 +1,20 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 /*
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-11 14:13:03
+ * @LastEditTime: 2022-01-22 20:41:28
  */
-import { resolve, join } from 'path'
+import { resolve, join, relative } from 'path'
 import fs from 'fs-extra'
 import fg from 'fast-glob'
+import { packages } from '../meta/packages'
+import Git from 'simple-git'
+import matter from 'gray-matter'
 
-// const DIR_ROOT = resolve(__dirname, '..')
+const git = Git()
+
+const DOCS_URL = 'http://localhost:3000/'
 const DIR_SRC = resolve(__dirname, '../packages')
 
 /**
@@ -21,6 +27,16 @@ export async function listFunctions(dir: string, ignore: string[] = []) {
     onlyDirectories: true,
     cwd: dir,
     ignore: ['_*', 'dist', 'node_modules', ...ignore]
+  })
+  files.sort()
+  return files
+}
+
+export const listFunctionIndexMd = async (dir: string) => {
+  const files = await fg('**/index.md', {
+    onlyFiles: true,
+    cwd: dir,
+    ignore: ['_*', 'dist', 'node_modules']
   })
   files.sort()
   return files
@@ -93,5 +109,44 @@ export const readPackageLernaGitHash = (cwd: string) => {
     return fs.readJSONSync(join(cwd, 'package.json'))?.gitHead || ''
   } catch {
     return ''
+  }
+}
+
+export const updateIndexes = async () => {
+  const indexes: PackageIndexes = {
+    packages: {},
+    categories: [],
+    functions: []
+  }
+  for (const info of packages) {
+    const dir = join(DIR_SRC, info.name)
+    const indexMds = await listFunctionIndexMd(dir)
+
+    const _package: HairyPackage = {
+      ...info,
+      dir: relative(DIR_SRC, dir).replace(/\\/g, '/')
+      // TODO: 默认文档 docs: info.a
+    }
+
+    await Promise.all(
+      indexMds.map(async (indexMd) => {
+        const fnPath = indexMd.replace(/index\.md|\/index\.md/, '')
+        const mdPath = join(dir, indexMd)
+
+        const absolutePath = join(dir, fnPath)
+        const relativePath = `${DOCS_URL}/${_package.name}/${fnPath}`
+
+        const fn: HairyFunction = {
+          name: relativePath,
+          package: _package.name,
+          lastUpdated: +(await git.raw(['log', '-1', '--format=%at', absolutePath])) * 1000,
+          docs: relativePath
+        }
+
+        const mdRaw = await fs.readFile(mdPath, 'utf-8')
+        const { content: md, data: frontmatter } = matter(mdRaw)
+        console.log(frontmatter)
+      })
+    )
   }
 }

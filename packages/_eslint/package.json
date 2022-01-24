@@ -48,5 +48,8 @@
       "require": "./index.cjs.js"
     },
     "./*": "./*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

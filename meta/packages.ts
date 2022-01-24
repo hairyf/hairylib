@@ -2,7 +2,7 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-21 10:47:52
+ * @LastEditTime: 2022-01-24 13:48:57
  */
 export const packages: PackageManifest[] = [
   {
@@ -38,8 +38,8 @@ export const packages: PackageManifest[] = [
     display: 'Browser utilities'
   },
   {
-    name: 'core',
-    display: 'Tuimao utilities core',
+    name: 'utils',
+    display: 'Hairy utilities core',
     description: 'Utilities core for Mr.Mao',
     external: ['dayjs']
   },

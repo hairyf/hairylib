@@ -3,7 +3,7 @@
   "version": "0.1.6",
   "license": "MIT",
   "dependencies": {
-    "@hairy/core": "^1.0.13",
+    "@hairy/utils": "^1.0.13",
     "axios": "^0.24.0",
     "fs-extra": "^10.0.0",
     "lodash": "^4.17.21",
@@ -29,7 +29,7 @@
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
-  "description": "Utilities core for Mr.Mao",
+  "description": "Swagger api generate",
   "exports": {
     ".": {
       "import": "./index.esm.js",
@@ -37,5 +37,8 @@
     },
     "./*": "./*"
   },
-  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b"
+  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b",
+  "publishConfig": {
+    "access": "public"
+  }
 }

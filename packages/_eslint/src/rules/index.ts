@@ -44,7 +44,8 @@ export const imports: Linter.HasRules['rules'] = {
   'import/no-absolute-path': 'error',
   'import/first': 'off',
   'import/no-unresolved': 'off',
-  'import/no-named-as-default': 'off'
+  'import/no-named-as-default': 'off',
+  'import/named': 'off'
 }
 
 /**

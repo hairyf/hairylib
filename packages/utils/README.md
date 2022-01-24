@@ -1,10 +1,10 @@
-# @hairy/core
+# @hairy/utils
 
 通用的 api 逻辑。
 
 ## Install
 
-`yarn add @hairy/core`
+`yarn add @hairy/utils`
 
 ## Usage apis
 
