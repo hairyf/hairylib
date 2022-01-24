@@ -79,7 +79,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
       const { name } = unshiftDeDupDefinition(ast.definitions, {
         name: varName(capitalizeCamelCase(`${api.path}/query`)),
         description: api.description,
-        value: api.request.path
+        value: api.request.query
       })
       apiArgumentsMap.params = `params: ${getNameSpaceType(name)}`
     }
