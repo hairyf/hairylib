@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prevent-abbreviations */
 /*
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-06 18:13:53
@@ -33,7 +32,7 @@ export async function listFunctions(dir: string, ignore: string[] = []) {
 }
 
 export const listFunctionIndexMd = async (dir: string) => {
-  const files = await fg('**/index.md', {
+  const files = await fg(['**/index.md', '**/README.md'], {
     onlyFiles: true,
     cwd: dir,
     ignore: ['_*', 'dist', 'node_modules']
@@ -116,7 +115,7 @@ export const updateIndexes = async () => {
   const indexes: PackageIndexes = {
     packages: {},
     categories: [],
-    functions: []
+    documents: []
   }
   for (const info of packages) {
     const dir = join(DIR_SRC, info.name)
@@ -130,30 +129,31 @@ export const updateIndexes = async () => {
 
     await Promise.all(
       indexMds.map(async (indexMd) => {
-        const fnPath = indexMd.replace(/index\.md|\/index\.md/, '')
+        const functionPath = indexMd.replace(/index\.md|\/index\.md/, '')
         const mdPath = join(dir, indexMd)
 
-        const absolutePath = join(dir, fnPath)
-        const relativePath = `/${_package.name}/${fnPath}/`
+        const absolutePath = join(dir, functionPath)
+
+        const relativePath = `/${_package.name}/${functionPath ? functionPath + '/' : ''}`
 
         const mdRaw = await fs.readFile(mdPath, 'utf-8')
         const { content: md, data: frontmatter } = matter(mdRaw)
 
         // TODO: 未获取 md 说明
         const description = ''
-        const fn: HairyFunction = {
-          name: fnPath || _package.name,
+        const function_: HairyDocument = {
+          name: functionPath || _package.name,
           package: _package.name,
           lastUpdated: +(await git.raw(['log', '-1', '--format=%at', absolutePath])) * 1000,
           docs: relativePath,
           category: frontmatter.category,
           description
         }
-        indexes.functions.push(fn)
+        indexes.documents.push(function_)
       })
     )
-    indexes.functions.sort((a, b) => a.name.localeCompare(b.name))
-    indexes.categories = [...new Set(indexes.functions.map((item) => item.category))]
+    indexes.documents.sort((a, b) => a.name.localeCompare(b.name))
+    indexes.categories = [...new Set(indexes.documents.map((item) => item.category))]
   }
   fs.writeJSON('packages/indexes.json', indexes)
 }

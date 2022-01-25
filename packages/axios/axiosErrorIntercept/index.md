@@ -6,6 +6,8 @@ category: 'Axios'
 
 axios 错误拦截处理，以及自定义拦截错误
 
+`npm install @hairy/axios -g`
+
 ~~~typescript
 import axios from 'axios'
 import { axiosErrorIntercept } from '@hairy/axios'

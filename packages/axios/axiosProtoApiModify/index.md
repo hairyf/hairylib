@@ -2,9 +2,12 @@
 title: axiosProtoApiModify
 category: 'Axios'
 ---
+
 ### axiosProtoApiModify
 
 涉及 delete, get, head, options 等方法的修改，主要参数调整 (url, config) -> (url, params, config)
+
+`npm install @hairy/axios -g`
 
 ~~~typescript
 import axios from 'axios'

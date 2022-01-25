@@ -60,7 +60,7 @@ interface PackageManifest {
   mergeBuild?: boolean
 }
 
-interface HairyFunction {
+interface HairyDocument {
   /** 方法名 */
   name: string
   /** 所属包 */
@@ -85,5 +85,5 @@ interface HairyPackage extends PackageManifest {
 interface PackageIndexes {
   packages: Record<string, HairyPackage>
   categories: string[]
-  functions: HairyFunction[]
+  documents: HairyDocument[]
 }

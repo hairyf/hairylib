@@ -6,6 +6,8 @@ category: 'Axios'
 
 请求 loading 加载器
 
+`npm install @hairy/axios -g`
+
 ~~~typescript
 import axios from 'axios'
 import { axiosLoading } from '@hairy/axios'

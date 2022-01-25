@@ -1,8 +1,3 @@
----
-title: guide
-category: 'Guide'
----
-
 ## Usage judge
 
 - isBrowser
