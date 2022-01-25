@@ -6,20 +6,20 @@
  */
 export const packages: PackageManifest[] = [
   {
-    name: '_tailwind',
+    name: 'tailwind',
     display: 'Tailwind preset',
     description: 'Tailwind config for Mr.Mao',
     iife: false
   },
   {
-    name: '_eslint',
+    name: 'eslint',
     display: 'Eslint preset',
     description: 'Eslint config for Mr.Mao',
     manualImport: true,
     mergeBuild: false
   },
   {
-    name: '_cli',
+    name: 'cli',
     display: 'Project All cli',
     description: 'Project All cli',
     manualImport: true,
