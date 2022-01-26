@@ -29,5 +29,5 @@ export type Option<L extends Key = 'label', V extends Key = 'value', C extends K
 } & {
   [P in V]: LooseNumber
 } & {
-  [P in C]: Option[]
+  [P in C]?: Option[]
 }
