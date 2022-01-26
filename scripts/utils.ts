@@ -32,7 +32,7 @@ export async function listFunctions(dir: string, ignore: string[] = []) {
 }
 
 export const listFunctionIndexMd = async (dir: string) => {
-  const files = await fg(['**/index.md', '**/README.md'], {
+  const files = await fg(['**/index.md'], {
     onlyFiles: true,
     cwd: dir,
     ignore: ['_*', 'dist', 'node_modules']

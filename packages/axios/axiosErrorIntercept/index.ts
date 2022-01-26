@@ -26,7 +26,7 @@ export const axiosErrorIntercept = (
     const validateResult = validate(response)
     const isError = typeof validateResult == 'boolean' && !validateResult
     if (isError) {
-      rejected({
+      onRejected({
         ...response,
         response,
         isAxiosError: false,

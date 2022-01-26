@@ -1,1 +1,148 @@
-{"packages":{},"categories":[null,"Axios","Browser","Engineering","Other"],"documents":[{"name":"_template","package":"vue-use","lastUpdated":0,"docs":"/vue-use/_template/","description":""},{"name":"axiosErrorIntercept","package":"axios","lastUpdated":1643008650000,"docs":"/axios/axiosErrorIntercept/","category":"Axios","description":""},{"name":"axiosLoading","package":"axios","lastUpdated":1643008650000,"docs":"/axios/axiosLoading/","category":"Axios","description":""},{"name":"axiosPickByParams","package":"axios","lastUpdated":1643008650000,"docs":"/axios/axiosPickByParams/","category":"Axios","description":""},{"name":"axiosProtoApiModify","package":"axios","lastUpdated":1643008650000,"docs":"/axios/axiosProtoApiModify/","category":"Axios","description":""},{"name":"browser","package":"browser","lastUpdated":1643008650000,"docs":"/browser/","category":"Browser","description":""},{"name":"cli","package":"cli","lastUpdated":1643076575000,"docs":"/cli/","category":"Engineering","description":""},{"name":"eslint","package":"eslint","lastUpdated":1643076575000,"docs":"/eslint/","category":"Engineering","description":""},{"name":"is","package":"utils","lastUpdated":1643008650000,"docs":"/utils/is/","description":""},{"name":"README.md","package":"utils","lastUpdated":1643004200000,"docs":"/utils/README.md/","description":""},{"name":"README.md","package":"vue-use","lastUpdated":1643004200000,"docs":"/vue-use/README.md/","description":""},{"name":"README.md","package":"vue-utils","lastUpdated":1643004200000,"docs":"/vue-utils/README.md/","description":""},{"name":"README.md","package":"vue-directive","lastUpdated":1642676131000,"docs":"/vue-directive/README.md/","description":""},{"name":"README.md","package":"uni-use","lastUpdated":1632381981000,"docs":"/uni-use/README.md/","description":""},{"name":"README.md","package":"uni-utils","lastUpdated":1632381981000,"docs":"/uni-utils/README.md/","description":""},{"name":"swagger","package":"swagger","lastUpdated":1643017163000,"docs":"/swagger/","category":"Engineering","description":""},{"name":"tailwind","package":"tailwind","lastUpdated":1643076575000,"docs":"/tailwind/","category":"Engineering","description":""},{"name":"wechat-jssdk","package":"wechat-jssdk","lastUpdated":1643008650000,"docs":"/wechat-jssdk/","category":"Other","description":""}]}
+{
+  "packages": {},
+  "categories": [
+    null,
+    "Axios",
+    "Browser",
+    "Engineering",
+    "Other"
+  ],
+  "documents": [
+    {
+      "name": "_template",
+      "package": "vue-use",
+      "lastUpdated": 0,
+      "docs": "/vue-use/_template/",
+      "description": ""
+    },
+    {
+      "name": "axiosErrorIntercept",
+      "package": "axios",
+      "lastUpdated": 1643008650000,
+      "docs": "/axios/axiosErrorIntercept/",
+      "category": "Axios",
+      "description": ""
+    },
+    {
+      "name": "axiosLoading",
+      "package": "axios",
+      "lastUpdated": 1643008650000,
+      "docs": "/axios/axiosLoading/",
+      "category": "Axios",
+      "description": ""
+    },
+    {
+      "name": "axiosPickByParams",
+      "package": "axios",
+      "lastUpdated": 1643008650000,
+      "docs": "/axios/axiosPickByParams/",
+      "category": "Axios",
+      "description": ""
+    },
+    {
+      "name": "axiosProtoApiModify",
+      "package": "axios",
+      "lastUpdated": 1643008650000,
+      "docs": "/axios/axiosProtoApiModify/",
+      "category": "Axios",
+      "description": ""
+    },
+    {
+      "name": "browser",
+      "package": "browser",
+      "lastUpdated": 1643008650000,
+      "docs": "/browser/",
+      "category": "Browser",
+      "description": ""
+    },
+    {
+      "name": "cli",
+      "package": "cli",
+      "lastUpdated": 1643076575000,
+      "docs": "/cli/",
+      "category": "Engineering",
+      "description": ""
+    },
+    {
+      "name": "eslint",
+      "package": "eslint",
+      "lastUpdated": 1643076575000,
+      "docs": "/eslint/",
+      "category": "Engineering",
+      "description": ""
+    },
+    {
+      "name": "is",
+      "package": "utils",
+      "lastUpdated": 1643008650000,
+      "docs": "/utils/is/",
+      "description": ""
+    },
+    {
+      "name": "README.md",
+      "package": "utils",
+      "lastUpdated": 1643004200000,
+      "docs": "/utils/README.md/",
+      "description": ""
+    },
+    {
+      "name": "README.md",
+      "package": "vue-use",
+      "lastUpdated": 1643004200000,
+      "docs": "/vue-use/README.md/",
+      "description": ""
+    },
+    {
+      "name": "README.md",
+      "package": "vue-utils",
+      "lastUpdated": 1643004200000,
+      "docs": "/vue-utils/README.md/",
+      "description": ""
+    },
+    {
+      "name": "README.md",
+      "package": "vue-directive",
+      "lastUpdated": 1642676131000,
+      "docs": "/vue-directive/README.md/",
+      "description": ""
+    },
+    {
+      "name": "README.md",
+      "package": "uni-use",
+      "lastUpdated": 1632381981000,
+      "docs": "/uni-use/README.md/",
+      "description": ""
+    },
+    {
+      "name": "README.md",
+      "package": "uni-utils",
+      "lastUpdated": 1632381981000,
+      "docs": "/uni-utils/README.md/",
+      "description": ""
+    },
+    {
+      "name": "swagger",
+      "package": "swagger",
+      "lastUpdated": 1643017163000,
+      "docs": "/swagger/",
+      "category": "Engineering",
+      "description": ""
+    },
+    {
+      "name": "tailwind",
+      "package": "tailwind",
+      "lastUpdated": 1643076575000,
+      "docs": "/tailwind/",
+      "category": "Engineering",
+      "description": ""
+    },
+    {
+      "name": "wechat-jssdk",
+      "package": "wechat-jssdk",
+      "lastUpdated": 1643008650000,
+      "docs": "/wechat-jssdk/",
+      "category": "Other",
+      "description": ""
+    }
+  ]
+}
