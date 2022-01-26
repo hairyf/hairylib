@@ -7,7 +7,11 @@ category: 'Axios'
 
 涉及 delete, get, head, options 等方法的修改，主要参数调整 (url, config) -> (url, params, config)
 
+## Install
+
 `npm install @hairy/axios -g`
+
+## Usage
 
 ~~~typescript
 import axios from 'axios'

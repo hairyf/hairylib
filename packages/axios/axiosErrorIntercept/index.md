@@ -2,11 +2,15 @@
 title: axiosErrorIntercept
 category: 'Axios'
 ---
-### axiosErrorIntercept
+# axiosErrorIntercept
 
 axios 错误拦截处理，以及自定义拦截错误
 
+## Install
+
 `npm install @hairy/axios -g`
+
+## Usage
 
 ~~~typescript
 import axios from 'axios'
@@ -14,6 +18,7 @@ import { axiosErrorIntercept } from '@hairy/axios'
 
 /**
  * 初次调用拦截
+ * @todo 成功拦截后数据丢失
  * @description
  * 
  * 注意: 普通错误与自定义错误都会进入 rejected 中

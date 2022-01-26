@@ -6,7 +6,7 @@ import { UNI_PLATFORM } from '../utils'
  * @fix makePhoneCall
  * @fix setClipboardData
  */
-export const uApiFixs = () => {
+export const uniApiFix = () => {
   uni.makePhoneCall = (options) => {
     try {
       if (UNI_PLATFORM === 'h5') {
@@ -32,23 +32,4 @@ export const uApiFixs = () => {
       options.fail?.(error)
     }
   }
-}
-
-/**
- * 查询 fields 信息
- * @param selector
- * @param componentThis
- * @param options
- * @returns
- */
-export const queryFields = (selector: string, componentThis?: any, options?: UniApp.NodeField) => {
-  const query = componentThis
-    ? uni.createSelectorQuery().in(componentThis)
-    : uni.createSelectorQuery()
-  return new Promise<UniApp.NodeInfo>((resolve) => {
-    query
-      .select(selector)
-      .fields(options || {}, resolve)
-      .exec()
-  })
 }

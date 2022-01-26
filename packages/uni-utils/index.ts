@@ -1,3 +1,3 @@
-export * from './api'
 export * from './router'
+export * from './uniApiFix'
 export * from './utils'

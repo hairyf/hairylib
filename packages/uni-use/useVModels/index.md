@@ -1,5 +1,6 @@
 ---
-category: Component
+name: useVModels
+category: uni-use
 ---
 
 # useVModels

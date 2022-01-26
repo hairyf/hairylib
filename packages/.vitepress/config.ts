@@ -37,13 +37,10 @@ const config = defineConfig({
       '/guide/': DefaultSideBar,
       '/contributing': DefaultSideBar,
 
-      '/axios/': DocumentsSideBar,
-      '/browser/': DocumentsSideBar,
-      '/cli/': DocumentsSideBar,
-      '/eslint/': DocumentsSideBar,
-      '/swagger/': DocumentsSideBar,
-      '/tailwind/': DocumentsSideBar,
-      '/wechat-jssdk/': DocumentsSideBar
+      // #region functions
+      ...getReduceSideBar(indexes.documents.filter(item => item.name === item.package).map(item => item.name)),
+      ...getReduceSideBar(categories),
+      // #endregion
     },
     nav: [
       {
@@ -79,6 +76,14 @@ function getDocumentSideBar() {
   }
 
   return links
+}
+function getReduceSideBar(names: string[]) {
+  return names.reduce((total, key) => {
+    if (!key) return total
+    const path = `/${key?.toLowerCase()}/`
+    total[path] = DocumentsSideBar
+    return total
+  }, <any>{})
 }
 
 export default config

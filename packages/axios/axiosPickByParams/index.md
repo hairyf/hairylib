@@ -6,7 +6,11 @@ category: 'Axios'
 
 过滤请求中不必要的参数
 
+## Install
+
 `npm install @hairy/axios -g`
+
+## Usage
 
 ~~~typescript
 

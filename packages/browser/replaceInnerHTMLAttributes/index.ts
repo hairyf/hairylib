@@ -1,12 +1,10 @@
-import { isArray } from 'lodash'
-
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
  * @param html html string
  * @param option
  * @returns
  */
-export const setInnerHTMLAttributes = (
+export const replaceInnerHTMLAttributes = (
   html: string,
   option: {
     tag: string | string[]
@@ -19,7 +17,7 @@ export const setInnerHTMLAttributes = (
   }
   if (Array.isArray(option.attr)) {
     const string_: string = option.attr.reverse().reduce((old, item) => {
-      return setInnerHTMLAttributes(old, { ...option, attr: item })
+      return replaceInnerHTMLAttributes(old, { ...option, attr: item })
     }, html)
     return string_
   }
@@ -46,17 +44,4 @@ export const setInnerHTMLAttributes = (
     })
   }
   return tags.reduce((total, tag) => transform(total, tag), html)
-}
-
-/**
- * 移除所有标签的一个或多个属性
- * @param html html string
- * @param attr attr string
- * @returns html
- */
-export const removeInnerHTMLAttribute = (html: string, attribute: string | string[]) => {
-  return (isArray(attribute) ? attribute : [attribute]).reduce(
-    (total, attribute) => total.replace(new RegExp(`${attribute}=['"](.*?)['"]`, 'gis'), ''),
-    html
-  )
 }
