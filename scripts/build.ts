@@ -78,7 +78,7 @@ export const buildPackageFiles = async () => {
 
     // 编译不合并, 采用 hairy build 方式
     if (mergeBuild === false) {
-      execa.sync('hairy build', { cwd: path.join('packages', name) })
+      execa.sync('tsc', { cwd: path.join('packages', name) })
       continue
     }
 
