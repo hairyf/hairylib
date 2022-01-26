@@ -1,6 +1,6 @@
 {
   "name": "@hairy/browser",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "license": "MIT",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
