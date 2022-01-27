@@ -9,9 +9,7 @@ category: 'Engineering'
 
 ## Install
 
-```sh
-npm install @hairy/cli -g
-```
+`npm install @hairy/cli -g`
 
 ## Usage
 

@@ -9,9 +9,7 @@ category: 'Engineering'
 
 ## Install
 
-~~~sh
-npm install @hairy/swagger
-~~~
+`npm install @hairy/swagger`
 
 ## Usage
 

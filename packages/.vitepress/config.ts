@@ -14,7 +14,7 @@ const Guide = [
 ]
 
 const CoreCategories = categories.map(c => ({
-  text: c,
+  text: capitalizeCamelCase(c),
   link: indexes.documents.find(item => item.category === c)?.docs || ''
 }))
 
@@ -50,7 +50,7 @@ const config = defineConfig({
       },
       {
         text: 'Functions',
-        items: []
+        items: CoreCategories
       },
       {
         text: 'Github',
@@ -74,8 +74,8 @@ function getDocumentSideBar() {
   for (const name of categories) {
     const documents = indexes.documents.filter(i => i.category === name)
     links.push({
-      children: documents.map(i => ({ text: i.name, link: i.docs })),
       text: capitalizeCamelCase(name),
+      children: documents.map(i => ({ text: i.name, link: i.docs })),
     })
   }
   return links
