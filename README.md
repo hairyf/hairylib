@@ -2,20 +2,6 @@
 
 hairylib 是工具代码库，使用 lerna 管理的多个工具模块包的项目。
 
-目前已有模块包：
-
-- [@hairy/eslint](./packages/eslint#readme)
-- [@hairy/tailwind](./packages/tailwind#readme)
-- [@hairy/axios](./packages/axios#readme)
-- [@hairy/browser](./packages/browser#readme)
-- [@hairy/utils](./packages/utils#readme)
-- [@hairy/uni-use](./packages/uni-use#readme)
-- [@hairy/uni-utils](./packages/uni-utils#readme)
-- [@hairy/vue-directive](./packages/vue-directive#readme)
-- [@hairy/vue-use](./packages/vue-use#readme)
-- [@hairy/vue-utils](./packages/vue-utils#readme)
-
-
 ## 项目流程图
 
 ![steps](./meta/images/steps.png)
