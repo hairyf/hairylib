@@ -1,0 +1,30 @@
+{
+  "name": "@hairy/share",
+  "version": "0.0.1",
+  "description": "Hairy packages share function",
+  "main": "./index.cjs.js",
+  "license": "ISC",
+  "author": "Anthony Fu<https://github.com/TuiMao233>",
+  "bugs": {
+    "url": "https://github.com/TuiMao233/hairylib/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
+  },
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./*": "./*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

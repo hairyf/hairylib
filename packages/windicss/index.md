@@ -1,29 +1,22 @@
 ---
-title: tailwind
+title: windicss
 category: 'Config'
 ---
 
-# @hairy/tailwind
+# @hairy/windicss
 
-tailwind 的规则集，包含了 Web 端，小程序端等配置，小程序端可以作用于 uniapp
-该配置由于打包后识别为 esm 模块，所以需要 esbuild-register 来读取 .ts 配置文件
+windicss 的规则集，包含了 Web 端，不支持小程序端
 
 ## Install
 
-`npm install @hairy/tailwind -D`
+`npm install @hairy/windicss -D`
 
 ## Usage
 
-~~~js
-// 小程序端的默认配置
-import { defineCloudMergeConfig } from '@hairy/tailwind'
-const cloudConfig = defineCloudMergeConfig({
-    // 这里的配置最终会进行深层合并
-})
-// web 端的默认配置
-import { defineWebMergeConfig } from '@hairy/tailwind'
-const webConfig = defineWebMergeConfig({
-    // 这里的配置最终会进行深层合并
+~~~typescript
+import { defineWebMergeConfig } from '@hairy/windicss'
+export default defineWebMergeConfig({
+  // ... merge config
 })
 ~~~
 
@@ -31,7 +24,7 @@ const webConfig = defineWebMergeConfig({
 
 ~~~ts
 // 用于生成间距信息的工具
-import { spacing } from '@hairy/tailwind'
+import { spacing } from '@hairy/windicss'
 spacing(2000)
 // 生成以下数据
 {
@@ -72,16 +65,7 @@ interface SpacingOptions {
 
 ~~~typescript
 // 用于将尺寸反转
-import { negative } from '@hairy/tailwind'
+import { negative } from '@hairy/windicss'
 negative({'1px': '1px'})
 // {'-1px': '-1px'}
-~~~
-
-## Config
-
-~~~js
-// 默认统一的所有配置
-import { defaultConfig } from '@hairy/taiwind'
-// 百分比的所有尺寸, 例如 '1/2': '50%',
-import { defaultPercentage } from '@hairy/taiwind'
 ~~~

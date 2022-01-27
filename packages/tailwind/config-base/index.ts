@@ -1,6 +1,6 @@
 import { merge } from 'lodash'
 import { lineClampPlugin } from '../plugins'
-import { DefineConfig } from '../utils/types'
+import { DefineConfig } from '../utils'
 
 const tailwindPresets: DefineConfig = require('tailwindcss/stubs/defaultConfig.stub.js')
 ;(tailwindPresets as any).theme.spacing = {}

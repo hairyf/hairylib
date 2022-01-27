@@ -1,5 +1,5 @@
 import { merge } from 'lodash'
-import { DefineConfig } from '../utils/types'
+import { DefineConfig } from '../utils'
 import defaults from './defaults'
 
 export const defineCloudMergeConfig = (config: DefineConfig = {}) => {

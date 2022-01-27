@@ -7,16 +7,22 @@
 export const packages: PackageManifest[] = [
   {
     name: 'tailwind',
-    display: 'Tailwind preset',
+    display: 'Tailwind preset Config',
     description: 'Tailwind config for Mr.Mao',
     iife: false
   },
   {
     name: 'eslint',
-    display: 'Eslint preset',
+    display: 'Eslint preset Configs',
     description: 'Eslint config for Mr.Mao',
     manualImport: true,
     mergeBuild: false
+  },
+  {
+    name: 'windicss',
+    display: 'Windicss preset Config',
+    description: 'Windicss config for Mr.Mao',
+    iife: false
   },
   {
     name: 'cli',
@@ -42,6 +48,11 @@ export const packages: PackageManifest[] = [
     display: 'Hairy utilities core',
     description: 'Utilities core for Mr.Mao',
     external: ['dayjs']
+  },
+  {
+    name: 'share',
+    display: 'Hairy packages share function',
+    description: 'Hairy packages share function'
   },
   {
     name: 'vue-use',

@@ -1,6 +1,6 @@
 ---
 title: eslint
-category: 'Engineering'
+category: 'Config'
 ---
 
 # @hairy/eslint

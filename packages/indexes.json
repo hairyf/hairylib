@@ -4,6 +4,7 @@
 		"Axios",
 		"Browser",
 		"Engineering",
+		"Config",
 		"Utils",
 		"uni-utils",
 		"uni-use",
@@ -13,7 +14,7 @@
 		{
 			"name": "axiosErrorIntercept",
 			"package": "axios",
-			"lastUpdated": 1643178526000,
+			"lastUpdated": 1643187251000,
 			"docs": "/axios/axiosErrorIntercept/",
 			"category": "Axios",
 			"description": ""
@@ -21,7 +22,7 @@
 		{
 			"name": "axiosLoading",
 			"package": "axios",
-			"lastUpdated": 1643087789000,
+			"lastUpdated": 1643187251000,
 			"docs": "/axios/axiosLoading/",
 			"category": "Axios",
 			"description": ""
@@ -29,7 +30,7 @@
 		{
 			"name": "axiosPickByParams",
 			"package": "axios",
-			"lastUpdated": 1643087789000,
+			"lastUpdated": 1643187251000,
 			"docs": "/axios/axiosPickByParams/",
 			"category": "Axios",
 			"description": ""
@@ -37,7 +38,7 @@
 		{
 			"name": "axiosProtoApiModify",
 			"package": "axios",
-			"lastUpdated": 1643087789000,
+			"lastUpdated": 1643187251000,
 			"docs": "/axios/axiosProtoApiModify/",
 			"category": "Axios",
 			"description": ""
@@ -45,7 +46,7 @@
 		{
 			"name": "chooseFile",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/chooseFile/",
 			"category": "Browser",
 			"description": ""
@@ -53,7 +54,7 @@
 		{
 			"name": "chooseImage",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/chooseImage/",
 			"category": "Browser",
 			"description": ""
@@ -69,7 +70,7 @@
 		{
 			"name": "downloadBlobFile",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/downloadBlobFile/",
 			"category": "Browser",
 			"description": ""
@@ -77,7 +78,7 @@
 		{
 			"name": "downloadNetworkFile",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/downloadNetworkFile/",
 			"category": "Browser",
 			"description": ""
@@ -85,7 +86,7 @@
 		{
 			"name": "ejectWindow",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/ejectWindow/",
 			"category": "Browser",
 			"description": ""
@@ -95,13 +96,13 @@
 			"package": "eslint",
 			"lastUpdated": 1643178850000,
 			"docs": "/eslint/",
-			"category": "Engineering",
+			"category": "Config",
 			"description": ""
 		},
 		{
 			"name": "is",
 			"package": "utils",
-			"lastUpdated": 1643087789000,
+			"lastUpdated": 1643187251000,
 			"docs": "/utils/is/",
 			"category": "Utils",
 			"description": ""
@@ -109,7 +110,7 @@
 		{
 			"name": "makePhoneCall",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/makePhoneCall/",
 			"category": "Browser",
 			"description": ""
@@ -117,7 +118,7 @@
 		{
 			"name": "readFileReader",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/readFileReader/",
 			"category": "Browser",
 			"description": ""
@@ -125,7 +126,7 @@
 		{
 			"name": "removeInnerHTMLAttribute",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/removeInnerHTMLAttribute/",
 			"category": "Browser",
 			"description": ""
@@ -133,7 +134,7 @@
 		{
 			"name": "replaceInnerHTMLAttributes",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/browser/replaceInnerHTMLAttributes/",
 			"category": "Browser",
 			"description": ""
@@ -141,7 +142,7 @@
 		{
 			"name": "router",
 			"package": "uni-utils",
-			"lastUpdated": 1643004200000,
+			"lastUpdated": 1643187251000,
 			"docs": "/uni-utils/router/",
 			"category": "uni-utils",
 			"description": ""
@@ -149,7 +150,7 @@
 		{
 			"name": "swagger",
 			"package": "swagger",
-			"lastUpdated": 1643179429000,
+			"lastUpdated": 1643187299000,
 			"docs": "/swagger/",
 			"category": "Engineering",
 			"description": ""
@@ -157,15 +158,15 @@
 		{
 			"name": "tailwind",
 			"package": "tailwind",
-			"lastUpdated": 1643179429000,
+			"lastUpdated": 1643187299000,
 			"docs": "/tailwind/",
-			"category": "Engineering",
+			"category": "Config",
 			"description": ""
 		},
 		{
 			"name": "uniApiFix",
 			"package": "uni-utils",
-			"lastUpdated": 0,
+			"lastUpdated": 1643187251000,
 			"docs": "/uni-utils/uniApiFix/",
 			"category": "uni-utils",
 			"description": ""
@@ -173,7 +174,7 @@
 		{
 			"name": "useVModel",
 			"package": "uni-use",
-			"lastUpdated": 1643008650000,
+			"lastUpdated": 1643187251000,
 			"docs": "/uni-use/useVModel/",
 			"category": "uni-use",
 			"description": ""
@@ -181,7 +182,7 @@
 		{
 			"name": "useVModels",
 			"package": "uni-use",
-			"lastUpdated": 1643008650000,
+			"lastUpdated": 1643187251000,
 			"docs": "/uni-use/useVModels/",
 			"category": "uni-use",
 			"description": ""
@@ -192,6 +193,14 @@
 			"lastUpdated": 1643178850000,
 			"docs": "/wechat-jssdk/",
 			"category": "Other",
+			"description": ""
+		},
+		{
+			"name": "windicss",
+			"package": "windicss",
+			"lastUpdated": 0,
+			"docs": "/windicss/",
+			"category": "Config",
 			"description": ""
 		}
 	]

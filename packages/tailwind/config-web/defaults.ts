@@ -9,7 +9,7 @@
 
 import { merge } from 'lodash'
 import { defaultConfig } from '../config-base'
-import { generateSpacing } from '../utils'
+import { spacing } from '@hairy/share'
 
 /** 默认配置 */
 const defaults = merge(defaultConfig, {
@@ -45,7 +45,7 @@ const defaults = merge(defaultConfig, {
       xxl: { min: '1600px' },
       xxxl: { min: '1920px' }
     },
-    spacing: generateSpacing(2000)
+    spacing: spacing(2000)
   },
 
   /**

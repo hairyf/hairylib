@@ -1,6 +1,6 @@
 import { merge } from 'lodash'
-import { DefineConfig } from '../utils'
 import defaults from './defaults'
+import { FullConfig } from 'windicss/types/interfaces'
 
 /**
 /**
@@ -8,6 +8,6 @@ import defaults from './defaults'
  * @param config 深层合并预设
  * @returns 预设
  */
-export const defineWebMergeConfig = (config: DefineConfig = {}) => {
+export const defineWebMergeConfig = (config: FullConfig = {}) => {
   return merge(defaults, config)
 }

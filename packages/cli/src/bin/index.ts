@@ -29,7 +29,6 @@ cli
   .command('build')
   .option('-i, --input <dir>', `bundle's entry`)
   .option('-o, --output <dir>', `bundle's output`)
-  .option('-ut, --un-type', `not build d.ts`)
   .option('-n, --not-type', `not build d.ts`)
   .action((options) => actionBuilder({ ...options, mode: 'production' }))
 
