@@ -8,13 +8,13 @@
  */
 
 /**
- * 颜色混合器
+ * 颜色混合器 - 仅支持 hex 颜色完整值
  * @param colorOne 颜色值
  * @param colorTwo 颜色值
  * @param ratio 根据 colorTwo 混合比例, 0~1 区间, 1 则是完全的 colorTwo
  * @returns 混合颜色
  */
-export const blendColor = (colorOne: string, colorTwo: string, ratio: number) => {
+export const colourBlend = (colorOne: string, colorTwo: string, ratio: number) => {
   ratio = Math.max(Math.min(Number(ratio), 1), 0)
   const r1 = parseInt(colorOne.slice(1, 3), 16)
   const g1 = parseInt(colorOne.slice(3, 5), 16)
@@ -61,18 +61,18 @@ export const hexToRgba = (hex: string, opacity: number) => {
  * @param color
  */
 export const fuseThemeColor = (color: string) => ({
-  'primaryColorLight-2': blendColor('#ffffff', color, 0.8),
-  'primaryColorLight-4': blendColor('#ffffff', color, 0.6),
-  'primaryColorLight-6': blendColor('#ffffff', color, 0.4),
-  'primaryColorLight-8': blendColor('#ffffff', color, 0.2),
+  'light-2': colourBlend('#ffffff', color, 0.8),
+  'light-4': colourBlend('#ffffff', color, 0.6),
+  'light-6': colourBlend('#ffffff', color, 0.4),
+  'light-8': colourBlend('#ffffff', color, 0.2),
 
-  'primaryColorDark-2': blendColor('#000000', color, 0.8),
-  'primaryColorDark-4': blendColor('#000000', color, 0.6),
-  'primaryColorDark-6': blendColor('#000000', color, 0.4),
-  'primaryColorDark-8': blendColor('#000000', color, 0.2),
+  'dark-2': colourBlend('#000000', color, 0.8),
+  'dark-4': colourBlend('#000000', color, 0.6),
+  'dark-6': colourBlend('#000000', color, 0.4),
+  'dark-8': colourBlend('#000000', color, 0.2),
 
-  'primaryColorOpacity-2': hexToRgba(color, 0.8).rgba,
-  'primaryColorOpacity-4': hexToRgba(color, 0.6).rgba,
-  'primaryColorOpacity-6': hexToRgba(color, 0.4).rgba,
-  'primaryColorOpacity-8': hexToRgba(color, 0.2).rgba
+  'opacity-2': hexToRgba(color, 0.8).rgba,
+  'opacity-4': hexToRgba(color, 0.6).rgba,
+  'opacity-6': hexToRgba(color, 0.4).rgba,
+  'opacity-8': hexToRgba(color, 0.2).rgba
 })

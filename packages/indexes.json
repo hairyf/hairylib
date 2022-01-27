@@ -2,12 +2,13 @@
 	"packages": {},
 	"categories": [
 		"Axios",
-		"Browser",
 		"Engineering",
-		"Config",
 		"Utils",
+		"Config",
+		"Browser",
 		"uni-utils",
 		"uni-use",
+		"vue-use",
 		"Other"
 	],
 	"documents": [
@@ -44,59 +45,43 @@
 			"description": ""
 		},
 		{
-			"name": "chooseFile",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/chooseFile/",
-			"category": "Browser",
-			"description": ""
-		},
-		{
-			"name": "chooseImage",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/chooseImage/",
-			"category": "Browser",
-			"description": ""
-		},
-		{
 			"name": "cli",
 			"package": "cli",
-			"lastUpdated": 1643178850000,
+			"lastUpdated": 1643254179000,
 			"docs": "/cli/",
 			"category": "Engineering",
 			"description": ""
 		},
 		{
-			"name": "downloadBlobFile",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/downloadBlobFile/",
-			"category": "Browser",
-			"description": ""
-		},
-		{
-			"name": "downloadNetworkFile",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/downloadNetworkFile/",
-			"category": "Browser",
-			"description": ""
-		},
-		{
-			"name": "ejectWindow",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/ejectWindow/",
-			"category": "Browser",
+			"name": "color",
+			"package": "utils",
+			"lastUpdated": 1643004200000,
+			"docs": "/utils/color/",
+			"category": "Utils",
 			"description": ""
 		},
 		{
 			"name": "eslint",
 			"package": "eslint",
-			"lastUpdated": 1643178850000,
+			"lastUpdated": 1643254179000,
 			"docs": "/eslint/",
 			"category": "Config",
+			"description": ""
+		},
+		{
+			"name": "file",
+			"package": "browser",
+			"lastUpdated": 0,
+			"docs": "/browser/file/",
+			"category": "Browser",
+			"description": ""
+		},
+		{
+			"name": "format",
+			"package": "utils",
+			"lastUpdated": 1643004200000,
+			"docs": "/utils/format/",
+			"category": "Utils",
 			"description": ""
 		},
 		{
@@ -108,35 +93,11 @@
 			"description": ""
 		},
 		{
-			"name": "makePhoneCall",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/makePhoneCall/",
-			"category": "Browser",
-			"description": ""
-		},
-		{
-			"name": "readFileReader",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/readFileReader/",
-			"category": "Browser",
-			"description": ""
-		},
-		{
-			"name": "removeInnerHTMLAttribute",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/removeInnerHTMLAttribute/",
-			"category": "Browser",
-			"description": ""
-		},
-		{
-			"name": "replaceInnerHTMLAttributes",
-			"package": "browser",
-			"lastUpdated": 1643187251000,
-			"docs": "/browser/replaceInnerHTMLAttributes/",
-			"category": "Browser",
+			"name": "lang",
+			"package": "utils",
+			"lastUpdated": 0,
+			"docs": "/utils/lang/",
+			"category": "Utils",
 			"description": ""
 		},
 		{
@@ -148,9 +109,17 @@
 			"description": ""
 		},
 		{
+			"name": "size",
+			"package": "utils",
+			"lastUpdated": 1643004200000,
+			"docs": "/utils/size/",
+			"category": "Utils",
+			"description": ""
+		},
+		{
 			"name": "swagger",
 			"package": "swagger",
-			"lastUpdated": 1643187299000,
+			"lastUpdated": 1643254179000,
 			"docs": "/swagger/",
 			"category": "Engineering",
 			"description": ""
@@ -158,9 +127,17 @@
 		{
 			"name": "tailwind",
 			"package": "tailwind",
-			"lastUpdated": 1643187299000,
+			"lastUpdated": 1643254179000,
 			"docs": "/tailwind/",
 			"category": "Config",
+			"description": ""
+		},
+		{
+			"name": "types",
+			"package": "utils",
+			"lastUpdated": 1643187251000,
+			"docs": "/utils/types/",
+			"category": "Utils",
 			"description": ""
 		},
 		{
@@ -188,6 +165,30 @@
 			"description": ""
 		},
 		{
+			"name": "util",
+			"package": "browser",
+			"lastUpdated": 0,
+			"docs": "/browser/util/",
+			"category": "Browser",
+			"description": ""
+		},
+		{
+			"name": "util",
+			"package": "utils",
+			"lastUpdated": 0,
+			"docs": "/utils/util/",
+			"category": "Utils",
+			"description": ""
+		},
+		{
+			"name": "vue-use",
+			"package": "vue-use",
+			"lastUpdated": 1643254179000,
+			"docs": "/vue-use/",
+			"category": "vue-use",
+			"description": ""
+		},
+		{
 			"name": "wechat-jssdk",
 			"package": "wechat-jssdk",
 			"lastUpdated": 1643178850000,
@@ -198,7 +199,7 @@
 		{
 			"name": "windicss",
 			"package": "windicss",
-			"lastUpdated": 0,
+			"lastUpdated": 1643254179000,
 			"docs": "/windicss/",
 			"category": "Config",
 			"description": ""

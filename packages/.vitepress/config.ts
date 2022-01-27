@@ -5,6 +5,7 @@
  * @LastEditTime: 2022-01-22 20:10:48
  */
 import { defineConfig, DefaultTheme } from 'vitepress'
+import { camelCase } from 'lodash'
 import indexes, { categories } from '../indexes.json'
 
 const Guide = [
@@ -62,21 +63,24 @@ const config = defineConfig({
     ]
   },
 })
+function capitalizeCamelCase (string_: string) {
+  let result = camelCase(string_)
+  result = result.slice(0, 1).toLocaleUpperCase() + result.slice(1)
+  return result
+}
 
 function getDocumentSideBar() {
   const links = []
-
   for (const name of categories) {
     const documents = indexes.documents.filter(i => i.category === name)
-
     links.push({
       children: documents.map(i => ({ text: i.name, link: i.docs })),
-      text: name,
+      text: capitalizeCamelCase(name),
     })
   }
-
   return links
 }
+
 function getReduceSideBar(names: string[]) {
   return names.reduce((total, key) => {
     if (!key) return total

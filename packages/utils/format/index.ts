@@ -65,13 +65,14 @@ export const formatUnix = (timestamp: number, format = 'YYYY-MM-DD HH:mm:ss') =>
 
 /**
  * 隐藏手机号中间四位
+ * @param phone 手机号
  */
 export const formatCoverPhone = (phone: string) => {
   return phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
 }
 
 /**
- * 数字位数不够，进行前补零
+ * 数字位数不够时，进行前补零
  * @param num 数值
  * @param lh 长度
  */
