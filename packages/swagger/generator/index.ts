@@ -135,9 +135,9 @@ export const generate = (config: SwaggerGenerateConfig) => {
     `
   }
 
-  apiFileCode = format(apiFileCode, { printWidth: 800, parser: 'typescript' })
+  // apiFileCode = format(apiFileCode, { printWidth: 800, parser: 'typescript' })
 
-  typeFileCode = format(typeFileCode, { printWidth: 800, parser: 'typescript' })
+  // typeFileCode = format(typeFileCode, { printWidth: 800, parser: 'typescript' })
 
   return { apiFileCode, typeFileCode }
 }

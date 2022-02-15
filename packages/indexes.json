@@ -47,7 +47,7 @@
 		{
 			"name": "cli",
 			"package": "cli",
-			"lastUpdated": 1643254179000,
+			"lastUpdated": 1643266150000,
 			"docs": "/cli/",
 			"category": "Engineering",
 			"description": ""
@@ -55,7 +55,7 @@
 		{
 			"name": "color",
 			"package": "utils",
-			"lastUpdated": 1643004200000,
+			"lastUpdated": 1643265730000,
 			"docs": "/utils/color/",
 			"category": "Utils",
 			"description": ""
@@ -71,7 +71,7 @@
 		{
 			"name": "file",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643265730000,
 			"docs": "/browser/file/",
 			"category": "Browser",
 			"description": ""
@@ -79,7 +79,7 @@
 		{
 			"name": "format",
 			"package": "utils",
-			"lastUpdated": 1643004200000,
+			"lastUpdated": 1643265730000,
 			"docs": "/utils/format/",
 			"category": "Utils",
 			"description": ""
@@ -87,7 +87,7 @@
 		{
 			"name": "is",
 			"package": "utils",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1643265730000,
 			"docs": "/utils/is/",
 			"category": "Utils",
 			"description": ""
@@ -95,7 +95,7 @@
 		{
 			"name": "lang",
 			"package": "utils",
-			"lastUpdated": 0,
+			"lastUpdated": 1643265730000,
 			"docs": "/utils/lang/",
 			"category": "Utils",
 			"description": ""
@@ -111,7 +111,7 @@
 		{
 			"name": "size",
 			"package": "utils",
-			"lastUpdated": 1643004200000,
+			"lastUpdated": 1643265730000,
 			"docs": "/utils/size/",
 			"category": "Utils",
 			"description": ""
@@ -119,7 +119,7 @@
 		{
 			"name": "swagger",
 			"package": "swagger",
-			"lastUpdated": 1643254179000,
+			"lastUpdated": 1643266150000,
 			"docs": "/swagger/",
 			"category": "Engineering",
 			"description": ""
@@ -135,7 +135,7 @@
 		{
 			"name": "types",
 			"package": "utils",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1643265730000,
 			"docs": "/utils/types/",
 			"category": "Utils",
 			"description": ""
@@ -167,7 +167,7 @@
 		{
 			"name": "util",
 			"package": "browser",
-			"lastUpdated": 0,
+			"lastUpdated": 1643265730000,
 			"docs": "/browser/util/",
 			"category": "Browser",
 			"description": ""
@@ -175,7 +175,7 @@
 		{
 			"name": "util",
 			"package": "utils",
-			"lastUpdated": 0,
+			"lastUpdated": 1643265730000,
 			"docs": "/utils/util/",
 			"category": "Utils",
 			"description": ""
@@ -183,7 +183,7 @@
 		{
 			"name": "vue-use",
 			"package": "vue-use",
-			"lastUpdated": 1643254179000,
+			"lastUpdated": 1643265730000,
 			"docs": "/vue-use/",
 			"category": "vue-use",
 			"description": ""

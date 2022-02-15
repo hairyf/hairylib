@@ -25,7 +25,7 @@ export interface SwaggerWebClientGeneratorType {
  */
 export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (config) => {
   const writeOptions = { encoding: 'utf8' as const, flag: 'w' as const }
-  const spinner = ora('Generate Interface ...\n').start()
+  // const spinner = ora('Generate Interface ...\n').start()
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
   const process = configs.map(async (iterator) => {
     // 合并 default 构建 config
@@ -48,8 +48,8 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
   })
 
   await Promise.all(process)
-  spinner.succeed()
-  spinner.clear()
+  // spinner.succeed()
+  // spinner.clear()
 }
 
 export { parseSource, parseOutput }

@@ -2,10 +2,10 @@
  * @Author: Mr'Mao https://github.com/TuiMao233
  * @Date: 2021-12-29 11:03:42
  * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-20 18:22:51
+ * @LastEditTime: 2022-02-15 16:03:07
  */
 
-import { varName } from '../internal'
+import { uselessString, varName } from '../internal'
 import { SwaggerField, SwaggerParserContext, SwaggerSourceParameter } from '../_types'
 import { parseProperties as _parseProperties } from './properties'
 
@@ -22,6 +22,7 @@ export function parseParameter(
   parameter: SwaggerSourceParameter,
   options: ParseParameterOptions
 ): string | SwaggerField {
+  parameter.name = uselessString(parameter.name)
   const parseOptions = {
     type: [varName(parameter.in || '')],
     name: parameter.name || '',

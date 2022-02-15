@@ -32,7 +32,9 @@ export const commons: Linter.HasRules['rules'] = {
   // 允许任意全局变量
   'no-undef': 'off',
   // 不允许空的代码块, 但允许空的捕获
-  'no-empty': ['error', { allowEmptyCatch: true }]
+  'no-empty': ['error', { allowEmptyCatch: true }],
+  // 注释前面空格
+  'spaced-comment': 'warn'
 }
 
 /**
@@ -44,8 +46,7 @@ export const imports: Linter.HasRules['rules'] = {
   'import/no-absolute-path': 'error',
   'import/first': 'off',
   'import/no-unresolved': 'off',
-  'import/no-named-as-default': 'off',
-  'import/named': 'off'
+  'import/no-named-as-default': 'off'
 }
 
 /**
@@ -54,7 +55,7 @@ export const imports: Linter.HasRules['rules'] = {
  * @module eslint-plugin-unicorn
  */
 export const unicorn: Linter.HasRules['rules'] = {
-  'unicorn/better-regex': 'error',
+  'unicorn/better-regex': 'off',
   'unicorn/catch-error-name': 'error',
   'unicorn/consistent-destructuring': 'error',
   // HACK: 规则会导致一些问题
