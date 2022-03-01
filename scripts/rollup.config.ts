@@ -4,7 +4,8 @@
  * @LastEditors: Mr'Mao
  * @LastEditTime: 2022-01-24 14:01:13
  */
-import { rollup, OutputOptions, RollupOptions } from 'rollup'
+import type { OutputOptions, RollupOptions } from 'rollup'
+import { rollup } from 'rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import { terser } from 'rollup-plugin-terser'
@@ -14,13 +15,13 @@ export const rollupBuildPackage = async (config: PackageManifest) => {
   const { name, external, iife, globals } = config
   const configs: RollupOptions[] = []
   const iifeGlobals = {
-    'vue-demi': 'vueDemi',
-    '@vueuse/core': 'vueUse',
+    'vue-demi': 'VueDemi',
+    '@vueuse/core': 'VueUse',
     '@hairy/utils': 'hairyUtils',
     '@hairy/browser': 'hairyBrowser',
     '@vue/composition-api': 'compositionApi',
     'pubsub-js': 'pubsubJs',
-    vue: 'vue',
+    vue: 'Vue',
     dayjs: 'dayjs',
     lodash: '_',
     ...(globals || {})

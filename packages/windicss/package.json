@@ -6,14 +6,11 @@
   "license": "ISC",
   "dependencies": {
     "@hairy/utils": "^1.0.16",
-    "@hairy/share": "^0.0.1"
+    "@hairy/share": "^0.0.1",
+    "windicss": "^3"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.170"
-  },
-  "peerDependencies": {
-    "lodash": "^4.17.21",
-    "windicss": "^3"
   },
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "bugs": {

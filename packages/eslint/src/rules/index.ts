@@ -46,7 +46,8 @@ export const imports: Linter.HasRules['rules'] = {
   'import/no-absolute-path': 'error',
   'import/first': 'off',
   'import/no-unresolved': 'off',
-  'import/no-named-as-default': 'off'
+  'import/no-named-as-default': 'off',
+  'import/named': 'off'
 }
 
 /**
@@ -111,7 +112,7 @@ export const unicorn: Linter.HasRules['rules'] = {
   // CONFLICT: prettier
   'unicorn/number-literal-case': 'off',
   'unicorn/numeric-separators-style': 'error',
-  'unicorn/prefer-add-event-listener': 'error',
+  'unicorn/prefer-add-event-listener': 'warn',
   'unicorn/prefer-array-find': 'error',
   'unicorn/prefer-array-flat': 'error',
   'unicorn/prefer-array-flat-map': 'error',

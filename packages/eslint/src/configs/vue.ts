@@ -8,7 +8,11 @@ const basic: Linter.Config = {
     'vue/max-attributes-per-line': 'off',
     'vue/html-indent': 'off',
     'vue/singleline-html-element-content-newline': 'off',
-    'vue/multiline-html-element-content-newline': 'off'
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/html-closing-bracket-newline': 'off',
+    'vue/no-unused-vars': 'warn',
+    'vue/require-valid-default-prop': 'warn'
   }
 }
 

@@ -16,6 +16,7 @@
     "publish:cli": "esno scripts/publish.ts",
     "update": "esno scripts/update.ts",
     "clean": "esno scripts/clean.ts",
+    "clean:all": "rimraf  packages/*/dist",
     "test": "cross-env NODE_ENV=test yarn clean && jest --collectCoverage=false",
     "test:cov": "cross-env NODE_ENV=test yarn clean && jest",
     "test:watch": "cross-env NODE_ENV=test yarn clean && jest ---watch --verbose --coverage",

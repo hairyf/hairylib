@@ -1,6 +1,6 @@
-import baseConfig from '../config-base'
 import { merge } from 'lodash'
 import { spacing } from '@hairy/share'
+import { baseConfig } from '../config-base'
 
 const defaultConfig = merge(baseConfig, {
   theme: {
