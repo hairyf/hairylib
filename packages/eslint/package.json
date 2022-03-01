@@ -1,6 +1,6 @@
 {
   "name": "@hairy/eslint",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Eslint config for Mr.Mao",
   "license": "ISC",
   "dependencies": {
@@ -26,8 +26,8 @@
     "@types/lodash": "^4.14.171"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "react": "^17.0.2"
   },
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {

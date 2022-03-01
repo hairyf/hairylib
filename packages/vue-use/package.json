@@ -1,14 +1,14 @@
 {
   "name": "@hairy/vue-use",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "license": "MIT",
   "dependencies": {
-    "@hairy/browser": "^1.0.12",
+    "@hairy/browser": "^1.0.13",
     "@types/pubsub-js": "^1.8.2",
-    "pubsub-js": "^1.9.3",
-    "vue-demi": "^0.12.1",
+    "@vueuse/core": "^5.2.0",
     "lodash": "^4.17.21",
-    "@vueuse/core": "^5.2.0"
+    "pubsub-js": "^1.9.3",
+    "vue-demi": "^0.12.1"
   },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",

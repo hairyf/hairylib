@@ -1,12 +1,12 @@
 {
   "name": "@hairy/windicss",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Windicss config for Mr.Mao",
   "main": "./index.cjs.js",
   "license": "ISC",
   "dependencies": {
-    "@hairy/utils": "^1.0.16",
-    "@hairy/share": "^0.0.1",
+    "@hairy/share": "^0.0.2",
+    "@hairy/utils": "^1.0.17",
     "windicss": "^3"
   },
   "devDependencies": {

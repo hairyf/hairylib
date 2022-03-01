@@ -1,9 +1,9 @@
 {
   "name": "@hairy/swagger",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "license": "MIT",
   "dependencies": {
-    "@hairy/utils": "^1.0.16",
+    "@hairy/utils": "^1.0.17",
     "axios": "^0.24.0",
     "fs-extra": "^10.0.0",
     "ora": "^6.0.1",
