@@ -23,4 +23,4 @@ jobs:
         # 要使用的构建命令
         BUILD_SCRIPT: npm i && npm run docs:build
         # 构建结果存储目录
-        BUILD_DIR: packages/.vuepress/dist/
+        BUILD_DIR: packages/.vitepress/dist/
