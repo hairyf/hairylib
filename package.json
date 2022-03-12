@@ -8,7 +8,7 @@
   "description": "目前包含 Vue3 Eslint 预设，tailwind 预设。\r 使用文档暂未开发，请自行运量使用。",
   "scripts": {
     "docs:dev": "yarn update && vitepress dev packages",
-    "docs:build": "vitepress build packages",
+    "docs:build": "yarn update && vitepress build packages",
     "docs:serve": "vitepress serve packages",
     "build": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
