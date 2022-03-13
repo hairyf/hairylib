@@ -32,14 +32,18 @@ export type ImperativeOverlay<Props, Result> = (options?: ExtractPropTypes<Props
 
 export const ImperativeOverlayKey: InjectionKey<OverlayMetaOptions> = Symbol('__imperative_overlay_key')
 
+export interface RenderInstanceOptions {
+  setup?: (vnode: VNode, vanish: Function) => void
+  root?: HTMLElement
+}
 /**
  * 渲染组件实例
  * @param Constructor 组件
  * @param props 组件参数
- * @param setup 包装层
+ * @param options 配置
  * @returns 组件实例
  */
-export const renderInstance = <T = Component>(Constructor: T, props: Record<string, any>, setup?: (vnode: VNode, vanish: Function) => void) => {
+export const renderInstance = <T = Component>(Constructor: T, props: Record<string, any>, options: RenderInstanceOptions = {}) => {
   // 组件消失时, 移除当前实例
   // 这里不需要调用 document.body.removeChild(container.firstElementChild)
   // 因为调用 render(null, container) 为我们完成了这项工作
@@ -50,7 +54,7 @@ export const renderInstance = <T = Component>(Constructor: T, props: Record<stri
   // 创建高阶组件, 注入销毁方法与组件
   const Component = defineComponent({
     setup: () => {
-      setup?.(vnode, vanish)
+      options.setup?.(vnode, vanish)
     },
     render() {
       return h(Constructor, props)
@@ -64,7 +68,8 @@ export const renderInstance = <T = Component>(Constructor: T, props: Record<stri
 
   // append document.body
   if (container.firstElementChild) {
-    document.body.append(container.firstElementChild)
+    const root = options.root || document.body
+    root.append(container.firstElementChild)
   }
 
   return { vanish, vnode }
@@ -114,8 +119,10 @@ export const createImperativeOverlay = <Props = any, Result = any>(
 
   const imperativeOverlay = (props: any) => {
     return new Promise<any>((resolve, reject) => {
-      renderInstance(component, props, (vnode, vanish) => {
-        provideMeta({ resolve, reject, vnode, vanish })
+      renderInstance(component, props, {
+        setup: (vnode, vanish) => {
+          provideMeta({ resolve, reject, vnode, vanish })
+        }
       })
     })
   }

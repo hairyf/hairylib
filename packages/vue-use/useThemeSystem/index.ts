@@ -1,25 +1,10 @@
-import { MaybeRef } from '@vueuse/core'
+import { MaybeElementRef, MaybeRef } from '@vueuse/core'
 import { get, merge, PropertyPath, set, toPath } from 'lodash'
-import {
-  computed,
-  ComputedRef,
-  inject,
-  InjectionKey,
-  provide,
-  unref,
-  readonly,
-  DeepReadonly,
-  ref,
-  Ref
-} from 'vue-demi'
+import { computed, ComputedRef, inject, InjectionKey, provide, unref, readonly, DeepReadonly, ref, Ref, watch } from 'vue-demi'
 import { UnwrapNestedRefs } from '@vue/reactivity'
 import { DeepPartial } from '@hairy/utils'
-import {
-  DeepConfigItem,
-  DeepStringObject,
-  transformTheme2CssVars,
-  useOverridesEditor
-} from './inside'
+import { DeepConfigItem, DeepStringObject, transformTheme2CssVars, useOverridesEditor } from './inside'
+import { unrefElement } from '../is/utils'
 
 interface CreateThemeResult<T, Overrides = DeepPartial<T>> {
   /**
@@ -35,13 +20,14 @@ interface CreateThemeResult<T, Overrides = DeepPartial<T>> {
    */
   provideTheme: (themeOverrides?: Overrides | MaybeRef<Overrides>) => void
   /**
-   * 获取基于当前主题的 css 变量
+   * 挂载基于当前主题的 css 变量
    *
+   * @param root 挂载的目标
    * @param target 目标路径, 例如 `'layout.slider' || ['layout', 'slider']`
    *
    * 不传则代表将所有配置转换
    */
-  useThemeCssVariables: (target?: PropertyPath) => ComputedRef<Record<string, string>>
+  useThemeCssVariables: (root?: MaybeElementRef, target?: PropertyPath) => ComputedRef<Record<string, string>>
   /**
    * 创建主题编辑器
    *
@@ -54,6 +40,10 @@ interface CreateThemeResult<T, Overrides = DeepPartial<T>> {
    * 默认配置，即传入配置，只读项
    */
   defaultTheme: DeepReadonly<UnwrapNestedRefs<T>>
+  /**
+   * 注入 Key 值
+   */
+  __THEME_KEY__: InjectionKey<MaybeRef<T>>
 }
 
 /**
@@ -75,15 +65,30 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
     return themeMerge
   }
 
-  const useThemeCssVariables = (target?: PropertyPath) => {
+  const useThemeCssVariables = (root = document.documentElement, target?: PropertyPath) => {
     const theme = injectTheme()
-    return computed(() => {
+    const cssVars = computed(() => {
       if (!target) return transformTheme2CssVars(theme.value as any)
       const paths = toPath(target)
       const objective: DeepStringObject = {}
       set(objective, paths, get(theme.value, paths))
       return transformTheme2CssVars(objective)
     })
+    watch(
+      cssVars,
+      (value) => {
+        const cssVars = transformTheme2CssVars(value)
+        const element = unrefElement(root)
+        if (!element) return undefined
+        for (const [key, value] of Object.entries(cssVars)) {
+          if (element.style.getPropertyPriority(`--${key}`) === value) continue
+          element.style.removeProperty(`--${key}`)
+          element.style.setProperty(`--${key}`, value)
+        }
+      },
+      { deep: true, immediate: true }
+    )
+    return cssVars
   }
 
   const useThemeEditorConfig = () => {
@@ -98,6 +103,7 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
     provideTheme,
     useThemeCssVariables,
     useThemeEditorConfig,
-    defaultTheme: readonly(options)
+    defaultTheme: readonly(options),
+    __THEME_KEY__
   }
 }

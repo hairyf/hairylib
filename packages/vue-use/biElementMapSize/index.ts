@@ -7,47 +7,61 @@
 
 import { analyUnit } from '@hairy/utils'
 import { MaybeElementRef, useElementSize } from '@vueuse/core'
-import { unref, watch } from 'vue'
+import { watch, WatchStopHandle } from 'vue'
+import { unrefElement } from '../is/utils'
 
 interface BiElementMapSizeOptions {
+  /** 是否开启宽度 @default true */
   width?: boolean
+  /** 是否开启高度 @default true */
   height?: boolean
 }
 
 /**
  * 同步 from DOM 的宽或高到指定的 to DOM
- * @param fromTarget
- * @param toTarget
+ * @param fromTarget 宽高来源元素
+ * @param toTarget 宽高设置元素
  * @param options
  */
-export const biElementMapSize = (
-  fromTarget: MaybeElementRef,
-  toTarget: MaybeElementRef,
-  options: BiElementMapSizeOptions = {}
-) => {
-  const { width: onWidth = true, height: onHeight = true } = options
+export const biElementMapSize = (fromTarget: MaybeElementRef, toTarget: MaybeElementRef, options: BiElementMapSizeOptions = {}) => {
+  const { width: isOnWidth = true, height: isOnHeight = false } = options
 
-  const { width: fromWidth, height: fromHeight } = useElementSize(fromTarget)
+  const defaultSize = { width: '', height: '' }
+  const fromSize = useElementSize(fromTarget)
 
-  onWidth &&
-    watch(
-      [fromWidth, toTarget],
-      () => {
-        const element = unref(toTarget) as HTMLDivElement
-        if (!element) return undefined
-        element.style.width = analyUnit(fromWidth.value)
-      },
-      { immediate: true }
-    )
+  let widthStopHandle: undefined | WatchStopHandle
+  let heightStopHandle: undefined | WatchStopHandle
 
-  onHeight &&
-    watch(
-      [fromHeight, toTarget],
-      () => {
-        const element = unref(toTarget) as HTMLDivElement
-        if (!element) return undefined
-        element.style.height = analyUnit(fromHeight.value)
-      },
-      { immediate: true }
-    )
+  const sync = (type: 'width' | 'height') => {
+    const sources = [fromSize[type], toTarget]
+    const callback = () => {
+      const element = unrefElement(toTarget)
+      if (!element) return undefined
+      element.style[type] = analyUnit(fromSize[type].value)
+    }
+    return watch(sources, callback, { immediate: true })
+  }
+
+  const stop = () => {
+    widthStopHandle?.()
+    heightStopHandle?.()
+    const element = unrefElement(toTarget)
+    element.style.width = defaultSize.width
+    element.style.height = defaultSize.height
+  }
+
+  const start = () => {
+    if (isOnWidth) widthStopHandle = sync('width')
+    if (isOnHeight) heightStopHandle = sync('height')
+  }
+
+  watch(toTarget, () => {
+    const element = unrefElement(toTarget)
+    defaultSize.width = element.style.width
+    defaultSize.height = element.style.height
+  })
+
+  start()
+
+  return { start, stop }
 }

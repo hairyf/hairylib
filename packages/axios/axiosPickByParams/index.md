@@ -2,13 +2,13 @@
 title: axiosPickByParams
 category: 'Axios'
 ---
-### axiosPickByParams
+## axiosPickByParams
 
 过滤请求中不必要的参数
 
 ## Install
 
-`npm install @hairy/axios -g`
+`npm install @hairy/axios`
 
 ## Usage
 
@@ -24,6 +24,8 @@ axiosPickByParams(axios, ['', undefined], {
 })
 
 ~~~
+
+## Type Declarations
 
 ~~~typescript
 interface AxiosPickByParamsOptions {

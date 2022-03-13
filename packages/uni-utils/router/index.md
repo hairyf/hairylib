@@ -15,3 +15,15 @@ import { navigateTo, reLaunch, switchTab, redirectTo, navigateBack } from '@hair
 
 navigateTo('/pages/index', { aa: 123 })
 ```
+
+## Type Declarations
+
+```typescript
+
+declare const navigateTo: (url: string, params?: Record<string, any>) => void;
+declare const reLaunch: (url: string, params?: Record<string, any>) => void;
+declare const switchTab: (url: string, params?: Record<string, any>) => void;
+declare const redirectTo: (url: string, params?: Record<string, any>) => void;
+declare const navigateBack: (delta?: number) => void;
+
+```

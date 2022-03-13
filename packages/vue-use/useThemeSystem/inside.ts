@@ -32,10 +32,7 @@ let transformKeys: string[] = []
  * @param theme 将要转换的对象
  * @param merge 内部合并参数
  */
-export const transformTheme2CssVars = (
-  target: DeepStringObject,
-  merge?: Record<string, string>
-) => {
+export const transformTheme2CssVars = (target: DeepStringObject, merge?: Record<string, string>) => {
   const result: Record<string, string> = merge || {}
   for (const [key, value] of Object.entries(target)) {
     transformKeys.push(key)

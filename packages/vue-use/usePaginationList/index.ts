@@ -37,9 +37,7 @@ export interface PaginationListOptionsResult<T> extends PaginationResult {
   list: Ref<T>
 }
 
-export const usePaginationList = <T extends Array<any>>(
-  options: PaginationListOptions<T>
-): PaginationListOptionsResult<T> => {
+export const usePaginationList = <T extends Array<any>>(options: PaginationListOptions<T>): PaginationListOptionsResult<T> => {
   const pagination = usePagination(options)
   const list = ref<any>([]) as Ref<T>
 

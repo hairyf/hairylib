@@ -60,8 +60,7 @@ noop() // undefined
 获取数据类型
 
 ```typescript
-import { checkedTypeof } from '@hairy/utils'
-
+const checkedTypeof: (target: any) => "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | "null" | "regexp";
 checkedTypeof('')     // 'string'
 checkedTypeof(0)      // 'number'
 checkedTypeof(/111/)  // 'regexp'

@@ -42,9 +42,7 @@ export interface PaginationListOptionSpliceResult<T> {
    */
   end: Ref<boolean>
 }
-export const usePaginationListSplice = <T extends Array<any>>(
-  options: PaginationListSpliceOptions<T>
-): PaginationListOptionSpliceResult<T> => {
+export const usePaginationListSplice = <T extends Array<any>>(options: PaginationListSpliceOptions<T>): PaginationListOptionSpliceResult<T> => {
   const list = ref<any>([]) as Ref<T>
   const currentPage = ref(0)
   const end = ref(false)

@@ -50,17 +50,7 @@ export const noop = () => {}
  */
 export const checkedTypeof = (target: any) => {
   const value = Object.prototype.toString.call(target).slice(8, -1).toLocaleLowerCase()
-  return value as
-    | 'string'
-    | 'number'
-    | 'bigint'
-    | 'boolean'
-    | 'symbol'
-    | 'undefined'
-    | 'object'
-    | 'function'
-    | 'null'
-    | 'regexp'
+  return value as 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function' | 'null' | 'regexp'
 }
 
 /**

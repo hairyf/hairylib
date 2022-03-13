@@ -2,13 +2,13 @@
 title: axiosErrorIntercept
 category: 'Axios'
 ---
-# axiosErrorIntercept
+## axiosErrorIntercept
 
 axios 错误拦截处理，以及自定义拦截错误
 
 ## Install
 
-`npm install @hairy/axios -g`
+`npm install @hairy/axios`
 
 ## Usage
 
@@ -40,6 +40,8 @@ axiosErrorIntercept(
  */
 axios.get('xxx', { preventError: true })
 ~~~
+
+## Type Declarations
 
 ~~~typescript
 declare module 'axios' {

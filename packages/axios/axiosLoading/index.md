@@ -2,13 +2,13 @@
 title: axiosLoading
 category: 'Axios'
 ---
-### axiosLoading
+## axiosLoading
 
 请求 loading 加载器
 
 ## Install
 
-`npm install @hairy/axios -g`
+`npm install @hairy/axios`
 
 ## Usage
 
@@ -29,6 +29,8 @@ axios.get('xxx', { loading: true })
 // global use
 axios.defaults['loading'] = true
 ~~~
+
+## Type Declarations
 
 ~~~typescript
 declare module 'axios' {

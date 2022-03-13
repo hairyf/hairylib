@@ -28,60 +28,73 @@ export const biElementSyncScroll = (
 ) => {
   const { left = true, top = true, wait } = options
 
-  const locked = reactive({ from: false, to: false })
+  const debounceScrollLocks = reactive({ from: false, to: false })
 
-  const unlock = debounce((type: keyof typeof locked) => (locked[type] = true), 20, {
-    leading: true,
-    trailing: false
-  })
-  const lock = debounce((type: keyof typeof locked) => (locked[type] = false), 20, {
-    leading: false,
-    trailing: true
-  })
-
-  useEventListener(
-    fromTarget,
-    'scroll',
-    throttle(() => {
-      if (locked.from) return undefined
-
-      unlock('to')
-
-      const aElement = unref(fromTarget) as HTMLElement
-      const bElement = unref(toTarget) as HTMLDivElement
-
-      if (!aElement || !bElement) return undefined
-
-      const options: ScrollToOptions = {}
-      if (left) options.left = aElement.scrollLeft
-      if (top) options.top = aElement.scrollTop
-
-      bElement?.scroll(options)
-
-      lock('to')
-    }, wait)
+  const onChangeLockScrollListener = debounce(
+    (type: keyof typeof debounceScrollLocks) => {
+      debounceScrollLocks[type] = true
+    },
+    20,
+    { leading: true, trailing: false }
   )
-
-  useEventListener(
-    toTarget,
-    'scroll',
-    throttle(() => {
-      if (locked.to) return undefined
-
-      unlock('from')
-
-      const aElement = unref(fromTarget) as HTMLElement
-      const bElement = unref(toTarget) as HTMLDivElement
-
-      if (!aElement || !bElement) return undefined
-
-      const options: ScrollToOptions = {}
-      if (left) options.left = bElement.scrollLeft
-      if (top) options.top = bElement.scrollTop
-
-      aElement?.scroll(options)
-
-      lock('from')
-    }, wait)
+  const offChangeLockScrollListener = debounce(
+    (type: keyof typeof debounceScrollLocks) => {
+      debounceScrollLocks[type] = false
+    },
+    20,
+    { leading: false, trailing: true }
   )
+  const syncFromTo = () => {
+    if (debounceScrollLocks.from) return undefined
+
+    onChangeLockScrollListener('to')
+
+    const aElement = unref(fromTarget) as HTMLElement
+    const bElement = unref(toTarget) as HTMLDivElement
+
+    if (!aElement || !bElement) return undefined
+
+    const options: ScrollToOptions = {}
+    if (left) options.left = aElement.scrollLeft
+    if (top) options.top = aElement.scrollTop
+
+    bElement?.scroll(options)
+
+    offChangeLockScrollListener('to')
+  }
+
+  const syncToFrom = () => {
+    if (debounceScrollLocks.to) return undefined
+
+    onChangeLockScrollListener('from')
+
+    const aElement = unref(fromTarget) as HTMLElement
+    const bElement = unref(toTarget) as HTMLDivElement
+
+    if (!aElement || !bElement) return undefined
+
+    const options: ScrollToOptions = {}
+    if (left) options.left = bElement.scrollLeft
+    if (top) options.top = bElement.scrollTop
+
+    aElement?.scroll(options)
+
+    offChangeLockScrollListener('from')
+  }
+
+  let toStopHandle: undefined | (() => void)
+  let formStopHandle: undefined | (() => void)
+
+  const stop = () => {
+    toStopHandle?.()
+    formStopHandle?.()
+  }
+  const start = () => {
+    toStopHandle = useEventListener(fromTarget, 'scroll', throttle(syncFromTo, wait))
+    formStopHandle = useEventListener(toTarget, 'scroll', throttle(syncToFrom, wait))
+  }
+
+  start()
+
+  return { stop, start, syncFromTo, syncToFrom }
 }

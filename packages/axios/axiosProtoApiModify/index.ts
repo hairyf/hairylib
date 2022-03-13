@@ -7,26 +7,10 @@
 import _axios, { AxiosStatic, AxiosInstance } from 'axios'
 declare module 'axios' {
   interface AxiosInstance {
-    get<T = any, R = AxiosResponse<T>>(
-      url: string,
-      params?: any,
-      config?: AxiosRequestConfig
-    ): Promise<R>
-    delete<T = any, R = AxiosResponse<T>>(
-      url: string,
-      params?: any,
-      config?: AxiosRequestConfig
-    ): Promise<R>
-    head<T = any, R = AxiosResponse<T>>(
-      url: string,
-      params?: any,
-      config?: AxiosRequestConfig
-    ): Promise<R>
-    options<T = any, R = AxiosResponse<T>>(
-      url: string,
-      params?: any,
-      config?: AxiosRequestConfig
-    ): Promise<R>
+    get<T = any, R = AxiosResponse<T>>(url: string, params?: any, config?: AxiosRequestConfig): Promise<R>
+    delete<T = any, R = AxiosResponse<T>>(url: string, params?: any, config?: AxiosRequestConfig): Promise<R>
+    head<T = any, R = AxiosResponse<T>>(url: string, params?: any, config?: AxiosRequestConfig): Promise<R>
+    options<T = any, R = AxiosResponse<T>>(url: string, params?: any, config?: AxiosRequestConfig): Promise<R>
   }
 }
 
@@ -38,10 +22,7 @@ declare module 'axios' {
  * 主要参数调整 (url, config) -> (url, params, config)
  * @param AxiosStatic
  */
-export const axiosProtoApiModify = (
-  axios?: AxiosStatic | AxiosInstance,
-  functions?: ('delete' | 'get' | 'head' | 'options')[]
-) => {
+export const axiosProtoApiModify = (axios?: AxiosStatic | AxiosInstance, functions?: ('delete' | 'get' | 'head' | 'options')[]) => {
   const origin = axios || _axios
   const dealWithOrigin = (origin: any) => {
     if (typeof origin === 'undefined') return undefined

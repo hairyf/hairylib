@@ -60,3 +60,38 @@ const value = replaceInnerHTMLAttributes(htmlString, {
 })
 // value -> <div class="aaaa" id="123"><div class="aaaa" id="123"></div></div>
 ```
+
+## Type Declarations
+
+~~~typescript
+
+/**
+ * 跳转到新的页面
+ * @param url 跳转url
+ */
+declare const ejectWindow: (url: string) => void;
+/**
+ * 拨打手机号
+ * @param phoneNumber 手机号码
+ */
+declare const makePhoneCall: (phoneNumber: string) => void;
+/**
+ * 移除所有标签的一个或多个属性
+ * @param html html string
+ * @param attr attr string
+ * @returns html
+ */
+declare const removeInnerHTMLAttribute: (html: string, attribute: string | string[]) => string;
+/**
+ * 替换 html string 中任意 tag 内任意 attr 值
+ * @param html html string
+ * @param option
+ * @returns
+ */
+declare const replaceInnerHTMLAttributes: (html: string, option: {
+    tag: string | string[];
+    attr: string | string[];
+    value: string;
+}) => string;
+
+~~~

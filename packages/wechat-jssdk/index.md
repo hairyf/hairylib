@@ -17,7 +17,7 @@ npm install @hairy/swagger
 
 ## Usage
 ```ts
-import { WechatJssdk } from '@bbg/sfe-helper'
+import { WechatJssdk } from '@hairy/sfe-helper'
 
 export const wxJssdk = new WechatJssdk({
   requestConfig: async () => {
@@ -178,3 +178,26 @@ class WechatJssdk extends WechatJssdkHelper {
   }
 }
 ~~~
+
+## Type Declarations
+
+```typescript
+interface WechatJssdkOptions {
+  /**
+   * 初始化请求配置
+   */
+  requestConfig: () => Promise<WechatJssdkConfig>
+  /**
+   * 是否立即加载 config
+   *
+   * @default true
+   */
+  immediate?: boolean
+  /**
+   * wechat-jssdk 版本
+   *
+   * @default 1.3.0
+   */
+  version?: '1.2.0' | '1.3.0' | '1.4.0' | '1.5.0' | '1.6.0'
+}
+```

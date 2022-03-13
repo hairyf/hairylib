@@ -1,26 +1,29 @@
 import { ref, Ref } from 'vue'
 
-export type Promisefactory = (...args: any[]) => Promise<any>
-export interface UsePromiseResult<T extends Promisefactory> {
+export type PromiseFactory<V = any> = (...args: any[]) => Promise<V>
+export interface UsePromiseResult<T extends PromiseFactory> {
   loading: Ref<boolean>
   error: Ref<any>
   exec: T
+  result: T extends PromiseFactory<infer V> ? Ref<V | undefined> : any
 }
 
-export const usePromise = <T extends Promisefactory>(factory: T): UsePromiseResult<T> => {
+export const usePromise = <T extends PromiseFactory>(factory: T): UsePromiseResult<T> => {
   const loading = ref(false)
   const error = ref(null)
+  const result = ref<any>()
   const exec = async (...args: Parameters<T>) => {
     loading.value = true
     try {
-      const result = await factory(...args)
+      const value = await factory(...args)
       loading.value = false
-      return result
+      result.value = value
+      return value
     } catch (_error: any) {
       loading.value = false
       error.value = _error
       throw _error
     }
   }
-  return { loading, error, exec: exec as any }
+  return { loading, error, exec: exec as any, result: result as any }
 }

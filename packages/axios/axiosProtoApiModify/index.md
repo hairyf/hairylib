@@ -3,13 +3,13 @@ title: axiosProtoApiModify
 category: 'Axios'
 ---
 
-### axiosProtoApiModify
+## axiosProtoApiModify
 
 涉及 delete, get, head, options 等方法的修改，主要参数调整 (url, config) -> (url, params, config)
 
 ## Install
 
-`npm install @hairy/axios -g`
+`npm install @hairy/axios`
 
 ## Usage
 
@@ -28,3 +28,9 @@ const instance = axios.create()
 axiosProtoApiModify(instance)
 instance.get('xxx', { offset: 10 }, {/* config */})
 ~~~
+
+## Type Declarations
+
+```typescript
+declare const axiosProtoApiModify: (axios?: AxiosStatic | AxiosInstance | undefined, functions?: ("delete" | "get" | "head" | "options")[] | undefined) => void;
+```

@@ -23,9 +23,9 @@ export type DeepReplace<T, K = unknown, V = unknown> = {
 }
 
 export type Option<L extends Key = 'label', V extends Key = 'value', C extends Key = 'children'> = {
-  [P in L]: string
+  [P in L]?: string
 } & {
-  [P in V]: LooseNumber
+  [P in V]?: LooseNumber
 } & {
-  [P in C]?: Option[]
+  [P in C]?: Option<L, V, C>[]
 }

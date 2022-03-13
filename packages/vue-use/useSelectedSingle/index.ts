@@ -25,10 +25,7 @@ export interface SelectedSingleResult<T extends SelectedSingleArray> {
   selectItem: ComputedRef<UnwrapRef<T>[number] | undefined>
 }
 
-export const useSelectedSingle = <T extends SelectedSingleArray>(
-  array: T,
-  options: SelectedSingleOptions = {}
-): SelectedSingleResult<T> => {
+export const useSelectedSingle = <T extends SelectedSingleArray>(array: T, options: SelectedSingleOptions = {}): SelectedSingleResult<T> => {
   const fieldName = options.fieldName ?? 'select'
   const required = options.required ?? false
 
