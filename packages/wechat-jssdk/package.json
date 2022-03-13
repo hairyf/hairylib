@@ -1,6 +1,6 @@
 {
   "name": "@hairy/wechat-jssdk",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "dependencies": {
     "@types/jweixin": "^1.0.8",
