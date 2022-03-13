@@ -12,7 +12,7 @@
   "unpkg": "./index.iife.min.js",
   "jsdelivr": "./index.iife.min.js",
   "author": "Anthony Fu<https://github.com/TuiMao233>",
-  "gitHead": "271eb6ce512d6a925d91f9b210d0487e5dd794fe",
+  "gitHead": "9682f0fdcb39beaab4b6b44a3d6eba020f98bd39",
   "description": "Wechat Jssdk",
   "bugs": {
     "url": "https://github.com/TuiMao233/hairylib/issues"

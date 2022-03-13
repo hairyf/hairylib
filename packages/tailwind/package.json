@@ -37,7 +37,7 @@
     },
     "./*": "./*"
   },
-  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b",
+  "gitHead": "9682f0fdcb39beaab4b6b44a3d6eba020f98bd39",
   "publishConfig": {
     "access": "public"
   }

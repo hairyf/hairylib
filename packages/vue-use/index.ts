@@ -1,5 +1,6 @@
 export * from './biElementMapSize'
 export * from './biElementSyncScroll'
+export * from './is'
 export * from './usePagination'
 export * from './usePaginationArray'
 export * from './usePaginationList'
