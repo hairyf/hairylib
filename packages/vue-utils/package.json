@@ -1,9 +1,9 @@
 {
   "name": "@hairy/vue-utils",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "license": "MIT",
   "dependencies": {
-    "@hairy/browser": "^1.0.14",
+    "@hairy/browser": "^1.0.15",
     "vue-demi": "^0.12.1",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"
