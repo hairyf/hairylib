@@ -25,9 +25,7 @@ eslint 的规则集，包含了 ts-vue | ts-react | ts | ts-uni 的规则。
 2. 编写 eslint 规则`.eslintrc.js`（其余方式引入都可使用：`.eslintrc|.eslintrc.js`）
 
 ~~~js
-const typescript = require('@hairy/eslint/typescript.js')
-
-module.exports = typescript
+module.exports = require('@hairy/eslint/typescript.js')
 ~~~
 
 ## Eslint extends options
@@ -40,6 +38,11 @@ module.exports = typescript
 - ts-uni-vue@2:  `@hairy/eslint/ts-uni-vue@2`
 - ts-vue@2:      `@hairy/eslint/ts-vue@2`
 - ts-vue@3:      `@hairy/eslint/ts-vue@3`
+
+- javascript:    `@hairy/eslint/javascript`
+- js-uni-vue@2:  `@hairy/eslint/js-uni-vue@2`
+- js-vue@2:      `@hairy/eslint/js-vue@2`
+- js-vue@3:      `@hairy/eslint/js-vue@3`
 
 ## modules
 
@@ -64,7 +67,7 @@ module.exports = typescript
  */
 ~~~
 
-### Typescript eslint
+### Typescript config
 
 ~~~typescript
 /**
@@ -76,7 +79,7 @@ module.exports = typescript
  */
 ~~~
 
-### React eslint
+### React config
 
 ~~~typescript
 /**
@@ -86,7 +89,7 @@ module.exports = typescript
  */
 ~~~
 
-### Vue eslint
+### Vue config
 
 ~~~typescript
 /**
@@ -97,7 +100,7 @@ module.exports = typescript
  */
 ~~~
 
-### Uni eslint
+### Uni config
 
 ~~~typescript
 /**

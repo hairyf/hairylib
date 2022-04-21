@@ -10,7 +10,7 @@ import consola from 'consola'
 import fs from 'fs-extra'
 import { execSync as exec } from 'child_process'
 import { packages } from '../meta/packages'
-import { readPackageLernaGitHash, updateImport } from './utils'
+import { updateImport } from './utils'
 import fg from 'fast-glob'
 import { rollupBuildPackage } from './rollup.config'
 import execa from 'execa'
@@ -43,8 +43,7 @@ export const buildMetaFiles = async () => {
     await fs.ensureDir(packageDist)
 
     // 向打包后的 dist 添加包的源信息
-    for (const file of FILES_COPY_ROOT)
-      await fs.copyFile(path.join(rootDir, file), path.join(packageDist, file))
+    for (const file of FILES_COPY_ROOT) await fs.copyFile(path.join(rootDir, file), path.join(packageDist, file))
     for (const file of FILES_COPY_LOCAL) {
       await fs.copyFile(path.join(packageRoot, file), path.join(packageDist, file))
     }
