@@ -31,7 +31,7 @@
     "@types/log-update": "^3.1.0",
     "@types/node": "^16.10.1"
   },
-  "gitHead": "d5b83d069dd7dfcd65aa6bcd07f1a33baceff00d",
+  "gitHead": "bf78d1ba552401f12a3afe5b4b0564b2ecaa91a7",
   "bugs": {
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },

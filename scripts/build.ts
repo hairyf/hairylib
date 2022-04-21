@@ -76,6 +76,7 @@ export const buildPackageFiles = async () => {
     }
 
     // 编译不合并, 采用 hairy build 方式
+    // TODO: MAC Error: Command failed with ENOENT: yarn build | spawnSync yarn build ENOENT
     if (mergeBuild === false) {
       execa.sync('tsc', { cwd: path.join('packages', name) })
       continue

@@ -38,7 +38,7 @@
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
-  "gitHead": "587b8b99b43671dd9d175f804618425b007f047b",
+  "gitHead": "bf78d1ba552401f12a3afe5b4b0564b2ecaa91a7",
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
   "module": "./index.esm.js",
