@@ -11,6 +11,7 @@ import { Plugin } from 'esbuild'
 import chalk from 'chalk'
 import logUpdate from 'log-update'
 import { version } from '../../../config'
+import path from 'path'
 
 export const reporterPlugin = (mode: string): Plugin => {
   const writeLogger = logUpdate.create(process.stderr, { showCursor: true })
@@ -25,6 +26,7 @@ export const reporterPlugin = (mode: string): Plugin => {
       const texts: string[] = []
       let remaining = 0
       onResolve({ filter: /.*/ }, (options): any => {
+        if (!path.extname(options.path)) return
         if (texts.length <= 5) {
           texts.push(`build ${chalk.magenta(options.path)}`)
         }

@@ -36,7 +36,9 @@ export interface SwaggerBuildConfig {
   /** 请求参数 */
   requestConfig?: AxiosRequestConfig
 }
-
+export interface SwaggerDefineConfig extends Omit<SwaggerBuildConfig, 'output' | 'uri'> {
+  servers?: SwaggerBuildConfig[]
+}
 export interface SwaggerOutputOption {
   root: string
   file: string

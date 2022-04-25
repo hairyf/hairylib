@@ -31,10 +31,11 @@ export const generate = (config: SwaggerGenerateConfig) => {
    * @title ${ast.info.title}
    * @basePath ${ast.info.basePath}
    * @see ${build.uri}
-   * @author sfe
+   * @author hairy
    * @throws 🈲 > 禁止手动修改
    */
   `
+
   let apiFileCode = `
   ${commonHeaderCode}
   import http from '${build.import?.http || 'axios'}'
@@ -135,9 +136,9 @@ export const generate = (config: SwaggerGenerateConfig) => {
     `
   }
 
-  // apiFileCode = format(apiFileCode, { printWidth: 800, parser: 'typescript' })
+  apiFileCode = format(apiFileCode, { printWidth: 800, parser: 'typescript' })
 
-  // typeFileCode = format(typeFileCode, { printWidth: 800, parser: 'typescript' })
+  typeFileCode = format(typeFileCode, { printWidth: 800, parser: 'typescript' })
 
   return { apiFileCode, typeFileCode }
 }

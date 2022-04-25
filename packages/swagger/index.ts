@@ -10,8 +10,9 @@ import { cloneDeep, merge } from 'lodash'
 
 import ora from 'ora'
 import { parseOutput } from './parser/output'
-import { SwaggerBuildConfig } from './_types'
+import { SwaggerBuildConfig, SwaggerDefineConfig } from './_types'
 import { parseSource } from './parser/source'
+import { DEFAULT_CONFIG } from './internal'
 
 export interface SwaggerWebClientGeneratorType {
   (config: SwaggerBuildConfig | SwaggerBuildConfig[]): Promise<void>
@@ -25,7 +26,7 @@ export interface SwaggerWebClientGeneratorType {
  */
 export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (config) => {
   const writeOptions = { encoding: 'utf8' as const, flag: 'w' as const }
-  // const spinner = ora('Generate Interface ...\n').start()
+  const spinner = ora('Generate Interface ...\n').start()
   const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
   const process = configs.map(async (iterator) => {
     // 合并 default 构建 config
@@ -41,22 +42,24 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
     // 确保 api 与 type 路径存在, 避免影响后续写入
     await Promise.all([fs.ensureDir(output.api.root), fs.ensureDir(output.type.root)])
     // 写入 api 与 type 文件
-    await Promise.all([
-      fs.writeFileSync(output.api.file, apiFileCode, writeOptions),
-      fs.writeFileSync(output.type.file, typeFileCode, writeOptions)
-    ])
+    await Promise.all([fs.writeFileSync(output.api.file, apiFileCode, writeOptions), fs.writeFileSync(output.type.file, typeFileCode, writeOptions)])
   })
 
   await Promise.all(process)
-  // spinner.succeed()
-  // spinner.clear()
+  spinner.succeed()
+  spinner.clear()
 }
+
+/**
+ * 处理 swagger define config ，使得使用扩展更加方便
+ * 该 config 提供给 @hairy/cli 的 hairy swagger 使用
+ * @param config
+ * @returns
+ */
+export const defineConfig = (config: SwaggerDefineConfig) => config
 
 export { parseSource, parseOutput }
 
-swaggerWebClientGenerator.default = {
-  output: { api: 'src/api/index.ts', type: 'src/api/index.type.ts', cwd: '' },
-  baseURL: '',
-  uri: '',
-  import: { http: 'axios' }
-}
+export * from './_types'
+
+swaggerWebClientGenerator.default = DEFAULT_CONFIG

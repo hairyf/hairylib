@@ -11,6 +11,14 @@ import { PlainObject, capitalizeCamelCase } from '@hairy/utils'
 import { transliterate } from 'transliteration'
 import { SwaggerDefinition } from '../_types'
 
+/** swagger 默认 config */
+export const DEFAULT_CONFIG = {
+  output: { api: 'src/api/index.ts', type: 'src/api/index.type.ts', cwd: '' },
+  baseURL: '',
+  uri: '',
+  import: { http: 'axios' }
+}
+
 /** swagger 类型 typescript 映射 */
 export const TYPE_MAPPING: PlainObject = {
   integer: 'number',
@@ -56,16 +64,7 @@ export function varName(string_: string) {
  */
 export function getNameSpaceType(type?: string | null, emptyType = 'void') {
   if (!type) return emptyType
-  const basicTyping = [
-    'string',
-    'string[]',
-    'number',
-    'number[]',
-    'Record<string, any>',
-    'Record<string, string>',
-    'any',
-    'boolean'
-  ]
+  const basicTyping = ['string', 'string[]', 'number', 'number[]', 'Record<string, any>', 'Record<string, string>', 'any', 'boolean']
   return basicTyping.includes(type) ? type : `${TS_TYPE_NAME_SPACE}.${type}`
 }
 
@@ -79,10 +78,7 @@ export function getNameSpaceType(type?: string | null, emptyType = 'void') {
  * @param definitions
  * @param definition
  */
-export function unshiftDeDupDefinition(
-  definitions: SwaggerDefinition[],
-  definition: SwaggerDefinition
-) {
+export function unshiftDeDupDefinition(definitions: SwaggerDefinition[], definition: SwaggerDefinition) {
   if (definitions.some((item) => item.name === definition.name)) {
     return definition
   }

@@ -10,13 +10,15 @@ import path from 'path'
 import { dtsPlugin } from 'esbuild-plugin-d.ts'
 import { reporterPlugin } from './plugins/reporter'
 import fs from 'fs-extra'
+import { externalizeDepsPlugin } from './plugins/externalize-deps'
 
 export interface ActionBuilderOptions {
   input?: string
   output?: string
-  mode?: string
-  notType?: boolean
+  mode?: 'production' | 'development'
+  type?: boolean
   meta?: boolean
+  logger?: boolean
 }
 const FILES_COPY_LOCAL = ['package.json', 'README.md', 'LICENSE']
 
@@ -25,18 +27,18 @@ const buildMetaFiles = async (outdir: string) => {
   for (const file of FILES_COPY_LOCAL) {
     const filePath = path.join(process.cwd(), file)
     if (!fs.existsSync(filePath)) continue
-    await fs.copy(filePath, path.join(outdir, file))
+    await fs.copy(filePath, path.join(process.cwd(), outdir, file))
   }
 }
 
 export const actionBuilder = async (options: ActionBuilderOptions = {}) => {
-  const { input = 'src', mode = 'development', output = 'dist', notType = false, meta = false } = options
+  const { input = 'src', mode = 'development', output = 'dist', type = false, meta = false, logger = false } = options
 
-  meta && buildMetaFiles(path.join(process.cwd(), output))
+  if (meta) buildMetaFiles(output)
 
-  await esbuild.build({
-    entryPoints: await fg(path.join(input, './**/*.ts').replace(/\\/g, '/')),
-    outdir: path.join(process.cwd(), output),
+  const isInputFile = input.endsWith('.js') || input.endsWith('.ts')
+
+  const buildConfig: esbuild.BuildOptions = {
     bundle: false,
     format: 'cjs',
     platform: 'node',
@@ -45,10 +47,21 @@ export const actionBuilder = async (options: ActionBuilderOptions = {}) => {
     minify: false,
     sourcemap: false,
     color: true,
-    loader: {
-      '.ts': 'tsx',
-      '.tsx': 'tsx'
-    },
-    plugins: [!notType && dtsPlugin(), reporterPlugin(mode)].filter(Boolean)
-  })
+    loader: { '.ts': 'tsx', '.tsx': 'tsx' },
+    plugins: [externalizeDepsPlugin(), type && dtsPlugin({ outDir: output }), logger && reporterPlugin(mode)].filter(Boolean)
+  }
+
+  if (isInputFile) {
+    const basename = path.basename(input).replace(/\.ts|\.tsx/, '.js')
+    const outfile = path.extname(output) ? output : path.join(output, basename)
+
+    buildConfig.bundle = true
+    buildConfig.entryPoints = [input]
+    buildConfig.outfile = path.join(outfile)
+  } else {
+    buildConfig.entryPoints = await fg(path.join(input, './**/*.ts').replace(/\\/g, '/'))
+    buildConfig.outdir = path.join(process.cwd(), output)
+  }
+
+  await esbuild.build(buildConfig)
 }
