@@ -17,7 +17,7 @@ export const packages: PackageManifest[] = [
     display: 'Eslint preset Configs',
     description: 'Eslint config for Mr.Mao',
     manualImport: true,
-    mergeBuild: false
+    internalBuild: true
   },
   {
     name: 'windicss',
@@ -30,6 +30,7 @@ export const packages: PackageManifest[] = [
     name: 'cli',
     display: 'Project All cli',
     description: 'Project All cli',
+    external: ['@hairy/swagger'],
     manualImport: true,
     internalBuild: true
   },

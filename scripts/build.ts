@@ -13,7 +13,6 @@ import { packages } from '../meta/packages'
 import { updateImport } from './utils'
 import fg from 'fast-glob'
 import { rollupBuildPackage } from './rollup.config'
-import execa from 'execa'
 import ora from 'ora'
 
 const rootDir = path.resolve(__dirname, '..')
@@ -51,14 +50,14 @@ export const buildMetaFiles = async () => {
 }
 
 export const buildPackageFiles = async () => {
-  const spinner = ora().start()
+  const spinner = ora()
 
   for (const config of packages) {
     const { name, build, internalBuild, mergeBuild } = config
     const packageRoot = path.resolve(__dirname, '..', 'packages', name)
     const packageDist = path.resolve(packageRoot, 'dist')
     const packageName = fs.readJSONSync(path.join(packageRoot, 'package.json')).name
-    spinner.text = `Build ${packageName}`
+    spinner.start(`Build ${packageName}`)
 
     await fs.ensureDir(packageDist)
 
@@ -76,22 +75,24 @@ export const buildPackageFiles = async () => {
     }
 
     // 编译不合并, 采用 hairy build 方式
-    // TODO: MAC Error: Command failed with ENOENT: yarn build | spawnSync yarn build ENOENT
     if (mergeBuild === false) {
-      execa.sync('tsc', { cwd: path.join('packages', name) })
+      exec('tsc', { cwd: path.join('packages', name) })
+      spinner.succeed(`Build ${packageName}`)
       continue
     }
 
     // 包内部编译
     if (internalBuild === true) {
-      execa.sync('yarn build', { cwd: path.join('packages', name) })
+      exec('yarn build', { cwd: path.join('packages', name) })
+      spinner.succeed(`Build ${packageName}`)
       continue
     }
 
     await rollupBuildPackage(config)
+    spinner.succeed(`Build ${packageName}`)
   }
-  spinner.succeed('Packages Builder')
-  spinner.clear()
+
+  spinner.succeed('Packages Builder succeeded')
 }
 
 export const build = async () => {
