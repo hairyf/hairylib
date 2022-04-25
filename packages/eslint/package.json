@@ -7,7 +7,7 @@
     "build": "hairy build"
   },
   "dependencies": {
-    "eslint": "^7.32.0",
+    "eslint": "^8",
     "lodash": "^4",
     "prettier": "^2.3.2"
   },
