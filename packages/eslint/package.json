@@ -1,18 +1,20 @@
 {
   "name": "@hairy/eslint",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Eslint config for Mr.Mao",
   "license": "ISC",
   "scripts": {
     "build": "hairy build"
   },
   "dependencies": {
+    "eslint": "^7.32.0",
     "lodash": "^4.17.21",
-    "typescript": "^4.3.5",
     "prettier": "^2.3.2",
-    "eslint": "^7.32.0"
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
+    "@types/eslint": "^7.28.0",
+    "@types/lodash": "^4.14.171",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
     "eslint-config-prettier": "^8.3.0",
@@ -25,9 +27,7 @@
     "eslint-plugin-unicorn": "^35.0.0",
     "eslint-plugin-vue": "^7.16.0",
     "eslint-plugin-yml": "^0.10.0",
-    "@types/eslint": "^7.28.0",
-    "vue-eslint-parser": "^7.10.0",
-    "@types/lodash": "^4.14.171"
+    "vue-eslint-parser": "^7.10.0"
   },
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {
