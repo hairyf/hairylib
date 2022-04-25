@@ -1,9 +1,9 @@
 {
   "name": "@hairy/vue-use",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "license": "MIT",
   "dependencies": {
-    "@hairy/browser": "^1.0.15",
+    "@hairy/browser": "^1.0.16",
     "@types/pubsub-js": "^1.8.2",
     "@vueuse/core": "^5.2.0",
     "lodash": "^4",

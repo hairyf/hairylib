@@ -1,10 +1,10 @@
 {
   "name": "@hairy/utils",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4",
-    "dayjs": "^1.10.6"
+    "dayjs": "^1.10.6",
+    "lodash": "^4"
   },
   "devDependencies": {
     "@types/lodash": "^4"

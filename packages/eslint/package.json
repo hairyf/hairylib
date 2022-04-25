@@ -1,6 +1,6 @@
 {
   "name": "@hairy/eslint",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Eslint config for Mr.Mao",
   "license": "ISC",
   "scripts": {
@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "eslint": "^7.32.0",
-    "prettier": "^2.3.2",
-    "lodash": "^4"
+    "lodash": "^4",
+    "prettier": "^2.3.2"
   },
   "devDependencies": {
     "@types/eslint": "^7.28.0",

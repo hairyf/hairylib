@@ -1,9 +1,9 @@
 {
   "name": "@hairy/axios",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "license": "MIT",
   "dependencies": {
-    "@hairy/utils": "^1.0.19",
+    "@hairy/utils": "^1.0.20",
     "lodash": "^4"
   },
   "devDependencies": {
