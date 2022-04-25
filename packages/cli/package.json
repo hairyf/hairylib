@@ -6,10 +6,9 @@
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "license": "ISC",
   "scripts": {
-    "build": "tsc && esno ./scripts/transfer.ts"
+    "build": "hairy build && esno ./scripts/transfer.ts"
   },
   "dependencies": {
-    "axios": "^0.24.0",
     "cac": "^6.7.3",
     "consola": "^2.15.3",
     "dayjs": "^1.10.7",
@@ -21,7 +20,8 @@
     "fs-extra": "^10.0.0",
     "gitlog": "^4.0.4",
     "log-update": "4.0.0",
-    "templa-cli": "0.0.4"
+    "templa-cli": "0.0.4",
+    "@hairy/swagger": "^0.1.12"
   },
   "bin": {
     "hairy": "bin/index.js"

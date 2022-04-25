@@ -14,12 +14,11 @@
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
   "dependencies": {
+    "lodash": "^4",
     "@hairy/utils": "^1.0.19",
     "vue-demi": "^0.12.1"
   },
-  "peerDependencies": {
-    "lodash": "^4.17.21"
-  },
+
   "types": "./index.d.ts",
   "module": "./index.esm.js",
   "unpkg": "./index.iife.min.js",

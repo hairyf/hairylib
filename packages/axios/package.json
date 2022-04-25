@@ -3,14 +3,14 @@
   "version": "1.0.21",
   "license": "MIT",
   "dependencies": {
-    "@hairy/utils": "^1.0.19"
+    "@hairy/utils": "^1.0.19",
+    "lodash": "^4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.171"
+    "@types/lodash": "^4"
   },
   "peerDependencies": {
-    "axios": "^0.24.0",
-    "lodash": "^4.17.21"
+    "axios": "^0.24.0"
   },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",
