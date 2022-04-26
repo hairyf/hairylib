@@ -10,6 +10,7 @@ import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig } from '../_types'
 import { getNameSpaceType, TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName } from '../internal'
 import { camelCase } from 'lodash'
 import { capitalizeCamelCase } from '@hairy/utils'
+import { spliceHeaderCode } from './utils'
 
 export interface SwaggerGenerateConfig {
   build: SwaggerBuildConfig
@@ -21,33 +22,20 @@ export const generate = (config: SwaggerGenerateConfig) => {
   const { build, ast, output } = config
 
   // #region 从配置中读取描述信息和导入信息, 写入文件头, 初始化 code
-  const commonHeaderCode = `
-  /* eslint-disable */
-
-  /**
-   * @swagger ${ast.info.swaggerVersion}
-   * @description ${ast.info.description}
-   * @version ${ast.info.apiVersion}
-   * @title ${ast.info.title}
-   * @basePath ${ast.info.basePath}
-   * @see ${build.uri}
-   * @author hairy
-   * @throws 🈲 > 禁止手动修改
-   */
-  `
+  const headerCode = spliceHeaderCode(config)
 
   let apiFileCode = `
-  ${commonHeaderCode}
+  ${headerCode}
   import http from '${build.import?.http || 'axios'}'
   import { AxiosRequestConfig } from 'axios'
   import * as ${TS_TYPE_NAME_SPACE} from '${build.import?.type || output.type.import}'
 
   `
   if (build.baseURL) {
-    apiFileCode += `const baseURL = ${build.baseURL || "''"}\n`
+    apiFileCode += `const baseURL = ${build.baseURL}\n`
   }
   let typeFileCode = `
-  ${commonHeaderCode}
+  ${headerCode}
   /** @响应infer数据取值 */
   export type Response<T> = ${build.responseType || 'T'}
   `
@@ -88,14 +76,13 @@ export const generate = (config: SwaggerGenerateConfig) => {
       apiArgumentsMap.body = `data: ${getNameSpaceType(api.request.body)}`
     }
     const apiConfigArgumentsMap = {
-      baseURL: 'baseURL',
+      baseURL: build.baseURL ? 'baseURL' : '',
       url: 'url',
       method: `method: '${api.method.toLocaleUpperCase()}'`,
       params: apiArgumentsMap.params ? 'params' : '',
       data: apiArgumentsMap.body ? 'data' : '',
       config: '...config'
     }
-
     // #endregion
 
     // #region 参数组合成代码, 添加一项 Api
@@ -126,7 +113,8 @@ export const generate = (config: SwaggerGenerateConfig) => {
     const content = definition.value.map((field) => {
       let string_ = ''
       if (field.description) string_ += `/** @${field.description} */\n`
-      string_ += field.required ? `${field.name}: ${field.value}` : `${field.name}?: ${field.value}`
+      // [field]?:[value] || [field]:[value]
+      string_ += `${field.name}${field.required ? '?' : ''}: ${field.value}`
       return string_
     })
     typeFileCode += `\
