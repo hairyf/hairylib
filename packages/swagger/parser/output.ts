@@ -12,6 +12,9 @@ export const parseOutput = (config: SwaggerBuildConfig) => {
   const api = config.output?.api || 'src/api/index.ts'
   const type = config.output?.type || 'src/api/index.type.ts'
 
+  let typeImport = path.relative(path.dirname(api), type).replace(/\.ts$/, '')
+  typeImport = typeImport.startsWith('.') ? typeImport : './' + typeImport
+
   const output: SwaggerOutput = {
     api: {
       root: path.join(basePath, path.dirname(api)),
@@ -20,7 +23,7 @@ export const parseOutput = (config: SwaggerBuildConfig) => {
     },
     type: {
       root: path.join(basePath, path.dirname(type)),
-      import: path.relative(path.dirname(api), type).replace(/\.ts$/, ''),
+      import: typeImport.replace(/\.ts$/, ''),
       file: path.join(basePath, type)
     }
   }
