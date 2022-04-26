@@ -2,7 +2,6 @@ import { Linter } from 'eslint'
 import { merge } from 'lodash'
 
 const basic: Linter.Config = {
-  parser: 'vue-eslint-parser',
   rules: {
     'vue/html-self-closing': 'off',
     'vue/max-attributes-per-line': 'off',
@@ -14,7 +13,19 @@ const basic: Linter.Config = {
     'vue/no-unused-vars': 'warn',
     'vue/require-valid-default-prop': 'warn'
   },
-  plugins: ['vue']
+  plugins: ['vue'],
+
+  // fix eslint in .tsx no effect
+  overrides: [
+    {
+      files: ['*.vue'],
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        ecmaFeatures: { jsx: true }
+      }
+    }
+  ]
 }
 
 /**
