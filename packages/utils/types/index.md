@@ -1,15 +1,12 @@
 ---
-name: type
-category: Utils
+title : Typescript Types
+category: 'utils'
 ---
 
-# utils - type
+# @hairy/utils - type
 
 客户机环境的判断
 
-## Install
-
-`npm install @hairy/utils`
 
 ## Usage
 

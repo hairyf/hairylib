@@ -30,9 +30,7 @@ export const calculRouterActive = (routes: RouteRecordRaw[], upperPath?: string)
     for (const index in routes) {
       const route = routes[index]
       // 拼接路由绝对路径
-      const completePath = upperPath
-        ? `${upperPath == '/' ? '/' : upperPath + '/'}${route.path}`
-        : route.path
+      const completePath = upperPath ? `${upperPath == '/' ? '/' : upperPath + '/'}${route.path}` : route.path
       // 记录路由路径信息
       pathMaps.push(completePath)
       // 添加路由路径信息
@@ -77,10 +75,7 @@ export const outputRoutes = (routes: RouteRecordRaw[]) => {
  * @param surfaceRoutes 对比路由信息
  * @returns 比较路由列表
  */
-export const compareRoutes = (
-  baseRoutes: RouteRecordRaw[] = [],
-  surfaceRoutes: RouteRecordRaw[] = []
-) => {
+export const compareRoutes = (baseRoutes: RouteRecordRaw[] = [], surfaceRoutes: RouteRecordRaw[] = []) => {
   const filterRoutes = baseRoutes.filter((brte) => {
     const srte = surfaceRoutes.find((v) => brte.name === v.name)
     if (brte.children && brte.children?.length > 0) {
@@ -110,9 +105,7 @@ export const setDefaultRoutes = (routes: RouteRecordRaw[] = [], upperPath?: stri
   routes.forEach((route) => {
     if (!(route.children && route.children.length > 0)) return false
     // 当前完整地址
-    const completePath = upperPath
-      ? `${upperPath == '/' ? '' : upperPath + '/'}${route.path}`
-      : route.path
+    const completePath = upperPath ? `${upperPath == '/' ? '' : upperPath + '/'}${route.path}` : route.path
     // 当前拼接符
     const splic = route.path === '/' ? '' : '/'
     route.redirect = `${completePath}${splic}${getChildrenCompletePath(route.children[0])}`

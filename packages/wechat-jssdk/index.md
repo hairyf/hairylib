@@ -1,5 +1,5 @@
 ---
-title: WechatJssdk
+title: '@hairy/wechat-jssdk'
 category: 'Other'
 ---
 
@@ -12,12 +12,12 @@ WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/
 ## Install
 
 ~~~sh
-npm install @hairy/swagger
+npm install @hairy/wechat-jssdk
 ~~~
 
 ## Usage
 ```ts
-import { WechatJssdk } from '@hairy/sfe-helper'
+import { WechatJssdk } from '@hairy/wechat-jssdk'
 
 export const wxJssdk = new WechatJssdk({
   requestConfig: async () => {

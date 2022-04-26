@@ -1,5 +1,5 @@
 ---
-title: cli
+title: '@hairy/cli'
 category: 'Engineering'
 ---
 

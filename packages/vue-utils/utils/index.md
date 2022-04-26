@@ -1,5 +1,5 @@
 ---
-name: render/overlay
+title : Custom Render Overlay
 category: 'vue-utils'
 ---
 

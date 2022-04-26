@@ -2,13 +2,9 @@
 title: createThemeSystem
 category: 'vue-use'
 ---
-## createThemeSystem
+## @hairy/vue-use - createThemeSystem
 
 创建一个基于注入的主题系统
-
-## Install
-
-`npm install @hairy/vue-use`
 
 ## Usage
 

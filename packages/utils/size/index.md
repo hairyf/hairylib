@@ -1,15 +1,12 @@
 ---
-name: size
-category: Utils
+title : Element size handling
+category: 'utils'
 ---
 
-# utils - size
+# @hairy/utils - size
 
 分析解析尺寸与大小
 
-## Install
-
-`npm install @hairy/utils`
 
 ## Usage
 

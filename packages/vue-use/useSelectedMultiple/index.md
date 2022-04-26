@@ -2,13 +2,9 @@
 title: useSelectedMultiple
 category: 'vue-use'
 ---
-## useSelectedMultiple
+## @hairy/vue-use - useSelectedMultiple
 
 对某个列表的多选处理
-
-## Install
-
-`npm install @hairy/vue-use`
 
 ## Usage
 

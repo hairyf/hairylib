@@ -1,5 +1,5 @@
 ---
-title: windicss
+title: '@hairy/windicss'
 category: 'Config'
 ---
 

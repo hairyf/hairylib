@@ -1,15 +1,12 @@
 ---
-name: util
-category: Utils
+title : Common tool
+category: 'utils'
 ---
 
-# utils - util
+# @hairy/utils - util
 
 工具集
 
-## Install
-
-`npm install @hairy/utils`
 
 ## Usage
 

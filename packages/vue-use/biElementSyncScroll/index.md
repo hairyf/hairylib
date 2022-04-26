@@ -2,13 +2,9 @@
 title: biElementSyncScroll
 category: 'vue-use'
 ---
-## biElementSyncScroll
+## @hairy/vue-use - biElementSyncScroll
 
 同步两个具有相同滚动条的 DOM 的滚动
-
-## Install
-
-`npm install @hairy/vue-use`
 
 ## Usage
 

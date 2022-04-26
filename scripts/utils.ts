@@ -142,7 +142,8 @@ export const updateIndexes = async () => {
         // TODO: 未获取 md 说明
         const description = ''
         const function_: HairyDocument = {
-          name: functionPath || _package.name,
+          name: frontmatter.title || functionPath || _package.name,
+          path: functionPath || _package.name,
           package: _package.name,
           lastUpdated: +(await git.raw(['log', '-1', '--format=%at', absolutePath])) * 1000,
           docs: relativePath,

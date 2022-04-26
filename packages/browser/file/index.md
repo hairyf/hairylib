@@ -1,5 +1,5 @@
 ---
-title: file
+title: File Tools
 category: 'Browser'
 ---
 

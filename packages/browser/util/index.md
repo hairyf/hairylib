@@ -1,5 +1,5 @@
 ---
-title: util
+title: Miscellaneous
 category: 'Browser'
 ---
 

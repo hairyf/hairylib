@@ -1,15 +1,12 @@
 ---
-name: format
-category: Utils
+title : 'Format String'
+category: 'utils'
 ---
 
-# utils - format
+# @hairy/utils - format
 
 字符串转换的集合
 
-## Install
-
-`npm install @hairy/utils`
 
 ## Usage
 

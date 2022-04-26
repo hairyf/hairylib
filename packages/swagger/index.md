@@ -1,5 +1,5 @@
 ---
-title: swagger
+title: '@hairy/swagger'
 category: 'Engineering'
 ---
 

@@ -1,15 +1,12 @@
 ---
-name: lang
-category: Utils
+title : Type Conversion (lang)
+category: 'utils'
 ---
 
-# utils - is
+# @hairy/utils - lang
 
 关于 JavaScript 语言特性的方法
 
-## Install
-
-`npm install @hairy/utils`
 
 ## Usage
 

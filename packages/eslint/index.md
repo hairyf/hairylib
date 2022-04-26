@@ -1,5 +1,5 @@
 ---
-title: eslint
+title: '@hairy/eslint'
 category: 'Config'
 ---
 

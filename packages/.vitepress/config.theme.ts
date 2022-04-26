@@ -24,7 +24,7 @@ export const sidebar: DefaultTheme.SideBarConfig = {
   '/contributing': DefaultSideBar,
 
   // #region functions
-  ...getReduceSideBar(indexes.documents.filter(item => item.name === item.package).map(item => item.name)),
+  ...getReduceSideBar(indexes.documents.filter(item => item.path === item.package).map(item => item.path)),
   ...getReduceSideBar(categories),
   // #endregion
 }

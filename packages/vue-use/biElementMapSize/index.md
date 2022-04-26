@@ -2,13 +2,9 @@
 title: biElementMapSize
 category: 'vue-use'
 ---
-## biElementMapSize
+## @hairy/vue-use - biElementMapSize
 
 同步 from DOM 的宽或高到指定的 to DOM
-
-## Install
-
-`npm install @hairy/vue-use`
 
 ## Usage
 

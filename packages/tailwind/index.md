@@ -1,5 +1,5 @@
 ---
-title: tailwind
+title: '@hairy/tailwind'
 category: 'Config'
 ---
 

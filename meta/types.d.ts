@@ -63,6 +63,8 @@ interface PackageManifest {
 interface HairyDocument {
   /** 方法名 */
   name: string
+  /** 所在路径 */
+  path: string
   /** 所属包 */
   package: string
   /** 更新时间 */

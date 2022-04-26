@@ -2,13 +2,9 @@
 title: useSelectedSingle
 category: 'vue-use'
 ---
-## useSelectedSingle
+## @hairy/vue-use - useSelectedSingle
 
 对某个列表的单选处理
-
-## Install
-
-`npm install @hairy/vue-use`
 
 ## Usage
 

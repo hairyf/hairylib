@@ -1,15 +1,11 @@
 ---
-name: color
-category: Utils
+title : 'Handle Color'
+category: 'utils'
 ---
 
-# utils - color
+# @hairy/utils - color
 
 颜色的混合与转换
-
-## Install
-
-`npm install @hairy/utils`
 
 ## Usage
 

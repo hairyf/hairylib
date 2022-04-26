@@ -1,15 +1,12 @@
 ---
-name: is
-category: Utils
+title : Environmental Judgment (is)
+category: 'utils'
 ---
 
-# utils - is
+# @hairy/utils - is
 
 客户机环境的判断
 
-## Install
-
-`npm install @hairy/utils`
 
 ## Usage
 
