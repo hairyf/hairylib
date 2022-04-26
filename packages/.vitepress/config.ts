@@ -6,7 +6,6 @@
  */
 import { defineConfig } from 'vitepress'
 import {sidebar, nav} from './config.theme'
-import cname from './plugins/vite-plugin-cname'
 
 
 const config = defineConfig({
@@ -16,9 +15,6 @@ const config = defineConfig({
   title: 'Hairy Library',
   description: 'Hairy Library',
   themeConfig: { logo: '/favicon.svg', sidebar, nav },
-  vite: {
-    plugins: [cname()]
-  }
 })
 
 
