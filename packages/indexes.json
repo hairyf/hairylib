@@ -2,20 +2,21 @@
 	"packages": {},
 	"categories": [
 		"Axios",
+		"vue-use",
 		"Engineering",
 		"Utils",
 		"Config",
 		"Browser",
 		"uni-utils",
 		"uni-use",
-		"vue-use",
+		"vue-utils",
 		"Other"
 	],
 	"documents": [
 		{
 			"name": "axiosErrorIntercept",
 			"package": "axios",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1647143700000,
 			"docs": "/axios/axiosErrorIntercept/",
 			"category": "Axios",
 			"description": ""
@@ -23,7 +24,7 @@
 		{
 			"name": "axiosLoading",
 			"package": "axios",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1647143700000,
 			"docs": "/axios/axiosLoading/",
 			"category": "Axios",
 			"description": ""
@@ -31,7 +32,7 @@
 		{
 			"name": "axiosPickByParams",
 			"package": "axios",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1647143700000,
 			"docs": "/axios/axiosPickByParams/",
 			"category": "Axios",
 			"description": ""
@@ -39,15 +40,31 @@
 		{
 			"name": "axiosProtoApiModify",
 			"package": "axios",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1647143700000,
 			"docs": "/axios/axiosProtoApiModify/",
 			"category": "Axios",
 			"description": ""
 		},
 		{
+			"name": "biElementMapSize",
+			"package": "vue-use",
+			"lastUpdated": 1647143700000,
+			"docs": "/vue-use/biElementMapSize/",
+			"category": "vue-use",
+			"description": ""
+		},
+		{
+			"name": "biElementSyncScroll",
+			"package": "vue-use",
+			"lastUpdated": 1647143700000,
+			"docs": "/vue-use/biElementSyncScroll/",
+			"category": "vue-use",
+			"description": ""
+		},
+		{
 			"name": "cli",
 			"package": "cli",
-			"lastUpdated": 1643266150000,
+			"lastUpdated": 1650953201000,
 			"docs": "/cli/",
 			"category": "Engineering",
 			"description": ""
@@ -63,7 +80,7 @@
 		{
 			"name": "eslint",
 			"package": "eslint",
-			"lastUpdated": 1643254179000,
+			"lastUpdated": 1650953201000,
 			"docs": "/eslint/",
 			"category": "Config",
 			"description": ""
@@ -71,7 +88,7 @@
 		{
 			"name": "file",
 			"package": "browser",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1647143700000,
 			"docs": "/browser/file/",
 			"category": "Browser",
 			"description": ""
@@ -103,7 +120,7 @@
 		{
 			"name": "router",
 			"package": "uni-utils",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1647143700000,
 			"docs": "/uni-utils/router/",
 			"category": "uni-utils",
 			"description": ""
@@ -119,7 +136,7 @@
 		{
 			"name": "swagger",
 			"package": "swagger",
-			"lastUpdated": 1643266150000,
+			"lastUpdated": 1650953201000,
 			"docs": "/swagger/",
 			"category": "Engineering",
 			"description": ""
@@ -127,7 +144,7 @@
 		{
 			"name": "tailwind",
 			"package": "tailwind",
-			"lastUpdated": 1643254179000,
+			"lastUpdated": 1650878808000,
 			"docs": "/tailwind/",
 			"category": "Config",
 			"description": ""
@@ -135,7 +152,7 @@
 		{
 			"name": "types",
 			"package": "utils",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1647143700000,
 			"docs": "/utils/types/",
 			"category": "Utils",
 			"description": ""
@@ -146,6 +163,30 @@
 			"lastUpdated": 1643187251000,
 			"docs": "/uni-utils/uniApiFix/",
 			"category": "uni-utils",
+			"description": ""
+		},
+		{
+			"name": "useSelectedMultiple",
+			"package": "vue-use",
+			"lastUpdated": 1647143700000,
+			"docs": "/vue-use/useSelectedMultiple/",
+			"category": "vue-use",
+			"description": ""
+		},
+		{
+			"name": "useSelectedSingle",
+			"package": "vue-use",
+			"lastUpdated": 1647143700000,
+			"docs": "/vue-use/useSelectedSingle/",
+			"category": "vue-use",
+			"description": ""
+		},
+		{
+			"name": "useThemeSystem",
+			"package": "vue-use",
+			"lastUpdated": 1647143700000,
+			"docs": "/vue-use/useThemeSystem/",
+			"category": "vue-use",
 			"description": ""
 		},
 		{
@@ -167,7 +208,7 @@
 		{
 			"name": "util",
 			"package": "browser",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1647143700000,
 			"docs": "/browser/util/",
 			"category": "Browser",
 			"description": ""
@@ -175,15 +216,23 @@
 		{
 			"name": "util",
 			"package": "utils",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1647143700000,
 			"docs": "/utils/util/",
 			"category": "Utils",
 			"description": ""
 		},
 		{
+			"name": "utils",
+			"package": "vue-utils",
+			"lastUpdated": 1647143700000,
+			"docs": "/vue-utils/utils/",
+			"category": "vue-utils",
+			"description": ""
+		},
+		{
 			"name": "vue-use",
 			"package": "vue-use",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1650878808000,
 			"docs": "/vue-use/",
 			"category": "vue-use",
 			"description": ""
@@ -191,7 +240,7 @@
 		{
 			"name": "wechat-jssdk",
 			"package": "wechat-jssdk",
-			"lastUpdated": 1643178850000,
+			"lastUpdated": 1647143917000,
 			"docs": "/wechat-jssdk/",
 			"category": "Other",
 			"description": ""
@@ -199,7 +248,7 @@
 		{
 			"name": "windicss",
 			"package": "windicss",
-			"lastUpdated": 1643254179000,
+			"lastUpdated": 1650878808000,
 			"docs": "/windicss/",
 			"category": "Config",
 			"description": ""
