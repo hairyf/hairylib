@@ -13,7 +13,8 @@ const basic: Linter.Config = {
     'vue/html-closing-bracket-newline': 'off',
     'vue/no-unused-vars': 'warn',
     'vue/require-valid-default-prop': 'warn'
-  }
+  },
+  plugins: ['vue']
 }
 
 /**

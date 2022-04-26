@@ -5,7 +5,7 @@ const config: Options = {
   tabWidth: 2,
   useTabs: false,
   semi: false, // 未尾逗号
-  vueIndentScriptAndStyle: true,
+  vueIndentScriptAndStyle: false,
   singleQuote: true, // 单引号
   quoteProps: 'as-needed',
   bracketSpacing: true,
