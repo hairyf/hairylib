@@ -1,6 +1,6 @@
 ## 关于(About)
 
-hairylib 是工具代码库，使用 lerna 管理的多个模块包(monorepo)的项目。
+[hairylib](https://hairylib.com/) 是工具代码库，使用 lerna 管理的多个模块包(monorepo)的项目。
 
 ## 项目流程图
 
