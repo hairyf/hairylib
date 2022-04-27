@@ -8,7 +8,7 @@ hairylib 是工具代码库，使用 lerna 管理的多个模块包(monorepo)的
 
 ## 文档系统
 
-基于 vitepress，收集 packages 中的文档，自动组成。
+基于 vitepress，收集 packages 中的文档，自动组合，通过 github actions 自动化部署到 hairylib.com 域名。
 地址：https://hairylib.com/
 
 ## 有点意思的小技巧
