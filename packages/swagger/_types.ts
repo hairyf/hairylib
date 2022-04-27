@@ -33,10 +33,10 @@ export interface SwaggerBuildConfig {
    * @template `T extends { data?: infer V } ? V : void`
    */
   responseType?: string
-  /** 请求参数 */
+  /** swagger 携带请求参数 */
   requestConfig?: AxiosRequestConfig
 }
-export interface SwaggerDefineConfig extends Omit<SwaggerBuildConfig, 'output' | 'uri'> {
+export interface SwaggerDefineConfig extends Omit<SwaggerBuildConfig, 'uri'> {
   servers?: SwaggerBuildConfig[]
 }
 export interface SwaggerOutputOption {

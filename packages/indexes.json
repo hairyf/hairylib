@@ -17,7 +17,7 @@
 			"name": "@hairy/cli",
 			"path": "cli",
 			"package": "cli",
-			"lastUpdated": 1650953201000,
+			"lastUpdated": 1650960983000,
 			"docs": "/cli/",
 			"category": "Engineering",
 			"description": ""
@@ -26,7 +26,7 @@
 			"name": "@hairy/eslint",
 			"path": "eslint",
 			"package": "eslint",
-			"lastUpdated": 1650953201000,
+			"lastUpdated": 1650960352000,
 			"docs": "/eslint/",
 			"category": "Config",
 			"description": ""
@@ -35,7 +35,7 @@
 			"name": "@hairy/swagger",
 			"path": "swagger",
 			"package": "swagger",
-			"lastUpdated": 1650953201000,
+			"lastUpdated": 1650960983000,
 			"docs": "/swagger/",
 			"category": "Engineering",
 			"description": ""
@@ -44,7 +44,7 @@
 			"name": "@hairy/tailwind",
 			"path": "tailwind",
 			"package": "tailwind",
-			"lastUpdated": 1650878808000,
+			"lastUpdated": 1650960352000,
 			"docs": "/tailwind/",
 			"category": "Config",
 			"description": ""
@@ -53,7 +53,7 @@
 			"name": "@hairy/wechat-jssdk",
 			"path": "wechat-jssdk",
 			"package": "wechat-jssdk",
-			"lastUpdated": 1647143917000,
+			"lastUpdated": 1650960352000,
 			"docs": "/wechat-jssdk/",
 			"category": "Other",
 			"description": ""
@@ -62,7 +62,7 @@
 			"name": "@hairy/windicss",
 			"path": "windicss",
 			"package": "windicss",
-			"lastUpdated": 1650878808000,
+			"lastUpdated": 1650960352000,
 			"docs": "/windicss/",
 			"category": "Config",
 			"description": ""
@@ -107,7 +107,7 @@
 			"name": "biElementMapSize",
 			"path": "biElementMapSize",
 			"package": "vue-use",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/vue-use/biElementMapSize/",
 			"category": "vue-use",
 			"description": ""
@@ -116,7 +116,7 @@
 			"name": "biElementSyncScroll",
 			"path": "biElementSyncScroll",
 			"package": "vue-use",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/vue-use/biElementSyncScroll/",
 			"category": "vue-use",
 			"description": ""
@@ -125,7 +125,7 @@
 			"name": "Common tool",
 			"path": "util",
 			"package": "utils",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/utils/util/",
 			"category": "utils",
 			"description": ""
@@ -134,7 +134,7 @@
 			"name": "createThemeSystem",
 			"path": "useThemeSystem",
 			"package": "vue-use",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/vue-use/useThemeSystem/",
 			"category": "vue-use",
 			"description": ""
@@ -143,7 +143,7 @@
 			"name": "Custom Render Overlay",
 			"path": "utils",
 			"package": "vue-utils",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/vue-utils/utils/",
 			"category": "vue-utils",
 			"description": ""
@@ -152,7 +152,7 @@
 			"name": "Element size handling",
 			"path": "size",
 			"package": "utils",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1650960352000,
 			"docs": "/utils/size/",
 			"category": "utils",
 			"description": ""
@@ -161,7 +161,7 @@
 			"name": "Environmental Judgment (is)",
 			"path": "is",
 			"package": "utils",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1650960352000,
 			"docs": "/utils/is/",
 			"category": "utils",
 			"description": ""
@@ -170,7 +170,7 @@
 			"name": "File Tools",
 			"path": "file",
 			"package": "browser",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/browser/file/",
 			"category": "Browser",
 			"description": ""
@@ -179,7 +179,7 @@
 			"name": "Fix UniApis",
 			"path": "uniApiFix",
 			"package": "uni-utils",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1650960352000,
 			"docs": "/uni-utils/uniApiFix/",
 			"category": "uni-utils",
 			"description": ""
@@ -188,7 +188,7 @@
 			"name": "Format String",
 			"path": "format",
 			"package": "utils",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1650960352000,
 			"docs": "/utils/format/",
 			"category": "utils",
 			"description": ""
@@ -197,7 +197,7 @@
 			"name": "Handle Color",
 			"path": "color",
 			"package": "utils",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1650960352000,
 			"docs": "/utils/color/",
 			"category": "utils",
 			"description": ""
@@ -206,7 +206,7 @@
 			"name": "Miscellaneous",
 			"path": "util",
 			"package": "browser",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/browser/util/",
 			"category": "Browser",
 			"description": ""
@@ -215,7 +215,7 @@
 			"name": "Type Conversion (lang)",
 			"path": "lang",
 			"package": "utils",
-			"lastUpdated": 1643265730000,
+			"lastUpdated": 1650960352000,
 			"docs": "/utils/lang/",
 			"category": "utils",
 			"description": ""
@@ -224,7 +224,7 @@
 			"name": "Typescript Types",
 			"path": "types",
 			"package": "utils",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/utils/types/",
 			"category": "utils",
 			"description": ""
@@ -233,7 +233,7 @@
 			"name": "Uni Page Router",
 			"path": "router",
 			"package": "uni-utils",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/uni-utils/router/",
 			"category": "uni-utils",
 			"description": ""
@@ -242,7 +242,7 @@
 			"name": "useSelectedMultiple",
 			"path": "useSelectedMultiple",
 			"package": "vue-use",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/vue-use/useSelectedMultiple/",
 			"category": "vue-use",
 			"description": ""
@@ -251,7 +251,7 @@
 			"name": "useSelectedSingle",
 			"path": "useSelectedSingle",
 			"package": "vue-use",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1650960352000,
 			"docs": "/vue-use/useSelectedSingle/",
 			"category": "vue-use",
 			"description": ""
@@ -260,7 +260,7 @@
 			"name": "useVModel",
 			"path": "useVModel",
 			"package": "uni-use",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1650960352000,
 			"docs": "/uni-use/useVModel/",
 			"category": "uni-use",
 			"description": ""
@@ -269,7 +269,7 @@
 			"name": "useVModels",
 			"path": "useVModels",
 			"package": "uni-use",
-			"lastUpdated": 1643187251000,
+			"lastUpdated": 1650960352000,
 			"docs": "/uni-use/useVModels/",
 			"category": "uni-use",
 			"description": ""

@@ -95,10 +95,8 @@ export const parseSource = async function (this: SwaggerParserContext, config: S
         }
       }
       // 响应的数据。默认去 200 的 HTTP状态码对应的数据
-      const responsesSchema = config.responses['200'].schema
-      fetchApi.response = responsesSchema
-        ? parseProperties(responsesSchema, { method, path, type: ['Data'] })
-        : null
+      const responsesSchema = config.responses?.['200']?.schema
+      fetchApi.response = responsesSchema ? parseProperties(responsesSchema, { method, path, type: ['Data'] }) : null
       astConfig.apis.push(fetchApi)
     }
   }

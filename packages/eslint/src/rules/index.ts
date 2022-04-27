@@ -1,4 +1,5 @@
 import { Linter } from 'eslint'
+import { preventAbbreviationsWhites } from './utils'
 
 /**
  * @author: Mr.Mao
@@ -6,6 +7,7 @@ import { Linter } from 'eslint'
  * @module eslint
  * @module prettier
  */
+
 export const commons: Linter.HasRules['rules'] = {
   'prettier/prettier': 'warn',
   'no-debugger': 'error',
@@ -159,7 +161,7 @@ export const unicorn: Linter.HasRules['rules'] = {
   'unicorn/prevent-abbreviations': [
     'error',
     {
-      ignore: [/param/i, /props/i, /args/i, /prev/i, /ref/i, /dir/i, /var/i]
+      ignore: preventAbbreviationsWhites(['param', 'prop', 'arg', 'prev', 'ref', 'dir', 'var', 'attr'])
     }
   ],
   'unicorn/require-array-join-separator': 'error',

@@ -35,9 +35,9 @@ Templates
 ### Compile Code
 
 ```sh
-Usage: hairy <mode> [options]
+Usage: hairy <dev|build> [options]
 
-仅支持 typescript ，不支持 vue、react 编译，一般用于轻量基础库编译
+不支持 vue 编译，一般用于轻量基础库编译
 
 Modes:
   dev                             提供持续监听编译, 默认输入文件 src 输出文件 dist
@@ -46,5 +46,33 @@ Modes:
 Options:
   -i, --input <path>              输入的路径，默认为 src 目录
   -o, --output <path>             输出的路径，默认为 dist 目录
-  -n, --not-type                  阻止输出 types，可用于提高编译速度
+  -t, --type                      输出 d.ts 类型文件，会减慢编译速度
 ```
+
+### Swagger Code
+
+读取项目根目录的 swagger.config.ts/js/json 生成 `api.ts` ｜ `type.ts` 文件，具体参数参考 [@hairy/swagger#types](https://hairylib.com/swagger/#types)
+
+`npm install @hairy/swagger @hairy/cli`
+
+```ts
+import { defineConfig } from '@hairy/swagger'
+
+export default defineConfig({
+  // global config
+  baseUrl: `'...'`,
+  servers: [
+    // swagger swervers
+    { uri: 'http://...api-docs' }
+  ]
+})
+```
+
+```sh
+# install -D/S
+npx hairy swagger
+# install -g
+hairy swagger
+```
+
+![cli-case](/public/cli-case.gif)

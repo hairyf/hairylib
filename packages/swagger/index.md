@@ -114,7 +114,7 @@ interface SwaggerBuildConfig {
    * @template `T extends { data?: infer V } ? V : void`
     */
   responseType?: string;
-  /** 请求参数 */
+  /** swagger 携带请求参数 */
   requestConfig?: AxiosRequestConfig;
 }
 interface SwaggerWebClientGeneratorType {
