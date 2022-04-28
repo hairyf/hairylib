@@ -1,7 +1,3 @@
-import { mergeWith } from 'lodash'
-import { unicorn } from '.'
-import { mergeCustomizer } from '../utils'
-
 /**
  * unicorn/prevent-abbreviations 白名单
  * @param name
@@ -15,11 +11,11 @@ export const preventAbbreviationsWhites = (names: string[]) => {
  * @param names
  */
 export const extendsPreventAbbreviations = (names: string[]) => {
-  const options = { ignore: preventAbbreviationsWhites(names) }
+  // eslint-disable-next-line unicorn/import-index
+  const unicorn = (require('.') || require('./index.js')).unicorn
+  const defaultOptions = unicorn['unicorn/prevent-abbreviations'][1]
+  const options = { ignore: [...preventAbbreviationsWhites(names), ...defaultOptions.ignore] }
   return {
-    'unicorn/prevent-abbreviations': [
-      unicorn['unicorn/prevent-abbreviations'][0],
-      mergeWith(options, unicorn['unicorn/prevent-abbreviations'][1], mergeCustomizer)
-    ]
+    'unicorn/prevent-abbreviations': [unicorn['unicorn/prevent-abbreviations'][0], options]
   }
 }

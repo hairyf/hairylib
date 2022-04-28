@@ -1,6 +1,6 @@
 {
   "name": "@hairy/eslint",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "Eslint config for Mr.Mao",
   "license": "ISC",
   "scripts": {
