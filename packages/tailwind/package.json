@@ -7,7 +7,7 @@
     "@hairy/share": "^0.0.2",
     "@hairy/utils": "^1.0.20",
     "@types/tailwindcss": "2.0.0",
-    "lodash": "^4",
+    "lodash-es": "^4",
     "tailwindcss": "^3.0.17"
   },
   "devDependencies": {

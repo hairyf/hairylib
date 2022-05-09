@@ -25,10 +25,10 @@
     "./*": "./*"
   },
   "dependencies": {
-    "lodash": "^4"
+    "lodash-es": "^4"
   },
   "devDependencies": {
-    "@types/lodash": "^4"
+    "@types/lodash-es": "^4"
   },
   "gitHead": "9682f0fdcb39beaab4b6b44a3d6eba020f98bd39",
   "publishConfig": {

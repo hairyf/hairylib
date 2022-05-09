@@ -24,14 +24,14 @@
     "eslint-plugin-unicorn": "^35.0.0",
     "eslint-plugin-vue": "^7.16.0",
     "eslint-plugin-yml": "^0.10.0",
-    "lodash": "^4",
+    "lodash-es": "^4",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "typescript": "^4.3.5",
     "vue-eslint-parser": "^7.10.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4"
+    "@types/lodash-es": "^4"
   },
   "author": "Anthony Fu<https://github.com/TuiMao233>",
   "repository": {

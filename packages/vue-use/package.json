@@ -6,7 +6,7 @@
     "@hairy/browser": "^1.0.16",
     "@types/pubsub-js": "^1.8.2",
     "@vueuse/core": "^5.2.0",
-    "lodash": "^4",
+    "lodash-es": "^4",
     "pubsub-js": "^1.9.3",
     "vue-demi": "^0.12.1"
   },
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "devDependencies": {
-    "@types/lodash": "^4",
+    "@types/lodash-es": "^4",
     "vue": "^3.1.5"
   },
   "description": "Collection of essential Vue Composition Utilities",

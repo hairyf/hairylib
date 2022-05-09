@@ -40,9 +40,6 @@ export const generateArray = (start: number, end: number) => {
   return [...new Array(end + 1).keys()].slice(start)
 }
 
-/** 空的方法 */
-export const noop = () => {}
-
 /**
  * 获取数据类型
  * @param target 检测对象

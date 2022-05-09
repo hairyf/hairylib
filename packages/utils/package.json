@@ -4,10 +4,10 @@
   "license": "MIT",
   "dependencies": {
     "dayjs": "^1.10.6",
-    "lodash": "^4"
+    "lodash-es": "^4"
   },
   "devDependencies": {
-    "@types/lodash": "^4"
+    "@types/lodash-es": "^4"
   },
   "main": "./index.cjs.js",
   "types": "./index.d.ts",

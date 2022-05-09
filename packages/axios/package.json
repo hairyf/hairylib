@@ -4,10 +4,10 @@
   "license": "MIT",
   "dependencies": {
     "@hairy/utils": "^1.0.20",
-    "lodash": "^4"
+    "lodash-es": "^4"
   },
   "devDependencies": {
-    "@types/lodash": "^4"
+    "@types/lodash-es": "^4"
   },
   "peerDependencies": {
     "axios": "^0.24.0"

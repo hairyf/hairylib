@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@hairy/utils": "^1.0.20",
-    "lodash": "^4",
+    "lodash-es": "^4",
     "vue-demi": "^0.12.1"
   },
   "types": "./index.d.ts",
