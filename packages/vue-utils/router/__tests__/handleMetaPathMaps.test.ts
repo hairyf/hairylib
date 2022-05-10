@@ -16,9 +16,9 @@
  */
 import { cloneDeep } from 'lodash'
 import { RouteRecordRaw } from 'vue-router'
-import { calculRouterActive } from '..'
+import { handleMetaPathMaps } from '..'
 import baseRoutes from './mock'
-describe('calculRouterActive', () => {
+describe('handleMetaPathMaps', () => {
   it('completePath Integrity', () => {
     const routes: RouteRecordRaw[] = [
       {
@@ -27,7 +27,7 @@ describe('calculRouterActive', () => {
         children: [{ path: 'index', component: {} }]
       }
     ]
-    calculRouterActive(routes)
+    handleMetaPathMaps(routes)
     expect(routes[0].children![0]!.meta!.completePath).toMatch('/home/index')
   })
 
@@ -51,7 +51,7 @@ describe('calculRouterActive', () => {
         ]
       }
     ]
-    calculRouterActive(routes)
+    handleMetaPathMaps(routes)
     const deepLevelRoute = routes[0]!.children![0]!.children![0]
     const equalValue = ['/A0', '/A0/A1', '/A0/A1/A2']
     expect(deepLevelRoute!.meta!.pathMaps).toEqual(equalValue)
@@ -59,7 +59,7 @@ describe('calculRouterActive', () => {
 
   it('pathMaps complex Integrity', () => {
     const routes = cloneDeep(baseRoutes)
-    calculRouterActive(routes)
+    handleMetaPathMaps(routes)
     const deepLevelRoute = routes[0].children![2].children![0]
     const equalValue = ['/shop', '/shop/materialCenter', '/shop/materialCenter/material']
     expect(deepLevelRoute.meta!.pathMaps).toEqual(equalValue)

@@ -23,7 +23,10 @@ export const rollupBuildPackage = async (config: PackageManifest) => {
     'pubsub-js': 'pubsubJs',
     vue: 'Vue',
     dayjs: 'dayjs',
+    'lodash-es': '_',
     lodash: '_',
+    '@vue/shared': 'VueShared',
+    delay: 'delay',
     ...(globals || {})
   }
 

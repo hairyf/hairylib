@@ -7,7 +7,7 @@
  * @任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import { RouteRecordRaw } from 'vue-router'
-import { downloadBlobFile } from '@hairy/browser'
+
 /** 定义 RouteMeta 类型 */
 declare module 'vue-router' {
   interface RouteMeta {
@@ -23,9 +23,9 @@ declare module 'vue-router' {
  * @param routes 当前路由列表
  * @param upperPath 上层路由路径
  */
-export const calculRouterActive = (routes: RouteRecordRaw[], upperPath?: string) => {
+export const handleMetaPathMaps = (routes: RouteRecordRaw[], upperPath?: string) => {
   let pathMaps: string[] = []
-  const recursion = (routes: RouteRecordRaw[], upperPath?: string) => {
+  const deepHandler = (routes: RouteRecordRaw[], upperPath?: string) => {
     typeof upperPath !== 'string' && (pathMaps = [])
     for (const index in routes) {
       const route = routes[index]
@@ -42,46 +42,44 @@ export const calculRouterActive = (routes: RouteRecordRaw[], upperPath?: string)
       }
       // 再次递归
       if (Array.isArray(route.children)) {
-        recursion(route.children, completePath)
+        deepHandler(route.children, completePath)
       }
       pathMaps = pathMaps.slice(0, pathMaps.indexOf(completePath))
     }
   }
-  recursion(routes, upperPath)
+  deepHandler(routes, upperPath)
 }
 
 /**
- * 递归输出当前路由权限表
+ * 递归输出当前路由元信息表
  * @param routes 当前路由列表
  */
-export const outputRoutes = (routes: RouteRecordRaw[]) => {
-  const recursion = (rs: RouteRecordRaw[]) => {
+export const getDeepMetaTable = (routes: RouteRecordRaw[]) => {
+  const deepHandler = (rs: RouteRecordRaw[]) => {
     return rs.map((route) => {
-      const newRoute: any = {
-        name: route.meta?.title as string
-      }
+      const newRoute: any = route.meta
       if (route.children) {
-        newRoute.children = recursion(route.children)
+        newRoute.children = deepHandler(route.children)
       }
       return newRoute
     })
   }
-  downloadBlobFile(JSON.stringify(recursion(routes)), 'routers.json')
+  return JSON.stringify(deepHandler(routes))
 }
 
 /**
- * 递归对比路由权限表, 返回路由列表
+ * 递归对比路由权限表, 返回路由交集列表
  * @param baseRoutes 基本路由
  * @param surfaceRoutes 对比路由信息
  * @returns 比较路由列表
  */
-export const compareRoutes = (baseRoutes: RouteRecordRaw[] = [], surfaceRoutes: RouteRecordRaw[] = []) => {
-  const filterRoutes = baseRoutes.filter((brte) => {
-    const srte = surfaceRoutes.find((v) => brte.name === v.name)
-    if (brte.children && brte.children?.length > 0) {
-      brte.children = compareRoutes(brte.children, srte?.children)
+export const intersection = (baseRoutes: RouteRecordRaw[] = [], surfaceRoutes: RouteRecordRaw[] = []) => {
+  const filterRoutes = baseRoutes.filter((base) => {
+    const surface = surfaceRoutes.find((v) => base.name === v.name)
+    if (base.children && base.children?.length > 0) {
+      base.children = intersection(base.children, surface?.children)
     }
-    return srte
+    return surface
   })
   return filterRoutes
 }
@@ -92,7 +90,7 @@ export const compareRoutes = (baseRoutes: RouteRecordRaw[] = [], surfaceRoutes: 
  * @param routes 当前路由表
  * @param upperPath 上层路由路径
  */
-export const setAllRouteRedirect = (routes: RouteRecordRaw[] = [], upperPath?: string) => {
+export const handleRedirects = (routes: RouteRecordRaw[] = [], upperPath?: string) => {
   // 二层递归获取子项拼接路径
   const getChildrenCompletePath = (route: RouteRecordRaw): string => {
     if (route?.children) {
@@ -111,14 +109,15 @@ export const setAllRouteRedirect = (routes: RouteRecordRaw[] = [], upperPath?: s
     const splic = route.path === '/' ? '' : '/'
     route.redirect = `${completePath}${splic}${getChildrenCompletePath(route.children[0])}`
     // 再次递归设置重定向地址
-    setAllRouteRedirect(route.children, completePath)
+    handleRedirects(route.children, completePath)
   })
 }
 
 /**
  * 设置当前路由表默认路由路径 / => 第一路径
+ * path: / 未设置，则添加 { path: '/', redirect: routes[0].path }
  */
-export const setDefaultRouteHome = (routes: RouteRecordRaw[] = []) => {
+export const handleDefaultRedirect = (routes: RouteRecordRaw[] = []) => {
   const existHomeRoute = routes.some((v) => v.path === '/')
   if (existHomeRoute) return false
   routes.unshift({ path: '/', redirect: routes[0].path })
