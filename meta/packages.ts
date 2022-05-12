@@ -69,8 +69,7 @@ export const packages: PackageManifest[] = [
     name: 'vue-utils',
     display: 'Vue utilities',
     description: 'Collection of essential Vue Utilities',
-    external: ['vue-router', 'vue-demi', '@hairy/browser'],
-    globals: { '@hairy/vue-utils': 'hairyVueUtils' }
+    external: ['vue-router', '@vue/shared', 'delay', 'lodash-es', 'vue']
   },
   {
     name: 'vue-directive',

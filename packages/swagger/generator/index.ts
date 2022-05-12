@@ -10,7 +10,7 @@ import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig } from '../_types'
 import { getNameSpaceType, TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName } from '../internal'
 import { camelCase } from 'lodash'
 import { capitalizeCamelCase } from '@hairy/utils'
-import { spliceHeaderCode } from './utils'
+import { spliceHeaderCode, spliceType, spliceTypeField } from './utils'
 
 export interface SwaggerGenerateConfig {
   build: SwaggerBuildConfig
@@ -109,19 +109,11 @@ export const generate = (config: SwaggerGenerateConfig) => {
 
   // codec types 生成特定规范和格式的 interface 类型
   for (const definition of ast.definitions) {
-    if (definition.description) typeFileCode += `/** @${definition.description} */\n`
-    const content = definition.value.map((field) => {
-      let string_ = ''
-      if (field.description) string_ += `/** @${field.description} */\n`
-      // [field]?:[value] || [field]:[value]
-      string_ += `${field.name}${field.required ? '?' : ''}: ${field.value}`
-      return string_
+    const contents = definition.value.map((field) => {
+      if (build.paramsPartial) field.required = false
+      return spliceTypeField(field)
     })
-    typeFileCode += `\
-    export type ${definition.name} = {
-        ${content.join('\n')}
-    }
-    `
+    typeFileCode += spliceType(definition, contents)
   }
 
   apiFileCode = format(apiFileCode, { printWidth: 800, parser: 'typescript' })

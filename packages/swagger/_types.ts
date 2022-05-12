@@ -29,10 +29,12 @@ export interface SwaggerBuildConfig {
   }
   /**
    * @description 响应体的类型转换
-   * @default T >>> type Response<T> = T >>> http.get<Response<Data>>('xxx')
+   * @default T >>> type Response<T> = T >>> http.get<Response<Data>>({...})
    * @template `T extends { data?: infer V } ? V : void`
    */
   responseType?: string
+  /** @description 强制参数可选 */
+  paramsPartial?: boolean
   /** swagger 携带请求参数 */
   requestConfig?: AxiosRequestConfig
 }

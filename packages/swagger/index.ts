@@ -42,7 +42,7 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
     // 确保 api 与 type 路径存在, 避免影响后续写入
     await Promise.all([fs.ensureDir(output.api.root), fs.ensureDir(output.type.root)])
     // 写入 api 与 type 文件
-    await Promise.all([fs.writeFileSync(output.api.file, apiFileCode, writeOptions), fs.writeFileSync(output.type.file, typeFileCode, writeOptions)])
+    await Promise.all([fs.writeFile(output.api.file, apiFileCode, writeOptions), fs.writeFile(output.type.file, typeFileCode, writeOptions)])
   })
 
   await Promise.all(process)

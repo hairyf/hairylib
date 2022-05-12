@@ -114,6 +114,8 @@ interface SwaggerBuildConfig {
    * @template `T extends { data?: infer V } ? V : void`
     */
   responseType?: string;
+  /** @description 强制参数可选 */
+  paramsPartial?: boolean
   /** swagger 携带请求参数 */
   requestConfig?: AxiosRequestConfig;
 }
