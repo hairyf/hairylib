@@ -6,13 +6,13 @@
  * @Description:
  * @任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-import { RouteRecordRaw } from 'vue-router'
+import { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 
 /** 定义 RouteMeta 类型 */
 declare module 'vue-router' {
   interface RouteMeta {
     /** 完整路径信息 */
-    completePath?: string
+    fullPath?: string
     /** 路径映射 */
     pathMaps?: string[]
   }
@@ -30,21 +30,21 @@ export const handleMetaPathMaps = (routes: RouteRecordRaw[], upperPath?: string)
     for (const index in routes) {
       const route = routes[index]
       // 拼接路由绝对路径
-      const completePath = upperPath ? `${upperPath == '/' ? '/' : upperPath + '/'}${route.path}` : route.path
+      const fullPath = upperPath ? `${upperPath == '/' ? '/' : upperPath + '/'}${route.path}` : route.path
       // 记录路由路径信息
-      pathMaps.push(completePath)
+      pathMaps.push(fullPath)
       // 添加路由路径信息
       if (route.meta) {
         route.meta.pathMaps = [...pathMaps]
-        route.meta.completePath = completePath
+        route.meta.fullPath = fullPath
       } else {
-        route.meta = { pathMaps: [...pathMaps], completePath }
+        route.meta = { pathMaps: [...pathMaps], fullPath }
       }
       // 再次递归
       if (Array.isArray(route.children)) {
-        deepHandler(route.children, completePath)
+        deepHandler(route.children, fullPath)
       }
-      pathMaps = pathMaps.slice(0, pathMaps.indexOf(completePath))
+      pathMaps = pathMaps.slice(0, pathMaps.indexOf(fullPath))
     }
   }
   deepHandler(routes, upperPath)
@@ -92,24 +92,24 @@ export const intersection = (baseRoutes: RouteRecordRaw[] = [], surfaceRoutes: R
  */
 export const handleRedirects = (routes: RouteRecordRaw[] = [], upperPath?: string) => {
   // 二层递归获取子项拼接路径
-  const getChildrenCompletePath = (route: RouteRecordRaw): string => {
+  const getChildrenFullPath = (route: RouteRecordRaw): string => {
     if (route?.children) {
       if (route.path == '/') {
-        return getChildrenCompletePath(route.children[0])
+        return getChildrenFullPath(route.children[0])
       }
-      return `${route.path}/${getChildrenCompletePath(route.children[0])}`
+      return `${route.path}/${getChildrenFullPath(route.children[0])}`
     }
     return route.path
   }
   routes.forEach((route) => {
     if (!(route.children && route.children.length > 0) || route.redirect) return false
     // 当前完整地址
-    const completePath = upperPath ? `${upperPath == '/' ? '' : upperPath + '/'}${route.path}` : route.path
+    const fullPath = upperPath ? `${upperPath == '/' ? '' : upperPath + '/'}${route.path}` : route.path
     // 当前拼接符
     const splic = route.path === '/' ? '' : '/'
-    route.redirect = `${completePath}${splic}${getChildrenCompletePath(route.children[0])}`
+    route.redirect = `${fullPath}${splic}${getChildrenFullPath(route.children[0])}`
     // 再次递归设置重定向地址
-    handleRedirects(route.children, completePath)
+    handleRedirects(route.children, fullPath)
   })
 }
 
@@ -121,4 +121,14 @@ export const handleDefaultRedirect = (routes: RouteRecordRaw[] = []) => {
   const existHomeRoute = routes.some((v) => v.path === '/')
   if (existHomeRoute) return false
   routes.unshift({ path: '/', redirect: routes[0].path })
+}
+
+/**
+ * 判断当前路由是否存在目标路由链表
+ * @param current
+ * @param target
+ * @returns
+ */
+export const someOf = (current: RouteLocationNormalizedLoaded, target: RouteRecordRaw) => {
+  return current.meta.pathMaps?.includes(target.meta?.fullPath || '') || false
 }

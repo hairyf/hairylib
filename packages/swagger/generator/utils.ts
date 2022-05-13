@@ -22,7 +22,7 @@ export const spliceHeaderCode = (config: SwaggerGenerateConfig) => {
 export const spliceTypeField = (field: SwaggerField) => {
   let string_ = ''
   if (field.description) string_ += `/** @${field.description} */\n`
-  string_ += `${field.name}${field.required ? '?' : ''}: ${field.value}`
+  string_ += `${field.name}${field.required ? '' : '?'}: ${field.value}`
   return string_
 }
 
