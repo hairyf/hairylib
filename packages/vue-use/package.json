@@ -4,6 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "@hairy/browser": "^1.0.17",
+    "@hairy/utils": "^1.0.21",
     "@vueuse/core": "^8.5.0",
     "lodash-es": "^4",
     "vue-demi": "^0.12.1"
@@ -23,7 +24,6 @@
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "devDependencies": {
-    "@types/lodash": "^4",
     "@types/lodash-es": "^4",
     "@types/pubsub-js": "^1.8.2",
     "vue": "^3.1.5"

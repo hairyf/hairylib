@@ -1,6 +1,5 @@
 import { MaybeElementRef, MaybeRef, unrefElement } from '@vueuse/core'
 import { get, merge, set, toPath } from 'lodash-es'
-import { PropertyPath } from 'lodash'
 
 import {
   computed,
@@ -39,7 +38,7 @@ interface CreateThemeResult<T, Overrides = DeepPartial<T>> {
    *
    * 不传则代表将所有配置转换
    */
-  useThemeCssVariables: (root?: MaybeElementRef, target?: PropertyPath) => ComputedRef<Record<string, string>>
+  useThemeCssVariables: (root?: MaybeElementRef, target?: string | string[]) => ComputedRef<Record<string, string>>
   /**
    * 创建主题编辑器
    *
@@ -77,7 +76,7 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
     return themeMerge
   }
 
-  const useThemeCssVariables = (root = document.documentElement as any, target?: PropertyPath) => {
+  const useThemeCssVariables = (root = document.documentElement as any, target?: any) => {
     const theme = injectTheme()
     const cssVars = computed(() => {
       if (!target) return transformTheme2CssVars(theme.value as any)
