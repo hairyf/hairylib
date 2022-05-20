@@ -49,10 +49,14 @@ export const usePaginationListSplice = <T extends Array<any>>(
   const currentPage = ref(0)
   const end = ref(false)
 
-  const { execute, isLoading } = useAsyncState(async () => {
-    const result = await options.resolve(currentPage.value)
-    return result || []
-  }, [] as never)
+  const { execute, isLoading } = useAsyncState(
+    async () => {
+      const result = await options.resolve(currentPage.value)
+      return result || []
+    },
+    [] as never,
+    { immediate: false }
+  )
 
   const reset = async () => {
     end.value = false

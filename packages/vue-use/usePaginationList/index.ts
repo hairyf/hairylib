@@ -43,10 +43,14 @@ export const usePaginationList = <T extends Array<any>>(
   const pagination = usePagination(options)
   const list = ref<any>([]) as Ref<T>
 
-  const { execute, isLoading } = useAsyncState(async () => {
-    const result = await options.resolve(reactive(pagination))
-    return result || []
-  }, [] as never)
+  const { execute, isLoading } = useAsyncState(
+    async () => {
+      const result = await options.resolve(reactive(pagination))
+      return result || []
+    },
+    [] as never,
+    { immediate: false }
+  )
 
   const reset = async () => {
     list.value = await execute()
