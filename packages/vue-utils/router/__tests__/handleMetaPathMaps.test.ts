@@ -14,7 +14,7 @@
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import { RouteRecordRaw } from 'vue-router'
 import { handleMetaPathMaps } from '..'
 import baseRoutes from './mock'

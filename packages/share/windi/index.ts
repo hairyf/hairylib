@@ -8,7 +8,7 @@
  */
 
 import { generateArray } from '@hairy/utils'
-import { isUndefined, isNumber } from 'lodash'
+import { isUndefined, isNumber } from 'lodash-es'
 
 export interface SpacingOptions {
   /** 步进值, step 设置为 false 则不进行步进; @default 1 */

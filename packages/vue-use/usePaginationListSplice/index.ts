@@ -7,13 +7,13 @@
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 import { nextTick, Ref, ref, watch, WatchOptions } from 'vue-demi'
-import { usePromise, UsePromiseResult } from '../usePromise'
+import { useAsyncState } from '@vueuse/core'
 
 export interface PaginationListSpliceOptions<T> extends WatchOptions {
   /**
    * 获取列表方法
    */
-  get: (page: number) => T | Promise<T>
+  resolve: (page: number) => T | Promise<T>
   /**
    * 监听源, 当源数据改变触发 reset
    */
@@ -24,7 +24,7 @@ export interface PaginationListOptionSpliceResult<T> {
   /**
    * 当前是否在加载
    */
-  loading: UsePromiseResult<any>['loading']
+  isLoading: Ref<boolean>
   /**
    * 重置列表
    */
@@ -42,29 +42,27 @@ export interface PaginationListOptionSpliceResult<T> {
    */
   end: Ref<boolean>
 }
-export const usePaginationListSplice = <T extends Array<any>>(options: PaginationListSpliceOptions<T>): PaginationListOptionSpliceResult<T> => {
+export const usePaginationListSplice = <T extends Array<any>>(
+  options: PaginationListSpliceOptions<T>
+): PaginationListOptionSpliceResult<T> => {
   const list = ref<any>([]) as Ref<T>
   const currentPage = ref(0)
   const end = ref(false)
 
-  const { exec, loading } = usePromise(async () => {
-    try {
-      return await options.get(currentPage.value)
-    } catch (error) {
-      console.error(error)
-      return (<any[]>[]) as T
-    }
-  })
+  const { execute, isLoading } = useAsyncState(async () => {
+    const result = await options.resolve(currentPage.value)
+    return result || []
+  }, [] as never)
 
   const reset = async () => {
     end.value = false
     currentPage.value = 1
-    list.value = await exec()
+    list.value = await execute()
   }
   const next = async () => {
     if (end.value) return
     currentPage.value++
-    const splice = await exec()
+    const splice = await execute()
     if (!splice?.length) {
       end.value = true
       return
@@ -77,5 +75,5 @@ export const usePaginationListSplice = <T extends Array<any>>(options: Paginatio
     watch(watchTarget, reset, { immediate: true, ...options })
   })
 
-  return { reset, next, loading, list, end }
+  return { reset, next, isLoading, list, end }
 }

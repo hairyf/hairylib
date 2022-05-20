@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-01-21 17:38:44
  */
 import { MaybeRef, useEventListener } from '@vueuse/core'
-import { debounce, throttle } from 'lodash'
+import { debounce, throttle } from 'lodash-es'
 import { unref, reactive } from 'vue'
 interface BiElementSyncScrollOptions {
   left?: boolean

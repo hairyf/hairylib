@@ -9,7 +9,7 @@ import { rollup } from 'rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import { terser } from 'rollup-plugin-terser'
-import { camelCase, isArray } from 'lodash'
+import { camelCase, isArray } from 'lodash-es'
 
 export const rollupBuildPackage = async (config: PackageManifest) => {
   const { name, external, iife, globals } = config
@@ -72,7 +72,7 @@ export const rollupBuildPackage = async (config: PackageManifest) => {
     )
   }
 
-  const baseExternals = ['vue-demi', 'lodash', '@hairy/utils']
+  const baseExternals = ['vue-demi', 'lodash-es', '@hairy/utils']
   configs.push(
     {
       input,

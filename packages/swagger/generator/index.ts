@@ -8,7 +8,7 @@
 import { format } from 'prettier'
 import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig } from '../_types'
 import { getNameSpaceType, TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName } from '../internal'
-import { camelCase } from 'lodash'
+import { camelCase } from 'lodash-es'
 import { capitalizeCamelCase } from '@hairy/utils'
 import { spliceHeaderCode, spliceType, spliceTypeField } from './utils'
 

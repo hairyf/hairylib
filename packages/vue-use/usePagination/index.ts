@@ -1,5 +1,5 @@
 import { MaybeRef } from '@vueuse/core'
-import { clamp, isNumber } from 'lodash'
+import { clamp, isNumber } from 'lodash-es'
 import { computed, Ref, ref } from 'vue-demi'
 
 export type PaginationControl = () => void

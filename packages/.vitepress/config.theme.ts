@@ -1,5 +1,5 @@
 import { DefaultTheme } from "vitepress"
-import { camelCase } from 'lodash'
+import { camelCase } from 'lodash-es'
 import indexes, { categories } from '../indexes.json'
 
 const Guide = [

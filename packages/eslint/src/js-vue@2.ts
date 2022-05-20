@@ -1,4 +1,4 @@
-import { mergeWith } from 'lodash'
+import { mergeWith } from 'lodash-es'
 import { basic } from './configs/basic'
 import { vue2 } from './configs/vue'
 import { mergeCustomizer } from './utils'

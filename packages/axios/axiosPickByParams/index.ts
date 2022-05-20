@@ -1,5 +1,5 @@
 import { AxiosStatic, AxiosInstance } from 'axios'
-import { isPlainObject } from 'lodash'
+import { isPlainObject } from 'lodash-es'
 import { formDataToObject, isFormData, objectToFormData, pickByParams } from '@hairy/utils'
 
 interface AxiosPickByParamsOptions {

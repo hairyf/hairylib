@@ -1,4 +1,4 @@
-import { kebabCase, isObject, camelCase, set, get } from 'lodash'
+import { kebabCase, isObject, camelCase, set, get } from 'lodash-es'
 import { MaybeRef } from '@vueuse/core'
 import { unref, computed, reactive } from 'vue-demi'
 

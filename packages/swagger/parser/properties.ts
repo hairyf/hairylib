@@ -7,7 +7,7 @@
 
 import { SwaggerDefinition, SwaggerField, SwaggerParserContext, SwaggerSourceProperties } from '../_types'
 import { varName, TYPE_MAPPING, unshiftDeDupDefinition } from '../internal'
-import { cloneDeep, isArray, isEmpty } from 'lodash'
+import { cloneDeep, isArray, isEmpty } from 'lodash-es'
 
 export interface ParsePropertiesOptions {
   name?: string

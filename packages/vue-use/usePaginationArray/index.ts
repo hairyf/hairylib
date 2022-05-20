@@ -1,5 +1,5 @@
 import { MaybeRef } from '@vueuse/shared'
-import { isArray } from 'lodash'
+import { isArray } from 'lodash-es'
 import { computed, ComputedRef, ref, unref } from 'vue-demi'
 import { PaginationOptions, PaginationResult, usePagination } from '../usePagination'
 
@@ -9,7 +9,10 @@ export interface PaginationArrayResult<T extends Array<any>> extends PaginationR
   result: ComputedRef<T>
 }
 
-export const usePaginationArray = <T extends Array<any>>(array: MaybeRef<T>, options: PaginationArrayOptions): PaginationArrayResult<T> => {
+export const usePaginationArray = <T extends Array<any>>(
+  array: MaybeRef<T>,
+  options: PaginationArrayOptions
+): PaginationArrayResult<T> => {
   const arrayRef = ref(array)
   const pagination = usePagination({
     ...{ currentPage: 1, pageSize: 10 },

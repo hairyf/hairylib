@@ -1,5 +1,5 @@
 import { AxiosStatic, AxiosInstance, AxiosResponse } from 'axios'
-import { isObject } from 'lodash'
+import { isObject } from 'lodash-es'
 
 export const axiosDataAssignResponse = (axios: AxiosStatic | AxiosInstance, expands: '*' | string[] = '*') => {
   const assign = (response: AxiosResponse, data: any) => {

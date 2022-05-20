@@ -1,11 +1,23 @@
-import { MaybeElementRef, MaybeRef } from '@vueuse/core'
-import { get, merge, PropertyPath, set, toPath } from 'lodash'
-import { computed, ComputedRef, inject, InjectionKey, provide, unref, readonly, DeepReadonly, ref, Ref, watch } from 'vue-demi'
+import { MaybeElementRef, MaybeRef, unrefElement } from '@vueuse/core'
+import { get, merge, set, toPath } from 'lodash-es'
+import { PropertyPath } from 'lodash'
+
+import {
+  computed,
+  ComputedRef,
+  inject,
+  InjectionKey,
+  provide,
+  unref,
+  readonly,
+  DeepReadonly,
+  ref,
+  Ref,
+  watch
+} from 'vue-demi'
 import { UnwrapNestedRefs } from '@vue/reactivity'
 import { DeepPartial } from '@hairy/utils'
 import { DeepConfigItem, DeepStringObject, transformTheme2CssVars, useOverridesEditor } from './inside'
-import { unrefElement } from '../is/utils'
-
 interface CreateThemeResult<T, Overrides = DeepPartial<T>> {
   /**
    * 默认主题与上级注入主题合并
@@ -65,7 +77,7 @@ export const createThemeSystem = <T extends object>(options: T): CreateThemeResu
     return themeMerge
   }
 
-  const useThemeCssVariables = (root = document.documentElement, target?: PropertyPath) => {
+  const useThemeCssVariables = (root = document.documentElement as any, target?: PropertyPath) => {
     const theme = injectTheme()
     const cssVars = computed(() => {
       if (!target) return transformTheme2CssVars(theme.value as any)

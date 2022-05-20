@@ -1,4 +1,4 @@
-import { forIn, isObject, isPlainObject, pickBy } from 'lodash'
+import { forIn, isObject, isPlainObject, pickBy } from 'lodash-es'
 
 /**
  * 将 formData 转换为 object
@@ -20,18 +20,18 @@ export const objectToFormData = (object: Record<string, string | number>) => {
 }
 
 /**
- * 过滤对象|数组中 filters 中的值
+ * 过滤对象|数组中 filter 中的值
  * @param params
- * @param filters
+ * @param filter
  */
-export const pickByParams = <T extends object>(params: T, filters: any[], deep = false) => {
+export const pickByParams = <T extends object>(params: T, filter: any[], deep = false) => {
   deep &&
     forIn(params, (value, key) => {
       if (isObject(value))
         // @ts-ignore
-        params[key] = pickByParams(params[key], filters, deep)
+        params[key] = pickByParams(params[key], filter, deep)
     })
-  const pickValue = pickBy(params, (value) => !filters.includes(value))
+  const pickValue = pickBy(params, (value) => !filter.includes(value))
   if (Array.isArray(params)) {
     return Object.values(pickValue) as any as Partial<T>
   }

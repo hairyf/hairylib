@@ -1,4 +1,4 @@
-import { merge } from 'lodash'
+import { merge } from 'lodash-es'
 import defaults from './defaults'
 import { FullConfig } from 'windicss/types/interfaces'
 

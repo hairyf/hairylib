@@ -4,7 +4,7 @@
  * @LastEditors: Mr'Mao
  * @LastEditTime: 2022-01-24 13:59:57
  */
-import { mergeWith, remove } from 'lodash'
+import { mergeWith, remove } from 'lodash-es'
 import { basic } from './configs/basic'
 import { typescript } from './configs/typescript'
 import { mergeCustomizer } from './utils'

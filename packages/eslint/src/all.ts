@@ -1,4 +1,4 @@
-import { mergeWith } from 'lodash'
+import { mergeWith } from 'lodash-es'
 import { basic } from './configs/basic'
 import { react } from './configs/react'
 import { typescript } from './configs/typescript'

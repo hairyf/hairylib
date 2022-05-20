@@ -5,10 +5,9 @@
  * @LastEditTime: 2022-01-21 17:38:38
  */
 
-import { analyUnit } from '@hairy/utils'
-import { MaybeElementRef, useElementSize } from '@vueuse/core'
-import { watch, WatchStopHandle } from 'vue'
-import { unrefElement } from '../is/utils'
+import { toUnit } from '@hairy/utils'
+import { MaybeElementRef, useElementSize, unrefElement } from '@vueuse/core'
+import { unref, watch, WatchStopHandle } from 'vue'
 
 interface BiElementMapSizeOptions {
   /** 是否开启宽度 @default true */
@@ -23,7 +22,11 @@ interface BiElementMapSizeOptions {
  * @param toTarget 宽高设置元素
  * @param options
  */
-export const biElementMapSize = (fromTarget: MaybeElementRef, toTarget: MaybeElementRef, options: BiElementMapSizeOptions = {}) => {
+export const biElementMapSize = (
+  fromTarget: MaybeElementRef,
+  toTarget: MaybeElementRef,
+  options: BiElementMapSizeOptions = {}
+) => {
   const { width: isOnWidth = true, height: isOnHeight = false } = options
 
   const defaultSize = { width: '', height: '' }
@@ -37,7 +40,7 @@ export const biElementMapSize = (fromTarget: MaybeElementRef, toTarget: MaybeEle
     const callback = () => {
       const element = unrefElement(toTarget)
       if (!element) return undefined
-      element.style[type] = analyUnit(fromSize[type].value)
+      element.style[type] = toUnit(fromSize[type].value)
     }
     return watch(sources, callback, { immediate: true })
   }
@@ -45,7 +48,7 @@ export const biElementMapSize = (fromTarget: MaybeElementRef, toTarget: MaybeEle
   const stop = () => {
     widthStopHandle?.()
     heightStopHandle?.()
-    const element = unrefElement(toTarget)
+    const element = unrefElement(toTarget)!
     element.style.width = defaultSize.width
     element.style.height = defaultSize.height
   }
@@ -55,11 +58,14 @@ export const biElementMapSize = (fromTarget: MaybeElementRef, toTarget: MaybeEle
     if (isOnHeight) heightStopHandle = sync('height')
   }
 
-  watch(toTarget, () => {
-    const element = unrefElement(toTarget)
-    defaultSize.width = element.style.width
-    defaultSize.height = element.style.height
-  })
+  watch(
+    () => unref(toTarget),
+    () => {
+      const element = unrefElement(toTarget)!
+      defaultSize.width = element.style.width
+      defaultSize.height = element.style.height
+    }
+  )
 
   start()
 

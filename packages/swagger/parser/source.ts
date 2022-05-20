@@ -6,7 +6,7 @@
  */
 
 import axios from 'axios'
-import { entries } from 'lodash'
+import { entries } from 'lodash-es'
 import { varName } from '../internal'
 import {
   SwaggerApi,

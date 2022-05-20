@@ -6,7 +6,7 @@
  */
 import { generate } from './generator'
 import fs from 'fs-extra'
-import { cloneDeep, merge } from 'lodash'
+import { cloneDeep, merge } from 'lodash-es'
 
 import ora from 'ora'
 import { parseOutput } from './parser/output'

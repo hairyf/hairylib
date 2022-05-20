@@ -1,6 +1,3 @@
-export * from './color'
-export * from './format'
-export * from './is'
 export * from './lang'
 export * from './size'
 export * from './types'

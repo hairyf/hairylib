@@ -4,7 +4,7 @@
  * @LastEditors: Mr'Mao
  * @LastEditTime: 2022-01-20 18:53:30
  */
-import { isArray } from 'lodash'
+import { isArray } from 'lodash-es'
 import { Directive } from 'vue-demi'
 import { directiveOptions } from '../utils'
 

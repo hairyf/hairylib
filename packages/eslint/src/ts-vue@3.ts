@@ -1,4 +1,4 @@
-import { mergeWith, remove } from 'lodash'
+import { mergeWith, remove } from 'lodash-es'
 import { basic } from './configs/basic'
 import { typescript } from './configs/typescript'
 import { vue3 } from './configs/vue'

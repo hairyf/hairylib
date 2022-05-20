@@ -1,7 +1,7 @@
 import { Options } from 'prettier'
 
 const config: Options = {
-  printWidth: 150,
+  printWidth: 120,
   tabWidth: 2,
   useTabs: false,
   semi: false, // 未尾逗号

@@ -9,13 +9,13 @@
 import { nextTick, reactive, Ref, ref, watch, WatchOptions } from 'vue-demi'
 import { PaginationOptions, PaginationResult, usePagination } from '../usePagination'
 import { UnwrapNestedRefs } from '@vue/reactivity'
-import { usePromise, UsePromiseResult } from '../usePromise'
+import { useAsyncState } from '@vueuse/core'
 
 export interface PaginationListOptions<T> extends PaginationOptions, WatchOptions {
   /**
    * 获取列表方法
    */
-  get: (options: UnwrapNestedRefs<PaginationResult>) => T | Promise<T>
+  resolve: (options: UnwrapNestedRefs<PaginationResult>) => T | Promise<T>
   /**
    * 监听源, 当源数据改变触发 reset
    */
@@ -26,7 +26,7 @@ export interface PaginationListOptionsResult<T> extends PaginationResult {
   /**
    * 当前是否在加载
    */
-  loading: UsePromiseResult<any>['loading']
+  isLoading: Ref<boolean>
   /**
    * 重置列表
    */
@@ -37,21 +37,19 @@ export interface PaginationListOptionsResult<T> extends PaginationResult {
   list: Ref<T>
 }
 
-export const usePaginationList = <T extends Array<any>>(options: PaginationListOptions<T>): PaginationListOptionsResult<T> => {
+export const usePaginationList = <T extends Array<any>>(
+  options: PaginationListOptions<T>
+): PaginationListOptionsResult<T> => {
   const pagination = usePagination(options)
   const list = ref<any>([]) as Ref<T>
 
-  const { exec, loading } = usePromise(async () => {
-    try {
-      return await options.get(reactive(pagination))
-    } catch (error) {
-      console.error(error)
-      return (<any[]>[]) as T
-    }
-  })
+  const { execute, isLoading } = useAsyncState(async () => {
+    const result = await options.resolve(reactive(pagination))
+    return result || []
+  }, [] as never)
 
   const reset = async () => {
-    list.value = await exec()
+    list.value = await execute()
   }
 
   nextTick(() => {
@@ -59,5 +57,5 @@ export const usePaginationList = <T extends Array<any>>(options: PaginationListO
     watch(watchTarget, reset, { immediate: true, ...options })
   })
 
-  return { reset, loading, list, ...pagination }
+  return { reset, isLoading, list, ...pagination }
 }

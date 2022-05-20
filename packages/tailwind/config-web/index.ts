@@ -1,4 +1,4 @@
-import { merge } from 'lodash'
+import { merge } from 'lodash-es'
 import { DefineConfig } from '../utils'
 import defaults from './defaults'
 

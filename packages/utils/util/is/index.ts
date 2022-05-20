@@ -1,4 +1,4 @@
-import { isObject } from 'lodash'
+import { isObject } from 'lodash-es'
 
 declare const WXEnvironment: any
 
@@ -14,8 +14,7 @@ export const isIE = UA && /msie|trident/.test(UA)
 
 export const isIE9 = UA && UA.indexOf('msie 9.0') > 0
 
-export const isIE11 =
-  isBrowser && navigator.userAgent.includes('Trident') && navigator.userAgent.includes('rv:11.0')
+export const isIE11 = isBrowser && navigator.userAgent.includes('Trident') && navigator.userAgent.includes('rv:11.0')
 
 export const isEdge = UA && UA.indexOf('edge/') > 0
 
@@ -31,8 +30,6 @@ export const isFF = typeof UA == 'string' && UA.match(/firefox\/(\d+)/)
 
 export const isMobile = isBrowser && navigator.userAgent.toLowerCase().includes('mobile')
 
-export const isFormData = (value: any): value is FormData =>
-  isObject(value) && value instanceof FormData
+export const isFormData = (value: any): value is FormData => isObject(value) && value instanceof FormData
 
-export const isWindow = (value: any): value is Window =>
-  typeof window !== 'undefined' && toString.call(value) === '[object Window]'
+export const isWindow = (value: any): value is Window => typeof window !== 'undefined' && toString.call(value) === '[object Window]'

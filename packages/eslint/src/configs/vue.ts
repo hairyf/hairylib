@@ -1,5 +1,5 @@
 import { Linter } from 'eslint'
-import { merge } from 'lodash'
+import { merge } from 'lodash-es'
 
 const basic: Linter.Config = {
   rules: {

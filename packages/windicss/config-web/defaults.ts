@@ -1,4 +1,4 @@
-import { merge } from 'lodash'
+import { merge } from 'lodash-es'
 import { spacing } from '@hairy/share'
 import { baseConfig } from '../config-base'
 
