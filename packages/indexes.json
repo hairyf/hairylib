@@ -1,8 +1,8 @@
 {
 	"packages": {},
 	"categories": [
-		"Engineering",
 		"Config",
+		"Engineering",
 		"Other",
 		"Axios",
 		"vue-use",
@@ -13,19 +13,10 @@
 	],
 	"documents": [
 		{
-			"name": "@hairy/cli",
-			"path": "cli",
-			"package": "cli",
-			"lastUpdated": 1652082250000,
-			"docs": "/cli/",
-			"category": "Engineering",
-			"description": ""
-		},
-		{
 			"name": "@hairy/eslint",
 			"path": "eslint",
 			"package": "eslint",
-			"lastUpdated": 1652082250000,
+			"lastUpdated": 1653024791000,
 			"docs": "/eslint/",
 			"category": "Config",
 			"description": ""
@@ -34,7 +25,7 @@
 			"name": "@hairy/swagger",
 			"path": "swagger",
 			"package": "swagger",
-			"lastUpdated": 1652421128000,
+			"lastUpdated": 1653033739000,
 			"docs": "/swagger/",
 			"category": "Engineering",
 			"description": ""
@@ -43,7 +34,7 @@
 			"name": "@hairy/tailwind",
 			"path": "tailwind",
 			"package": "tailwind",
-			"lastUpdated": 1652082250000,
+			"lastUpdated": 1653024791000,
 			"docs": "/tailwind/",
 			"category": "Config",
 			"description": ""
@@ -52,7 +43,7 @@
 			"name": "@hairy/wechat-jssdk",
 			"path": "wechat-jssdk",
 			"package": "wechat-jssdk",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653024791000,
 			"docs": "/wechat-jssdk/",
 			"category": "Other",
 			"description": ""
@@ -61,7 +52,7 @@
 			"name": "@hairy/windicss",
 			"path": "windicss",
 			"package": "windicss",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653024791000,
 			"docs": "/windicss/",
 			"category": "Config",
 			"description": ""
@@ -88,7 +79,7 @@
 			"name": "axiosPickByParams",
 			"path": "axiosPickByParams",
 			"package": "axios",
-			"lastUpdated": 1647143700000,
+			"lastUpdated": 1653022829000,
 			"docs": "/axios/axiosPickByParams/",
 			"category": "Axios",
 			"description": ""
@@ -106,7 +97,7 @@
 			"name": "biElementMapSize",
 			"path": "biElementMapSize",
 			"package": "vue-use",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653022829000,
 			"docs": "/vue-use/biElementMapSize/",
 			"category": "vue-use",
 			"description": ""
@@ -115,7 +106,7 @@
 			"name": "biElementSyncScroll",
 			"path": "biElementSyncScroll",
 			"package": "vue-use",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653022829000,
 			"docs": "/vue-use/biElementSyncScroll/",
 			"category": "vue-use",
 			"description": ""
@@ -124,7 +115,7 @@
 			"name": "Common tool",
 			"path": "util/util",
 			"package": "utils",
-			"lastUpdated": 0,
+			"lastUpdated": 1653022829000,
 			"docs": "/utils/util/util/",
 			"category": "utils",
 			"description": ""
@@ -133,7 +124,7 @@
 			"name": "createThemeSystem",
 			"path": "useThemeSystem",
 			"package": "vue-use",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653026309000,
 			"docs": "/vue-use/useThemeSystem/",
 			"category": "vue-use",
 			"description": ""
@@ -142,7 +133,7 @@
 			"name": "Element size handling",
 			"path": "size",
 			"package": "utils",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653023186000,
 			"docs": "/utils/size/",
 			"category": "utils",
 			"description": ""
@@ -151,7 +142,7 @@
 			"name": "Environmental Judgment (is)",
 			"path": "util/is",
 			"package": "utils",
-			"lastUpdated": 0,
+			"lastUpdated": 1653022829000,
 			"docs": "/utils/util/is/",
 			"category": "utils",
 			"description": ""
@@ -160,7 +151,7 @@
 			"name": "File Tools",
 			"path": "file",
 			"package": "browser",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653022829000,
 			"docs": "/browser/file/",
 			"category": "Browser",
 			"description": ""
@@ -178,7 +169,7 @@
 			"name": "Miscellaneous",
 			"path": "util",
 			"package": "browser",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653022829000,
 			"docs": "/browser/util/",
 			"category": "Browser",
 			"description": ""
@@ -187,7 +178,7 @@
 			"name": "Type Conversion (lang)",
 			"path": "lang",
 			"package": "utils",
-			"lastUpdated": 1650960352000,
+			"lastUpdated": 1653022829000,
 			"docs": "/utils/lang/",
 			"category": "utils",
 			"description": ""

@@ -9,13 +9,13 @@
 import { nextTick, reactive, Ref, ref, watch, WatchOptions } from 'vue-demi'
 import { PaginationOptions, PaginationResult, usePagination } from '../usePagination'
 import { UnwrapNestedRefs } from '@vue/reactivity'
-import { useAsyncState } from '@vueuse/core'
+import { usePromise, UsePromiseResult } from '../usePromise'
 
 export interface PaginationListOptions<T> extends PaginationOptions, WatchOptions {
   /**
    * 获取列表方法
    */
-  resolve: (options: UnwrapNestedRefs<PaginationResult>) => T | Promise<T>
+  get: (options: UnwrapNestedRefs<PaginationResult>) => T | Promise<T>
   /**
    * 监听源, 当源数据改变触发 reset
    */
@@ -26,7 +26,7 @@ export interface PaginationListOptionsResult<T> extends PaginationResult {
   /**
    * 当前是否在加载
    */
-  isLoading: Ref<boolean>
+  loading: UsePromiseResult<any>['loading']
   /**
    * 重置列表
    */
@@ -43,17 +43,12 @@ export const usePaginationList = <T extends Array<any>>(
   const pagination = usePagination(options)
   const list = ref<any>([]) as Ref<T>
 
-  const { execute, isLoading } = useAsyncState(
-    async () => {
-      const result = await options.resolve(reactive(pagination))
-      return result || []
-    },
-    [] as never,
-    { immediate: false }
-  )
+  const { exec, loading } = usePromise(async () => {
+    return (await options.get(reactive(pagination))) || []
+  })
 
   const reset = async () => {
-    list.value = await execute()
+    list.value = await exec()
   }
 
   nextTick(() => {
@@ -61,5 +56,5 @@ export const usePaginationList = <T extends Array<any>>(
     watch(watchTarget, reset, { immediate: true, ...options })
   })
 
-  return { reset, isLoading, list, ...pagination }
+  return { reset, loading, list, ...pagination }
 }
