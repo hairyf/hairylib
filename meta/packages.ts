@@ -26,14 +26,14 @@ export const packages: PackageManifest[] = [
     external: ['@hairy/share', 'windicss', 'windicss/helpers'],
     iife: false
   },
-  {
-    name: 'cli',
-    display: 'Project All cli',
-    description: 'Project All cli',
-    external: ['@hairy/swagger'],
-    manualImport: true,
-    internalBuild: true
-  },
+  // {
+  //   name: 'cli',
+  //   display: 'Project All cli',
+  //   description: 'Project All cli',
+  //   external: ['@hairy/swagger'],
+  //   manualImport: true,
+  //   internalBuild: true
+  // },
   {
     name: 'axios',
     display: 'Axios utilities',

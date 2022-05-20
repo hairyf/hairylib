@@ -1,18 +1,17 @@
 {
   "name": "@hairy/swagger",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "license": "MIT",
   "dependencies": {
-    "@hairy/utils": "^1.0.21",
     "axios": "^0.24.0",
     "fs-extra": "^10.0.0",
-    "lodash-es": "^4",
+    "lodash": "^4",
     "ora": "^5",
     "prettier": "^2.5.1",
     "transliteration": "^2.2.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4",
+    "@types/lodash": "^4",
     "@types/node": "^17.0.5"
   },
   "main": "./index.cjs.js",

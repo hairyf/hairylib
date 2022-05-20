@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-01-12 17:22:08
  */
 
-import { PlainObject, capitalizeCamelCase } from '@hairy/utils'
+import { camelCase } from 'lodash'
 import { transliterate } from 'transliteration'
 import { SwaggerDefinition } from '../_types'
 
@@ -20,7 +20,7 @@ export const DEFAULT_CONFIG = {
 }
 
 /** swagger 类型 typescript 映射 */
-export const TYPE_MAPPING: PlainObject = {
+export const TYPE_MAPPING: { [key: string]: any } = {
   integer: 'number',
   TypesLong: 'number',
   TypesString: 'string',
@@ -64,7 +64,16 @@ export function varName(string_: string) {
  */
 export function getNameSpaceType(type?: string | null, emptyType = 'void') {
   if (!type) return emptyType
-  const basicTyping = ['string', 'string[]', 'number', 'number[]', 'Record<string, any>', 'Record<string, string>', 'any', 'boolean']
+  const basicTyping = [
+    'string',
+    'string[]',
+    'number',
+    'number[]',
+    'Record<string, any>',
+    'Record<string, string>',
+    'any',
+    'boolean'
+  ]
   return basicTyping.includes(type) ? type : `${TS_TYPE_NAME_SPACE}.${type}`
 }
 
@@ -84,4 +93,10 @@ export function unshiftDeDupDefinition(definitions: SwaggerDefinition[], definit
   }
   definitions.unshift(definition)
   return definition
+}
+
+export const capitalizeCamelCase = (string_: string) => {
+  let result = camelCase(string_)
+  result = result.slice(0, 1).toLocaleUpperCase() + result.slice(1)
+  return result
 }

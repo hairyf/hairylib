@@ -7,7 +7,7 @@
 
 import { SwaggerDefinition, SwaggerField, SwaggerParserContext, SwaggerSourceProperties } from '../_types'
 import { varName, TYPE_MAPPING, unshiftDeDupDefinition } from '../internal'
-import { cloneDeep, isArray, isEmpty } from 'lodash-es'
+import { cloneDeep, isArray, isEmpty } from 'lodash'
 
 export interface ParsePropertiesOptions {
   name?: string
@@ -21,7 +21,11 @@ export interface ParsePropertiesOptions {
  * TODO 为无法复现的 swagger 结构场景。
  * @param propertie
  */
-export function parseProperties(this: SwaggerParserContext, propertie: SwaggerSourceProperties, options: ParsePropertiesOptions = {}): string {
+export function parseProperties(
+  this: SwaggerParserContext,
+  propertie: SwaggerSourceProperties,
+  options: ParsePropertiesOptions = {}
+): string {
   const _parseProperties = parseProperties.bind(this)
 
   if (propertie.originalRef) {
