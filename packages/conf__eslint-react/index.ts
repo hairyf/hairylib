@@ -1,18 +1,11 @@
 import { Linter } from 'eslint'
 import typescript from '@hairy/eslint-typescript'
 import { merge } from '@hairy/share-node'
+import config from './config'
 
-const tsReact: Linter.Config = merge(typescript, {
-  extends: ['plugin:react/recommended'],
-  settings: {
-    react: {
-      pragma: 'React',
-      version: 'detect'
-    }
-  },
-  parserOptions: {
-    ecmaFeatures: { jsx: true }
-  }
-})
+const override: Linter.Config = {
+  extends: ['@hairy/eslint-typescript'],
+  overrides: typescript.overrides
+}
 
-export default tsReact
+export = merge(override, config)

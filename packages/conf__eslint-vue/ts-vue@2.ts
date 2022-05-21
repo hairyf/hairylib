@@ -1,10 +1,11 @@
-import typescript from '@hairy/eslint-basic'
+import typescript from '@hairy/eslint-typescript'
 import { merge } from '@hairy/share-node'
-import { remove } from 'lodash'
-import { vue2 } from './config/basic'
+import { Linter } from 'eslint'
+import { vue2 } from './config'
 
-const tsVue2 = merge(typescript, vue2)
+const override: Linter.Config = {
+  extends: ['@hairy/eslint-typescript'],
+  overrides: typescript.overrides
+}
 
-remove(tsVue2.extends, 'plugin:prettier/recommended')
-
-export = tsVue2
+export = merge(override, vue2)

@@ -1,7 +1,7 @@
-import { merge } from '@hairy/share-node'
-import tsReact from '../conf__eslint-react'
-import tsVue3 from '../conf__eslint-vue'
+import { Linter } from 'eslint'
 
-const config = merge(tsReact, tsVue3)
+const config: Linter.Config = {
+  extends: ['@hairy/eslint-vue', '@hairy/eslint-react']
+}
 
 export = config

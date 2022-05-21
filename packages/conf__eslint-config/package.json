@@ -11,6 +11,7 @@
     "build": "hairy build"
   },
   "dependencies": {
+    "eslint": "^8.15.0",
     "@hairy/eslint-react": "workspace:*",
     "@hairy/eslint-vue": "workspace:*",
     "@hairy/share-node": "workspace:*"

@@ -1,10 +1,11 @@
 import basic from '@hairy/eslint-basic'
 import { merge } from '@hairy/share-node'
-import { remove } from 'lodash'
-import { vue3 } from './config/basic'
+import { Linter } from 'eslint'
+import { vue3 } from './config'
 
-const jsVue3 = merge(basic, vue3)
+const override: Linter.Config = {
+  extends: ['@hairy/eslint-basic'],
+  overrides: basic.overrides
+}
 
-remove(jsVue3.extends, 'plugin:prettier/recommended')
-
-export = jsVue3
+export = merge(override, vue3)

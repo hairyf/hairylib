@@ -53,6 +53,8 @@ const basic: Linter.Config = {
     '!.vscode'
   ],
   plugins: [
+    // prettier 插件
+    'prettier',
     // 关于 html 的规则
     'html',
     // 一些很棒的 eslint 规则
