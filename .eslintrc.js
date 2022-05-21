@@ -5,4 +5,4 @@
  * @LastEditTime: 2022-01-22 17:48:06
  */
 require('esbuild-register')
-module.exports = require('./packages/eslint/src/typescript.ts')
+module.exports = require('./packages/conf__eslint-config/index.ts')

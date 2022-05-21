@@ -1,76 +1,27 @@
 {
-  "name": "@hairy/config",
+  "name": "hairylib",
   "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
-  "description": "目前包含 Vue3 Eslint 预设，tailwind 预设。\r 使用文档暂未开发，请自行运量使用。",
+  "description": "hairylib 是工具代码库，使用 lerna 管理的多个模块包(monorepo)的项目。",
+  "main": "index.js",
   "scripts": {
-    "docs:dev": "yarn update && vitepress dev packages",
-    "docs:build": "yarn update && vitepress build packages",
-    "docs:serve": "vitepress serve packages",
-    "build": "esno scripts/build.ts",
-    "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
-    "publish:lerna": "lerna publish --contents dist",
-    "publish:cli": "esno scripts/publish.ts",
-    "update": "esno scripts/update.ts",
-    "clean": "esno scripts/clean.ts",
-    "clean:all": "rimraf  packages/*/dist",
-    "test": "cross-env NODE_ENV=test yarn clean && jest --collectCoverage=false",
-    "test:cov": "cross-env NODE_ENV=test yarn clean && jest",
-    "test:watch": "cross-env NODE_ENV=test yarn clean && jest ---watch --verbose --coverage",
-    "prepublishOnly": "yarn build",
-    "prepare": "husky install"
+    "prepublish": "yarn build"
   },
+  "author": "TuiMao233",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TuiMao233/hairylib.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "devDependencies": {
-    "@types/fs-extra": "^9.0.12",
-    "@types/jest": "^26.0.24",
-    "vitepress": "^0.21.6"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "@changesets/cli": "^2.22.0",
+    "turbo": "^1.2.9"
   },
   "dependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@types/mockjs": "^1.0.4",
-    "consola": "^2.15.3",
-    "cross-env": "^7.0.3",
-    "esbuild-plugin-d.ts": "^1.0.6",
-    "esbuild-register": "^2.6.0",
-    "esno": "^0.8.0",
-    "execa": "^5.1.1",
-    "fast-glob": "^3.2.7",
-    "fs-extra": "^10.0.0",
-    "gray-matter": "^4.0.3",
-    "husky": "^7.0.2",
-    "jest": "^27.0.6",
-    "lerna": "^4.0.0",
-    "mockjs": "^1.1.0",
-    "nodejs-fs-utils": "^1.2.5",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.55.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-dts": "^3.0.2",
-    "rollup-plugin-esbuild": "^4.5.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "simple-git": "^3.0.3",
-    "ts-jest": "^27.0.0-next.12",
-    "typescript": "^4.3.5"
+    "esbuild": "^0.14.39",
+    "esbuild-register": "^3.3.2"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "name": "@hairy/eslint-vue",
+  "version": "0.0.0",
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist"
+  },
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@hairy/eslint-basic": "workspace:*",
+    "@hairy/eslint-typescript": "workspace:*",
+    "@hairy/share-node": "workspace:*",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "eslint": "^8.15.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.0.1",
+    "lodash": "^4",
+    "prettier": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.174",
+    "@types/node": "^16.10.1"
+  }
+}

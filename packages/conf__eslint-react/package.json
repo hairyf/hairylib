@@ -1,0 +1,20 @@
+{
+  "name": "@hairy/eslint-react",
+  "version": "0.0.0",
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist"
+  },
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@hairy/eslint-typescript": "workspace:*",
+    "@hairy/share-node": "workspace:*",
+    "eslint": "^8.15.0",
+    "eslint-plugin-react": "^7.30.0"
+  },
+  "devDependencies": {
+    "react": "^18.1.0",
+    "@types/node": "^16.10.1"
+  }
+}

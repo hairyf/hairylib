@@ -1,0 +1,20 @@
+{
+  "name": "@hairy/share-node",
+  "version": "0.0.0",
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist"
+  },
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "esbuild": "^0.14.39",
+    "fs-extra": "^10.0.0",
+    "lodash": "^4"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.12",
+    "@types/lodash": "^4",
+    "@types/node": "^16.10.1"
+  }
+}

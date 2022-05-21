@@ -1,0 +1,15 @@
+{
+  "name": "@hairy/eslint-config",
+  "main": "index.ts",
+  "license": "MIT",
+  "version": "0.0.0",
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist"
+  },
+  "dependencies": {
+    "@hairy/eslint-react": "workspace:*",
+    "@hairy/eslint-vue": "workspace:*",
+    "@hairy/share-node": "workspace:*"
+  }
+}
