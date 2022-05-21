@@ -5,6 +5,9 @@
     "main": "index.js",
     "directory": "dist"
   },
+  "scripts": {
+    "build": "hairy build"
+  },
   "main": "index.ts",
   "license": "MIT",
   "dependencies": {

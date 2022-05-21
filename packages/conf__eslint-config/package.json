@@ -7,6 +7,9 @@
     "main": "index.js",
     "directory": "dist"
   },
+  "scripts": {
+    "build": "hairy build"
+  },
   "dependencies": {
     "@hairy/eslint-react": "workspace:*",
     "@hairy/eslint-vue": "workspace:*",

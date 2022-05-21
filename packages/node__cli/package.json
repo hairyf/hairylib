@@ -8,7 +8,7 @@
   "author": "TuiMao233<https://github.com/TuiMao233>",
   "license": "ISC",
   "scripts": {
-    "build": "hairy build --input . && esno ./scripts/transfer.ts"
+    "build": "hairy build && esno ./scripts/transfer.ts"
   },
   "dependencies": {
     "@hairy/share-node": "workspace:*",
