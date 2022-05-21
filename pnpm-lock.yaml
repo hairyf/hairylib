@@ -7,10 +7,12 @@ importers:
       '@changesets/cli': ^2.22.0
       esbuild: ^0.14.39
       esbuild-register: ^3.3.2
+      rimraf: ^3.0.2
       turbo: ^1.2.9
     dependencies:
       esbuild: registry.npmmirror.com/esbuild/0.14.39
       esbuild-register: registry.npmmirror.com/esbuild-register/3.3.2_esbuild@0.14.39
+      rimraf: registry.npmmirror.com/rimraf/3.0.2
     devDependencies:
       '@changesets/cli': registry.npmmirror.com/@changesets/cli/2.22.0
       turbo: registry.npmmirror.com/turbo/1.2.9

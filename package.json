@@ -4,7 +4,8 @@
   "description": "hairylib 是工具代码库，使用 lerna 管理的多个模块包(monorepo)的项目。",
   "main": "index.js",
   "scripts": {
-    "prepublish": "yarn build"
+    "build": "pnpm clean && pnpm turbo run build",
+    "clean": "rimraf dist types packages/*/dist"
   },
   "author": "TuiMao233",
   "license": "ISC",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "esbuild": "^0.14.39",
-    "esbuild-register": "^3.3.2"
+    "esbuild-register": "^3.3.2",
+    "rimraf": "^3.0.2"
   }
 }

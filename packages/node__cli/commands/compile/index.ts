@@ -34,8 +34,13 @@ const buildMetaFiles = async (outdir: string) => {
 
 export const actionBuilder = async (options: ActionBuilderOptions = {}) => {
   const {
-    input = '.', mode = 'development', output = 'dist',
-    type = false, meta = false, logger = false, ignore = []
+    input = '.',
+    mode = 'development',
+    output = 'dist',
+    type = false,
+    meta = false,
+    logger = false,
+    ignore = []
   } = options
 
   if (meta) buildMetaFiles(output)
@@ -52,7 +57,9 @@ export const actionBuilder = async (options: ActionBuilderOptions = {}) => {
     sourcemap: false,
     color: true,
     loader: { '.ts': 'tsx', '.tsx': 'tsx' },
-    plugins: [externalizeDepsPlugin(), type && dtsPlugin({ outDir: output }), logger && reporterPlugin(mode)].filter(Boolean)
+    plugins: [externalizeDepsPlugin(), type && dtsPlugin({ outDir: output }), logger && reporterPlugin(mode)].filter(
+      Boolean
+    )
   }
 
   if (isInputFile) {
@@ -64,7 +71,7 @@ export const actionBuilder = async (options: ActionBuilderOptions = {}) => {
     buildConfig.outfile = path.join(outfile)
   } else {
     const source = path.join(input, './**/*.ts').replace(/\\/g, '/')
-    buildConfig.entryPoints = await fg(source, { ignore: ['_*', 'dist', 'node_modules', ...ignore] })
+    buildConfig.entryPoints = await fg(source, { ignore: ['_*', 'dist', 'node_modules', '__tests__/**', ...ignore] })
     buildConfig.outdir = path.join(process.cwd(), output)
   }
 
