@@ -1,7 +1,7 @@
 import path from 'path'
 import { Plugin } from 'esbuild'
 
-export const externalizeDepsPlugin = (): Plugin => {
+export const externalizePlugin = (): Plugin => {
   return {
     name: 'externalize-deps',
     setup: ({ onResolve }) => {

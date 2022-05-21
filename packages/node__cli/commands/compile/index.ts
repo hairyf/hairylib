@@ -4,76 +4,56 @@
  * @LastEditors: Mr'Mao
  * @LastEditTime: 2022-01-12 09:59:58
  */
-import path from 'path'
 import esbuild from 'esbuild'
-import fg from 'fast-glob'
 import { dtsPlugin } from 'esbuild-plugin-d.ts'
-import fs from 'fs-extra'
 import { reporterPlugin } from './plugins/reporter'
-import { externalizeDepsPlugin } from './plugins/externalize-deps'
+import { externalizePlugin } from './plugins/externalize'
+import { buildMetaFiles } from './utils'
+import config from './config'
+import { buildDir, buildEsllpkg, buildFile } from './build'
 
-export interface ActionBuilderOptions {
-  input?: string
-  output?: string
-  mode?: 'production' | 'development'
-  type?: boolean
-  meta?: boolean
-  logger?: boolean
-  ignore?: string[]
-}
-const FILES_COPY_LOCAL = ['package.json', 'README.md', 'LICENSE']
+export const actionBuilder = async (_options = config) => {
+  const params = resolveConfig(_options)
+  const { input, options } = params
 
-const buildMetaFiles = async (outdir: string) => {
-  await fs.ensureDir(outdir)
-  for (const file of FILES_COPY_LOCAL) {
-    const filePath = path.join(process.cwd(), file)
-    if (!fs.existsSync(filePath)) continue
-    await fs.copy(filePath, path.join(process.cwd(), outdir, file))
+  if (!(input.endsWith('.js') || input.endsWith('.ts'))) {
+    return await buildDir(params)
   }
+
+  if (!options.esllpkg || options.pkgMode.length <= 0) {
+    return await buildFile(params)
+  }
+
+  await buildEsllpkg(params)
 }
 
-export const actionBuilder = async (options: ActionBuilderOptions = {}) => {
-  const {
-    input = '.',
-    mode = 'development',
-    output = 'dist',
-    type = false,
-    meta = false,
-    logger = false,
-    ignore = []
-  } = options
+function resolveConfig(_options = config) {
+  if (_options.esllpkg && !_options.input) _options.input = 'index.ts'
+  const { input, output, mode, ...options } = { ...config, ..._options }
 
-  if (meta) buildMetaFiles(output)
+  if (typeof options.pkgMode === 'string') {
+    options.pkgMode = (options.pkgMode as any).split('/')
+  }
+  if (options.meta) buildMetaFiles(output)
 
-  const isInputFile = input.endsWith('.js') || input.endsWith('.ts')
+  const plugins = [
+    externalizePlugin(),
+    options.type && dtsPlugin({ outDir: output }),
+    options.logger && reporterPlugin(mode)
+  ]
 
   const buildConfig: esbuild.BuildOptions = {
-    bundle: true,
+    bundle: false,
     format: 'cjs',
-    platform: 'node',
+    platform: 'neutral',
+    globalName: options.globalName,
     splitting: false,
     watch: mode === 'development',
     minify: false,
     sourcemap: false,
     color: true,
     loader: { '.ts': 'tsx', '.tsx': 'tsx' },
-    plugins: [externalizeDepsPlugin(), type && dtsPlugin({ outDir: output }), logger && reporterPlugin(mode)].filter(
-      Boolean
-    )
+    plugins: plugins.filter(Boolean)
   }
-
-  if (isInputFile) {
-    const basename = path.basename(input).replace(/\.ts|\.tsx/, '.js')
-    const outfile = path.extname(output) ? output : path.join(output, basename)
-
-    buildConfig.bundle = true
-    buildConfig.entryPoints = [input]
-    buildConfig.outfile = path.join(outfile)
-  } else {
-    const source = path.join(input, './**/*.ts').replace(/\\/g, '/')
-    buildConfig.entryPoints = await fg(source, { ignore: ['_*', 'dist', 'node_modules', '__tests__/**', ...ignore] })
-    buildConfig.outdir = path.join(process.cwd(), output)
-  }
-
-  await esbuild.build(buildConfig)
+  return { buildConfig, input, output, mode, options }
 }

@@ -1,0 +1,55 @@
+import path from 'path'
+import esbuild from 'esbuild'
+import fg from 'fast-glob'
+import { generateDts } from './utils'
+
+export async function buildDir({ options, input, output, buildConfig }) {
+  const source = path.join(input, './**/*.ts').replace(/\\/g, '/')
+  const ignores = ['_*', 'dist', 'node_modules', '__tests__/**', ...options.ignore]
+
+  buildConfig.entryPoints = await fg(source, { ignore: ignores })
+  buildConfig.outdir = path.join(process.cwd(), output)
+
+  await esbuild.build(buildConfig)
+}
+
+export async function buildEsllpkg({ options, input, output, buildConfig }) {
+  const basename = path.basename(input).replace(/\.ts|\.tsx/, '.js')
+  const outfile = path.extname(output) ? output : path.join(output, basename)
+
+  buildConfig.bundle = true
+  buildConfig.entryPoints = [input]
+
+  buildConfig.plugins = buildConfig.plugins.filter((item) => item.name !== 'dts-plugin')
+
+  const buildConfigs: esbuild.BuildOptions[] = []
+  for (const mode of options.pkgMode) {
+    const config = { ...buildConfig }
+    const modeExt = mode === 'iife-minify' ? 'iife.min' : mode
+    config.format = mode === 'iife-minify' ? 'iife' : mode
+
+    config.outfile = `${outfile.replace('.js', '')}.${modeExt}.js`
+
+    if (mode === 'iife-minify') config.minify = true
+
+    config.plugins = [...config.plugins]
+
+    buildConfigs.push(config)
+  }
+
+  const promises = buildConfigs.map(esbuild.build) as any[]
+  if (options.type) {
+    promises.push(generateDts(input, outfile.replace(path.extname(outfile), '.d.ts')))
+  }
+
+  await Promise.all(promises)
+}
+
+export async function buildFile({ input, output, buildConfig }) {
+  const basename = path.basename(input).replace(/\.ts|\.tsx/, '.js')
+  const outfile = path.extname(output) ? output : path.join(output, basename)
+  buildConfig.bundle = true
+  buildConfig.entryPoints = [input]
+  buildConfig.outfile = path.join(outfile)
+  await esbuild.build(buildConfig)
+}
