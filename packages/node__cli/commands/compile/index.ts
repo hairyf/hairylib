@@ -10,9 +10,11 @@ import { externalizePlugin } from './plugins/externalize'
 import { buildMetaFiles } from './utils'
 import config from './config'
 import { buildDir, buildEsllpkg, buildFile } from './build'
+import { loadConfigFromFile } from '@hairy/share-node'
+import { camelCase } from 'lodash'
 
 export const actionBuilder = async (_options = config) => {
-  const params = resolveConfig(_options)
+  const params = await resolveConfig(_options)
   const { input, options } = params
 
   if (!(input.endsWith('.js') || input.endsWith('.ts'))) {
@@ -26,7 +28,7 @@ export const actionBuilder = async (_options = config) => {
   await buildEsllpkg(params)
 }
 
-function resolveConfig(_options = config) {
+async function resolveConfig(_options = config) {
   if (_options.esllpkg && !_options.input) _options.input = 'index.ts'
   const { input, output, mode, ...options } = { ...config, ..._options }
 
@@ -36,6 +38,15 @@ function resolveConfig(_options = config) {
   if (options.meta) buildMetaFiles(output)
 
   const plugins = [externalizePlugin(), options.logger && reporterPlugin(mode)]
+
+  if (!options.globalName && options.pkgMode.includes('iife')) {
+    const { config } = await loadConfigFromFile('package')
+    let name = config.name as string
+    name = name.replace('@', '')
+    name = camelCase(name)
+    name = name.slice(0, 1).toLocaleUpperCase() + name.slice(1)
+    options.globalName = name
+  }
 
   const buildConfig: esbuild.BuildOptions = {
     bundle: false,

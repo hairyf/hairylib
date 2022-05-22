@@ -15,7 +15,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --type"
+    "build": "hairy build --esllpkg --type --globalName HairyColor"
   },
   "license": "MIT"
 }

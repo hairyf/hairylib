@@ -141,6 +141,7 @@ importers:
       '@hairy/swagger': workspace:*
       '@rollup/plugin-node-resolve': ^13.3.0
       '@types/fs-extra': ^9.0.12
+      '@types/lodash': ^4.14.182
       '@types/node': ^16.10.1
       cac: ^6.7.3
       chalk: ^5.0.1
@@ -154,6 +155,7 @@ importers:
       fast-glob: ^3.2.7
       fs-extra: ^10.0.0
       gitlog: ^4.0.4
+      lodash: ^4
       log-update: 4.0.0
       rollup: ^2.74.1
       rollup-plugin-dts: ^4.2.1
@@ -162,6 +164,7 @@ importers:
     dependencies:
       '@hairy/share-node': link:../node__share
       '@rollup/plugin-node-resolve': registry.npmmirror.com/@rollup/plugin-node-resolve/13.3.0_rollup@2.74.1
+      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.182
       cac: registry.npmmirror.com/cac/6.7.12
       chalk: registry.npmmirror.com/chalk/5.0.1
       consola: registry.npmmirror.com/consola/2.15.3
@@ -173,6 +176,7 @@ importers:
       fast-glob: registry.npmmirror.com/fast-glob/3.2.11
       fs-extra: registry.npmmirror.com/fs-extra/10.1.0
       gitlog: registry.npmmirror.com/gitlog/4.0.4
+      lodash: registry.npmmirror.com/lodash/4.17.21
       log-update: registry.npmmirror.com/log-update/4.0.0
       rollup: registry.npmmirror.com/rollup/2.74.1
       rollup-plugin-dts: registry.npmmirror.com/rollup-plugin-dts/4.2.1_lq4dy2bb4fhoyaf2vwyb4geyfa
@@ -656,7 +660,6 @@ packages:
     resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.182.tgz}
     name: '@types/lodash'
     version: 4.14.182
-    dev: true
 
   registry.npmmirror.com/@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/mdast/-/mdast-3.0.10.tgz}

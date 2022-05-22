@@ -13,6 +13,7 @@
   "dependencies": {
     "@hairy/share-node": "workspace:*",
     "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/lodash": "^4.14.182",
     "cac": "^6.7.3",
     "chalk": "^5.0.1",
     "consola": "^2.15.3",
@@ -24,6 +25,7 @@
     "fast-glob": "^3.2.7",
     "fs-extra": "^10.0.0",
     "gitlog": "^4.0.4",
+    "lodash": "^4",
     "log-update": "4.0.0",
     "rollup": "^2.74.1",
     "rollup-plugin-dts": "^4.2.1",

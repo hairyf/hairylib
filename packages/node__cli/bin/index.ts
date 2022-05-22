@@ -18,7 +18,7 @@ cli
   .option('--meta', `Contains meta information files such as package.json, README.md`)
   .option('--ignore [source]', `Ignore partial files or folders for folder compilation`)
   .option('--esllpkg', `Esllpkg mode, will output .cjs .esm .iife .iife.min files`)
-  .option('--globalName', `In IIFE mode, define the global name`)
+  .option('--globalName <name>', `In IIFE mode, define the global name`)
   .option(
     '--pkgMode [mode]',
     `Which modules are output under esllpkg, all modules are output by default, with/separate`
@@ -33,7 +33,7 @@ cli
   .option('--meta', `Contains meta information files such as package.json, README.md`)
   .option('--ignore [source]', `Ignore partial files or folders for folder compilation`)
   .option('--esllpkg', `Esllpkg mode, will output .cjs .esm .iife .iife.min files`)
-  .option('--globalName', `In IIFE mode, define the global name`)
+  .option('--globalName <name>', `In IIFE mode, define the global name`)
   .option(
     '--pkgMode [mode]',
     `Which modules are output under esllpkg, all modules are output by default, with/separate`
