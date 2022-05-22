@@ -41,11 +41,14 @@ async function resolveConfig(_options = config) {
 
   if (!options.globalName && options.pkgMode.includes('iife')) {
     const { config } = await loadConfigFromFile('package')
+    if (config) 
+   {
     let name = config.name as string
     name = name.replace('@', '')
     name = camelCase(name)
     name = name.slice(0, 1).toLocaleUpperCase() + name.slice(1)
     options.globalName = name
+   }
   }
 
   const buildConfig: esbuild.BuildOptions = {
