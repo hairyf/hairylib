@@ -1,0 +1,32 @@
+{
+  "name": "@hairy/libcore",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "directory": "dist"
+  },
+  "scripts": {
+    "build": "hairy build --esllpkg --type"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@extra-array/arange": "^1.1.7",
+    "delay": "^5.0.0",
+    "lodash": "^4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4"
+  }
+}

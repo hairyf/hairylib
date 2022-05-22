@@ -15,6 +15,16 @@ export const buildMetaFiles = async (outdir: string) => {
 }
 
 export const generateDts = async (input: string, file: string) => {
-  const bundles = await rollup({ input, plugins: [rollupPluginDts()], onwarn: () => false })
+  const bundles = await rollup({
+    input,
+    plugins: [
+      rollupPluginDts({
+        compilerOptions: {
+          preserveSymlinks: false
+        }
+      })
+    ],
+    onwarn: () => false
+  })
   await bundles.write({ file, format: 'es' })
 }

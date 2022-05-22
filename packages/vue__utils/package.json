@@ -1,0 +1,36 @@
+{
+  "name": "@hairy/vue-utils",
+  "version": "1.0.28",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "directory": "dist"
+  },
+  "scripts": {
+    "build": "hairy build --esllpkg --type"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@hairy/libcore": "workspace:^0.0.0",
+    "@vue/shared": "^3.2.35",
+    "lodash": "^4",
+    "vue": "^3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4"
+  },
+  "peerDependencies": {
+    "vue": "^3"
+  }
+}

@@ -58,7 +58,7 @@ async function resolveConfig(_options = config) {
     splitting: false,
     watch: mode === 'development',
     minify: false,
-    sourcemap: false,
+    sourcemap: true,
     color: true,
     loader: { '.ts': 'tsx', '.tsx': 'tsx' },
     plugins: plugins.filter(Boolean)

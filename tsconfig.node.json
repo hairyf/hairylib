@@ -2,11 +2,20 @@
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES2016",
+    "moduleResolution": "node",
+    "strict": true,
     "declaration": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowJs": true,
+    "downlevelIteration": true,
     "outDir": "./dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "lib": [
+      "esnext",
+      "dom"
+    ]
   },
   
   "exclude": [
