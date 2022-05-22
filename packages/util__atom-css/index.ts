@@ -32,6 +32,7 @@ const generateArray = (start: number, end: number) => {
   end = end > start ? end : start
   return [...new Array(end + 1).keys()].slice(start)
 }
+
 /** 生成 0 ~ max Spacing 尺寸 */
 export const spacing = (max: number, option?: SpacingOptions) => {
   const nodes = option?.nodes ?? [16, 48, 80, 256, 320, 384]
@@ -61,7 +62,7 @@ export const spacing = (max: number, option?: SpacingOptions) => {
   const spacing = generates.reduce((total, current) => {
     total[key(current)] = `${compute(current)}${unit}`
     return total
-  }, <Record<string, string>>{})
+  }, {} as Record<string, string>)
 
   spacing[key('px')] = '1px'
   spacing[key(unit)] = '1' + unit
