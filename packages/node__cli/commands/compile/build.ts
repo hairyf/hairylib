@@ -1,12 +1,14 @@
 import path from 'path'
 import esbuild from 'esbuild'
 import fg from 'fast-glob'
+import { dtsPlugin } from 'esbuild-plugin-d.ts'
 import { generateDts } from './utils'
 
 export async function buildDir({ options, input, output, buildConfig }) {
   const source = path.join(input, './**/*.ts').replace(/\\/g, '/')
   const ignores = ['_*', 'dist', 'node_modules', '__tests__/**', ...options.ignore]
 
+  if (options.type) buildConfig.plugins.push(dtsPlugin({ outDir: output }))
   buildConfig.entryPoints = await fg(source, { ignore: ignores })
   buildConfig.outdir = path.join(process.cwd(), output)
 
@@ -19,8 +21,6 @@ export async function buildEsllpkg({ options, input, output, buildConfig }) {
 
   buildConfig.bundle = true
   buildConfig.entryPoints = [input]
-
-  buildConfig.plugins = buildConfig.plugins.filter((item) => item.name !== 'dts-plugin')
 
   const buildConfigs: esbuild.BuildOptions[] = []
   for (const mode of options.pkgMode) {
@@ -45,11 +45,15 @@ export async function buildEsllpkg({ options, input, output, buildConfig }) {
   await Promise.all(promises)
 }
 
-export async function buildFile({ input, output, buildConfig }) {
+export async function buildFile({ options, input, output, buildConfig }) {
   const basename = path.basename(input).replace(/\.ts|\.tsx/, '.js')
   const outfile = path.extname(output) ? output : path.join(output, basename)
   buildConfig.bundle = true
   buildConfig.entryPoints = [input]
   buildConfig.outfile = path.join(outfile)
-  await esbuild.build(buildConfig)
+
+  await Promise.all([
+    esbuild.build(buildConfig),
+    options.type && generateDts(input, outfile.replace(path.extname(outfile), '.d.ts'))
+  ])
 }

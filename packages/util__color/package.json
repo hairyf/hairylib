@@ -1,11 +1,13 @@
 {
-  "name": "@hairy/share-node",
+  "name": "@hairy/color",
   "version": "0.0.0",
   "main": "index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
     "types": "./index.d.ts",
     "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
     "exports": {
       ".": { "import": "./index.esm.js", "require": "./index.cjs.js" },
       "./*": "./*"
@@ -13,17 +15,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --pkgMode esm/cjs --type"
-  },
-  "dependencies": {
-    "esbuild": "^0.14.39",
-    "fs-extra": "^10.0.0",
-    "lodash": "^4"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^9.0.12",
-    "@types/lodash": "^4",
-    "@types/node": "^16.10.1"
+    "build": "hairy build --esllpkg --type"
   },
   "license": "MIT"
 }

@@ -1,6 +1,6 @@
 {
-  "name": "@hairy/share-node",
-  "version": "0.0.0",
+  "name": "@hairy/swagger",
+  "version": "0.1.21",
   "main": "index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
@@ -15,15 +15,18 @@
   "scripts": {
     "build": "hairy build --esllpkg --pkgMode esm/cjs --type"
   },
+  "license": "MIT",
   "dependencies": {
-    "esbuild": "^0.14.39",
+    "axios": "^0.24.0",
     "fs-extra": "^10.0.0",
-    "lodash": "^4"
+    "lodash": "^4",
+    "ora": "^5",
+    "prettier": "^2.5.1",
+    "transliteration": "^2.2.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
     "@types/lodash": "^4",
     "@types/node": "^16.10.1"
-  },
-  "license": "MIT"
+  }
 }

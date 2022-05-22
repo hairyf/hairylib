@@ -24,6 +24,7 @@
   "dependencies": {
     "esbuild": "^0.14.39",
     "esbuild-register": "^3.3.2",
+    "eslint": "^8.15.0",
     "rimraf": "^3.0.2"
   }
 }

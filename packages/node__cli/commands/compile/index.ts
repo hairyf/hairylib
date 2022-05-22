@@ -5,7 +5,6 @@
  * @LastEditTime: 2022-01-12 09:59:58
  */
 import esbuild from 'esbuild'
-import { dtsPlugin } from 'esbuild-plugin-d.ts'
 import { reporterPlugin } from './plugins/reporter'
 import { externalizePlugin } from './plugins/externalize'
 import { buildMetaFiles } from './utils'
@@ -36,16 +35,12 @@ function resolveConfig(_options = config) {
   }
   if (options.meta) buildMetaFiles(output)
 
-  const plugins = [
-    externalizePlugin(),
-    options.type && dtsPlugin({ outDir: output }),
-    options.logger && reporterPlugin(mode)
-  ]
+  const plugins = [externalizePlugin(), options.logger && reporterPlugin(mode)]
 
   const buildConfig: esbuild.BuildOptions = {
     bundle: false,
     format: 'cjs',
-    platform: 'neutral',
+    platform: 'node',
     globalName: options.globalName,
     splitting: false,
     watch: mode === 'development',
