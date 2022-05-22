@@ -1,6 +1,6 @@
 {
-  "name": "@hairy/swagger",
-  "version": "0.1.21",
+  "name": "@hairy/atom.css-utils",
+  "version": "0.0.0",
   "main": "index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
@@ -18,19 +18,11 @@
   "scripts": {
     "build": "hairy build --esllpkg --pkgMode esm/cjs --type"
   },
-  "license": "MIT",
   "dependencies": {
-    "axios": "^0.24.0",
-    "fs-extra": "^10.0.0",
-    "lodash": "^4",
-    "ora": "^5",
-    "pascal-case": "^3.1.2",
-    "prettier": "^2.5.1",
-    "transliteration": "^2.2.0"
+    "lodash": "^4"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.12",
-    "@types/lodash": "^4",
-    "@types/node": "^16.10.1"
-  }
+    "@types/lodash": "^4"
+  },
+  "license": "MIT"
 }

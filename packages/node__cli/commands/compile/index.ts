@@ -5,13 +5,13 @@
  * @LastEditTime: 2022-01-12 09:59:58
  */
 import esbuild from 'esbuild'
+import { loadConfigFromFile } from '@hairy/share-node'
+import { camelCase } from 'lodash'
 import { reporterPlugin } from './plugins/reporter'
 import { externalizePlugin } from './plugins/externalize'
 import { buildMetaFiles } from './utils'
 import config from './config'
 import { buildDir, buildEsllpkg, buildFile } from './build'
-import { loadConfigFromFile } from '@hairy/share-node'
-import { camelCase } from 'lodash'
 
 export const actionBuilder = async (_options = config) => {
   const params = await resolveConfig(_options)
@@ -41,14 +41,13 @@ async function resolveConfig(_options = config) {
 
   if (!options.globalName && options.pkgMode.includes('iife')) {
     const { config } = await loadConfigFromFile('package')
-    if (config) 
-   {
-    let name = config.name as string
-    name = name.replace('@', '')
-    name = camelCase(name)
-    name = name.slice(0, 1).toLocaleUpperCase() + name.slice(1)
-    options.globalName = name
-   }
+    if (config) {
+      let name = config.name as string
+      name = name.replace('@', '')
+      name = camelCase(name)
+      name = name.slice(0, 1).toLocaleUpperCase() + name.slice(1)
+      options.globalName = name
+    }
   }
 
   const buildConfig: esbuild.BuildOptions = {

@@ -7,8 +7,8 @@
  * @LastEditTime: 2022-01-12 17:22:08
  */
 
-import { camelCase } from 'lodash'
 import { transliterate } from 'transliteration'
+import { pascalCase } from 'pascal-case'
 import { SwaggerDefinition } from '../_types'
 
 /** swagger 默认 config */
@@ -53,7 +53,7 @@ export function varName(string_: string) {
   // 过滤非英文字符
   string_ = uselessString(string_)
   // 转换为大驼峰
-  string_ = capitalizeCamelCase(string_)
+  string_ = pascalCase(string_)
   return string_
 }
 
@@ -93,10 +93,4 @@ export function unshiftDeDupDefinition(definitions: SwaggerDefinition[], definit
   }
   definitions.unshift(definition)
   return definition
-}
-
-export const capitalizeCamelCase = (string_: string) => {
-  let result = camelCase(string_)
-  result = result.slice(0, 1).toLocaleUpperCase() + result.slice(1)
-  return result
 }

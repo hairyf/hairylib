@@ -6,9 +6,10 @@
  */
 
 import { format } from 'prettier'
-import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig } from '../_types'
-import { getNameSpaceType, TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName, capitalizeCamelCase } from '../internal'
 import { camelCase } from 'lodash'
+import { pascalCase } from 'pascal-case'
+import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig } from '../_types'
+import { getNameSpaceType, TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName } from '../internal'
 import { spliceHeaderCode, spliceType, spliceTypeField } from './utils'
 
 export interface SwaggerGenerateConfig {
@@ -57,7 +58,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
     }
     if (api.request.path.length > 0) {
       const definition = unshiftDeDupDefinition(ast.definitions, {
-        name: varName(capitalizeCamelCase(api.request.path.map((v) => v.name).join('/') + '/path')),
+        name: varName(pascalCase(api.request.path.map((v) => v.name).join('/') + '/path')),
         description: api.description,
         value: api.request.path
       })
@@ -65,7 +66,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
     }
     if (api.request.query.length > 0) {
       const { name } = unshiftDeDupDefinition(ast.definitions, {
-        name: varName(capitalizeCamelCase(`${api.path}/query`)),
+        name: varName(pascalCase(`${api.path}/query`)),
         description: api.description,
         value: api.request.query
       })
