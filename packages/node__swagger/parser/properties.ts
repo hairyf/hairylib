@@ -5,9 +5,9 @@
  * @LastEditTime: 2022-01-20 18:21:24
  */
 
+import { cloneDeep, isArray, isEmpty } from 'lodash'
 import { SwaggerDefinition, SwaggerField, SwaggerParserContext, SwaggerSourceProperties } from '../_types'
 import { varName, TYPE_MAPPING, unshiftDeDupDefinition } from '../internal'
-import { cloneDeep, isArray, isEmpty } from 'lodash'
 
 export interface ParsePropertiesOptions {
   name?: string
@@ -16,9 +16,22 @@ export interface ParsePropertiesOptions {
   type?: string[]
 }
 
+const useRefMap = (ref: string) => ref.split('/').pop()!
+const splitName = (options: ParsePropertiesOptions) => {
+  return [
+    // 截取字符串路径后三位, 避免长度太长
+    varName(options.path?.split('/').slice(-3).join('/') || ''),
+    varName(options.method || ''),
+    varName(options.name || ''),
+    // 截取字符串路径后三位, 避免长度太长
+    options.type?.map((name) => varName(name)).join('') || ''
+  ]
+    .join('')
+    .trim()
+}
+
 /**
  * 根据 Definitions 不同的类型进行解析 为 通用的类型结构
- * TODO 为无法复现的 swagger 结构场景。
  * @param propertie
  */
 export function parseProperties(
@@ -31,8 +44,13 @@ export function parseProperties(
   if (propertie.originalRef) {
     return varName(propertie.originalRef)
   }
+
   if (propertie['$ref']) {
-    return varName(propertie['$ref'].split('/').pop()!)
+    return varName(useRefMap(propertie['$ref']))
+  }
+
+  if (propertie.additionalProperties) {
+    return `Record<string, ${_parseProperties(propertie.additionalProperties)}>`
   }
 
   if (propertie.type === 'array') {
@@ -41,19 +59,11 @@ export function parseProperties(
   }
 
   if (propertie.type === 'object') {
-    const name = [
-      // 截取字符串路径后三位, 避免长度太长
-      varName(options.path?.split('/').slice(-3).join('/') || ''),
-      varName(options.method || ''),
-      varName(options.name || ''),
-      // 截取字符串路径后三位, 避免长度太长
-      options.type?.map((name) => varName(name)).join('') || ''
-    ]
-      .join('')
-      .trim()
+    // 空的对象
     if (!propertie.properties || isEmpty(propertie.properties)) {
       return 'Record<string, any>'
     }
+    // 列举属性
     const fields = Object.keys(propertie.properties).map((name) => {
       const propertieItem = propertie.properties![name]
       const newOptions = cloneDeep(options)
@@ -66,6 +76,9 @@ export function parseProperties(
       }
       return item
     })
+
+    // 添加映射
+    const name = splitName(options)
     unshiftDeDupDefinition(this.definitions, {
       name,
       description: '',
@@ -73,6 +86,8 @@ export function parseProperties(
     })
     return name
   }
+
+  // TODO: types
   if (isArray(propertie.type)) {
     return propertie.type.join(' | ')
   }

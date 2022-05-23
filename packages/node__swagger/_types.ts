@@ -95,6 +95,7 @@ export interface SwaggerAstConfig {
 export interface SwaggerSourceProperties {
   type?: string | string[]
   items?: SwaggerSourceProperties
+  additionalProperties?: SwaggerSourceProperties
   originalRef?: string
   $ref?: string
   required?: boolean
