@@ -1,10 +1,3 @@
-/*
- * @Author: Mr'Mao https://github.com/TuiMao233
- * @Date: 2021-12-29 11:04:24
- * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-10 11:39:46
- */
-
 import { format } from 'prettier'
 import { camelCase } from 'lodash'
 import { pascalCase } from 'pascal-case'

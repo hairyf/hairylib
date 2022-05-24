@@ -1,11 +1,5 @@
 import { AxiosRequestConfig } from 'axios'
 
-/*
- * @Author: Mr'Mao https://github.com/TuiMao233
- * @Date: 2021-12-29 11:01:44
- * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-20 18:19:06
- */
 export interface SwaggerBuildConfig {
   /** @description 当前 Swagger 服务器配置地址 http://dev-ebg.com/api/ebg-order-app/v2/api-docs */
   uri: string
@@ -64,7 +58,7 @@ export interface SwaggerDefinition {
   value: SwaggerField[]
 }
 
-/** @Swagger转换Api */
+/** @Swagger__转换Api */
 export interface SwaggerApi {
   path: string
   method: string
@@ -79,7 +73,7 @@ export interface SwaggerApi {
   response: null | string
 }
 
-/** @Swagger抽象语法描述信息 */
+/** @Swagger__抽象语法描述信息 */
 export interface SwaggerAstConfig {
   info: {
     swaggerVersion: string

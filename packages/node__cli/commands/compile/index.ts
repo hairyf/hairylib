@@ -1,9 +1,3 @@
-/*
- * @Author: Mr'Mao https://github.com/TuiMao233
- * @Date: 2021-12-06 18:13:53
- * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-12 09:59:58
- */
 import esbuild from 'esbuild'
 import { loadConfigFromFile } from '@hairy/share-node'
 import { camelCase } from 'lodash'
@@ -61,7 +55,7 @@ async function resolveConfig(_options = config) {
     sourcemap: true,
     color: true,
     loader: { '.ts': 'tsx', '.tsx': 'tsx' },
-    plugins: plugins.filter(Boolean)
+    plugins: plugins.filter(Boolean) as any
   }
   return { buildConfig, input, output, mode, options }
 }

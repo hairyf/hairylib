@@ -1,10 +1,3 @@
-/*
- * @Author: Mr'Mao https://github.com/TuiMao233
- * @Date: 2021-12-29 11:03:59
- * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-20 18:20:36
- */
-
 import axios from 'axios'
 import { entries } from 'lodash'
 import { varName } from '../internal'
@@ -14,13 +7,11 @@ import {
   SwaggerDefinition,
   SwaggerField,
   SwaggerSourceParameter,
-  SwaggerAstConfig,
-  SwaggerParserContext
+  SwaggerAstConfig
 } from '../_types'
-import { parseParameter as _parseParameter } from './parameter'
-import { parseProperties as _parseProperties } from './properties'
+import { createContext } from './context'
 
-export const parseSource = async function (this: SwaggerParserContext, config: SwaggerBuildConfig) {
+export const parseSourceOpenapi = async function (config: SwaggerBuildConfig) {
   const { data } = await axios(config.uri, {
     method: 'get',
     responseType: 'json',
@@ -39,9 +30,7 @@ export const parseSource = async function (this: SwaggerParserContext, config: S
     definitions: []
   }
 
-  this.definitions = astConfig.definitions
-  const parseParameter = _parseParameter.bind(this)
-  const parseProperties = _parseProperties.bind(this)
+  const { parseParameter, parseProperties } = createContext(astConfig)
 
   // #endregion
 
@@ -77,21 +66,17 @@ export const parseSource = async function (this: SwaggerParserContext, config: S
         method,
         tags: config.tags ?? [],
         description: config.summary ?? '',
-        request: {
-          header: [],
-          path: [],
-          body: null,
-          query: []
-        },
+        request: { header: [], path: [], body: null, query: [] },
         response: null
       }
       const parameters: SwaggerSourceParameter[] = config?.parameters || []
       for (const parameter of parameters) {
-        if (Array.isArray(fetchApi.request[parameter.in])) {
-          const target = fetchApi.request[parameter.in] as any
-          target.push(parseParameter(parameter, { method }))
+        const target = fetchApi.request[parameter.in]
+        const parseValue = parseParameter(parameter, { method })
+        if (Array.isArray(target)) {
+          target.push(parseValue as any)
         } else {
-          fetchApi.request[parameter.in] = parseParameter(parameter, { method }) as any
+          fetchApi.request[parameter.in] = parseValue as any
         }
       }
       // 响应的数据。默认去 200 的 HTTP状态码对应的数据

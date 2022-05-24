@@ -1,17 +1,11 @@
-/*
- * @Author: Mr'Mao https://github.com/TuiMao233
- * @Date: 2021-12-29 10:36:04
- * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-21 11:11:32
- */
-import { generate } from './generator'
 import fs from 'fs-extra'
 import { cloneDeep, merge } from 'lodash'
 
 import ora from 'ora'
+import { generate } from './generator'
 import { parseOutput } from './parser/output'
 import { SwaggerBuildConfig, SwaggerDefineConfig } from './_types'
-import { parseSource } from './parser/source'
+import { parseSourceOpenapi } from './parser/source'
 import { DEFAULT_CONFIG } from './internal'
 
 export interface SwaggerWebClientGeneratorType {
@@ -34,7 +28,7 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
     // 解析 config  生成 output
     const output = parseOutput(config)
     // 解析 swagger 生成 swagger ast
-    const ast = await parseSource.call({ definitions: [] }, config)
+    const ast = await parseSourceOpenapi(config)
 
     // 使用 buildConfig, output, transform 生成代码
     const { apiFileCode, typeFileCode } = generate({ build: config, output, ast })
@@ -61,7 +55,7 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
  */
 export const defineConfig = (config: SwaggerDefineConfig) => config
 
-export { parseSource, parseOutput }
+export { parseSourceOpenapi, parseOutput }
 
 export * from './_types'
 

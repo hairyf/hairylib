@@ -77,7 +77,7 @@ async function loadConfigFromBundledFile(fileName: string, bundledCode: string):
 export const loadConfigFromFile = async <T = any>(
   name: string,
   root = process.cwd()
-): Promise<{ path: string; config: T } | null> => {
+): Promise<{ path?: string; config?: T }> => {
   let resolvedPath = ''
   let isES = false
   let isTS = false
@@ -94,7 +94,7 @@ export const loadConfigFromFile = async <T = any>(
     resolvedPath = configFile
   }
 
-  if (!resolvedPath) return null
+  if (!resolvedPath) return {}
 
   if (isJSON) config = await fs.readJSON(resolvedPath)
 

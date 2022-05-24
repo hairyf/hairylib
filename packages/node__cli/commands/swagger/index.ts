@@ -1,7 +1,8 @@
 import { loadConfigFromFile } from '@hairy/share-node'
+import { swaggerWebClientGenerator } from '@hairy/swagger'
 
 export const actionSwagger = async () => {
-  const { swaggerWebClientGenerator } = require('@hairy/swagger')
+  // const { swaggerWebClientGenerator } = require('@hairy/swagger')
   const { config = {} } = await loadConfigFromFile('swagger.config')
   const servers = config.servers || []
 

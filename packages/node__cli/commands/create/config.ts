@@ -1,9 +1,3 @@
-/*
- * @Author: Mr'Mao https://github.com/TuiMao233
- * @Date: 2021-12-06 18:13:53
- * @LastEditors: Mr'Mao
- * @LastEditTime: 2022-01-21 13:20:54
- */
 import path from 'path'
 import { Select, prompt } from 'enquirer'
 import { install } from './utils'
@@ -16,7 +10,7 @@ interface Project {
   created?: () => any | Promise<any>
 }
 interface ProjectOptions {
-  [key: string]: (outpath: string) => Promise<Project> | Project
+  [key: string]: (outPath: string) => Promise<Project> | Project
 }
 
 export const projectOptions: ProjectOptions = {
