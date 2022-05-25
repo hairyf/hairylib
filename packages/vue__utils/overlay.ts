@@ -1,10 +1,81 @@
-import { Component, VNode, InjectionKey, provide, ref, Ref, onMounted, ExtractPropTypes, watch, inject } from 'vue'
+import {
+  Component,
+  VNode,
+  InjectionKey,
+  provide,
+  ref,
+  Ref,
+  onMounted,
+  ExtractPropTypes,
+  watch,
+  inject,
+  defineComponent,
+  h
+} from 'vue'
 import { delay } from '@hairy/libcore'
 import { renderInstance } from './render'
 
-export interface CreateOverlayOptions {
+export interface ImperativeOverlayOptions {
   animation?: number
   setup?: () => void
+}
+export type ExtractInferTypes<Props> = Props extends ExtractPropTypes<infer E> ? E : ExtractPropTypes<Props>
+export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>) => Promise<Result>
+
+/**
+ * 创建命令式弹出层 Api
+ * @param component 组件
+ * @param options 弹出层配置
+ * @returns 命令式弹出层
+ */
+export const createImperativeOverlay = <P = any, R = void>(
+  component: Component,
+  options: ImperativeOverlayOptions = {}
+): ImperativeOverlay<P, R> => {
+  const { animation = 0 } = options
+
+  const useOverlayVisible = (_vanish: Function) => {
+    const visible = ref(false)
+    watch(visible, async () => {
+      if (visible.value) return undefined
+      if (animation > 0) await delay(animation)
+      _vanish?.()
+    })
+    onMounted(() => (visible.value = true))
+    return visible
+  }
+
+  const executor = (props: any, _resolve: Function, _reject: Function) => {
+    const Provider = defineComponent({
+      setup: () => {
+        const visible = useOverlayVisible(vanish)
+        function reject(value: any) {
+          _reject?.(value)
+          visible.value = false
+        }
+        function resolve(value: any) {
+          _resolve?.(value)
+          visible.value = false
+        }
+        function vanish() {
+          _vanish?.()
+          _reject?.()
+        }
+        provide(ImperativeOverlayKey, { reject, resolve, vanish, visible, vnode })
+      },
+      render() {
+        return h(component as any, props)
+      }
+    })
+    const { vanish: _vanish, vnode } = renderInstance(Provider)
+  }
+
+  const caller = (props: any) =>
+    new Promise<any>((_resolve, _reject) => {
+      executor(props, _resolve, _reject)
+    })
+
+  return caller
 }
 
 export type OverlayMetaOptions = {
@@ -18,66 +89,6 @@ export type OverlayMetaOptions = {
   vnode: VNode
   /** visible 包装层属性，控制弹出层显示与隐藏 */
   visible: Ref<boolean>
-}
-
-export type ImperativeOverlay<Props, Result> = (options?: ExtractPropTypes<Props>) => Promise<Result>
-
-interface CreateImperativeOverlay<P = any, R = any> {
-  (component: Component, options?: CreateOverlayOptions): ImperativeOverlay<P, R>
-}
-
-/**
- * 创建命令式弹出层 Api
- * @param component 组件
- * @param options 弹出层配置
- * @returns 命令式弹出层
- */
-export const createImperativeOverlay: CreateImperativeOverlay = (
-  component: Component,
-  options: CreateOverlayOptions = {}
-) => {
-  const { animation = 0 } = options
-
-  const provideMeta = (options: Partial<OverlayMetaOptions> = {}) => {
-    const visible = ref(false)
-
-    onMounted(() => (visible.value = true))
-
-    watch(visible, async () => {
-      if (visible.value) return undefined
-      if (animation > 0) await delay(animation)
-      options.vanish?.()
-    })
-    // 关闭事件
-    const reject = (result: any) => {
-      options.reject?.(result)
-      visible.value = false
-    }
-
-    // 确定事件
-    const resolve = (result: any) => {
-      options.resolve?.(result)
-      visible.value = false
-    }
-    const vanish = () => {
-      options.vanish?.()
-      options.reject?.()
-    }
-    const result = { ...options, resolve, reject, vanish, visible } as OverlayMetaOptions
-    provide(ImperativeOverlayKey, result)
-  }
-
-  const imperativeOverlay = (props: any) => {
-    return new Promise<any>((resolve, reject) => {
-      renderInstance(component, props, {
-        setup: (vnode, vanish) => {
-          provideMeta({ resolve, reject, vnode, vanish })
-        }
-      })
-    })
-  }
-
-  return imperativeOverlay
 }
 
 export const ImperativeOverlayKey: InjectionKey<OverlayMetaOptions> = Symbol('__imperative_overlay_key')

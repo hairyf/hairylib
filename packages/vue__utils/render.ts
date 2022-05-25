@@ -13,7 +13,7 @@ export interface RenderInstanceOptions {
  */
 export const renderInstance = (
   Constructor: Component,
-  props: Record<string, any>,
+  props?: Record<string, any>,
   options: RenderInstanceOptions = {}
 ) => {
   // 组件消失时, 移除当前实例
