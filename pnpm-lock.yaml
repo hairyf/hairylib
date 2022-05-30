@@ -296,10 +296,12 @@ importers:
       '@types/lodash': ^4
       delay: ^5.0.0
       lodash: ^4
+      pipe-and-compose-types: ^0.0.13
     dependencies:
       '@extra-array/arange': 1.1.7
       delay: 5.0.0
       lodash: 4.17.21
+      pipe-and-compose-types: 0.0.13
     devDependencies:
       '@types/lodash': 4.14.182
 
@@ -324,6 +326,21 @@ importers:
       lodash: 4.17.21
       vue: 3.2.35
       vue-router: 4.0.15_vue@3.2.35
+    devDependencies:
+      '@types/lodash': 4.14.182
+
+  packages/vue__use:
+    specifiers:
+      '@hairy/libcore': workspace:^0.0.0
+      '@types/lodash': ^4
+      '@vueuse/core': ^8.5.0
+      lodash: ^4
+      vue: ^3
+    dependencies:
+      '@hairy/libcore': link:../util__libcore
+      '@vueuse/core': 8.5.0_vue@3.2.35
+      lodash: 4.17.21
+      vue: 3.2.35
     devDependencies:
       '@types/lodash': 4.14.182
 
@@ -523,6 +540,42 @@ packages:
 
   /@vue/shared/3.2.35:
     resolution: {integrity: sha512-/sxDqMcy0MsfQ3LQixKYDxIinDYNy1dXTsF2Am0pv0toImWabymFQ8cFmPJnPt+gh5ElKwwn7KzQcDbLHar60A==}
+    dev: false
+
+  /@vueuse/core/8.5.0_vue@3.2.35:
+    resolution: {integrity: sha512-VEJ6sGNsPlUp0o9BGda2YISvDZbhWJSOJu5zlp2TufRGVrLcYUKr31jyFEOj6RXzG3k/H4aCYeZyjpItfU8glw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.0
+      vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      '@vueuse/metadata': 8.5.0
+      '@vueuse/shared': 8.5.0_vue@3.2.35
+      vue: 3.2.35
+      vue-demi: 0.12.5_vue@3.2.35
+    dev: false
+
+  /@vueuse/metadata/8.5.0:
+    resolution: {integrity: sha512-WxsD+Cd+bn+HcjpY6Dl9FJ8ywTRTT9pTwk3bCQpzEhXVYAyNczKDSahk50fCfIJKeWHhyI4B2+/ZEOxQAkUr0g==}
+    dev: false
+
+  /@vueuse/shared/8.5.0_vue@3.2.35:
+    resolution: {integrity: sha512-qKG+SZb44VvGD4dU5cQ63z4JE2Yk39hQUecR0a9sEdJA01cx+XrxAvFKJfPooxwoiqalAVw/ktWK6xbyc/jS3g==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.0
+      vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      vue: 3.2.35
+      vue-demi: 0.12.5_vue@3.2.35
     dev: false
 
   /asynckit/0.4.0:
@@ -828,6 +881,12 @@ packages:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: false
 
+  /pipe-and-compose-types/0.0.13:
+    resolution: {integrity: sha512-hN+kRk2C/yVzojijNfg7OXSvw9zps1qXxEFKB2+uWctUF9nLQpbN71oF3PRY82DN0AiQFRDNCxdUlN/g8ybImw==}
+    dependencies:
+      typescript-tuple: 2.2.1
+    dev: false
+
   /postcss/8.4.14:
     resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}
     engines: {node: ^10 || ^12 || >=14}
@@ -991,6 +1050,37 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /typescript-compare/0.0.2:
+    resolution: {integrity: sha512-8ja4j7pMHkfLJQO2/8tut7ub+J3Lw2S3061eJLFQcvs3tsmJKp8KG5NtpLn7KcY2w08edF74BSVN7qJS0U6oHA==}
+    dependencies:
+      typescript-logic: 0.0.0
+    dev: false
+
+  /typescript-logic/0.0.0:
+    resolution: {integrity: sha512-zXFars5LUkI3zP492ls0VskH3TtdeHCqu0i7/duGt60i5IGPIpAHE/DWo5FqJ6EjQ15YKXrt+AETjv60Dat34Q==}
+    dev: false
+
+  /typescript-tuple/2.2.1:
+    resolution: {integrity: sha512-Zcr0lbt8z5ZdEzERHAMAniTiIKerFCMgd7yjq1fPnDJ43et/k9twIFQMUYff9k5oXcsQ0WpvFcgzK2ZKASoW6Q==}
+    dependencies:
+      typescript-compare: 0.0.2
+    dev: false
+
+  /vue-demi/0.12.5_vue@3.2.35:
+    resolution: {integrity: sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.35
+    dev: false
 
   /vue-router/4.0.15_vue@3.2.35:
     resolution: {integrity: sha512-xa+pIN9ZqORdIW1MkN2+d9Ui2pCM1b/UMgwYUCZOiFYHAvz/slKKBDha8DLrh5aCG/RibtrpyhKjKOZ85tYyWg==}

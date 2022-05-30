@@ -1,5 +1,5 @@
 {
-  "name": "@hairy/libcore",
+  "name": "@hairy/vue-use",
   "version": "0.0.0",
   "main": "index.ts",
   "publishConfig": {
@@ -22,10 +22,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@extra-array/arange": "^1.1.7",
-    "delay": "^5.0.0",
+    "@hairy/libcore": "workspace:^*",
+    "@vueuse/core": "^8.5.0",
     "lodash": "^4",
-    "pipe-and-compose-types": "^0.0.13"
+    "vue": "^3"
   },
   "devDependencies": {
     "@types/lodash": "^4"

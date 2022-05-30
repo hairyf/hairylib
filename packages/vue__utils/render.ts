@@ -1,4 +1,4 @@
-import { Component, h, render, defineComponent, VNode } from 'vue'
+import { Component, h, render, defineComponent, VNode, FunctionalComponent } from 'vue'
 
 export interface RenderInstanceOptions {
   setup?: (vnode: VNode, vanish: Function) => void
@@ -45,4 +45,15 @@ export const renderInstance = (
   }
 
   return { vanish, vnode }
+}
+
+/**
+ * 直接渲染传入的组件（function component）
+ * @param component
+ * @returns 渲染的容器（默认 div）
+ */
+export function ehr<K extends keyof HTMLElementTagNameMap = 'div'>(component: FunctionalComponent, tag?: K) {
+  const container = document.createElement((tag || 'dev') as K)
+  render(h(component), container)
+  return container
 }
