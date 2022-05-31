@@ -95,15 +95,16 @@ export interface SwaggerSourceProperties {
   required?: boolean
   format?: string
   description?: string
+  schema?: SwaggerSourceProperties
   properties?: Record<string, SwaggerSourceProperties>
 }
 export interface SwaggerSourceParameter {
   name: string
   in: 'body' | 'header' | 'query' | 'path'
   type?: string
-  description: string
-  required: boolean
-  schema: SwaggerSourceProperties
+  description?: string
+  required?: boolean
+  schema?: SwaggerSourceProperties
 }
 export interface SwaggerParserContext {
   definitions: SwaggerDefinition[]

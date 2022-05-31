@@ -3,10 +3,11 @@
  * @param url 跳转url
  */
 export const ejectWindow = (url: string) => {
-  const a = document.createElement('a')
-  a.href = url
-  a.target = '_blank'
-  a.click()
+  const link = document.createElement('a')
+  link.href = url
+  link.target = '_blank'
+  link.click()
+  link.remove()
 }
 /**
  * 拨打手机号
@@ -16,6 +17,6 @@ export const makePhoneCall = (phoneNumber: string) => {
   const link = document.createElement('a')
   link.style.display = 'none'
   link.href = `tel:${phoneNumber}`
-  document.body.append(link)
   link.click()
+  link.remove()
 }

@@ -17,14 +17,12 @@ export function parseParameter(
 ): string | SwaggerField {
   parameter.name = uselessString(parameter.name)
   const parseOptions = {
-    type: [varName(parameter.in || '')],
-    name: parameter.name || '',
-    ...options
+    name: [options.method, parameter.name || '', varName(parameter.in || '')]
   }
   const parseProperties = _parseProperties.bind(this)
 
   if (parameter.in === 'body') {
-    return parseProperties(parameter.schema, parseOptions)
+    return parseProperties(parameter, parseOptions)
   }
   if (parameter.in === 'query') {
     const isQueryArray = parameter.type === 'array'

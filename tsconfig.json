@@ -14,10 +14,11 @@
       "esnext",
       "dom"
     ],
+    "types": [
+      "vitest/globals"
+    ]
   },
   "exclude": [
-    "**/__tests__/*.ts",
-    "**/__test__/*.ts",
     "**/dist/*.ts",
     "**/dist/*.d.ts",
   ],

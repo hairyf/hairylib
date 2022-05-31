@@ -9,7 +9,7 @@ import {
   SwaggerSourceParameter,
   SwaggerAstConfig
 } from '../_types'
-import { createContext } from './context'
+import { createContext } from '../internal/context'
 
 export const parseSourceOpenapi = async function (config: SwaggerBuildConfig) {
   const { data } = await axios(config.uri, {
@@ -81,7 +81,7 @@ export const parseSourceOpenapi = async function (config: SwaggerBuildConfig) {
       }
       // 响应的数据。默认去 200 的 HTTP状态码对应的数据
       const responsesSchema = config.responses?.['200']?.schema
-      fetchApi.response = responsesSchema ? parseProperties(responsesSchema, { method, path, type: ['Data'] }) : null
+      fetchApi.response = responsesSchema ? parseProperties(responsesSchema, { name: [method, path, 'Data'] }) : null
       astConfig.apis.push(fetchApi)
     }
   }

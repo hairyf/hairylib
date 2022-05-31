@@ -1,6 +1,6 @@
 import { SwaggerAstConfig } from '../_types'
-import { parseParameter } from './parameter'
-import { parseProperties } from './properties'
+import { parseParameter } from '../parser/parameter'
+import { parseProperties } from '../parser/properties'
 
 export interface SwaggerParserContext extends SwaggerAstConfig {
   parseProperties: OmitThisParameter<typeof parseProperties>

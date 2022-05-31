@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "pnpm clean && pnpm turbo run build",
-    "clean": "rimraf dist types packages/*/dist"
+    "clean": "rimraf dist types packages/*/dist",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage"
   },
   "author": "TuiMao233",
   "license": "ISC",
@@ -25,6 +28,7 @@
     "esbuild": "^0.14.39",
     "esbuild-register": "^3.3.2",
     "eslint": "^8.15.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "vitest": "^0.13.0"
   }
 }

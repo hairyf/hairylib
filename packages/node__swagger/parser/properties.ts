@@ -1,26 +1,18 @@
-import { cloneDeep, isArray, isEmpty } from 'lodash'
+import { isArray, isEmpty } from 'lodash'
 import { SwaggerDefinition, SwaggerField, SwaggerParserContext, SwaggerSourceProperties } from '../_types'
 import { varName, TYPE_MAPPING, unshiftDeDupDefinition } from '../internal'
+import { spliceTypeField } from '../generator/utils'
 
 export interface ParsePropertiesOptions {
-  name?: string
-  method?: string
-  path?: string
-  type?: string[]
+  name?: string | string[]
+  /** 如果 expands 开启，对象不直接添加 definitions，而是直接展开 */
+  expands?: boolean
 }
 
 const useRefMap = (ref: string) => ref.split('/').pop()!
 const splitName = (options: ParsePropertiesOptions) => {
-  return [
-    // 截取字符串路径后三位, 避免长度太长
-    varName(options.path?.split('/').slice(-3).join('/') || ''),
-    varName(options.method || ''),
-    varName(options.name || ''),
-    // 截取字符串路径后三位, 避免长度太长
-    options.type?.map((name) => varName(name)).join('') || ''
-  ]
-    .join('')
-    .trim()
+  const names = Array.isArray(options.name) ? options.name : [options.name]
+  return names.join('/').split('/').map(varName).join('').trim()
 }
 
 /**
@@ -42,13 +34,16 @@ export function parseProperties(
     return varName(useRefMap(propertie['$ref']))
   }
 
+  if (propertie['schema']) {
+    return _parseProperties(propertie['schema'], options)
+  }
+
   if (propertie.additionalProperties) {
-    return `Record<string, ${_parseProperties(propertie.additionalProperties)}>`
+    return `Record<string, ${_parseProperties(propertie.additionalProperties, { expands: true })}>`
   }
 
   if (propertie.type === 'array') {
-    const newOptions = { ...options }
-    return `${_parseProperties(propertie.items!, newOptions)}[]`
+    return `${_parseProperties(propertie.items!, { expands: true })}[]`
   }
 
   if (propertie.type === 'object') {
@@ -56,19 +51,22 @@ export function parseProperties(
     if (!propertie.properties || isEmpty(propertie.properties)) {
       return 'Record<string, any>'
     }
+
     // 列举属性
     const fields = Object.keys(propertie.properties).map((name) => {
       const propertieItem = propertie.properties![name]
-      const newOptions = cloneDeep(options)
-      newOptions.type?.push(name)
       const item: SwaggerField = {
         name,
-        value: _parseProperties(propertieItem, newOptions),
+        value: _parseProperties(propertieItem, { expands: true }),
         required: !!propertieItem.required,
         description: propertieItem.description || ''
       }
       return item
     })
+
+    if (options.expands) {
+      return `{ ${fields.map(spliceTypeField).join(';')} }`
+    }
 
     // 添加映射
     const name = splitName(options)
@@ -80,9 +78,8 @@ export function parseProperties(
     return name
   }
 
-  // TODO: types
   if (isArray(propertie.type)) {
-    return propertie.type.join(' | ')
+    return propertie.type.map((type) => _parseProperties({ type })).join(' | ')
   }
 
   if (propertie.type) return TYPE_MAPPING[propertie.type] || propertie.type

@@ -78,6 +78,10 @@ export const loadConfigFromFile = async <T = any>(
   name: string,
   root = process.cwd()
 ): Promise<{ path?: string; config?: T }> => {
+  if (path.extname(name)) {
+    name = name.replace(path.extname(name), '')
+  }
+
   let resolvedPath = ''
   let isES = false
   let isTS = false

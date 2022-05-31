@@ -16,6 +16,18 @@ export const DEFAULT_CONFIG = {
 /** swagger 类型 typescript 映射 */
 export const TYPE_MAPPING: { [key: string]: any } = {
   integer: 'number',
+  long: 'number',
+  float: 'number',
+  double: 'number',
+
+  byte: 'string',
+  binary: 'string',
+  date: 'string',
+  dateTime: 'string',
+  password: 'string',
+
+  boolean: 'boolean',
+
   TypesLong: 'number',
   TypesString: 'string',
   object: 'Record<string, any>'
