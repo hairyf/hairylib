@@ -1,5 +1,5 @@
 import delay from 'delay'
-import { isTypeof } from './typeof'
+import { isTypeof } from '../typeof'
 /**
  * 地址参数设置
  * @param url 传入url

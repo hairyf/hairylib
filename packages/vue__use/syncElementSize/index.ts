@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-01-21 17:38:38
  */
 
-import { textToUnit } from '@hairy/libcore'
+import { atWillToUnit } from '@hairy/libcore'
 import { MaybeElementRef, useElementSize, unrefElement } from '@vueuse/core'
 import { unref, watch, WatchStopHandle, WatchOptions } from 'vue'
 
@@ -45,7 +45,7 @@ export const syncElementSize = (
     const callback = () => {
       const element = unrefElement(toTarget)
       if (!element) return undefined
-      element.style[type] = textToUnit(fromSize[type].value)
+      element.style[type] = atWillToUnit(fromSize[type].value)
     }
     return watch(sources, callback, { immediate: true, ...options })
   }
