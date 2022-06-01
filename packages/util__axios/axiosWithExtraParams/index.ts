@@ -1,5 +1,7 @@
 import { AxiosStatic, AxiosInstance } from 'axios'
-import { isObject } from '@hairy/libcore'
+import { isFormData } from '@hairy/libcore'
+import isNumber from 'lodash/isNumber'
+import isString from 'lodash/isString'
 
 /**
  * 请求时携带一些参数
@@ -14,7 +16,9 @@ export const axiosWithExtraParams = (
 ) => {
   axios.interceptors.request.use((config) => {
     const assign = (path: keyof typeof config) => {
-      if (!isObject(config[path])) return
+      if (isFormData(config[path])) return
+      if (isNumber(config[path])) return
+      if (isString(config[path])) return
       config[path] = { ...params, ...config[path] }
     }
     if (mode === '*') {

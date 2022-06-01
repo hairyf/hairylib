@@ -35,7 +35,7 @@ describe('@hairy/swagger:generate(TypescriptAxios)', () => {
     '/** @响应infer数据取值 */\n' +
     'export type Response<T> = T;\n'
 
-  test('basic', () => {
+  it('basic', () => {
     const { apiFileCode, typeFileCode } = generate({
       build: { uri: 'xxx/api-docs' },
       output: {
@@ -59,7 +59,7 @@ describe('@hairy/swagger:generate(TypescriptAxios)', () => {
     expect(typeFileCode).toEqual(typeHeaderCode)
   })
 
-  test('basic function', () => {
+  it('basic function', () => {
     const { apiFileCode } = generate({
       build: { uri: 'xxx/api-docs' },
       output: {
@@ -109,7 +109,7 @@ describe('@hairy/swagger:generate(TypescriptAxios)', () => {
     )
   })
 
-  test('basic type function', () => {
+  it('basic type function', () => {
     const { apiFileCode, typeFileCode } = generate({
       build: { uri: 'xxx/api-docs' },
       output: {

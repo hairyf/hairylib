@@ -5,34 +5,34 @@ import { SwaggerSourceProperties } from '../_types'
 describe('@hairy/swagger:parseProperties', () => {
   const context = createContext({ definitions: [] })
   const parseProperties = context.parseProperties
-  test('parse number', () => {
+  it('parse number', () => {
     expect(parseProperties({ type: 'integer' })).toEqual('number')
     expect(parseProperties({ type: 'long' })).toEqual('number')
     expect(parseProperties({ type: 'float' })).toEqual('number')
     expect(parseProperties({ type: 'double' })).toEqual('number')
   })
-  test('parse string', () => {
+  it('parse string', () => {
     expect(parseProperties({ type: 'byte' })).toEqual('string')
     expect(parseProperties({ type: 'binary' })).toEqual('string')
     expect(parseProperties({ type: 'date' })).toEqual('string')
     expect(parseProperties({ type: 'dateTime' })).toEqual('string')
     expect(parseProperties({ type: 'password' })).toEqual('string')
   })
-  test('parse boolean', () => {
+  it('parse boolean', () => {
     expect(parseProperties({ type: 'boolean' })).toEqual('boolean')
   })
-  test('parse object(arbitrary)', () => {
+  it('parse object(arbitrary)', () => {
     expect(parseProperties({ type: 'object' })).toEqual('Record<string, any>')
   })
-  test('parse array(union type)', () => {
+  it('parse array(union type)', () => {
     expect(parseProperties({ type: ['integer', 'byte', 'boolean', 'object'] })).toEqual(
       'number | string | boolean | Record<string, any>'
     )
   })
-  test('parse array(items)', () => {
+  it('parse array(items)', () => {
     expect(parseProperties({ type: 'array', items: { type: 'integer' } })).toEqual('number[]')
   })
-  test('parse object(detailed)', () => {
+  it('parse object(detailed)', () => {
     const context = createContext({ definitions: [] })
     const parseProperties = context.parseProperties
     const propertie: SwaggerSourceProperties = {
@@ -80,13 +80,13 @@ describe('@hairy/swagger:parseProperties', () => {
       ]
     })
   })
-  test('parse originalRef', () => {
+  it('parse originalRef', () => {
     expect(parseProperties({ originalRef: 'TestRrr' })).toEqual('TestRrr')
   })
-  test('parse $ref', () => {
+  it('parse $ref', () => {
     expect(parseProperties({ $ref: 'TestRrr/Def/ResAfc' })).toEqual('ResAfc')
   })
-  test('parse additionalProperties', () => {
+  it('parse additionalProperties', () => {
     expect(parseProperties({ additionalProperties: { type: 'integer' } })).toEqual('Record<string, number>')
     expect(
       parseProperties({

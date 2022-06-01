@@ -5,7 +5,7 @@ describe('@hairy/swagger:parseParameter', () => {
   const context = createContext({ definitions: [] })
   const parseParameter = context.parseParameter
 
-  test('in body', () => {
+  it('in body', () => {
     const extendsSchema = (type: SwaggerSourceParameter['in'], schema: SwaggerSourceParameter['schema']) => {
       return { in: type, schema, description: '', name: '', required: false }
     }
@@ -13,7 +13,7 @@ describe('@hairy/swagger:parseParameter', () => {
     expect(parseParameter(extendsSchema('body', { type: 'integer' }), { method: 'Post' })).toEqual('number')
   })
 
-  test('in query', () => {
+  it('in query', () => {
     expect(
       parseParameter(
         {
@@ -81,7 +81,7 @@ describe('@hairy/swagger:parseParameter', () => {
     })
   })
 
-  test('in fromData', () => {
+  it('in fromData', () => {
     expect(
       parseParameter(
         {
@@ -96,7 +96,7 @@ describe('@hairy/swagger:parseParameter', () => {
   })
 
   // TODO: fromData Field
-  test.skip('in fromData', () => {
+  it.skip('in fromData', () => {
     expect(
       parseParameter(
         {
