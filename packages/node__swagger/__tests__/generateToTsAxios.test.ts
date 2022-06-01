@@ -188,7 +188,7 @@ describe('@hairy/swagger:generate(TypescriptAxios)', () => {
         ' * @name basic function\n' +
         ' * @method GET\n' +
         ' */\n' +
-        'export function getXxxASearch(query: SwaggerType.XxxASearchPath, params: SwaggerType.XxxASearchParams, data: SwaggerType.SearchData, config?: AxiosRequestConfig) {\n' +
+        'export function getXxxASearch(query: SwaggerType.XxxASearchPath, data: SwaggerType.SearchData, params?: SwaggerType.XxxASearchParams, config?: AxiosRequestConfig) {\n' +
         '  type ResponseType = SwaggerType.Response<void>;\n' +
         '  const url = `/xxx/${query.a}/search`;\n' +
         '  return http.request<ResponseType>({ url, method: "GET", params, data, ...config });\n' +

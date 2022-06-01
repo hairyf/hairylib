@@ -44,6 +44,8 @@ export const spliceFunction = (api: SwaggerApi, functionArguments: string[] = []
   const apiName = camelCase(`${api.method}/${api.path}`)
   const response = getNameSpaceType('Response') + `<${getNameSpaceType(api.response, 'void')}>`
 
+  functionArguments.sort((v) => v.indexOf('?'))
+
   return `
   /**
    * @name ${api.description}
@@ -57,4 +59,8 @@ export const spliceFunction = (api: SwaggerApi, functionArguments: string[] = []
   `
 }
 
-export const isRequiredType = () => {}
+export const spliceArgument = (field: string, type: string, definitions: SwaggerDefinition[]) => {
+  const isRequired = definitions.find((item) => item.name === type)?.value.some((field) => field.required)
+  if (isRequired || field === 'path') return `${field}: ${getNameSpaceType(type)}`
+  return `${field}?: ${getNameSpaceType(type)}`
+}

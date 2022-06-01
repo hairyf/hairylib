@@ -1,8 +1,8 @@
 import { format } from 'prettier'
 import { pascalCase } from 'pascal-case'
-import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig } from '../_types'
-import { getNameSpaceType, TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName } from '../internal'
-import { spliceHeaderCode, spliceType, spliceTypeField, spliceFunction } from './utils'
+import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig, SwaggerApi, SwaggerDefinition } from '../_types'
+import { TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName } from '../internal'
+import { spliceHeaderCode, spliceType, spliceTypeField, spliceFunction, spliceArgument } from './utils'
 
 export interface SwaggerGenerateConfig {
   build: SwaggerBuildConfig
@@ -38,35 +38,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
   // axios 参数转换 path. body. config. 发起请求前转换数据，响应后转换数据，数据转换基于 axios 默认的数据类型转化之后
   for (const api of ast.apis) {
     // #region 参数映射组装
-    const apiArgumentsMap = {
-      // query  参数: /xxx/rrr?name=xxx
-      query: '',
-      // params 参数: /xxx/{name}/eee
-      params: '',
-      // body   参数: axios({ data: { xxx } })
-      body: '',
-      // config 参数: axios({ ...config })
-      config: 'config?: AxiosRequestConfig'
-    }
-    if (api.request.path.length > 0) {
-      const definition = unshiftDeDupDefinition(ast.definitions, {
-        name: varName(pascalCase(`${api.path}/path`)),
-        description: api.description,
-        value: api.request.path
-      })
-      apiArgumentsMap.query = `query: ${getNameSpaceType(definition.name)}`
-    }
-    if (api.request.query.length > 0) {
-      const { name } = unshiftDeDupDefinition(ast.definitions, {
-        name: varName(pascalCase(`${api.path}/params`)),
-        description: api.description,
-        value: api.request.query
-      })
-      apiArgumentsMap.params = `params: ${getNameSpaceType(name)}`
-    }
-    if (api.request.body) {
-      apiArgumentsMap.body = `data: ${getNameSpaceType(api.request.body)}`
-    }
+    const apiArgumentsMap = handleArguments(api, ast.definitions)
     const apiConfigArgumentsMap = {
       baseURL: build.baseURL ? 'baseURL' : '',
       url: 'url',
@@ -96,8 +68,41 @@ export const generate = (config: SwaggerGenerateConfig) => {
   }
 
   apiFileCode = format(apiFileCode, { printWidth: 800, parser: 'typescript' })
-
   typeFileCode = format(typeFileCode, { printWidth: 800, parser: 'typescript' })
 
   return { apiFileCode, typeFileCode }
+}
+
+function handleArguments(api: SwaggerApi, definitions: SwaggerDefinition[]) {
+  const apiArgumentsMap = {
+    // body   参数: axios({ data: { xxx } })
+    body: '',
+    // params 参数: /xxx/{name}/eee
+    params: '',
+    // query  参数: /xxx/rrr?name=xxx
+    query: '',
+    // config 参数: axios({ ...config })
+    config: 'config?: AxiosRequestConfig'
+  }
+  if (api.request.path.length > 0) {
+    const { name } = unshiftDeDupDefinition(definitions, {
+      name: varName(pascalCase(`${api.path}/path`)),
+      description: api.description,
+      value: api.request.path
+    })
+    apiArgumentsMap.query = spliceArgument('query', name, definitions)
+  }
+  if (api.request.query.length > 0) {
+    const { name } = unshiftDeDupDefinition(definitions, {
+      name: varName(pascalCase(`${api.path}/params`)),
+      description: api.description,
+      value: api.request.query
+    })
+    apiArgumentsMap.params = spliceArgument('params', name, definitions)
+  }
+  if (api.request.body) {
+    apiArgumentsMap.body = spliceArgument('data', api.request.body, definitions)
+  }
+
+  return apiArgumentsMap
 }
