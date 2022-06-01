@@ -14,11 +14,9 @@ export const formDataToObject = (formData: FormData) => {
  * 将 object 转换为 formData
  * @param object
  */
-export const objectToFormData = (object: Record<string, string | number>) => {
+export const objectToFormData = (object: Record<string, string | File>) => {
   const formData = new FormData()
-  for (const [key, value] of Object.entries(object)) {
-    formData.append(key, String(value))
-  }
+  for (const [key, value] of Object.entries(object)) formData.append(key, value)
   return formData
 }
 

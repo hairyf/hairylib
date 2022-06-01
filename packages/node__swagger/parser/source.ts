@@ -11,12 +11,7 @@ import {
 } from '../_types'
 import { createContext } from '../internal/context'
 
-export const parseSourceOpenapi = async function (config: SwaggerBuildConfig) {
-  const { data } = await axios(config.uri, {
-    method: 'get',
-    responseType: 'json',
-    ...config.requestConfig
-  })
+export const parseSourceTransform = (data: any) => {
   // #region 构造 swagger 相关描述性信息
   const astConfig: SwaggerAstConfig = {
     info: {
@@ -66,17 +61,19 @@ export const parseSourceOpenapi = async function (config: SwaggerBuildConfig) {
         method,
         tags: config.tags ?? [],
         description: config.summary ?? '',
-        request: { header: [], path: [], body: null, query: [] },
+        request: { header: [], path: [], body: null, query: [], fromData: [] },
         response: null
       }
       const parameters: SwaggerSourceParameter[] = config?.parameters || []
       for (const parameter of parameters) {
-        const target = fetchApi.request[parameter.in]
-        const parseValue = parseParameter(parameter, { method })
+        // TODO: fromData Field
+        const paramType = parameter.in === 'formData' ? 'body' : parameter.in
+        const target = fetchApi.request[paramType]
+        const parseValue = parseParameter(parameter, { method, path })
         if (Array.isArray(target)) {
           target.push(parseValue as any)
         } else {
-          fetchApi.request[parameter.in] = parseValue as any
+          fetchApi.request[paramType] = parseValue as any
         }
       }
       // 响应的数据。默认去 200 的 HTTP状态码对应的数据
@@ -86,6 +83,13 @@ export const parseSourceOpenapi = async function (config: SwaggerBuildConfig) {
     }
   }
   // #endregion
+}
 
-  return astConfig
+export const parseSourceOpenapiUri = async function (config: SwaggerBuildConfig) {
+  const { data } = await axios(config.uri, {
+    method: 'get',
+    responseType: 'json',
+    ...config.requestConfig
+  })
+  return parseSourceTransform(data)
 }

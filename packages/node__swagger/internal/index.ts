@@ -78,7 +78,8 @@ export function getNameSpaceType(type?: string | null, emptyType = 'void') {
     'Record<string, any>',
     'Record<string, string>',
     'any',
-    'boolean'
+    'boolean',
+    'FormData'
   ]
   return basicTyping.includes(type) ? type : `${TS_TYPE_NAME_SPACE}.${type}`
 }

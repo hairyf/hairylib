@@ -5,7 +5,7 @@ import ora from 'ora'
 import { generate } from './generator'
 import { parseOutput } from './parser/output'
 import { SwaggerBuildConfig, SwaggerDefineConfig } from './_types'
-import { parseSourceOpenapi } from './parser/source'
+import { parseSourceOpenapiUri } from './parser/source'
 import { DEFAULT_CONFIG } from './internal'
 
 export interface SwaggerWebClientGeneratorType {
@@ -28,7 +28,7 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
     // 解析 config  生成 output
     const output = parseOutput(config)
     // 解析 swagger 生成 swagger ast
-    const ast = await parseSourceOpenapi(config)
+    const ast = await parseSourceOpenapiUri(config)
 
     // 使用 buildConfig, output, transform 生成代码
     const { apiFileCode, typeFileCode } = generate({ build: config, output, ast })
@@ -55,7 +55,7 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
  */
 export const defineConfig = (config: SwaggerDefineConfig) => config
 
-export { parseSourceOpenapi, parseOutput }
+export { parseSourceOpenapiUri, parseOutput }
 
 export * from './_types'
 

@@ -1,9 +1,9 @@
 import { uselessString, varName } from '../internal'
 import { SwaggerField, SwaggerParserContext, SwaggerSourceParameter } from '../_types'
-import { parseProperties as _parseProperties } from './properties'
-
+import { useContext } from '../internal/context'
 export interface ParseParameterOptions {
   method: string
+  path?: string
 }
 
 /**
@@ -17,27 +17,31 @@ export function parseParameter(
 ): string | SwaggerField {
   parameter.name = uselessString(parameter.name)
   const parseOptions = {
-    name: [options.method, parameter.name || '', varName(parameter.in || '')]
+    name: [options.method, options.path || '', parameter.name || '', varName(parameter.in || '')]
   }
-  const parseProperties = _parseProperties.bind(this)
+  const { parseProperties } = useContext(this)
+
+  // TODO: formData Field
+  if (parameter.in === 'formData') {
+    return 'FormData'
+  }
 
   if (parameter.in === 'body') {
     return parseProperties(parameter, parseOptions)
   }
-  if (parameter.in === 'query') {
-    const isQueryArray = parameter.type === 'array'
-    const description = parameter.description ?? ''
-    const isQueryArrayDescription = `${description} ?${parameter.name}=a,b,c`
-    return {
-      name: parameter.name,
-      value: isQueryArray ? 'string' : parseProperties(parameter, parseOptions),
-      required: !!parameter.required,
-      description: isQueryArray ? isQueryArrayDescription : description
-    }
+
+  parameter.description = parameter.description ?? ''
+  parameter.value = parameter.value ?? ''
+
+  if (parameter.in === 'query' && parameter.type === 'array') {
+    parameter.value = 'string | string[]'
+    parameter.description += `?${parameter.name}=a,b,c | ?${parameter.name}=a&${parameter.name}=b`
   }
+
+  // header | path | query
   return {
     name: parameter.name,
-    value: parseProperties(parameter, parseOptions),
+    value: parameter.value || parseProperties(parameter, parseOptions),
     required: !!parameter.required,
     description: parameter.description ?? ''
   }

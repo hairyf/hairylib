@@ -1,5 +1,7 @@
+import { camelCase } from 'lodash'
+import { SwaggerDefinition, SwaggerField, SwaggerApi } from '../_types'
+import { getNameSpaceType } from '../internal'
 import { SwaggerGenerateConfig } from '.'
-import { SwaggerDefinition, SwaggerField } from '../_types'
 
 export const spliceHeaderCode = (config: SwaggerGenerateConfig) => {
   const { ast, build } = config
@@ -36,3 +38,23 @@ export const spliceType = (definition: SwaggerDefinition, contents: string[]) =>
   `
   return string_
 }
+
+export const spliceFunction = (api: SwaggerApi, functionArguments: string[] = [], configArguments: string[] = []) => {
+  const url = api.path.replace(/\${/g, '${query.')
+  const apiName = camelCase(`${api.method}/${api.path}`)
+  const response = getNameSpaceType('Response') + `<${getNameSpaceType(api.response, 'void')}>`
+
+  return `
+  /**
+   * @name ${api.description}
+   * @method ${api.method.toLocaleUpperCase()}
+   */
+  export function ${apiName}(${functionArguments}) {
+    type ResponseType = ${response}
+    const url = \`${url}\`
+    return http.request<ResponseType>({ ${configArguments} })
+  }
+  `
+}
+
+export const isRequiredType = () => {}

@@ -1,9 +1,8 @@
 import { format } from 'prettier'
-import { camelCase } from 'lodash'
 import { pascalCase } from 'pascal-case'
 import { SwaggerBuildConfig, SwaggerOutput, SwaggerAstConfig } from '../_types'
 import { getNameSpaceType, TS_TYPE_NAME_SPACE, unshiftDeDupDefinition, varName } from '../internal'
-import { spliceHeaderCode, spliceType, spliceTypeField } from './utils'
+import { spliceHeaderCode, spliceType, spliceTypeField, spliceFunction } from './utils'
 
 export interface SwaggerGenerateConfig {
   build: SwaggerBuildConfig
@@ -40,10 +39,10 @@ export const generate = (config: SwaggerGenerateConfig) => {
   for (const api of ast.apis) {
     // #region 参数映射组装
     const apiArgumentsMap = {
-      // params 参数: /xxx/{name}/eee
-      params: '',
       // query  参数: /xxx/rrr?name=xxx
       query: '',
+      // params 参数: /xxx/{name}/eee
+      params: '',
       // body   参数: axios({ data: { xxx } })
       body: '',
       // config 参数: axios({ ...config })
@@ -51,7 +50,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
     }
     if (api.request.path.length > 0) {
       const definition = unshiftDeDupDefinition(ast.definitions, {
-        name: varName(pascalCase(api.request.path.map((v) => v.name).join('/') + '/path')),
+        name: varName(pascalCase(`${api.path}/path`)),
         description: api.description,
         value: api.request.path
       })
@@ -59,7 +58,7 @@ export const generate = (config: SwaggerGenerateConfig) => {
     }
     if (api.request.query.length > 0) {
       const { name } = unshiftDeDupDefinition(ast.definitions, {
-        name: varName(pascalCase(`${api.path}/query`)),
+        name: varName(pascalCase(`${api.path}/params`)),
         description: api.description,
         value: api.request.query
       })
@@ -79,24 +78,11 @@ export const generate = (config: SwaggerGenerateConfig) => {
     // #endregion
 
     // #region 参数组合成代码, 添加一项 Api
-    const url = api.path.replace(/\${/g, '${query.')
-    const apiName = camelCase(`${api.method}/${api.path}`)
-    const response = getNameSpaceType('Response') + `<${getNameSpaceType(api.response, 'void')}>`
 
     const apiFunctionArguments = Object.values(apiArgumentsMap).filter(Boolean)
     const apiConfigArguments = Object.values(apiConfigArgumentsMap).filter(Boolean)
 
-    apiFileCode += `
-    /**
-     * @name ${api.description}
-     * @method ${api.method.toLocaleUpperCase()}
-     */
-    export function ${apiName}(${apiFunctionArguments}) {
-      type ResponseType = ${response}
-      const url = \`${url}\`
-      return http.request<ResponseType>({ ${apiConfigArguments} })
-    }
-    `
+    apiFileCode += spliceFunction(api, apiFunctionArguments, apiConfigArguments)
     // #endregion
   }
 

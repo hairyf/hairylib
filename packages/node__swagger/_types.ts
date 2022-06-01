@@ -69,6 +69,7 @@ export interface SwaggerApi {
     path: SwaggerField[]
     body: null | string
     query: SwaggerField[]
+    fromData: SwaggerField[]
   }
   response: null | string
 }
@@ -97,11 +98,14 @@ export interface SwaggerSourceProperties {
   description?: string
   schema?: SwaggerSourceProperties
   properties?: Record<string, SwaggerSourceProperties>
+  in?: SwaggerSourceParameter['in']
 }
 export interface SwaggerSourceParameter {
   name: string
-  in: 'body' | 'header' | 'query' | 'path'
+  in: 'body' | 'header' | 'query' | 'path' | 'formData'
   type?: string
+  // 用于函数内部使用
+  value?: string
   description?: string
   required?: boolean
   schema?: SwaggerSourceProperties

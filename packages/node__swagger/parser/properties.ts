@@ -2,6 +2,7 @@ import { isArray, isEmpty } from 'lodash'
 import { SwaggerDefinition, SwaggerField, SwaggerParserContext, SwaggerSourceProperties } from '../_types'
 import { varName, TYPE_MAPPING, unshiftDeDupDefinition } from '../internal'
 import { spliceTypeField } from '../generator/utils'
+import { useContext } from '../internal/context'
 
 export interface ParsePropertiesOptions {
   name?: string | string[]
@@ -24,7 +25,7 @@ export function parseProperties(
   propertie: SwaggerSourceProperties,
   options: ParsePropertiesOptions = {}
 ): string {
-  const _parseProperties = parseProperties.bind(this)
+  const { parseProperties: _parseProperties } = useContext(this)
 
   if (propertie.originalRef) {
     return varName(propertie.originalRef)
