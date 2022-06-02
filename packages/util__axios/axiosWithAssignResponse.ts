@@ -1,6 +1,5 @@
-import { AxiosStatic, AxiosInstance, AxiosResponse } from 'axios'
+import http, { AxiosStatic, AxiosInstance, AxiosResponse } from 'axios'
 import { isObject } from '@hairy/libcore'
-
 /**
  * 根据 expands 规则合并 response 和 data
  *

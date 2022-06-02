@@ -1,9 +1,10 @@
-type SchemaNumberType = 'integer' | 'long' | 'float' | 'byte' | 'TypesLong' | 'TypesString'
+type SchemaNumberType = 'integer' | 'long' | 'float' | 'byte' | 'TypesLong' | 'TypesString' | 'string'
 type SchemaStringType = 'byte' | 'binary' | 'date' | 'dateTime' | 'password'
 type SchemaBooleanType = 'boolean'
 type SchemaObjectType = 'object'
+type SchemaArrayType = 'array'
 
-type SchemaType = SchemaNumberType | SchemaStringType | SchemaBooleanType | SchemaObjectType
+type SchemaType = SchemaNumberType | SchemaStringType | SchemaBooleanType | SchemaObjectType | SchemaArrayType
 
 export interface Schema {
   type?: SchemaType | SchemaType[]

@@ -1,10 +1,9 @@
-import { Properties } from './schema'
+import { Properties, Schema } from './schema'
 
 export interface Definition {
-  type: string
+  type: Schema['type']
   properties: Properties
   required: string[]
-  xml: { name: string; wrapped?: boolean }
 }
 
 export interface Definitions {
