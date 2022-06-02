@@ -2,6 +2,8 @@ export type AtWillObject = { [key: string]: any }
 
 export type AtWillNumber = string | number
 
+export type StringObject = { [key: string]: string }
+
 export type Key = string | number | symbol
 
 export type DeepReadonly<T> = {
