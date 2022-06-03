@@ -19,7 +19,7 @@ export interface OpenAPIWebClientGeneratorType {
 
 export const openAPIWebClientGenerator: OpenAPIWebClientGeneratorType = async (config) => {
   const configs: OpenAPIBuildConfiguration[] = Array.isArray(config) ? config : [config]
-  const spinner = ora('Generate Interface ...\n').start()
+  const spinner = ora('Generate OpenAPI File...\n').start()
 
   const process = configs.map(
     pPipe(
