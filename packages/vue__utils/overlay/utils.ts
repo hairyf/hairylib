@@ -8,7 +8,7 @@ import { transformImperativeOverlay, ImperativeOverlay } from './transform'
  * @param options imperativeOverlay 的配置
  * @returns
  */
-export const useImperativeOverlay = <P = any, R = any>(component: Component, props: P) => {
+export function useImperativeOverlay<P = any, R = any>(component: Component, props: P) {
   return transformImperativeOverlay<P, R>(component)(props as any)
 }
 

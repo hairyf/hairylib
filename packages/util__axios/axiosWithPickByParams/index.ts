@@ -38,7 +38,7 @@ export const axiosWithPickByParams = (
     if (formData && isFormData(config.data)) {
       const transformObject = formDataToObject(config.data)
       const pickByObject = pickByParams(transformObject, filters)
-      config.data = objectToFormData(<Record<string, string>>pickByObject)
+      config.data = objectToFormData(pickByObject as Record<string, string>)
     }
     return config
   })

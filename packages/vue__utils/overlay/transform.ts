@@ -11,7 +11,7 @@ export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>
  * @param options 弹出层配置
  * @returns 命令式弹出层
  */
-export const transformImperativeOverlay = <P = any, R = void>(component: Component): ImperativeOverlay<P, R> => {
+export function transformImperativeOverlay<P = any, R = void>(component: Component): ImperativeOverlay<P, R> {
   const executor = (props: any, _resolve: Function, _reject: Function) => {
     const Provider = defineComponent({
       setup: () => {
@@ -50,4 +50,6 @@ export const transformImperativeOverlay = <P = any, R = void>(component: Compone
  * @todo 未实现
  * @param component
  */
-export const transformDeclarativeOverlay = <P = any>(component: P) => component
+export function transformDeclarativeOverlay<P = any>(component: P) {
+  return component
+}

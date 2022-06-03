@@ -13,7 +13,7 @@ import { defineComponent, inject, InjectionKey, provide, h, Fragment } from 'vue
  * @param callback 控制器注入的内容
  * @returns
  */
-export const createContext = <T>(key: string, callback: () => T) => {
+export function createContext<T>(key: string, callback: () => T) {
   const _key: InjectionKey<T> = Symbol(key)
 
   const _provide = () => {

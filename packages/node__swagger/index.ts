@@ -1,48 +1,38 @@
-import fs from 'fs-extra'
-import { cloneDeep, merge } from 'lodash'
 
 import ora from 'ora'
-import { generate } from './generator'
-import { parseOutput } from './parser/output'
-import { SwaggerBuildConfig, SwaggerDefineConfig } from './_types'
-import { parseSourceOpenapiUri } from './parser/source'
-import { DEFAULT_CONFIG } from './internal'
+import pPipe from 'p-pipe';
+import {
+  OpenAPIBuildConfiguration,
+  OpenAPIDefineConfig,
+  parserTsConfig,
+  JSONParser,
+  dataSource,
+  tsCompiler,
+  generate,
+  dest,
+} from './helper'
 
-export interface SwaggerWebClientGeneratorType {
-  (config: SwaggerBuildConfig | SwaggerBuildConfig[]): Promise<void>
-  default: SwaggerBuildConfig
+
+export interface OpenAPIWebClientGeneratorType {
+  (config: OpenAPIBuildConfiguration | OpenAPIBuildConfiguration[]): Promise<void>
 }
 
-/**
- * swagger Web 客户端代码生成器
- * @description http 模块, 需类似 axios 结构调用
- * @param config
- */
-export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (config) => {
-  const writeOptions = { encoding: 'utf8' as const, flag: 'w' as const }
+export const openAPIWebClientGenerator: OpenAPIWebClientGeneratorType = async (config) => {
+  const configs: OpenAPIBuildConfiguration[] = Array.isArray(config) ? config : [config]
   const spinner = ora('Generate Interface ...\n').start()
-  const configs: SwaggerBuildConfig[] = Array.isArray(config) ? config : [config]
-  const process = configs.map(async (iterator) => {
-    // 合并 default 构建 config
-    const config = merge(cloneDeep(swaggerWebClientGenerator.default), iterator)
-    // 解析 config  生成 output
-    const output = parseOutput(config)
-    // 解析 swagger 生成 swagger ast
-    const ast = await parseSourceOpenapiUri(config)
 
-    // 使用 buildConfig, output, transform 生成代码
-    const { apiFileCode, typeFileCode } = generate({ build: config, output, ast })
-
-    // 确保 api 与 type 路径存在, 避免影响后续写入
-    await Promise.all([fs.ensureDir(output.api.root), fs.ensureDir(output.type.root)])
-    // 写入 api 与 type 文件
-    await Promise.all([
-      fs.writeFile(output.api.file, apiFileCode, writeOptions),
-      fs.writeFile(output.type.file, typeFileCode, writeOptions)
-    ])
-  })
-
+  const process = configs.map(
+    pPipe(
+      (config) => parserTsConfig(config),
+      (configRead) => dataSource(configRead),
+      (configRead) => JSONParser(configRead),
+      (configRead) => tsCompiler(configRead),
+      (configRead) => generate(configRead),
+      (configRead) => dest(configRead),
+    )
+  )
   await Promise.all(process)
+
   spinner.succeed()
   spinner.clear()
 }
@@ -53,10 +43,6 @@ export const swaggerWebClientGenerator: SwaggerWebClientGeneratorType = async (c
  * @param config
  * @returns
  */
-export const defineConfig = (config: SwaggerDefineConfig) => config
+export const defineConfig = (config: OpenAPIDefineConfig) => config
 
-export { parseSourceOpenapiUri, parseOutput }
-
-export * from './_types'
-
-swaggerWebClientGenerator.default = DEFAULT_CONFIG
+export * from './config'
