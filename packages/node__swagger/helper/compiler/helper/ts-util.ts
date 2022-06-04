@@ -103,14 +103,20 @@ export function markRequestCall(name: string, responseType: string, filed: Liter
       ]
     ))
 }
-export function markImportDeclaration(name: string, value: string) {
+export function markImportDeclaration(name: string, value: string, nameInputs?: string[]) {
   return factory.createImportDeclaration(
     undefined,
     undefined,
     factory.createImportClause(
       false,
       factory.createIdentifier(name),
-      undefined
+      nameInputs ? factory.createNamedImports(
+        nameInputs.map(item => factory.createImportSpecifier(
+          false,
+          undefined,
+          factory.createIdentifier(item)
+        ))
+      ) : undefined
     ),
     factory.createStringLiteral(value),
     undefined

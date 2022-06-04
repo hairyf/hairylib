@@ -1,6 +1,7 @@
 
 import axios, { AxiosRequestConfig } from 'axios'
 import { OpenAPIBuildConfigurationRead } from "../typings/generator";
+import example from './internal/example'
 
 interface DataSourceOptions {
   uri?: string
@@ -17,7 +18,7 @@ const getSource = async (options: DataSourceOptions | string) => {
     })
     return data
   }
-  if (options.test) return (await import('./internal/example')).default
+  if (options.test) return example
   if (options.json) return options.json
   if (options.uri) {
     const { data } = await axios(options.uri, {

@@ -4,13 +4,13 @@ import { ParserRequestOptions, StatementFiled, LiteralExpressionFiled } from '..
 /**
  * 处理传入请求参数
  * @param httpImport 调用函数名称
- * @param httpConfig 添加 options / parameters
+ * @param typeConfig 添加 options / parameters
  * @param functions 添加 options / parameters
  * @param baseURL 添加 options
  */
 export function handleRequestOptions({
   baseURL,
-  httpConfig,
+  typeConfig,
   functions,
   httpImport,
 }: ParserRequestOptions) {
@@ -21,16 +21,15 @@ export function handleRequestOptions({
   }
   if (baseURL) baseURL.name = baseURL.name ?? 'baseURL'
   if (baseURL && baseURL.value) commons.before.unshift(baseURL.name!)
-  if (httpConfig) {
-    httpConfig.name = httpConfig.name ?? 'Config'
-    httpConfig.parameter = httpConfig.parameter ?? 'config'
-    httpConfig.type = httpConfig.type ?? 'any'
+  if (typeConfig) {
+    typeConfig.name = typeConfig.name ?? 'Config'
+    typeConfig.parameter = typeConfig.parameter ?? 'config'
     commons.parameters.push({
-      name: httpConfig.parameter,
-      type: httpConfig.name,
+      name: typeConfig.parameter,
+      type: typeConfig.name,
       required: false
     })
-    commons.after.push(['...', httpConfig.parameter])
+    commons.after.push(['...', typeConfig.parameter])
   }
   functions.forEach(item => {
     (item as any).httpImport = httpImport

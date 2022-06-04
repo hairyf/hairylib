@@ -16,6 +16,7 @@ export interface ParserRequestOptions {
   httpImport: {
     name: string
     value: string
+    imports?: string[]
   }
   typeImport?: {
     name: string
@@ -31,7 +32,7 @@ export interface ParserRequestOptions {
   /**
    * http config
    */
-  httpConfig?: {
+  typeConfig?: {
     name?: string
     parameter?: string
     type?: string

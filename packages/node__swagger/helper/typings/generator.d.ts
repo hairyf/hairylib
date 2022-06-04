@@ -22,7 +22,7 @@ export interface OpenAPIBuildConfiguration {
    */
   output?: {
     /** @default 'src/api/index.ts' */
-    api?: string
+    main?: string
     /** @default 'src/api/index.type.ts' */
     type?: string | boolean
     /** Node.js 进程的当前工作目录。 */
@@ -30,7 +30,7 @@ export interface OpenAPIBuildConfiguration {
   } | string
   /** @description 生成文件的导入类型 */
   import?: {
-    /** @description 导入 axios 请求函数的别名地址 @default axios; */
+    /** @description 导入请求函数的默认别名地址 @default axios; */
     http?: string
     /** @description 导入 types 生成类型的别名地址 @default output.type; */
     type?: string
@@ -50,7 +50,7 @@ export interface OpenAPIBuildConfiguration {
 export interface OpenAPIBuildConfigurationRead {
   config: OpenAPIBuildConfiguration
   baseURL?: ParserRequestOptions['baseURL']
-  httpConfig?: ParserRequestOptions['httpConfig']
+  typeConfig?: ParserRequestOptions['typeConfig']
   httpImport?: ParserRequestOptions['httpImport']
   typeImport?: ParserRequestOptions['typeImport']
   outputs?: BuildOutput[]
@@ -59,6 +59,7 @@ export interface OpenAPIBuildConfigurationRead {
   source?: any
 }
 
-export interface OpenAPIDefineConfig extends Omit<OpenAPIBuildConfiguration, 'uri'> {
-  servers?: OpenAPIBuildConfiguration[]
+export interface OpenAPIBuildConfigurationServers extends Omit<OpenAPIBuildConfiguration, 'input'> {
+  server: OpenAPIBuildConfiguration | OpenAPIBuildConfiguration[]
 }
+export type OpenAPIDefineConfig = OpenAPIBuildConfigurationServers | OpenAPIBuildConfiguration

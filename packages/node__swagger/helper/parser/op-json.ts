@@ -56,11 +56,12 @@ class OpenAPI_JSONParserFactory {
     const request: ParserRequestOptions = {
       jsonDocs,
       baseURL: options.baseURL,
-      httpConfig: options.httpConfig,
+      typeConfig: options.typeConfig,
       typeImport: options.typeImport,
       httpImport: {
         name: options.httpImport?.name ?? 'http',
-        value: options.httpImport?.value ?? 'axios'
+        value: options.httpImport?.value ?? 'axios',
+        imports: ['AxiosRequestConfig']
       },
       functions: functions,
     }
@@ -112,7 +113,7 @@ class OpenAPI_JSONParserFactory {
   private transformDefinitions() {
     forIn(this.$source.definitions, (definition, name) => {
       function typePropMap(item: OpenAPITypes.Schema, name: string) {
-        item.required = definition.required.some(v => v === name)
+        item.required = definition?.required?.some(v => v === name)
         if (item.description) item.description = `@description ${item.description}`
         return {
           name, type: helperPropertie(item),

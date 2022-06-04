@@ -78,10 +78,9 @@ export const loadConfigFromFile = async <T = any>(
   name: string,
   root = process.cwd()
 ): Promise<{ path?: string; config?: T }> => {
-  if (path.extname(name)) {
+  if (['js', 'mjs', 'ts', 'cjs', 'json'].includes(path.extname(name))) {
     name = name.replace(path.extname(name), '')
   }
-
   let resolvedPath = ''
   let isES = false
   let isTS = false
@@ -89,7 +88,7 @@ export const loadConfigFromFile = async <T = any>(
   let config
 
   for (const ext of ['js', 'mjs', 'ts', 'cjs', 'json', '']) {
-    const configFile = path.resolve(root, ext ? `${name}.${ext}` : name)
+    const configFile = path.join(root, ext ? `${name}.${ext}` : name)
     if (!fs.existsSync(configFile)) continue
     if (ext === 'ts') isTS = true
     if (ext === 'json') isJSON = true

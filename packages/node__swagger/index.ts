@@ -1,6 +1,7 @@
 
 import ora from 'ora'
 import pPipe from 'p-pipe';
+import { parser } from '../conf__eslint-config';
 import {
   OpenAPIBuildConfiguration,
   OpenAPIDefineConfig,

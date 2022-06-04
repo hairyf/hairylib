@@ -8,21 +8,52 @@ import path from 'path'
 export const parserTsConfig = (config: OpenAPIBuildConfiguration): OpenAPIBuildConfigurationRead => {
   config = merge(cloneDeep(defaultConfig), config)
   const outputs = helperOutput(config)
+  const typings = outputs.find(i => i.type === 'typings')
   const options: OpenAPIBuildConfigurationRead = {
     baseURL: { value: config.baseURL || '' },
-    httpConfig: {
-      name: 'Config',
+    typeConfig: {
+      /**
+       * 函数参数名称 (config)
+       */
       parameter: 'config',
-      type: `import('axios').AxiosRequestConfig`
+      /**
+       * 类型名称 (config: AxiosRequestConfig)
+       */
+      name: 'AxiosRequestConfig'
     },
     typeImport: {
+      /**
+       * 解析的类型导入名称 import * as OpenAPITypes
+       */
       name: 'OpenAPITypes',
-      value: outputs.find(i => i.type === 'typings')?.import || ''
+      /**
+       * 解析的类型导入地址 import * as OpenAPITypes "value"
+       */
+      value: typings?.import || ''
     },
     httpImport: {
       name: 'http',
-      value: 'axios'
+      value: 'axios',
+      imports: [ 'AxiosRequestConfig' ]
     },
+    // TODO: 通用的导入 import，会在 main 中定义
+    // imports: [
+    //   {
+    //     name: 'http',
+    //     value: 'axios',
+    //     imports: [ 'AxiosRequestConfig' ]
+    //   },
+    //   {
+    //     name: 'OpenAPITypes',
+    //     value: typings?.import || ''
+    //   }
+    // ],
+    // TODO: 通用的值定义，会在 main 中定义
+    // vars: [],
+    // TODO: 通用的类型定义，会在 main 中定义
+    // types: [],
+    // TODO: 通用的函数 parameter，会给每个函数都添加上
+    // parameter: [],
     outputs,
     config
   }
@@ -32,14 +63,14 @@ export const parserTsConfig = (config: OpenAPIBuildConfiguration): OpenAPIBuildC
 const helperOutput = (config: OpenAPIBuildConfiguration): BuildOutput[] => {
   const output = (function () {
     if (typeof config.output === 'string')
-      return { api: config.output, cwd: '', type: '' }
+      return { main: config.output, cwd: '', type: '' }
     else {
       return config.output
     }
   })()
 
   const basePath = output?.cwd || process.cwd()
-  const api = output?.api || 'src/api/index.ts'
+  const api = output?.main || 'src/api/index.ts'
   let type = ''
   if (output?.type === true || typeof output?.type === 'undefined')
     type = api.replace(/\.ts|\.js/g, '.type.ts')

@@ -11,12 +11,12 @@ export function createTSRequestDeclaration(o: ParserRequestOptions, t?: ParserTy
   handleRequestOptions(o)
 
   const imports = [
-    markImportDeclaration(o.httpImport.name, o.httpImport.value),
+    markImportDeclaration(o.httpImport.name, o.httpImport.value, o.httpImport.imports),
     o.typeImport && o.typeImport.value && markNamespaceImportDeclaration(o.typeImport.name, o.typeImport.value)
   ]
 
   const vars = [
-    o.httpConfig && markTypeAliasDeclaration(o.httpConfig.name!, o.httpConfig.type!),
+    o.typeConfig && o.typeConfig.type && markTypeAliasDeclaration(o.typeConfig.name!, o.typeConfig.type!),
     o.baseURL && o.baseURL.value && markVariableDeclarationConst(o.baseURL.name!, o.baseURL.value),
   ]
 
