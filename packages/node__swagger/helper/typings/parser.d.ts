@@ -4,7 +4,6 @@ import { InterfaceOptions } from './interface'
 export * from  './filed'
 export * from  './interface'
 export * from  './method'
-
 export interface ParserRequestOptions {
   /**
    * 文件注释

@@ -1,5 +1,4 @@
 ---
-title: '@hairy/cli'
 category: 'Engineering'
 ---
 
@@ -66,6 +65,7 @@ export default defineConfig({
     { uri: 'http://...api-docs' }
   ]
 })
+
 ```
 
 ```sh

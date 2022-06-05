@@ -8,7 +8,11 @@
     "clean": "rimraf dist types packages/*/dist",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "update": "esno scripts/update.ts",
+    "docs:dev": "vitepress dev packages",
+    "docs:build": "vitepress build packages",
+    "docs:serve": "vitepress serve packages"
   },
   "author": "TuiMao233",
   "license": "ISC",
@@ -22,13 +26,24 @@
   "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "devDependencies": {
     "@changesets/cli": "^2.22.0",
+    "@types/fs-extra": "^9.0.12",
+    "fs-extra": "^10.1.0",
     "turbo": "^1.2.9"
   },
   "dependencies": {
+    "@docsearch/js": "^3.1.0",
+    "@types/react": "^18.0.9",
     "esbuild": "^0.14.39",
     "esbuild-register": "^3.3.2",
     "eslint": "^8.15.0",
+    "fast-glob": "^3.2.7",
+    "gray-matter": "^4.0.3",
+    "pascal-case": "^3.1.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "rimraf": "^3.0.2",
+    "simple-git": "^3.7.1",
+    "vitepress": "1.0.0-alpha.1",
     "vitest": "^0.13.0"
   }
 }

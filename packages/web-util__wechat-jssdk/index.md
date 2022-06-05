@@ -1,9 +1,8 @@
 ---
-title: '@hairy/wechat-jssdk'
-category: 'Other'
+category: 'Browser Utils'
 ---
 
-### @hairy/wechat-jssdk
+# Wechat Jssdk
 
 WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 api 进行了 promise 处理，并且可直接调用，不需要执行 wx.ready 等待 jssdk 授权完毕。
 

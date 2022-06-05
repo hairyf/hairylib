@@ -1,0 +1,108 @@
+$Comment
+
+$Imports(name, value, imports)
+
+$Vars(varType, value)
+
+$Function(
+  $Parameters,
+  $RequestUrlVar,
+  $ReturnCallMode(
+    $CallBody(string),
+    $Options($All | $Others),
+    $Schema($Array)
+  )
+)
+
+$Schema($Array)
+>
+$Schema(
+  $CallBody,
+  $RequestUrl,
+  $Options($Others)
+)
+
+$All
+>
+$All($Url, $Config)
+
+{
+  Comments: [
+    ...
+  ],
+  Imports: [
+    ...
+  ],
+  Functions: [
+    {
+      Parameters: [
+        {
+          name: string,
+          value: string,
+          requited: bool
+        }
+      ],
+      RequestUrlVar: {
+        name: string,
+        value: urlString
+      },
+      ReturnCallMode: {
+        CallBody: string,
+        Url,
+        Options($Config | $Others)
+      }
+    }
+  ]
+}
+
+{
+  Comments: [
+    {
+      type: string,
+      value: string[] | string
+    }
+  ],
+  Imports: [
+    {
+      name: string,
+      value: string,
+      imports: string[]
+    }
+  ],
+  Vars: [
+    {
+      name: string,
+      value: string,
+      type?: string
+    }
+  ],
+  Types: [
+    {
+      name: string,
+      value: string,
+      type?: string
+    }
+  ],
+  Functions: [
+    {
+      Parameters: [
+        {
+          name: string,
+          type: string,
+          requited: bool
+        }
+      ],
+      RequestUrlVar: {
+        name: string,
+        value: UrlString
+      },
+      ReturnCallMode: {
+        CallBody: string,
+        CallOptions: [
+          Url,
+          Options()
+        ]
+      }
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 
 import ora from 'ora'
 import pPipe from 'p-pipe';
-import { parser } from '../conf__eslint-config';
 import {
   OpenAPIBuildConfiguration,
   OpenAPIDefineConfig,
@@ -24,11 +23,17 @@ export const openAPIWebClientGenerator: OpenAPIWebClientGeneratorType = async (c
 
   const process = configs.map(
     pPipe(
+      // 外模式 - 配置转换
       (config) => parserTsConfig(config),
-      (configRead) => dataSource(configRead),
+      // 外模式 - 数据原
+      (configRead) => dataSource  (configRead),
+      // 外模式 - 转模式
       (configRead) => JSONParser(configRead),
+      // 模式   - 转内模式
       (configRead) => tsCompiler(configRead),
+      // 内模式 - 转视图
       (configRead) => generate(configRead),
+      // 视图   - 输出文件
       (configRead) => dest(configRead),
     )
   )
