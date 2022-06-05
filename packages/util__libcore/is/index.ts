@@ -1,5 +1,3 @@
-import _isObject from 'lodash/isObject'
-
 declare const WXEnvironment: any
 
 export const isBrowser = typeof window !== 'undefined'
@@ -29,10 +27,3 @@ export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = typeof UA == 'string' && UA.match(/firefox\/(\d+)/)
 
 export const isMobile = isBrowser && navigator.userAgent.toLowerCase().includes('mobile')
-
-export const isFormData = (value: any): value is FormData => isObject(value) && isBrowser && value instanceof FormData
-
-export const isWindow = (value: any): value is Window =>
-  typeof window !== 'undefined' && toString.call(value) === '[object Window]'
-
-export const isObject = (value: any): value is object => _isObject(value) && !Array.isArray(value)

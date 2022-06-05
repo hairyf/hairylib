@@ -8,7 +8,7 @@
  */
 
 import axios from 'axios'
-import { axiosWithExtraParams } from '../axiosWithExtraParams'
+import { axiosWithExtraParams } from '.'
 
 axios.defaults['baseURL'] = 'https://jsonplaceholder.typicode.com'
 

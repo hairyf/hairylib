@@ -2,7 +2,7 @@
 import cac from 'cac'
 import { actionBuilder } from '../commands/compile'
 import { actionCreateTemplate } from '../commands/create'
-import { actionSwagger } from '../commands/swagger'
+import { actionApiGenerator } from '../commands/api-generator'
 import { version } from '../config'
 
 const cli = cac('hairy')
@@ -40,7 +40,7 @@ cli
   )
   .action((options) => actionBuilder({ ...options, mode: 'production' }))
 
-cli.command('swagger', 'Generate TypeScript files from swagger service').action(actionSwagger)
+cli.command('api-generator', 'Generate TypeScript files from open-api service').action(actionApiGenerator)
 
 cli.help()
 cli.version(version)

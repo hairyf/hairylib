@@ -1,7 +1,8 @@
 import forIn from 'lodash/forIn'
-import isObject from 'lodash/isObject'
+import _isObject from 'lodash/isObject'
 import isPlainObject from 'lodash/isPlainObject'
 import pickBy from 'lodash/pickBy'
+import { isBrowser } from '../is'
 
 /**
  * 将 formData 转换为 object
@@ -28,7 +29,7 @@ export const objectToFormData = (object: Record<string, string | File>) => {
 export const pickByParams = <T extends object>(params: T, filter: any[], deep = false) => {
   deep &&
     forIn(params, (value, key) => {
-      if (isObject(value))
+      if (_isObject(value))
         // @ts-ignore
         params[key] = pickByParams(params[key], filter, deep)
     })
@@ -58,3 +59,10 @@ export const objectFlat = (object: Record<string, any>, deep = 1) => {
   }
   return flatDeep(object, deep)
 }
+
+export const isFormData = (value: any): value is FormData => isObject(value) && isBrowser && value instanceof FormData
+
+export const isWindow = (value: any): value is Window =>
+  typeof window !== 'undefined' && toString.call(value) === '[object Window]'
+
+export const isObject = (value: any): value is object => _isObject(value) && !Array.isArray(value)

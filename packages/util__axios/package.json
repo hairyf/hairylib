@@ -1,5 +1,5 @@
 {
-  "name": "@hairy/axios",
+  "name": "@hairy/axios-bearer",
   "version": "0.0.0",
   "main": "index.ts",
   "publishConfig": {

@@ -1,4 +1,4 @@
-interface PrefixZeroOptions {
+export interface PrefixZeroOptions {
   type?: 'positive' | 'reverse'
 }
 /**

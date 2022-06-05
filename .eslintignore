@@ -1,5 +1,4 @@
 dist
 output
 v2/**
-node__swagger
 *.md

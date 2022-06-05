@@ -24,6 +24,7 @@
   "dependencies": {
     "@extra-array/arange": "^1.1.7",
     "delay": "^5.0.0",
+    "p-pipe": "^4.0.0",
     "lodash": "^4",
     "pipe-and-compose-types": "^0.0.13"
   },

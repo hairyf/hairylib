@@ -1,15 +1,117 @@
 {
 	"categories": [
+		"Node Utils",
+		"Axios Intercept",
+		"Utils",
 		"Project Configuration",
 		"Browser Utils",
 		"Command-Line Interface"
 	],
 	"documents": [
 		{
+			"name": "Api Generator",
+			"package": "@hairy/api-generator",
+			"function": "index.ts",
+			"lastUpdated": 0,
+			"docs": "node__api-generator/",
+			"category": "Node Utils",
+			"description": "根据 OpenAPI-V2(swagger) 数据源（url/json/test）解析 AST，生成 Api 与 Types，暂不支持 JavaScript 生成"
+		},
+		{
+			"name": "AtomCss Utils",
+			"package": "@hairy/atom.css-utils",
+			"function": "index.ts",
+			"lastUpdated": 1654416256000,
+			"docs": "util__atom-css/",
+			"category": "Node Utils",
+			"description": "常用的 atom-css 工具，可以用于（tailwindcss / windcss...）由于 [Value Auto-infer](https://windicss.org/features/value-auto-infer.html) 的推进，该库可能不在继续维护"
+		},
+		{
+			"name": "axiosWithAssignResponse",
+			"package": "@hairy/axios-bearer",
+			"function": "axiosWithAssignResponse/index.ts",
+			"lastUpdated": 0,
+			"docs": "util__axios/axiosWithAssignResponse/",
+			"category": "Axios Intercept",
+			"description": "根据 expands 规则合并 response 和 data，由于执行顺序规则，axiosWithAssignResponse 应该最先被调用"
+		},
+		{
+			"name": "axiosWithCustomError",
+			"package": "@hairy/axios-bearer",
+			"function": "axiosWithCustomError/index.ts",
+			"lastUpdated": 0,
+			"docs": "util__axios/axiosWithCustomError/",
+			"category": "Axios Intercept",
+			"description": "自定义响应错误，抛出请求数据错误"
+		},
+		{
+			"name": "axiosWithErrorHandler",
+			"package": "@hairy/axios-bearer",
+			"function": "axiosWithErrorHandler/index.ts",
+			"lastUpdated": 0,
+			"docs": "util__axios/axiosWithErrorHandler/",
+			"category": "Axios Intercept",
+			"description": "自定义响应错误处理，所有错误都会从此经过"
+		},
+		{
+			"name": "axiosWithExtraParams",
+			"package": "@hairy/axios-bearer",
+			"function": "axiosWithExtraParams/index.ts",
+			"lastUpdated": 1654093871000,
+			"docs": "util__axios/axiosWithExtraParams/",
+			"category": "Axios Intercept",
+			"description": "请求时携带一些参数，支持 data、params、headers"
+		},
+		{
+			"name": "axiosWithLoadingHandler",
+			"package": "@hairy/axios-bearer",
+			"function": "axiosWithLoadingHandler/index.ts",
+			"lastUpdated": 1654093871000,
+			"docs": "util__axios/axiosWithLoadingHandler/",
+			"category": "Axios Intercept",
+			"description": "请求 loading 加载器，可自定义加载字段"
+		},
+		{
+			"name": "axiosWithPickByParams",
+			"package": "@hairy/axios-bearer",
+			"function": "axiosWithPickByParams/index.ts",
+			"lastUpdated": 1654245021000,
+			"docs": "util__axios/axiosWithPickByParams/",
+			"category": "Axios Intercept",
+			"description": "过滤请求中不必要的参数"
+		},
+		{
+			"name": "Color Palette",
+			"package": "@hairy/palette",
+			"function": "index.ts",
+			"lastUpdated": 1654098020000,
+			"docs": "util__color/",
+			"category": "Utils",
+			"description": "颜色的处理、转换、计算"
+		},
+		{
+			"name": "Element size handling",
+			"package": "@hairy/libcore",
+			"function": "size/index.ts",
+			"lastUpdated": 1654098020000,
+			"docs": "util__libcore/size/",
+			"category": "Utils",
+			"description": "分析解析尺寸与大小"
+		},
+		{
+			"name": "Environmental Judgment",
+			"package": "@hairy/libcore",
+			"function": "is/index.ts",
+			"lastUpdated": 1654098020000,
+			"docs": "util__libcore/is/",
+			"category": "Utils",
+			"description": "客户机环境的判断"
+		},
+		{
 			"name": "Eslint Config",
 			"package": "@hairy/eslint-config",
 			"function": "index.ts",
-			"lastUpdated": 1653128706000,
+			"lastUpdated": 1654416256000,
 			"docs": "conf__eslint-config/",
 			"category": "Project Configuration",
 			"description": "- 单引号，没有半引号"
@@ -18,7 +120,7 @@
 			"name": "Eslint Config Basic",
 			"package": "@hairy/eslint-basic",
 			"function": "index.ts",
-			"lastUpdated": 1654413412000,
+			"lastUpdated": 1654416256000,
 			"docs": "conf__eslint-basic/",
 			"category": "Project Configuration",
 			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
@@ -26,7 +128,7 @@
 		{
 			"name": "Eslint Config React",
 			"function": "index.ts",
-			"lastUpdated": 1654413412000,
+			"lastUpdated": 1654416256000,
 			"docs": "conf__eslint-react/",
 			"category": "Project Configuration",
 			"description": "Eslint 的 react 配置，包含内容：react"
@@ -35,7 +137,7 @@
 			"name": "Eslint Config Typescript",
 			"package": "@hairy/eslint-typescript",
 			"function": "index.ts",
-			"lastUpdated": 1653128706000,
+			"lastUpdated": 1654416256000,
 			"docs": "conf__eslint-typescript/",
 			"category": "Project Configuration",
 			"description": "Eslint 的 typescript 配置，包含内容：typescript"
@@ -44,7 +146,7 @@
 			"name": "Eslint Config Vue2/3",
 			"package": "@hairy/eslint-vue",
 			"function": "index.ts",
-			"lastUpdated": 1653128706000,
+			"lastUpdated": 1654416256000,
 			"docs": "conf__eslint-vue/",
 			"category": "Project Configuration",
 			"description": "Eslint 的 vue 配置，包含内容：vue2-ts / vue2-js / vue3-ts / vue3-js"
@@ -61,10 +163,10 @@
 		{
 			"name": "Hairy Cli",
 			"package": "@hairy/cli",
-			"lastUpdated": 1654413412000,
+			"lastUpdated": 1654416256000,
 			"docs": "node__cli/",
 			"category": "Command-Line Interface",
-			"description": "提供创建模板，编译代码，swagger 功能等。"
+			"description": "提供创建模板，编译代码，生成 OpenAPI-v2（swagger） 接口功能等。"
 		},
 		{
 			"name": "Miscellaneous",
@@ -76,10 +178,64 @@
 			"description": "关于浏览器的工具集"
 		},
 		{
+			"name": "Share Node Utils",
+			"package": "@hairy/share-node",
+			"function": "index.ts",
+			"lastUpdated": 1654416256000,
+			"docs": "node__share/",
+			"category": "Node Utils",
+			"description": "一些实用的 Node 工具。"
+		},
+		{
+			"name": "String / Number",
+			"package": "@hairy/format",
+			"function": "index.ts",
+			"lastUpdated": 1654098020000,
+			"docs": "util__format/",
+			"category": "Utils",
+			"description": "数值的处理"
+		},
+		{
+			"name": "Type Conversion (lang)",
+			"package": "@hairy/libcore",
+			"function": "lang/index.ts",
+			"lastUpdated": 1654098020000,
+			"docs": "util__libcore/lang/",
+			"category": "Utils",
+			"description": "关于 JavaScript 语言特性的方法"
+		},
+		{
+			"name": "Typeof",
+			"package": "@hairy/libcore",
+			"function": "typeof/index.ts",
+			"lastUpdated": 1654098020000,
+			"docs": "util__libcore/typeof/",
+			"category": "Utils",
+			"description": "类型的获取与判断"
+		},
+		{
+			"name": "Typings",
+			"package": "@hairy/libcore",
+			"function": "typings/index.ts",
+			"lastUpdated": 1654166062000,
+			"docs": "util__libcore/typings/",
+			"category": "Utils",
+			"description": "Typescript 一些常用的类型"
+		},
+		{
+			"name": "Universal",
+			"package": "@hairy/libcore",
+			"function": "util/index.ts",
+			"lastUpdated": 1654098020000,
+			"docs": "util__libcore/util/",
+			"category": "Utils",
+			"description": "多端通用的工具"
+		},
+		{
 			"name": "Wechat Jssdk",
 			"package": "@hairy/wechat-jssdk",
 			"function": "index.ts",
-			"lastUpdated": 1654413412000,
+			"lastUpdated": 1654416256000,
 			"docs": "web-util__wechat-jssdk/",
 			"category": "Browser Utils",
 			"description": "WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 api 进行了 promise 处理，并且可直接调用，不需要执行 wx.ready 等待 jssdk 授权完毕。"

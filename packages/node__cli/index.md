@@ -5,7 +5,7 @@ category: 'Command-Line Interface'
 
 # Hairy Command-Line Interface
 
-提供创建模板，编译代码，swagger 功能等。
+提供创建模板，编译代码，生成 OpenAPI-v2（swagger） 接口功能等。
 
 ## Install
 
@@ -51,20 +51,19 @@ Options:
   -pm,--pmode [mode]      输出多模块包的指定部分，default = esm/cjs/iife/iife-minify
 ```
 
-### Swagger Code
+### ApiGenerator Code
 
-读取项目根目录的 swagger.config.ts/js/json 生成请求和类型文件，默认使用 axios-ts 编译器，具体参数参考 [@hairy/swagger#types](https://hairylib.com/swagger/#types)
-
-`npm install @hairy/swagger @hairy/cli`
+读取项目根目录的 api-generator.config.ts/js/json 生成请求和类型文件，默认使用 axios-ts 编译器，具体参数参考 [@hairy/api-generator#types](https://hairylib.com/swagger/#types)，目前支持的解析器有 OpenAPI-v2（swagger）
+`npm install @hairy/api-generator @hairy/cli`
 
 ```ts
-import { defineConfig } from '@hairy/swagger'
+import { defineConfig } from '@hairy/api-generator'
 
 export default defineConfig({
   // global config
   baseUrl: `'...'`,
   servers: [
-    // swagger swervers
+    // open-api swervers
     { uri: 'http://...api-docs' }
   ]
 })
@@ -73,9 +72,9 @@ export default defineConfig({
 
 ```sh
 # install -D/S
-npx hairy swagger
+npx hairy api-generator
 # install -g
-hairy swagger
+hairy api-generator
 ```
 
 ![cli-case](/cli-case.gif)

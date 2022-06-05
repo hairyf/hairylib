@@ -1,5 +1,5 @@
 {
-  "name": "@hairy/color",
+  "name": "@hairy/palette",
   "version": "0.0.0",
   "main": "index.ts",
   "publishConfig": {

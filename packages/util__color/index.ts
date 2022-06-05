@@ -218,7 +218,6 @@ export function textToRgb(str: COLOR): RGB {
 }
 
 /**
- *
  * Lighten the `color` (if `percent` is positive) or darken it (if `percent` is negative).
  *
  * Accepts a HEX/A String or a RGB/A String as color and a percent (0 to 100 or -100 to 0) of lighten/darken to be applied to the   `color`. Returns a HEX String representation of the calculated `color`.
@@ -251,7 +250,6 @@ export function lighten(color: COLOR, percent: number) {
   )
 }
 /**
- *
  * Calculates the [relative luminance](https://www.w3.org/TR/WCAG20/#relativeluminancedef) of the `color`.
  *
  * Accepts a HEX/A String, a RGB/A String or a RGB/A Object as `color`. Returns a value between 0 and 1.
@@ -271,7 +269,6 @@ export function luminosity(color: COLOR | RGB) {
   return 0.2126 * R + 0.7152 * G + 0.0722 * B
 }
 /**
- *
  * Calculates the [color contrast](https://www.w3.org/TR/AERT/#color-contrast) of the `color`.
  *
  * Accepts a HEX/A String, a RGB/A String or a RGB/A Object as `color`. Returns a value between 0 and 1.
@@ -287,7 +284,6 @@ export function brightness(color: COLOR | RGB) {
 }
 
 /**
- *
  * Calculates the [blend](https://www.w3.org/TR/compositing-1/#simplealphacompositing) of two colors.
  *
  * Accepts a HEX/A String or a RGB/A Object as `fgColor`/`bgColor`. If the alpha channel of the `fgColor` is completely opaque, then the result will be the `fgColor`. If the alpha channel of the `bgColor` is completely opaque, then the resulting blended color will also be opaque. Returns the same type as input for fgColor.
@@ -321,7 +317,6 @@ export function blend(fgColor: COLOR | RGB, bgColor: COLOR | RGB) {
 }
 
 /**
- *
  * Increments or decrements the alpha of a string color.
  *
  * Accepts a HEX/A String as color and a number between -1 and 1 (including edges) as offset. Use a negative value to decrement and a positive number to increment (ex: changeAlpha('#ff0000', -0.1) to decrement alpha by 10%). Returns HEX/A String.
