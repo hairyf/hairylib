@@ -4,6 +4,7 @@ on:
     paths:
     - 'packages/**'
     - '.github/workflows/docs.yml'
+    - 'package.json'
 
 jobs:
   build-and-deploy:

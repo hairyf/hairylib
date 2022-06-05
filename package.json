@@ -37,6 +37,7 @@
     "esbuild": "^0.14.39",
     "esbuild-register": "^3.3.2",
     "eslint": "^8.15.0",
+    "esno": "^0.16.3",
     "fast-glob": "^3.2.7",
     "gray-matter": "^4.0.3",
     "pascal-case": "^3.1.2",
