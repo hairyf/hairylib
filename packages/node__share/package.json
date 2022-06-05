@@ -1,13 +1,16 @@
 {
   "name": "@hairy/share-node",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
     "types": "./index.d.ts",
     "module": "./index.esm.js",
     "exports": {
-      ".": { "import": "./index.esm.js", "require": "./index.cjs.js" },
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
       "./*": "./*"
     },
     "directory": "dist"

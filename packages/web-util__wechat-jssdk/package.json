@@ -1,6 +1,6 @@
 {
   "name": "@hairy/wechat-jssdk",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "main": "index.ts",
   "publishConfig": {
     "main": "index.cjs.js",

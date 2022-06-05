@@ -1,6 +1,6 @@
 {
   "name": "@hairy/axios-bearer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@hairy/libcore": "workspace:^0.0.0",
+    "@hairy/libcore": "workspace:^0.1.0",
     "axios": "0.27.2",
     "lodash": "^4"
   },
