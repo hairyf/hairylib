@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@hairy/libcore": "workspace:^0.2.0",
+    "@hairy/libcore": "workspace:*",
     "axios": "0.27.2",
     "lodash": "^4"
   },
