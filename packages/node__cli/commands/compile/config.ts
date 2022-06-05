@@ -3,7 +3,7 @@ const config = {
   mode: 'development',
   output: 'dist',
   type: false,
-  meta: false,
+  meta: true,
   logger: false,
   ignore: [] as string[],
   globalName: '',
