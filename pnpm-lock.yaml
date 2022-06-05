@@ -92,6 +92,45 @@ importers:
       '@types/lodash': 4.14.182
       '@types/node': 16.11.38
 
+  packages/conf__eslint-basic/dist:
+    specifiers:
+      '@types/eslint': ^8.4.2
+      '@types/lodash': ^4
+      '@types/node': ^16.10.1
+      eslint: ^8.15.0
+      eslint-config-prettier: ^8.5.0
+      eslint-plugin-eslint-comments: ^3.2.0
+      eslint-plugin-html: ^6.2.0
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-jsonc: ^2.2.1
+      eslint-plugin-markdown: ^2.2.1
+      eslint-plugin-prettier: ^4.0.0
+      eslint-plugin-unicorn: ^42.0.0
+      eslint-plugin-yml: ^1.0.0
+      jsonc-eslint-parser: ^2.1.0
+      lodash: ^4
+      prettier: ^2.6.2
+      yaml-eslint-parser: ^1.0.1
+    dependencies:
+      eslint: 8.17.0
+      eslint-config-prettier: 8.5.0_eslint@8.17.0
+      eslint-plugin-eslint-comments: 3.2.0_eslint@8.17.0
+      eslint-plugin-html: 6.2.0
+      eslint-plugin-import: 2.26.0_eslint@8.17.0
+      eslint-plugin-jsonc: 2.3.0_eslint@8.17.0
+      eslint-plugin-markdown: 2.2.1_eslint@8.17.0
+      eslint-plugin-prettier: 4.0.0_ucegkljdju7q4zmvwxzqoprf3y
+      eslint-plugin-unicorn: 42.0.0_eslint@8.17.0
+      eslint-plugin-yml: 1.0.0_eslint@8.17.0
+      jsonc-eslint-parser: 2.1.0
+      lodash: 4.17.21
+      prettier: 2.6.2
+      yaml-eslint-parser: 1.0.1
+    devDependencies:
+      '@types/eslint': 8.4.2
+      '@types/lodash': 4.14.182
+      '@types/node': 16.11.38
+
   packages/conf__eslint-config:
     specifiers:
       '@hairy/eslint-react': workspace:*
@@ -99,9 +138,21 @@ importers:
       '@hairy/share-node': workspace:*
       eslint: ^8.15.0
     dependencies:
-      '@hairy/eslint-react': link:../conf__eslint-react
-      '@hairy/eslint-vue': link:../conf__eslint-vue
-      '@hairy/share-node': link:../node__share
+      '@hairy/eslint-react': link:../conf__eslint-react/dist
+      '@hairy/eslint-vue': link:../conf__eslint-vue/dist
+      '@hairy/share-node': link:../node__share/dist
+      eslint: 8.17.0
+
+  packages/conf__eslint-config/dist:
+    specifiers:
+      '@hairy/eslint-react': workspace:*
+      '@hairy/eslint-vue': workspace:*
+      '@hairy/share-node': workspace:*
+      eslint: ^8.15.0
+    dependencies:
+      '@hairy/eslint-react': link:../../conf__eslint-react/dist
+      '@hairy/eslint-vue': link:../../conf__eslint-vue/dist
+      '@hairy/share-node': link:../../node__share/dist
       eslint: 8.17.0
 
   packages/conf__eslint-react:
@@ -113,8 +164,25 @@ importers:
       eslint-plugin-react: ^7.30.0
       react: ^18.1.0
     dependencies:
-      '@hairy/eslint-typescript': link:../conf__eslint-typescript
-      '@hairy/share-node': link:../node__share
+      '@hairy/eslint-typescript': link:../conf__eslint-typescript/dist
+      '@hairy/share-node': link:../node__share/dist
+      eslint: 8.17.0
+      eslint-plugin-react: 7.30.0_eslint@8.17.0
+    devDependencies:
+      '@types/node': 16.11.38
+      react: 18.1.0
+
+  packages/conf__eslint-react/dist:
+    specifiers:
+      '@hairy/eslint-typescript': workspace:*
+      '@hairy/share-node': workspace:*
+      '@types/node': ^16.10.1
+      eslint: ^8.15.0
+      eslint-plugin-react: ^7.30.0
+      react: ^18.1.0
+    dependencies:
+      '@hairy/eslint-typescript': link:../../conf__eslint-typescript/dist
+      '@hairy/share-node': link:../../node__share/dist
       eslint: 8.17.0
       eslint-plugin-react: 7.30.0_eslint@8.17.0
     devDependencies:
@@ -133,8 +201,31 @@ importers:
       lodash: ^4
       typescript: ^4.6.4
     dependencies:
-      '@hairy/eslint-basic': link:../conf__eslint-basic
-      '@hairy/share-node': link:../node__share
+      '@hairy/eslint-basic': link:../conf__eslint-basic/dist
+      '@hairy/share-node': link:../node__share/dist
+      '@typescript-eslint/eslint-plugin': 5.27.0_kor2e3kwnnzugzo3aovmfcq2la
+      '@typescript-eslint/parser': 5.27.0_ud6rd4xtew5bv4yhvkvu24pzm4
+      eslint: 8.17.0
+      lodash: 4.17.21
+      typescript: 4.7.3
+    devDependencies:
+      '@types/lodash': 4.14.182
+      '@types/node': 16.11.38
+
+  packages/conf__eslint-typescript/dist:
+    specifiers:
+      '@hairy/eslint-basic': workspace:*
+      '@hairy/share-node': workspace:*
+      '@types/lodash': ^4
+      '@types/node': ^16.10.1
+      '@typescript-eslint/eslint-plugin': ^5.25.0
+      '@typescript-eslint/parser': ^5.25.0
+      eslint: ^8.15.0
+      lodash: ^4
+      typescript: ^4.6.4
+    dependencies:
+      '@hairy/eslint-basic': link:../../conf__eslint-basic/dist
+      '@hairy/share-node': link:../../node__share/dist
       '@typescript-eslint/eslint-plugin': 5.27.0_kor2e3kwnnzugzo3aovmfcq2la
       '@typescript-eslint/parser': 5.27.0_ud6rd4xtew5bv4yhvkvu24pzm4
       eslint: 8.17.0
@@ -157,9 +248,34 @@ importers:
       lodash: ^4
       prettier: ^2.6.2
     dependencies:
-      '@hairy/eslint-basic': link:../conf__eslint-basic
-      '@hairy/eslint-typescript': link:../conf__eslint-typescript
-      '@hairy/share-node': link:../node__share
+      '@hairy/eslint-basic': link:../conf__eslint-basic/dist
+      '@hairy/eslint-typescript': link:../conf__eslint-typescript/dist
+      '@hairy/share-node': link:../node__share/dist
+      eslint: 8.17.0
+      eslint-plugin-prettier: 4.0.0_ddjd75dz7x3czaucyvuaamiqdi
+      eslint-plugin-vue: 9.1.0_eslint@8.17.0
+      lodash: 4.17.21
+      prettier: 2.6.2
+    devDependencies:
+      '@types/lodash': 4.14.182
+      '@types/node': 16.11.38
+
+  packages/conf__eslint-vue/dist:
+    specifiers:
+      '@hairy/eslint-basic': workspace:*
+      '@hairy/eslint-typescript': workspace:*
+      '@hairy/share-node': workspace:*
+      '@types/lodash': ^4.14.174
+      '@types/node': ^16.10.1
+      eslint: ^8.15.0
+      eslint-plugin-prettier: ^4.0.0
+      eslint-plugin-vue: ^9.0.1
+      lodash: ^4
+      prettier: ^2.6.2
+    dependencies:
+      '@hairy/eslint-basic': link:../../conf__eslint-basic/dist
+      '@hairy/eslint-typescript': link:../../conf__eslint-typescript/dist
+      '@hairy/share-node': link:../../node__share/dist
       eslint: 8.17.0
       eslint-plugin-prettier: 4.0.0_ddjd75dz7x3czaucyvuaamiqdi
       eslint-plugin-vue: 9.1.0_eslint@8.17.0
@@ -188,7 +304,44 @@ importers:
       transliteration: ^2.2.0
       typescript: ^4.6.4
     dependencies:
-      '@hairy/libcore': link:../util__libcore
+      '@hairy/libcore': link:../util__libcore/dist
+      '@phenomnomnominal/tsquery': 5.0.0_typescript@4.7.3
+      axios: 0.24.0
+      fs-extra: 10.1.0
+      lodash: 4.17.21
+      ora: 5.4.1
+      p-pipe: 4.0.0
+      pascal-case: 3.1.2
+      prettier: 2.6.2
+      transliteration: 2.2.0
+      typescript: 4.7.3
+    devDependencies:
+      '@types/fs-extra': 9.0.13
+      '@types/lodash': 4.14.182
+      '@types/node': 16.11.38
+      '@types/prettier': 2.6.3
+      esno: 0.16.3
+
+  packages/node__api-generator/dist:
+    specifiers:
+      '@hairy/libcore': workspace:*
+      '@phenomnomnominal/tsquery': ^5.0.0
+      '@types/fs-extra': ^9.0.12
+      '@types/lodash': ^4
+      '@types/node': ^16.10.1
+      '@types/prettier': ^2.6.1
+      axios: ^0.24.0
+      esno: ^0.16.3
+      fs-extra: ^10.0.0
+      lodash: ^4
+      ora: ^5
+      p-pipe: ^4.0.0
+      pascal-case: ^3.1.2
+      prettier: ^2.5.1
+      transliteration: ^2.2.0
+      typescript: ^4.6.4
+    dependencies:
+      '@hairy/libcore': link:../../util__libcore/dist
       '@phenomnomnominal/tsquery': 5.0.0_typescript@4.7.3
       axios: 0.24.0
       fs-extra: 10.1.0
@@ -233,7 +386,7 @@ importers:
       templa-cli: 0.0.4
       typescript: ^4.6.4
     dependencies:
-      '@hairy/share-node': link:../node__share
+      '@hairy/share-node': link:../node__share/dist
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.75.5
       '@types/lodash': 4.14.182
       cac: 6.7.12
@@ -254,13 +407,84 @@ importers:
       templa-cli: 0.0.4
       typescript: 4.7.3
     optionalDependencies:
-      '@hairy/api-generator': link:../node__api-generator
+      '@hairy/api-generator': link:../node__api-generator/dist
+    devDependencies:
+      '@types/fs-extra': 9.0.13
+      '@types/node': 16.11.38
+      esbuild-register: 3.3.3_esbuild@0.14.42
+
+  packages/node__cli/dist:
+    specifiers:
+      '@hairy/api-generator': workspace:*
+      '@hairy/share-node': workspace:*
+      '@rollup/plugin-node-resolve': ^13.3.0
+      '@types/fs-extra': ^9.0.12
+      '@types/lodash': ^4.14.182
+      '@types/node': ^16.10.1
+      cac: ^6.7.3
+      chalk: ^5.0.1
+      consola: ^2.15.3
+      dayjs: ^1.10.7
+      enquirer: ^2.3.6
+      esbuild: ^0.14.39
+      esbuild-plugin-d.ts: ^1.1.0
+      esbuild-register: ^3.3.2
+      execa: ^5.1.1
+      fast-glob: ^3.2.7
+      fs-extra: ^10.0.0
+      gitlog: ^4.0.4
+      lodash: ^4
+      log-update: 4.0.0
+      rollup: ^2.74.1
+      rollup-plugin-dts: ^4.2.1
+      templa-cli: 0.0.4
+      typescript: ^4.6.4
+    dependencies:
+      '@hairy/share-node': link:../../node__share/dist
+      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.75.5
+      '@types/lodash': 4.14.182
+      cac: 6.7.12
+      chalk: 5.0.1
+      consola: 2.15.3
+      dayjs: 1.11.2
+      enquirer: 2.3.6
+      esbuild: 0.14.42
+      esbuild-plugin-d.ts: 1.1.0_typescript@4.7.3
+      execa: 5.1.1
+      fast-glob: 3.2.11
+      fs-extra: 10.1.0
+      gitlog: 4.0.4
+      lodash: 4.17.21
+      log-update: 4.0.0
+      rollup: 2.75.5
+      rollup-plugin-dts: 4.2.2_5tbauevimgxepjeo5powblb5xq
+      templa-cli: 0.0.4
+      typescript: 4.7.3
+    optionalDependencies:
+      '@hairy/api-generator': link:../../node__api-generator/dist
     devDependencies:
       '@types/fs-extra': 9.0.13
       '@types/node': 16.11.38
       esbuild-register: 3.3.3_esbuild@0.14.42
 
   packages/node__share:
+    specifiers:
+      '@types/fs-extra': ^9.0.12
+      '@types/lodash': ^4
+      '@types/node': ^16.10.1
+      esbuild: ^0.14.39
+      fs-extra: ^10.0.0
+      lodash: ^4
+    dependencies:
+      esbuild: 0.14.42
+      fs-extra: 10.1.0
+      lodash: 4.17.21
+    devDependencies:
+      '@types/fs-extra': 9.0.13
+      '@types/lodash': 4.14.182
+      '@types/node': 16.11.38
+
+  packages/node__share/dist:
     specifiers:
       '@types/fs-extra': ^9.0.12
       '@types/lodash': ^4
@@ -289,7 +513,30 @@ importers:
       react-dom: ^18.1.0
       react-if: ^4.1.4
     dependencies:
-      '@hairy/libcore': link:../util__libcore
+      '@hairy/libcore': link:../util__libcore/dist
+      '@types/react': 18.0.11
+      '@types/react-dom': 18.0.5
+      lodash: 4.17.21
+      mitt: 3.0.0
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+      react-if: 4.1.4_react@18.1.0
+    devDependencies:
+      '@types/lodash': 4.14.182
+
+  packages/react__utils/dist:
+    specifiers:
+      '@hairy/libcore': workspace:*
+      '@types/lodash': ^4
+      '@types/react': ^18.0.9
+      '@types/react-dom': ^18.0.5
+      lodash: ^4
+      mitt: ^3.0.0
+      react: ^18
+      react-dom: ^18.1.0
+      react-if: ^4.1.4
+    dependencies:
+      '@hairy/libcore': link:../../util__libcore/dist
       '@types/react': 18.0.11
       '@types/react-dom': 18.0.5
       lodash: 4.17.21
@@ -309,6 +556,15 @@ importers:
     devDependencies:
       '@types/lodash': 4.14.182
 
+  packages/util__atom-css/dist:
+    specifiers:
+      '@types/lodash': ^4
+      lodash: ^4
+    dependencies:
+      lodash: 4.17.21
+    devDependencies:
+      '@types/lodash': 4.14.182
+
   packages/util__axios:
     specifiers:
       '@hairy/libcore': workspace:*
@@ -316,13 +572,29 @@ importers:
       axios: 0.27.2
       lodash: ^4
     dependencies:
-      '@hairy/libcore': link:../util__libcore
+      '@hairy/libcore': link:../util__libcore/dist
+      axios: 0.27.2
+      lodash: 4.17.21
+    devDependencies:
+      '@types/lodash': 4.14.182
+
+  packages/util__axios/dist:
+    specifiers:
+      '@hairy/libcore': workspace:*
+      '@types/lodash': ^4
+      axios: 0.27.2
+      lodash: ^4
+    dependencies:
+      '@hairy/libcore': link:../../util__libcore/dist
       axios: 0.27.2
       lodash: 4.17.21
     devDependencies:
       '@types/lodash': 4.14.182
 
   packages/util__color:
+    specifiers: {}
+
+  packages/util__color/dist:
     specifiers: {}
 
   packages/util__format:
@@ -334,7 +606,33 @@ importers:
     devDependencies:
       '@types/lodash': 4.14.182
 
+  packages/util__format/dist:
+    specifiers:
+      '@types/lodash': ^4.14.182
+      lodash: ^4
+    dependencies:
+      lodash: 4.17.21
+    devDependencies:
+      '@types/lodash': 4.14.182
+
   packages/util__libcore:
+    specifiers:
+      '@extra-array/arange': ^1.1.7
+      '@types/lodash': ^4
+      delay: ^5.0.0
+      lodash: ^4
+      p-pipe: ^4.0.0
+      pipe-and-compose-types: ^0.0.13
+    dependencies:
+      '@extra-array/arange': 1.1.7
+      delay: 5.0.0
+      lodash: 4.17.21
+      p-pipe: 4.0.0
+      pipe-and-compose-types: 0.0.13
+    devDependencies:
+      '@types/lodash': 4.14.182
+
+  packages/util__libcore/dist:
     specifiers:
       '@extra-array/arange': ^1.1.7
       '@types/lodash': ^4
@@ -362,7 +660,31 @@ importers:
     devDependencies:
       '@types/lodash': 4.14.182
 
+  packages/vue__directive/dist:
+    specifiers:
+      '@types/lodash': ^4
+      lodash: ^4
+      vue: ^3
+    dependencies:
+      lodash: 4.17.21
+      vue: 3.2.36
+    devDependencies:
+      '@types/lodash': 4.14.182
+
   packages/vue__router:
+    specifiers:
+      '@types/lodash': ^4
+      lodash: ^4
+      vue: ^3
+      vue-router: ^4
+    dependencies:
+      lodash: 4.17.21
+      vue: 3.2.36
+      vue-router: 4.0.15_vue@3.2.36
+    devDependencies:
+      '@types/lodash': 4.14.182
+
+  packages/vue__router/dist:
     specifiers:
       '@types/lodash': ^4
       lodash: ^4
@@ -383,7 +705,22 @@ importers:
       lodash: ^4
       vue: ^3
     dependencies:
-      '@hairy/libcore': link:../util__libcore
+      '@hairy/libcore': link:../util__libcore/dist
+      '@vueuse/core': 8.6.0_vue@3.2.36
+      lodash: 4.17.21
+      vue: 3.2.36
+    devDependencies:
+      '@types/lodash': 4.14.182
+
+  packages/vue__use/dist:
+    specifiers:
+      '@hairy/libcore': workspace:^*
+      '@types/lodash': ^4
+      '@vueuse/core': ^8.5.0
+      lodash: ^4
+      vue: ^3
+    dependencies:
+      '@hairy/libcore': link:../../util__libcore/dist
       '@vueuse/core': 8.6.0_vue@3.2.36
       lodash: 4.17.21
       vue: 3.2.36
@@ -398,7 +735,22 @@ importers:
       lodash: ^4
       vue: ^3
     dependencies:
-      '@hairy/libcore': link:../util__libcore
+      '@hairy/libcore': link:../util__libcore/dist
+      '@vue/shared': 3.2.36
+      lodash: 4.17.21
+      vue: 3.2.36
+    devDependencies:
+      '@types/lodash': 4.14.182
+
+  packages/vue__utils/dist:
+    specifiers:
+      '@hairy/libcore': workspace:*
+      '@types/lodash': ^4
+      '@vue/shared': ^3.2.35
+      lodash: ^4
+      vue: ^3
+    dependencies:
+      '@hairy/libcore': link:../../util__libcore/dist
       '@vue/shared': 3.2.36
       lodash: 4.17.21
       vue: 3.2.36
@@ -414,7 +766,29 @@ importers:
     devDependencies:
       '@types/lodash': 4.14.182
 
+  packages/web-util__browser/dist:
+    specifiers:
+      '@types/lodash': ^4
+      lodash: ^4
+    dependencies:
+      lodash: 4.17.21
+    devDependencies:
+      '@types/lodash': 4.14.182
+
   packages/web-util__wechat-jssdk:
+    specifiers:
+      '@types/jweixin': ^1.0.8
+      '@types/lodash': ^4
+      jweixin: ^1.0.0
+      lodash: ^4
+    dependencies:
+      '@types/jweixin': 1.0.8
+      lodash: 4.17.21
+    devDependencies:
+      '@types/lodash': 4.14.182
+      jweixin: 1.0.0
+
+  packages/web-util__wechat-jssdk/dist:
     specifiers:
       '@types/jweixin': ^1.0.8
       '@types/lodash': ^4
