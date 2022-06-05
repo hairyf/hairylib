@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@hairy/libcore": "workspace:^0.0.0",
+    "@hairy/libcore": "workspace:*",
     "@vue/shared": "^3.2.35",
     "lodash": "^4",
     "vue": "^3"
