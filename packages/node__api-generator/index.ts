@@ -50,10 +50,3 @@ export const openAPIWebClientGenerator: OpenAPIWebClientGeneratorType = async (c
 export const defineConfig = (config: OpenAPIDefineConfig) => config
 
 export * from './config'
-
-openAPIWebClientGenerator({
-  input: { test: true },
-  baseURL: 'import.meta.env.VITE_APP_BASE_API',
-  responseType: 'T extends { data?: infer V } ? V : void',
-  output: { main: 'src/api/index.ts', type: 'src/api/index.type.ts', cwd: '' }
-})

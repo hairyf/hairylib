@@ -24,6 +24,7 @@ cli
     `Which modules are output under esllpkg, all modules are output by default, with/separate`
   )
   .action((options) => actionBuilder({ ...options, mode: 'development' }))
+
 cli
   .command('build', 'Build file or dir to output')
   .option('-i,--input <dir/file>', `bundle's entry`)
@@ -44,4 +45,5 @@ cli.command('api-generator', 'Generate TypeScript files from open-api service').
 
 cli.help()
 cli.version(version)
+
 cli.parse()

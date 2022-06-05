@@ -1,10 +1,10 @@
 import { loadConfigFromFile } from '@hairy/share-node'
-import { openAPIWebClientGenerator, defaultConfig } from '@hairy/api-generator'
 import isArray from 'lodash/isArray'
 import isObject from 'lodash/isObject'
 import isUndefined from 'lodash/isUndefined'
 
 export const actionApiGenerator = async () => {
+  const { openAPIWebClientGenerator, defaultConfig } = require('@hairy/api-generator')
   const { config = {} } = await loadConfigFromFile('api-generator.config')
   if (!isArray(config.servers) && isObject(config.servers)) {
     config.servers = [config.servers]
