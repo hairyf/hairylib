@@ -2,7 +2,7 @@
 category: 'Vue Utils'
 ---
 
-# Props Helpers
+# Props
 
 生成 prop，能更好地优化类型
 

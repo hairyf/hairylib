@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-02-26 13:47:57
  */
 
-import { defineComponent, inject, InjectionKey, provide, h, Fragment } from 'vue'
+import { defineComponent, inject, InjectionKey, provide, h, Fragment, Component } from 'vue'
 
 /**
  * 创建上下文
@@ -34,7 +34,7 @@ export function createContext<T>(key: string, callback: () => T) {
     setup: (_, { slots }) => {
       return () => h(Fragment, slots['default']?.())
     }
-  })
+  }) as Component
 
   return {
     key: _key,

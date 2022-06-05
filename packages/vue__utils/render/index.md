@@ -2,7 +2,7 @@
 category: 'Vue Utils'
 ---
 
-# Render Helpers
+# Render
 
 Vue vnode 的渲染工具
 

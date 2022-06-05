@@ -2,7 +2,7 @@
 category: 'Vue Utils'
 ---
 
-# Router Helpers
+# Router
 
 Vue 自定义指令 directives 及其常用函数
 
