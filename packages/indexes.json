@@ -1,110 +1,82 @@
 {
 	"categories": [
 		"Node Utils",
-		"Axios Intercept",
-		"Utils",
+		"Vue Utils",
+		"Universal Utils",
 		"Project Configuration",
-		"Browser Utils",
-		"Command-Line Interface"
+		"Browser Utils"
 	],
 	"documents": [
 		{
 			"name": "Api Generator",
 			"package": "@hairy/api-generator",
 			"function": "index.ts",
-			"lastUpdated": 0,
+			"lastUpdated": 1654424234000,
 			"docs": "node__api-generator/",
 			"category": "Node Utils",
 			"description": "根据 OpenAPI-V2(swagger) 数据源（url/json/test）解析 AST，生成 Api 与 Types，暂不支持 JavaScript 生成"
 		},
 		{
-			"name": "AtomCss Utils",
+			"name": "App Directives",
+			"package": "@hairy/vue-directives",
+			"function": "index.ts",
+			"lastUpdated": 1653387148000,
+			"docs": "vue__directive/",
+			"category": "Vue Utils",
+			"description": "Vue 自定义指令 directives 及其常用函数"
+		},
+		{
+			"name": "Atom Css",
 			"package": "@hairy/atom.css-utils",
 			"function": "index.ts",
-			"lastUpdated": 1654416256000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__atom-css/",
 			"category": "Node Utils",
 			"description": "常用的 atom-css 工具，可以用于（tailwindcss / windcss...）由于 [Value Auto-infer](https://windicss.org/features/value-auto-infer.html) 的推进，该库可能不在继续维护"
 		},
 		{
-			"name": "axiosWithAssignResponse",
+			"name": "Axios Intercept",
 			"package": "@hairy/axios-bearer",
-			"function": "axiosWithAssignResponse/index.ts",
-			"lastUpdated": 0,
-			"docs": "util__axios/axiosWithAssignResponse/",
-			"category": "Axios Intercept",
-			"description": "根据 expands 规则合并 response 和 data，由于执行顺序规则，axiosWithAssignResponse 应该最先被调用"
-		},
-		{
-			"name": "axiosWithCustomError",
-			"package": "@hairy/axios-bearer",
-			"function": "axiosWithCustomError/index.ts",
-			"lastUpdated": 0,
-			"docs": "util__axios/axiosWithCustomError/",
-			"category": "Axios Intercept",
-			"description": "自定义响应错误，抛出请求数据错误"
-		},
-		{
-			"name": "axiosWithErrorHandler",
-			"package": "@hairy/axios-bearer",
-			"function": "axiosWithErrorHandler/index.ts",
-			"lastUpdated": 0,
-			"docs": "util__axios/axiosWithErrorHandler/",
-			"category": "Axios Intercept",
-			"description": "自定义响应错误处理，所有错误都会从此经过"
-		},
-		{
-			"name": "axiosWithExtraParams",
-			"package": "@hairy/axios-bearer",
-			"function": "axiosWithExtraParams/index.ts",
-			"lastUpdated": 1654093871000,
-			"docs": "util__axios/axiosWithExtraParams/",
-			"category": "Axios Intercept",
-			"description": "请求时携带一些参数，支持 data、params、headers"
-		},
-		{
-			"name": "axiosWithLoadingHandler",
-			"package": "@hairy/axios-bearer",
-			"function": "axiosWithLoadingHandler/index.ts",
-			"lastUpdated": 1654093871000,
-			"docs": "util__axios/axiosWithLoadingHandler/",
-			"category": "Axios Intercept",
-			"description": "请求 loading 加载器，可自定义加载字段"
-		},
-		{
-			"name": "axiosWithPickByParams",
-			"package": "@hairy/axios-bearer",
-			"function": "axiosWithPickByParams/index.ts",
-			"lastUpdated": 1654245021000,
-			"docs": "util__axios/axiosWithPickByParams/",
-			"category": "Axios Intercept",
-			"description": "过滤请求中不必要的参数"
+			"function": "index.ts",
+			"lastUpdated": 1654424234000,
+			"docs": "util__axios/",
+			"category": "Universal Utils",
+			"description": "更加简单的 axios 拦截器使用"
 		},
 		{
 			"name": "Color Palette",
 			"package": "@hairy/palette",
 			"function": "index.ts",
-			"lastUpdated": 1654098020000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__color/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "颜色的处理、转换、计算"
+		},
+		{
+			"name": "Composition Hooks",
+			"package": "@hairy/vue-use",
+			"function": "index.ts",
+			"lastUpdated": 1654413412000,
+			"docs": "vue__use/",
+			"category": "Vue Utils",
+			"description": "基本 Vue 组合实用程序的集合"
 		},
 		{
 			"name": "Element size handling",
 			"package": "@hairy/libcore",
 			"function": "size/index.ts",
-			"lastUpdated": 1654098020000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__libcore/size/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "分析解析尺寸与大小"
 		},
 		{
 			"name": "Environmental Judgment",
 			"package": "@hairy/libcore",
 			"function": "is/index.ts",
-			"lastUpdated": 1654098020000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__libcore/is/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "客户机环境的判断"
 		},
 		{
@@ -163,9 +135,9 @@
 		{
 			"name": "Hairy Cli",
 			"package": "@hairy/cli",
-			"lastUpdated": 1654416256000,
+			"lastUpdated": 1654424234000,
 			"docs": "node__cli/",
-			"category": "Command-Line Interface",
+			"category": "Node Utils",
 			"description": "提供创建模板，编译代码，生成 OpenAPI-v2（swagger） 接口功能等。"
 		},
 		{
@@ -178,57 +150,93 @@
 			"description": "关于浏览器的工具集"
 		},
 		{
-			"name": "Share Node Utils",
+			"name": "Overlay Helpers",
+			"package": "@hairy/vue-utils",
+			"function": "overlay/index.ts",
+			"lastUpdated": 1654245021000,
+			"docs": "vue__utils/overlay/",
+			"category": "Vue Utils",
+			"description": "Vue 弹出层（dialog/message）等组件的处理"
+		},
+		{
+			"name": "Props Helpers",
+			"package": "@hairy/vue-utils",
+			"function": "props/index.ts",
+			"lastUpdated": 0,
+			"docs": "vue__utils/props/",
+			"category": "Vue Utils",
+			"description": "生成 prop，能更好地优化类型"
+		},
+		{
+			"name": "Render Helpers",
+			"package": "@hairy/vue-utils",
+			"function": "render/index.ts",
+			"lastUpdated": 0,
+			"docs": "vue__utils/render/",
+			"category": "Vue Utils",
+			"description": "Vue vnode 的渲染工具"
+		},
+		{
+			"name": "Router Helpers",
+			"package": "@hairy/vue-router",
+			"function": "index.ts",
+			"lastUpdated": 1653387148000,
+			"docs": "vue__router/",
+			"category": "Vue Utils",
+			"description": "Vue 自定义指令 directives 及其常用函数"
+		},
+		{
+			"name": "Share Node",
 			"package": "@hairy/share-node",
 			"function": "index.ts",
-			"lastUpdated": 1654416256000,
+			"lastUpdated": 1654424234000,
 			"docs": "node__share/",
 			"category": "Node Utils",
-			"description": "一些实用的 Node 工具。"
+			"description": "一些实用的 Node 工具"
 		},
 		{
 			"name": "String / Number",
 			"package": "@hairy/format",
 			"function": "index.ts",
-			"lastUpdated": 1654098020000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__format/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "数值的处理"
 		},
 		{
 			"name": "Type Conversion (lang)",
 			"package": "@hairy/libcore",
 			"function": "lang/index.ts",
-			"lastUpdated": 1654098020000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__libcore/lang/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "关于 JavaScript 语言特性的方法"
 		},
 		{
 			"name": "Typeof",
 			"package": "@hairy/libcore",
 			"function": "typeof/index.ts",
-			"lastUpdated": 1654098020000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__libcore/typeof/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "类型的获取与判断"
 		},
 		{
 			"name": "Typings",
 			"package": "@hairy/libcore",
 			"function": "typings/index.ts",
-			"lastUpdated": 1654166062000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__libcore/typings/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "Typescript 一些常用的类型"
 		},
 		{
 			"name": "Universal",
 			"package": "@hairy/libcore",
 			"function": "util/index.ts",
-			"lastUpdated": 1654098020000,
+			"lastUpdated": 1654424234000,
 			"docs": "util__libcore/util/",
-			"category": "Utils",
+			"category": "Universal Utils",
 			"description": "多端通用的工具"
 		},
 		{

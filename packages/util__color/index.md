@@ -1,6 +1,7 @@
 ---
-category: 'Utils'
+category: 'Universal Utils'
 ---
+
 # Color Palette
 
 颜色的处理、转换、计算

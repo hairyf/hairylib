@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { sidebar, nav } from './config.theme'
+import { MarkdownTransform } from './plugins/transform'
 
 const config = defineConfig({
   head: [['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }]],
@@ -15,7 +16,8 @@ const config = defineConfig({
     nav
   },
   vite: {
-    publicDir: 'docs__public'
+    publicDir: 'docs__public',
+    plugins: [MarkdownTransform()]
   }
 })
 

@@ -19,12 +19,11 @@ export const generateDts = async (input: string, file: string) => {
     input,
     plugins: [
       rollupPluginDts({
-        compilerOptions: {
-          preserveSymlinks: false
-        }
+        compilerOptions: { preserveSymlinks: false }
       })
     ],
     onwarn: () => false
   })
+
   await bundles.write({ file, format: 'es' })
 }

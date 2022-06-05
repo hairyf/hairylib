@@ -1,5 +1,5 @@
 ---
-category: 'Utils'
+category: 'Universal Utils'
 ---
 # Type Conversion (lang)
 

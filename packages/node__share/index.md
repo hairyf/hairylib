@@ -2,17 +2,23 @@
 category: 'Node Utils'
 ---
 
-# Share Node Utils
+# Share Node
 
-一些实用的 Node 工具。
+一些实用的 Node 工具
+
+## Install
+
+```
+pnpm add -D @hairy/share-node
+```
 
 ## Usage Functions
 
 ### loadConfigFromFile
 
-加载 config file，支持 cjs / esm / ts-esm / json
+加载 config file，支持 `cjs / esm / ts-esm / json`
 
-xxx-config.ts > export default  { a: 1 }
+`xxx-config.ts > export default  { a: 1 }`
 
 ```ts
 // 可以不输入后缀，自动读取内容

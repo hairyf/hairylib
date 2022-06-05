@@ -6,7 +6,7 @@ category: 'Node Utils'
 
 根据 OpenAPI-V2(swagger) 数据源（url/json/test）解析 AST，生成 Api 与 Types，暂不支持 JavaScript 生成
 
-暂时仅支持 OpenAPI-V2 源解析与 AxiosTs Compiler，欢迎提交贡献另外的源解析，具体了解 #Running Process
+暂时仅支持 OpenAPI-V2 源解析与 AxiosTs Compiler，欢迎提交贡献另外的源解析，具体了解 [Running Process](#running-process)
 
 ## Install
 

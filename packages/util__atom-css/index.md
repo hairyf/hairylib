@@ -2,7 +2,7 @@
 category: 'Node Utils'
 ---
 
-# AtomCss Utils
+# Atom Css
 
 常用的 atom-css 工具，可以用于（tailwindcss / windcss...）由于 [Value Auto-infer](https://windicss.org/features/value-auto-infer.html) 的推进，该库可能不在继续维护
 

@@ -11,7 +11,7 @@ export const directiveOptions = {
  * 定义命令配置
  * @param options {DirectiveConfig}
  */
-export const defineDirectiveConfig = (options: DirectiveConfig = {}) => {
+export const defineHasConfig = (options: DirectiveConfig = {}) => {
   for (const [key, value] of Object.entries(options)) {
     ;(directiveOptions as any)[key] = value
   }
