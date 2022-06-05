@@ -309,7 +309,7 @@ importers:
 
   packages/util__axios:
     specifiers:
-      '@hairy/libcore': workspace:^0.1.0
+      '@hairy/libcore': workspace:^0.2.0
       '@types/lodash': ^4
       axios: 0.27.2
       lodash: ^4
