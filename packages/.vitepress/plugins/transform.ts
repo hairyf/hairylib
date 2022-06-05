@@ -62,6 +62,7 @@ export async function getTypeDefinition(tsPath: string): Promise<string | undefi
   const { output } = await bundles.generate({ format: 'es' })
   let code = output[0].code.replace(/declare /g, '')
   code = code.replace(/export {};/, '')
-  code = format(code, { printWidth: 90, parser: 'typescript', semi: false, singleQuote: true })
+  if (!/props/.test(tsPath))
+    code = format(code, { printWidth: 90, parser: 'typescript', semi: false, singleQuote: true })
   return code
 }
