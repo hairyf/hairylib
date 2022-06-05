@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import { rollup } from 'rollup'
 import rollupPluginDts from 'rollup-plugin-dts'
 
-const FILES_COPY_LOCAL = ['package.json', 'README.md', 'LICENSE', 'index.md', 'CHANGELOG.md']
+const FILES_COPY_LOCAL = ['README.md', 'LICENSE', 'index.md', 'CHANGELOG.md']
 
 export const buildMetaFiles = async (outdir: string) => {
   await fs.ensureDir(outdir)
@@ -12,6 +12,12 @@ export const buildMetaFiles = async (outdir: string) => {
     if (!fs.existsSync(filePath)) continue
     await fs.copy(filePath, path.join(process.cwd(), outdir, file))
   }
+  const packageJsonPath = path.join(process.cwd(), 'package.json')
+  if (!fs.existsSync(packageJsonPath)) return
+  const packageJson = await fs.readJson(packageJsonPath)
+  delete packageJson.publishConfig.directory
+  const packageJsonPathOutput = path.join(process.cwd(), outdir, 'package.json')
+  await fs.writeJson(packageJsonPathOutput, packageJson, { spaces: '\t' })
 }
 
 export const generateDts = async (input: string, file: string) => {

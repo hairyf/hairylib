@@ -29,7 +29,7 @@ async function resolveConfig(_options = config) {
   if (typeof options.pmode === 'string') {
     options.pmode = (options.pmode as any).split('/')
   }
-  if (options.meta) buildMetaFiles(output)
+  if (options.meta) await buildMetaFiles(output)
 
   const plugins = [externalizePlugin(), options.logger && reporterPlugin(mode)]
 
