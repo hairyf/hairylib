@@ -1,5 +1,16 @@
 # @hairy/cli
 
+## 0.2.0
+
+### Minor Changes
+
+- fix dist not being packaged
+
+### Patch Changes
+
+- Updated dependencies
+  - @hairy/share-node@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes
