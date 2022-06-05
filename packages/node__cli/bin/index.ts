@@ -11,31 +11,31 @@ cli.command('create <app-name>', 'create project to app-name dir').action((outpu
 
 cli
   .command('dev', 'Observe the file or dir Bundle output')
-  .option('--input <dir/file>', `bundle's entry`)
-  .option('--output <dir/file>', `bundle's output`)
-  .option('--type', `build d.ts, but this slows down compilation`)
-  .option('--logger', `print log during build`)
-  .option('--meta', `Contains meta information files such as package.json, README.md`)
-  .option('--ignore [source]', `Ignore partial files or folders for folder compilation`)
-  .option('--esllpkg', `Esllpkg mode, will output .cjs .esm .iife .iife.min files`)
-  .option('--globalName <name>', `In IIFE mode, define the global name`)
+  .option('-i,--input <dir/file>', `bundle's entry`)
+  .option('-o,--output <dir/file>', `bundle's output`)
+  .option('-t,--type', `build d.ts, but this slows down compilation`)
+  .option('-l,--logger', `print log during build`)
+  .option('-m,--meta', `Contains meta information files such as package.json, README.md`)
+  .option('-ig,--ignore [source]', `Ignore partial files or folders for folder compilation`)
+  .option('-e,--esllpkg', `Esllpkg mode, will output .cjs .esm .iife .iife.min files`)
+  .option('-g,--globalName <name>', `In IIFE mode, define the global name`)
   .option(
-    '--pkgMode [mode]',
+    '-pm,--pmode [mode]',
     `Which modules are output under esllpkg, all modules are output by default, with/separate`
   )
   .action((options) => actionBuilder({ ...options, mode: 'development' }))
 cli
   .command('build', 'Build file or dir to output')
-  .option('--input <dir/file>', `bundle's entry`)
-  .option('--output <dir/file>', `bundle's output`)
-  .option('--type', `build d.ts, but this slows down compilation`)
-  .option('--logger', `print log during build`)
-  .option('--meta', `Contains meta information files such as package.json, README.md`)
-  .option('--ignore [source]', `Ignore partial files or folders for folder compilation`)
-  .option('--esllpkg', `Esllpkg mode, will output .cjs .esm .iife .iife.min files`)
-  .option('--globalName <name>', `In IIFE mode, define the global name`)
+  .option('-i,--input <dir/file>', `bundle's entry`)
+  .option('-o,--output <dir/file>', `bundle's output`)
+  .option('-t,--type', `build d.ts, but this slows down compilation`)
+  .option('-l,--logger', `print log during build`)
+  .option('-m,--meta', `Contains meta information files such as package.json, README.md`)
+  .option('-ig,--ignore [source]', `Ignore partial files or folders for folder compilation`)
+  .option('-e,--esllpkg', `Esllpkg mode, will output .cjs .esm .iife .iife.min files`)
+  .option('-g,--globalName <name>', `In IIFE mode, define the global name`)
   .option(
-    '--pkgMode [mode]',
+    '-pm,--pmode [mode]',
     `Which modules are output under esllpkg, all modules are output by default, with/separate`
   )
   .action((options) => actionBuilder({ ...options, mode: 'production' }))

@@ -40,9 +40,8 @@ pnpm dev
 非常欢迎新的附加功能！
 
 - 在 下创建一个新文件夹packages/，将其命名为您的加载项名称。
-- 在中添加附加详细信息 scripts/packages.ts
-- README.md 在该文件夹下创建。
-- 像对 utils 包所做的那样添加功能。
+- `README.md` 在该文件夹下创建。
+- 像对 util__libcore 包所做的那样添加功能。
 - 提交并作为 PR 提交。
 
 
@@ -63,7 +62,7 @@ packages
 
 函数文件夹典型性包含以下 3 个文件：
 
-> 您可以在下面找到模板 packages/vue-use/_template/
+> 您可以在下面找到模板 packages/vue__use/_template/
 
 `index.ts` 您应该使用名称导出函数。
 

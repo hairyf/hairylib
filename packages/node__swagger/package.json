@@ -16,7 +16,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --pkgMode esm/cjs --type"
+    "build": "hairy build --esllpkg --pmode esm/cjs --type"
   },
   "license": "MIT",
   "dependencies": {

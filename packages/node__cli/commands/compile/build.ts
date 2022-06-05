@@ -4,7 +4,7 @@ import fg from 'fast-glob'
 import { dtsPlugin } from 'esbuild-plugin-d.ts'
 import { generateDts } from './utils'
 
-export async function buildDir({ options, input, output, buildConfig }) {
+export async function buildDir({ options, input, output, buildConfig }: any) {
   const source = path.join(input, './**/*.ts').replace(/\\/g, '/')
   const ignores = ['_*', 'dist', 'node_modules', '__tests__/**', ...options.ignore]
 
@@ -15,7 +15,7 @@ export async function buildDir({ options, input, output, buildConfig }) {
   await esbuild.build(buildConfig)
 }
 
-export async function buildEsllpkg({ options, input, output, buildConfig }) {
+export async function buildEsllpkg({ options, input, output, buildConfig }: any) {
   const basename = path.basename(input).replace(/\.ts|\.tsx/, '.js')
   const outfile = path.extname(output) ? output : path.join(output, basename)
 
@@ -23,7 +23,7 @@ export async function buildEsllpkg({ options, input, output, buildConfig }) {
   buildConfig.entryPoints = [input]
 
   const buildConfigs: esbuild.BuildOptions[] = []
-  for (const mode of options.pkgMode) {
+  for (const mode of options.pmode) {
     const config = { ...buildConfig }
     const modeExt = mode === 'iife-minify' ? 'iife.min' : mode
     config.format = mode === 'iife-minify' ? 'iife' : mode
@@ -45,7 +45,7 @@ export async function buildEsllpkg({ options, input, output, buildConfig }) {
   await Promise.all(promises)
 }
 
-export async function buildFile({ options, input, output, buildConfig }) {
+export async function buildFile({ options, input, output, buildConfig }: any) {
   const basename = path.basename(input).replace(/\.ts|\.tsx/, '.js')
   const outfile = path.extname(output) ? output : path.join(output, basename)
   buildConfig.bundle = true

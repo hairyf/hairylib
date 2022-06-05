@@ -8,7 +8,7 @@ const config = {
   ignore: [] as string[],
   globalName: '',
   esllpkg: false,
-  pkgMode: ['cjs', 'esm', 'iife', 'iife-minify'] as const
+  pmode: ['cjs', 'esm', 'iife', 'iife-minify'] as const
 }
 
 export default config

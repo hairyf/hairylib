@@ -15,7 +15,7 @@ export const actionBuilder = async (_options = config) => {
     return await buildDir(params)
   }
 
-  if (!options.esllpkg || options.pkgMode.length <= 0) {
+  if (!options.esllpkg || options.pmode.length <= 0) {
     return await buildFile(params)
   }
 
@@ -26,14 +26,14 @@ async function resolveConfig(_options = config) {
   if (_options.esllpkg && !_options.input) _options.input = 'index.ts'
   const { input, output, mode, ...options } = { ...config, ..._options }
 
-  if (typeof options.pkgMode === 'string') {
-    options.pkgMode = (options.pkgMode as any).split('/')
+  if (typeof options.pmode === 'string') {
+    options.pmode = (options.pmode as any).split('/')
   }
   if (options.meta) buildMetaFiles(output)
 
   const plugins = [externalizePlugin(), options.logger && reporterPlugin(mode)]
 
-  if (!options.globalName && options.pkgMode.includes('iife')) {
+  if (!options.globalName && options.pmode.includes('iife')) {
     const { config } = await loadConfigFromFile('package')
     if (config) {
       let name = config.name as string

@@ -13,7 +13,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --pkgMode esm/cjs --type"
+    "build": "hairy build --esllpkg --pmode esm/cjs --type"
   },
   "dependencies": {
     "esbuild": "^0.14.39",

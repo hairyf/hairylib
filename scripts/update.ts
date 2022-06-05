@@ -71,7 +71,7 @@ export const updateIndexes = async () => {
           .map((v) => v.replace(/#/g, ''))
           .map((v) => v.trim())
 
-        doc.name = contentRows[0]
+        doc.name = frontmatter['side-bar'] || contentRows[0]
         doc.description = contentRows[1]
         indexes.documents.push(doc)
       })

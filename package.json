@@ -10,9 +10,9 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "update": "esno scripts/update.ts",
-    "docs:dev": "vitepress dev packages",
-    "docs:build": "vitepress build packages",
-    "docs:serve": "vitepress serve packages"
+    "docs:dev": "yarn update && vitepress dev packages",
+    "docs:build": "yarn update && vitepress build packages",
+    "docs:serve": "yarn update && vitepress serve packages"
   },
   "author": "TuiMao233",
   "license": "ISC",

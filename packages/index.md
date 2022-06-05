@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/
+      link: /docs__guide/
     - theme: alt
       text: View on GitHub
       link: https://github.com/TuiMao233/hairylib
