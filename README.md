@@ -25,9 +25,43 @@ what is turbo and changeset ?
 
 ## 文档系统
 
-基于 vitepress，收集 packages 中的文档，自动组合，通过 github actions 自动化部署到 hairylib.com 域名。
+基于 `github actions` 工作流(`.github/workflows/docs.yml`)，自动部署 [hairylib.com](https://hairylib.com/)
+
+文档构建使用 `vitepress`，自动**收集 / 组合**文档，生成 `Type Declarations` 和 `side-bar`。
 
 地址：https://hairylib.com/
+
+```yml
+# .github/workflows/docs.yml
+name: A TO A:GH_PAGES
+on:
+  push:
+    paths:
+    - 'packages/**'
+    - '.github/workflows/docs.yml'
+    - 'package.json'
+    - 'pnpm-lock'
+    - 'pnpm-workspace.yaml'
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: jenkey2011/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        # 你要操作的目标仓库
+        TARGET_REPO: TuiMao233/hairylib
+        # 构建结果存储的分支
+        TARGET_BRANCH: gh_pages
+        # 要使用的构建命令
+        BUILD_SCRIPT: npm i pnpm -g && pnpm i && pnpm docs:build
+        # 构建结果存储目录
+        BUILD_DIR: packages/.vitepress/dist/
+```
 
 
 ## 模块与依赖
