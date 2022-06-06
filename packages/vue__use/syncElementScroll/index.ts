@@ -2,7 +2,7 @@ import { MaybeRef, useEventListener } from '@vueuse/core'
 import throttle from 'lodash/throttle'
 import debounce from 'lodash/debounce'
 import { reactive } from 'vue'
-interface BiElementSyncScrollOptions {
+interface SyncElementSyncScrollOptions {
   left?: boolean
   top?: boolean
   wait?: number
@@ -17,10 +17,10 @@ interface BiElementSyncScrollOptions {
  * @todo 优化 useEventListener 复用
  * @todo 使用 wait 可能存在 BUG
  */
-export const biElementSyncScroll = (
+export const syncElementSyncScroll = (
   fromTarget: MaybeRef<EventTarget | null | undefined>,
   toTarget: MaybeRef<EventTarget | null | undefined>,
-  options: BiElementSyncScrollOptions = {}
+  options: SyncElementSyncScrollOptions = {}
 ) => {
   const { left = true, top = true, wait, immediate = true } = options
 

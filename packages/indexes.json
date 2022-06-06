@@ -1,10 +1,12 @@
 {
 	"categories": [
 		"Node Utils",
-		"Vue Utils",
 		"Universal Utils",
+		"Vue Use",
 		"Project Configuration",
-		"Browser Utils"
+		"Browser Utils",
+		"Vue Utils",
+		"Vue Directives"
 	],
 	"documents": [
 		{
@@ -15,15 +17,6 @@
 			"docs": "node__api-generator/",
 			"category": "Node Utils",
 			"description": "根据 OpenAPI-V2(swagger) 数据源（url/json/test）解析 AST，生成 Api 与 Types，暂不支持 JavaScript 生成"
-		},
-		{
-			"name": "App Directives",
-			"package": "@hairy/vue-directives",
-			"function": "index.ts",
-			"lastUpdated": 1654433825000,
-			"docs": "vue__directive/",
-			"category": "Vue Utils",
-			"description": "Vue 自定义指令 directives 及其常用函数"
 		},
 		{
 			"name": "Atom Css",
@@ -44,6 +37,24 @@
 			"description": "更加简单的 axios 拦截器使用"
 		},
 		{
+			"name": "biElementSyncScroll",
+			"package": "@hairy/vue-use",
+			"function": "syncElementSize/index.ts",
+			"lastUpdated": 1654413412000,
+			"docs": "vue__use/syncElementSize/",
+			"category": "Vue Use",
+			"description": "同步两个具有相同滚动条的DOM的滚动"
+		},
+		{
+			"name": "biElementSyncScroll",
+			"package": "@hairy/vue-use",
+			"function": "syncElementScroll/index.ts",
+			"lastUpdated": 1653881591000,
+			"docs": "vue__use/syncElementScroll/",
+			"category": "Vue Use",
+			"description": "同步两个具有相同滚动条的DOM的滚动"
+		},
+		{
 			"name": "Color Palette",
 			"package": "@hairy/palette",
 			"function": "index.ts",
@@ -53,13 +64,13 @@
 			"description": "颜色的处理、转换、计算"
 		},
 		{
-			"name": "Composition Hooks",
+			"name": "createContext",
 			"package": "@hairy/vue-use",
-			"function": "index.ts",
-			"lastUpdated": 1654433825000,
-			"docs": "vue__use/",
-			"category": "Vue Utils",
-			"description": "基本 Vue 组合实用程序的集合"
+			"function": "createContext/index.ts",
+			"lastUpdated": 1654431530000,
+			"docs": "vue__use/createContext/",
+			"category": "Vue Use",
+			"description": "创建上下文 `provide / inject`"
 		},
 		{
 			"name": "Element size handling",
@@ -198,7 +209,7 @@
 			"name": "String / Number",
 			"package": "@hairy/format",
 			"function": "index.ts",
-			"lastUpdated": 1654433825000,
+			"lastUpdated": 1654506558000,
 			"docs": "util__format/",
 			"category": "Universal Utils",
 			"description": "数值的处理"
@@ -238,6 +249,69 @@
 			"docs": "util__libcore/util/",
 			"category": "Universal Utils",
 			"description": "多端通用的工具"
+		},
+		{
+			"name": "useCheckedState",
+			"package": "@hairy/vue-use",
+			"function": "useCheckedState/index.ts",
+			"lastUpdated": 1654430840000,
+			"docs": "vue__use/useCheckedState/",
+			"category": "Vue Use",
+			"description": "获取 checked 的状态，自定义设置 checked | unchecked 的值"
+		},
+		{
+			"name": "usePaginationServer",
+			"package": "@hairy/vue-use",
+			"function": "usePaginationServer/index.ts",
+			"lastUpdated": 1653881591000,
+			"docs": "vue__use/usePaginationServer/",
+			"category": "Vue Use",
+			"description": "服务端分页"
+		},
+		{
+			"name": "usePromise",
+			"package": "@hairy/vue-use",
+			"function": "usePromise/index.ts",
+			"lastUpdated": 1653881591000,
+			"docs": "vue__use/usePromise/",
+			"category": "Vue Use",
+			"description": "异步函数 loading 、execute、 state 封装"
+		},
+		{
+			"name": "useSelectedMultiple",
+			"package": "@hairy/vue-use",
+			"function": "useSelectedMultiple/index.ts",
+			"lastUpdated": 1653881591000,
+			"docs": "vue__use/useSelectedMultiple/",
+			"category": "Vue Use",
+			"description": "使用多选列表状态"
+		},
+		{
+			"name": "useSelectedSingle",
+			"package": "@hairy/vue-use",
+			"function": "useSelectedSingle/index.ts",
+			"lastUpdated": 1653881591000,
+			"docs": "vue__use/useSelectedSingle/",
+			"category": "Vue Use",
+			"description": "使用单选列表状态"
+		},
+		{
+			"name": "vFocus",
+			"package": "@hairy/vue-directives",
+			"function": "directives/focus.ts",
+			"lastUpdated": 1653387148000,
+			"docs": "vue__directive/directives/focus",
+			"category": "Vue Directives",
+			"description": "让输入框 / 深层的输入框高亮"
+		},
+		{
+			"name": "vHas",
+			"package": "@hairy/vue-directives",
+			"function": "directives/has.ts",
+			"lastUpdated": 1653387148000,
+			"docs": "vue__directive/directives/has",
+			"category": "Vue Directives",
+			"description": "判断权限是否满足"
 		},
 		{
 			"name": "Wechat Jssdk",
