@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.22.0
+      '@hairy/cli': workspace:^0.2.0
       '@types/fs-extra': ^9.0.12
       '@types/react': ^18.0.9
       esbuild: ^0.14.39
@@ -27,6 +28,7 @@ importers:
       vitepress: 1.0.0-alpha.1
       vitest: ^0.13.0
     dependencies:
+      '@hairy/cli': link:packages/node__cli
       esbuild: 0.14.42
       esbuild-register: 3.3.3_esbuild@0.14.42
       eslint: 8.17.0
