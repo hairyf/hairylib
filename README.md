@@ -1,8 +1,10 @@
 # Hairylib Monorepo
 
-<div align=center> <img src="packages/docs__public/logo.png" > </div>
+<div align="center"> <img src="packages/docs__public/logo.png" > </div>
 
-[hairylib](https://hairylib.com/) 是工具代码库，使用 `pnpm` / `turbo` / `changeset` 管理的多个模块包(monorepo)的项目。
+****
+
+[hairylib](https://hairylib.com/) 是使用 `pnpm` / `turbo` / `changeset` 管理的多个模块包(monorepo)的项目。
 
 Monorepo 的好处是什么？
 
