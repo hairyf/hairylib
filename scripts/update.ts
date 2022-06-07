@@ -1,22 +1,22 @@
 import { resolve, join, dirname } from 'path'
 import fs from 'fs-extra'
-import fg from 'fast-glob'
 import Git from 'simple-git'
 import matter from 'gray-matter'
+
+import fg from 'fast-glob'
+import { listFunctionMds, DIR_SRC } from './utils'
+
 const git = Git()
 
-const DOCS_URL = 'https://hairylib.com'
-const DIR_SRC = resolve(__dirname, '../packages')
-
-export const listFunctionMds = async (dir: string) => {
-  const files = await fg(['**/**.md'], {
-    onlyFiles: true,
-    cwd: dir,
-    ignore: ['_*', 'dist', 'node_modules', 'CHANGELOG.md']
+export const listPackageDir = async () => {
+  return await fg('**', {
+    onlyDirectories: true,
+    cwd: DIR_SRC,
+    deep: 1,
+    ignore: ['docs__guide']
   })
-  files.sort()
-  return files
 }
+
 export const getPackageName = async (dir: string, cwd = DIR_SRC) => {
   const jsonPath = resolve(cwd, dir, 'package.json')
   if (!fs.existsSync(jsonPath)) return
@@ -30,12 +30,7 @@ export const updateIndexes = async () => {
     categories: [],
     documents: []
   }
-  const directory = await fg('**', {
-    onlyDirectories: true,
-    cwd: DIR_SRC,
-    deep: 1,
-    ignore: ['docs__guide']
-  })
+  const directory = await listPackageDir()
   for (const _dir of directory) {
     const dir = join(DIR_SRC, _dir)
     const mds = await listFunctionMds(dir)
@@ -82,4 +77,4 @@ export const updateIndexes = async () => {
   fs.writeJSON('packages/indexes.json', indexes, { spaces: '\t' })
 }
 
-updateIndexes()
+// updateIndexes()

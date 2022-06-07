@@ -1,8 +1,7 @@
+import path from 'path'
 import type { Plugin } from 'vite'
 import fs from 'fs-extra'
-import { rollup } from 'rollup'
-import rollupPluginDts from 'rollup-plugin-dts'
-import { format } from 'prettier'
+import md5 from 'md5'
 import { replacer } from '../utils'
 
 export function MarkdownTransform(): Plugin {
@@ -49,20 +48,7 @@ export async function getFunctionMarkdown(mdPath: string, length: number) {
 }
 
 export async function getTypeDefinition(tsPath: string): Promise<string | undefined> {
-  if (!fs.existsSync(tsPath)) return
-  const bundles = await rollup({
-    input: tsPath,
-    plugins: [
-      rollupPluginDts({
-        compilerOptions: { preserveSymlinks: false }
-      })
-    ],
-    onwarn: () => false
-  })
-  const { output } = await bundles.generate({ format: 'es' })
-  let code = output[0].code.replace(/declare /g, '')
-  code = code.replace(/export {};/, '')
-  if (!/props/.test(tsPath))
-    code = format(code, { printWidth: 90, parser: 'typescript', semi: false, singleQuote: true })
-  return code
+  const typeFilePath = path.join(process.cwd(), 'node_modules', '.cache/types', md5(tsPath))
+  if (!fs.existsSync(typeFilePath)) return
+  return fs.readFileSync(typeFilePath, 'utf-8')
 }

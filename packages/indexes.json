@@ -39,17 +39,8 @@
 		{
 			"name": "biElementSyncScroll",
 			"package": "@hairy/vue-use",
-			"function": "syncElementSize/index.ts",
-			"lastUpdated": 1654413412000,
-			"docs": "vue__use/syncElementSize/",
-			"category": "Vue Use",
-			"description": "同步两个具有相同滚动条的DOM的滚动"
-		},
-		{
-			"name": "biElementSyncScroll",
-			"package": "@hairy/vue-use",
 			"function": "syncElementScroll/index.ts",
-			"lastUpdated": 1653881591000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__use/syncElementScroll/",
 			"category": "Vue Use",
 			"description": "同步两个具有相同滚动条的DOM的滚动"
@@ -67,7 +58,7 @@
 			"name": "createContext",
 			"package": "@hairy/vue-use",
 			"function": "createContext/index.ts",
-			"lastUpdated": 1654431530000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__use/createContext/",
 			"category": "Vue Use",
 			"description": "创建上下文 `provide / inject`"
@@ -215,6 +206,15 @@
 			"description": "数值的处理"
 		},
 		{
+			"name": "syncElementSize",
+			"package": "@hairy/vue-use",
+			"function": "syncElementSize/index.ts",
+			"lastUpdated": 1654511380000,
+			"docs": "vue__use/syncElementSize/",
+			"category": "Vue Use",
+			"description": "同步 from DOM 的宽或高到指定的 to DOM"
+		},
+		{
 			"name": "Type Conversion (lang)",
 			"package": "@hairy/libcore",
 			"function": "lang/index.ts",
@@ -254,7 +254,7 @@
 			"name": "useCheckedState",
 			"package": "@hairy/vue-use",
 			"function": "useCheckedState/index.ts",
-			"lastUpdated": 1654430840000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__use/useCheckedState/",
 			"category": "Vue Use",
 			"description": "获取 checked 的状态，自定义设置 checked | unchecked 的值"
@@ -263,7 +263,7 @@
 			"name": "usePaginationServer",
 			"package": "@hairy/vue-use",
 			"function": "usePaginationServer/index.ts",
-			"lastUpdated": 1653881591000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__use/usePaginationServer/",
 			"category": "Vue Use",
 			"description": "服务端分页"
@@ -272,7 +272,7 @@
 			"name": "usePromise",
 			"package": "@hairy/vue-use",
 			"function": "usePromise/index.ts",
-			"lastUpdated": 1653881591000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__use/usePromise/",
 			"category": "Vue Use",
 			"description": "异步函数 loading 、execute、 state 封装"
@@ -281,7 +281,7 @@
 			"name": "useSelectedMultiple",
 			"package": "@hairy/vue-use",
 			"function": "useSelectedMultiple/index.ts",
-			"lastUpdated": 1653881591000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__use/useSelectedMultiple/",
 			"category": "Vue Use",
 			"description": "使用多选列表状态"
@@ -290,7 +290,7 @@
 			"name": "useSelectedSingle",
 			"package": "@hairy/vue-use",
 			"function": "useSelectedSingle/index.ts",
-			"lastUpdated": 1653881591000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__use/useSelectedSingle/",
 			"category": "Vue Use",
 			"description": "使用单选列表状态"
@@ -299,7 +299,7 @@
 			"name": "vFocus",
 			"package": "@hairy/vue-directives",
 			"function": "directives/focus.ts",
-			"lastUpdated": 1653387148000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__directive/directives/focus",
 			"category": "Vue Directives",
 			"description": "让输入框 / 深层的输入框高亮"
@@ -308,7 +308,7 @@
 			"name": "vHas",
 			"package": "@hairy/vue-directives",
 			"function": "directives/has.ts",
-			"lastUpdated": 1653387148000,
+			"lastUpdated": 1654511380000,
 			"docs": "vue__directive/directives/has",
 			"category": "Vue Directives",
 			"description": "判断权限是否满足"

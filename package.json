@@ -5,15 +5,18 @@
   "description": "hairylib 是工具代码库，使用 lerna 管理的多个模块包(monorepo)的项目。",
   "main": "index.js",
   "scripts": {
-    "build": "pnpm clean && pnpm turbo run build --parallel",
+    "build": "nr clean && turbo run build --parallel",
+    "build:types": "esno scripts/types.ts",
     "clean": "rimraf dist types packages/*/dist",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
+    "docs:dev": "nr update && vitepress dev packages",
+    "docs:build": "nr update:full && vitepress build packages",
+    "docs:serve": "vitepress serve packages",
     "update": "esno scripts/update.ts",
-    "docs:dev": "yarn update && vitepress dev packages",
-    "docs:build": "yarn update && vitepress build packages",
-    "docs:serve": "yarn update && vitepress serve packages"
+    "update:full": "nr update && nr build:types",
+    "publish:ci": "changeset && changeset version && nr build && changeset publish"
   },
   "author": "TuiMao233",
   "license": "ISC",
@@ -33,7 +36,10 @@
     "react-dom": "^18.1.0"
   },
   "dependencies": {
-    "@hairy/cli": "workspace:^0.2.0",
+    "@antfu/ni": "^0.16.2",
+    "@hairy/cli": "workspace:*",
+    "@types/md5": "^2.3.2",
+    "@types/prettier": "^2.6.1",
     "esbuild": "^0.14.39",
     "esbuild-register": "^3.3.2",
     "eslint": "^8.15.0",
@@ -41,6 +47,7 @@
     "fast-glob": "^3.2.7",
     "fs-extra": "^10.1.0",
     "gray-matter": "^4.0.3",
+    "md5": "^2.3.0",
     "pascal-case": "^3.1.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.74.1",
