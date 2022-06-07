@@ -16,7 +16,7 @@
     "docs:serve": "vitepress serve packages",
     "update": "esno scripts/update.ts",
     "update:full": "nr update && nr build:types",
-    "publish:ci": "changeset && changeset version && nr build && changeset publish"
+    "publish:ci": "changeset && changeset version && nr build && pnpm -r publish"
   },
   "author": "TuiMao233",
   "license": "ISC",
