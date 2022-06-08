@@ -1,0 +1,16 @@
+{
+  "name": "@ex/b",
+  "version": "1.0.0",
+  "description": "",
+  "publishConfig": {
+    "directory": "dist",
+    "main": "dist/index.js"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
