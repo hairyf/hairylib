@@ -7,7 +7,7 @@
 - [monorepo 方案选择](https://github.com/practicajs/practica/blob/main/docs/docs/decisions/monorepo.md)
 
 
-## pnpm workspace
+## pnpm workspace（example-1）
 
 - [高性能 npm](https://zhuanlan.zhihu.com/p/457698236)
 
@@ -15,7 +15,7 @@
 
 ***
 
-### 流行的编译工具
+### 流行的编译工具（example-2）
 
 集成：rollup（lib）、[webpack](https://tuimao233.gitee.io/mao-blog/ruan-jian-kai-fa/qian-duan-bi-ji/23-webpack-quan-mian-fen-xi.html)（业务）、[vite](https://tuimao233.gitee.io/mao-blog/ruan-jian-kai-fa/qian-duan-bi-ji/41-vite-shi-yong-yu-yuan-li-fen-xi.html#vite-%E6%98%AF%E4%BB%80%E4%B9%88)（业务）
 
@@ -37,20 +37,20 @@
 
 - [tsc 移植到 Go](https://kdy1.dev/posts/2022/1/tsc-go)
 
-### Turborepo 任务编排
+### Turborepo 任务编排（hairy）
 
 ***
 
 - [从 Turborepo 看 Monorepo 工具的任务编排能力](https://juejin.cn/post/7065323766640967716)
 
-## 版本系统
+## 版本系统（hairy）
 
 ***
 
 - [流行的 monorepo 场景发包工具](https://juejin.cn/post/7024827345059971080)
 
 
-## 文档系统
+## 文档系统（hairy）
 
 ***
 
