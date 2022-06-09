@@ -64,6 +64,10 @@ cherry-doc、vitepress、博客园、vuepress、hexo
 
 - 历史版本文档系统
 
+## 单元测试(vitest)
+
+[测试标准](https://zhuanlan.zhihu.com/p/340615580)
+
 ## 自动化部署（ci）
 
 ***
