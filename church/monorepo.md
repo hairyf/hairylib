@@ -37,6 +37,12 @@
 
 - [tsc 移植到 Go](https://kdy1.dev/posts/2022/1/tsc-go)
 
+### 完全的 Typescript 开发
+
+bin、rollup、esbuild-register
+
+### 
+
 ### Turborepo 任务编排（hairy）
 
 ***
