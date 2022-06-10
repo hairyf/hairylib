@@ -6,6 +6,16 @@ const Guide = [
   { text: 'Contributing', link: '/docs__guide/contributing' }
 ]
 
+const Study = [
+  { text: 'What is Monorepo?', link: '/docs__study/monorepo' },
+  { text: 'Pnpm Workspace', link: '/docs__study/pnpm-workspace' },
+  { text: 'Monorepo Compiler', link: '/docs__study/monorepo-compiler' },
+  { text: 'Turborepo', link: '/docs__study/turborepo' },
+  { text: 'Changesets', link: '/docs__study/changesets' },
+  { text: 'Document system', link: '/docs__study/docs-system' },
+  { text: 'Unit Testing', link: '/docs__study/unit-testing' }
+]
+
 const CoreCategories = categories.map((category) => ({
   text: category,
   link: indexes.documents.find((item) => item.category === category)?.docs || ''
@@ -14,10 +24,12 @@ const DocumentsSideBar = getDocumentSideBar()
 
 const DefaultSideBar: DefaultTheme.SidebarGroup[] = [
   { text: 'Guide', items: Guide },
+  { text: 'Study', items: Study },
   { text: 'Core Functions', items: CoreCategories }
 ]
 export const sidebar: DefaultTheme.Sidebar = {
   '/docs__guide/': DefaultSideBar,
+  '/docs__study/': DefaultSideBar,
   // #region functions
   ...getReduceSideBar(indexes.documents.map((v) => v.docs))
   // #endregion

@@ -15,7 +15,7 @@ export const buildMetaFiles = async (outdir: string) => {
   const packageJsonPath = path.join(process.cwd(), 'package.json')
   if (!fs.existsSync(packageJsonPath)) return
   const packageJson = await fs.readJson(packageJsonPath)
-  delete packageJson.publishConfig.directory
+  if (packageJson.publishConfig) delete packageJson.publishConfig.directory
   const packageJsonPathOutput = path.join(process.cwd(), outdir, 'package.json')
   await fs.writeJson(packageJsonPathOutput, packageJson, { spaces: '\t' })
 }
