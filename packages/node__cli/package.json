@@ -1,6 +1,6 @@
 {
   "name": "@hairy/cli",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publishConfig": {
     "directory": "dist"
   },
@@ -25,6 +25,7 @@
     "fast-glob": "^3.2.7",
     "fs-extra": "^10.0.0",
     "gitlog": "^4.0.4",
+    "lnk": "^1.1.0",
     "lodash": "^4",
     "log-update": "4.0.0",
     "rollup": "^2.74.1",

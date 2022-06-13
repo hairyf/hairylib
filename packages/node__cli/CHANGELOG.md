@@ -1,5 +1,11 @@
 # @hairy/cli
 
+## 0.4.0
+
+### Minor Changes
+
+- chore: add node_modules lnk
+
 ## 0.3.0
 
 ### Minor Changes

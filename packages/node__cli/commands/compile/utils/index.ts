@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs-extra'
+import lnk from 'lnk'
 import { rollup } from 'rollup'
 import rollupPluginDts from 'rollup-plugin-dts'
 
@@ -12,12 +13,20 @@ export const buildMetaFiles = async (outdir: string) => {
     if (!fs.existsSync(filePath)) continue
     await fs.copy(filePath, path.join(process.cwd(), outdir, file))
   }
+
   const packageJsonPath = path.join(process.cwd(), 'package.json')
-  if (!fs.existsSync(packageJsonPath)) return
-  const packageJson = await fs.readJson(packageJsonPath)
-  if (packageJson.publishConfig) delete packageJson.publishConfig.directory
-  const packageJsonPathOutput = path.join(process.cwd(), outdir, 'package.json')
-  await fs.writeJson(packageJsonPathOutput, packageJson, { spaces: '\t' })
+  if (fs.existsSync(packageJsonPath)) {
+    const packageJson = await fs.readJson(packageJsonPath)
+    if (packageJson.publishConfig) delete packageJson.publishConfig.directory
+    const packageJsonPathOutput = path.join(process.cwd(), outdir, 'package.json')
+    await fs.writeJson(packageJsonPathOutput, packageJson, { spaces: '\t' })
+  }
+
+  const nodeModulesPath = path.join(process.cwd(), 'node_modules')
+  if (fs.existsSync(nodeModulesPath)) {
+    const nodeModulesOutput = path.join(process.cwd(), outdir)
+    lnk(['node_modules'], nodeModulesOutput)
+  }
 }
 
 export const generateDts = async (input: string, file: string) => {
