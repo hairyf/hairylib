@@ -9,6 +9,8 @@ category: 'Node Utils'
 
 暂时仅支持 OpenAPI-V2 源解析与 AxiosTs Compiler，欢迎提交贡献另外的源解析，具体了解 [Running Process](#running-process)
 
+脚手架[@hairy/cli/#apigenerator-code](https://hairylib.com/node__cli/#apigenerator-code)
+
 ## Install
 
 ```
