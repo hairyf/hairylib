@@ -1,5 +1,11 @@
 # @hairy/axios-bearer
 
+## 0.3.0
+
+### Minor Changes
+
+- chore: name change
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,14 +1,14 @@
 import axios from 'axios'
 import noop from 'lodash/noop'
-import { axiosWithLoadingHandler } from '.'
+import { axiosWithLoadingHelper } from '.'
 
 axios.defaults['baseURL'] = 'https://jsonplaceholder.typicode.com'
 
-describe('@hairy/axios:axiosWithLoadingHandler', () => {
+describe('@hairy/axios:axiosWithLoadingHelper', () => {
   it('show loading call.', async () => {
     const http = axios.create()
     let count = 0
-    axiosWithLoadingHandler(http, () => count++, noop)
+    axiosWithLoadingHelper(http, () => count++, noop)
 
     await http.get('/albums', { loading: true })
     expect(count).toEqual(1)
@@ -16,7 +16,7 @@ describe('@hairy/axios:axiosWithLoadingHandler', () => {
   it('hide loading call.', async () => {
     const http = axios.create()
     let count = 0
-    axiosWithLoadingHandler(http, noop, () => count++)
+    axiosWithLoadingHelper(http, noop, () => count++)
 
     await http.get('/albums', { loading: true })
     expect(count).toEqual(1)
@@ -25,7 +25,7 @@ describe('@hairy/axios:axiosWithLoadingHandler', () => {
     const https = axios.create()
     let showCount = 0
     let hideCount = 0
-    axiosWithLoadingHandler(
+    axiosWithLoadingHelper(
       https,
       () => showCount++,
       () => hideCount++

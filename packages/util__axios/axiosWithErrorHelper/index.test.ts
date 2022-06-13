@@ -8,8 +8,8 @@
  */
 
 import axios from 'axios'
-import { axiosWithErrorHandler } from '.'
+import { axiosWithErrorHelper } from '.'
 
 axios.defaults['baseURL'] = 'https://jsonplaceholder.typicode.com'
 
-describe('@hairy/axios:axiosWithErrorHandler', () => {})
+describe('@hairy/axios:axiosWithErrorHelper', () => {})

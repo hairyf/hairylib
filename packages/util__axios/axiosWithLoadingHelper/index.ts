@@ -16,7 +16,7 @@ export type LoadingHideCallback = (config: AxiosRequestConfig, response?: AxiosR
  * @param show 展示逻辑钩子
  * @param hide 关闭逻辑钩子
  */
-export const axiosWithLoadingHandler = (
+export const axiosWithLoadingHelper = (
   axios: AxiosStatic | AxiosInstance,
   show: LoadingShowCallback,
   hide: LoadingHideCallback,
