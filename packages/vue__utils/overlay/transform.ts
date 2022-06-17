@@ -12,23 +12,23 @@ export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>
  * @returns 命令式弹出层
  */
 export function transformImperativeOverlay<P = any, R = void>(component: Component): ImperativeOverlay<P, R> {
-  const executor = (props: any, _resolve: Function, _reject: Function) => {
+  const executor = (props: any, resolve: Function, reject: Function) => {
     const Provider = defineComponent({
       setup: () => {
         const visible = ref(false)
-        function reject(value: any) {
-          _reject?.(value)
+        function cancel(value: any) {
+          reject?.(value)
           visible.value = false
         }
-        function resolve(value: any) {
-          _resolve?.(value)
+        function confirm(value: any) {
+          resolve?.(value)
           visible.value = false
         }
         function vanish() {
           _vanish?.()
-          _reject?.()
+          reject?.()
         }
-        provide(OverlayMetaKey, { reject, resolve, vanish, visible, vnode })
+        provide(OverlayMetaKey, { cancel, confirm, vanish, visible, vnode })
       },
       render() {
         return h(component as any, props)
@@ -38,18 +38,9 @@ export function transformImperativeOverlay<P = any, R = void>(component: Compone
   }
 
   const caller = (props: any) =>
-    new Promise<any>((_resolve, _reject) => {
-      executor(props, _resolve, _reject)
+    new Promise<any>((resolve, reject) => {
+      executor(props, resolve, reject)
     })
 
   return caller
-}
-
-/**
- * 转换声明式弹出层（组件）
- * @todo 未实现
- * @param component
- */
-export function transformDeclarativeOverlay<P = any>(component: P) {
-  return component
 }
