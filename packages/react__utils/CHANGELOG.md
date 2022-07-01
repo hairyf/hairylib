@@ -1,5 +1,12 @@
 # @hairy/react-utils
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @hairy/libcore@0.3.0
+
 ## 0.1.0
 
 ### Minor Changes

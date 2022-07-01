@@ -1,5 +1,11 @@
 # @hairy/libcore
 
+## 0.3.0
+
+### Minor Changes
+
+- remove pickByParams function
+
 ## 0.2.0
 
 ### Minor Changes

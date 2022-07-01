@@ -1,5 +1,12 @@
 # @hairy/vue-utils
 
+## 1.3.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @hairy/libcore@0.3.0
+
 ## 1.3.0
 
 ### Minor Changes

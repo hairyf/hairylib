@@ -1,5 +1,12 @@
 # @hairy/api-generator
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @hairy/libcore@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
