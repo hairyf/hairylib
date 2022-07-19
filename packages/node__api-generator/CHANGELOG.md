@@ -1,5 +1,11 @@
 # @hairy/api-generator
 
+## 0.2.2
+
+### Patch Changes
+
+- fix es modules
+
 ## 0.2.1
 
 ### Patch Changes
