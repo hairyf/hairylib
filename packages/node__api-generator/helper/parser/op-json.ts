@@ -69,7 +69,8 @@ class OpenAPI_JSONParserFactory {
     }
     const typings: ParserTypingsOptions = {
       jsonDocs,
-      typings: interfaces
+      typings: interfaces,
+      responseType: options.responseType
     }
     this.$parser = { request, typings }
   }

@@ -56,6 +56,7 @@ export interface OpenAPIBuildConfigurationRead {
   typeConfig?: ParserRequestOptions['typeConfig']
   httpImport?: ParserRequestOptions['httpImport']
   typeImport?: ParserRequestOptions['typeImport']
+  responseType?: string
   outputs?: BuildOutput[]
   request?: ParserRequestOptions
   typings?: ParserTypingsOptions

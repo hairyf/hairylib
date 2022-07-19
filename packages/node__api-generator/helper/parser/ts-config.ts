@@ -9,6 +9,7 @@ export const parserTsConfig = (config: OpenAPIBuildConfiguration): OpenAPIBuildC
   config = merge(cloneDeep(defaultConfig), config)
   const outputs = helperOutput(config)
   const typings = outputs.find((i) => i.type === 'typings')
+  // TODO: 信息失真
   const options: OpenAPIBuildConfigurationRead = {
     baseURL: { value: config.baseURL || '' },
     typeConfig: {
@@ -55,6 +56,7 @@ export const parserTsConfig = (config: OpenAPIBuildConfiguration): OpenAPIBuildC
     // TODO: 通用的函数 parameter，会给每个函数都添加上
     // parameter: [],
     outputs,
+    responseType: config.responseType,
     config
   }
   return options
