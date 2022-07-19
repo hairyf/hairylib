@@ -1,5 +1,11 @@
 # @hairy/api-generator
 
+## 0.2.4
+
+### Patch Changes
+
+- fix in body params
+
 ## 0.2.3
 
 ### Patch Changes
