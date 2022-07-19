@@ -1,5 +1,11 @@
 # @hairy/cli
 
+## 0.4.4
+
+### Patch Changes
+
+- change cli dev
+
 ## 0.4.3
 
 ## 0.4.2
