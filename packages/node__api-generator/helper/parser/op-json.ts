@@ -151,9 +151,9 @@ class OpenAPI_JSONParserFactory {
       typings: { typings }
     } = this.$parser
     config.parameters = config.parameters.filter((item) => {
-      return !options.parameters.some((v) => v.name === item.name)
+      return !options.parameters?.some((v) => v.name === item.name)
     })
-    const parameters = [...config.parameters, ...options.parameters]
+    const parameters = [...config.parameters, ...(options.parameters || [])]
     const parametersHelpers = createParametersHelpers()
     const functionHelpers = createFunctionHelpers()
     for (const parameter of parameters) {

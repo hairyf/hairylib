@@ -1,5 +1,11 @@
 # @hairy/api-generator
 
+## 0.2.3
+
+### Patch Changes
+
+- fix parameters is undefined
+
 ## 0.2.2
 
 ### Patch Changes
