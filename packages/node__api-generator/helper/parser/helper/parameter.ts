@@ -10,6 +10,7 @@ export function helperParameter(parameter: OpenAPITypes.Parameter): StatementFil
     required: parameter.required,
     description: parameter.description ?? ''
   }
+
   if (filed.description) filed.description = `@description ${filed.description}`
 
   if (parameter.in === 'formData') filed.type = helperPropertie(parameter)
@@ -25,5 +26,6 @@ export function helperParameter(parameter: OpenAPITypes.Parameter): StatementFil
       filed.type = `string | ${spliceEnumType(parameter.items?.enum)}[]`
     }
   }
+
   return filed
 }

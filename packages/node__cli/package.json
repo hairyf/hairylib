@@ -42,6 +42,6 @@
     "esbuild-register": "^3.3.2"
   },
   "optionalDependencies": {
-    "@hairy/api-generator": "workspace:*"
+    "@hairy/api-generator": "*"
   }
 }

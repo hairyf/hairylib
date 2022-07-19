@@ -89,8 +89,8 @@ class OpenAPI_JSONParserFactory {
         meta.description && `@description ${meta.description}`,
         `@method ${method}`,
         meta.tags && `@tags ${meta.tags.join(' | ') || '-'}`,
-        meta.consumes && `@consumes ${meta.consumes.join('; ') || '-'}`,
-        meta.produces && `@produces ${meta.produces.join('; ') || '-'}`
+        meta.consumes && `@consumes ${meta.consumes.join('; ') || '-'}`
+        // meta.produces && `@produces ${meta.produces.join('; ') || '-'}`
       ].filter(Boolean)
       /**
        * 函数名称
@@ -132,7 +132,9 @@ class OpenAPI_JSONParserFactory {
       }
       this.$parser.typings.typings.push({
         name: varName(name),
-        properties: Object.keys(definition.properties).map((name) => typePropMap(definition.properties[name], name))
+        properties: Object.keys(definition.properties || {}).map((name) =>
+          typePropMap(definition.properties[name], name)
+        )
       })
     })
   }
@@ -162,17 +164,29 @@ class OpenAPI_JSONParserFactory {
     }
     forIn(parametersHelpers, (properties, paramType) => {
       if (properties.length === 0) return
-      const typeName = varName([method, path, paramType])
-
-      typings.push({ name: typeName, properties })
 
       if (paramType === 'formData') {
         // TODO:fromData
-        return increaseState(functionHelpers, FORM_DATA_FILED)
+        increaseState(functionHelpers, FORM_DATA_FILED)
+        return
       }
+
+      // body 是特殊的, 仅拿第一个
+      if (paramType === 'body') {
+        increaseState(functionHelpers, {
+          required: properties[0].required,
+          name: paramType,
+          type: properties[0].type
+        })
+        return
+      }
+
       if (paramType === 'header') {
         signAnyInter(properties)
       }
+
+      const typeName = varName([method, path, paramType])
+      typings.push({ name: typeName, properties })
       increaseState(functionHelpers, {
         required: isRequiredParameter(properties),
         name: paramType,
