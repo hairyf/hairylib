@@ -29,3 +29,19 @@ export const arange = (x1: number, x2?: number, stp = 1, z: number[] = [], z0 = 
   for (let z1 = z0 + Math.max(Math.ceil((++x2 - x1) / stp), 0); z0 < z1; x1 += stp) z[z0++] = x1
   return z
 }
+
+export interface PromiseResolver<T = void> extends Promise<T> {
+  resolve: (value: T) => void
+  reject: Function
+}
+export function createPromise<T>(): PromiseResolver<T> {
+  let resolve
+  let reject
+  const promise: any = new Promise((_r, _j) => {
+    resolve = _r
+    reject = _j
+  })
+  promise.resolve = resolve
+  promise.reject = reject
+  return promise as PromiseResolver<T>
+}
