@@ -1,8 +1,8 @@
 import { MaybeRef } from '@vueuse/core'
 
 import { computed, ComputedRef, ref, unref, UnwrapRef, watch } from 'vue'
+import { extendSelected } from '../utils/extendSelected'
 export type SelectedSingleArray = MaybeRef<{ [key: string]: any }[]>
-
 export interface SelectedSingleOptions {
   /**
    * 选择字段
@@ -23,6 +23,10 @@ export interface SelectedSingleResult<T extends SelectedSingleArray> {
    * 当前选中项
    */
   selected: ComputedRef<UnwrapRef<T>[number] | undefined>
+  /**
+   * 是否已经选择
+   */
+  isSelected: ComputedRef<boolean>
 }
 
 export const useSelectedSingle = <T extends SelectedSingleArray>(
@@ -32,6 +36,8 @@ export const useSelectedSingle = <T extends SelectedSingleArray>(
   const fieldName = options.fieldName ?? 'select'
   const required = options.required ?? false
 
+  extendSelected(array, fieldName)
+
   const SELECTED_SINGLE_KEY = 'selected_single_key'
 
   const isLocked = ref(false)
@@ -40,16 +46,16 @@ export const useSelectedSingle = <T extends SelectedSingleArray>(
   const isSelected = computed(() => !!unref(array).some((item) => item.select))
 
   if (required) {
-    const reset = (bool: boolean) => {
+    const recover = (bool: boolean) => {
       const index = required === true ? 0 : required
       if (!bool && unref(array).length > 0) {
         unref(array)[index][fieldName] = true
       }
     }
-    watch(isSelected, reset, { flush: 'sync', immediate: true })
+    watch(isSelected, recover, { flush: 'sync', immediate: true })
   }
 
-  const resetAllSelected = (neglect: number) => {
+  const itemChange = (neglect: number) => {
     if (isLocked.value) return
     isLocked.value = true
 
@@ -69,21 +75,27 @@ export const useSelectedSingle = <T extends SelectedSingleArray>(
     isLocked.value = false
   }
 
-  const watchTargetEffect = (target: { [key: string]: any }, index: number) => {
+  const targetEffect = (target: { [key: string]: any }, index: number) => {
     if (!target[SELECTED_SINGLE_KEY]) {
       return watch(
         () => target[fieldName],
-        () => resetAllSelected(index),
+        () => itemChange(index),
         { flush: 'sync' }
       )
     }
     Object.defineProperty(target, SELECTED_SINGLE_KEY, { value: true })
   }
 
-  watch(array, () => unref(array).forEach(watchTargetEffect), { immediate: true, flush: 'sync' })
+  watch(
+    array,
+    () => {
+      unref(array).forEach(targetEffect)
+    },
+    { immediate: true, flush: 'sync' }
+  )
 
   /** 当前选中的项 */
   const selected = computed(() => unref(array).find((v) => v[fieldName]))
 
-  return { selected }
+  return { selected, isSelected }
 }

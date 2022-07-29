@@ -1,8 +1,7 @@
-import { useOffsetPagination, UseOffsetPaginationOptions, UseOffsetPaginationReturn } from '@vueuse/core'
+import { useOffsetPagination, UseOffsetPaginationOptions, UseOffsetPaginationReturn, useAsyncState } from '@vueuse/core'
 import { nextTick, reactive, ref, Ref, UnwrapRef, WatchOptions, watch } from 'vue'
 import { DebouncedFunc } from 'lodash'
 import debounce from 'lodash/debounce'
-import { usePromise } from '../usePromise'
 
 export type UseServerPaginationResolve = UnwrapRef<
   Pick<UseOffsetPaginationReturn, 'currentPage' | 'currentPageSize'> & { total: number }
@@ -47,12 +46,12 @@ export const useServerPagination = <T extends any[]>(
   const state = ref<any>([]) as Ref<T>
   const {
     execute: _execute,
-    loading,
+    isLoading: loading,
     error
-  } = usePromise(async () => {
+  } = useAsyncState(async () => {
     const resolved = await options.resolve(resolveOptions)
-    return resolved || []
-  })
+    return resolved
+  }, [] as unknown as T)
 
   const execute = debounce(async () => {
     state.value = await _execute()

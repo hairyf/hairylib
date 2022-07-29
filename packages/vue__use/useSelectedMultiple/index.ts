@@ -6,6 +6,7 @@
  */
 import { MaybeRef } from '@vueuse/core'
 import { computed, ComputedRef, Ref, unref, UnwrapRef } from 'vue'
+import { extendSelected } from '../utils/extendSelected'
 
 export type SelectedMultipleArray = MaybeRef<{ [key: string]: any }[]>
 
@@ -46,6 +47,9 @@ export const useSelectedMultiple = <T extends SelectedMultipleArray>(
   options: SelectedMultipleOptions<T> = {}
 ): SelectedMultipleResult<T> => {
   const { fieldName = 'select', disabled } = options
+
+  extendSelected(array, fieldName)
+
   /** 当前选中的项列表 */
   const selected = computed<any>(() => unref(array).filter((item) => item[fieldName]))
 

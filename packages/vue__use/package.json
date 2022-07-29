@@ -1,5 +1,5 @@
 {
-  "name": "@hairy/vue-use",
+  "name": "@hairy/vueuse",
   "version": "1.2.0",
   "main": "index.ts",
   "publishConfig": {
@@ -18,7 +18,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --type"
+    "build": "ptsup index.ts --dts --meta"
   },
   "license": "MIT",
   "dependencies": {
