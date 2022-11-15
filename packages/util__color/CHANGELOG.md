@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.1
+
+### Patch Changes
+
+- fix: change alpha value error
+
 ## 0.3.0
 
 ### Minor Changes

@@ -80,3 +80,5 @@ Accepts a HEX/A String or a RGB/A Object as `fgColor`/`bgColor`. If the alpha ch
 Increments or decrements the alpha of a string color.
 
 Accepts a HEX/A String as color and a number between -1 and 1 (including edges) as offset. Use a negative value to decrement and a positive number to increment (ex: changeAlpha('#ff0000', -0.1) to decrement alpha by 10%). Returns HEX/A String.
+
+### 
