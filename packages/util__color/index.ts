@@ -350,7 +350,7 @@ export function changeAlpha(color: COLOR, alpha: number) {
     throw new TypeError('Expected a string as color')
   }
   if (alpha === void 0 || alpha < 0 || alpha > 100) {
-    throw new TypeError('Expected alpha to be between 0 and 1')
+    throw new TypeError('Expected alpha to be between 1 and 100')
   }
   const rgba = textToRgb(color)
   rgba.a = alpha

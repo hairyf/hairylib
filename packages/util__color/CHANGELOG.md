@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.2
+
+### Patch Changes
+
+- chore: update type error
+
 ## 0.3.1
 
 ### Patch Changes
