@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.0
+
+### Minor Changes
+
+- feat(alpha|palette): add palette and change alpha func
+
 ## 0.2.0
 
 ### Minor Changes

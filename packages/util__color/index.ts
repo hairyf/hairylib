@@ -7,8 +7,9 @@ export type RGBA_TEXT = string
 export type HEX_TEXT = string
 export type HSVA_TEXT = string
 export type COLOR = RGBA_TEXT | HEX_TEXT | HSVA_TEXT
+export type PALETTE_INDEXES = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 
-const reRGBA = /^rgb(a)?\((\d{1,3}),(\d{1,3}),(\d{1,3}),?([01]?\.?\d*?)?\)$/
+const RE_RGBA = /^rgb(a)?\((\d{1,3}),(\d{1,3}),(\d{1,3}),?([01]?\.?\d*?)?\)$/
 
 /**
  * Converts a RGB/A color
@@ -21,19 +22,19 @@ const reRGBA = /^rgb(a)?\((\d{1,3}),(\d{1,3}),(\d{1,3}),?([01]?\.?\d*?)?\)$/
  *
  * If Alpha channel is present in the original object it will be present also in the output.
  */
-export function rgbToHex({ r, g, b, a }: RGBA): HEX {
+export function rgbToHex({ r, g, b, a }: RGB): HEX {
   const alpha = a !== void 0
 
   r = Math.round(r)
   g = Math.round(g)
   b = Math.round(b)
 
-  if (r > 255 || g > 255 || b > 255 || (alpha && a > 100)) {
+  if (r > 255 || g > 255 || b > 255 || (alpha && a! > 100)) {
     throw new TypeError('Expected 3 numbers below 256 (and optionally one below 100)')
   }
 
   if (alpha) {
-    a = Number((Math.round((255 * a) / 100) | (1 << 8)).toString(16).slice(1))
+    a = Number((Math.round((255 * a!) / 100) | (1 << 8)).toString(16).slice(1))
   }
 
   return '#' + (b | (g << 8) | (r << 16) | (1 << 24)).toString(16).slice(1) + a
@@ -145,7 +146,7 @@ export function hsvToRgb({ h, s, v, a }: HSVA): RGBA {
  *
  * If Alpha channel is present in the original object it will be present also in the output.
  */
-export function rgbToHsv({ r, g, b, a }: RGBA): HSVA {
+export function rgbToHsv({ r, g, b, a }: RGB): HSVA {
   const max = Math.max(r, g, b),
     min = Math.min(r, g, b),
     d = max - min,
@@ -175,7 +176,7 @@ export function rgbToHsv({ r, g, b, a }: RGBA): HSVA {
     h: Math.round(h * 360),
     s: Math.round(s * 100),
     v: Math.round(v * 100),
-    a
+    a: a || 1
   }
 }
 
@@ -197,7 +198,7 @@ export function textToRgb(str: COLOR): RGB {
 
   const color = str.replace(/ /g, '')
 
-  const m = reRGBA.exec(color)
+  const m = RE_RGBA.exec(color)
 
   if (m === null) {
     return hexToRgb(color)
@@ -319,9 +320,9 @@ export function blend(fgColor: COLOR | RGB, bgColor: COLOR | RGB) {
 /**
  * Increments or decrements the alpha of a string color.
  *
- * Accepts a HEX/A String as color and a number between -1 and 1 (including edges) as offset. Use a negative value to decrement and a positive number to increment (ex: changeAlpha('#ff0000', -0.1) to decrement alpha by 10%). Returns HEX/A String.
+ * Accepts a HEX/A String as color and a number between -1 and 1 (including edges) as offset. Use a negative value to decrement and a positive number to increment (ex: blendAlpha('#ff0000', -0.1) to decrement alpha by 10%). Returns HEX/A String.
  */
-export function changeAlpha(color: COLOR, offset: number) {
+export function blendAlpha(color: COLOR, offset: number) {
   if (typeof color !== 'string') {
     throw new TypeError('Expected a string as color')
   }
@@ -339,4 +340,116 @@ export function changeAlpha(color: COLOR, offset: number) {
     b,
     a: Math.round(Math.min(1, Math.max(0, alpha + offset)) * 100)
   })
+}
+
+/**
+ * Change color transparency
+ */
+export function changeAlpha(color: COLOR, alpha: number) {
+  if (typeof color !== 'string') {
+    throw new TypeError('Expected a string as color')
+  }
+  if (alpha === void 0 || alpha < 0 || alpha > 1) {
+    throw new TypeError('Expected alpha to be between 0 and 1')
+  }
+  const rgba = textToRgb(color)
+  rgba.a = alpha
+
+  return rgbToHex(rgba)
+}
+
+const hueStep = 2
+const saturationStep = 16
+const saturationStep2 = 5
+const brightnessStep1 = 5
+const brightnessStep2 = 15
+const lightColorCount = 5
+const darkColorCount = 4
+
+/**
+ * 根据颜色获取调色板颜色(从左至右颜色从浅到深，6为主色号)
+ * @param color - 颜色
+ * @param index - 调色板的对应的色号(6为主色号)
+ * @description 算法实现从ant-design调色板算法中借鉴 https://github.com/ant-design/ant-design/blob/master/components/style/color/colorPalette.less
+ */
+export function colorPalette(color: COLOR | RGB, index: PALETTE_INDEXES) {
+  if (typeof color !== 'string' && (!color || color.r === void 0)) {
+    throw new TypeError('Expected a string or a {r, g, b} object as color')
+  }
+  const rgb = typeof color === 'string' ? textToRgb(color) : color
+  const oldHsv = rgbToHsv(rgb)
+
+  if (index === 6) return rgbToHex(rgb)
+
+  const light = index < 6
+  const i = light ? lightColorCount + 1 - index : index - lightColorCount - 1
+  const newHsv: HSVA = {
+    h: hue(oldHsv, i, light),
+    s: saturation(oldHsv, i, light),
+    v: value(oldHsv, i, light),
+    a: oldHsv.a
+  }
+
+  return rgbToHex(hsvToRgb(newHsv))
+}
+
+/**
+ * 获取色相渐变
+ * @param hsv - hsv格式颜色值
+ * @param i - 与6的相对距离
+ * @param isLight - 是否是亮颜色
+ */
+function hue(hsv: HSVA, i: number, isLight: boolean) {
+  let hue: number
+  if (hsv.h >= 60 && hsv.h <= 240) {
+    // 冷色调
+    // 减淡变亮 色相顺时针旋转 更暖
+    // 加深变暗 色相逆时针旋转 更冷
+    hue = isLight ? hsv.h - hueStep * i : hsv.h + hueStep * i
+  } else {
+    // 暖色调
+    // 减淡变亮 色相逆时针旋转 更暖
+    // 加深变暗 色相顺时针旋转 更冷
+    hue = isLight ? hsv.h + hueStep * i : hsv.h - hueStep * i
+  }
+  if (hue < 0) hue += 360
+  else if (hue >= 360) hue -= 360
+
+  return hue
+}
+
+/**
+ * 获取饱和度渐变
+ * @param hsv - hsv格式颜色值
+ * @param i - 与6的相对距离
+ * @param isLight - 是否是亮颜色
+ */
+function saturation(hsv: HSVA, i: number, isLight: boolean) {
+  let saturation: number
+  if (isLight) saturation = hsv.s - saturationStep * i
+  else if (i === darkColorCount) saturation = hsv.s + saturationStep
+  else saturation = hsv.s + saturationStep2 * i
+
+  if (saturation > 100) saturation = 100
+
+  if (isLight && i === lightColorCount && saturation > 10) saturation = 10
+
+  if (saturation < 6) saturation = 6
+
+  return saturation
+}
+
+/**
+ * 获取明度渐变
+ * @param hsv - hsv格式颜色值
+ * @param i - 与6的相对距离
+ * @param isLight - 是否是亮颜色
+ */
+function value(hsv: HSVA, i: number, isLight: boolean) {
+  let value: number
+  value = isLight ? hsv.v + brightnessStep1 * i : hsv.v - brightnessStep2 * i
+
+  if (value > 100) value = 100
+
+  return value
 }
