@@ -1,6 +1,6 @@
 {
   "name": "@hairy/palette",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
@@ -20,5 +20,8 @@
   "scripts": {
     "build": "hairy build --esllpkg --type"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "colord": "^2.9.3"
+  }
 }
