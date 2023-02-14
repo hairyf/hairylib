@@ -9,7 +9,7 @@ declare module 'jweixin' {
     timestamp: number // 必填，生成签名的时间戳
     nonceStr: string // 必填，生成签名的随机串
     signature: string // 必填，签名，见附录1
-    jsApiList: (WxType.ApiMethod & v4ApiMethod)[] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    jsApiList: (WxType.ApiMethod | v4ApiMethod)[] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
   }): void
 }
 
@@ -23,7 +23,7 @@ export interface WechatJssdkOptions {
   /**
    * 初始化请求配置
    */
-  requestConfig: () => Promise<WechatJssdkConfig>
+  requestConfig: () => Promise<WechatJssdkConfig> | WechatJssdkConfig
   /**
    * 是否立即加载 config
    *
@@ -50,7 +50,7 @@ export class WechatJssdkHelper {
 
   private isReady = false
 
-  private requestConfig: () => Promise<WechatJssdkConfig>
+  private requestConfig: WechatJssdkOptions['requestConfig']
 
   private loadPromise?: Promise<void>
   private configPromise?: Promise<void>

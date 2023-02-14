@@ -1,5 +1,11 @@
 # @hairy/wechat-jssdk
 
+## 1.2.2
+
+### Patch Changes
+
+- fix wechat-jssdk type
+
 ## 1.2.1
 
 ### Patch Changes
