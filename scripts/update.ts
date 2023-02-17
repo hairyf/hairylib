@@ -58,6 +58,7 @@ export const updateIndexes = async () => {
         doc.docs = doc.docs.replace('.md', '')
         doc.docs = [_dir, doc.docs].filter(Boolean).join('/')
         doc.docs += mdName.endsWith('index.md') ? '/' : ''
+        doc.docs = '/' + doc.docs
 
         doc.category = frontmatter.category
 

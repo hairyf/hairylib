@@ -2,7 +2,7 @@
   "name": "hairylib",
   "private": true,
   "version": "0.0.0",
-  "description": "hairylib 是工具代码库，使用 lerna 管理的多个模块包(monorepo)的项目。",
+  "description": "hairylib 是工具代码库，使用 changeset 管理的多个模块包(monorepo)的项目。",
   "main": "index.js",
   "scripts": {
     "build": "nr clean && turbo run build --parallel",
@@ -21,6 +21,7 @@
   },
   "author": "TuiMao233",
   "license": "ISC",
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TuiMao233/hairylib.git"
@@ -28,36 +29,42 @@
   "bugs": {
     "url": "https://github.com/TuiMao233/hairylib/issues"
   },
-  "homepage": "https://github.com/TuiMao233/hairylib#readme",
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.22.0",
-    "@types/fs-extra": "^9.0.12",
-    "@types/react": "^18.0.9",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "@changesets/cli": "^2.26.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/react": "^18.0.28",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@antfu/ni": "^0.16.2",
-    "@hairy/cli": "workspace:*",
+    "@antfu/ni": "^0.20.0",
+    "@hairy/cli": "workspace:0.4.4",
     "@types/md5": "^2.3.2",
-    "@types/prettier": "^2.6.1",
-    "esbuild": "^0.14.39",
-    "esbuild-register": "^3.3.2",
-    "eslint": "^8.15.0",
+    "@types/prettier": "^2.7.2",
+    "esbuild": "^0.17.8",
+    "esbuild-register": "^3.4.2",
+    "eslint": "^8.34.0",
     "esno": "^0.16.3",
-    "fast-glob": "^3.2.7",
+    "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
     "gray-matter": "^4.0.3",
     "md5": "^2.3.0",
     "pascal-case": "^3.1.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.74.1",
-    "rollup-plugin-dts": "^4.2.1",
-    "simple-git": "^3.7.1",
-    "turbo": "^1.2.9",
-    "typescript": "^4.6.4",
-    "vite": "^2.9.9",
-    "vitepress": "1.0.0-alpha.1",
-    "vitest": "^0.13.0"
+    "rollup": "^3.15.0",
+    "rollup-plugin-dts": "^5.2.0",
+    "simple-git": "^3.16.1",
+    "turbo": "^1.7.4",
+    "typescript": "^4.9.5",
+    "vite": "^2.9.15",
+    "vitepress": "1.0.0-alpha.46",
+    "vitest": "^0.13.1"
   }
 }

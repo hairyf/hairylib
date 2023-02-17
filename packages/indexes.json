@@ -1,6 +1,5 @@
 {
 	"categories": [
-		"Study",
 		"Node Utils",
 		"Vue Use",
 		"Universal Utils",
@@ -12,18 +11,11 @@
 	],
 	"documents": [
 		{
-			"name": "什么是 Monorepo?",
-			"lastUpdated": 1654846801000,
-			"docs": "docs__study/monorepo",
-			"category": "Study",
-			"description": "Monorepo 其实不是一个新的概念，在软件工程领域，它已经有着十多年的历史了。概念上很好理解，就是把**多个项目**放在一个**仓库**里面，相对立的是传统的 MultiRepo 模式，即每个项目对应一个单独的仓库来分散管理。"
-		},
-		{
 			"name": "Api Generator",
 			"package": "@hairy/api-generator",
 			"function": "index.ts",
 			"lastUpdated": 1658221281000,
-			"docs": "node__api-generator/",
+			"docs": "/node__api-generator/",
 			"category": "Node Utils",
 			"description": "根据 OpenAPI-V2(swagger) 数据源（url/json/test）解析 AST，生成 Api 与 Types，暂不支持 JavaScript 生成"
 		},
@@ -32,7 +24,7 @@
 			"package": "@hairy/atom.css-utils",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "util__atom-css/",
+			"docs": "/util__atom-css/",
 			"category": "Node Utils",
 			"description": "常用的 atom-css 工具，可以用于（tailwindcss / windcss...）由于 [Value Auto-infer](https://windicss.org/features/value-auto-infer.html) 的推进，该库可能不在继续维护"
 		},
@@ -41,7 +33,7 @@
 			"package": "@hairy/vueuse",
 			"function": "syncElementScroll/index.ts",
 			"lastUpdated": 1654511380000,
-			"docs": "vue__use/syncElementScroll/",
+			"docs": "/vue__use/syncElementScroll/",
 			"category": "Vue Use",
 			"description": "同步两个具有相同滚动条的DOM的滚动"
 		},
@@ -50,7 +42,7 @@
 			"package": "@hairy/palette",
 			"function": "index.ts",
 			"lastUpdated": 1668565559000,
-			"docs": "util__color/",
+			"docs": "/util__color/",
 			"category": "Universal Utils",
 			"description": "颜色的处理、转换、计算"
 		},
@@ -59,7 +51,7 @@
 			"package": "@hairy/vueuse",
 			"function": "createInjectionContext/index.ts",
 			"lastUpdated": 1659061813000,
-			"docs": "vue__use/createInjectionContext/",
+			"docs": "/vue__use/createInjectionContext/",
 			"category": "Vue Use",
 			"description": "创建上下文 `provide / inject`"
 		},
@@ -68,7 +60,7 @@
 			"package": "@hairy/libcore",
 			"function": "size/index.ts",
 			"lastUpdated": 1654430840000,
-			"docs": "util__libcore/size/",
+			"docs": "/util__libcore/size/",
 			"category": "Universal Utils",
 			"description": "分析解析尺寸与大小"
 		},
@@ -77,7 +69,7 @@
 			"package": "@hairy/libcore",
 			"function": "is/index.ts",
 			"lastUpdated": 1654430840000,
-			"docs": "util__libcore/is/",
+			"docs": "/util__libcore/is/",
 			"category": "Universal Utils",
 			"description": "客户机环境的判断"
 		},
@@ -86,7 +78,7 @@
 			"package": "@hairy/eslint-config",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "conf__eslint-config/",
+			"docs": "/conf__eslint-config/",
 			"category": "Project Configuration",
 			"description": "- 单引号，没有半引号"
 		},
@@ -95,7 +87,7 @@
 			"package": "@hairy/eslint-basic",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "conf__eslint-basic/",
+			"docs": "/conf__eslint-basic/",
 			"category": "Project Configuration",
 			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
 		},
@@ -103,7 +95,7 @@
 			"name": "Eslint Config React",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "conf__eslint-react/",
+			"docs": "/conf__eslint-react/",
 			"category": "Project Configuration",
 			"description": "Eslint 的 react 配置，包含内容：react"
 		},
@@ -112,7 +104,7 @@
 			"package": "@hairy/eslint-typescript",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "conf__eslint-typescript/",
+			"docs": "/conf__eslint-typescript/",
 			"category": "Project Configuration",
 			"description": "Eslint 的 typescript 配置，包含内容：typescript"
 		},
@@ -121,7 +113,7 @@
 			"package": "@hairy/eslint-vue",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "conf__eslint-vue/",
+			"docs": "/conf__eslint-vue/",
 			"category": "Project Configuration",
 			"description": "Eslint 的 vue 配置，包含内容：vue2-ts / vue2-js / vue3-ts / vue3-js"
 		},
@@ -130,7 +122,7 @@
 			"package": "@hairy/browser-utils",
 			"function": "file.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "web-util__browser/file",
+			"docs": "/web-util__browser/file",
 			"category": "Browser Utils",
 			"description": "关于浏览器中文件操作"
 		},
@@ -138,7 +130,7 @@
 			"name": "Hairy Cli",
 			"package": "@hairy/cli",
 			"lastUpdated": 1658219896000,
-			"docs": "node__cli/",
+			"docs": "/node__cli/",
 			"category": "Node Utils",
 			"description": "提供创建模板，编译代码，生成 OpenAPI-v2（swagger） 接口功能等。"
 		},
@@ -147,36 +139,22 @@
 			"package": "@hairy/browser-utils",
 			"function": "util.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "web-util__browser/util",
+			"docs": "/web-util__browser/util",
 			"category": "Browser Utils",
 			"description": "关于浏览器的工具集"
 		},
 		{
-			"name": "Monorepo 项目编译",
-			"lastUpdated": 1654846801000,
-			"docs": "docs__study/monorepo-compiler",
-			"category": "Study",
-			"description": "在前端开发当中，我们会用很多编译工具：`typescript compiler`、`babel`、`eslint`、`postcss`"
-		},
-		{
 			"name": "My Packages",
 			"lastUpdated": 1676624669000,
-			"docs": "docs__other/",
+			"docs": "/docs__other/",
 			"category": "Other Utils"
-		},
-		{
-			"name": "Pnpm Workspace",
-			"lastUpdated": 1654846801000,
-			"docs": "docs__study/pnpm-workspace",
-			"category": "Study",
-			"description": "`pnpm`跟`npm`、`yarn`一样，也内置了对  的支持，使用起来比较简单，在项目根目录中新建`pnpm-workspace.yaml`文件，并声明对应的工作区就好。"
 		},
 		{
 			"name": "Props",
 			"package": "@hairy/vue-utils",
 			"function": "props/index.ts",
 			"lastUpdated": 1654431530000,
-			"docs": "vue__utils/props/",
+			"docs": "/vue__utils/props/",
 			"category": "Vue Utils",
 			"description": "生成 prop，能更好地优化类型"
 		},
@@ -185,7 +163,7 @@
 			"package": "@hairy/vue-utils",
 			"function": "render/index.ts",
 			"lastUpdated": 1654431530000,
-			"docs": "vue__utils/render/",
+			"docs": "/vue__utils/render/",
 			"category": "Vue Utils",
 			"description": "Vue vnode 的渲染工具"
 		},
@@ -194,7 +172,7 @@
 			"package": "@hairy/vue-router",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "vue__router/",
+			"docs": "/vue__router/",
 			"category": "Vue Utils",
 			"description": "Vue 自定义指令 directives 及其常用函数"
 		},
@@ -203,7 +181,7 @@
 			"package": "@hairy/share-node",
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
-			"docs": "node__share/",
+			"docs": "/node__share/",
 			"category": "Node Utils",
 			"description": "一些实用的 Node 工具"
 		},
@@ -212,7 +190,7 @@
 			"package": "@hairy/format",
 			"function": "index.ts",
 			"lastUpdated": 1654506558000,
-			"docs": "util__format/",
+			"docs": "/util__format/",
 			"category": "Universal Utils",
 			"description": "数值的处理"
 		},
@@ -221,7 +199,7 @@
 			"package": "@hairy/vueuse",
 			"function": "syncElementSize/index.ts",
 			"lastUpdated": 1654511380000,
-			"docs": "vue__use/syncElementSize/",
+			"docs": "/vue__use/syncElementSize/",
 			"category": "Vue Use",
 			"description": "同步 from DOM 的宽或高到指定的 to DOM"
 		},
@@ -230,7 +208,7 @@
 			"package": "@hairy/libcore",
 			"function": "lang/index.ts",
 			"lastUpdated": 1656647298000,
-			"docs": "util__libcore/lang/",
+			"docs": "/util__libcore/lang/",
 			"category": "Universal Utils",
 			"description": "关于 JavaScript 语言特性的方法"
 		},
@@ -239,7 +217,7 @@
 			"package": "@hairy/libcore",
 			"function": "typeof/index.ts",
 			"lastUpdated": 1654430840000,
-			"docs": "util__libcore/typeof/",
+			"docs": "/util__libcore/typeof/",
 			"category": "Universal Utils",
 			"description": "类型的获取与判断"
 		},
@@ -248,7 +226,7 @@
 			"package": "@hairy/libcore",
 			"function": "typings/index.ts",
 			"lastUpdated": 1654430840000,
-			"docs": "util__libcore/typings/",
+			"docs": "/util__libcore/typings/",
 			"category": "Universal Utils",
 			"description": "Typescript 一些常用的类型"
 		},
@@ -257,7 +235,7 @@
 			"package": "@hairy/libcore",
 			"function": "util/index.ts",
 			"lastUpdated": 1658827622000,
-			"docs": "util__libcore/util/",
+			"docs": "/util__libcore/util/",
 			"category": "Universal Utils",
 			"description": "多端通用的工具"
 		},
@@ -266,7 +244,7 @@
 			"package": "@hairy/vueuse",
 			"function": "useCheckedState/index.ts",
 			"lastUpdated": 1654511380000,
-			"docs": "vue__use/useCheckedState/",
+			"docs": "/vue__use/useCheckedState/",
 			"category": "Vue Use",
 			"description": "获取 checked 的状态，自定义设置 checked | unchecked 的值"
 		},
@@ -275,7 +253,7 @@
 			"package": "@hairy/vueuse",
 			"function": "usePaginationServer/index.ts",
 			"lastUpdated": 1659061813000,
-			"docs": "vue__use/usePaginationServer/",
+			"docs": "/vue__use/usePaginationServer/",
 			"category": "Vue Use",
 			"description": "服务端分页"
 		},
@@ -284,7 +262,7 @@
 			"package": "@hairy/vueuse",
 			"function": "useSelectedMultiple/index.ts",
 			"lastUpdated": 1659061813000,
-			"docs": "vue__use/useSelectedMultiple/",
+			"docs": "/vue__use/useSelectedMultiple/",
 			"category": "Vue Use",
 			"description": "使用多选列表状态"
 		},
@@ -293,7 +271,7 @@
 			"package": "@hairy/vueuse",
 			"function": "useSelectedSingle/index.ts",
 			"lastUpdated": 1659061813000,
-			"docs": "vue__use/useSelectedSingle/",
+			"docs": "/vue__use/useSelectedSingle/",
 			"category": "Vue Use",
 			"description": "使用单选列表状态"
 		},
@@ -302,7 +280,7 @@
 			"package": "@hairy/vue-directives",
 			"function": "directives/focus.ts",
 			"lastUpdated": 1654511380000,
-			"docs": "vue__directive/directives/focus",
+			"docs": "/vue__directive/directives/focus",
 			"category": "Vue Directives",
 			"description": "让输入框 / 深层的输入框高亮"
 		},
@@ -311,7 +289,7 @@
 			"package": "@hairy/vue-directives",
 			"function": "directives/has.ts",
 			"lastUpdated": 1654511380000,
-			"docs": "vue__directive/directives/has",
+			"docs": "/vue__directive/directives/has",
 			"category": "Vue Directives",
 			"description": "判断权限是否满足"
 		},
@@ -320,7 +298,7 @@
 			"package": "@hairy/wechat-jssdk",
 			"function": "index.ts",
 			"lastUpdated": 1676342589000,
-			"docs": "web-util__wechat-jssdk/",
+			"docs": "/web-util__wechat-jssdk/",
 			"category": "Browser Utils",
 			"description": "WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 api 进行了 promise 处理，并且可直接调用，不需要执行 wx.ready 等待 jssdk 授权完毕。"
 		}

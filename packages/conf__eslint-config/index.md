@@ -11,6 +11,8 @@ category: 'Project Configuration'
 - 排序导入，悬空逗号以获得​​更清晰的提交差异
 - 合理的默认值，最佳实践，只有一行配置
 
+> @hairy/eslint-* 目前暂停维护、建议使用 @antfu/eslint-config
+
 ## Usage
 
 ### Install

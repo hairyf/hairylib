@@ -14,7 +14,9 @@ export const updateFunctionTypes = async () => {
   await fs.ensureDir('node_modules/.cache/types')
   for (const tsPath of tsPaths) {
     const filePath = `node_modules/.cache/types/${md5(tsPath)}`
+
     console.time(`bundles ${filePath}`)
+
     const bundles = await rollup({
       input: tsPath,
       plugins: [
@@ -24,10 +26,13 @@ export const updateFunctionTypes = async () => {
       ],
       onwarn: () => false
     })
+
     const { output } = await bundles.generate({ format: 'es' })
     let code = output[0].code.replace(/declare /g, '')
     code = code.replace(/export {};/, '')
+
     if (!/props/.test(tsPath)) code = await formatTypescript(code)
+
     await fs.writeFile(filePath, code, { flag: 'w' })
     console.timeEnd(`bundles ${filePath}`)
   }
