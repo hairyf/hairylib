@@ -31,6 +31,9 @@ export const updateIndexes = async () => {
     documents: []
   }
   const directory = await listPackageDir()
+
+  await git.addConfig('safe.directory', '*', undefined, 'global')
+
   for (const _dir of directory) {
     const dir = join(DIR_SRC, _dir)
     const mds = await listFunctionMds(dir)
