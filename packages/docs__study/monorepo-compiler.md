@@ -1,7 +1,3 @@
----
-category: 'Study'
----
-
 # Monorepo 项目编译
 
 在前端开发当中，我们会用很多编译工具：`typescript compiler`、`babel`、`eslint`、`postcss` 

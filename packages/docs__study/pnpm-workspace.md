@@ -1,8 +1,4 @@
----
-category: 'Study'
----
-
-## Pnpm Workspace
+# Pnpm Workspace
 
 `pnpm`跟`npm`、`yarn`一样，也内置了对  的支持，使用起来比较简单，在项目根目录中新建`pnpm-workspace.yaml`文件，并声明对应的工作区就好。
 
