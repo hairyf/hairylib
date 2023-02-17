@@ -49,13 +49,13 @@ export const nav: DefaultTheme.NavItem[] = [
     link: 'https://github.com/TuiMao233/hairylib'
   },
   {
-    text: 'Blog',
-    link: 'https://tuimao233.gitee.io/mao-blog/'
+    text: "Hairy's Blog",
+    link: 'https://hairy.blog/'
   }
 ]
 
 function getDocumentSideBar() {
-  const links = []
+  const links: any[] = []
   for (const name of categories) {
     const documents = indexes.documents.filter((i) => i.category === name)
     links.push({

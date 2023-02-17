@@ -74,7 +74,7 @@ export const updateIndexes = async () => {
   }
   indexes.documents.sort((a, b) => a.name.localeCompare(b.name))
   indexes.categories = [...new Set(indexes.documents.map((item) => item.category).filter(Boolean))] as any
-  fs.writeJSON('packages/indexes.json', indexes, { spaces: '\t' })
+  await fs.writeJSON('packages/indexes.json', indexes, { spaces: '\t' })
 }
 
-// updateIndexes()
+updateIndexes()
