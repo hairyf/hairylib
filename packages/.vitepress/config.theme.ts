@@ -22,11 +22,12 @@ const CoreCategories = categories.map((category) => ({
 }))
 const DocumentsSideBar = getDocumentSideBar()
 
-const DefaultSideBar: DefaultTheme.SidebarGroup[] = [
+const DefaultSideBar: any[] = [
   { text: 'Guide', items: Guide },
   { text: 'Study', items: Study },
   { text: 'Core Functions', items: CoreCategories }
 ]
+
 export const sidebar: DefaultTheme.Sidebar = {
   '/docs__guide/': DefaultSideBar,
   '/docs__study/': DefaultSideBar,

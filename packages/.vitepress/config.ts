@@ -18,7 +18,7 @@ const config = defineConfig({
   },
   vite: {
     publicDir: 'docs__public',
-    plugins: [MarkdownTransform()]
+    plugins: [MarkdownTransform() as any]
   }
 })
 

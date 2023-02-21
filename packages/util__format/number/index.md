@@ -2,15 +2,9 @@
 category: '@format'
 ---
 
-# String / Number
+# Number
 
-数值的处理
-
-## Install
-
-```
-pnpm add -D @hairy/format
-```
+数值的处理。
 
 ## Usage Functions
 
