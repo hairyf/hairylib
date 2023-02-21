@@ -1,13 +1,19 @@
 {
 	"categories": [
-		"Node Utils",
-		"Vue Use",
-		"Universal Utils",
-		"Project Configuration",
-		"Browser Utils",
-		"Other Utils",
-		"Vue Utils",
-		"Vue Directives"
+		"@api-generator",
+		"@vue-use",
+		"@palette",
+		"@libcore",
+		"@eslint",
+		"@browser-utils",
+		"@node-cli",
+		"@others",
+		"@vue-utils",
+		"@vue-router",
+		"@node-share",
+		"@format",
+		"@vue-directives",
+		"@wechat-jssdk"
 	],
 	"documents": [
 		{
@@ -16,17 +22,8 @@
 			"function": "index.ts",
 			"lastUpdated": 1658221281000,
 			"docs": "/node__api-generator/",
-			"category": "Node Utils",
+			"category": "@api-generator",
 			"description": "根据 OpenAPI-V2(swagger) 数据源（url/json/test）解析 AST，生成 Api 与 Types，暂不支持 JavaScript 生成"
-		},
-		{
-			"name": "Atom Css",
-			"package": "@hairy/atom.css-utils",
-			"function": "index.ts",
-			"lastUpdated": 1654433825000,
-			"docs": "/util__atom-css/",
-			"category": "Node Utils",
-			"description": "常用的 atom-css 工具，可以用于（tailwindcss / windcss...）由于 [Value Auto-infer](https://windicss.org/features/value-auto-infer.html) 的推进，该库可能不在继续维护"
 		},
 		{
 			"name": "biElementSyncScroll",
@@ -34,7 +31,7 @@
 			"function": "syncElementScroll/index.ts",
 			"lastUpdated": 1654511380000,
 			"docs": "/vue__use/syncElementScroll/",
-			"category": "Vue Use",
+			"category": "@vue-use",
 			"description": "同步两个具有相同滚动条的DOM的滚动"
 		},
 		{
@@ -43,7 +40,7 @@
 			"function": "index.ts",
 			"lastUpdated": 1668565559000,
 			"docs": "/util__color/",
-			"category": "Universal Utils",
+			"category": "@palette",
 			"description": "颜色的处理、转换、计算"
 		},
 		{
@@ -52,7 +49,7 @@
 			"function": "createInjectionContext/index.ts",
 			"lastUpdated": 1659061813000,
 			"docs": "/vue__use/createInjectionContext/",
-			"category": "Vue Use",
+			"category": "@vue-use",
 			"description": "创建上下文 `provide / inject`"
 		},
 		{
@@ -61,7 +58,7 @@
 			"function": "size/index.ts",
 			"lastUpdated": 1654430840000,
 			"docs": "/util__libcore/size/",
-			"category": "Universal Utils",
+			"category": "@libcore",
 			"description": "分析解析尺寸与大小"
 		},
 		{
@@ -70,16 +67,16 @@
 			"function": "is/index.ts",
 			"lastUpdated": 1654430840000,
 			"docs": "/util__libcore/is/",
-			"category": "Universal Utils",
+			"category": "@libcore",
 			"description": "客户机环境的判断"
 		},
 		{
 			"name": "Eslint Config",
 			"package": "@hairy/eslint-config",
 			"function": "index.ts",
-			"lastUpdated": 1654433825000,
+			"lastUpdated": 1676627549000,
 			"docs": "/conf__eslint-config/",
-			"category": "Project Configuration",
+			"category": "@eslint",
 			"description": "- 单引号，没有半引号"
 		},
 		{
@@ -88,7 +85,7 @@
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
 			"docs": "/conf__eslint-basic/",
-			"category": "Project Configuration",
+			"category": "@eslint",
 			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
 		},
 		{
@@ -96,7 +93,7 @@
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
 			"docs": "/conf__eslint-react/",
-			"category": "Project Configuration",
+			"category": "@eslint",
 			"description": "Eslint 的 react 配置，包含内容：react"
 		},
 		{
@@ -105,7 +102,7 @@
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
 			"docs": "/conf__eslint-typescript/",
-			"category": "Project Configuration",
+			"category": "@eslint",
 			"description": "Eslint 的 typescript 配置，包含内容：typescript"
 		},
 		{
@@ -114,7 +111,7 @@
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
 			"docs": "/conf__eslint-vue/",
-			"category": "Project Configuration",
+			"category": "@eslint",
 			"description": "Eslint 的 vue 配置，包含内容：vue2-ts / vue2-js / vue3-ts / vue3-js"
 		},
 		{
@@ -123,7 +120,7 @@
 			"function": "file.ts",
 			"lastUpdated": 1654433825000,
 			"docs": "/web-util__browser/file",
-			"category": "Browser Utils",
+			"category": "@browser-utils",
 			"description": "关于浏览器中文件操作"
 		},
 		{
@@ -131,7 +128,7 @@
 			"package": "@hairy/cli",
 			"lastUpdated": 1658219896000,
 			"docs": "/node__cli/",
-			"category": "Node Utils",
+			"category": "@node-cli",
 			"description": "提供创建模板，编译代码，生成 OpenAPI-v2（swagger） 接口功能等。"
 		},
 		{
@@ -140,14 +137,14 @@
 			"function": "util.ts",
 			"lastUpdated": 1654433825000,
 			"docs": "/web-util__browser/util",
-			"category": "Browser Utils",
+			"category": "@browser-utils",
 			"description": "关于浏览器的工具集"
 		},
 		{
 			"name": "My Packages",
 			"lastUpdated": 1676624669000,
 			"docs": "/docs__other/",
-			"category": "Other Utils"
+			"category": "@others"
 		},
 		{
 			"name": "Props",
@@ -155,7 +152,7 @@
 			"function": "props/index.ts",
 			"lastUpdated": 1654431530000,
 			"docs": "/vue__utils/props/",
-			"category": "Vue Utils",
+			"category": "@vue-utils",
 			"description": "生成 prop，能更好地优化类型"
 		},
 		{
@@ -164,17 +161,17 @@
 			"function": "render/index.ts",
 			"lastUpdated": 1654431530000,
 			"docs": "/vue__utils/render/",
-			"category": "Vue Utils",
+			"category": "@vue-utils",
 			"description": "Vue vnode 的渲染工具"
 		},
 		{
 			"name": "Router",
 			"package": "@hairy/vue-router",
 			"function": "index.ts",
-			"lastUpdated": 1654433825000,
+			"lastUpdated": 1676627549000,
 			"docs": "/vue__router/",
-			"category": "Vue Utils",
-			"description": "Vue 自定义指令 directives 及其常用函数"
+			"category": "@vue-router",
+			"description": "Vue Router 中常用的逻辑（deep helper、redirects、someOf）"
 		},
 		{
 			"name": "Share Node",
@@ -182,7 +179,7 @@
 			"function": "index.ts",
 			"lastUpdated": 1654433825000,
 			"docs": "/node__share/",
-			"category": "Node Utils",
+			"category": "@node-share",
 			"description": "一些实用的 Node 工具"
 		},
 		{
@@ -191,7 +188,7 @@
 			"function": "index.ts",
 			"lastUpdated": 1654506558000,
 			"docs": "/util__format/",
-			"category": "Universal Utils",
+			"category": "@format",
 			"description": "数值的处理"
 		},
 		{
@@ -200,7 +197,7 @@
 			"function": "syncElementSize/index.ts",
 			"lastUpdated": 1654511380000,
 			"docs": "/vue__use/syncElementSize/",
-			"category": "Vue Use",
+			"category": "@vue-use",
 			"description": "同步 from DOM 的宽或高到指定的 to DOM"
 		},
 		{
@@ -209,7 +206,7 @@
 			"function": "lang/index.ts",
 			"lastUpdated": 1656647298000,
 			"docs": "/util__libcore/lang/",
-			"category": "Universal Utils",
+			"category": "@libcore",
 			"description": "关于 JavaScript 语言特性的方法"
 		},
 		{
@@ -218,7 +215,7 @@
 			"function": "typeof/index.ts",
 			"lastUpdated": 1654430840000,
 			"docs": "/util__libcore/typeof/",
-			"category": "Universal Utils",
+			"category": "@libcore",
 			"description": "类型的获取与判断"
 		},
 		{
@@ -227,7 +224,7 @@
 			"function": "typings/index.ts",
 			"lastUpdated": 1654430840000,
 			"docs": "/util__libcore/typings/",
-			"category": "Universal Utils",
+			"category": "@libcore",
 			"description": "Typescript 一些常用的类型"
 		},
 		{
@@ -236,7 +233,7 @@
 			"function": "util/index.ts",
 			"lastUpdated": 1658827622000,
 			"docs": "/util__libcore/util/",
-			"category": "Universal Utils",
+			"category": "@libcore",
 			"description": "多端通用的工具"
 		},
 		{
@@ -245,7 +242,7 @@
 			"function": "useCheckedState/index.ts",
 			"lastUpdated": 1654511380000,
 			"docs": "/vue__use/useCheckedState/",
-			"category": "Vue Use",
+			"category": "@vue-use",
 			"description": "获取 checked 的状态，自定义设置 checked | unchecked 的值"
 		},
 		{
@@ -254,7 +251,7 @@
 			"function": "usePaginationServer/index.ts",
 			"lastUpdated": 1659061813000,
 			"docs": "/vue__use/usePaginationServer/",
-			"category": "Vue Use",
+			"category": "@vue-use",
 			"description": "服务端分页"
 		},
 		{
@@ -263,7 +260,7 @@
 			"function": "useSelectedMultiple/index.ts",
 			"lastUpdated": 1659061813000,
 			"docs": "/vue__use/useSelectedMultiple/",
-			"category": "Vue Use",
+			"category": "@vue-use",
 			"description": "使用多选列表状态"
 		},
 		{
@@ -272,7 +269,7 @@
 			"function": "useSelectedSingle/index.ts",
 			"lastUpdated": 1659061813000,
 			"docs": "/vue__use/useSelectedSingle/",
-			"category": "Vue Use",
+			"category": "@vue-use",
 			"description": "使用单选列表状态"
 		},
 		{
@@ -281,7 +278,7 @@
 			"function": "directives/focus.ts",
 			"lastUpdated": 1654511380000,
 			"docs": "/vue__directive/directives/focus",
-			"category": "Vue Directives",
+			"category": "@vue-directives",
 			"description": "让输入框 / 深层的输入框高亮"
 		},
 		{
@@ -290,16 +287,16 @@
 			"function": "directives/has.ts",
 			"lastUpdated": 1654511380000,
 			"docs": "/vue__directive/directives/has",
-			"category": "Vue Directives",
+			"category": "@vue-directives",
 			"description": "判断权限是否满足"
 		},
 		{
 			"name": "Wechat Jssdk",
 			"package": "@hairy/wechat-jssdk",
 			"function": "index.ts",
-			"lastUpdated": 1676342589000,
+			"lastUpdated": 1676949774000,
 			"docs": "/web-util__wechat-jssdk/",
-			"category": "Browser Utils",
+			"category": "@wechat-jssdk",
 			"description": "WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 api 进行了 promise 处理，并且可直接调用，不需要执行 wx.ready 等待 jssdk 授权完毕。"
 		}
 	]

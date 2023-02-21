@@ -1,5 +1,5 @@
 ---
-category: 'Vue Directives'
+category: '@vue-directives'
 ---
 
 # vFocus

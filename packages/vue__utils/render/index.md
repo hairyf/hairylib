@@ -1,5 +1,5 @@
 ---
-category: 'Vue Utils'
+category: '@vue-utils'
 ---
 
 # Render

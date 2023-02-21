@@ -1,5 +1,5 @@
 ---
-category: 'Vue Use'
+category: '@vue-use'
 ---
 
 # syncElementSize

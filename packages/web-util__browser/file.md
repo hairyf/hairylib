@@ -1,5 +1,5 @@
 ---
-category: 'Browser Utils'
+category: '@browser-utils'
 ---
 
 # Files Utils

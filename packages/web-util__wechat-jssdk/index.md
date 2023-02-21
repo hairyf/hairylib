@@ -1,5 +1,5 @@
 ---
-category: 'Browser Utils'
+category: '@wechat-jssdk'
 ---
 
 # Wechat Jssdk

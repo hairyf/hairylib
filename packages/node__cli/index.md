@@ -1,6 +1,6 @@
 ---
 side-bar: "Hairy Cli"
-category: 'Node Utils'
+category: '@node-cli'
 ---
 
 # Hairy Command-Line Interface

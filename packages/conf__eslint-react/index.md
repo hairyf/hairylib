@@ -1,5 +1,5 @@
 ---
-category: 'Project Configuration'
+category: '@eslint'
 ---
 
 # Eslint Config React

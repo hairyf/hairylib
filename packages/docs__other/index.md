@@ -1,6 +1,6 @@
 ---
 side-bar: "My Packages"
-category: 'Other Utils'
+category: '@others'
 ---
 
 我还开发了什么？

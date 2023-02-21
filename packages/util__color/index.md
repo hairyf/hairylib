@@ -1,5 +1,5 @@
 ---
-category: 'Universal Utils'
+category: '@palette'
 ---
 
 # Color Palette
