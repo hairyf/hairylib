@@ -1,5 +1,6 @@
 import * as WxType from 'jweixin'
-import { WechatJssdkHelper, WechatJssdkOptions } from './helper'
+import { WechatJssdkHelper } from './src/helper'
+import { WechatJssdkOptions } from './src/types'
 
 /**
  * @description WechatJssdk Api 封装，与 [jssdk 文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 保持一致，主要以下改动
