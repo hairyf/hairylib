@@ -26,7 +26,7 @@
 			"name": "Color Palette",
 			"package": "@hairy/palette",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677057395000,
 			"docs": "/util__color/",
 			"category": "@palette",
 			"description": "颜色的处理、转换、计算"
@@ -53,7 +53,7 @@
 			"name": "Eslint Basic",
 			"package": "@hairy/eslint-basic",
 			"function": "index.ts",
-			"lastUpdated": 1677032253000,
+			"lastUpdated": 1677057395000,
 			"docs": "/conf__eslint-basic/",
 			"category": "@eslint",
 			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
@@ -62,7 +62,7 @@
 			"name": "Eslint Config",
 			"package": "@hairy/eslint-config",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677057395000,
 			"docs": "/conf__eslint-config/",
 			"category": "@eslint",
 			"description": "- 单引号，没有半引号"
@@ -70,7 +70,7 @@
 		{
 			"name": "Eslint React",
 			"function": "index.ts",
-			"lastUpdated": 1677032253000,
+			"lastUpdated": 1677057395000,
 			"docs": "/conf__eslint-react/",
 			"category": "@eslint",
 			"description": "Eslint 的 react 配置，包含内容：react"
@@ -79,7 +79,7 @@
 			"name": "Eslint Typescript",
 			"package": "@hairy/eslint-typescript",
 			"function": "index.ts",
-			"lastUpdated": 1677032253000,
+			"lastUpdated": 1677057395000,
 			"docs": "/conf__eslint-typescript/",
 			"category": "@eslint",
 			"description": "Eslint 的 typescript 配置，包含内容：typescript"
@@ -88,7 +88,7 @@
 			"name": "Eslint Vue2/3",
 			"package": "@hairy/eslint-vue",
 			"function": "index.ts",
-			"lastUpdated": 1677032253000,
+			"lastUpdated": 1677057395000,
 			"docs": "/conf__eslint-vue/",
 			"category": "@eslint",
 			"description": "Eslint 的 vue 配置，包含内容：vue2-ts / vue2-js / vue3-ts / vue3-js"
@@ -97,7 +97,7 @@
 			"name": "Files Utils",
 			"package": "@hairy/browser-utils",
 			"function": "file.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677057395000,
 			"docs": "/web-util__browser/file",
 			"category": "@browser-utils",
 			"description": "关于浏览器中文件操作"
@@ -115,7 +115,7 @@
 			"name": "Miscellaneous",
 			"package": "@hairy/browser-utils",
 			"function": "util.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677057395000,
 			"docs": "/web-util__browser/util",
 			"category": "@browser-utils",
 			"description": "关于浏览器的工具集"
@@ -157,7 +157,7 @@
 			"name": "Router",
 			"package": "@hairy/vue-router",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677057395000,
 			"docs": "/vue__router/",
 			"category": "@vue-router",
 			"description": "Vue Router 中常用的逻辑（deep helper、redirects、someOf）"
@@ -274,7 +274,7 @@
 			"name": "Wechat Jssdk",
 			"package": "@hairy/wechat-jssdk",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677057395000,
 			"docs": "/web-util__wechat-jssdk/",
 			"category": "@wechat-jssdk",
 			"description": "WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 api 进行了 promise 处理，并且可直接调用，不需要执行 wx.ready 等待 jssdk 授权完毕。"
