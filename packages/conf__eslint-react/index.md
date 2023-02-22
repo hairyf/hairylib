@@ -2,7 +2,7 @@
 category: '@eslint'
 ---
 
-# Eslint Config React
+# Eslint React
 
 Eslint 的 react 配置，包含内容：react
 

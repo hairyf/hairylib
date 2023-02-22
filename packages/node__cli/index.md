@@ -1,5 +1,5 @@
 ---
-side-bar: "Hairy Cli"
+side-bar: "Hairy Compile"
 category: '@node-cli'
 ---
 

@@ -2,7 +2,7 @@
 category: '@libcore'
 ---
 
-# Element size handling
+# Size treatment
 
 分析解析尺寸与大小
 

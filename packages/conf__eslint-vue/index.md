@@ -2,7 +2,7 @@
 category: '@eslint'
 ---
 
-# Eslint Config Vue2/3
+# Eslint Vue2/3
 
 Eslint 的 vue 配置，包含内容：vue2-ts / vue2-js / vue3-ts / vue3-js
 

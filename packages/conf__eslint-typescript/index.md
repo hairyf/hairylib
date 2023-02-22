@@ -2,7 +2,7 @@
 category: '@eslint'
 ---
 
-# Eslint Config Typescript
+# Eslint Typescript
 
 Eslint 的 typescript 配置，包含内容：typescript
 

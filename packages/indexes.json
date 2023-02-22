@@ -53,22 +53,22 @@
 			"description": "创建上下文 `provide / inject`"
 		},
 		{
-			"name": "Element size handling",
-			"package": "@hairy/libcore",
-			"function": "size/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/util__libcore/size/",
-			"category": "@libcore",
-			"description": "分析解析尺寸与大小"
-		},
-		{
-			"name": "Environmental Judgment",
+			"name": "Environmental",
 			"package": "@hairy/libcore",
 			"function": "is/index.ts",
 			"lastUpdated": 1676973191000,
 			"docs": "/util__libcore/is/",
 			"category": "@libcore",
 			"description": "客户机环境的判断"
+		},
+		{
+			"name": "Eslint Basic",
+			"package": "@hairy/eslint-basic",
+			"function": "index.ts",
+			"lastUpdated": 1676973191000,
+			"docs": "/conf__eslint-basic/",
+			"category": "@eslint",
+			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
 		},
 		{
 			"name": "Eslint Config",
@@ -80,16 +80,7 @@
 			"description": "- 单引号，没有半引号"
 		},
 		{
-			"name": "Eslint Config Basic",
-			"package": "@hairy/eslint-basic",
-			"function": "index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/conf__eslint-basic/",
-			"category": "@eslint",
-			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
-		},
-		{
-			"name": "Eslint Config React",
+			"name": "Eslint React",
 			"function": "index.ts",
 			"lastUpdated": 1676973191000,
 			"docs": "/conf__eslint-react/",
@@ -97,7 +88,7 @@
 			"description": "Eslint 的 react 配置，包含内容：react"
 		},
 		{
-			"name": "Eslint Config Typescript",
+			"name": "Eslint Typescript",
 			"package": "@hairy/eslint-typescript",
 			"function": "index.ts",
 			"lastUpdated": 1676973191000,
@@ -106,7 +97,7 @@
 			"description": "Eslint 的 typescript 配置，包含内容：typescript"
 		},
 		{
-			"name": "Eslint Config Vue2/3",
+			"name": "Eslint Vue2/3",
 			"package": "@hairy/eslint-vue",
 			"function": "index.ts",
 			"lastUpdated": 1676973191000,
@@ -132,6 +123,15 @@
 			"description": "提供创建模板，编译代码，生成 OpenAPI-v2（swagger） 接口功能等。"
 		},
 		{
+			"name": "Language",
+			"package": "@hairy/libcore",
+			"function": "lang/index.ts",
+			"lastUpdated": 1676973191000,
+			"docs": "/util__libcore/lang/",
+			"category": "@libcore",
+			"description": "关于 JavaScript 语言特性的方法"
+		},
+		{
 			"name": "Miscellaneous",
 			"package": "@hairy/browser-utils",
 			"function": "util.ts",
@@ -150,7 +150,7 @@
 			"name": "Number",
 			"package": "@hairy/format",
 			"function": "number/index.ts",
-			"lastUpdated": 1654424234000,
+			"lastUpdated": 1676974563000,
 			"docs": "/util__format/number/",
 			"category": "@format",
 			"description": "数值的处理。"
@@ -192,10 +192,19 @@
 			"description": "一些实用的 Node 工具"
 		},
 		{
+			"name": "Size treatment",
+			"package": "@hairy/libcore",
+			"function": "size/index.ts",
+			"lastUpdated": 1676973191000,
+			"docs": "/util__libcore/size/",
+			"category": "@libcore",
+			"description": "分析解析尺寸与大小"
+		},
+		{
 			"name": "String",
 			"package": "@hairy/format",
 			"function": "string/index.ts",
-			"lastUpdated": 1654506558000,
+			"lastUpdated": 1676974563000,
 			"docs": "/util__format/string/",
 			"category": "@format",
 			"description": "字符串的处理。"
@@ -208,15 +217,6 @@
 			"docs": "/vue__use/syncElementSize/",
 			"category": "@vue-use",
 			"description": "同步 from DOM 的宽或高到指定的 to DOM"
-		},
-		{
-			"name": "Type Conversion (lang)",
-			"package": "@hairy/libcore",
-			"function": "lang/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/util__libcore/lang/",
-			"category": "@libcore",
-			"description": "关于 JavaScript 语言特性的方法"
 		},
 		{
 			"name": "Typeof",

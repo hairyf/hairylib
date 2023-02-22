@@ -2,7 +2,7 @@
 category: '@eslint'
 ---
 
-# Eslint Config Basic
+# Eslint Basic
 
 Eslint 的基础配置，包含内容：json、yaml、markdown、javascript
 

@@ -2,7 +2,7 @@
 category: '@libcore'
 ---
 
-# Environmental Judgment
+# Environmental
 
 客户机环境的判断
 

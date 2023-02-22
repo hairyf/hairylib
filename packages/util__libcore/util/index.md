@@ -27,7 +27,8 @@ setQueryParams('xxx', { aaa: 123, bbb: true }) // xxx?aaa=123&bbb
 延迟指定的时间
 
 ```typescript
-await delay(1000) // 1000 Create a promise which resolves after the specified milliseconds.
+// 1000 Create a promise which resolves after the specified milliseconds.
+await delay(1000) 
 // delay.reject(milliseconds, options?)
 // delay.range(minimum, maximum, options?)
 ```

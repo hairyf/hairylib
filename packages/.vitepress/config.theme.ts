@@ -64,6 +64,7 @@ function getDocumentSideBar() {
       items: documents.map((i) => ({ text: i.name, link: i.docs }))
     })
   }
+  links.sort((a, b) => b.items.length - a.items.length)
   return links
 }
 

@@ -1,7 +1,7 @@
 ---
 category: '@libcore'
 ---
-# Type Conversion (lang)
+# Language
 
 关于 JavaScript 语言特性的方法
 
