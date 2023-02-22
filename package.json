@@ -40,12 +40,12 @@
     "@changesets/cli": "^2.26.0",
     "@types/fs-extra": "^9.0.13",
     "@types/react": "^18.0.28",
+    "ptsup": "^0.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@antfu/ni": "^0.20.0",
-    "@hairy/cli": "workspace:0.4.4",
     "@types/md5": "^2.3.2",
     "@types/prettier": "^2.7.2",
     "esbuild": "^0.17.8",

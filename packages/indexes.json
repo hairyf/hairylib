@@ -1,12 +1,9 @@
 {
 	"categories": [
-		"@api-generator",
 		"@browser-utils",
 		"@eslint",
 		"@format",
 		"@libcore",
-		"@node-cli",
-		"@node-share",
 		"@others",
 		"@palette",
 		"@vue-directives",
@@ -16,15 +13,6 @@
 		"@wechat-jssdk"
 	],
 	"documents": [
-		{
-			"name": "Api Generator",
-			"package": "@hairy/api-generator",
-			"function": "index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/node__api-generator/",
-			"category": "@api-generator",
-			"description": "根据 OpenAPI-V2(swagger) 数据源（url/json/test）解析 AST，生成 Api 与 Types，暂不支持 JavaScript 生成"
-		},
 		{
 			"name": "biElementSyncScroll",
 			"package": "@hairy/vueuse",
@@ -56,7 +44,7 @@
 			"name": "Environmental",
 			"package": "@hairy/libcore",
 			"function": "is/index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/util__libcore/is/",
 			"category": "@libcore",
 			"description": "客户机环境的判断"
@@ -65,7 +53,7 @@
 			"name": "Eslint Basic",
 			"package": "@hairy/eslint-basic",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/conf__eslint-basic/",
 			"category": "@eslint",
 			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
@@ -82,7 +70,7 @@
 		{
 			"name": "Eslint React",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/conf__eslint-react/",
 			"category": "@eslint",
 			"description": "Eslint 的 react 配置，包含内容：react"
@@ -91,7 +79,7 @@
 			"name": "Eslint Typescript",
 			"package": "@hairy/eslint-typescript",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/conf__eslint-typescript/",
 			"category": "@eslint",
 			"description": "Eslint 的 typescript 配置，包含内容：typescript"
@@ -100,7 +88,7 @@
 			"name": "Eslint Vue2/3",
 			"package": "@hairy/eslint-vue",
 			"function": "index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/conf__eslint-vue/",
 			"category": "@eslint",
 			"description": "Eslint 的 vue 配置，包含内容：vue2-ts / vue2-js / vue3-ts / vue3-js"
@@ -115,18 +103,10 @@
 			"description": "关于浏览器中文件操作"
 		},
 		{
-			"name": "Hairy Cli",
-			"package": "@hairy/cli",
-			"lastUpdated": 1676973191000,
-			"docs": "/node__cli/",
-			"category": "@node-cli",
-			"description": "提供创建模板，编译代码，生成 OpenAPI-v2（swagger） 接口功能等。"
-		},
-		{
 			"name": "Language",
 			"package": "@hairy/libcore",
 			"function": "lang/index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/util__libcore/lang/",
 			"category": "@libcore",
 			"description": "关于 JavaScript 语言特性的方法"
@@ -183,19 +163,10 @@
 			"description": "Vue Router 中常用的逻辑（deep helper、redirects、someOf）"
 		},
 		{
-			"name": "Share Node",
-			"package": "@hairy/share-node",
-			"function": "index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/node__share/",
-			"category": "@node-share",
-			"description": "一些实用的 Node 工具"
-		},
-		{
 			"name": "Size treatment",
 			"package": "@hairy/libcore",
 			"function": "size/index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/util__libcore/size/",
 			"category": "@libcore",
 			"description": "分析解析尺寸与大小"
@@ -240,7 +211,7 @@
 			"name": "Universal",
 			"package": "@hairy/libcore",
 			"function": "util/index.ts",
-			"lastUpdated": 1676973191000,
+			"lastUpdated": 1677032253000,
 			"docs": "/util__libcore/util/",
 			"category": "@libcore",
 			"description": "多端通用的工具"

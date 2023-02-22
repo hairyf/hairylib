@@ -18,7 +18,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --type --globalName HairyColor"
+    "build": "ptsup index.ts --dts --meta"
   },
   "license": "MIT",
   "dependencies": {

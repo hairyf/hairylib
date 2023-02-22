@@ -2,6 +2,7 @@
   "name": "@hairy/react-utils",
   "version": "0.1.1",
   "main": "index.ts",
+  "private": true,
   "publishConfig": {
     "main": "index.cjs.js",
     "types": "./index.d.ts",
@@ -18,7 +19,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --type"
+    "build": "ptsup index.ts --dts --meta"
   },
   "license": "MIT",
   "dependencies": {

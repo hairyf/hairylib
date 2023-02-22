@@ -2,6 +2,7 @@
   "name": "@hairy/share-node",
   "version": "0.2.0",
   "main": "index.ts",
+  "private": true,
   "publishConfig": {
     "main": "index.cjs.js",
     "types": "./index.d.ts",
@@ -16,7 +17,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build --esllpkg --pmode esm/cjs --type"
+    "build": "ptsup index.ts --dts --meta"
   },
   "dependencies": {
     "esbuild": "^0.14.39",

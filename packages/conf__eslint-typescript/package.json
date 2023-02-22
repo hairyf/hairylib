@@ -6,7 +6,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build"
+    "build": "ptsup --meta --clean"
   },
   "main": "index.ts",
   "license": "MIT",

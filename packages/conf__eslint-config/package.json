@@ -8,7 +8,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "hairy build"
+    "build": "ptsup --meta --clean"
   },
   "dependencies": {
     "eslint": "^8.15.0",
