@@ -26,7 +26,7 @@
     "docs:serve": "vitepress serve packages",
     "update": "esno scripts/update.ts",
     "update:full": "nr update && nr build:types",
-    "changeset": "changeset && changeset version",
+    "bump": "changeset && changeset version",
     "publish:ci": "nr build && pnpm -r publish"
   },
   "dependencies": {

@@ -1,0 +1,28 @@
+{
+  "name": "@hairy/vue-components",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "linkDirectory": false
+  },
+  "scripts": {
+    "build": "ptsup index.ts --dts --meta"
+  },
+  "dependencies": {
+    "css-render": "^0.15.12",
+    "vue-demi": "^0.14.5"
+  }
+}
