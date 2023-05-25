@@ -27,7 +27,7 @@
     "update": "esno scripts/update.ts",
     "update:full": "nr update && nr build:types",
     "bump": "changeset && changeset version",
-    "publish:ci": "nr build && pnpm -r publish"
+    "publish:ci": "nr build && pnpm -r publish --access public"
   },
   "dependencies": {
     "@antfu/ni": "^0.20.0",
