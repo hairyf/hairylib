@@ -1,6 +1,6 @@
 # Hairylib Monorepo
 
-<div align="center"> <img src="packages/docs__public/logo.png" > </div>
+<div align="center"> <img src="packages/public/logo.png" > </div>
 
 ****
 
@@ -17,18 +17,18 @@ what is pnpm ?
 
 what is turbo and changeset ?
 
+- [changesets: 流行的 monorepo 场景发包工具](https://hairylib.com/docs/study/changesets.html)
 - [turbo: Turborepo 的任务编排能力](https://zhuanlan.zhihu.com/p/468382756)
 
+## 运行流程
 
-## 运行流程图
-
-> TODO
+> 想了想没什么特别的，就不写了。
 
 ## 文档系统
 
 基于 `github actions` 工作流(`.github/workflows/docs.yml`)，自动部署 [hairylib.com](https://hairylib.com/)
 
-文档构建使用 `vitepress`，自动**收集 / 组合**文档，生成 `Type Declarations` 和 `side-bar`。
+文档构建使用 `vitepress`，自动收集组合文档，生成 `Type Declarations` 和 `side-bar`。
 
 地址：https://hairylib.com/
 
@@ -83,4 +83,4 @@ module.exports = require('./scripts/rollup.config.ts').default
 
 ## License
 
-Licensed under the [MIT License](https://opensource.org/licenses/MIT).
+[MIT License](/LICENSE) Copyright (c) 2019-PRESENT.

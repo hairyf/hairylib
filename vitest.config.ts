@@ -2,8 +2,8 @@ import { defineConfig } from 'vitest/config'
 
 const config = defineConfig({
   test: {
-    globals: true
-  }
+    globals: true,
+  },
 })
 
 export default config

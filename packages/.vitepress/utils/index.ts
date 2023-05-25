@@ -6,8 +6,10 @@ export function replacer(code: string, value: string, key: string, insert: 'head
   const target = value ? `${START}\n${value}\n${END}` : `${START}${END}`
 
   if (!regex.test(code)) {
-    if (insert === 'none') return code
-    else if (insert === 'head') return `${target}\n\n${code}`
+    if (insert === 'none')
+      return code
+    else if (insert === 'head')
+      return `${target}\n\n${code}`
     return `${code}\n\n${target}`
   }
 

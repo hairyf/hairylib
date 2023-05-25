@@ -1,282 +1,60 @@
 {
-	"categories": [
-		"@browser-utils",
-		"@eslint",
-		"@format",
-		"@libcore",
-		"@others",
-		"@palette",
-		"@vue-directives",
-		"@vue-router",
-		"@vue-use",
-		"@vue-utils",
-		"@wechat-jssdk"
-	],
+	"categories": [],
 	"documents": [
 		{
-			"name": "biElementSyncScroll",
-			"package": "@hairy/vueuse",
-			"function": "syncElementScroll/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__use/syncElementScroll/",
-			"category": "@vue-use",
-			"description": "同步两个具有相同滚动条的DOM的滚动"
+			"name": "Browser Utils",
+			"package": "@hairy/browser-utils",
+			"function": "index.ts",
+			"lastUpdated": 0,
+			"docs": "/web-browser/",
+			"description": "浏览器的一些工具函数，挺好用的，至少我认为是这样。"
 		},
 		{
 			"name": "Color Palette",
 			"package": "@hairy/palette",
 			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/util__color/",
-			"category": "@palette",
+			"lastUpdated": 0,
+			"docs": "/util-color/",
 			"description": "颜色的处理、转换、计算"
 		},
 		{
-			"name": "createContext",
-			"package": "@hairy/vueuse",
-			"function": "createInjectionContext/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__use/createInjectionContext/",
-			"category": "@vue-use",
-			"description": "创建上下文 `provide / inject`"
-		},
-		{
-			"name": "Environmental",
-			"package": "@hairy/libcore",
-			"function": "is/index.ts",
-			"lastUpdated": 1677032253000,
-			"docs": "/util__libcore/is/",
-			"category": "@libcore",
-			"description": "客户机环境的判断"
-		},
-		{
-			"name": "Eslint Basic",
-			"package": "@hairy/eslint-basic",
-			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/conf__eslint-basic/",
-			"category": "@eslint",
-			"description": "Eslint 的基础配置，包含内容：json、yaml、markdown、javascript"
-		},
-		{
-			"name": "Eslint Config",
-			"package": "@hairy/eslint-config",
-			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/conf__eslint-config/",
-			"category": "@eslint",
-			"description": "- 单引号，没有半引号"
-		},
-		{
-			"name": "Eslint React",
-			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/conf__eslint-react/",
-			"category": "@eslint",
-			"description": "Eslint 的 react 配置，包含内容：react"
-		},
-		{
-			"name": "Eslint Typescript",
-			"package": "@hairy/eslint-typescript",
-			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/conf__eslint-typescript/",
-			"category": "@eslint",
-			"description": "Eslint 的 typescript 配置，包含内容：typescript"
-		},
-		{
-			"name": "Eslint Vue2/3",
-			"package": "@hairy/eslint-vue",
-			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/conf__eslint-vue/",
-			"category": "@eslint",
-			"description": "Eslint 的 vue 配置，包含内容：vue2-ts / vue2-js / vue3-ts / vue3-js"
-		},
-		{
-			"name": "Files Utils",
-			"package": "@hairy/browser-utils",
-			"function": "file.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/web-util__browser/file",
-			"category": "@browser-utils",
-			"description": "关于浏览器中文件操作"
-		},
-		{
-			"name": "Language",
-			"package": "@hairy/libcore",
-			"function": "lang/index.ts",
-			"lastUpdated": 1677032253000,
-			"docs": "/util__libcore/lang/",
-			"category": "@libcore",
-			"description": "关于 JavaScript 语言特性的方法"
-		},
-		{
-			"name": "Miscellaneous",
-			"package": "@hairy/browser-utils",
-			"function": "util.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/web-util__browser/util",
-			"category": "@browser-utils",
-			"description": "关于浏览器的工具集"
-		},
-		{
-			"name": "My Packages",
-			"lastUpdated": 1676973191000,
-			"docs": "/docs__other/",
-			"category": "@others"
-		},
-		{
-			"name": "Number",
+			"name": "Format Utils",
 			"package": "@hairy/format",
-			"function": "number/index.ts",
-			"lastUpdated": 1676974563000,
-			"docs": "/util__format/number/",
-			"category": "@format",
-			"description": "数值的处理。"
-		},
-		{
-			"name": "Props",
-			"package": "@hairy/vue-utils",
-			"function": "props/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__utils/props/",
-			"category": "@vue-utils",
-			"description": "生成 prop，能更好地优化类型"
-		},
-		{
-			"name": "Render",
-			"package": "@hairy/vue-utils",
-			"function": "render/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__utils/render/",
-			"category": "@vue-utils",
-			"description": "Vue vnode 的渲染工具"
-		},
-		{
-			"name": "Router",
-			"package": "@hairy/vue-router",
 			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/vue__router/",
-			"category": "@vue-router",
-			"description": "Vue Router 中常用的逻辑（deep helper、redirects、someOf）"
+			"lastUpdated": 0,
+			"docs": "/util-format/",
+			"description": "用来格式化一些字符串和数字的工具类，仅此而已。"
 		},
 		{
-			"name": "Size treatment",
-			"package": "@hairy/libcore",
-			"function": "size/index.ts",
-			"lastUpdated": 1677032253000,
-			"docs": "/util__libcore/size/",
-			"category": "@libcore",
-			"description": "分析解析尺寸与大小"
+			"name": "Hairy Utils",
+			"package": "@hairy/utils",
+			"function": "index.ts",
+			"lastUpdated": 0,
+			"docs": "/util-core/",
+			"description": "没什么特别的，除了为了让我变懒。"
 		},
 		{
-			"name": "String",
-			"package": "@hairy/format",
-			"function": "string/index.ts",
-			"lastUpdated": 1676974563000,
-			"docs": "/util__format/string/",
-			"category": "@format",
-			"description": "字符串的处理。"
-		},
-		{
-			"name": "syncElementSize",
+			"name": "Vue Use",
 			"package": "@hairy/vueuse",
-			"function": "syncElementSize/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__use/syncElementSize/",
-			"category": "@vue-use",
-			"description": "同步 from DOM 的宽或高到指定的 to DOM"
+			"function": "index.ts",
+			"lastUpdated": 1653124243000,
+			"docs": "/vue-use/",
+			"description": "好的工具无需多言，也许我来兴趣了会编写文档？（别想了，我懒得写）"
 		},
 		{
-			"name": "Typeof",
-			"package": "@hairy/libcore",
-			"function": "typeof/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/util__libcore/typeof/",
-			"category": "@libcore",
-			"description": "类型的获取与判断"
-		},
-		{
-			"name": "Typings",
-			"package": "@hairy/libcore",
-			"function": "typings/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/util__libcore/typings/",
-			"category": "@libcore",
-			"description": "Typescript 一些常用的类型"
-		},
-		{
-			"name": "Universal",
-			"package": "@hairy/libcore",
-			"function": "util/index.ts",
-			"lastUpdated": 1677032253000,
-			"docs": "/util__libcore/util/",
-			"category": "@libcore",
-			"description": "多端通用的工具"
-		},
-		{
-			"name": "useCheckedState",
-			"package": "@hairy/vueuse",
-			"function": "useCheckedState/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__use/useCheckedState/",
-			"category": "@vue-use",
-			"description": "获取 checked 的状态，自定义设置 checked | unchecked 的值"
-		},
-		{
-			"name": "usePaginationServer",
-			"package": "@hairy/vueuse",
-			"function": "usePaginationServer/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__use/usePaginationServer/",
-			"category": "@vue-use",
-			"description": "服务端分页"
-		},
-		{
-			"name": "useSelectedMultiple",
-			"package": "@hairy/vueuse",
-			"function": "useSelectedMultiple/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__use/useSelectedMultiple/",
-			"category": "@vue-use",
-			"description": "使用多选列表状态"
-		},
-		{
-			"name": "useSelectedSingle",
-			"package": "@hairy/vueuse",
-			"function": "useSelectedSingle/index.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__use/useSelectedSingle/",
-			"category": "@vue-use",
-			"description": "使用单选列表状态"
-		},
-		{
-			"name": "vFocus",
-			"package": "@hairy/vue-directives",
-			"function": "directives/focus.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__directive/directives/focus",
-			"category": "@vue-directives",
-			"description": "让输入框 / 深层的输入框高亮"
-		},
-		{
-			"name": "vHas",
-			"package": "@hairy/vue-directives",
-			"function": "directives/has.ts",
-			"lastUpdated": 1676973191000,
-			"docs": "/vue__directive/directives/has",
-			"category": "@vue-directives",
-			"description": "判断权限是否满足"
+			"name": "Vue Utils",
+			"package": "@hairy/vue-utils",
+			"function": "index.ts",
+			"lastUpdated": 1653124243000,
+			"docs": "/vue-utils/",
+			"description": "Vue 的一些工具函数，其实没多少。"
 		},
 		{
 			"name": "Wechat Jssdk",
 			"package": "@hairy/wechat-jssdk",
 			"function": "index.ts",
-			"lastUpdated": 1677057395000,
-			"docs": "/web-util__wechat-jssdk/",
-			"category": "@wechat-jssdk",
+			"lastUpdated": 0,
+			"docs": "/web-wechat-jssdk/",
 			"description": "WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 api 进行了 promise 处理，并且可直接调用，不需要执行 wx.ready 等待 jssdk 授权完毕。"
 		}
 	]

@@ -1,0 +1,27 @@
+{
+  "name": "@hairy/palette",
+  "version": "0.3.3",
+  "license": "MIT",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "linkDirectory": false
+  },
+  "scripts": {
+    "build": "ptsup index.ts --dts --meta"
+  },
+  "dependencies": {
+    "colord": "^2.9.3"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@hairy/utils",
+  "version": "0.6.0",
+  "license": "MIT",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "directory": "dist",
+    "linkDirectory": false
+  },
+  "scripts": {
+    "build": "ptsup index.ts --dts --meta"
+  },
+  "dependencies": {
+    "@extra-array/arange": "^1.1.7",
+    "delay": "^5.0.0",
+    "lodash": "^4",
+    "p-pipe": "^4.0.0",
+    "pipe-and-compose-types": "^0.0.13"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4"
+  }
+}

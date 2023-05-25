@@ -1,0 +1,32 @@
+{
+  "name": "@hairy/wechat-jssdk",
+  "version": "1.2.2",
+  "license": "MIT",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "linkDirectory": false
+  },
+  "scripts": {
+    "build": "ptsup index.ts --dts --meta"
+  },
+  "dependencies": {
+    "@types/jweixin": "^1.0.8",
+    "lodash": "^4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4",
+    "jweixin": "^1.0.0"
+  }
+}

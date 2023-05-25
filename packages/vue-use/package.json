@@ -1,0 +1,33 @@
+{
+  "name": "@hairy/vueuse",
+  "version": "1.2.0",
+  "license": "MIT",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "linkDirectory": false
+  },
+  "scripts": {
+    "build": "ptsup index.ts --dts --meta"
+  },
+  "dependencies": {
+    "@hairy/utils": "workspace:*",
+    "@vueuse/core": "^8.5.0",
+    "lodash": "^4",
+    "vue": "^3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4"
+  }
+}

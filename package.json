@@ -1,8 +1,18 @@
 {
   "name": "hairylib",
-  "private": true,
   "version": "0.0.0",
-  "description": "hairylib 是工具代码库，使用 changeset 管理的多个模块包(monorepo)的项目。",
+  "private": true,
+  "description": "hairylib 使用 changeset 管理的多个模块包(monorepo)的工具项目。",
+  "author": "hairyf",
+  "license": "MIT",
+  "homepage": "https://github.com/TuiMao233/hairylib#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/hairylib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/hairylib/issues"
+  },
   "main": "index.js",
   "scripts": {
     "build": "nr clean && turbo run build --parallel",
@@ -19,38 +29,10 @@
     "changeset": "changeset && changeset version",
     "publish:ci": "nr build && pnpm -r publish"
   },
-  "author": "TuiMao233",
-  "license": "ISC",
-  "homepage": "https://github.com/TuiMao233/hairylib#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TuiMao233/hairylib.git"
-  },
-  "bugs": {
-    "url": "https://github.com/TuiMao233/hairylib/issues"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search"
-      ]
-    }
-  },
-  "devDependencies": {
-    "@changesets/cli": "^2.26.0",
-    "@types/fs-extra": "^9.0.13",
-    "@types/react": "^18.0.28",
-    "ptsup": "^0.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "dependencies": {
     "@antfu/ni": "^0.20.0",
     "@types/md5": "^2.3.2",
     "@types/prettier": "^2.7.2",
-    "esbuild": "^0.17.8",
-    "esbuild-register": "^3.4.2",
-    "eslint": "^8.34.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
@@ -66,5 +48,22 @@
     "vite": "^2.9.15",
     "vitepress": "1.0.0-alpha.46",
     "vitest": "^0.13.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.39.3",
+    "@changesets/cli": "^2.26.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/react": "^18.0.28",
+    "eslint": "^8.41.0",
+    "ptsup": "^0.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
   }
 }

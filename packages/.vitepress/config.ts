@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { sidebar, nav } from './config.theme'
+import { nav, sidebar } from './config.theme'
 import { MarkdownTransform } from './plugins/transform'
 
 const config = defineConfig({
@@ -11,15 +11,15 @@ const config = defineConfig({
     logo: '/favicon.svg',
     footer: {
       message: 'MIT Licensed',
-      copyright: 'Copyright © 2019-present Evan You'
+      copyright: 'Copyright © 2019-present Evan You',
     },
     sidebar,
-    nav
+    nav,
   },
   vite: {
-    publicDir: 'docs__public',
-    plugins: [MarkdownTransform() as any]
-  }
+    publicDir: 'public',
+    plugins: [MarkdownTransform() as any],
+  },
 })
 
 export default config
