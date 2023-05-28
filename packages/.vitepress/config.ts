@@ -19,6 +19,12 @@ const config = defineConfig({
   vite: {
     publicDir: 'public',
     plugins: [MarkdownTransform() as any],
+    build: {
+      // fix: rollup failed to resolve import "vue/server-renderer"
+      rollupOptions: {
+        external: ['vue/server-renderer'],
+      },
+    },
   },
 })
 
