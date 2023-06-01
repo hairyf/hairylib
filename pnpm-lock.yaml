@@ -111,7 +111,6 @@ importers:
       '@types/lodash':
         specifier: ^4
         version: 4.14.182
-    publishDirectory: dist
 
   packages/util-format:
     dependencies:
@@ -153,22 +152,9 @@ importers:
 
   packages/vue-utils:
     dependencies:
-      '@hairy/utils':
-        specifier: workspace:*
-        version: link:../util-core
-      '@vue/shared':
-        specifier: ^3.2.35
-        version: 3.2.35
-      lodash:
-        specifier: ^4
-        version: 4.0.0
-      vue:
-        specifier: ^3
-        version: 3.0.0
-    devDependencies:
-      '@types/lodash':
-        specifier: ^4
-        version: 4.14.182
+      vue-demi:
+        specifier: ^0.14.5
+        version: 0.14.5(vue@3.3.4)
 
   packages/web-browser:
     dependencies:
@@ -1640,10 +1626,6 @@ packages:
 
   /@vue/shared@3.0.0:
     resolution: {integrity: sha512-4XWL/avABGxU2E2ZF1eZq3Tj7fvksCMssDZUHOykBIMmh5d+KcAnQMC5XHMhtnA0NAvktYsA2YpdsVwVmhWzvA==}
-    dev: false
-
-  /@vue/shared@3.2.35:
-    resolution: {integrity: sha512-/sxDqMcy0MsfQ3LQixKYDxIinDYNy1dXTsF2Am0pv0toImWabymFQ8cFmPJnPt+gh5ElKwwn7KzQcDbLHar60A==}
     dev: false
 
   /@vue/shared@3.3.4:
