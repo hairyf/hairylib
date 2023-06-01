@@ -1,4 +1,4 @@
-import { hexToRgb } from '..'
+import { hexToRgb } from '../src'
 
 describe('@hairy/color:hexToRgb', () => {
   test('Converting hex code to RGB - object // 3 digit', () => {
