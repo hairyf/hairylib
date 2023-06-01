@@ -4,56 +4,49 @@
 		{
 			"name": "Browser Utils",
 			"package": "@hairy/browser-utils",
-			"function": "index.ts",
-			"lastUpdated": 1685024011000,
+			"lastUpdated": 1685589170000,
 			"docs": "/web-browser/",
 			"description": "浏览器的一些工具函数，挺好用的，至少我认为是这样。"
 		},
 		{
 			"name": "Color Palette",
 			"package": "@hairy/palette",
-			"function": "index.ts",
-			"lastUpdated": 1685024011000,
+			"lastUpdated": 1685589170000,
 			"docs": "/util-color/",
 			"description": "颜色的处理、转换、计算"
 		},
 		{
 			"name": "Format Utils",
 			"package": "@hairy/format",
-			"function": "index.ts",
-			"lastUpdated": 1685024011000,
+			"lastUpdated": 1685589170000,
 			"docs": "/util-format/",
 			"description": "用来格式化一些字符串和数字的工具类，仅此而已。"
 		},
 		{
 			"name": "Hairy Utils",
 			"package": "@hairy/utils",
-			"function": "index.ts",
-			"lastUpdated": 1685024011000,
+			"lastUpdated": 1685589170000,
 			"docs": "/util-core/",
 			"description": "没什么特别的，除了为了让我变懒。"
 		},
 		{
 			"name": "Vue Use",
 			"package": "@hairy/vueuse",
-			"function": "index.ts",
-			"lastUpdated": 1685024011000,
+			"lastUpdated": 1685589170000,
 			"docs": "/vue-use/",
 			"description": "好的工具无需多言，也许我来兴趣了会编写文档？（别想了，我懒得写）"
 		},
 		{
 			"name": "Vue Utils",
 			"package": "@hairy/vue-utils",
-			"function": "index.ts",
-			"lastUpdated": 1685024011000,
+			"lastUpdated": 1685589170000,
 			"docs": "/vue-utils/",
 			"description": "Vue 的一些工具函数，其实没多少。"
 		},
 		{
 			"name": "Wechat Jssdk",
 			"package": "@hairy/wechat-jssdk",
-			"function": "index.ts",
-			"lastUpdated": 1685024011000,
+			"lastUpdated": 1685589170000,
 			"docs": "/web-wechat-jssdk/",
 			"description": "WechatJssdk 构造函数对 [wechat-jssdk](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 的 `api` 进行了 `promise` 处理，并且可直接调用，不需要执行 `wx.ready` 等待 `jssdk` 授权完毕。"
 		}

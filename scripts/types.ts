@@ -1,3 +1,4 @@
+import { dirname, join } from 'node:path'
 import { rollup } from 'rollup'
 import rollupPluginDts from 'rollup-plugin-dts'
 import md5 from 'md5'
@@ -7,7 +8,7 @@ import { dirSrc, formatTypescript, listFunctionMds } from './utils'
 export async function updateFunctionTypes() {
   const mdPaths = await listFunctionMds(dirSrc, { absolute: true })
 
-  const tsPaths = mdPaths.map(v => v.replace('.md', '.ts')).filter(v => fs.existsSync(v))
+  const tsPaths = mdPaths.map(v => join(dirname(v), 'src/index.ts')).filter(v => fs.existsSync(v))
 
   await fs.ensureDir('node_modules/.cache/types')
   for (const tsPath of tsPaths) {

@@ -23,7 +23,8 @@ export function MarkdownTransform(): Plugin {
 }
 
 export async function getFunctionMarkdown(mdPath: string, length: number) {
-  const types = await getTypeDefinition(mdPath.replace('.md', '.ts'))
+  const filepath = path.join(path.dirname(mdPath), 'src/index.ts')
+  const types = await getTypeDefinition(filepath)
   let typingSection = ''
 
   if (types) {
