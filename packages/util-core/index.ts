@@ -1,6 +1,0 @@
-export * from './src/is'
-export * from './src/lang'
-export * from './src/size'
-export * from './src/typeof'
-export * from './src/typings'
-export * from './src/util'
