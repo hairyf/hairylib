@@ -11,6 +11,7 @@
     "jsdelivr": "./dist/index.iife.min.js",
     "exports": {
       ".": {
+        "types": "./dist/index.d.ts",
         "import": "./dist/index.esm.js",
         "require": "./dist/index.cjs.js"
       },
