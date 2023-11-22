@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.6.2
+
+### Patch Changes
+
+- fix pnpm exports types change
+
 ## 0.6.1
 
 ### Patch Changes

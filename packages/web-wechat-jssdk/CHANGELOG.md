@@ -1,5 +1,11 @@
 # @hairy/wechat-jssdk
 
+## 1.2.4
+
+### Patch Changes
+
+- fix pnpm exports types change
+
 ## 1.2.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @hairy/format
 
+## 0.3.2
+
+### Patch Changes
+
+- fix pnpm exports types change
+
 ## 0.3.1
 
 ### Patch Changes

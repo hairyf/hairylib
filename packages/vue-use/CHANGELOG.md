@@ -1,5 +1,13 @@
 # @hairy/vue-use
 
+## 1.2.2
+
+### Patch Changes
+
+- fix pnpm exports types change
+- Updated dependencies
+  - @hairy/utils@0.6.2
+
 ## 1.2.1
 
 ### Patch Changes

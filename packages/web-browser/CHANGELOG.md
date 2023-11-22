@@ -1,5 +1,11 @@
 # @hairy/browser-utils
 
+## 0.2.2
+
+### Patch Changes
+
+- fix pnpm exports types change
+
 ## 0.2.1
 
 ### Patch Changes

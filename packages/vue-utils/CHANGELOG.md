@@ -1,5 +1,11 @@
 # @hairy/vue-utils
 
+## 1.3.3
+
+### Patch Changes
+
+- fix pnpm exports types change
+
 ## 1.3.2
 
 ### Patch Changes

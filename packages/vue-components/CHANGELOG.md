@@ -1,5 +1,11 @@
 # @hairy/vue-components
 
+## 0.1.3
+
+### Patch Changes
+
+- fix pnpm exports types change
+
 ## 0.1.2
 
 ### Patch Changes

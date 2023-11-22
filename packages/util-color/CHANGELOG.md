@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.5
+
+### Patch Changes
+
+- fix pnpm exports types change
+
 ## 0.3.4
 
 ### Patch Changes
