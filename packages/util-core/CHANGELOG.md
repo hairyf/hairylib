@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.6.4
+
+### Patch Changes
+
+- fix utils p-pipe import esm error
+
 ## 0.6.3
 
 ### Patch Changes
