@@ -1,5 +1,11 @@
 # @hairy/browser-utils
 
+## 0.2.3
+
+### Patch Changes
+
+- fix install pacakge not codes
+
 ## 0.2.2
 
 ### Patch Changes

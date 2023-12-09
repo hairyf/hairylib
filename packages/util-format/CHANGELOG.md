@@ -1,5 +1,11 @@
 # @hairy/format
 
+## 0.3.3
+
+### Patch Changes
+
+- fix install pacakge not codes
+
 ## 0.3.2
 
 ### Patch Changes

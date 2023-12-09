@@ -1,5 +1,11 @@
 # @hairy/vue-components
 
+## 0.1.4
+
+### Patch Changes
+
+- fix install pacakge not codes
+
 ## 0.1.3
 
 ### Patch Changes

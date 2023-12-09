@@ -1,5 +1,11 @@
 # @hairy/wechat-jssdk
 
+## 1.2.5
+
+### Patch Changes
+
+- fix install pacakge not codes
+
 ## 1.2.4
 
 ### Patch Changes

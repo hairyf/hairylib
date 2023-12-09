@@ -1,5 +1,13 @@
 # @hairy/vue-use
 
+## 1.2.3
+
+### Patch Changes
+
+- fix install pacakge not codes
+- Updated dependencies
+  - @hairy/utils@0.6.3
+
 ## 1.2.2
 
 ### Patch Changes

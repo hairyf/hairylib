@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.6.3
+
+### Patch Changes
+
+- fix install pacakge not codes
+
 ## 0.6.2
 
 ### Patch Changes

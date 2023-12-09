@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.6
+
+### Patch Changes
+
+- fix install pacakge not codes
+
 ## 0.3.5
 
 ### Patch Changes

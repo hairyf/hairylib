@@ -1,5 +1,11 @@
 # @hairy/vue-utils
 
+## 1.3.4
+
+### Patch Changes
+
+- fix install pacakge not codes
+
 ## 1.3.3
 
 ### Patch Changes
