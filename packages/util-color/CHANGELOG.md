@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.7
+
+### Patch Changes
+
+- chore: update
+
 ## 0.3.6
 
 ### Patch Changes

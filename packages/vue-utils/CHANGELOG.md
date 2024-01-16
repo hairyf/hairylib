@@ -1,5 +1,11 @@
 # @hairy/vue-utils
 
+## 1.3.5
+
+### Patch Changes
+
+- chore: update
+
 ## 1.3.4
 
 ### Patch Changes

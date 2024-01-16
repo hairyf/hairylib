@@ -1,5 +1,11 @@
 # @hairy/vue-components
 
+## 0.1.5
+
+### Patch Changes
+
+- chore: update
+
 ## 0.1.4
 
 ### Patch Changes

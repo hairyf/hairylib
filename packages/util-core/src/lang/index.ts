@@ -19,7 +19,7 @@ export function objectToFormData(object: Record<string, string | File>) {
 }
 
 export function isFormData(value: any): value is FormData {
-  return isObject(value) && isBrowser && value instanceof FormData
+  return isObject(value) && isBrowser() && value instanceof FormData
 }
 
 export function isWindow(value: any): value is Window {
