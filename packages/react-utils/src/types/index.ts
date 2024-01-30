@@ -1,1 +1,1 @@
-export type BooleanLike = boolean | string | number | null | undefined
+export type BooleanLike = any
