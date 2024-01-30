@@ -51,6 +51,7 @@ export function useSelectedSingle<T extends SelectedSingleArray>(array: T,
       if (!bool && unref(array).length > 0)
         unref(array)[index][fieldName] = true
     }
+
     watch(isSelected, recover, { flush: 'sync', immediate: true })
   }
 
