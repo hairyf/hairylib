@@ -1,5 +1,11 @@
 # @hairy/browser-utils
 
+## 0.2.5
+
+### Patch Changes
+
+- chore: update packages
+
 ## 0.2.4
 
 ### Patch Changes

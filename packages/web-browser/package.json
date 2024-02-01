@@ -1,6 +1,6 @@
 {
   "name": "@hairy/browser-utils",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
   "main": "src/index.ts",
   "publishConfig": {

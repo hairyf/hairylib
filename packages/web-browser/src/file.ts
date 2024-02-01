@@ -1,7 +1,7 @@
 /* eslint-disable prefer-promise-reject-errors */
 import isNull from 'lodash/isNull'
 
-export interface ChooseFileOptions {
+export interface OpenFilePickerOptions {
   /**
    * 是否多选文件
    */
@@ -16,7 +16,7 @@ export interface ChooseFileOptions {
  * @param option.multiple 是否多选
  * @param option.accept 文件类型(accept)
  */
-export function chooseFile(option: ChooseFileOptions = {}) {
+export function showOpenFilePicker(option: OpenFilePickerOptions = {}) {
   const { multiple = true, accept } = option
   return new Promise<File[]>((resolve, reject) => {
     const inputElement = document.createElement('input')
@@ -35,7 +35,7 @@ export function chooseFile(option: ChooseFileOptions = {}) {
   })
 }
 
-export interface ChooseImageOptions {
+export interface OpenImagePickerOptions {
   /**
    * 是否多选图片
    */
@@ -46,13 +46,13 @@ export interface ChooseImageOptions {
  * 选择多个图片
  * @param multiple 是否多选
  */
-export function chooseImage(options: ChooseImageOptions = {}) {
+export function showOpenImagePicker(options: OpenImagePickerOptions = {}) {
   const { multiple = true } = options
-  return chooseFile({ multiple, accept: 'image/jpeg,image/x-png,image/gif' })
+  return showOpenFilePicker({ multiple, accept: 'image/jpeg,image/x-png,image/gif' })
 }
 
 /** @deprecated use chooseFile */
-export const selectImages = chooseImage
+export const selectImages = showOpenImagePicker
 
 /**
  * 生成 blob|string 文件，并下载
@@ -71,11 +71,11 @@ export function downloadBlobFile(data: Blob | string, name: string) {
 /**
  * 下载网络文件
  * @param url 下载地址
- * @param fileName 文件名称
+ * @param name 文件名称
  */
-export function downloadNetworkFile(url: string, fileName?: string) {
+export function downloadNetworkFile(url: string, name?: string) {
   const a = document.createElement('a')
-  fileName && (a.download = fileName)
+  name && (a.download = name)
   a.href = url
   a.click()
 }
