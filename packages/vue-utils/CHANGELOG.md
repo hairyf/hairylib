@@ -1,5 +1,12 @@
 # @hairy/vue-utils
 
+## 1.3.7
+
+### Patch Changes
+
+- Updated dependencies
+  - @hairy/utils@0.6.6
+
 ## 1.3.6
 
 ### Patch Changes

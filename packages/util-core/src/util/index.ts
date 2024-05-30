@@ -1,10 +1,8 @@
-import type { ComposeFn, PipeFn } from 'pipe-and-compose-types'
-
 export { default as pPipe } from 'p-pipe'
 export { default as delay } from 'delay'
 
-export const pipe: PipeFn = (...fns) => fns.reduce((v, f) => f(v)) as any
-export const compose: ComposeFn = (...fns) => fns.reduceRight((v, f) => f(v)) as any
+export const pipe = (...fns: any[]) => fns.reduce((v, f) => f(v))
+export const compose = (...fns: any[]) => fns.reduceRight((v, f) => f(v))
 
 /**
  * 生成区间数组

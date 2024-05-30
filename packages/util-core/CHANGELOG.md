@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.6.6
+
+### Patch Changes
+
+- util type error
+
 ## 0.6.5
 
 ### Patch Changes
