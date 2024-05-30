@@ -1,5 +1,11 @@
 # @hairy/wechat-jssdk
 
+## 1.2.7
+
+### Patch Changes
+
+- update all packages change build file imports
+
 ## 1.2.6
 
 ### Patch Changes

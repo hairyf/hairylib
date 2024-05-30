@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.8
+
+### Patch Changes
+
+- update all packages change build file imports
+
 ## 0.3.7
 
 ### Patch Changes

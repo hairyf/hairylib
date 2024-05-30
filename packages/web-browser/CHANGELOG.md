@@ -1,5 +1,11 @@
 # @hairy/browser-utils
 
+## 0.2.6
+
+### Patch Changes
+
+- update all packages change build file imports
+
 ## 0.2.5
 
 ### Patch Changes

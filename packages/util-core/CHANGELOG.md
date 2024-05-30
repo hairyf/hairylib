@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.6.7
+
+### Patch Changes
+
+- update all packages change build file imports
+
 ## 0.6.6
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @hairy/vue-utils
 
+## 1.3.8
+
+### Patch Changes
+
+- update all packages change build file imports
+- Updated dependencies
+  - @hairy/utils@0.6.7
+
 ## 1.3.7
 
 ### Patch Changes

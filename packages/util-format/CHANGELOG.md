@@ -1,5 +1,11 @@
 # @hairy/format
 
+## 0.3.5
+
+### Patch Changes
+
+- update all packages change build file imports
+
 ## 0.3.4
 
 ### Patch Changes
