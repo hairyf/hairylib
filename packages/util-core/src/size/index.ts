@@ -1,15 +1,15 @@
 import isNumber from 'lodash/isNumber'
 import isString from 'lodash/isString'
-import type { AtWillNumber } from '../typings'
+import type { AtwillNumber } from '../typings'
 
-export function atWillToUnit(value: AtWillNumber, unit = 'px') {
+export function atWillToUnit(value: AtwillNumber, unit = 'px') {
   if (!(isString(value) || isNumber(value)))
     return ''
   return (isString(value) && /\D/g.test(value)) ? value : value + unit
 }
 
 /** size 转换配置 */
-export type AtWillSize = AtWillNumber | [AtWillNumber, AtWillNumber] | { width: AtWillNumber; height: AtWillNumber }
+export type AtWillSize = AtwillNumber | [AtwillNumber, AtwillNumber] | { width: AtwillNumber; height: AtwillNumber }
 export interface Size { width: string; height: string }
 
 /**
@@ -18,7 +18,7 @@ export interface Size { width: string; height: string }
  * @returns
  */
 export function atWillToSize(size: AtWillSize, unit?: string): Size {
-  const _atWillToUnit = (value: AtWillNumber) => atWillToUnit(value, unit)
+  const _atWillToUnit = (value: AtwillNumber) => atWillToUnit(value, unit)
   // 单数值正方形
   if (typeof size === 'string' || typeof size === 'number')
     return { width: _atWillToUnit(size), height: _atWillToUnit(size) }

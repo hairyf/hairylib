@@ -1,5 +1,11 @@
 # @hairy/react-utils
 
+## 1.0.5
+
+### Patch Changes
+
+- update react-utils and core typings and format
+
 ## 1.0.4
 
 ### Patch Changes

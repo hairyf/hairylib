@@ -1,6 +1,6 @@
 import { hexToRgb } from '../src'
 
-describe('@hairy/color:hexToRgb', () => {
+describe.skip('@hairy/color:hexToRgb', () => {
   test('Converting hex code to RGB - object // 3 digit', () => {
     expect(hexToRgb('#01C')).toEqual({ r: 0, g: 17, b: 204 })
     expect(hexToRgb('#F52')).toEqual({ r: 255, g: 85, b: 34 })

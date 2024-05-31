@@ -1,5 +1,11 @@
 # @hairy/format
 
+## 0.3.6
+
+### Patch Changes
+
+- update react-utils and core typings and format
+
 ## 0.3.5
 
 ### Patch Changes

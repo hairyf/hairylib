@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.9
+
+### Patch Changes
+
+- update react-utils and core typings and format
+
 ## 0.3.8
 
 ### Patch Changes
