@@ -1,5 +1,11 @@
 # @hairy/react-utils
 
+## 1.0.6
+
+### Patch Changes
+
+- add react func
+
 ## 1.0.5
 
 ### Patch Changes
