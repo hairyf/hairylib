@@ -22,7 +22,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "ptsup src/index.ts --dts"
+    "build": "ptsup src --dts"
   },
   "dependencies": {
     "mitt": "^3.0.1",
