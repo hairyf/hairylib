@@ -1,35 +1,25 @@
 import isNumber from 'lodash/isNumber'
 import isString from 'lodash/isString'
-import type { AtwillNumber } from '../typings'
+import type { Numeric } from '../typings'
 
-export function atWillToUnit(value: AtwillNumber, unit = 'px') {
+export function formatUnit(value: Numeric, unit = 'px') {
   if (!(isString(value) || isNumber(value)))
     return ''
   return (isString(value) && /\D/g.test(value)) ? value : value + unit
 }
 
-/** size 转换配置 */
-export type AtWillSize = AtwillNumber | [AtwillNumber, AtwillNumber] | { width: AtwillNumber; height: AtwillNumber }
-export interface Size { width: string; height: string }
+export type Dimension = Numeric | [Numeric, Numeric] | { width: Numeric; height: Numeric }
 
-/**
- * 将 size 转换为宽高，用于元素宽高
- * @param size AtWillSize
- * @returns
- */
-export function atWillToSize(size: AtWillSize, unit?: string): Size {
-  const _atWillToUnit = (value: AtwillNumber) => atWillToUnit(value, unit)
-  // 单数值正方形
-  if (typeof size === 'string' || typeof size === 'number')
-    return { width: _atWillToUnit(size), height: _atWillToUnit(size) }
+export function formatSize(dimension: Dimension, unit?: string): { width: string; height: string } {
+  const _formatUnit = (value: Numeric) => formatUnit(value, unit)
+  if (typeof dimension === 'string' || typeof dimension === 'number')
+    return { width: _formatUnit(dimension), height: _formatUnit(dimension) }
 
-  // 数组形式尺寸
-  if (Array.isArray(size))
-    return { width: _atWillToUnit(size[0]), height: _atWillToUnit(size[1]) }
+  if (Array.isArray(dimension))
+    return { width: _formatUnit(dimension[0]), height: _formatUnit(dimension[1]) }
 
-  // 对象形式尺寸
-  if (typeof size === 'object')
-    return { width: _atWillToUnit(size.width), height: _atWillToUnit(size.height) }
+  if (typeof dimension === 'object')
+    return { width: _formatUnit(dimension.width), height: _formatUnit(dimension.height) }
 
   return { width: '', height: '' }
 }

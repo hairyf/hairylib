@@ -1,8 +1,5 @@
-export { default as pPipe } from 'p-pipe'
-export { default as delay } from 'delay'
-
-export const pipe = (...fns: any[]) => fns.reduce((v, f) => f(v))
-export const compose = (...fns: any[]) => fns.reduceRight((v, f) => f(v))
+export * from './deferred'
+export * from './third'
 
 /**
  * 生成区间数组
@@ -15,24 +12,9 @@ export function arange(x1: number, x2?: number, stp = 1, z: number[] = [], z0 = 
   return z
 }
 
-export type Deferred<T = void> = Promise<T> & {
-  resolve: (value: T) => void
-  reject: (value?: any) => void
-}
+export const pipe = (...fns: any[]) => fns.reduce((v, f) => f(v))
+export const compose = (...fns: any[]) => fns.reduceRight((v, f) => f(v))
 
-export function createDeferred<T = void>(): Deferred<T> {
-  let resolve: any, reject: any
-
-  const promise = new Promise<any>((_resolve, _reject) => {
-    resolve = _resolve
-    reject = _reject
-  }) as unknown as any
-
-  promise.resolve = (v: any) => {
-    resolve(v)
-    return promise
-  }
-  promise.reject = reject
-
-  return promise
+export function whenever<T, C extends (value: Exclude<T, null | undefined>) => any>(value: T, callback: C): ReturnType<C> | undefined {
+  return value ? callback(value as any) : undefined
 }

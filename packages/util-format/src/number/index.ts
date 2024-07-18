@@ -3,12 +3,12 @@ import Bignumber from 'bignumber.js'
 /**
  *  Any type that can be used where a numeric value is needed.
  */
-export type Numeric = number | bigint
+export type Numeric = number | bigint | string
 
 /**
  *  Any type that can be used where a big number is needed.
  */
-export type Numberish = string | Numeric | { toString: (...args: any[]) => string }
+export type Numberish = Numeric | { toString: (...args: any[]) => string }
 
 /**
  * leading zeros
