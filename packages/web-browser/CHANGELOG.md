@@ -1,5 +1,11 @@
 # @hairy/browser-utils
 
+## 0.2.7
+
+### Patch Changes
+
+- das
+
 ## 0.2.6
 
 ### Patch Changes
