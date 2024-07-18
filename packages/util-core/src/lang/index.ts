@@ -1,4 +1,3 @@
-import _isObject from 'lodash/isObject'
 import { isBrowser } from '../is'
 
 /**
@@ -27,5 +26,5 @@ export function isWindow(value: any): value is Window {
 }
 
 export function isObject(value: any): value is object {
-  return _isObject(value) && !Array.isArray(value)
+  return typeof value === 'object' && !Array.isArray(value)
 }
