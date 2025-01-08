@@ -27,3 +27,15 @@ export const isPhantomJS = () => UA() && /phantomjs/.test(UA())
 export const isFF = () => typeof UA() === 'string' && UA().match(/firefox\/(\d+)/)
 
 export const isMobile = () => isBrowser() && navigator.userAgent.toLowerCase().includes('mobile')
+
+export const isObject = (value: any): value is object => typeof value === 'object' && !Array.isArray(value)
+
+export const isNumber = (value: any) => typeof value === 'number'
+
+export const isString = (value: any) => typeof value === 'string'
+
+export const isPlainObject = (value: any) => typeof value === 'object' && value !== null && value.constructor === Object
+
+export const isFormData = (value: any): value is FormData => isObject(value) && isBrowser() && value instanceof FormData
+
+export const isWindow = (value: any): value is Window => typeof window !== 'undefined' && toString.call(value) === '[object Window]'

@@ -1,5 +1,4 @@
-import isNumber from 'lodash/isNumber'
-import isString from 'lodash/isString'
+import { isNumber, isString } from '../is'
 import type { Numeric } from '../typings'
 
 export function formatUnit(value: Numeric, unit = 'px') {

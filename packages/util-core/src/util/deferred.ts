@@ -1,21 +1,19 @@
-export type Deferred<T = void> = Promise<T> & {
-  resolve: (value: T) => void
-  reject: (value?: any) => void
-}
-
-export function createDeferred<T = void>(): Deferred<T> {
-  let resolve: any, reject: any
-
-  const promise = new Promise<any>((_resolve, _reject) => {
-    resolve = _resolve
-    reject = _reject
-  }) as unknown as any
-
-  promise.resolve = (v: any) => {
-    resolve(v)
-    return promise
+export class Deferred<T> extends Promise<T> {
+  resolve: (value: T) => Deferred<T>
+  reject: (reason?: any) => Deferred<T>
+  constructor() {
+    let _resolve: any, _reject: any
+    super((resolve_, reject_) => {
+      _resolve = resolve_
+      _reject = reject_
+    })
+    this.resolve = (value) => {
+      _resolve(value)
+      return this
+    }
+    this.reject = (reason) => {
+      _reject(reason)
+      return this
+    }
   }
-  promise.reject = reject
-
-  return promise
 }
