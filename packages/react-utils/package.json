@@ -25,9 +25,11 @@
     "build": "ptsup src --dts"
   },
   "dependencies": {
+    "html-parse-stringify": "^3.0.1",
     "mitt": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.2",
     "valtio": "^1.13.0"
   },
   "devDependencies": {

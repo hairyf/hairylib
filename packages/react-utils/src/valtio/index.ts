@@ -1,3 +1,5 @@
 export * from './storeToState'
 export * from './proxyWithPersistant'
 export * from './storeToStates'
+export * from './defineStore'
+export * from './useProxyAsyncFn'

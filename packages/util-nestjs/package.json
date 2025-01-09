@@ -1,5 +1,5 @@
 {
-  "name": "@hairy/format",
+  "name": "@hairy/util-nestjs",
   "version": "0.3.7",
   "license": "MIT",
   "main": "src/index.ts",
@@ -26,16 +26,16 @@
   },
   "dependencies": {
     "@nestjs/common": "^10.3.8",
-"@nestjs/swagger": "^7.3.1",
-"@prisma/client": "^5.14.0",
-"bignumber.js": "^9.1.2",
-"ethers": "^6.12.1",
-"tunnel": "^0.0.6",
+    "@nestjs/swagger": "^7.3.1",
+    "@prisma/client": "^5.14.0",
+    "bignumber.js": "^9.1.2",
     "chalk": "4.1.2",
+    "ethers": "^6.12.1",
+    "tunnel": "^0.0.6"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.182",
-    "@types/tunnel": "^0.0.7",
+    "@types/tunnel": "^0.0.7"
 
   }
 }
