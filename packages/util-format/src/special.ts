@@ -21,6 +21,7 @@ export function replaceInnerHTMLAttributes(html: string,
     const string_: string = option.attr.reverse().reduce((old, item) => {
       return replaceInnerHTMLAttributes(old, { ...option, attr: item })
     }, html)
+
     return string_
   }
   const tags = Array.isArray(option.tag) ? option.tag : [option.tag]

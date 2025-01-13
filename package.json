@@ -59,7 +59,8 @@
     "eslint": "^8.41.0",
     "ptsup": "^0.3.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-use": "^17.6.0"
   },
   "pnpm": {
     "peerDependencyRules": {
