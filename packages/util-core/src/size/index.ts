@@ -4,7 +4,8 @@ import type { Numeric } from '../typings'
 export function formatUnit(value: Numeric, unit = 'px') {
   if (!(isString(value) || isNumber(value)))
     return ''
-  return (isString(value) && /\D/g.test(value)) ? value : value + unit
+  value = String(value)
+  return /\D/g.test(value) ? value : value + unit
 }
 
 export type Dimension = Numeric | [Numeric, Numeric] | { width: Numeric; height: Numeric }
