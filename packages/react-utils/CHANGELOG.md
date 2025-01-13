@@ -1,5 +1,11 @@
 # @hairy/react-utils
 
+## 1.0.7
+
+### Patch Changes
+
+- chore: update
+
 ## 1.0.6
 
 ### Patch Changes

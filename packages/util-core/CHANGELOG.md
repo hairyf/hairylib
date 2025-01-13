@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.6.10
+
+### Patch Changes
+
+- chore: update
+
 ## 0.6.9
 
 ### Patch Changes

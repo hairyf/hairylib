@@ -1,5 +1,11 @@
 # @hairy/format
 
+## 0.3.8
+
+### Patch Changes
+
+- chore: update
+
 ## 0.3.7
 
 ### Patch Changes

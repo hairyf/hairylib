@@ -1,6 +1,6 @@
 {
   "name": "@hairy/palette",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "license": "MIT",
   "main": "src/index.ts",
   "publishConfig": {

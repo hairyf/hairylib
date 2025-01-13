@@ -1,6 +1,6 @@
 {
   "name": "@hairy/util-nestjs",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "license": "MIT",
   "main": "src/index.ts",
   "publishConfig": {
@@ -36,6 +36,5 @@
   "devDependencies": {
     "@types/lodash": "^4.14.182",
     "@types/tunnel": "^0.0.7"
-
   }
 }
