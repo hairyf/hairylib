@@ -24,8 +24,13 @@ export interface DecimalOptions {
   r?: Bignumber.RoundingMode
 }
 
+export interface FormatGroupOptions {
+  size?: number
+  symbol?: string
+}
 export interface FormatNumericOptions extends DecimalOptions {
-  delimiters?: Delimiter[]
+  delimiters?: Delimiter[] | false
+  format?: Bignumber.Format
 }
 
 export function unum(num: Numeric = '0') {
@@ -133,31 +138,6 @@ export function decimal(value: Numberish, n = 2) {
   return `${integer}.${decimal}`
 }
 
-interface ThousandBitSeparatorOptions {
-  integer?: boolean
-  decimal?: boolean
-}
-/**
- * format number thousand separator
- * @param target
- * @param unit
- */
-export function thousandBitSeparator(
-  target: Numberish,
-  unit = ',',
-  options: ThousandBitSeparatorOptions = {},
-) {
-  options.integer = options.integer ?? true
-  options.decimal = options.decimal ?? true
-  const replace = (v: string) => v.replace(/(\d)(?=(\d{3})+$)/ig, `$1${unit || ''}`)
-  let [integer = '0', decimal = ''] = numerfix(target).split('.')
-  if (options.integer)
-    integer = replace(integer)
-  if (options.decimal)
-    decimal = replace(decimal)
-  return [integer, decimal].filter(Boolean).join('.')
-}
-
 export function parseNumeric(num: Numeric, delimiters: Delimiter[] = ['t', 'b', 'm']) {
   const mappings = [
     delimiters.includes('t') && ((n: Numeric) => gte(n, BIG_INTS.t.v) && BIG_INTS.t),
@@ -173,9 +153,16 @@ export function parseNumeric(num: Numeric, delimiters: Delimiter[] = ['t', 'b', 
   return options || { v: 1, d: 0, n: '' }
 }
 
+/**
+ * format number thousand separator and unit
+ * @param value
+ * @param options
+ * @returns
+ */
+
 export function formatNumeric(value: Numeric = '0', options?: FormatNumericOptions) {
-  const { d = 3, r = Bignumber.ROUND_DOWN, delimiters = [] } = options || {}
-  const config = parseNumeric(value, delimiters)
-  const number = unum(value).div(config.v).toFormat(d, r)
+  const { d = 2, r = Bignumber.ROUND_DOWN, delimiters, format } = options || {}
+  const config = parseNumeric(value, delimiters || [])
+  const number = unum(value).div(config.v).toFormat(d, r, format)
   return `${number}${config.n}`
 }
