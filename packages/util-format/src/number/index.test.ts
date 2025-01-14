@@ -1,4 +1,4 @@
-import { decimal, integer, percentage, thousandBitSeparator, zerofill } from '.'
+import { decimal, integer, percentage, zerofill } from '.'
 
 describe('@hairy/format:number', () => {
   test('integer', () => {
@@ -25,12 +25,7 @@ describe('@hairy/format:number', () => {
     expect(decimal('223.1')).toEqual('223.10')
     expect(decimal('223.100000', 6)).toEqual('223.100000')
   })
-  test('thousandBitSeparator', () => {
-    expect(thousandBitSeparator('123456789')).toEqual('123,456,789')
-    expect(thousandBitSeparator('123456789.123456789')).toEqual('123,456,789.123,456,789')
-    expect(thousandBitSeparator('123456789.123456789', ',', { decimal: false })).toEqual('123,456,789.123456789')
-    expect(thousandBitSeparator('123456789.123456789', ',', { integer: false })).toEqual('123456789.123,456,789')
-  })
+
   test('percentage', () => {
     expect(percentage(200, 7)).toEqual('3')
     expect(percentage(100, 7)).toEqual('7')

@@ -28,8 +28,10 @@ export interface FormatGroupOptions {
   size?: number
   symbol?: string
 }
-export interface FormatNumericOptions extends DecimalOptions {
+export interface FormatNumericOptions {
   delimiters?: Delimiter[] | false
+  rounding?: Bignumber.RoundingMode
+  decimals?: number
   format?: Bignumber.Format
 }
 
@@ -161,8 +163,15 @@ export function parseNumeric(num: Numeric, delimiters: Delimiter[] = ['t', 'b', 
  */
 
 export function formatNumeric(value: Numeric = '0', options?: FormatNumericOptions) {
-  const { d = 2, r = Bignumber.ROUND_DOWN, delimiters, format } = options || {}
+  const {
+    rounding = Bignumber.ROUND_DOWN,
+    delimiters, format,
+    decimals = 2,
+  } = options || {}
+
   const config = parseNumeric(value, delimiters || [])
-  const number = unum(value).div(config.v).toFormat(d, r, format)
+  const number = unum(value).div(config.v).toFormat(decimals, rounding, format)
   return `${number}${config.n}`
 }
+
+export { Bignumber }
