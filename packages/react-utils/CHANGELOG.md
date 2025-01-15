@@ -1,5 +1,11 @@
 # @hairy/react-utils
 
+## 1.1.0
+
+### Minor Changes
+
+- asdasd
+
 ## 1.0.9
 
 ### Patch Changes
