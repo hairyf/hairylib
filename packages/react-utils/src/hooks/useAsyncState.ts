@@ -19,5 +19,5 @@ export function useAsyncState<T extends FunctionReturningPromise>(
 
   useMount(() => options?.immediate && _fn())
 
-  return [state, _fn] as const
+  return [state, _fn] as any
 }
