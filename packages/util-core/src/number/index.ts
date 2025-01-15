@@ -166,7 +166,15 @@ export function formatNumeric(value: Numeric = '0', options?: FormatNumericOptio
   } = options || {}
 
   const config = parseNumeric(value, delimiters || [])
-  const number = unum(value).div(config.v).toFormat(decimals, rounding, format)
+  const number = unum(value).div(config.v).toFormat(decimals, rounding, {
+    decimalSeparator: '.',
+    groupSeparator: ',',
+    groupSize: 3,
+    secondaryGroupSize: 0,
+    fractionGroupSeparator: ' ',
+    fractionGroupSize: 0,
+    ...format,
+  })
   return `${number}${config.n}`
 }
 

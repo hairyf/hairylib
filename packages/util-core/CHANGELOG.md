@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.7.1
+
+### Patch Changes
+
+- update package
+
 ## 0.7.0
 
 ### Minor Changes
