@@ -2,7 +2,7 @@ import type { INTERNAL_Snapshot as Snapshot } from 'valtio'
 import { proxy, useSnapshot } from 'valtio'
 import { proxyWithPersistant } from './proxyWithPersistant'
 
-interface StoreDefine<S extends object, A extends Actions<S> = {}> {
+interface StoreDefine<S extends object, A extends Actions<S> = Record<string, any>> {
   state: () => S
   actions?: A
 }
