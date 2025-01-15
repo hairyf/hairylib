@@ -1,5 +1,11 @@
 # @hairy/wechat-jssdk
 
+## 1.2.9
+
+### Patch Changes
+
+- changeset
+
 ## 1.2.8
 
 ### Patch Changes

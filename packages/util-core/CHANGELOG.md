@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.6.11
+
+### Patch Changes
+
+- changeset
+
 ## 0.6.10
 
 ### Patch Changes

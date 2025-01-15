@@ -1,5 +1,13 @@
 # @hairy/vue-utils
 
+## 1.3.12
+
+### Patch Changes
+
+- changeset
+- Updated dependencies
+  - @hairy/utils@0.6.11
+
 ## 1.3.11
 
 ### Patch Changes

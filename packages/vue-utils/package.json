@@ -1,6 +1,6 @@
 {
   "name": "@hairy/vue-utils",
-  "version": "1.3.11",
+  "version": "1.3.12",
   "license": "MIT",
   "main": "src/index.ts",
   "publishConfig": {

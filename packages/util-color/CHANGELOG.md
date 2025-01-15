@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.11
+
+### Patch Changes
+
+- changeset
+
 ## 0.3.10
 
 ### Patch Changes

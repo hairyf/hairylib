@@ -106,7 +106,7 @@ export function zerofill(
 }
 
 export function numerfix(value: any) {
-  const _isNaN = isNaN(Number(value)) || value.toString() === 'NaN'
+  const _isNaN = Number.isNaN(Number(value)) || value.toString() === 'NaN'
   if (_isNaN)
     console.warn(`numerfix(${value}): value is not the correct value. To ensure the normal operation of the program, it will be converted to zero`)
   return (_isNaN) ? '0' : String(value)
