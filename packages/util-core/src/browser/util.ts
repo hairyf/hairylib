@@ -6,7 +6,7 @@ export function redirectTo(url: string, target = '_blank') {
   link.remove()
 }
 
-export function callPhoneNumber(phoneNumber: string) {
+export function dialsPhone(phoneNumber: string) {
   const aTag = document.createElement('a')
   aTag.setAttribute('href', `tel:${phoneNumber}`)
   aTag.setAttribute('target', '_blank')

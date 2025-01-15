@@ -1,4 +1,5 @@
 import Bignumber from 'bignumber.js'
+import type { Numeric } from '../typings'
 
 export const BIG_INTS = {
   t: { v: 10 ** 12, d: 13, n: 't' },
@@ -6,11 +7,6 @@ export const BIG_INTS = {
   m: { v: 10 ** 6, d: 7, n: 'm' },
   k: { v: 10 ** 3, d: 4, n: 'k' },
 }
-
-/**
- *  Any type that can be used where a numeric value is needed.
- */
-export type Numeric = number | bigint | string
 
 /**
  *  Any type that can be used where a big number is needed.

@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-promise-reject-errors */
-import isNull from 'lodash/isNull'
+
+import { isNull } from '../is'
 
 export interface OpenFilePickerOptions {
   /**
@@ -96,9 +98,8 @@ export function readFileReader<T extends ReaderType>(formType: T, file: File) {
     const reader = new FileReader()
     reader[formType](file)
     reader.onloadend = function () {
-      if (isNull(this.result))
-        reject()
-      else resolve(this.result as ResultType)
+      // @ts-expect-error
+      isNull(this.result) ? reject() : resolve(this.result)
     }
   })
 }

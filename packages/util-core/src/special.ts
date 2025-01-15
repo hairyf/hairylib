@@ -1,6 +1,6 @@
-import isArray from 'lodash/isArray'
-
 /* 特殊的字符处理，不暴露，仅做保存 */
+
+import { isArray } from './is'
 
 /**
  * 替换 html string 中任意 tag 内任意 attr 值

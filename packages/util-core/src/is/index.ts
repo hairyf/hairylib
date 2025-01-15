@@ -34,6 +34,10 @@ export const isNumber = (value: any) => typeof value === 'number'
 
 export const isString = (value: any) => typeof value === 'string'
 
+export const isArray = (value: any): value is any[] => Array.isArray(value)
+
+export const isNull = (value: any): value is null => value === null
+
 export const isPlainObject = (value: any) => typeof value === 'object' && value !== null && value.constructor === Object
 
 export const isFormData = (value: any): value is FormData => isObject(value) && isBrowser() && value instanceof FormData
