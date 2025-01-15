@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.7.2
+
+### Patch Changes
+
+- chore: update utils
+
 ## 0.7.1
 
 ### Patch Changes
