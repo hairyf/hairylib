@@ -28,6 +28,7 @@ export interface FormatNumericOptions {
   delimiters?: Delimiter[] | false
   rounding?: Bignumber.RoundingMode
   decimals?: number
+  zeromove?: boolean
   format?: Bignumber.Format
 }
 
@@ -105,6 +106,10 @@ export function zerofill(
   return ''
 }
 
+export function zeromove(value: Numberish) {
+  return value.toString().replace(/\.?0+$/, '')
+}
+
 export function numerfix(value: any) {
   const _isNaN = Number.isNaN(Number(value)) || value.toString() === 'NaN'
   if (_isNaN)
@@ -166,7 +171,7 @@ export function formatNumeric(value: Numeric = '0', options?: FormatNumericOptio
   } = options || {}
 
   const config = parseNumeric(value, delimiters || [])
-  const number = unum(value).div(config.v).toFormat(decimals, rounding, {
+  let number = unum(value).div(config.v).toFormat(decimals, rounding, {
     decimalSeparator: '.',
     groupSeparator: ',',
     groupSize: 3,
@@ -175,6 +180,7 @@ export function formatNumeric(value: Numeric = '0', options?: FormatNumericOptio
     fractionGroupSize: 0,
     ...format,
   })
+  number = options?.zeromove ? zeromove(number) : number
   return `${number}${config.n}`
 }
 
