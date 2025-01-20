@@ -12,6 +12,7 @@ export function Trans({ i18nKey, ...additionalProps }: TransProps) {
   const translation = useTranslation().t(i18nKey, additionalProps)
   return renderNodes(HTML.parse(translation), additionalProps)
 }
+
 let index = 0
 function renderNodes(tokens: HTML.Token[], values: Record<string, ReactNode>): ReactNode[] {
   return tokens.map((token) => {

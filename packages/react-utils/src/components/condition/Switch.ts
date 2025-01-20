@@ -1,6 +1,6 @@
 import type { PropsWithChildren, ReactElement } from 'react'
 import { Children, isValidElement } from 'react'
-import type { BooleanLike } from '../types'
+import type { BooleanLike } from '../../types'
 import { Case } from './Case'
 import { Default } from './Default'
 
@@ -16,7 +16,6 @@ export function Switch(props: SwitchProps) {
   Children.forEach(props.children, (child) => {
     if (!isValidElement(child) || matchingCase)
       return
-
     if (child.type === Case) {
       const cond = child.props.cond
       if (isUseValue ? props.value === cond : cond) {

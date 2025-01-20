@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { BooleanLike } from '../types'
+import type { BooleanLike } from '../../types'
 
 export interface CaseProps {
   cond?: BooleanLike

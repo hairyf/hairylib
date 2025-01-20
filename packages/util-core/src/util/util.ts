@@ -30,3 +30,7 @@ export function riposte<T>(...args: [cond: boolean, value: T][]): T {
   }
   return undefined as T
 }
+
+export function unwrap<T extends object>(value: T | (() => T)) {
+  return typeof value === 'function' ? value() : value
+}
