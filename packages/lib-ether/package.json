@@ -1,6 +1,6 @@
 {
-  "name": "@hairy/util-nestjs",
-  "version": "0.3.9",
+  "name": "@hairy/ether-lib",
+  "version": "1.1.0",
   "license": "MIT",
   "main": "src/index.ts",
   "publishConfig": {
@@ -25,16 +25,16 @@
     "build": "ptsup src/index.ts --dts"
   },
   "dependencies": {
-    "@nestjs/common": "^10.3.8",
-    "@nestjs/swagger": "^7.3.1",
-    "@prisma/client": "^5.14.0",
-    "bignumber.js": "^9.1.2",
-    "chalk": "4.1.2",
-    "ethers": "^6.12.1",
-    "tunnel": "^0.0.6"
+    "html-parse-stringify": "^3.0.1",
+    "mitt": "^3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.2",
+    "valtio": "^1.13.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.182",
-    "@types/tunnel": "^0.0.7"
+    "@types/node": "^20.11.7",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17"
   }
 }
