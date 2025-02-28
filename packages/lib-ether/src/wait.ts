@@ -13,7 +13,7 @@ for (const Response of [TransactionResponse, ContractTransactionResponse]) {
   const waitForTransaction = Response.prototype.wait
   // @ts-ignore
   Response.prototype._wait = waitForTransaction
-  Response.prototype.wait = async function (...args) {
+  Response.prototype.wait = async function (...args: any[]) {
     try {
       emitter.emit('before')
       const receipt = await waitForTransaction.call(this, ...args)
@@ -32,7 +32,7 @@ export type GenericTransactionResponse = TransactionResponse | ContractTransacti
   | (() => TransactionResponse | ContractTransactionResponse)
   | (() => Promise<TransactionResponse | ContractTransactionResponse>)
 
-export async function waitForTransaction(transaction: GenericTransactionResponse) {
+export async function wait(transaction: GenericTransactionResponse) {
   try {
     emitter.emit('before')
     if (typeof transaction === 'function')
@@ -40,7 +40,7 @@ export async function waitForTransaction(transaction: GenericTransactionResponse
     if (transaction instanceof Promise)
       transaction = await transaction
     // @ts-ignore
-    const receipt = await transaction._wait()
+    const receipt = await transaction.getTransaction().then(transaction => transaction?._wait())
     emitter.emit('after', receipt)
     return receipt
   }

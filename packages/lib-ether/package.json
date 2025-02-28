@@ -25,16 +25,13 @@
     "build": "ptsup src/index.ts --dts"
   },
   "dependencies": {
-    "html-parse-stringify": "^3.0.1",
-    "mitt": "^3.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^14.1.2",
-    "valtio": "^1.13.0"
+   "@hairy/utils": "workspace:*",
+    "mitt": "^3.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.11.7",
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17"
+    "ethers": "^6"
+  },
+  "peerDependencies": {
+    "ethers": ">=6"
   }
 }

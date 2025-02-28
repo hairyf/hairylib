@@ -93,34 +93,16 @@ importers:
 
   packages/lib-ether:
     dependencies:
-      html-parse-stringify:
-        specifier: ^3.0.1
-        version: 3.0.1
+      '@hairy/utils':
+        specifier: workspace:*
+        version: link:../util-core
       mitt:
         specifier: ^3.0.1
         version: 3.0.1
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.3.1(react@18.3.1)
-      react-i18next:
-        specifier: ^14.1.2
-        version: 14.1.3(i18next@24.2.1(typescript@4.9.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      valtio:
-        specifier: ^1.13.0
-        version: 1.13.2(@types/react@18.3.18)(react@18.3.1)
     devDependencies:
-      '@types/node':
-        specifier: ^20.11.7
-        version: 20.17.13
-      '@types/react':
-        specifier: ^18.2.43
-        version: 18.3.18
-      '@types/react-dom':
-        specifier: ^18.2.17
-        version: 18.3.5(@types/react@18.3.18)
+      ethers:
+        specifier: ^6
+        version: 6.13.5
 
   packages/lib-nestjs:
     dependencies:

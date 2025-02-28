@@ -9,6 +9,7 @@ export interface TransProps {
 }
 
 export function Trans({ i18nKey, ...additionalProps }: TransProps) {
+  // @ts-ignore
   const translation = useTranslation().t(i18nKey, additionalProps)
   return renderNodes(HTML.parse(translation), additionalProps)
 }
