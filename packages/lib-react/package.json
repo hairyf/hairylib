@@ -8,15 +8,7 @@
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
     "unpkg": "./dist/index.iife.min.js",
-    "jsdelivr": "./dist/index.iife.min.js",
-    "exports": {
-      ".": {
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.cjs",
-        "types": "./dist/index.d.ts"
-      },
-      "./*": "./*"
-    }
+    "jsdelivr": "./dist/index.iife.min.js"
   },
   "files": [
     "dist"
