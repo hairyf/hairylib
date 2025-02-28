@@ -1,5 +1,11 @@
 # @hairy/utils
 
+## 0.7.3
+
+### Patch Changes
+
+- change packages name
+
 ## 0.7.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @hairy/palette
 
+## 0.3.12
+
+### Patch Changes
+
+- change packages name
+
 ## 0.3.11
 
 ### Patch Changes

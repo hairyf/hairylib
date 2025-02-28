@@ -1,6 +1,6 @@
 {
   "name": "@hairy/ether-lib",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "main": "src/index.ts",
   "publishConfig": {
@@ -25,7 +25,7 @@
     "build": "ptsup src/index.ts --dts"
   },
   "dependencies": {
-   "@hairy/utils": "workspace:*",
+    "@hairy/utils": "workspace:*",
     "mitt": "^3.0.1"
   },
   "devDependencies": {
