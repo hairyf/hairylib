@@ -1,5 +1,11 @@
 # @hairy/react-utils
 
+## 1.1.2
+
+### Patch Changes
+
+- fix react error
+
 ## 1.1.1
 
 ### Patch Changes
