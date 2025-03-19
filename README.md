@@ -15,13 +15,13 @@ What are the benefits of a Monorepo?
 ## Workflow
 
 - Code checking based on `eslint`, `lint-staged`, `github actions`, and `tsc`.
-- Unified version management and publishing using `bumpp`, with `CHANGELOG` generation through `changelogithub`.
+- Unified version management and publishing using [bumpp](https://github.com/antfu-collective/bumpp), with `CHANGELOG` generation through [changelogithub](https://github.com/antfu/changelogithub).
 - Fast execution of TypeScript files using `tsx`, and building with tsup.
 - Dependency hoisting using the `catalog:` protocol for unified management of all dependencies.
 - Direct reading of `index.ts` during development to simplify references between modules.
 - Publishing using `publishConfig` to automatically build and publish to `npm`.
 - Support for multiple module formats (`esm`, `cjs`, `iife`).
-- Testing with vitest, with built-in workspace support.
+- Testing with [vitest](https://vitest.dev/), with built-in workspace support.
 
 ## License
 
