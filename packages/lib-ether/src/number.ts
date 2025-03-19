@@ -1,6 +1,6 @@
-import { formatEther as _formatEther } from 'ethers'
 import type { Delimiter, Numberish } from '@hairy/utils'
 import { Bignumber, formatNumeric, numerfix, unum } from '@hairy/utils'
+import { formatEther as _formatEther } from 'ethers'
 
 export interface FormatEtherOptions {
   delimiters?: Delimiter[] | boolean
@@ -11,7 +11,7 @@ export interface FormatEtherOptions {
   format?: Bignumber.Format
 }
 
-export function formatEther(value: Numberish = '0', options: FormatEtherOptions = {}) {
+export function formatEther(value: Numberish = '0', options: FormatEtherOptions = {}): string {
   const { separator = false, decimals, delimiters = false, rounding, zeromove = true } = options
   const number = _formatEther(unum(numerfix(value)).toFixed(0))
   const groupSeparator = separator === false ? '' : ','

@@ -1,9 +1,9 @@
-import { Children } from 'react'
+import type { BooleanLike } from '@hairy/utils'
 import type { ReactElement, ReactNode } from 'react'
-import type { BooleanLike } from '../../types'
 
-import { Then } from './Then'
+import { Children } from 'react'
 import { Else } from './Else'
+import { Then } from './Then'
 
 export interface UnlessProps {
   cond?: BooleanLike

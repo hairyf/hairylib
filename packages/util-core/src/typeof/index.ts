@@ -1,4 +1,4 @@
-export type TypeofType =
+export type Typeof =
   | 'string'
   | 'number'
   | 'bigint'
@@ -11,20 +11,18 @@ export type TypeofType =
   | 'regexp'
 
 /**
- * 获取数据类型
- * @param target 检测对象
- * @returns 返回字符串
+ * obtain data type
+ * @param target Detection object
  */
 export function getTypeof(target: any) {
   const value = Object.prototype.toString.call(target).slice(8, -1).toLocaleLowerCase()
-  return value as TypeofType
+  return value as Typeof
 }
 /**
- * 检测数据类型
- * @param target 检测对象
- * @param type 类型
- * @returns 返回字符串
+ * Detecting data types
+ * @param target Detection object
+ * @param type Data type
  */
-export function isTypeof(target: any, type: TypeofType) {
+export function isTypeof(target: any, type: Typeof) {
   return getTypeof(target) === type
 }

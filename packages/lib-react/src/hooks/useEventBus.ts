@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
 import mitt from 'mitt'
+import { useEffect, useRef } from 'react'
 
 export interface EventBusListener<T = any> {
   (event: T): void

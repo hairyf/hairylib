@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next'
 import type { ReactNode } from 'react'
-import { createElement } from 'react'
 import HTML from 'html-parse-stringify'
+import { createElement } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export interface TransProps {
   i18nKey: string
@@ -9,13 +9,12 @@ export interface TransProps {
 }
 
 export function Trans({ i18nKey, ...additionalProps }: TransProps) {
-  // @ts-ignore
   const translation = useTranslation().t(i18nKey, additionalProps)
   return renderNodes(HTML.parse(translation), additionalProps)
 }
 
-let index = 0
 function renderNodes(tokens: HTML.Token[], values: Record<string, ReactNode>): ReactNode[] {
+  let index = 0
   return tokens.map((token) => {
     if (token.type === 'text')
       return token.content

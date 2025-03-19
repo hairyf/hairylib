@@ -1,19 +1,15 @@
 /* 特殊的字符处理，不暴露，仅做保存 */
 
-import { isArray } from './is'
+import { isArray } from './util'
 
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
- * @param html html string
- * @param option
- * @returns
  */
-export function replaceInnerHTMLAttributes(html: string,
-  option: {
-    tag: string | string[]
-    attr: string | string[]
-    value: string
-  }) {
+export function replaceInnerHTMLAttributes(html: string, option: {
+  tag: string | string[]
+  attr: string | string[]
+  value: string
+}) {
   if (typeof html !== 'string')
     throw new TypeError('error: html is not string')
 
@@ -48,9 +44,6 @@ export function replaceInnerHTMLAttributes(html: string,
 
 /**
  * 移除所有标签的一个或多个属性
- * @param html html string
- * @param attr attr string
- * @returns html
  */
 export function removeInnerHTMLAttribute(html: string, attribute: string | string[]) {
   return (isArray(attribute) ? attribute : [attribute]).reduce(

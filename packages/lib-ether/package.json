@@ -1,17 +1,29 @@
 {
   "name": "@hairy/ether-lib",
+  "type": "module",
   "version": "1.1.1",
+  "description": "Library for ether",
+  "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/hairyf",
+  "homepage": "https://github.com/hairyf/hairylib#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/hairylib.git"
+  },
+  "bugs": "https://github.com/hairyf/hairylib/issues",
+  "keywords": [],
+  "sideEffects": false,
   "main": "src/index.ts",
   "publishConfig": {
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.mjs",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "unpkg": "./dist/index.iife.min.js",
-    "jsdelivr": "./dist/index.iife.min.js",
+    "unpkg": "./dist/index.global.js",
+    "jsdelivr": "./dist/index.global.js",
     "exports": {
       ".": {
-        "import": "./dist/index.mjs",
+        "import": "./dist/index.js",
         "require": "./dist/index.cjs",
         "types": "./dist/index.d.ts"
       },
@@ -22,16 +34,19 @@
     "dist"
   ],
   "scripts": {
-    "build": "ptsup src/index.ts --dts"
-  },
-  "dependencies": {
-    "@hairy/utils": "workspace:*",
-    "mitt": "^3.0.1"
-  },
-  "devDependencies": {
-    "ethers": "^6"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
   },
   "peerDependencies": {
     "ethers": ">=6"
+  },
+  "dependencies": {
+    "@hairy/utils": "workspace:*",
+    "mitt": "catalog:"
+  },
+  "devDependencies": {
+    "ethers": "catalog:"
   }
 }

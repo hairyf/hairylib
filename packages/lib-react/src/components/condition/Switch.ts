@@ -1,6 +1,6 @@
+import type { BooleanLike } from '@hairy/utils'
 import type { PropsWithChildren, ReactElement } from 'react'
 import { Children, isValidElement } from 'react'
-import type { BooleanLike } from '../../types'
 import { Case } from './Case'
 import { Default } from './Default'
 

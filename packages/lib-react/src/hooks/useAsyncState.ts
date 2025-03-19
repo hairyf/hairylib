@@ -1,7 +1,7 @@
 import type { DependencyList } from 'react'
-import { useAsyncFn, useMount } from 'react-use'
 import type { FunctionReturningPromise, PromiseType } from 'react-use/lib/misc/types'
 import type { AsyncFnReturn, AsyncState } from 'react-use/lib/useAsyncFn'
+import { useAsyncFn, useMount } from 'react-use'
 
 export type StateFromFunctionReturningPromise<T extends FunctionReturningPromise> = AsyncState<PromiseType<ReturnType<T>>>
 

@@ -1,5 +1,5 @@
+import type { BooleanLike } from '@hairy/utils'
 import type { ReactNode } from 'react'
-import type { BooleanLike } from '../../types'
 
 export interface CaseProps {
   cond?: BooleanLike

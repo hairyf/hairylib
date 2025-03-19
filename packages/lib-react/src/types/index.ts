@@ -1,5 +1,3 @@
-import type { HTMLAttributes, DetailedHTMLProps as _DetailedHTMLProps } from 'react'
+import type { DetailedHTMLProps as _DetailedHTMLProps, HTMLAttributes } from 'react'
 
-export type DetailedHTMLProps<T = HTMLDivElement> = _DetailedHTMLProps<HTMLAttributes<T>, T>
-
-export type BooleanLike = any
+export type PropWithHtmlProps<T = HTMLDivElement> = _DetailedHTMLProps<HTMLAttributes<T>, T>

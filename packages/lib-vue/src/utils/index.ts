@@ -2,9 +2,9 @@ import type { FunctionalComponent } from 'vue-demi'
 import { computed, h, render } from 'vue-demi'
 
 /**
- * 直接渲染传入的组件（function component）
+ * Directly render the incoming function components
  * @param component
- * @param tag 渲染的容器（默认 div）
+ * @param tag Rendering container (default div)
  */
 export function ehr<K extends keyof HTMLElementTagNameMap = 'div'>(component: FunctionalComponent, tag?: K) {
   const container = document.createElement((tag || 'dev') as K)
@@ -13,10 +13,9 @@ export function ehr<K extends keyof HTMLElementTagNameMap = 'div'>(component: Fu
 }
 
 /**
- * 将对象的属性转换为 ref
+ * Convert the properties of an object to ref
  * @param data
  * @param prop
- * @returns
  */
 export function propertyToRef<T>(data: T, prop: keyof T) {
   return computed({

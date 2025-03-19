@@ -1,32 +1,61 @@
 {
   "name": "@hairy/react-lib",
+  "type": "module",
   "version": "1.1.2",
+  "description": "Library for react",
+  "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/hairyf",
+  "homepage": "https://github.com/hairyf/hairylib#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/hairylib.git"
+  },
+  "bugs": "https://github.com/hairyf/hairylib/issues",
+  "keywords": [],
+  "sideEffects": false,
   "main": "src/index.ts",
   "publishConfig": {
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.mjs",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "unpkg": "./dist/index.iife.min.js",
-    "jsdelivr": "./dist/index.iife.min.js"
+    "unpkg": "./dist/index.global.js",
+    "jsdelivr": "./dist/index.global.js",
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
+      },
+      "./*": "./*"
+    }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "ptsup src/index.ts --dts"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
   },
-  "dependencies": {
-    "html-parse-stringify": "^3.0.1",
-    "mitt": "^3.0.1",
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^14.1.2",
-    "valtio": "^1.13.0"
+    "react-i18next": "^14.1.2"
+  },
+  "dependencies": {
+    "html-parse-stringify": "catalog:",
+    "mitt": "catalog:",
+    "react-use": "catalog:"
   },
   "devDependencies": {
-    "@types/node": "^20.11.7",
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17"
+    "@hairy/utils": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-i18next": "catalog:"
   }
 }

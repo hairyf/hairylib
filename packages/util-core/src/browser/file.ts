@@ -1,22 +1,19 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-promise-reject-errors */
 
-import { isNull } from '../is'
+import { isNull } from '../util'
 
 export interface OpenFilePickerOptions {
   /**
-   * 是否多选文件
+   * select multiple files
    */
   multiple?: boolean
   /**
-   * 选择文件的默认格式
+   * Choose the default format for the file
    */
   accept?: string
 }
 /**
- * 选择多个文件
- * @param option.multiple 是否多选
- * @param option.accept 文件类型(accept)
+ * Select multiple files
  */
 export function showOpenFilePicker(option: OpenFilePickerOptions = {}) {
   const { multiple = true, accept } = option
@@ -39,14 +36,13 @@ export function showOpenFilePicker(option: OpenFilePickerOptions = {}) {
 
 export interface OpenImagePickerOptions {
   /**
-   * 是否多选图片
+   * select multiple images
    */
   multiple?: boolean
 }
 
 /**
- * 选择多个图片
- * @param multiple 是否多选
+ * Select multiple images
  */
 export function showOpenImagePicker(options: OpenImagePickerOptions = {}) {
   const { multiple = true } = options
@@ -57,9 +53,9 @@ export function showOpenImagePicker(options: OpenImagePickerOptions = {}) {
 export const selectImages = showOpenImagePicker
 
 /**
- * 生成 blob|string 文件，并下载
- * @param data blob 数据，或者字符串
- * @param name 文件名称
+ * Generate Blob | string file and download it
+ * @param data Blob data, or string
+ * @param name file name
  */
 export function downloadBlobFile(data: Blob | string, name: string) {
   const blob = new Blob([data])
@@ -71,9 +67,9 @@ export function downloadBlobFile(data: Blob | string, name: string) {
 }
 
 /**
- * 下载网络文件
- * @param url 下载地址
- * @param name 文件名称
+ * Download network files
+ * @param url Download link
+ * @param name file name
  */
 export function downloadNetworkFile(url: string, name?: string) {
   const a = document.createElement('a')
@@ -84,9 +80,9 @@ export function downloadNetworkFile(url: string, name?: string) {
 
 export type ReaderType = 'readAsArrayBuffer' | 'readAsBinaryString' | 'readAsDataURL' | 'readAsText'
 /**
- * 读取 File 文件
- * @param formType 转换形式
- * @param file 文件
+ * Read File file
+ * @param formType Transform type
+ * @param file file object
  */
 export function readFileReader<T extends ReaderType>(formType: T, file: File) {
   type ResultType = T extends 'readAsArrayBuffer' ? ArrayBuffer : string
@@ -98,6 +94,7 @@ export function readFileReader<T extends ReaderType>(formType: T, file: File) {
     const reader = new FileReader()
     reader[formType](file)
     reader.onloadend = function () {
+      // eslint-disable-next-line ts/ban-ts-comment
       // @ts-expect-error
       isNull(this.result) ? reject() : resolve(this.result)
     }

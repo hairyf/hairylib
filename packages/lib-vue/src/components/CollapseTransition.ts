@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable ts/no-use-before-define */
 import type { DefineComponent, TransitionProps } from 'vue-demi'
-import { Transition, defineComponent, h } from 'vue-demi'
 import CssRender from 'css-render'
+import { defineComponent, h, Transition } from 'vue-demi'
 
 const { c } = CssRender()
 

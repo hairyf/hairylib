@@ -2,7 +2,7 @@ export class Deferred<T> extends Promise<T> {
   resolve: (value: T) => Deferred<T>
   reject: (reason?: any) => Deferred<T>
   constructor() {
-    let _resolve: any, _reject: any
+    let _resolve: (value: T | PromiseLike<T>) => void, _reject: (reason?: any) => void
     super((resolve_, reject_) => {
       _resolve = resolve_
       _reject = reject_

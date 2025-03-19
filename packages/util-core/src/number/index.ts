@@ -1,5 +1,5 @@
-import Bignumber from 'bignumber.js'
 import type { Numeric } from '../typings'
+import Bignumber from 'bignumber.js'
 
 export const BIG_INTS = {
   t: { v: 10 ** 12, d: 13, n: 't' },
@@ -24,6 +24,7 @@ export interface FormatGroupOptions {
   size?: number
   symbol?: string
 }
+
 export interface FormatNumericOptions {
   delimiters?: Delimiter[] | false
   rounding?: Bignumber.RoundingMode
@@ -87,8 +88,9 @@ export function percentage(total: Numeric, count: Numeric, options?: DecimalOpti
 
 /**
  * leading zeros
- * @param number_
- * @param lh
+ * @param value
+ * @param n
+ * @param type
  */
 export function zerofill(
   value: Numberish,
@@ -148,7 +150,7 @@ export function parseNumeric(num: Numeric, delimiters: Delimiter[] = ['t', 'b', 
     delimiters.includes('m') && ((n: Numeric) => gte(n, BIG_INTS.m.v) && lt(n, BIG_INTS.b.v) && BIG_INTS.m),
     delimiters.includes('k') && ((n: Numeric) => gte(n, BIG_INTS.k.v) && lt(n, BIG_INTS.m.v) && BIG_INTS.k),
   ]
-  let options: { v: number; d: number; n: string } | undefined
+  let options: { v: number, d: number, n: string } | undefined
   for (const analy of mappings) {
     const opts = analy && analy(unum(num).toFixed(0))
     opts && (options = opts)
@@ -166,7 +168,8 @@ export function parseNumeric(num: Numeric, delimiters: Delimiter[] = ['t', 'b', 
 export function formatNumeric(value: Numeric = '0', options?: FormatNumericOptions) {
   const {
     rounding = Bignumber.ROUND_DOWN,
-    delimiters, format,
+    delimiters,
+    format,
     decimals = 2,
   } = options || {}
 

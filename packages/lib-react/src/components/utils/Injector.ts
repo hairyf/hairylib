@@ -1,5 +1,5 @@
-import { createElement, useMemo } from 'react'
 import type { ComponentClass, FC, ReactNode } from 'react'
+import { createElement, useMemo } from 'react'
 
 export interface InjectComponent<P> {
   component: FC<P> | ComponentClass<P>
