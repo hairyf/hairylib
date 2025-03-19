@@ -1,86 +1,28 @@
 # Hairylib Monorepo
 
-<div align="center"> <img src="packages/public/logo.png" > </div>
+<div align="center"> <img src="docs/public/logo.svg" > </div>
 
 ****
 
-[hairylib](https://hairylib.com/) 是使用 `pnpm` / `turbo` / `changeset` 管理的多个模块包(monorepo)的项目。
+[Hairylib](https://hairylib.com/) is a monorepo project managed and published using pnpm and bumpp.
 
-Monorepo 的好处是什么？
+What are the benefits of a Monorepo?
 
-- **统一管理**。比如微前端项目，多个子应用可以放在同一个`monorepo`中方便管理；后端用`node.js`的项目放在`monorepo`中也可以使用同一套技术栈管理。在`CI/CD`等流水线过程中，方便统一迭代或升级版本，也方便做通用化的配置，适用到多个子项目当中。
-- **依赖提升**。如果多个项目都依赖了诸如`react`、`vue`或`TypeScript`等常用库，那可以通过`lerna`或者`yarn workspace`、`pnpm workspace`将依赖提升到最外层，多个子模块/包复用同一个依赖，减小项目体积。
+- **Dependency Hoisting**. When multiple projects depend on common libraries like `react`, `vue`, or `TypeScript`, using `pnpm workspace` with the `catalog:` protocol hoists dependencies to the top level. This allows multiple sub-modules/packages to reuse the same dependencies, reducing project size and ensuring consistency.
+- **Unified Management**. For example, in micro-frontend projects, multiple sub-applications can be placed in the same `monorepo` for easier management. Backend projects using `node.js` can also be managed with the same technology stack in a `monorepo`. During `CI/CD` and other pipeline processes, this facilitates unified iteration or version upgrades, and makes it easier to apply common configurations across multiple sub-projects.
+- **Unified Publishing**. Using tools like `bumpp` and `pnpm` for unified publishing simplifies version management and reduces publishing complexity.
 
-what is pnpm ?
+## Workflow
 
-- [pnpm: 关于现代包管理器的深度思考](https://juejin.cn/post/6932046455733485575)
-
-what is turbo and changeset ?
-
-- [changesets: 流行的 monorepo 场景发包工具](https://hairylib.com/docs/study/changesets.html)
-- [turbo: Turborepo 的任务编排能力](https://zhuanlan.zhihu.com/p/468382756)
-
-## 运行流程
-
-> 想了想没什么特别的，就不写了。
-
-## 文档系统
-
-基于 `github actions` 工作流(`.github/workflows/docs.yml`)，自动部署 [hairylib.com](https://hairylib.com/)
-
-文档构建使用 `vitepress`，自动收集组合文档，生成 `Type Declarations` 和 `side-bar`。
-
-地址：https://hairylib.com/
-
-```yml
-# .github/workflows/docs.yml
-name: A TO A:GH_PAGES
-on:
-  push:
-    paths:
-    - 'packages/**'
-    - '.github/workflows/docs.yml'
-    - 'package.json'
-    - 'pnpm-lock'
-    - 'pnpm-workspace.yaml'
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name: Build and Deploy
-      uses: jenkey2011/vuepress-deploy@master
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        # 你要操作的目标仓库
-        TARGET_REPO: TuiMao233/hairylib
-        # 构建结果存储的分支
-        TARGET_BRANCH: gh_pages
-        # 要使用的构建命令
-        BUILD_SCRIPT: npm i pnpm -g && pnpm i && pnpm docs:build
-        # 构建结果存储目录
-        BUILD_DIR: packages/.vitepress/dist/
-```
-
-
-## 模块与依赖
-
-![dependencies](meta/dependencies.svg)
-
-
-## 有点意思的小技巧
-
-在 .js 文件中引入 .ts 文件
-
-~~~js
-require('esbuild-register')
-// 要注意的是，因为 ts 使用 esm 的原因，export default 则需要在获取一层
-module.exports = require('./scripts/rollup.config.ts').default
-~~~
-
+- Code checking based on `eslint`, `lint-staged`, `github actions`, and `tsc`.
+- Unified version management and publishing using `bumpp`, with `CHANGELOG` generation through `changelogithub`.
+- Fast execution of TypeScript files using `tsx`, and building with tsup.
+- Dependency hoisting using the `catalog:` protocol for unified management of all dependencies.
+- Direct reading of `index.ts` during development to simplify references between modules.
+- Publishing using `publishConfig` to automatically build and publish to `npm`.
+- Support for multiple module formats (`esm`, `cjs`, `iife`).
+- Testing with vitest, with built-in workspace support.
 
 ## License
 
-[MIT License](/LICENSE) Copyright (c) 2019-PRESENT.
+[MIT](./LICENSE) License © [Hairyf](https://github.com/hairyf)

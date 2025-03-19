@@ -1,72 +1,42 @@
 {
-  "name": "hairylib",
-  "version": "0.0.0",
-  "packageManager": "pnpm@9.5.0",
+  "type": "module",
+  "version": "1.0.0",
   "private": true,
-  "description": "hairylib 使用 changeset 管理的多个模块包(monorepo)的工具项目。",
-  "author": "hairyf",
-  "license": "MIT",
-  "homepage": "https://github.com/TuiMao233/hairylib#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TuiMao233/hairylib.git"
-  },
-  "bugs": {
-    "url": "https://github.com/TuiMao233/hairylib/issues"
-  },
-  "main": "index.js",
+  "packageManager": "pnpm@10.4.0",
   "scripts": {
-    "build": "nr clean && turbo run build --parallel",
-    "build:types": "esno scripts/types.ts",
-    "clean": "rimraf dist types packages/*/dist",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage",
-    "docs:dev": "nr update && vitepress dev packages",
-    "docs:build": "nr update:full && vitepress build packages",
-    "docs:serve": "vitepress serve packages",
-    "update": "esno scripts/update.ts",
-    "update:full": "nr update && nr build:types",
-    "release": "nr bump && nr publish:ci",
-    "bump": "changeset && changeset version",
-    "publish:ci": "nr build && pnpm -r publish --access public"
-  },
-  "dependencies": {
-    "@antfu/ni": "^0.20.0",
-    "@types/md5": "^2.3.2",
-    "@types/prettier": "^2.7.2",
-    "esno": "^0.16.3",
-    "fast-glob": "^3.2.12",
-    "fs-extra": "^10.1.0",
-    "gray-matter": "^4.0.3",
-    "md5": "^2.3.0",
-    "pascal-case": "^3.1.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^3.15.0",
-    "rollup-plugin-dts": "^5.2.0",
-    "simple-git": "^3.16.1",
-    "turbo": "^2.3.3",
-    "typescript": "^4.9.5",
-    "vite": "^2.9.15",
-    "vitepress": "1.0.0-alpha.46",
-    "vitest": "^0.13.1"
+    "build": "nr -r build",
+    "dev": "nr -r dev",
+    "lint": "eslint --cache .",
+    "prepublishOnly": "nr build",
+    "docs": "pnpm -C docs run docs:dev",
+    "docs:build": "pnpm -C docs run docs:build",
+    "release": "bumpp -r && pnpm -r publish",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.3",
-    "@changesets/cli": "^2.26.0",
-    "@types/fs-extra": "^9.0.13",
-    "@types/react": "^18.0.28",
-    "eslint": "^8.41.0",
-    "ptsup": "^0.3.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-use": "^17.6.0"
+    "@antfu/eslint-config": "catalog:",
+    "@antfu/ni": "catalog:",
+    "@antfu/utils": "catalog:",
+    "@types/node": "catalog:",
+    "bumpp": "catalog:",
+    "esbuild-plugin-globals": "catalog:",
+    "eslint": "catalog:",
+    "lib-placeholder": "workspace:*",
+    "lint-staged": "catalog:",
+    "pnpm": "catalog:",
+    "simple-git-hooks": "catalog:",
+    "tsup": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search"
-      ]
-    }
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
