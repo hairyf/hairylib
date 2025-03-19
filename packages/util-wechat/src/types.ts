@@ -1,3 +1,5 @@
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-nocheck
 import type * as WxType from 'jweixin'
 
 declare module 'jweixin' {
