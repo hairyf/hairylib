@@ -1,7 +1,5 @@
 /* eslint-disable prefer-promise-reject-errors */
 
-import { isNull } from '../util'
-
 export interface OpenFilePickerOptions {
   /**
    * select multiple files

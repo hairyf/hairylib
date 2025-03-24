@@ -1,5 +1,5 @@
 import type { Numeric } from '../typings'
-import { isNumber, isString } from '../util'
+import { isNumber, isString } from 'lodash-es'
 
 export type Dimension = Numeric | [Numeric, Numeric] | { width: Numeric, height: Numeric }
 
