@@ -1,7 +1,7 @@
 {
   "name": "@hairy/ether-lib",
   "type": "module",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Library for ether",
   "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
