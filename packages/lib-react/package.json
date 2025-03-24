@@ -46,8 +46,7 @@
   },
   "dependencies": {
     "html-parse-stringify": "catalog:",
-    "mitt": "catalog:",
-    "react-use": "catalog:"
+    "mitt": "catalog:"
   },
   "devDependencies": {
     "@hairy/utils": "workspace:*",
@@ -56,6 +55,7 @@
     "@types/react-dom": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-i18next": "catalog:"
+    "react-i18next": "catalog:",
+    "react-use": "catalog:"
   }
 }
