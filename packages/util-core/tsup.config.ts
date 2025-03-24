@@ -1,13 +1,15 @@
 import { defineConfig } from 'tsup'
-import { dependencies, name } from './package.json'
+import { dependencies, devDependencies, name } from './package.json'
 
 export default defineConfig(() => {
   const external = Object.keys(dependencies || {})
+  const resolve = Object.keys(devDependencies || {})
+    .filter(name => !name.startsWith('lodash'))
   return [
     {
       entry: ['./src/index.ts'],
       clean: true,
-      dts: true,
+      dts: { resolve },
       format: ['esm'],
       name,
       external,

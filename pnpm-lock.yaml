@@ -305,6 +305,9 @@ importers:
 
   packages/util-core:
     dependencies:
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
       bignumber.js:
         specifier: 'catalog:'
         version: 9.1.2
@@ -312,9 +315,6 @@ importers:
         specifier: 'catalog:'
         version: 4.0.0
     devDependencies:
-      '@types/lodash-es':
-        specifier: ^4.17.12
-        version: 4.17.12
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
