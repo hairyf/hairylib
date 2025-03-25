@@ -1,20 +1,26 @@
 import { proxy, subscribe } from 'valtio'
 import { proxyWithPersistant } from './proxyWithPersistant'
 
-export interface StoreDefine<S extends object, A extends Actions<S> = Record<string, any>> {
+export interface StoreDefine<S extends object, A extends Actions<S>> {
   state: (() => S) | S
   actions?: A
 }
+
 export interface StoreOptions {
   persistant?: string
 }
-export type Actions<S> = Record<string, (this: S, ...args: any) => void>
-export type Store<S, A> = A & {
+
+export type Actions<S> = Record<string, (this: S, ...args: any) => any>
+export type ActionsOmitThisParameter<A extends Actions<any>> = {
+  [K in keyof A]: (...args: Parameters<A[K]>) => ReturnType<A[K]>
+}
+
+export type Store<S, A extends Actions<S>> = {
   $subscribe: (listener: (state: S) => void) => () => void
   $patch: (patch: Partial<S> | ((state: S) => void)) => void
   $state: S
-  $actions: A
-}
+  $actions: ActionsOmitThisParameter<A>
+} & ActionsOmitThisParameter<A>
 
 export function defineStore<S extends object, A extends Actions<S>>(
   store: StoreDefine<S, A>,
