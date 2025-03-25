@@ -44,9 +44,9 @@
   },
   "dependencies": {
     "@hairy/utils": "workspace:*",
-    "mitt": "catalog:"
+    "mitt": "catalog:utils"
   },
   "devDependencies": {
-    "ethers": "catalog:"
+    "ethers": "catalog:inlined"
   }
 }

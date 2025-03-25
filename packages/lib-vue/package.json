@@ -50,13 +50,13 @@
   },
   "dependencies": {
     "@hairy/utils": "workspace:*",
-    "@vueuse/core": "catalog:",
-    "css-render": "catalog:",
-    "lodash": "catalog:",
-    "vue-demi": "latest"
+    "@vueuse/core": "catalog:vue",
+    "css-render": "catalog:utils",
+    "lodash": "catalog:utils",
+    "vue-demi": "catalog:vue"
   },
   "devDependencies": {
-    "@types/lodash": "catalog:",
-    "vue": "catalog:"
+    "@types/lodash": "catalog:types",
+    "vue": "catalog:vue"
   }
 }

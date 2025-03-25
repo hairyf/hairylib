@@ -40,6 +40,6 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "colord": "catalog:"
+    "colord": "catalog:utils"
   }
 }

@@ -45,17 +45,17 @@
     "react-i18next": "^14.1.2"
   },
   "dependencies": {
-    "html-parse-stringify": "catalog:",
-    "mitt": "catalog:"
+    "html-parse-stringify": "catalog:utils",
+    "mitt": "catalog:utils",
+    "valtio": "catalog:react"
   },
   "devDependencies": {
     "@hairy/utils": "workspace:*",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-i18next": "catalog:",
-    "react-use": "catalog:"
+    "@types/react": "catalog:types",
+    "@types/react-dom": "catalog:types",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-i18next": "catalog:react",
+    "react-use": "catalog:react"
   }
 }

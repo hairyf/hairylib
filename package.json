@@ -16,22 +16,20 @@
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:",
-    "@antfu/ni": "catalog:",
-    "@antfu/utils": "catalog:",
-    "@types/node": "catalog:",
-    "bumpp": "catalog:",
-    "esbuild-plugin-globals": "catalog:",
-    "eslint": "catalog:",
+    "@antfu/eslint-config": "catalog:cli",
+    "@antfu/ni": "catalog:cli",
+    "@types/node": "catalog:types",
+    "bumpp": "catalog:cli",
+    "esbuild-plugin-globals": "catalog:plugin",
+    "eslint": "catalog:cli",
     "lib-placeholder": "workspace:*",
-    "lint-staged": "catalog:",
-    "pnpm": "catalog:",
-    "simple-git-hooks": "catalog:",
-    "tsup": "catalog:",
-    "tsx": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:",
-    "vitest": "catalog:"
+    "lint-staged": "catalog:cli",
+    "pnpm": "catalog:cli",
+    "simple-git-hooks": "catalog:cli",
+    "tsup": "catalog:cli",
+    "typescript": "catalog:cli",
+    "vite": "catalog:cli",
+    "vitest": "catalog:testing"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

@@ -43,6 +43,6 @@
     "@hairy/utils": "workspace:*"
   },
   "devDependencies": {
-    "@types/jweixin": "catalog:"
+    "@types/jweixin": "catalog:types"
   }
 }

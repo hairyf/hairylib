@@ -40,12 +40,12 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@types/lodash-es": "^4.17.12",
-    "bignumber.js": "catalog:",
-    "p-pipe": "catalog:"
+    "@types/lodash-es": "catalog:types",
+    "bignumber.js": "catalog:utils",
+    "p-pipe": "catalog:utils"
   },
   "devDependencies": {
-    "change-case": "^5.4.4",
-    "lodash-es": "^4.17.21"
+    "change-case": "catalog:utils",
+    "lodash-es": "catalog:utils"
   }
 }
