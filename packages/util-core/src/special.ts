@@ -1,6 +1,6 @@
-/* 特殊的字符处理，不暴露，仅做保存 */
+/* Special character processing, not exposed, only for saving */
 
-import { isArray } from './util'
+import { isArray } from 'lodash-es'
 
 /**
  * 替换 html string 中任意 tag 内任意 attr 值
