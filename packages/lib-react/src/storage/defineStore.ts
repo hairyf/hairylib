@@ -8,7 +8,7 @@ export interface StoreDefine<S extends object, A extends Actions<S> = Record<str
 export interface StoreOptions {
   persistant?: string
 }
-export type Actions<S> = Record<string, (this: S) => void>
+export type Actions<S> = Record<string, (this: S, ...args: any) => void>
 export type Store<S, A> = A & {
   $subscribe: (listener: (state: S) => void) => () => void
   $patch: (patch: Partial<S> | ((state: S) => void)) => void
