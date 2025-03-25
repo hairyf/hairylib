@@ -1,6 +1,4 @@
 /* eslint-disable prefer-spread */
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable prefer-rest-params */
 
 const hasOwn = {}.hasOwnProperty
 export type Value = string | boolean | undefined | null
@@ -15,16 +13,16 @@ export type Argument = Value | Mapping | ArgumentArray | ReadonlyArgumentArray
 export function cls(...args: ArgumentArray): string {
   let classes = ''
 
-  for (let i = 0; i < arguments.length; i++) {
-    const arg = arguments[i]
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i]
     if (arg)
-      classes = appendClass(classes, parseValue(arg))
+      classes = cls.append(classes, cls.parse(arg))
   }
 
   return classes
 }
 
-function parseValue(arg: any) {
+cls.parse = function (arg: any) {
   if (typeof arg === 'string')
     return arg
   if (typeof arg !== 'object')
@@ -36,14 +34,13 @@ function parseValue(arg: any) {
   let classes = ''
   for (const key in arg) {
     if (hasOwn.call(arg, key) && arg[key])
-      classes = appendClass(classes, key)
+      classes = cls.append(classes, key)
   }
   return classes
 }
 
-function appendClass(value: any, newClass: any) {
+cls.append = function (value: any, newClass: any) {
   if (!newClass)
     return value
-
   return value ? (`${value} ${newClass}`) : newClass
 }
