@@ -25,16 +25,14 @@ export default defineConfig({
       light: 'vitesse-light',
       dark: 'vitesse-dark',
     },
-    codeTransformers: [
-      transformerTwoslash(),
-    ],
+    codeTransformers: [transformerTwoslash() as any],
     languages: ['js', 'jsx', 'ts', 'tsx'],
     config: (md) => {
       md.use(groupIconMdPlugin)
     },
   },
   cleanUrls: true,
-  vite,
+  vite: vite as any,
   themeConfig: {
     logo: '/logo.svg',
     nav: [
