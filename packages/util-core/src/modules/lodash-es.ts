@@ -27,6 +27,7 @@ export {
   isUndefined,
   join,
   keys,
+  merge,
   truncate,
   uniq,
   uniqBy,
