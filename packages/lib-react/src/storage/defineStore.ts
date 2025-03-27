@@ -1,3 +1,4 @@
+import type { PersistantOptions } from './proxyWithPersistant'
 import { proxy, subscribe } from 'valtio'
 import { proxyWithPersistant } from './proxyWithPersistant'
 
@@ -7,7 +8,7 @@ export interface StoreDefine<S extends object, A extends Actions<S>> {
 }
 
 export interface StoreOptions {
-  persistant?: string
+  persistant?: string | PersistantOptions
 }
 
 export type Actions<S> = Record<string, (this: S, ...args: any) => any>
@@ -32,7 +33,7 @@ export function defineStore<S extends object, A extends Actions<S>>(
   const actions: any = store.actions || {}
 
   const $state = options.persistant
-    ? proxyWithPersistant(options.persistant, state)
+    ? proxyWithPersistant(options.persistant as any, state)
     : proxy(state)
 
   const $actions: any = {}
