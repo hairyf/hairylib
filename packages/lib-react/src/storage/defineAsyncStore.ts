@@ -18,7 +18,9 @@ export function defineAsyncStore<T extends FunctionReturningPromise>(options: As
         error: undefined as Error | undefined,
       }),
     },
-    { persistant: options.persistant },
+    { persistant: options.persistant
+      ? { id: options.persistant, pick: ['value'] }
+      : undefined },
   )
 
   function use() {
