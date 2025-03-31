@@ -1,20 +1,20 @@
 import type { BooleanLike } from '@hairy/utils'
 import type { ReactElement, ReactNode } from 'react'
+import type { WrapperProps, WrapperTag } from '../../utils'
 
-import type { WrapperProps } from '../../utils'
 import { Children } from 'react'
 import { wrapper } from '../../utils'
 import { Else } from './Else'
 import { Then } from './Then'
 
-export type UnlessProps<K, P> = WrapperProps<K, P> & {
+export type UnlessProps<Tag> = WrapperProps<Tag> & {
   cond?: BooleanLike
   then?: ReactNode
   else?: ReactNode
   children?: ReactNode
 }
 
-export function Unless<K, P>(props: UnlessProps<K, P>) {
+export function Unless<Tag extends WrapperTag>(props: UnlessProps<Tag>) {
   const { cond, then, else: _else, tag, children = props.then, ...attrs } = props
   const elements = Children.toArray(children) as ReactElement[]
   const thenChild = elements.find(c => c.type === Then)
