@@ -33,27 +33,27 @@ export interface FormatNumericOptions {
   format?: Bignumber.Format
 }
 
-export function unum(num: Numeric = '0') {
+export function unum(num: Numberish = '0') {
   return new Bignumber(numerfix(num))
 }
 
-export function gte(num: Numeric, n: Numeric) {
+export function gte(num: Numberish, n: Numberish) {
   return unum(num).gte(unum(n))
 }
 
-export function gt(num: Numeric, n: Numeric) {
+export function gt(num: Numberish, n: Numberish) {
   return unum(num).gt(unum(n))
 }
 
-export function lte(num: Numeric, n: Numeric) {
+export function lte(num: Numberish, n: Numberish) {
   return unum(num).lte(unum(n))
 }
 
-export function lt(num: Numeric, n: Numeric) {
+export function lt(num: Numberish, n: Numberish) {
   return unum(num).lt(unum(n))
 }
 
-export function plus(array: Numeric[], options?: DecimalOptions): string {
+export function plus(array: Numberish[], options?: DecimalOptions): string {
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 0
   return array
@@ -62,7 +62,7 @@ export function plus(array: Numeric[], options?: DecimalOptions): string {
     .toFixed(decimal, rounding)
 }
 
-export function average(array: Numeric[], options?: DecimalOptions) {
+export function average(array: Numberish[], options?: DecimalOptions) {
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 0
   if (array.length === 0)
@@ -77,7 +77,7 @@ export function average(array: Numeric[], options?: DecimalOptions) {
  * @param total
  * @param count
  */
-export function percentage(total: Numeric, count: Numeric, options?: DecimalOptions) {
+export function percentage(total: Numberish, count: Numberish, options?: DecimalOptions) {
   options ??= { d: 3, r: Bignumber.ROUND_DOWN }
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 3
@@ -114,8 +114,6 @@ export function zeromove(value: Numberish) {
 
 export function numerfix(value: any) {
   const _isNaN = Number.isNaN(Number(value)) || value.toString() === 'NaN'
-  if (_isNaN)
-    console.warn(`numerfix(${value}): value is not the correct value. To ensure the normal operation of the program, it will be converted to zero`)
   return (_isNaN) ? '0' : String(value)
 }
 
@@ -143,12 +141,12 @@ export function decimal(value: Numberish, n = 2) {
   return `${integer}.${decimal}`
 }
 
-export function parseNumeric(num: Numeric, delimiters: Delimiter[] = ['t', 'b', 'm']) {
+export function parseNumeric(num: Numberish, delimiters: Delimiter[] = ['t', 'b', 'm']) {
   const mappings = [
-    delimiters.includes('t') && ((n: Numeric) => gte(n, BIG_INTS.t.v) && BIG_INTS.t),
-    delimiters.includes('b') && ((n: Numeric) => gte(n, BIG_INTS.b.v) && lt(n, BIG_INTS.t.v) && BIG_INTS.b),
-    delimiters.includes('m') && ((n: Numeric) => gte(n, BIG_INTS.m.v) && lt(n, BIG_INTS.b.v) && BIG_INTS.m),
-    delimiters.includes('k') && ((n: Numeric) => gte(n, BIG_INTS.k.v) && lt(n, BIG_INTS.m.v) && BIG_INTS.k),
+    delimiters.includes('t') && ((n: Numberish) => gte(n, BIG_INTS.t.v) && BIG_INTS.t),
+    delimiters.includes('b') && ((n: Numberish) => gte(n, BIG_INTS.b.v) && lt(n, BIG_INTS.t.v) && BIG_INTS.b),
+    delimiters.includes('m') && ((n: Numberish) => gte(n, BIG_INTS.m.v) && lt(n, BIG_INTS.b.v) && BIG_INTS.m),
+    delimiters.includes('k') && ((n: Numberish) => gte(n, BIG_INTS.k.v) && lt(n, BIG_INTS.m.v) && BIG_INTS.k),
   ]
   let options: { v: number, d: number, n: string } | undefined
   for (const analy of mappings) {
@@ -165,7 +163,7 @@ export function parseNumeric(num: Numeric, delimiters: Delimiter[] = ['t', 'b', 
  * @returns
  */
 
-export function formatNumeric(value: Numeric = '0', options?: FormatNumericOptions) {
+export function formatNumeric(value: Numberish = '0', options?: FormatNumericOptions) {
   const {
     rounding = Bignumber.ROUND_DOWN,
     delimiters,
