@@ -33,32 +33,32 @@ export interface FormatNumericOptions {
   format?: Bignumber.Format
 }
 
-export function unum(num: Numberish = '0') {
+export function BigNum(num: Numberish = '0') {
   return new Bignumber(numerfix(num))
 }
 
 export function gte(num: Numberish, n: Numberish) {
-  return unum(num).gte(unum(n))
+  return BigNum(num).gte(BigNum(n))
 }
 
 export function gt(num: Numberish, n: Numberish) {
-  return unum(num).gt(unum(n))
+  return BigNum(num).gt(BigNum(n))
 }
 
 export function lte(num: Numberish, n: Numberish) {
-  return unum(num).lte(unum(n))
+  return BigNum(num).lte(BigNum(n))
 }
 
 export function lt(num: Numberish, n: Numberish) {
-  return unum(num).lt(unum(n))
+  return BigNum(num).lt(BigNum(n))
 }
 
 export function plus(array: Numberish[], options?: DecimalOptions): string {
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 0
   return array
-    .filter(v => unum(v).gt(0))
-    .reduce((t, v) => t.plus(unum(v)), unum(0))
+    .filter(v => BigNum(v).gt(0))
+    .reduce((t, v) => t.plus(BigNum(v)), BigNum(0))
     .toFixed(decimal, rounding)
 }
 
@@ -67,7 +67,7 @@ export function average(array: Numberish[], options?: DecimalOptions) {
   const decimal = options?.d || 0
   if (array.length === 0)
     return '0'
-  return unum(plus(array))
+  return BigNum(plus(array))
     .div(array.length)
     .toFixed(decimal, rounding)
 }
@@ -81,9 +81,9 @@ export function percentage(total: Numberish, count: Numberish, options?: Decimal
   options ??= { d: 3, r: Bignumber.ROUND_DOWN }
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 3
-  if (unum(total).lte(0) || unum(count).lte(0))
+  if (BigNum(total).lte(0) || BigNum(count).lte(0))
     return '0'
-  return unum(count).div(unum(total)).times(100).toFixed(decimal, rounding)
+  return BigNum(count).div(BigNum(total)).times(100).toFixed(decimal, rounding)
 }
 
 /**
@@ -150,7 +150,7 @@ export function parseNumeric(num: Numberish, delimiters: Delimiter[] = ['t', 'b'
   ]
   let options: { v: number, d: number, n: string } | undefined
   for (const analy of mappings) {
-    const opts = analy && analy(unum(num).toFixed(0))
+    const opts = analy && analy(BigNum(num).toFixed(0))
     opts && (options = opts)
   }
   return options || { v: 1, d: 0, n: '' }
@@ -172,7 +172,7 @@ export function formatNumeric(value: Numberish = '0', options?: FormatNumericOpt
   } = options || {}
 
   const config = parseNumeric(value, delimiters || [])
-  let number = unum(value).div(config.v).toFormat(decimals, rounding, {
+  let number = BigNum(value).div(config.v).toFormat(decimals, rounding, {
     decimalSeparator: '.',
     groupSeparator: ',',
     groupSize: 3,
