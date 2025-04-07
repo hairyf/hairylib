@@ -3,7 +3,7 @@
 import { isArray } from 'lodash-es'
 
 /**
- * 替换 html string 中任意 tag 内任意 attr 值
+ * Replace any attr value within any tag in the HTML string
  */
 export function replaceInnerHTMLAttributes(html: string, option: {
   tag: string | string[]
@@ -43,9 +43,9 @@ export function replaceInnerHTMLAttributes(html: string, option: {
 }
 
 /**
- * 移除所有标签的一个或多个属性
+ * Remove one or more attributes of all tags
  */
-export function removeInnerHTMLAttribute(html: string, attribute: string | string[]) {
+export function removeInnerHTMLAttributes(html: string, attribute: string | string[]) {
   return (isArray(attribute) ? attribute : [attribute]).reduce(
     (total, attribute) => total.replace(new RegExp(`${attribute}=['"](.*?)['"]`, 'gis'), ''),
     html,
