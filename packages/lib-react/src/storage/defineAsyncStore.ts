@@ -40,8 +40,8 @@ export function defineAsyncStore<T extends FunctionReturningPromise>(options: As
         })
       return store.$state.promise
     }
-    function refresh(value: (ReturnType<T> extends Promise<infer U> ? U : undefined)) {
-      store.$state.value = value
+    function refresh(value?: (ReturnType<T> extends Promise<infer U> ? U : undefined)) {
+      store.$state.value = value || options.initial
     }
     return [state, fetch as T, refresh] as const
   }
