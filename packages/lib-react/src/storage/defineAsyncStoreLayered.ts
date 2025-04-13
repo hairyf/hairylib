@@ -9,6 +9,6 @@ export function defineAsyncStoreLayered<T extends FunctionReturningPromise>(fn: 
   return defineAsyncStore({
     setup: () => fn,
     initial: options.initial,
-    persistant: options.persistant,
+    persist: options.persist,
   })
 }
