@@ -1,0 +1,27 @@
+{
+  "name": "@examples/react",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@hairy/react-lib": "workspace:*",
+    "@hairy/utils": "workspace:*",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "globals": "^15.15.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
+  }
+}
