@@ -5,7 +5,7 @@ import { useStore } from './useStore'
 export interface AsyncStoreOptions<T extends FunctionReturningPromise> {
   initial?: ReturnType<T> extends Promise<infer U> ? U : undefined
   setup: () => T
-  persistant?: string
+  persist?: string
 }
 
 export function defineAsyncStore<T extends FunctionReturningPromise>(options: AsyncStoreOptions<T>) {
@@ -18,8 +18,8 @@ export function defineAsyncStore<T extends FunctionReturningPromise>(options: As
         error: undefined as Error | undefined,
       }),
     },
-    { persistant: options.persistant
-      ? { id: options.persistant, pick: ['value'] }
+    { persist: options.persist
+      ? { id: options.persist, pick: ['value'] }
       : undefined },
   )
 
