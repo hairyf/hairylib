@@ -1,7 +1,7 @@
 {
   "name": "lib-placeholder",
   "type": "module",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "private": true,
   "description": "Library for lib-placeholder",
   "author": "Hairyf <wwu710632@gmail.com>",
