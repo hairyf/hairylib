@@ -4,6 +4,7 @@ import { useState } from 'react'
 export function useAsyncCallback<T extends PromiseFn>(fun: T) {
   const [state, set] = useState<{ loading: boolean, error?: Error }>({ loading: false })
   async function execute(...args: any[]) {
+    set({ loading: true })
     return fun(...args)
       .then((value) => {
         set({ loading: false })
