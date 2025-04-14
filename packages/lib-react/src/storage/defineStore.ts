@@ -1,7 +1,7 @@
 import type { Actions, Getters, GettersReturnType, Store, StoreDefine, StoreOptions } from './types'
 import { createElement } from 'react'
 import { proxy, subscribe, useSnapshot } from 'valtio'
-import { proxyWithPersistant } from './proxyWithPersistant'
+import { proxyWithPersistant } from './persistant'
 
 export function defineStore<S extends object, A extends Actions<S>, G extends Getters<S>>(
   store: StoreDefine<S, A, G>,

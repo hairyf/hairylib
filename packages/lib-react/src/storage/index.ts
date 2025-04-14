@@ -1,6 +1,5 @@
 export * from './defineAsyncStore'
-export * from './defineAsyncStoreLayered'
 export * from './defineStore'
-export * from './proxyWithPersistant'
+export * from './persistant'
 export * from './useStatus'
 export * from './useStore'

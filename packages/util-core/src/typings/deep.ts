@@ -15,3 +15,18 @@ export type DeepReplace<T, K = unknown, V = unknown> = {
 }
 
 export type DeepKeyof<T> = T extends object ? keyof T | DeepKeyof<T[keyof T]> : never
+
+export type MergeInsertions<T> =
+  T extends object
+    ? { [K in keyof T]: MergeInsertions<T[K]> }
+    : T
+
+export type DeepMerge<F, S> = MergeInsertions<{
+  [K in keyof F | keyof S]: K extends keyof S & keyof F
+    ? DeepMerge<F[K], S[K]>
+    : K extends keyof S
+      ? S[K]
+      : K extends keyof F
+        ? F[K]
+        : never;
+}>
