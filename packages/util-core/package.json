@@ -1,7 +1,7 @@
 {
   "name": "@hairy/utils",
   "type": "module",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "description": "Library for anywhere",
   "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
