@@ -6,7 +6,7 @@ export interface AsyncStoreOptions<T extends AnyFn> {
   persist?: string
 }
 
-export function defineAsyncStore<T extends AnyFn>(fetch: AnyFn, options: AsyncStoreOptions<T> = {}) {
+export function defineAsyncStore<T extends AnyFn>(fetch: T, options: AsyncStoreOptions<T> = {}) {
   const store = defineStore(
     {
       state: () => ({ value: options.initial }),
