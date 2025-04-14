@@ -1,23 +1,26 @@
-import type { DependencyList } from 'react'
-import type { FunctionReturningPromise, PromiseType } from 'react-use/lib/misc/types'
-import type { AsyncFnReturn, AsyncState } from 'react-use/lib/useAsyncFn'
-import { useAsyncFn, useMount } from 'react-use'
+import type { AnyFn, PromiseFn, PromiseType } from '@hairy/utils'
+import type { AsyncStateReturn } from './types'
+import { useEffect, useState } from 'react'
+import { useMount } from 'react-use'
+import { useAsyncCallback } from './useAsyncCallback'
 
-export type StateFromFunctionReturningPromise<T extends FunctionReturningPromise> = AsyncState<PromiseType<ReturnType<T>>>
-
-export interface UseAsyncStateOptions<T extends FunctionReturningPromise> {
+export type UseAsyncStateOptions<T extends AnyFn> = {
   immediate?: boolean
-  initial?: StateFromFunctionReturningPromise<T>
+  initial?: PromiseType<ReturnType<T>>
+} | {
+  immediate?: boolean
+  initial: PromiseType<ReturnType<T>>
 }
 
-export function useAsyncState<T extends FunctionReturningPromise>(
-  fn: T,
-  deps?: DependencyList,
+export function useAsyncState<T extends PromiseFn>(
+  fun: T,
   options?: UseAsyncStateOptions<T>,
-): AsyncFnReturn<T> {
-  const [state, _fn] = useAsyncFn(fn, deps, options?.initial)
-
-  useMount(() => options?.immediate && _fn())
-
-  return [state, _fn] as any
+): AsyncStateReturn<T> {
+  const [value, set] = useState(options?.initial)
+  const [loading, execute, error] = useAsyncCallback(async (...args: any[]) => fun(...args).then(set))
+  useMount(() => options?.immediate && execute())
+  useEffect(() => {
+    execute()
+  }, [execute])
+  return [{ value, loading, error }, execute] as any
 }

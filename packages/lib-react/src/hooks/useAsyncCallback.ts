@@ -1,21 +1,19 @@
+import type { PromiseFn } from '@hairy/utils'
 import { useState } from 'react'
 
-export function useAsyncCallback<T extends (...args: any[]) => any>(fun: T) {
-  const [error, setError] = useState<Error>()
-  const [loading, setLoading] = useState(false)
+export function useAsyncCallback<T extends PromiseFn>(fun: T) {
+  const [state, set] = useState<{ loading: boolean, error?: Error }>({ loading: false })
   async function execute(...args: any[]) {
-    try {
-      setLoading(true)
-      const result = await fun(...args)
-      setLoading(false)
-      return result
-    }
-    catch (error: any) {
-      setLoading(false)
-      setError(error)
-      throw error
-    }
+    return fun(...args)
+      .then((value) => {
+        set({ loading: false })
+        return value
+      })
+      .catch((err) => {
+        set({ loading: false, error: err })
+        return Promise.reject(err)
+      })
   }
 
-  return [loading, execute as unknown as T, error] as const
+  return [state.loading, execute as unknown as T, state.error] as const
 }
