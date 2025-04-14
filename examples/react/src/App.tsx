@@ -32,7 +32,7 @@ const asyncStore = defineAsyncStore(
     await delay(1000)
     return 'async store'
   },
-  { initial: 'initial async value' },
+  { initial: 'initial async value', immediate: true },
 )
 
 function mu(value: any) {

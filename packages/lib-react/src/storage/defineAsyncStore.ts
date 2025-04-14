@@ -1,5 +1,5 @@
 import type { AnyFn } from '@hairy/utils'
-import { subscribeKey } from 'valtio/utils'
+import { watch } from 'valtio/utils'
 import { defineStore } from './defineStore'
 
 export interface AsyncStoreOptions<T extends AnyFn> {
@@ -29,9 +29,12 @@ export function defineAsyncStore<T extends AnyFn>(fetch: T, options: AsyncStoreO
     { persist: options.persist ? { id: options.persist, pick: ['value'] } : undefined },
   )
 
-  subscribeKey(store.$status, 'error', error => store.$state.error = error)
-  subscribeKey(store.$status, 'loading', loading => store.$state.loading = loading)
-  subscribeKey(store.$status, 'finished', finished => store.$state.finished = finished)
+  watch((get) => {
+    const status = get(store.$status.fetch)
+    store.$state.error = status.error
+    store.$state.loading = status.loading
+    store.$state.finished = status.finished
+  })
 
   // eslint-disable-next-line ts/ban-ts-comment
   // @ts-expect-error
