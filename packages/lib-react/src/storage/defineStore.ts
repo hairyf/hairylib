@@ -70,25 +70,23 @@ function track(action: any, status: Status) {
   let loadings = 0
   const tracking = () => loadings++ === 0 && (status.loading = true)
   const done = () => !--loadings && (status.loading = false)
-  const fulfilled = () => {
+  const fulfilled = (value: any) => {
     status.finished = true
     done()
+    return value
   }
   const rejected = (error: any) => {
     status.error = error
     done()
+    throw error
   }
   return function (...args: any[]) {
     tracking()
     try {
-      const result = action(...args)
-      if (result instanceof Promise) {
-        return result.then(fulfilled).catch(rejected)
-      }
-      else {
-        fulfilled()
-        return result
-      }
+      const value = action(...args)
+      return value instanceof Promise
+        ? value.then(fulfilled, rejected)
+        : fulfilled(value)
     }
     catch (error: any) {
       rejected(error)

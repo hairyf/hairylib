@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { defineAsyncStore, defineStore } from '@hairy/react-lib'
 import { delay } from '@hairy/utils'
 import reactLogo from './assets/react.svg'
@@ -12,11 +13,11 @@ const store = defineStore(
     }),
     actions: {
       increment() {
-        this.count++
+        return this.count++
       },
       async incrementAsync() {
         await delay(1000)
-        this.count++
+        return this.count++
       },
     },
     getters: {
@@ -53,10 +54,10 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <div>
-          <button style={{ marginRight: 20 }} onClick={() => store.increment()}>
+          <button style={{ marginRight: 20 }} onClick={() => console.log(store.increment())}>
             increment
           </button>
-          <button onClick={() => store.incrementAsync()}>
+          <button onClick={async () => console.log(await store.incrementAsync())}>
             async increment
           </button>
         </div>
