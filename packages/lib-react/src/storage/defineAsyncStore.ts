@@ -26,7 +26,7 @@ export function defineAsyncStore<T extends AnyFn>(fetch: T, options: AsyncStoreO
         },
       },
     },
-    { persist: options.persist },
+    { persist: options.persist ? { id: options.persist, pick: ['value'] } : undefined },
   )
 
   subscribeKey(store.$status, 'error', error => store.$state.error = error)
