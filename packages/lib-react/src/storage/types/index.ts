@@ -1,4 +1,4 @@
-import type { PersistantOptions } from '../proxyWithPersistant'
+import type { PersistantOptions } from '../persistant'
 
 export type Actions<S> = Record<string, (this: S, ...args: any) => any>
 export type Getters<S> = Record<string, (this: S) => any>
