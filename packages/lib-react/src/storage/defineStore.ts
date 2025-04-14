@@ -19,11 +19,10 @@ export function defineStore<S extends object, A extends Actions<S>, G extends Ge
   status.loading = false
   status.error = null
 
+  const $status = proxy(status)
   const $state = options.persist
     ? proxyWithPersistant(options.persist as string, state)
     : proxy(state)
-
-  const $status = proxy(status)
 
   const $actions: any = {}
   const $getters: any = {}

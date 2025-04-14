@@ -1,4 +1,4 @@
-import { defineStore } from '@hairy/react-lib'
+import { defineAsyncStore, defineStore } from '@hairy/react-lib'
 import { delay } from '@hairy/utils'
 import reactLogo from './assets/react.svg'
 import './App.css'
@@ -26,6 +26,13 @@ const store = defineStore(
     },
   },
   {},
+)
+const asyncStore = defineAsyncStore(
+  async () => {
+    await delay(1000)
+    return 'async store'
+  },
+  { initial: 'initial async value' },
 )
 
 function mu(value: any) {
@@ -77,6 +84,11 @@ function App() {
           status is
           {' '}
           {store.$signal.status(status => mu(JSON.stringify(status)))}
+        </p>
+        <p>
+          async store is
+          {' '}
+          {asyncStore.$signal(state => mu(JSON.stringify(state)))}
         </p>
       </div>
       <p className="read-the-docs">
