@@ -14,7 +14,7 @@
 
 </div>
 
-[Hairylib](https://hairylib.com/) is a monorepo project managed and published using [pnpm](https://pnpm.io/) and [bumpp](https://github.com/antfu-collective/bumpp).
+[Hairylib](https://hairylib.com/) is a monorepo project managed and published using [pnpm](https://pnpm.io/) and [bumpp](https://github.com/antfu-collective/bumpp). For convenience of my development.
 
 What are the benefits of a Monorepo?
 
