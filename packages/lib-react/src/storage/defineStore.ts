@@ -83,10 +83,13 @@ function track(action: any, status: Status) {
     tracking()
     try {
       const result = action(...args)
-      if (result instanceof Promise)
-        result.then(fulfilled).catch(rejected)
-      else
+      if (result instanceof Promise) {
+        return result.then(fulfilled).catch(rejected)
+      }
+      else {
         fulfilled()
+        return result
+      }
     }
     catch (error: any) {
       rejected(error)
