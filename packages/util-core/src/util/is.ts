@@ -33,3 +33,5 @@ export const isMobile = () => isBrowser() && navigator.userAgent.toLowerCase().i
 export const isFormData = (value: any): value is FormData => isObject(value) && isBrowser() && value instanceof FormData
 
 export const isWindow = (value: any): value is Window => typeof window !== 'undefined' && toString.call(value) === '[object Window]'
+
+export const isTruthy = <T>(value: T): value is NonNullable<T> => Boolean(value)
