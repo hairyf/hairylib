@@ -1,0 +1,63 @@
+{
+  "name": "@hairy/reactivity",
+  "type": "module",
+  "version": "1.27.0",
+  "description": "Library for react reactivity",
+  "author": "Hairyf <wwu710632@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/hairyf",
+  "homepage": "https://github.com/hairyf/hairylib#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/hairylib.git"
+  },
+  "bugs": "https://github.com/hairyf/hairylib/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "unpkg": "./dist/index.global.js",
+    "jsdelivr": "./dist/index.global.js",
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
+      },
+      "./*": "./*"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.2"
+  },
+  "dependencies": {
+    "@vue/reactivity": "^3.5.13",
+    "html-parse-stringify": "catalog:utils",
+    "mitt": "catalog:utils",
+    "valtio": "catalog:react"
+  },
+  "devDependencies": {
+    "@hairy/react-lib": "workspace:*",
+    "@hairy/utils": "workspace:*",
+    "@types/react": "catalog:types",
+    "@types/react-dom": "catalog:types",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-i18next": "catalog:react",
+    "react-use": "catalog:react"
+  }
+}

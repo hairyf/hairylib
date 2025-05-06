@@ -235,16 +235,25 @@ importers:
 
   examples/react:
     dependencies:
+      '@vueuse/core':
+        specifier: ^13.1.0
+        version: 13.1.0(vue@3.5.13(typescript@5.7.3))
       react:
         specifier: ^19.0.0
         version: 19.1.0
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
+      veact:
+        specifier: ^1.0.0
+        version: 1.0.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@hairy/react-lib':
         specifier: workspace:*
-        version: link:../../packages/lib-react-i18
+        version: link:../../packages/lib-react
+      '@hairy/reactivity':
+        specifier: workspace:*
+        version: link:../../packages/lib-reactivity
       '@hairy/utils':
         specifier: workspace:*
         version: link:../../packages/util-core
@@ -338,6 +347,46 @@ importers:
       react-i18next:
         specifier: catalog:react
         version: 14.1.3(i18next@24.2.3(typescript@5.8.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
+  packages/lib-reactivity:
+    dependencies:
+      '@vue/reactivity':
+        specifier: ^3.5.13
+        version: 3.5.13
+      html-parse-stringify:
+        specifier: catalog:utils
+        version: 3.0.1
+      mitt:
+        specifier: catalog:utils
+        version: 3.0.1
+      valtio:
+        specifier: catalog:react
+        version: 2.1.4(@types/react@18.3.18)(react@18.3.1)
+    devDependencies:
+      '@hairy/react-lib':
+        specifier: workspace:*
+        version: link:../lib-react
+      '@hairy/utils':
+        specifier: workspace:*
+        version: link:../util-core
+      '@types/react':
+        specifier: catalog:types
+        version: 18.3.18
+      '@types/react-dom':
+        specifier: catalog:types
+        version: 18.3.5(@types/react@18.3.18)
+      react:
+        specifier: catalog:react
+        version: 18.3.1
+      react-dom:
+        specifier: catalog:react
+        version: 18.3.1(react@18.3.1)
+      react-i18next:
+        specifier: catalog:react
+        version: 14.1.3(i18next@24.2.3(typescript@5.8.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-use:
+        specifier: catalog:react
+        version: 17.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   packages/lib-vue:
     dependencies:
@@ -1597,6 +1646,11 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
+  '@vueuse/core@13.1.0':
+    resolution: {integrity: sha512-PAauvdRXZvTWXtGLg8cPUFjiZEddTqmogdwYpnn60t08AA5a8Q4hZokBnpTOnVNqySlFlTcRYIC8OqreV4hv3Q==}
+    peerDependencies:
+      vue: ^3.5.0
+
   '@vueuse/integrations@12.8.2':
     resolution: {integrity: sha512-fbGYivgK5uBTRt7p5F3zy6VrETlV9RtZjBqd1/HxGdjdckBgBM4ugP8LHpjolqTj14TXTxSK1ZfgPbHYyGuH7g==}
     peerDependencies:
@@ -1644,11 +1698,19 @@ packages:
   '@vueuse/metadata@13.0.0':
     resolution: {integrity: sha512-TRNksqmvtvqsuHf7bbgH9OSXEV2b6+M3BSN4LR5oxWKykOFT9gV78+C2/0++Pq9KCp9KQ1OQDPvGlWNQpOb2Mw==}
 
+  '@vueuse/metadata@13.1.0':
+    resolution: {integrity: sha512-+TDd7/a78jale5YbHX9KHW3cEDav1lz1JptwDvep2zSG8XjCsVE+9mHIzjTOaPbHUAk5XiE4jXLz51/tS+aKQw==}
+
   '@vueuse/shared@12.8.2':
     resolution: {integrity: sha512-dznP38YzxZoNloI0qpEfpkms8knDtaoQ6Y/sfS0L7Yki4zh40LFHEhur0odJC6xTHG5dxWVPiUWBXn+wCG2s5w==}
 
   '@vueuse/shared@13.0.0':
     resolution: {integrity: sha512-9MiHhAPw+sqCF/RLo8V6HsjRqEdNEWVpDLm2WBRW2G/kSQjb8X901sozXpSCaeLG0f7TEfMrT4XNaA5m1ez7Dg==}
+    peerDependencies:
+      vue: ^3.5.0
+
+  '@vueuse/shared@13.1.0':
+    resolution: {integrity: sha512-IVS/qRRjhPTZ6C2/AM3jieqXACGwFZwWTdw5sNTSKk2m/ZpkuuN+ri+WCVUP8TqaKwJYt/KuMwmXspMAw8E6ew==}
     peerDependencies:
       vue: ^3.5.0
 
@@ -3665,6 +3727,12 @@ packages:
       react:
         optional: true
 
+  veact@1.0.0:
+    resolution: {integrity: sha512-/gXOhlGrGkxsDlAS/QyXg2npSqgOUM4QdXE9TFdKsNrZsBzTAAbVF4CoLgOGZWEDVB8ePY9ykDl4IQUZMa4+ZA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+      react-dom: ^16.8.0 || ^17 || ^18 || ^19
+
   vfile-message@4.0.2:
     resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
 
@@ -5325,6 +5393,12 @@ snapshots:
       '@vue/shared': 3.5.13
       csstype: 3.1.3
 
+  '@vue/server-renderer@3.5.13(vue@3.5.13(typescript@5.7.3))':
+    dependencies:
+      '@vue/compiler-ssr': 3.5.13
+      '@vue/shared': 3.5.13
+      vue: 3.5.13(typescript@5.7.3)
+
   '@vue/server-renderer@3.5.13(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@vue/compiler-ssr': 3.5.13
@@ -5349,6 +5423,13 @@ snapshots:
       '@vueuse/shared': 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue: 3.5.13(typescript@5.8.2)
 
+  '@vueuse/core@13.1.0(vue@3.5.13(typescript@5.7.3))':
+    dependencies:
+      '@types/web-bluetooth': 0.0.21
+      '@vueuse/metadata': 13.1.0
+      '@vueuse/shared': 13.1.0(vue@3.5.13(typescript@5.7.3))
+      vue: 3.5.13(typescript@5.7.3)
+
   '@vueuse/integrations@12.8.2(change-case@5.4.4)(focus-trap@7.6.4)(typescript@5.8.2)':
     dependencies:
       '@vueuse/core': 12.8.2(typescript@5.8.2)
@@ -5364,6 +5445,8 @@ snapshots:
 
   '@vueuse/metadata@13.0.0': {}
 
+  '@vueuse/metadata@13.1.0': {}
+
   '@vueuse/shared@12.8.2(typescript@5.8.2)':
     dependencies:
       vue: 3.5.13(typescript@5.8.2)
@@ -5373,6 +5456,10 @@ snapshots:
   '@vueuse/shared@13.0.0(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       vue: 3.5.13(typescript@5.8.2)
+
+  '@vueuse/shared@13.1.0(vue@3.5.13(typescript@5.7.3))':
+    dependencies:
+      vue: 3.5.13(typescript@5.7.3)
 
   '@xobotyi/scrollbar-width@1.9.5': {}
 
@@ -7648,6 +7735,12 @@ snapshots:
       '@types/react': 18.3.18
       react: 18.3.1
 
+  veact@1.0.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@vue/reactivity': 3.5.13
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
   vfile-message@4.0.2:
     dependencies:
       '@types/unist': 3.0.3
@@ -7852,6 +7945,16 @@ snapshots:
   vue-resize@2.0.0-alpha.1(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       vue: 3.5.13(typescript@5.8.2)
+
+  vue@3.5.13(typescript@5.7.3):
+    dependencies:
+      '@vue/compiler-dom': 3.5.13
+      '@vue/compiler-sfc': 3.5.13
+      '@vue/runtime-dom': 3.5.13
+      '@vue/server-renderer': 3.5.13(vue@3.5.13(typescript@5.7.3))
+      '@vue/shared': 3.5.13
+    optionalDependencies:
+      typescript: 5.7.3
 
   vue@3.5.13(typescript@5.8.2):
     dependencies:

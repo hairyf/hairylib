@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^13.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "veact": "^1.0.0"
   },
   "devDependencies": {
     "@hairy/react-lib": "workspace:*",
+    "@hairy/reactivity": "workspace:*",
     "@hairy/utils": "workspace:*",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
