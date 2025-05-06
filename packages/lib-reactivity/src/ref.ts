@@ -15,7 +15,7 @@ export type Ref<T = any, S = T> = VueRef<T, S> & ReactRef<NonNullable<T>>
  *
  * @example
  * ```js
- * const count = useRef(0)
+ * const count = ref(0)
  * console.log(count.value) // 0
  *
  * count.value = 1
