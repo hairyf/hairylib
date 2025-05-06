@@ -1,10 +1,11 @@
 import type { IfAny } from '@hairy/utils'
-import type { Ref as _Ref, CustomRefFactory, ShallowRef, UnwrapRef } from '@vue/reactivity'
+import type { CustomRefFactory, ShallowRef, UnwrapRef, Ref as VueRef } from '@vue/reactivity'
+import type { Ref as ReactRef } from 'react'
 import { tryUseState, tryUseUpdate } from '@hairy/react-lib'
 import { customRef as vueCustomRef, ref as vueRef, shallowRef as vueShallowRef } from '@vue/reactivity'
 import { watch } from './watch'
 
-export type Ref<T = any, S = T> = _Ref<T, S> & { current: T }
+export type Ref<T = any, S = T> = VueRef<T, S> & ReactRef<NonNullable<T>>
 /**
  * Takes an inner value and returns a reactive and mutable ref object, which
  * has a single property `.value` that points to the inner value.

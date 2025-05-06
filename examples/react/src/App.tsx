@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { defineAsyncStore, defineStore } from '@hairy/react-lib'
+import { ref } from '@hairy/reactivity'
 import { delay } from '@hairy/utils'
 import reactLogo from './assets/react.svg'
 import './App.css'
@@ -39,10 +40,13 @@ const asyncStore = defineAsyncStore(
 function mu(value: any) {
   return `${value} (${new Date().toISOString()})`
 }
+
 function App() {
+  const a = ref<HTMLDivElement>()
+
   return (
     <>
-      <div>
+      <div ref={a}>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
