@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useRef } from 'react'
 
-export interface WatchCallback<T> {
+export interface UseWatchCallback<T> {
   (value: T): void
 }
 
-export interface WatchOptions {
+export interface UseWatchOptions {
   immediate?: boolean
 }
 
-export function useWatch<T>(source: T, callback: WatchCallback<T>, options: WatchOptions = {}) {
+export function useWatch<T>(source: T, callback: UseWatchCallback<T>, options: UseWatchOptions = {}) {
   const firstUpdate = useRef(false)
   const then = useRef<Promise<any>>()
 
