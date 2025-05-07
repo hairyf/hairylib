@@ -1,4 +1,4 @@
-import { tryUseEffect, tryUseRef } from '@hairy/react-lib'
+import { tryUseEffect, tryUseInsertionEffect, tryUseRef } from '@hairy/react-lib'
 
 /**
  * The function is called right after the component is mounted.
@@ -12,7 +12,14 @@ export function onMounted(fn: () => any) {
   }, [])
 }
 
-export const onBeforeMount = onMounted
+export function onBeforeMount(fn: () => any) {
+  const isMounted = tryUseRef(false)
+  if (!isMounted.current) {
+    fn()
+    isMounted.current = true
+  }
+}
+
 /**
  * The function is called right before the component is unmounted.
  *
@@ -27,7 +34,9 @@ export function onBeforeUnmount(fn: () => void) {
   }, [])
 }
 
-export const onUnmounted = onBeforeUnmount
+export function onUnmounted(fn: () => void) {
+  onBeforeUnmount(() => setTimeout(fn, 0))
+}
 
 /**
  * The function is called immediately after the component is re-rendered with updated props or state.
@@ -39,13 +48,12 @@ export const onUnmounted = onBeforeUnmount
 export function onUpdated(fn: () => void) {
   const isMounted = tryUseRef(false)
   tryUseEffect(() => {
-    if (isMounted.current) {
-      fn()
-    }
-    else {
-      isMounted.current = true
-    }
+    isMounted.current
+      ? fn()
+      : (isMounted.current = true)
   })
 }
 
-export const onBeforeUpdate = onUpdated
+export function onBeforeUpdate(fn: () => void) {
+  tryUseInsertionEffect(fn)
+}

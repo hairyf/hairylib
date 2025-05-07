@@ -29,9 +29,6 @@ export {
   Fragment,
   createElement as h,
 } from 'react'
-
-export const getCurrentScope = noop
-export const onScopeDispose = noop
 export const getCurrentInstance = noop
 export const hasInjectionContext = noop
 export const inject = noop

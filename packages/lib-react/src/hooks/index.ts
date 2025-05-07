@@ -1,5 +1,6 @@
 export * from './tryUseCallback'
 export * from './tryUseEffect'
+export * from './tryUseInsertionEffect'
 export * from './tryUseReducer'
 export * from './tryUseRef'
 export * from './tryUseState'

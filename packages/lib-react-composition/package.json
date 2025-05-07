@@ -1,5 +1,5 @@
 {
-  "name": "@hairy/reactivity",
+  "name": "@hairy/react-lib-composition",
   "type": "module",
   "version": "1.28.0",
   "description": "Library for react reactivity",
