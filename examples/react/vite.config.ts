@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'vue': '@hairy/reactivity',
-      '@vue/runtime-dom': '@hairy/reactivity',
+      'vue': '@hairy/react-lib-composition',
+      '@vue/runtime-dom': '@hairy/react-lib-composition',
     },
   },
 })

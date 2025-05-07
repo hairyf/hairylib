@@ -1,106 +1,29 @@
-/* eslint-disable no-console */
-import { defineAsyncStore, defineStore } from '@hairy/react-lib'
-import { ref } from '@hairy/reactivity'
-import { delay } from '@hairy/utils'
-import reactLogo from './assets/react.svg'
+import { ref, withEffectScope } from '@hairy/react-lib-composition'
+import { useElementHover } from '@vueuse/core'
+import { useState } from 'react'
 import './App.css'
-import viteLogo from '/vite.svg'
 
-const store = defineStore(
-  {
-    state: () => ({
-      count: 0,
-      arg: 1,
-    }),
-    actions: {
-      increment() {
-        return this.count++
-      },
-      async incrementAsync() {
-        await delay(1000)
-        return this.count++
-      },
-    },
-    getters: {
-      doubleCount() {
-        return this.count * 2
-      },
-    },
-  },
-  {},
-)
-const asyncStore = defineAsyncStore(
-  async () => {
-    await delay(1000)
-    return 'async store'
-  },
-  { initial: 'initial async value', immediate: true },
-)
-
-function mu(value: any) {
-  return `${value} (${new Date().toISOString()})`
-}
-
-function App() {
-  const a = ref<HTMLDivElement>()
-
+const App = withEffectScope(() => {
+  const [count, setCount] = useState(0)
+  const el = ref<HTMLDivElement>()
+  const hover = useElementHover(el)
   return (
     <>
-      <div ref={a}>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div ref={el}>el</div>
+      <div>
+        hover:
+        {hover.value ? 'true' : 'false'}
       </div>
-      {new Date().toUTCString()}
-      <h1>Vite + React</h1>
-      <div className="card">
-        <div>
-          <button style={{ marginRight: 20 }} onClick={() => console.log(store.increment())}>
-            increment
-          </button>
-          <button onClick={async () => console.log(await store.incrementAsync())}>
-            async increment
-          </button>
-        </div>
-        <p>
-          count is
-          {' '}
-          {store.$signal(state => mu(state.count))}
-          <br />
-          double count is
-          {' '}
-          {store.$signal(state => mu(state.doubleCount))}
-          <br />
-          arg is
-          {' '}
-          {store.$signal(state => mu(state.arg))}
-        </p>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to test HMR
-        </p>
-        <p>
-          status is
-          {' '}
-          {store.$signal.status(status => mu(JSON.stringify(status)))}
-        </p>
-        <p>
-          async store is
-          {' '}
-          {asyncStore.$signal(state => mu(JSON.stringify(state)))}
-        </p>
+
+      <button onClick={() => setCount(count + 1)}>
+        increment
+      </button>
+      <div>
+        count:
+        {count}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
-}
+})
 
 export default App
