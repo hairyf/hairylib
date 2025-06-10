@@ -1,3 +1,4 @@
+export * from './browser'
 export * from './modules'
 export * from './number'
 export * from './size'
