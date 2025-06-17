@@ -33,32 +33,36 @@ export interface FormatNumericOptions {
   format?: Bignumber.Format
 }
 
-export function BigNum(num: Numberish = '0') {
-  return new Bignumber(numerfix(num))
+export function bignum(n: Numberish = '0') {
+  return new Bignumber(numfix(n))
 }
 
-export function gte(num: Numberish, n: Numberish) {
-  return BigNum(num).gte(BigNum(n))
+export function numfix(value: any) {
+  return (Number.isNaN(Number(value)) || value.toString() === 'NaN') ? '0' : String(value)
 }
 
-export function gt(num: Numberish, n: Numberish) {
-  return BigNum(num).gt(BigNum(n))
+export function gte(a: Numberish, b: Numberish) {
+  return bignum(a).gte(bignum(b))
 }
 
-export function lte(num: Numberish, n: Numberish) {
-  return BigNum(num).lte(BigNum(n))
+export function gt(a: Numberish, b: Numberish) {
+  return bignum(a).gt(bignum(b))
 }
 
-export function lt(num: Numberish, n: Numberish) {
-  return BigNum(num).lt(BigNum(n))
+export function lte(a: Numberish, b: Numberish) {
+  return bignum(a).lte(bignum(b))
+}
+
+export function lt(a: Numberish, b: Numberish) {
+  return bignum(a).lt(bignum(b))
 }
 
 export function plus(array: Numberish[], options?: DecimalOptions): string {
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 0
   return array
-    .filter(v => BigNum(v).gt(0))
-    .reduce((t, v) => t.plus(BigNum(v)), BigNum(0))
+    .filter(v => bignum(v).gt(0))
+    .reduce((t, v) => t.plus(bignum(v)), bignum(0))
     .toFixed(decimal, rounding)
 }
 
@@ -67,7 +71,7 @@ export function average(array: Numberish[], options?: DecimalOptions) {
   const decimal = options?.d || 0
   if (array.length === 0)
     return '0'
-  return BigNum(plus(array))
+  return bignum(plus(array))
     .div(array.length)
     .toFixed(decimal, rounding)
 }
@@ -81,9 +85,9 @@ export function percentage(total: Numberish, count: Numberish, options?: Decimal
   options ??= { d: 3, r: Bignumber.ROUND_DOWN }
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 3
-  if (BigNum(total).lte(0) || BigNum(count).lte(0))
+  if (bignum(total).lte(0) || bignum(count).lte(0))
     return '0'
-  return BigNum(count).div(BigNum(total)).times(100).toFixed(decimal, rounding)
+  return bignum(count).div(bignum(total)).times(100).toFixed(decimal, rounding)
 }
 
 /**
@@ -112,17 +116,12 @@ export function zeromove(value: Numberish) {
   return value.toString().replace(/\.?0+$/, '')
 }
 
-export function numerfix(value: any) {
-  const _isNaN = Number.isNaN(Number(value)) || value.toString() === 'NaN'
-  return (_isNaN) ? '0' : String(value)
-}
-
 /**
  * format as a positive integer
  * @param value
  */
 export function integer(value: Numberish) {
-  return new Bignumber(numerfix(value)).toFixed(0)
+  return new Bignumber(numfix(value)).toFixed(0)
 }
 
 /**
@@ -131,7 +130,7 @@ export function integer(value: Numberish) {
  * @param n
  */
 export function decimal(value: Numberish, n = 2) {
-  let [integer, decimal] = numerfix(value).split('.')
+  let [integer, decimal] = numfix(value).split('.')
   if (n <= 0)
     return integer
   if (!decimal)
@@ -150,7 +149,7 @@ export function parseNumeric(num: Numberish, delimiters: Delimiter[] = ['t', 'b'
   ]
   let options: { v: number, d: number, n: string } | undefined
   for (const analy of mappings) {
-    const opts = analy && analy(BigNum(num).toFixed(0))
+    const opts = analy && analy(bignum(num).toFixed(0))
     opts && (options = opts)
   }
   return options || { v: 1, d: 0, n: '' }
@@ -172,7 +171,7 @@ export function formatNumeric(value: Numberish = '0', options?: FormatNumericOpt
   } = options || {}
 
   const config = parseNumeric(value, delimiters || [])
-  let number = BigNum(value).div(config.v).toFormat(decimals, rounding, {
+  let number = bignum(value).div(config.v).toFormat(decimals, rounding, {
     decimalSeparator: '.',
     groupSeparator: ',',
     groupSize: 3,
