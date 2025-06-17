@@ -8,7 +8,7 @@ export interface EventBusListener<T = any> {
 const emitter = mitt() as any
 
 export function useEventBus<T>(key: string) {
-  const onRef = useRef<EventBusListener>()
+  const onRef = useRef<EventBusListener>(undefined)
   function on(listener: EventBusListener<T>) {
     emitter.on(key, listener)
     onRef.current = listener
