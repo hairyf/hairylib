@@ -1,4 +1,5 @@
 export * from './browser'
+export * from './is'
 export * from './modules'
 export * from './number'
 export * from './size'
