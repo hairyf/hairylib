@@ -17,7 +17,9 @@ export function Switch(props: SwitchProps) {
     if (!isValidElement(child) || matchingCase)
       return
     if (child.type === Case) {
-      const cond = child.props.cond
+      // eslint-disable-next-line ts/ban-ts-comment
+      // @ts-expect-error
+      const cond = child?.props?.cond
       if (isUseValue ? props.value === cond : cond) {
         matchingCase = child
         return

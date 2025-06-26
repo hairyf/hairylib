@@ -10,7 +10,7 @@ export interface UseWatchOptions {
 
 export function useWatch<T>(source: T, callback: UseWatchCallback<T>, options: UseWatchOptions = {}) {
   const firstUpdate = useRef(false)
-  const then = useRef<Promise<any>>()
+  const then = useRef<Promise<any>>(undefined)
 
   const deps = useMemo(
     () => Array.isArray(source) ? source : [source],

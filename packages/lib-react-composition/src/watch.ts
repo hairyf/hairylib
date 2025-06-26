@@ -85,7 +85,7 @@ export function watch<T = any, Immediate extends Readonly<boolean> = false>(
   callback: WatchCallback<T>,
   options: WatchOptions<Immediate> = {},
 ): WatchHandle {
-  const handle = tryUseRef<WatchHandle>()
+  const handle = tryUseRef<WatchHandle>(undefined)
 
   const cancel = tryUseCallback(() => {
     if (!handle.current)

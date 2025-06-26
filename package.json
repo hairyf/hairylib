@@ -7,7 +7,6 @@
     "build": "nr -r build",
     "dev": "nr -r dev",
     "lint": "eslint --cache .",
-    "prepublishOnly": "nr build",
     "docs": "pnpm -C docs run docs:dev",
     "docs:build": "pnpm -C docs run docs:build",
     "release": "bumpp -r && pnpm -r publish --access public",
