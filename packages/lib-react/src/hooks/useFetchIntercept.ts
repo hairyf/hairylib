@@ -1,7 +1,7 @@
 import { useMount } from 'react-use'
 
 export interface FetchResponseInterceptCallback {
-  (response: Response): Response | Promise<Response>
+  (response: Response, init: RequestInit | undefined): Response | Promise<Response>
 }
 export interface FetchRequestInterceptCallback {
   (fetch: typeof window.fetch, input: RequestInfo | URL, init?: RequestInit | undefined): Response | Promise<Response>
@@ -22,7 +22,7 @@ function fetchResponseIntercept(intercept: FetchResponseInterceptCallback) {
     // request interceptor here
     const response = await originalFetch(resource, config)
     // response interceptor here
-    return intercept(response)
+    return intercept(response, config)
   }
 }
 
