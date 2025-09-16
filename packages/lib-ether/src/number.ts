@@ -9,10 +9,11 @@ export interface FormatEtherOptions {
   zeromove?: boolean
   decimals?: number
   format?: Bignumber.Format
+  default?: string
 }
 
 export function formatEther(value: Numberish = '0', options: FormatEtherOptions = {}): string {
-  const { separator = false, decimals, delimiters = false, rounding, zeromove = true } = options
+  const { separator = false, decimals, delimiters = false, rounding, zeromove = true, default: _default } = options
   const number = _formatEther(bignum(value).toFixed(0))
   const groupSeparator = separator === false ? '' : ','
   return formatNumeric(number, {
@@ -20,6 +21,7 @@ export function formatEther(value: Numberish = '0', options: FormatEtherOptions 
     delimiters: typeof delimiters === 'boolean'
       ? delimiters && ['m', 'b', 't']
       : delimiters,
+    default: _default,
     decimals,
     rounding,
     zeromove,

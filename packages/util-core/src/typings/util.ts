@@ -22,3 +22,9 @@ export type Option<L extends Key = 'label', V extends Key = 'value', C extends K
   { [P in L]?: string } &
   { [P in V]?: Numeric } &
   { [P in C]?: Option<L, V, C>[] }
+
+export type OmitBy<T, V> = { [K in keyof T as T[K] extends V ? never : K]: T[K] }
+export type PickBy<T, U> = { [K in keyof T as T[K] extends U ? K : never]: T[K] }
+
+export type Overwrite<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U
+export type Assign<T, U> = Omit<T, keyof U> & U

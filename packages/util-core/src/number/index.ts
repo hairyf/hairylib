@@ -30,6 +30,7 @@ export interface FormatNumericOptions {
   rounding?: Bignumber.RoundingMode
   decimals?: number
   zeromove?: boolean
+  default?: string
   format?: Bignumber.Format
 }
 
@@ -161,8 +162,10 @@ export function parseNumeric(num: Numberish, delimiters: Delimiter[] = ['t', 'b'
  * @param options
  * @returns
  */
-
 export function formatNumeric(value: Numberish = '0', options?: FormatNumericOptions) {
+  if (options?.default && bignum(value).isZero())
+    return options?.default
+
   const {
     rounding = Bignumber.ROUND_DOWN,
     delimiters,
