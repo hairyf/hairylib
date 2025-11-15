@@ -4,6 +4,34 @@ import { proxy, subscribe, useSnapshot } from 'valtio'
 import { proxyWithPersistant } from './persistant'
 import { track } from './utils'
 
+/**
+ * @description Define a store
+ * @example
+ * ```tsx
+ * const store = defineStore({
+ *   state: () => ({ count: 0 }),
+ *   actions: {
+ *     increment() {
+ *       this.count++
+ *     },
+ *   },
+ * })
+ *
+ * store.increment()
+ * console.log(store.$state.count) // 1
+ *
+ * function Component() {
+ *   const store = useStore(store)
+ *   return (
+ *     <div>
+ *       <button onClick={store.increment}>Increment</button>
+ *       <div>{store.count}</div>
+ *     </div>
+ *   )
+ * }
+ *
+ * ```
+ */
 export function defineStore<S extends object, A extends Actions<S>, G extends Getters<S>>(
   store: StoreDefine<S, A, G>,
   options: StoreOptions = {},
