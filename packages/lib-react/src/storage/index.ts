@@ -1,5 +1,5 @@
-export * from './defineAsyncStore'
 export * from './defineStore'
+export * from './defineStoreAsync'
 export * from './persistant'
 export * from './useStatus'
 export * from './useStore'

@@ -2,13 +2,13 @@ import type { AnyFn } from '@hairy/utils'
 import { watch } from 'valtio/utils'
 import { defineStore } from './defineStore'
 
-export interface AsyncStoreOptions<T extends AnyFn> {
+export interface StoreAsyncOptions<T extends AnyFn> {
   initial?: ReturnType<T> extends Promise<infer U> ? U : undefined
   persist?: string
   immediate?: boolean
 }
 
-export function defineAsyncStore<T extends AnyFn>(fetch: T, options: AsyncStoreOptions<T> = {}) {
+export function defineStoreAsync<T extends AnyFn>(fetch: T, options: StoreAsyncOptions<T> = {}) {
   const store = defineStore(
     {
       state: () => ({
@@ -42,3 +42,9 @@ export function defineAsyncStore<T extends AnyFn>(fetch: T, options: AsyncStoreO
 
   return store
 }
+
+/**
+ * @deprecated
+ * use defineStoreAsync instead
+ */
+export const defienAsyncStore = defineStoreAsync

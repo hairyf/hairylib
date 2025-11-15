@@ -1,12 +1,12 @@
-import { ref, withEffectScope } from '@hairy/react-lib-composition'
+import { ref } from '@hairy/react-lib-composition'
 import { useElementHover } from '@vueuse/core'
-import { useState } from 'react'
 import './App.css'
 
-const App = withEffectScope(() => {
-  const [count, setCount] = useState(0)
+function App() {
+  const count = ref(0)
   const el = ref<HTMLDivElement>()
   const hover = useElementHover(el)
+
   return (
     <>
       <div ref={el}>el</div>
@@ -15,15 +15,15 @@ const App = withEffectScope(() => {
         {hover.value ? 'true' : 'false'}
       </div>
 
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={() => count.value++}>
         increment
       </button>
       <div>
         count:
-        {count}
+        {count.value}
       </div>
     </>
   )
-})
+}
 
 export default App

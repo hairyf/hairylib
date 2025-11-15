@@ -42,7 +42,7 @@ export interface StorePatch<S, G extends Getters<S>> {
 export type Store<S, A extends Actions<S>, G extends Getters<S>> = {
   $subscribe: StoreSubscribe<S, A, G>
   $patch: StorePatch<S, G>
-  $state: S & GettersReturnType<G>
+  $state: S & GettersReturnType<G> & ActionsOmitThisParameter<A>
   $actions: ActionsOmitThisParameter<A>
   $getters: GettersReturnType<G>
   $status: ActionsStatus<A>

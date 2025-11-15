@@ -1,7 +1,8 @@
-import type { Actions, ActionsStatus, Getters, GettersReturnType, Status, Store, StoreDefine, StoreOptions } from './types'
+import type { Actions, ActionsStatus, Getters, GettersReturnType, Store, StoreDefine, StoreOptions } from './types'
 import { createElement } from 'react'
 import { proxy, subscribe, useSnapshot } from 'valtio'
 import { proxyWithPersistant } from './persistant'
+import { track } from './utils'
 
 export function defineStore<S extends object, A extends Actions<S>, G extends Getters<S>>(
   store: StoreDefine<S, A, G>,
@@ -66,38 +67,13 @@ export function defineStore<S extends object, A extends Actions<S>, G extends Ge
   }
 }
 
-function track(action: any, status: Status) {
-  let loadings = 0
-  const tracking = () => loadings++ === 0 && (status.loading = true)
-  const done = () => !--loadings && (status.loading = false)
-  const fulfilled = (value: any) => {
-    status.finished = true
-    done()
-    return value
-  }
-  const rejected = (error: any) => {
-    status.error = error
-    done()
-    throw error
-  }
-  return function (...args: any[]) {
-    tracking()
-    try {
-      const value = action(...args)
-      return value instanceof Promise
-        ? value.then(fulfilled, rejected)
-        : fulfilled(value)
-    }
-    catch (error: any) {
-      rejected(error)
-    }
-  }
-}
-
 function setupActions($state: any, actions: any, $actions: any, $status: any) {
   for (const key in actions) {
     $status[key] = { finished: false, loading: false, error: null }
     $actions[key] = track(actions[key].bind($state), $status[key])
+    Object.defineProperty($state, key, {
+      get: () => $actions[key],
+    })
   }
 }
 
