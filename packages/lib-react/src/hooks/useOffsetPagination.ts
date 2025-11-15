@@ -32,14 +32,14 @@ export function useOffsetPagination(options: UseOffsetPaginationOptions): Pagina
   const isFirstPage = useMemo(() => page === 1, [page])
   const isLastPage = useMemo(() => page === pageCount, [page, pageCount])
 
-  function pageChange(page: number) {
-    setPage(() => Math.max(1, Math.min(page, pageCount)))
-  }
   function next() {
-    setPage(() => Math.min(pageCount, page + 1))
+    setPage(page => Math.min(pageCount, page + 1))
   }
   function prev() {
-    setPage(() => Math.max(1, page - 1))
+    setPage(page => Math.max(1, page - 1))
+  }
+  function pageChange(page: number) {
+    setPage(() => Math.max(1, Math.min(page, pageCount)))
   }
   function pageSizeChange(limit: number) {
     setPageSize(limit)
