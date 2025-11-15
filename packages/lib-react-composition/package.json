@@ -1,7 +1,7 @@
 {
   "name": "@hairy/react-lib-composition",
   "type": "module",
-  "version": "1.36.0",
+  "version": "1.36.1",
   "description": "Library for react reactivity",
   "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
