@@ -84,7 +84,7 @@ export function defineStoreAsync<T extends AnyFn>(fetch: T, options: StoreAsyncO
 
   // eslint-disable-next-line ts/ban-ts-comment
   // @ts-expect-error
-  options.immediate && store.fetch()
+  options.immediate && store.refetch()
 
   return store as StoreAsync<T, StoreAsyncInitial<T>>
 }
