@@ -19,12 +19,10 @@ export function useAsyncState<T extends PromiseFn>(
   options?: UseAsyncStateOptions<T>,
 ): AsyncStateReturn<T> {
   const [value, set] = useState(options?.initial)
-  const [loading, execute, error] = useAsyncCallback(async (...args: any[]) => fun(...args).then(set))
+  const [loading, refetch, error] = useAsyncCallback(async (...args: any[]) => fun(...args).then(set))
   useEffect(
-    () => {
-      execute()
-    },
+    () => { refetch() },
     deps,
   )
-  return [{ value, loading, error }, execute] as any
+  return [{ value, loading, error }, refetch] as any
 }

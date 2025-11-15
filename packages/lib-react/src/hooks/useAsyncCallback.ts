@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export function useAsyncCallback<T extends PromiseFn>(fun: T) {
   const [state, set] = useState<{ loading: boolean, error?: Error }>({ loading: false })
-  async function execute(...args: any[]) {
+  async function refetch(...args: any[]) {
     set({ loading: true })
     return fun(...args)
       .then((value) => {
@@ -16,5 +16,5 @@ export function useAsyncCallback<T extends PromiseFn>(fun: T) {
       })
   }
 
-  return [state.loading, execute as unknown as T, state.error] as const
+  return [state.loading, refetch as unknown as T, state.error] as const
 }
