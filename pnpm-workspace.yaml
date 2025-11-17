@@ -38,6 +38,7 @@ catalogs:
   testing:
     vitest: ^3.0.5
   types:
+    '@dcloudio/types': ^3.4.28
     '@types/jweixin': ^1.0.8
     '@types/lodash': ^4.17.16
     '@types/lodash-es': ^4.17.12

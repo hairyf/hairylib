@@ -1,0 +1,63 @@
+{
+  "name": "@hairy/uni-lib",
+  "type": "module",
+  "version": "1.38.0",
+  "description": "Library for vue",
+  "author": "Hairyf <wwu710632@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/hairyf",
+  "homepage": "https://github.com/hairyf/hairylib#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/hairylib.git"
+  },
+  "bugs": "https://github.com/hairyf/hairylib/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "unpkg": "./dist/index.global.js",
+    "jsdelivr": "./dist/index.global.js",
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
+      },
+      "./*": "./*"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@hairy/utils": "workspace:*",
+    "@vueuse/core": "catalog:vue",
+    "css-render": "catalog:utils",
+    "lodash": "catalog:utils",
+    "vue-demi": "catalog:vue"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "catalog:types",
+    "@types/lodash": "catalog:types",
+    "vue": "catalog:vue"
+  }
+}

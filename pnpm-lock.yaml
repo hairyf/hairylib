@@ -388,6 +388,37 @@ importers:
         specifier: catalog:react
         version: 14.1.3(i18next@24.2.3(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
+  packages/lib-uni:
+    dependencies:
+      '@hairy/utils':
+        specifier: workspace:*
+        version: link:../util-core
+      '@vue/composition-api':
+        specifier: ^1.0.0-rc.1
+        version: 1.7.2(vue@3.5.13(typescript@5.8.2))
+      '@vueuse/core':
+        specifier: catalog:vue
+        version: 13.0.0(vue@3.5.13(typescript@5.8.2))
+      css-render:
+        specifier: catalog:utils
+        version: 0.15.14
+      lodash:
+        specifier: catalog:utils
+        version: 4.17.21
+      vue-demi:
+        specifier: catalog:vue
+        version: 0.14.10(@vue/composition-api@1.7.2(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))
+    devDependencies:
+      '@dcloudio/types':
+        specifier: ^3.4.28
+        version: 3.4.28
+      '@types/lodash':
+        specifier: catalog:types
+        version: 4.17.16
+      vue:
+        specifier: catalog:vue
+        version: 3.5.13(typescript@5.8.2)
+
   packages/lib-vue:
     dependencies:
       '@hairy/utils':
@@ -690,6 +721,9 @@ packages:
 
   '@clack/prompts@0.10.0':
     resolution: {integrity: sha512-H3rCl6CwW1NdQt9rE3n373t7o5cthPv7yUoxF2ytZvyvlJv89C5RYMJu83Hed8ODgys5vpBU0GKxIRG83jd8NQ==}
+
+  '@dcloudio/types@3.4.28':
+    resolution: {integrity: sha512-uVIRp1VLBkrL0LaGLgIS/sT3bl1zzVTKZQbfqJEQcSAvBffRdirbSh5OvOHfA1WV5lmCAGfjhKsUQouNEVUQHg==}
 
   '@docsearch/css@3.9.0':
     resolution: {integrity: sha512-cQbnVbq0rrBwNAKegIac/t6a8nWoUAn8frnkLFW6YARaRmAQr5/Eoe6Ln2fqkUCZ40KpdrKbpSAmgrkviOxuWA==}
@@ -4189,7 +4223,7 @@ snapshots:
   '@babel/helper-module-imports@7.25.9':
     dependencies:
       '@babel/traverse': 7.27.0
-      '@babel/types': 7.26.10
+      '@babel/types': 7.27.0
     transitivePeerDependencies:
       - supports-color
 
@@ -4275,6 +4309,8 @@ snapshots:
       '@clack/core': 0.4.1
       picocolors: 1.1.1
       sisteransi: 1.0.5
+
+  '@dcloudio/types@3.4.28': {}
 
   '@docsearch/css@3.9.0': {}
 
@@ -4775,7 +4811,7 @@ snapshots:
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@babel/types': 7.26.10
 
   '@types/babel__traverse@7.20.7':
@@ -5289,7 +5325,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -5302,7 +5338,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
