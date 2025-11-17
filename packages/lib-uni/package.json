@@ -1,7 +1,7 @@
 {
   "name": "@hairy/uni-lib",
   "type": "module",
-  "version": "1.38.0",
+  "version": "1.39.0",
   "description": "Library for vue",
   "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
