@@ -11,6 +11,7 @@ export {
   concat,
   debounce,
   find,
+  get,
   groupBy,
   isArguments,
   isArray,
