@@ -1,5 +1,9 @@
 import type { Key, Numeric } from './atom'
 
+/**
+ *  Any type that can be used where a big number is needed.
+ */
+export type Numberish = Numeric | { toString: (...args: any[]) => string } | undefined | null
 export type Awaitable<T> = T | PromiseLike<T>
 export type Arrayable<T> = T | T[]
 export type Promisify<T> = Promise<Awaited<T>>
@@ -17,6 +21,7 @@ export type ConstructorType<T = void> = new (...args: any[]) => T
 
 export type ArgumentsType<T> = T extends ((...args: infer A) => any) ? A : never
 export declare type PromiseType<P extends PromiseLike<any>> = P extends PromiseLike<infer T> ? T : never
+export type BrowserNativeObject = Date | FileList | File
 
 export type Option<L extends Key = 'label', V extends Key = 'value', C extends Key = 'children'> =
   { [P in L]?: string } &
@@ -28,3 +33,8 @@ export type PickBy<T, U> = { [K in keyof T as T[K] extends U ? K : never]: T[K] 
 
 export type Overwrite<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U
 export type Assign<T, U> = Omit<T, keyof U> & U
+export type NonUndefined<T> = T extends undefined ? never : T
+
+export type DeepMap<T, V> = IsAny<T> extends true ? any : T extends BrowserNativeObject ? V : T extends object ? {
+  [K in keyof T]: DeepMap<NonUndefined<T[K]>, V>;
+} : V

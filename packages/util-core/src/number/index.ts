@@ -1,5 +1,6 @@
-import type { Numeric } from '../typings'
+import type { Numberish } from '../typings'
 import Bignumber from 'bignumber.js'
+import { numberish } from '../util'
 
 export const BIG_INTS = {
   t: { v: 10 ** 12, d: 13, n: 't' },
@@ -7,11 +8,6 @@ export const BIG_INTS = {
   m: { v: 10 ** 6, d: 7, n: 'm' },
   k: { v: 10 ** 3, d: 4, n: 'k' },
 }
-
-/**
- *  Any type that can be used where a big number is needed.
- */
-export type Numberish = Numeric | { toString: (...args: any[]) => string }
 
 export type Delimiter = 'k' | 'm' | 'b' | 't'
 
@@ -34,36 +30,32 @@ export interface FormatNumericOptions {
   format?: Bignumber.Format
 }
 
-export function bignum(n: Numberish = '0') {
-  return new Bignumber(numfix(n))
-}
-
-export function numfix(value: any) {
-  return (Number.isNaN(Number(value)) || value.toString() === 'NaN') ? '0' : String(value)
+export function bignumber(n: Numberish = '0') {
+  return new Bignumber(numberish(n))
 }
 
 export function gte(a: Numberish, b: Numberish) {
-  return bignum(a).gte(bignum(b))
+  return bignumber(a).gte(bignumber(b))
 }
 
 export function gt(a: Numberish, b: Numberish) {
-  return bignum(a).gt(bignum(b))
+  return bignumber(a).gt(bignumber(b))
 }
 
 export function lte(a: Numberish, b: Numberish) {
-  return bignum(a).lte(bignum(b))
+  return bignumber(a).lte(bignumber(b))
 }
 
 export function lt(a: Numberish, b: Numberish) {
-  return bignum(a).lt(bignum(b))
+  return bignumber(a).lt(bignumber(b))
 }
 
 export function plus(array: Numberish[], options?: DecimalOptions): string {
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 0
   return array
-    .filter(v => bignum(v).gt(0))
-    .reduce((t, v) => t.plus(bignum(v)), bignum(0))
+    .filter(v => bignumber(v).gt(0))
+    .reduce((t, v) => t.plus(bignumber(v)), bignumber(0))
     .toFixed(decimal, rounding)
 }
 
@@ -72,7 +64,7 @@ export function average(array: Numberish[], options?: DecimalOptions) {
   const decimal = options?.d || 0
   if (array.length === 0)
     return '0'
-  return bignum(plus(array))
+  return bignumber(plus(array))
     .div(array.length)
     .toFixed(decimal, rounding)
 }
@@ -86,9 +78,9 @@ export function percentage(total: Numberish, count: Numberish, options?: Decimal
   options ??= { d: 3, r: Bignumber.ROUND_DOWN }
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 3
-  if (bignum(total).lte(0) || bignum(count).lte(0))
+  if (bignumber(total).lte(0) || bignumber(count).lte(0))
     return '0'
-  return bignum(count).div(bignum(total)).times(100).toFixed(decimal, rounding)
+  return bignumber(count).div(bignumber(total)).times(100).toFixed(decimal, rounding)
 }
 
 /**
@@ -114,7 +106,7 @@ export function zerofill(
 }
 
 export function zeromove(value: Numberish) {
-  return value.toString().replace(/\.?0+$/, '')
+  return numberish(value).toString().replace(/\.?0+$/, '')
 }
 
 /**
@@ -122,7 +114,7 @@ export function zeromove(value: Numberish) {
  * @param value
  */
 export function integer(value: Numberish) {
-  return new Bignumber(numfix(value)).toFixed(0)
+  return new Bignumber(numberish(value)).toFixed(0)
 }
 
 /**
@@ -131,7 +123,7 @@ export function integer(value: Numberish) {
  * @param n
  */
 export function decimal(value: Numberish, n = 2) {
-  let [integer, decimal] = numfix(value).split('.')
+  let [integer, decimal] = numberish(value).split('.')
   if (n <= 0)
     return integer
   if (!decimal)
@@ -150,7 +142,7 @@ export function parseNumeric(num: Numberish, delimiters: Delimiter[] = ['t', 'b'
   ]
   let options: { v: number, d: number, n: string } | undefined
   for (const analy of mappings) {
-    const opts = analy && analy(bignum(num).toFixed(0))
+    const opts = analy && analy(bignumber(num).toFixed(0))
     opts && (options = opts)
   }
   return options || { v: 1, d: 0, n: '' }
@@ -160,10 +152,9 @@ export function parseNumeric(num: Numberish, delimiters: Delimiter[] = ['t', 'b'
  * format number thousand separator and unit
  * @param value
  * @param options
- * @returns
  */
 export function formatNumeric(value: Numberish = '0', options?: FormatNumericOptions) {
-  if (options?.default && bignum(value).isZero())
+  if (options?.default && bignumber(value).isZero())
     return options?.default
 
   const {
@@ -174,7 +165,7 @@ export function formatNumeric(value: Numberish = '0', options?: FormatNumericOpt
   } = options || {}
 
   const config = parseNumeric(value, delimiters || [])
-  let number = bignum(value).div(config.v).toFormat(decimals, rounding, {
+  let number = bignumber(value).div(config.v).toFormat(decimals, rounding, {
     decimalSeparator: '.',
     groupSeparator: ',',
     groupSize: 3,
