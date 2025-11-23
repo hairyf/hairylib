@@ -29,6 +29,13 @@ export interface FieldProps<Values extends StructValues, FieldName extends Value
   onChange: ChangeHandler
   onBlur: ChangeHandler
   name: ValuePath<Values>
+  disabled: boolean
+  max: number | undefined
+  maxLength: number | undefined
+  min: number | undefined
+  minLength: number | undefined
+  pattern: string | undefined
+  required: boolean | undefined
 }
 
 export interface FieldRef<Values extends StructValues, FieldName extends ValuePath<Values>> {

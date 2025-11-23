@@ -1,6 +1,6 @@
-import type { FieldErrors, FieldState, FormProps, InternalFieldName, State, StructValues } from '../types'
+import type { FieldError, FieldErrors, FieldState, FormProps, FormState, InternalFieldName, State, StructValues } from '../types'
 import { isFunction } from '@hairy/utils'
-import { computed, reactive } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { deepMap, get } from '../utils'
 
 export function useState<
@@ -11,10 +11,17 @@ export function useState<
   props: FormProps<Values, Context, TransformedValues>,
   names: Set<InternalFieldName>,
 ) {
+  const rootError = ref({} as any)
   const state = reactive({
     fields: {},
     form: {
-      isDirty: false,
+
+      isLoading: isFunction(props.defaultValues),
+      isSubmitted: false,
+      isSubmitting: false,
+      isSubmitSuccessful: false,
+      submitCount: 0,
+
       isValidating: computed(() => {
         for (const name of names) {
           if (get(state.fields, `${name}.isValidating`))
@@ -22,17 +29,37 @@ export function useState<
         }
         return false
       }),
-      isLoading: isFunction(props.defaultValues),
-      isSubmitted: false,
-      isSubmitting: false,
-      isSubmitSuccessful: false,
-      isValid: false,
-      submitCount: 0,
-      dirtyFields: {},
-      touchedFields: {},
-      validatingFields: {},
+      isDirty: computed((): FormState['isDirty'] => {
+        for (const name of names) {
+          if (get(state.fields, `${name}.isDirty`))
+            return true
+        }
+        return false
+      }),
+      isValid: computed((): FormState['isValid'] => {
+        for (const name of names) {
+          if (get(state.fields, `${name}.invalid`))
+            return false
+        }
+        return true
+      }),
+      dirtyFields: computed((): FormState['dirtyFields'] => {
+        return deepMap(state.fields, field => Reflect.get(field || {}, 'isDirty'))
+      }),
+      touchedFields: computed((): FormState['touchedFields'] => {
+        return deepMap(state.fields, field => Reflect.get(field || {}, 'isTouched'))
+      }),
+      validatingFields: computed((): FormState['validatingFields'] => {
+        return deepMap(state.fields, field => Reflect.get(field || {}, 'isValidating'))
+      }),
       errors: computed((): FieldErrors<Values> => {
-        return deepMap(state.fields, field => Reflect.get(field || {}, 'error'))
+        return reactive({
+          root: rootError as any,
+          ...deepMap(state.fields, field => computed({
+            set: (value: FieldError) => Reflect.set(field, 'error', value),
+            get: () => Reflect.get(field || {}, 'error'),
+          })),
+        }) as FieldErrors<Values>
       }),
       disabled: props.disabled || false,
       isReady: false,

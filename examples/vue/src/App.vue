@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useForm } from './use-form';
-import HelloWorld from './components/HelloWorld.vue';
-import { ref } from 'vue';
 
 const form = useForm({
   defaultValues: {
@@ -28,12 +26,16 @@ const form = useForm({
   }
 })
 
-const componentRef = ref<any>(null)
+
+function submit(data: any) {
+  console.log(data)
+}
 </script>
 
 <template>
-  <form>
+  <form @submit="form.handleSubmit(submit)($event)">
     <input v-bind="form.register('name')" />
+    {{ form.state.fields.name }}
     <!-- <input v-bind="form.register('age')" /> -->
     <!-- <input v-bind="form.register('email')" /> -->
     <!-- <input v-bind="form.register('password')" /> -->
@@ -42,8 +44,7 @@ const componentRef = ref<any>(null)
     <!-- <input v-bind="form.register('acceptMarketing')" /> -->
     <!-- <input v-bind="form.register('acceptPrivacy')" /> -->
     <div @click="form.trigger('name')">Submit</div>
-    {{ form.state.fields.name }}
-    <HelloWorld msg="Hello World" ref="componentRef" />
+    <button type="submit">Submit</button>
   </form>
 </template>
 

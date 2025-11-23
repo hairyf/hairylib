@@ -9,8 +9,9 @@ export function deepMap<T extends object, V>(value: T, callback: DeepMapFn<T, V>
   function traverse(target: any, path: string[] = []): any {
     const isNativeObject = target instanceof Date || (isBrowser() && (target instanceof FileList || target instanceof File))
     const isPlainObject = typeof target === 'object' && target !== null && !Array.isArray(target) && !isNativeObject
+    const isFieldState = target?.invalid !== undefined
 
-    if (isPlainObject) {
+    if (isPlainObject && !isFieldState) {
       const result: Record<string, any> = {}
       for (const key in target)
         result[key] = traverse(target[key], [...path, key])

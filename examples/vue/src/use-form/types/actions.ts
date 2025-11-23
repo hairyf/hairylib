@@ -56,7 +56,6 @@ export interface ClearError<Values extends StructValues> {
     name?:
       | ValuePath<Values>
       | ValuePath<Values>[]
-      | readonly ValuePath<Values>[]
       | `root.${string}` | 'root'
   ): void
 }
@@ -105,7 +104,8 @@ export interface Update<Values extends StructValues> {
   ): void
 }
 
-export interface UpdateOptions {
+export interface UpdateOptions<Value> {
+  defaultValue?: Value
   shouldValidate?: boolean
   shouldDirty?: boolean
   shouldTouch?: boolean
@@ -127,10 +127,9 @@ export interface UpdateOptions {
  * ```
  */
 export interface ResetField<Values extends StructValues> {
-  <TFieldName extends ValuePath<Values> = ValuePath<Values>>(
-    name: TFieldName,
-    value: ValuePathValue<Values, TFieldName>,
-    options?: UpdateOptions
+  <FieldName extends ValuePath<Values> = ValuePath<Values>>(
+    name: FieldName,
+    options?: UpdateOptions<ValuePathValue<Values, FieldName>>
   ): void
 }
 
@@ -174,19 +173,12 @@ export interface Reset<Values extends StructValues> {
   ): void
 }
 
-export interface Reset<Values extends StructValues> {
-  (
-    values?: DefaultValues<Values> | Values | ResetAction<Values>,
-    keepStateOptions?: KeepStateOptions
-  ): void
-}
-
 export interface SubmitHandler<TransformedValues> {
-  (data: TransformedValues): Promise<void>
+  (data: TransformedValues, event: any): Promise<void> | void
 }
 
 export interface SubmitErrorHandler<Values extends StructValues> {
-  (errors: FieldErrors<Values>): Promise<unknown>
+  (errors: FieldErrors<Values>, event: any): Promise<unknown>
 }
 
 /**
@@ -215,10 +207,7 @@ export interface HandleSubmit<
   Values extends StructValues,
   TransformedValues = Values,
 > {
-  (
-    onValid: (data: TransformedValues) => Promise<void>,
-    onInvalid: (errors: FieldErrors<Values>) => Promise<unknown>,
-  ): Promise<void>
+  (onValid: SubmitHandler<TransformedValues>, onInvalid?: SubmitErrorHandler<Values>): (event: any) => Promise<void>
 }
 
 export interface UnregisterOptions extends Omit<KeepStateOptions, 'keepIsSubmitted' | 'keepSubmitCount' | 'keepValues' | 'keepDefaultValues' | 'keepErrors'> {
