@@ -1,17 +1,50 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { useForm } from './use-form';
+import HelloWorld from './components/HelloWorld.vue';
+import { ref } from 'vue';
+
+const form = useForm({
+  defaultValues: {
+    name: 'John Doe',
+    age: 30,
+    // email: 'john.doe@example.com',
+    // password: 'password',
+    // confirmPassword: 'password',
+    // acceptTerms: false,
+    // acceptMarketing: false,
+    // acceptPrivacy: false,
+    // aad: {
+    //   bbb: 'bbb',
+    // },
+  },
+  resolver: async (values) => {
+    const errors: any = {}
+    if (!values.name)
+      errors.name = { type: 'required', message: 'Name is required' }
+    return {
+      values,
+      errors,
+    }
+  }
+})
+
+const componentRef = ref<any>(null)
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <form>
+    <input v-bind="form.register('name')" />
+    <!-- <input v-bind="form.register('age')" /> -->
+    <!-- <input v-bind="form.register('email')" /> -->
+    <!-- <input v-bind="form.register('password')" /> -->
+    <!-- <input v-bind="form.register('confirmPassword')" /> -->
+    <!-- <input v-bind="form.register('acceptTerms')" /> -->
+    <!-- <input v-bind="form.register('acceptMarketing')" /> -->
+    <!-- <input v-bind="form.register('acceptPrivacy')" /> -->
+    <div @click="form.trigger('name')">Submit</div>
+    {{ form.state.fields.name }}
+    <HelloWorld msg="Hello World" ref="componentRef" />
+  </form>
 </template>
 
 <style scoped>
@@ -21,9 +54,11 @@ import HelloWorld from './components/HelloWorld.vue'
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }

@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@vueuse/core": "^13.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "veact": "^1.0.0"
+    "react-hook-form": "^7.66.1",
+    "veact": "^1.0.0",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@hairy/react-lib": "workspace:*",

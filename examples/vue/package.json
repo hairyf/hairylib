@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hairy/utils": "workspace:*",
+    "@vueuse/core": "^14.0.0",
     "vue": "^3.5.24"
   },
   "devDependencies": {
