@@ -1,5 +1,5 @@
 import type { FieldErrors } from './errors'
-import type { Field, FieldName } from './fields'
+import type { Field } from './fields'
 import type { CriteriaMode } from './mode'
 import type { ValuePath } from './path'
 import type { StructValues } from './struct'
@@ -18,7 +18,7 @@ export type ResolverResolved<Values extends StructValues = StructValues, Transfo
 export interface ResolverOptions<Values extends StructValues = StructValues> {
   criteriaMode?: CriteriaMode
   fields: Record<ValuePath<Values>, Field<Values, ValuePath<Values>>>
-  names?: FieldName<Values>[]
+  names: ValuePath<Values>[]
   shouldUseNativeValidation: boolean | undefined
 }
 

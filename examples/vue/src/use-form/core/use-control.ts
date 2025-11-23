@@ -1,14 +1,26 @@
 import type { Ref } from 'vue'
 import type { ElementMapKey } from '../constants'
-import type { Control, DefaultValues, FieldName, Fields, FieldState, FocusOptions, FormProps, InternalFieldName, State, StructValues, UnregisterOptions, UpdateOptions } from '../types'
+import type {
+  Control,
+  Fields,
+  FieldState,
+  FocusOptions,
+  FormProps,
+  InternalFieldName,
+  State,
+  StructValues,
+  UnregisterOptions,
+  UpdateOptions,
+} from '../types'
 import type { ValuePath, ValuePathValue } from '../types/path'
 import type { TriggerConfig } from '../types/trigger'
-import { cloneDeep, isBrowser, isFunction, toArray } from '@hairy/utils'
+import { isBrowser, toArray } from '@hairy/utils'
 import { reactiveComputed } from '@vueuse/core'
 import { computed, reactive, ref } from 'vue'
 import { ELEMENT_EVENT_MAP, ELEMENT_VALUE_MAP } from '../constants'
-import { get, set, unset } from '../utils'
+import { get, resolve, set, unset } from '../utils'
 import { resolveFlattenFields } from '../utils/reslve-flatten-fields'
+import { useDefaultValues } from './use-default-values'
 
 export function useControl<
   Values extends StructValues,
@@ -21,52 +33,43 @@ export function useControl<
   names: Set<InternalFieldName>,
 ) {
   const context = reactive(props.context || {} as any)
-  const defaultValues = ref({} as unknown as DefaultValues<Values>)
+  const defaultValues = useDefaultValues(values)
   const fields = reactive({} as Fields<Values>)
 
-  function setDefaultValues(_values: DefaultValues<Values>) {
-    defaultValues.value = _values
-    values.value = cloneDeep(_values) as Values
+  function _mergeNames(name?: InternalFieldName | InternalFieldName[]) {
+    return (toArray(name) || Array.from(names)) as ValuePath<Values>[]
   }
 
   async function _resetDefaultValues() {
-    if (isFunction(props.defaultValues)) {
-      const result = props.defaultValues()
-      if (!(result instanceof Promise)) {
-        setDefaultValues(result)
-      }
-      else {
-        state.form.isLoading = true
-        result.then(setDefaultValues)
-        result.finally(() => state.form.isLoading = false)
-      }
-    }
-    else {
-      setDefaultValues(cloneDeep(props.defaultValues) as DefaultValues<Values>)
-    }
+    resolve(props.defaultValues, {
+      onPromiseStart: () => state.form.isLoading = true,
+      onPromiseEnded: () => state.form.isLoading = false,
+      onResolved: (result: any) => defaultValues.value = result,
+    })
   }
 
   async function _runSchema(name?: InternalFieldName[]) {
     set(state.fields, `${name}.isValidating`, true)
-    const _names = name || Array.from(names)
+    const names = _mergeNames(name)
+    const options = {
+      names,
+      fields: resolveFlattenFields(names, fields),
+      shouldUseNativeValidation: props.shouldUseNativeValidation,
+      criteriaMode: props.criteriaMode,
+    }
     const result = await props.resolver?.(
       values.value,
       context,
-      {
-        fields: resolveFlattenFields(_names, fields),
-        shouldUseNativeValidation: props.shouldUseNativeValidation,
-        criteriaMode: props.criteriaMode,
-        names: _names as FieldName<Values>[],
-      },
+      options,
     )
     set(state.fields, `${name}.isValidating`, false)
     return result || { values: {}, errors: {} }
   }
 
-  async function _executeSchemaAndUpdateState(names_?: InternalFieldName[]) {
-    const _names = names_ || Array.from(names)
-    const { errors } = await _runSchema(_names)
-    for (const name of _names) {
+  async function _executeSchemaAndUpdateState(names?: InternalFieldName[]) {
+    names = _mergeNames(names)
+    const { errors } = await _runSchema(names)
+    for (const name of names) {
       const error = get(errors, name)
       error
         ? set(state.fields, `${name}.error`, error)
@@ -79,34 +82,32 @@ export function useControl<
 
   async function onChange(event: any) {
     const nextValue = event?.target?.value ?? event?.target?.checked ?? event
-    const name = event?.name ?? event?.target?.name
-    const fieldState = get(state.fields, name) as FieldState
+    const fieldName = event?.name ?? event?.target?.name
+    const fieldState = get(state.fields, fieldName) as FieldState
 
-    fieldState.isDirty = nextValue !== get(defaultValues.value, name)
+    const shouldRevalidate = fieldState.isTouched && props.reValidateMode === 'onChange'
+    const shouldTrigger = props.mode === 'onChange' || shouldRevalidate
 
-    set(values.value, name, nextValue)
+    fieldState.isDirty = nextValue !== get(defaultValues.value, fieldName)
 
-    if (
-      props.mode === 'onChange'
-      || (fieldState.isTouched && props.reValidateMode === 'onChange')
-    ) {
-      trigger(name)
-    }
+    set(values.value, fieldName, nextValue)
+    shouldTrigger && trigger(fieldName)
   }
 
   async function trigger(name?: ValuePath<Values> | ValuePath<Values>[], options?: TriggerConfig): Promise<boolean> {
-    const _names = toArray(name) || Array.from(names)
+    const names = _mergeNames(name)
     if (!props.resolver)
       return true
-    const errors = await _executeSchemaAndUpdateState(_names as InternalFieldName[])
+
+    const errors = await _executeSchemaAndUpdateState(names)
     const isValid = state.form.isValid = Object.keys(errors).length === 0
 
     if ((props.shouldFocusError || options?.shouldFocus) && !isValid) {
       for (const name of names) {
-        if (get(fields, `${name}.error`)) {
-          focus(name as ValuePath<Values>)
-          break
-        }
+        if (!get(fields, `${name}.error`))
+          continue
+        focus(name)
+        break
       }
     }
 
