@@ -20,24 +20,19 @@ import { useState } from './use-state'
  * @returns methods - individual functions to manage the form state. {@link Form}
  *
  * @example
- * ```tsx
+ * ```vue
+ * <script setup lang="ts">
  * function App() {
  *   const { register, handleSubmit, watch, state, values } = useForm();
- *   const onSubmit = handleSubmit(data => {
- *     console.log(data)
- *   })
+ * </script>
  *
- *   console.log(values.example);
- *
- *   return (
- *     <form onSubmit={onSubmit}>
- *       <input defaultValue="test" {...register("example")} />
- *       <input {...register("exampleRequired", { required: true })} />
- *       {state.form.errors.exampleRequired && <span>This field is required</span>}
- *       <button>Submit</button>
- *     </form>
- *   );
- * }
+ * <template>
+ *   <form @submit="handleSubmit(onSubmit)">
+ *     <input v-bind="register('example')" />
+ *     <input v-bind="register('exampleRequired', { required: true })" />
+ *     <button type="submit">Submit</button>
+ *   </form>
+ * </template>
  * ```
  */
 export function useForm<
@@ -56,17 +51,13 @@ export function useForm<
   const values = ref<Values>(cloneDeep(props.values) || {} as Values)
   const names = reactive(new Set<InternalFieldName>())
   const state = useState(props, names)
-  const control = useControl(
-    props,
-    values,
-    state,
-    names,
-  )
+
+  const control = useControl(props, values, state, names)
 
   control._resetDefaultValues()
 
   const form: Form<Values, Context, TransformedValues> = {
-    values: values as any,
+    values: values as Values,
     state,
     control,
     update: control.update,

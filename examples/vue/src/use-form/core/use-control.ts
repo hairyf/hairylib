@@ -371,13 +371,13 @@ export function useControl<
     }
   }
 
-  const control: Control<Values, Context, TransformedValues> = {
+  const control = {
     _runSchema,
     _resetDefaultValues,
 
-    defaultValues: defaultValues as any,
-    state: state as any,
-    fields: fields as any,
+    defaultValues,
+    state,
+    fields,
 
     trigger,
     register,
