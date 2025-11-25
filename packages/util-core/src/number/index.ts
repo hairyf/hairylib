@@ -1,20 +1,29 @@
+/* eslint-disable ts/no-namespace */
+/* eslint-disable ts/no-redeclare */
 import type { Numberish } from '../typings'
-import Bignumber from 'bignumber.js'
+import _Bignumber from 'bignumber.js'
 import { numberish } from '../util'
 
+export const DEFAULT_BIGNUM_CONFIG: _Bignumber.Config = {
+  ROUNDING_MODE: _Bignumber.ROUND_UP,
+  DECIMAL_PLACES: 6,
+}
+
+// reexport bignumber.js namespace
+export namespace Bignumber {
+  export type RoundingMode = _Bignumber.RoundingMode
+  export type Format = _Bignumber.Format
+  export type Config = _Bignumber.Config
+  export type Instance = _Bignumber.Instance
+  export type Value = _Bignumber.Value
+}
+
+export const Bignumber = _Bignumber.clone(DEFAULT_BIGNUM_CONFIG)
 /**
  * export bignumber.js
  *
  * do not use Bignumber directly, use bignumber function instead
  */
-export { Bignumber }
-
-export const DEFAULT_BIGNUM_CONFIG: Bignumber.Config = {
-  ROUNDING_MODE: Bignumber.ROUND_UP,
-  DECIMAL_PLACES: 6,
-}
-
-const BignumberCLONE = Bignumber.clone(DEFAULT_BIGNUM_CONFIG)
 
 export const BIG_INTS = {
   t: { v: 10 ** 12, d: 13, n: 't' },
@@ -45,7 +54,7 @@ export interface FormatNumericOptions {
 }
 
 export function bignumber(n: Numberish = '0', base?: number) {
-  return new BignumberCLONE(numberish(n), base)
+  return new Bignumber(numberish(n), base)
 }
 
 bignumber.clone = function (config: Bignumber.Config) {
