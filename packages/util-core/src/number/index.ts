@@ -2,6 +2,13 @@ import type { Numberish } from '../typings'
 import Bignumber from 'bignumber.js'
 import { numberish } from '../util'
 
+export const DEFAULT_BIGNUM_CONFIG: Bignumber.Config = {
+  ROUNDING_MODE: Bignumber.ROUND_UP,
+  DECIMAL_PLACES: 6,
+}
+
+const BignumberCLONE = Bignumber.clone(DEFAULT_BIGNUM_CONFIG)
+
 export const BIG_INTS = {
   t: { v: 10 ** 12, d: 13, n: 't' },
   b: { v: 10 ** 9, d: 10, n: 'b' },
@@ -30,8 +37,12 @@ export interface FormatNumericOptions {
   format?: Bignumber.Format
 }
 
-export function bignumber(n: Numberish = '0') {
-  return new Bignumber(numberish(n))
+export function bignumber(n: Numberish = '0', base?: number) {
+  return new BignumberCLONE(numberish(n), base)
+}
+
+bignumber.clone = function (config: Bignumber.Config) {
+  return Bignumber.clone({ ...DEFAULT_BIGNUM_CONFIG, ...config })
 }
 
 export function gte(a: Numberish, b: Numberish) {
@@ -57,6 +68,12 @@ export function plus(array: Numberish[], options?: DecimalOptions): string {
     .filter(v => bignumber(v).gt(0))
     .reduce((t, v) => t.plus(bignumber(v)), bignumber(0))
     .toFixed(decimal, rounding)
+}
+
+export function divs(array: Numberish[], options?: DecimalOptions) {
+  const rounding = options?.r || Bignumber.ROUND_DOWN
+  const decimal = options?.d || 0
+  return array.reduce((t, v) => t.div(bignumber(v)), bignumber(1)).toFixed(decimal, rounding)
 }
 
 export function average(array: Numberish[], options?: DecimalOptions) {
@@ -177,5 +194,3 @@ export function formatNumeric(value: Numberish = '0', options?: FormatNumericOpt
   number = options?.zeromove ? zeromove(number) : number
   return `${number}${config.n}`
 }
-
-export { Bignumber }
