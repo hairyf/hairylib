@@ -2,6 +2,13 @@ import type { Numberish } from '../typings'
 import Bignumber from 'bignumber.js'
 import { numberish } from '../util'
 
+/**
+ * export bignumber.js
+ *
+ * do not use Bignumber directly, use bignumber function instead
+ */
+export { Bignumber }
+
 export const DEFAULT_BIGNUM_CONFIG: Bignumber.Config = {
   ROUNDING_MODE: Bignumber.ROUND_UP,
   DECIMAL_PLACES: 6,
