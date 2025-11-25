@@ -4,14 +4,14 @@ import type { Numberish } from '../typings'
  * formData to object
  * @param formData
  */
-export function objectFromFormdata(formData: FormData) {
+export function formdataToObject(formData: FormData) {
   return Object.fromEntries((formData as any).entries()) as Record<string, string>
 }
 /**
  * Object to formData
  * @param object
  */
-export function formdataFromObject(object: Record<string, string | File>) {
+export function objectToFormdata(object: Record<string, string | File>) {
   const formdata = new FormData()
   for (const [key, value] of Object.entries(object))
     formdata.set(key, value)
