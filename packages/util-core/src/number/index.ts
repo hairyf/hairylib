@@ -79,10 +79,10 @@ export function lt(a: Numberish, b: Numberish) {
 
 export function plus(array: Numberish[], options?: DecimalOptions): string {
   const rounding = options?.r || Bignumber.ROUND_DOWN
-  const decimal = options?.d || 0
+  const decimal = options?.d || 6
   return array
     .filter(v => bignumber(v).gt(0))
-    .reduce((t, v) => t.plus(bignumber(v)), bignumber(0))
+    .reduce((t, v) => t.plus(numberish(v)), bignumber(0))
     .toFixed(decimal, rounding)
 }
 
