@@ -215,6 +215,6 @@ export function formatNumeric(value: Numberish = '0', options?: FormatNumericOpt
     ...format,
   })
 
-  number = options?.decimalsZero ? zeroRemove(number, false) : number
+  number = options?.decimalsZero === false ? zeroRemove(number, false) : number
   return `${number}${config.n}`
 }
