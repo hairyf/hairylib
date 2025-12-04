@@ -6,14 +6,14 @@ export interface FormatEtherOptions {
   delimiters?: Delimiter[] | boolean
   separator?: boolean
   rounding?: Bignumber.RoundingMode
-  zeromove?: boolean
+  decimalsZero?: boolean
   decimals?: number
   format?: Bignumber.Format
   default?: string
 }
 
 export function formatEther(value: Numberish = '0', options: FormatEtherOptions = {}): string {
-  const { separator = false, decimals, delimiters = false, rounding, zeromove = true, default: _default } = options
+  const { separator = false, decimals, delimiters = false, rounding, decimalsZero = true, default: _default } = options
   const number = _formatEther(bignumber(value).toFixed(0))
   const groupSeparator = separator === false ? '' : ','
   return formatNumeric(number, {
@@ -24,6 +24,6 @@ export function formatEther(value: Numberish = '0', options: FormatEtherOptions 
     default: _default,
     decimals,
     rounding,
-    zeromove,
+    decimalsZero,
   })
 }
