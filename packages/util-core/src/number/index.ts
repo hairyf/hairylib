@@ -48,7 +48,7 @@ export interface FormatNumericOptions {
   delimiters?: Delimiter[] | false
   rounding?: Bignumber.RoundingMode
   decimals?: number
-  zeromove?: boolean
+  decimalsZero?: boolean
   default?: string
   format?: Bignumber.Format
 }
@@ -88,7 +88,7 @@ export function plus(array: Numberish[], options?: DecimalOptions): string {
 
 export function divs(array: Numberish[], options?: DecimalOptions) {
   const rounding = options?.r || Bignumber.ROUND_DOWN
-  const decimal = options?.d || 0
+  const decimal = options?.d || 6
   return array.reduce((t, v) => t.div(bignumber(v)), bignumber(1)).toFixed(decimal, rounding)
 }
 
@@ -138,8 +138,9 @@ export function zerofill(
   return ''
 }
 
-export function zeromove(value: Numberish) {
-  return numberish(value).toString().replace(/\.?0+$/, '')
+export function zeroRemove(value: Numberish, convert = true) {
+  const _value = convert ? numberish(value) : value || ''
+  return _value.toString().replace(/\.?0+$/, '')
 }
 
 /**
@@ -207,6 +208,7 @@ export function formatNumeric(value: Numberish = '0', options?: FormatNumericOpt
     fractionGroupSize: 0,
     ...format,
   })
-  number = options?.zeromove ? zeromove(number) : number
+
+  number = options?.decimalsZero ? zeroRemove(number, false) : number
   return `${number}${config.n}`
 }
