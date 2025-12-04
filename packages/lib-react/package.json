@@ -1,7 +1,7 @@
 {
   "name": "@hairy/react-lib",
   "type": "module",
-  "version": "1.44.0",
+  "version": "1.45.0",
   "description": "Library for react",
   "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
