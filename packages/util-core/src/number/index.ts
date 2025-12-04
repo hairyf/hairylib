@@ -86,10 +86,16 @@ export function plus(array: Numberish[], options?: DecimalOptions): string {
     .toFixed(decimal, rounding)
 }
 
-export function divs(array: Numberish[], options?: DecimalOptions) {
+export function divide(array: Numberish[], options?: DecimalOptions) {
   const rounding = options?.r || Bignumber.ROUND_DOWN
   const decimal = options?.d || 6
   return array.reduce((t, v) => t.div(bignumber(v)), bignumber(1)).toFixed(decimal, rounding)
+}
+
+export function multiply(array: Numberish[], options?: DecimalOptions) {
+  const rounding = options?.r || Bignumber.ROUND_DOWN
+  const decimal = options?.d || 6
+  return array.reduce((t, v) => t.times(bignumber(v)), bignumber(1)).toFixed(decimal, rounding)
 }
 
 export function average(array: Numberish[], options?: DecimalOptions) {
