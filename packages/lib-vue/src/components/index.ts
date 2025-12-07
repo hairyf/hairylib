@@ -1,2 +1,2 @@
-export * from './CollapseTransition'
-export * from './Field'
+export * from './c-field'
+export * from './collapse-transition'

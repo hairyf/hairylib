@@ -1,7 +1,7 @@
 import type { Noop } from '@hairy/utils'
 import type { MaybeElementRef } from '@vueuse/core'
 import type { WatchOptions, WatchStopHandle } from 'vue'
-import { formatUnit } from '@hairy/utils'
+import { unit } from '@hairy/utils'
 import { unrefElement, useElementSize } from '@vueuse/core'
 import { unref, watch } from 'vue'
 
@@ -38,7 +38,7 @@ export function syncElementSize(fromTarget: MaybeElementRef, toTarget: MaybeElem
       const element = unrefElement(toTarget)
       if (!element)
         return undefined
-      element.style[type] = formatUnit(fromSize[type].value)
+      element.style[type] = unit(fromSize[type].value)
     }
     return watch(sources, callback, { immediate: true, ...options })
   }
