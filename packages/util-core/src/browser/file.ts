@@ -13,7 +13,7 @@ export interface OpenFilePickerOptions {
 /**
  * Select multiple files
  */
-export function showOpenFilePicker(option: OpenFilePickerOptions = {}) {
+export function openFilePicker(option: OpenFilePickerOptions = {}) {
   const { multiple = true, accept } = option
   return new Promise<File[]>((resolve, reject) => {
     const inputElement = document.createElement('input')
@@ -32,6 +32,9 @@ export function showOpenFilePicker(option: OpenFilePickerOptions = {}) {
   })
 }
 
+/** @deprecated use openFilePicker */
+export const showOpenFilePicker = openFilePicker
+
 export interface OpenImagePickerOptions {
   /**
    * select multiple images
@@ -42,13 +45,14 @@ export interface OpenImagePickerOptions {
 /**
  * Select multiple images
  */
-export function showOpenImagePicker(options: OpenImagePickerOptions = {}) {
+export function openImagePicker(options: OpenImagePickerOptions = {}) {
   const { multiple = true } = options
-  return showOpenFilePicker({ multiple, accept: 'image/jpeg,image/x-png,image/gif' })
+  return openFilePicker({ multiple, accept: 'image/jpeg,image/x-png,image/gif' })
 }
 
-/** @deprecated use chooseFile */
-export const selectImages = showOpenImagePicker
+/** @deprecated use openImagePicker */
+export const selectImages = openImagePicker
+export const showOpenImagePicker = openImagePicker
 
 /**
  * Generate Blob | string file and download it
@@ -69,12 +73,15 @@ export function downloadBlobFile(data: Blob | string, name: string) {
  * @param url Download link
  * @param name file name
  */
-export function downloadNetworkFile(url: string, name?: string) {
+export function downloadUrlFile(url: string, name?: string) {
   const a = document.createElement('a')
   name && (a.download = name)
   a.href = url
   a.click()
 }
+
+/** @deprecated use downloadUrlFile */
+export const downloadNetworkFile = downloadUrlFile
 
 export type ReaderType = 'readAsArrayBuffer' | 'readAsBinaryString' | 'readAsDataURL' | 'readAsText'
 /**

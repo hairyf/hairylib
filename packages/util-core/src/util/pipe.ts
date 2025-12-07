@@ -9,7 +9,8 @@ import { pPipe } from './pipe-promise'
  * TypeScript, because it doesn't support **Variadic Kinds** and we explicitly
  * have to define the type of all the possible usages as method overloads.
  *
- * @example
+ * @example pipe
+ *
  * const normalizeWhiteSpaces = text => name.replace(/\s+/g, ' ').trim();
  *
  * const getInitials = pipe(
@@ -24,7 +25,7 @@ import { pPipe } from './pipe-promise'
  * @param fn - An arity N function. Its result is the argument of next one.
  * @param fns - Functions of arity 1. Each one's result is next's argument.
  *
- * @example
+ * @example pipe.promise
  *
  * const addUnicorn = async string => `${string} Unicorn`;
  * const addRainbow = async string => `${string} Rainbow`;

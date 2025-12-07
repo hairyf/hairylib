@@ -1,3 +1,5 @@
+import type { BrowserNativeObject, IsAny, NonUndefined } from './util'
+
 export type DeepReadonly<T> = {
   readonly [P in keyof T]: T[P] extends object ? DeepReadonly<T[P]> : T[P]
 }
@@ -30,3 +32,7 @@ export type DeepMerge<F, S> = MergeInsertions<{
         ? F[K]
         : never;
 }>
+
+export type DeepMap<T, V, ST = BrowserNativeObject> = IsAny<T> extends true ? any : T extends ST ? V : T extends object ? {
+  [K in keyof T]: DeepMap<NonUndefined<T[K]>, V, ST>;
+} : V

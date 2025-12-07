@@ -40,6 +40,7 @@ function App() {
     defaultValues: {
       name: '',
     },
+
     resolver: yupResolver(player),
   })
 

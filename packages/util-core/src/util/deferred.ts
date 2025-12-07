@@ -1,5 +1,14 @@
 import { noop } from './noop'
 
+/**
+ * A deferred promise.
+ * @param T - The type of the value.
+ * @returns The deferred promise.
+ * @example
+ * ```ts
+ * const deferred = new Deferred()
+ * deferred.resolve('value')
+ */
 export class Deferred<T> extends Promise<T> {
   resolve: (value?: T) => Deferred<T>
   reject: (reason?: any) => Deferred<T>
