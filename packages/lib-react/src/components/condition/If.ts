@@ -15,12 +15,12 @@ export type IfProps<Kag> = WrapperProps<Kag> & {
 }
 
 export function If<K extends WrapperTag>(props: IfProps<K>) {
-  const { then, cond, else: _else, children = props.then, tag, ...attrs } = props
+  const { then, cond, else: _else, children = props.then, tag, as: asChild, ...attrs } = props
   const elements = Children.toArray(children) as ReactElement[]
   const thenChild = elements.find(c => c.type === Then)
   const elseChild = elements.find(c => c.type === Else)
   const child = (thenChild || elseChild)
     ? cond ? thenChild : elseChild
     : cond ? children : _else
-  return wrapper(tag, attrs, child)
+  return wrapper(tag || asChild, attrs, child)
 }

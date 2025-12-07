@@ -9,6 +9,6 @@ export type CaseProps<Kag> = WrapperProps<Kag> & {
 }
 
 export function Case<Tag extends WrapperTag>(props: CaseProps<Tag>) {
-  const { cond, children, tag, ...attrs } = props
-  return wrapper(tag, attrs, children)
+  const { cond, children, tag, as: asChild, ...attrs } = props
+  return wrapper(tag || asChild, attrs, children)
 }

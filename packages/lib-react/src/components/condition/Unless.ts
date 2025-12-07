@@ -15,12 +15,12 @@ export type UnlessProps<Tag> = WrapperProps<Tag> & {
 }
 
 export function Unless<Tag extends WrapperTag>(props: UnlessProps<Tag>) {
-  const { cond, then, else: _else, tag, children = props.then, ...attrs } = props
+  const { cond, then, else: _else, tag, as: asChild, children = props.then, ...attrs } = props
   const elements = Children.toArray(children) as ReactElement[]
   const thenChild = elements.find(c => c.type === Then)
   const elseChild = elements.find(c => c.type === Else)
   const child = (thenChild || elseChild)
     ? !cond ? elseChild : thenChild
     : !cond ? children : _else
-  return wrapper(tag, attrs, child)
+  return wrapper(tag || asChild, attrs, child)
 }

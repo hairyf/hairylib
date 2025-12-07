@@ -6,8 +6,8 @@ import { If } from './If'
 export type ThenProps<Tag> = IfProps<Tag>
 
 export function Then<Tag extends WrapperTag>(props: ThenProps<Tag>) {
-  const { children, cond, else: _else, then, tag, ...attrs } = props
+  const { children, cond, else: _else, then, tag, as: asChild, ...attrs } = props
   return Object.keys(props).includes('cond')
     ? wrapper(If, props, children)
-    : wrapper(tag, attrs, children)
+    : wrapper(tag || asChild, attrs, children)
 }

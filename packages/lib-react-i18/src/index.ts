@@ -8,6 +8,15 @@ export interface TransProps {
   [key: string]: ReactNode
 }
 
+/**
+ * Translate a string to a React node
+ *
+ * @example
+ * <Trans i18nKey="hello" />
+ * <Trans i18nKey="hello" name="John" />
+ * <Trans i18nKey="hello" name="John" age={20} />
+ * <Trans i18nKey="hello" name="John" age={<span>20</span>} />
+ */
 export function Trans({ i18nKey, ...additionalProps }: TransProps) {
   const translation = useTranslation().t(i18nKey, additionalProps)
   return renderNodes(HTML.parse(translation), additionalProps)

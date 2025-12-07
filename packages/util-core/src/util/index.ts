@@ -1,4 +1,5 @@
 export * from './compose'
+export * from './deferred'
 export * from './delay'
 export * from './json'
 export * from './loop'
