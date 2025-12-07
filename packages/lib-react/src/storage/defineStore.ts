@@ -6,6 +6,7 @@ import { track } from './utils'
 
 /**
  * @description Define a store
+ * @deprecated please use `valtio-define`
  * @example
  * ```tsx
  * const store = defineStore({

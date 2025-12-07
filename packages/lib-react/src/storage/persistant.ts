@@ -1,4 +1,4 @@
-import { jsonTryParse } from '@hairy/utils'
+import { tryParseJson } from '@hairy/utils'
 import { proxy, subscribe } from 'valtio'
 
 export interface PersistantOptions {
@@ -7,6 +7,10 @@ export interface PersistantOptions {
   pick?: string[]
 }
 
+/**
+ *
+ * @deprecated please use `valtio-define`
+ */
 export function proxyWithPersistant<T extends object>(key: string, initialObject?: T, options?: Omit<PersistantOptions, 'key'>): T
 export function proxyWithPersistant<T extends object>(options: PersistantOptions, initialObject?: T): T
 export function proxyWithPersistant<T extends object>(keyOrOptions: string | PersistantOptions, initialObject?: T): T {
@@ -22,13 +26,13 @@ export function proxyWithPersistant<T extends object>(keyOrOptions: string | Per
   )
   typeof keyOrOptions === 'string' && (keyOrOptions = { id: keyOrOptions })
 
-  const state = proxy(jsonTryParse(storage?.getItem(options.id)) || initialObject)
+  const state = proxy(tryParseJson(storage?.getItem(options.id)) || initialObject)
 
   subscribe(state, () => {
     const pick = options.pick || Object.keys(state)
-    const statePick: any = {}
+    const statePick: Record<string, any> = {}
     for (const key of pick)
-      statePick[key] = state[key]
+      statePick[key] = state[key as keyof typeof state]
     storage?.setItem(options.id, JSON.stringify(statePick))
   })
 

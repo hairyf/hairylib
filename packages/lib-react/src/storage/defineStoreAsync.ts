@@ -33,6 +33,7 @@ export type StoreAsync<T extends AnyFn, Initial = StoreAsyncInitial<T> | undefin
 
 /**
  * @description Define a store async
+ * @deprecated please use `valtio-define`
  * @example
  * ```tsx
  * const store = defineStoreAsync(
