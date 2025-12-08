@@ -1,12 +1,8 @@
 import type { Fn } from '../typings'
+import { range } from 'lodash-es'
 
-export function arange(x1: number, x2?: number, stp = 1, z: number[] = [], z0 = z.length) {
-  if (!x2)
-    x1 -= x2 = x1
-  for (let z1 = z0 + Math.max(Math.ceil((++x2 - x1) / stp), 0); z0 < z1; x1 += stp)
-    z[z0++] = x1
-  return z
-}
+/** @deprecated Use range instead */
+export const arange = range
 
 /**
  * Select a value based on a condition.

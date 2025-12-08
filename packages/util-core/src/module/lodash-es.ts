@@ -4,6 +4,7 @@
  * @npm lodash-es
  */
 export {
+  chunk,
   clone,
   cloneDeep,
   cloneDeepWith,
@@ -48,8 +49,18 @@ export {
   join,
   keyBy,
   keys,
+  max,
+  maxBy,
   merge,
   mergeWith,
+  min,
+  minBy,
+  omit,
+  omitBy,
+  once,
+  pick,
+  pickBy,
+  range,
   set,
   truncate,
   uniq,
