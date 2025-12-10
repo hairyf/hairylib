@@ -11,6 +11,22 @@ export function cover(value: string, mode: [number, number, number], symbol = '*
 }
 
 /**
+ * Shortens an identifier string by showing only the beginning and end portions,
+ * with ellipsis in the middle. Suitable for various types of identifiers like
+ * IPFS CID, transaction hashes, EVM addresses, user IDs, etc.
+ *
+ * @param value - The identifier string to shorten
+ * @param startWith - Number of characters to show at the start (default: 6)
+ * @param endWith - Number of characters to show at the end (default: 6)
+ * @returns Shortened identifier string with ellipsis, or empty string if id is null/undefined
+ */
+export function shortenId(value: string | null | undefined, startWith: number = 6, endWith: number = 4) {
+  if (!value)
+    return ''
+  return `${value.slice(0, startWith)}...${value.slice(-endWith)}`
+}
+
+/**
  * Replace backslash to slash
  *
  * @category String
