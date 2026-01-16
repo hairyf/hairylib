@@ -1,7 +1,7 @@
 {
   "name": "@hairy/react-i18-lib",
   "type": "module",
-  "version": "1.46.0",
+  "version": "1.47.0",
   "description": "Library for react",
   "author": "Hairyf <wwu710632@gmail.com>",
   "license": "MIT",
