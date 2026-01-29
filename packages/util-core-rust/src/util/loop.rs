@@ -6,9 +6,9 @@ pub enum LoopFlow<T> {
     Break(T),
 }
 
-pub fn loop_fn<F, Fut>(f: F) -> impl FnOnce()
+pub fn loop_fn<F, Fut>(mut logic: F) -> impl FnOnce()
 where
-    F: Fn() -> Fut + Send + Sync + 'static,
+    F: FnMut() -> Fut + Send + Sync + 'static,
     Fut: Future<Output = LoopFlow<()>> + Send,
 {
     let token = tokio_util::sync::CancellationToken::new();
@@ -17,7 +17,7 @@ where
         loop {
             tokio::select! {
                 _ = cloned_token.cancelled() => break, // 立即响应取消
-                flow = f() => {
+                flow = logic() => {
                     match flow {
                         LoopFlow::Continue(ms) => {
                             // 同时监听 sleep 和取消信号

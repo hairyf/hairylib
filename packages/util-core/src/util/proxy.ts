@@ -46,6 +46,9 @@ export function proxy<T extends object, E extends object = {}>(
         ? target
         : undefined
     },
+    get extend() {
+      return extended
+    },
     strictMessage: options?.strictMessage || 'Proxy not updated. Call object.proxy.update() to update the proxy.',
   }
   const proxyed = new Proxy({} as Proxyed<T, E>, {
