@@ -2,24 +2,22 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['esm', 'cjs', 'iife'],
+  format: ['esm', 'cjs'],
   dts: { resolver: 'tsc', eager: true },
   clean: true,
-  name: 'LibReact',
-  outputOptions(outputOptions, format) {
-    if (format === 'iife') {
-      outputOptions.globals = {
-        ...outputOptions.globals,
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'react-i18next': 'reactI18next',
-      }
-    }
-    return outputOptions
-  },
   exports: {
     devExports: true,
     enabled: true,
   },
-  publint: false,
+  external: [
+    'react',
+    'react-dom',
+    'react-i18next',
+    'valtio',
+    'valtio/utils',
+    'mitt',
+    'html-parse-stringify',
+    'react-use',
+    '@hairy/utils',
+  ],
 })

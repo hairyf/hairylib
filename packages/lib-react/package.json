@@ -47,15 +47,21 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^14.1.2"
+    "react-i18next": "^14.1.2",
+    "react-use": "^17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-i18next": {
+      "optional": true
+    }
   },
   "dependencies": {
+    "@hairy/utils": "workspace:*",
     "html-parse-stringify": "catalog:utils",
     "mitt": "catalog:utils",
     "valtio": "catalog:react"
   },
   "devDependencies": {
-    "@hairy/utils": "workspace:*",
     "@types/react": "catalog:types",
     "@types/react-dom": "catalog:types",
     "react": "catalog:react",

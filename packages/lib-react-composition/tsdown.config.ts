@@ -2,24 +2,11 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['esm', 'cjs', 'iife'],
+  format: ['esm', 'cjs'],
   dts: { resolver: 'tsc', eager: true },
   clean: true,
-  name: 'LibReactReactive',
-  outputOptions(outputOptions, format) {
-    if (format === 'iife') {
-      outputOptions.globals = {
-        ...outputOptions.globals,
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'react-i18next': 'reactI18next',
-      }
-    }
-    return outputOptions
-  },
   exports: {
     devExports: true,
     enabled: true,
   },
-  publint: false,
 })

@@ -340,6 +340,9 @@ importers:
 
   packages/lib-react:
     dependencies:
+      '@hairy/utils':
+        specifier: workspace:*
+        version: link:../util-core
       html-parse-stringify:
         specifier: catalog:utils
         version: 3.0.1
@@ -350,9 +353,6 @@ importers:
         specifier: catalog:react
         version: 2.1.4(@types/react@19.1.6)(react@19.1.0)
     devDependencies:
-      '@hairy/utils':
-        specifier: workspace:*
-        version: link:../util-core
       '@types/react':
         specifier: catalog:types
         version: 19.1.6
@@ -374,6 +374,9 @@ importers:
 
   packages/lib-react-composition:
     dependencies:
+      '@hairy/utils':
+        specifier: workspace:*
+        version: link:../util-core
       '@vue/reactivity':
         specifier: ^3.5.13
         version: 3.5.13
@@ -390,9 +393,6 @@ importers:
       '@hairy/react-lib':
         specifier: workspace:*
         version: link:../lib-react
-      '@hairy/utils':
-        specifier: workspace:*
-        version: link:../util-core
       '@types/react':
         specifier: catalog:types
         version: 19.1.6

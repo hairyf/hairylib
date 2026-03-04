@@ -50,6 +50,7 @@
     "react-i18next": "^14.1.2"
   },
   "dependencies": {
+    "@hairy/utils": "workspace:*",
     "@vue/reactivity": "^3.5.13",
     "html-parse-stringify": "catalog:utils",
     "mitt": "catalog:utils",
@@ -57,7 +58,6 @@
   },
   "devDependencies": {
     "@hairy/react-lib": "workspace:*",
-    "@hairy/utils": "workspace:*",
     "@types/react": "catalog:types",
     "@types/react-dom": "catalog:types",
     "react": "catalog:react",
