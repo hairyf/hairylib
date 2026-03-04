@@ -45,9 +45,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@hairy/utils": "workspace:*"
-  },
-  "devDependencies": {
+    "@hairy/utils": "workspace:*",
     "@types/jweixin": "catalog:types"
   }
 }
