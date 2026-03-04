@@ -4,21 +4,21 @@ export type UF<VT, RT> = (value: VT) => RT | PromiseLike<RT>
 export type Pipeline<VT, RT> = (value?: VT) => Promise<RT>
 
 /**
-Compose promise-returning & async fns into a reusable pipeline.
-
-@param ...input - Iterated over sequentially when returned `function` is called.
-@returns The `input` fns are applied from left to right.
-
-@example
-```
-const addUnicorn = async string => `${string} Unicorn`;
-const addRainbow = async string => `${string} Rainbow`;
-
-const pipeline = pipe.promise(addUnicorn, addRainbow);
-
-console.log(await pipeline('❤️'));
-//=> '❤️ Unicorn Rainbow'
-```
+ * Compose promise-returning & async fns into a reusable pipeline.
+ *
+ * @param ...input - Iterated over sequentially when returned `function` is called.
+ * @returns The `input` fns are applied from left to right.
+ *
+ * @example
+ * ```
+ * const addUnicorn = async string => `${string} Unicorn`;
+ * const addRainbow = async string => `${string} Rainbow`;
+ *
+ * const pipeline = pipe.promise(addUnicorn, addRainbow);
+ *
+ * console.log(await pipeline('❤️'));
+ * //=> '❤️ Unicorn Rainbow'
+ * ```
  */
 export function pPipe<VT, RT>(f1: UF<VT, RT>): Pipeline<VT, RT>
 export function pPipe<VT, R1, RT>(f1: UF<VT, R1>, f2: UF<R1, RT>): Pipeline<VT, RT>
