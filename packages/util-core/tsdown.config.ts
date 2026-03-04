@@ -6,7 +6,18 @@ export default defineConfig({
   format: ['esm', 'cjs', 'iife'],
   dts: { resolver: 'tsc' },
   clean: true,
-  name: pkg.name,
+  inlineOnly: false,
+  name: 'HairyUtils',
+  outputOptions(outputOptions, format) {
+    if (format === 'iife') {
+      outputOptions.name = 'HairyUtils'
+      outputOptions.globals = {
+        ...outputOptions.globals,
+        'bignumber.js': 'BigNumber',
+      }
+    }
+    return outputOptions
+  },
   exports: {
     devExports: true,
     enabled: true,
