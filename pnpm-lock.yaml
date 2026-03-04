@@ -525,7 +525,6 @@ importers:
       '@hairy/utils':
         specifier: workspace:*
         version: link:../util-core
-    devDependencies:
       '@types/jweixin':
         specifier: catalog:types
         version: 1.0.11
