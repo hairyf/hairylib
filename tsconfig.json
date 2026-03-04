@@ -6,6 +6,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
+    "types": ["@types/node", "@dcloudio/types"],
     "strict": true,
     "strictNullChecks": true,
     "noEmit": true,
@@ -13,5 +14,6 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist"]
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "playground/**/*.ts", "docs/**/*.ts"],
+  "exclude": ["node_modules", "dist", "examples"]
 }

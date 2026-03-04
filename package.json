@@ -11,13 +11,16 @@
     "docs:build": "pnpm -C docs run docs:build",
     "release": "bumpp -r && pnpm -r publish --access public",
     "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:cli",
     "@antfu/ni": "catalog:cli",
+    "@dcloudio/types": "catalog:types",
     "@types/node": "catalog:types",
+    "@vitest/coverage-v8": "catalog:testing",
     "bumpp": "catalog:cli",
     "esbuild-plugin-globals": "catalog:plugin",
     "eslint": "catalog:cli",

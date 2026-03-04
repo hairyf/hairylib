@@ -36,6 +36,7 @@ catalogs:
     '@iconify-json/svg-spinners': ^1.2.2
     '@unocss/reset': ^65.5.0
   testing:
+    '@vitest/coverage-v8': ^3.0.9
     vitest: ^3.0.5
   types:
     '@dcloudio/types': ^3.4.28
