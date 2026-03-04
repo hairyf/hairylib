@@ -6,6 +6,7 @@ export default defineConfig({
   format: ['esm', 'cjs', 'iife'],
   dts: true,
   clean: true,
+  inlineOnly: false,
   name: pkg.name,
   outputOptions(outputOptions, format) {
     if (format === 'iife') {
