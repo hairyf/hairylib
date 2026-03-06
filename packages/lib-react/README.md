@@ -68,6 +68,7 @@ A simple JavaScript utility for conditionally joining classNames together.
 import { track } from '@hairy/lib-react'
 const context = await track(() => useContext(YourContext))
 console.log(context) // { ... }
+```
 
 ### `Trigger()`
 

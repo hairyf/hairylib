@@ -173,6 +173,7 @@ Delay for a given number of milliseconds.
 
 ```ts
 delay(1000).then(() => { console.log('1 second') })
+```
 
 ### `dialsPhone(phoneNumber)`
 
@@ -440,6 +441,7 @@ Get a random item from an array.
 
 ```ts
 randomItem(['a', 'b', 'c']) // 'a' | 'b' | 'c'
+```
 
 ### `randomNumber(min, max)`
 
@@ -449,6 +451,7 @@ Get a random number between a minimum and maximum value.
 
 ```ts
 randomNumber(0, 100) // 0-100
+```
 
 ### `randomString(size, chars)`
 
@@ -460,6 +463,7 @@ Get a random string of a given size.
 randomString() // 10 characters long
 randomString(20) // 20 characters long
 randomString(20, 'abcdefghijklmnopqrstuvwxyz') // 20 characters long
+```
 
 ### `range()`
 
@@ -608,6 +612,7 @@ Call a callback if a value is not null or undefined.
 
 ```ts
 whenever(value, (value) => { return 'value' }) // value
+```
 
 ### `zerofill(value, n, type)`
 
