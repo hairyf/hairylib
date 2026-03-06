@@ -26,16 +26,12 @@ What are the benefits of a Monorepo?
 
 ## Workflow
 
-- Code style checking based on [antfu/eslint-config](https://github.com/antfu/eslint-config) and [lint-staged](https://github.com/lint-staged/lint-staged).
-- Continuous integration via [GitHub Actions](/.github/workflows): run `pnpm lint`, `pnpm test`, and `pnpm typecheck` (using `tsc --noEmit`) on every push/PR, so broken code never lands on `main`.
-- Unified version management and publishing using [bumpp](https://github.com/antfu-collective/bumpp), with `CHANGELOG` generation through [changelogithub](https://github.com/antfu/changelogithub), and automated GitHub Releases.
-- Fast execution of TypeScript files using [tsx](https://tsx.is).
-- Dependency hoisting using the [catalog:](https://pnpm.io/catalogs) protocol for unified management of all dependencies.
-- Direct reading of `index.ts` during development to simplify references between modules.
-- Publishing to npm via [Trusted Publisher](https://docs.npmjs.com/trusted-publishers), using [publishConfig](https://pnpm.io/package_json#publishconfig) plus GitHub Actions OIDC, so releases are automated and credential-less.
-- Support for multiple module formats (`esm`, `cjs`) by [tsdown](https://tsdown.dev/).
-- Testing with [vitest](https://vitest.dev/), with built-in workspace support.
-
+- **Code quality**: Unified linting and formatting powered by [antfu/eslint-config](https://github.com/antfu/eslint-config) and [lint-staged](https://github.com/lint-staged/lint-staged) and [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks).
+- **Continuous integration**: [GitHub Actions](/.github/workflows) runs `pnpm lint`, `pnpm test`, and `pnpm typecheck` (`tsc --noEmit`) on every push/PR so `branch` stays green.
+- **Versioning & Releases**: Use [bumpp](https://github.com/antfu-collective/bumpp) for versioning and [changelogithub](https://github.com/antfu/changelogithub) for `CHANGELOG` and GitHub Releases and Automate passwordless publishing via npm [Trusted Publisher](https://docs.npmjs.com/trusted-publishers)
+- **Build & runtime**: [tsdown](https://tsdown.dev/) outputs both `esm` and `cjs` bundles; [tsx](https://tsx.is) is used to run TypeScript directly during development.
+- **Monorepo DX**: Uses [pnpm catalog](https://pnpm.io/catalogs) for centralized dependency management and hoisting; during development packages import each other's `index.ts` directly to simplify cross-package references.
+- **Testing**: [vitest](https://vitest.dev/) with built-in workspace support for fast, isolated tests.
 ## Packages in this monorepo
 
 These are the packages currently maintained in this repository:
