@@ -9,7 +9,7 @@
     "lint": "eslint --cache .",
     "docs": "pnpm -C docs run docs:dev",
     "docs:build": "pnpm -C docs run docs:build",
-    "release": "bumpp -r && pnpm -r publish --access public",
+    "release": "bumpp -r",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
