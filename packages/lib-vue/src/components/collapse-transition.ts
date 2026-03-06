@@ -1,13 +1,15 @@
-/* eslint-disable ts/no-use-before-define */
 import type { DefineComponent, TransitionProps } from 'vue-demi'
 import CssRender from 'css-render'
 import { defineComponent, h, Transition } from 'vue-demi'
 
-const { c } = CssRender()
-
 export const CollapseTransition: DefineComponent = defineComponent({
   name: 'CollapseTransition',
   setup(_, { slots }) {
+    const { c } = CssRender()
+    const style = c('.collapse-transition', {
+      transition: '0.2s height ease-in-out, 0.2s padding-top ease-in-out,0.2s padding-bottom ease-in-out',
+    })
+
     const on = {
       onBeforeEnter(el: HTMLDivElement) {
         el.classList.add('collapse-transition')
@@ -78,8 +80,4 @@ export const CollapseTransition: DefineComponent = defineComponent({
     style.mount()
     return () => h(Transition, on as unknown as TransitionProps, slots)
   },
-})
-
-const style = c('.collapse-transition', {
-  transition: '0.2s height ease-in-out, 0.2s padding-top ease-in-out,0.2s padding-bottom ease-in-out',
 })

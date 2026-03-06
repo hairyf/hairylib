@@ -6,7 +6,7 @@ import { computed, h, render } from 'vue-demi'
  * @param component
  * @param tag Rendering container (default div)
  */
-export function ehr<K extends keyof HTMLElementTagNameMap = 'div'>(component: FunctionalComponent, tag?: K) {
+export function ehr<K extends keyof HTMLElementTagNameMap = 'div'>(component: FunctionalComponent, tag?: K): HTMLElement {
   const container = document.createElement((tag || 'dev') as K)
   render(h(component), container)
   return container

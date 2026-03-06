@@ -39,14 +39,6 @@ deno install npm:@hairy/wechat-jssdk
 
 <!-- /automd -->
 
-## Usage
-
-<!-- automd:jsimport name="@hairy/wechat-jssdk" src -->
-
-<!-- ⚠️  (jsimport) input must be a `string` or `URL` -->
-
-<!-- /automd -->
-
 ### Example
 
 ```ts
@@ -76,7 +68,7 @@ await wxJssdk.updateAppMessageShareData({
 
 ## API
 
-<!-- automd:jsdocs src="./src/index" -->
+<!-- automd:jsdocs src="./src/index.ts" -->
 
 ### `WechatJssdk()`
 
@@ -84,14 +76,20 @@ await wxJssdk.updateAppMessageShareData({
 
 ## Directory structure
 
-<!-- automd:dir-tree src="./src" maxDepth=2 -->
+<!-- automd:dir-tree imports=""maxDepth=2 -->
 
 ```
-├── internal/
-│   └── load_script.ts
-├── helper.ts
-├── index.ts
-└── types.ts
+├── src/
+│   ├── internal/
+│   │   └── load_script.ts
+│   ├── helper.ts
+│   ├── index.ts
+│   └── types.ts
+├── test/
+│   └── index.test.ts
+├── package.json
+├── README.md
+└── tsdown.config.ts
 ```
 
 <!-- /automd -->
@@ -315,7 +313,27 @@ Made by [@Hairyf](https://github.com/Hairyf) and [community](https://github.com/
 
 <!-- automd:fetch url="gh:hairyf/hairylib/main/LICENSE" -->
 
-<!-- ⚠️  (fetch) [GET] "https://raw.githubusercontent.com/hairyf/hairylib/main/LICENSE": 404 Not Found -->
+MIT License
+
+Copyright (c) 2025-PRESENT Hairyf <https://github.com/antfu>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 <!-- /automd -->
 

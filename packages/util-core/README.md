@@ -37,17 +37,9 @@ deno install npm:@hairy/utils
 
 <!-- /automd -->
 
-## Usage
-
-<!-- automd:jsimport name="@hairy/utils" src -->
-
-<!-- ⚠️  (jsimport) input must be a `string` or `URL` -->
-
-<!-- /automd -->
-
 ## API
 
-<!-- automd:jsdocs src="./src/index" -->
+<!-- automd:jsdocs src="./src/index.ts" -->
 
 ### `arange()`
 
@@ -621,51 +613,57 @@ leading zeros
 
 ## Directory structure
 
-<!-- automd:dir-tree src="./src" maxDepth=2 -->
+<!-- automd:dir-tree imports=""maxDepth=2 -->
 
 ```
-├── browser/
-│   ├── file.ts
+├── src/
+│   ├── browser/
+│   │   ├── file.ts
+│   │   ├── index.ts
+│   │   └── util.ts
+│   ├── is/
+│   │   └── index.ts
+│   ├── module/
+│   │   ├── change-case.ts
+│   │   ├── index.ts
+│   │   └── lodash-es.ts
+│   ├── number/
+│   │   └── index.ts
+│   ├── string/
+│   │   └── index.ts
+│   ├── typings/
+│   │   ├── atom.ts
+│   │   ├── deep.ts
+│   │   ├── index.ts
+│   │   └── util.ts
+│   ├── util/
+│   │   ├── compose-promise.ts
+│   │   ├── compose.ts
+│   │   ├── deferred.ts
+│   │   ├── delay.ts
+│   │   ├── ghost.ts
+│   │   ├── index.ts
+│   │   ├── json.ts
+│   │   ├── loop.ts
+│   │   ├── map-deep.ts
+│   │   ├── noop.ts
+│   │   ├── pipe-promise.ts
+│   │   ├── pipe.ts
+│   │   ├── proxy.ts
+│   │   ├── random.ts
+│   │   ├── serialized.ts
+│   │   ├── to-array.ts
+│   │   ├── to.ts
+│   │   ├── typeof.ts
+│   │   ├── unit.ts
+│   │   └── util.ts
 │   ├── index.ts
-│   └── util.ts
-├── is/
-│   └── index.ts
-├── module/
-│   ├── change-case.ts
-│   ├── index.ts
-│   └── lodash-es.ts
-├── number/
-│   └── index.ts
-├── string/
-│   └── index.ts
-├── typings/
-│   ├── atom.ts
-│   ├── deep.ts
-│   ├── index.ts
-│   └── util.ts
-├── util/
-│   ├── compose-promise.ts
-│   ├── compose.ts
-│   ├── deferred.ts
-│   ├── delay.ts
-│   ├── ghost.ts
-│   ├── index.ts
-│   ├── json.ts
-│   ├── loop.ts
-│   ├── map-deep.ts
-│   ├── noop.ts
-│   ├── pipe-promise.ts
-│   ├── pipe.ts
-│   ├── proxy.ts
-│   ├── random.ts
-│   ├── serialized.ts
-│   ├── to-array.ts
-│   ├── to.ts
-│   ├── typeof.ts
-│   ├── unit.ts
-│   └── util.ts
-├── index.ts
-└── special.ts
+│   └── special.ts
+├── test/
+│   └── index.test.ts
+├── package.json
+├── README.md
+└── tsdown.config.ts
 ```
 
 <!-- /automd -->
@@ -703,7 +701,27 @@ Made by [@Hairyf](https://github.com/Hairyf) and [community](https://github.com/
 
 <!-- automd:fetch url="gh:hairyf/hairylib/main/LICENSE" -->
 
-<!-- ⚠️  (fetch) [GET] "https://raw.githubusercontent.com/hairyf/hairylib/main/LICENSE": 404 Not Found -->
+MIT License
+
+Copyright (c) 2025-PRESENT Hairyf <https://github.com/antfu>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 <!-- /automd -->
 

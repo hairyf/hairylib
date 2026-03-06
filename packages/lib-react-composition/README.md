@@ -37,17 +37,9 @@ deno install npm:@hairy/react-lib-composition
 
 <!-- /automd -->
 
-## Usage
-
-<!-- automd:jsimport name="@hairy/react-lib-composition" src -->
-
-<!-- ⚠️  (jsimport) input must be a `string` or `URL` -->
-
-<!-- /automd -->
-
 ## API
 
-<!-- automd:jsdocs src="./src/index" -->
+<!-- automd:jsdocs src="./src/index.ts" -->
 
 ### `computed(arg1, arg2)`
 
@@ -126,7 +118,7 @@ Converts some of the 'raw Vue' data, which is not already wrapped in a hook, int
 
 ```tsx
 import React from 'react'
-import { reactivity, ref } from 'veact'
+import { ref, reactivity } from 'veact'
 
 const countRef = ref(0)
 
@@ -265,20 +257,25 @@ count.value++
 
 ## Directory structure
 
-<!-- automd:dir-tree src="./src" maxDepth=2 -->
+<!-- automd:dir-tree imports=""maxDepth=2 -->
 
 ```
-├── computed.ts
-├── effectScope.ts
-├── index.ts
-├── inject.ts
-├── lifecycle.ts
-├── reactive.ts
-├── reactivity.ts
-├── readonly.ts
-├── ref.ts
-├── watch.ts
-└── watchEffect.ts
+├── src/
+│   ├── computed.ts
+│   ├── effectScope.ts
+│   ├── index.ts
+│   ├── inject.ts
+│   ├── lifecycle.ts
+│   ├── reactive.ts
+│   ├── reactivity.ts
+│   ├── readonly.ts
+│   ├── ref.ts
+│   ├── watch.ts
+│   └── watchEffect.ts
+├── macros-global.d.ts
+├── package.json
+├── README.md
+└── tsdown.config.ts
 ```
 
 <!-- /automd -->
@@ -347,7 +344,27 @@ Made by [@Hairyf](https://github.com/Hairyf) and [community](https://github.com/
 
 <!-- automd:fetch url="gh:hairyf/hairylib/main/LICENSE" -->
 
-<!-- ⚠️  (fetch) [GET] "https://raw.githubusercontent.com/hairyf/hairylib/main/LICENSE": 404 Not Found -->
+MIT License
+
+Copyright (c) 2025-PRESENT Hairyf <https://github.com/antfu>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 <!-- /automd -->
 
