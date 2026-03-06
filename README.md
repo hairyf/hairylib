@@ -14,7 +14,7 @@
 
 </div>
 
-[Hairylib](https://hairylib.com/) is a monorepo project managed and published using [pnpm](https://pnpm.io/) and [bumpp](https://github.com/antfu-collective/bumpp). For convenience of my development.
+[Hairylib](https://hairylib.com/) is a monorepo project managed and published using [pnpm](https://pnpm.io/) and [bumpp](https://github.com/antfu-collective/bumpp). It collects the libraries and utilities I use across projects into one place, with shared tooling and workflows.
 
 What are the benefits of a Monorepo?
 
@@ -26,15 +26,32 @@ What are the benefits of a Monorepo?
 
 ## Workflow
 
-- Code style checking based on [antfu/eslint-config](https://github.com/antfu/eslint-config)  and [lint-staged](https://github.com/lint-staged/lint-staged)
-- Use [github actions](/.github/workflows), and `typecheck(tsc --noEmit)` to check the code and auto run tests.
-- Unified version management and publishing using [bumpp](https://github.com/antfu-collective/bumpp), with `CHANGELOG` generation through [changelogithub](https://github.com/antfu/changelogithub).
+- Code style checking based on [antfu/eslint-config](https://github.com/antfu/eslint-config) and [lint-staged](https://github.com/lint-staged/lint-staged).
+- Continuous integration via [GitHub Actions](/.github/workflows): run `pnpm lint`, `pnpm test`, and `pnpm typecheck` (using `tsc --noEmit`) on every push/PR, so broken code never lands on `main`.
+- Unified version management and publishing using [bumpp](https://github.com/antfu-collective/bumpp), with `CHANGELOG` generation through [changelogithub](https://github.com/antfu/changelogithub), and automated GitHub Releases.
 - Fast execution of TypeScript files using [tsx](https://tsx.is).
 - Dependency hoisting using the [catalog:](https://pnpm.io/catalogs) protocol for unified management of all dependencies.
 - Direct reading of `index.ts` during development to simplify references between modules.
-- Publishing using [publishConfig](https://pnpm.io/package_json#publishconfig) to automatically build and publish to `npm`.
-- Support for multiple module formats (`esm`, `cjs`, `iife`) by [tsup](https://tsup.egoist.dev/).
+- Publishing to npm via [Trusted Publisher](https://docs.npmjs.com/trusted-publishers), using [publishConfig](https://pnpm.io/package_json#publishconfig) plus GitHub Actions OIDC, so releases are automated and credential-less.
+- Support for multiple module formats (`esm`, `cjs`) by [tsdown](https://tsdown.dev/).
 - Testing with [vitest](https://vitest.dev/), with built-in workspace support.
+
+## Packages in this monorepo
+
+These are the packages currently maintained in this repository:
+
+- `@hairy/utils` – core utility library used by all other packages.
+- `@hairy/wechat-jssdk` – helpers around the WeChat JSSDK.
+- `@hairy/palette` – utilities for building and working with color palettes.
+- `@hairy/vue-lib` – Vue composables and helpers (Vue 2 + 3 via `vue-demi`).
+- `@hairy/uni-lib` – shared utilities targeting Uni-app / Vue-based runtimes.
+- `@hairy/react-lib` – React hooks and utilities built on top of `@hairy/utils`.
+- `@hairy/react-lib-composition` – React reactivity layer using `@vue/reactivity` and Valtio.
+- `@hairy/react-i18-lib` – small helpers for `react-i18next`-based i18n.
+- `@hairy/ether-lib` – utilities built around `ethers@6`.
+- `lib-placeholder` – private internal playground package for experimenting with new setups.
+
+All publishable packages share the same toolchain: `tsdown` for builds, `vitest` for tests, `tsx` for quick scripts, and `pnpm` workspaces with `catalog:` hoisting for consistent dependency versions.
 
 ## License
 
