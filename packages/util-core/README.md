@@ -39,7 +39,7 @@ deno install npm:@hairy/utils
 
 ## API
 
-<!-- automd:jsdocs src="./src/index.ts" -->
+<!-- automd:jsdocs src="./src/index.ts" headingLevel="2" -->
 
 ### `arange()`
 
@@ -211,6 +211,8 @@ format number thousand separator and unit
 formData to object
 
 ### `get()`
+
+### `ghost(strictMessage?)`
 
 ### `groupBy()`
 
@@ -608,63 +610,6 @@ whenever(value, (value) => { return 'value' }) // value
 leading zeros
 
 ### `zeroRemove(value, convert)`
-
-<!-- /automd -->
-
-## Directory structure
-
-<!-- automd:dir-tree imports=""maxDepth=2 -->
-
-```
-├── src/
-│   ├── browser/
-│   │   ├── file.ts
-│   │   ├── index.ts
-│   │   └── util.ts
-│   ├── is/
-│   │   └── index.ts
-│   ├── module/
-│   │   ├── change-case.ts
-│   │   ├── index.ts
-│   │   └── lodash-es.ts
-│   ├── number/
-│   │   └── index.ts
-│   ├── string/
-│   │   └── index.ts
-│   ├── typings/
-│   │   ├── atom.ts
-│   │   ├── deep.ts
-│   │   ├── index.ts
-│   │   └── util.ts
-│   ├── util/
-│   │   ├── compose-promise.ts
-│   │   ├── compose.ts
-│   │   ├── deferred.ts
-│   │   ├── delay.ts
-│   │   ├── ghost.ts
-│   │   ├── index.ts
-│   │   ├── json.ts
-│   │   ├── loop.ts
-│   │   ├── map-deep.ts
-│   │   ├── noop.ts
-│   │   ├── pipe-promise.ts
-│   │   ├── pipe.ts
-│   │   ├── proxy.ts
-│   │   ├── random.ts
-│   │   ├── serialized.ts
-│   │   ├── to-array.ts
-│   │   ├── to.ts
-│   │   ├── typeof.ts
-│   │   ├── unit.ts
-│   │   └── util.ts
-│   ├── index.ts
-│   └── special.ts
-├── test/
-│   └── index.test.ts
-├── package.json
-├── README.md
-└── tsdown.config.ts
-```
 
 <!-- /automd -->
 

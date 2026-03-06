@@ -25,7 +25,7 @@ export const Bignumber = _Bignumber.clone(DEFAULT_BIGNUM_CONFIG)
  * do not use Bignumber directly, use bignumber function instead
  */
 
-export const BIG_INTS = {
+export const BIG_INTS: Record<Delimiter, { v: number, d: number, n: string }> = {
   t: { v: 10 ** 12, d: 13, n: 't' },
   b: { v: 10 ** 9, d: 10, n: 'b' },
   m: { v: 10 ** 6, d: 7, n: 'm' },
