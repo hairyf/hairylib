@@ -37,15 +37,15 @@ What are the benefits of a Monorepo?
 
 These are the packages currently maintained in this repository:
 
-- [@hairy/utils](./packages/util-core) – core utility library used by all other packages.
-- [@hairy/wechat-jssdk](./packages/util-wechat) – helpers around the WeChat JSSDK.
-- [@hairy/palette](./packages/util-palette) – utilities for building and working with color palettes.
-- [@hairy/vue-lib](./packages/lib-vue) – Vue composables and helpers (Vue 2 + 3 via `vue-demi`).
-- [@hairy/uni-lib](./packages/lib-uni) – shared utilities targeting Uni-app / Vue-based runtimes.
-- [@hairy/react-lib](./packages/lib-react) – A utility tool library based on React.
-- [@hairy/react-lib-composition](./packages/lib-react-composition) – React reactivity layer using `@vue/reactivity`.
-- [@hairy/react-i18-lib](./packages/lib-react-i18) – small helpers for `react-i18next`-based i18n.
-- [lib-placeholder](./packages/util-placeholder) – A empty template.
+- [@hairy/utils](./packages/utils) – core utility library used by all other packages.
+- [@hairy/wechat-jssdk](./packages/wechat) – helpers around the WeChat JSSDK.
+- [@hairy/palette](./packages/palette) – utilities for building and working with color palettes.
+- [@hairy/vue-lib](./packages/vue) – Vue composables and helpers (Vue 2 + 3 via `vue-demi`).
+- [@hairy/uni-lib](./packages/uni) – shared utilities targeting Uni-app / Vue-based runtimes.
+- [@hairy/react-lib](./packages/react) – A utility tool library based on React.
+- [@hairy/react-lib-composition](./packages/react-composition) – React reactivity layer using `@vue/reactivity`.
+- [@hairy/react-i18-lib](./packages/react-i18) – small helpers for `react-i18next`-based i18n.
+- [lib-placeholder](./packages/placeholder) – A empty template.
 
 All publishable packages share the same toolchain: `tsdown` for builds, `vitest` for tests, `tsx` for quick scripts, and `pnpm` workspaces with `catalog:` hoisting for consistent dependency versions.
 
