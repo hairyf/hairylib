@@ -58,7 +58,7 @@ export default defineConfig({
       ],
     },
     editLink: {
-      pattern: 'https://github.com/antfu/hairylib/edit/main/docs/:path',
+      pattern: 'https://github.com/hairyf/hairylib/edit/main/docs/:path',
       text: 'Suggest changes to this page',
     },
     search: {
@@ -66,7 +66,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/antfu/hairylib' },
+      { icon: 'github', link: 'https://github.com/hairyf/hairylib' },
     ],
 
     footer: {
