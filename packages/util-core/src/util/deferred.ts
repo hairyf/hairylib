@@ -8,6 +8,7 @@ import { noop } from './noop'
  * ```ts
  * const deferred = new Deferred()
  * deferred.resolve('value')
+ * ```
  */
 export class Deferred<T> extends Promise<T> {
   resolve: (value?: T) => Deferred<T>

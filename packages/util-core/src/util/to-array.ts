@@ -7,6 +7,7 @@
  * ```ts
  * toArray(arrorOrItemOrUndefined) // item[] | undefined
  * toArray(arrayOrItemOrUndefined, true) // item[]
+ * ```
  */
 export function toArray<T, R extends boolean>(value?: T | T[], required: R = false as R): R extends true ? T[] : T[] | undefined {
   if (!value)

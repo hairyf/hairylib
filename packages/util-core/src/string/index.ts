@@ -117,6 +117,7 @@ const _reFullWs = /^\s*$/
  *     b()
  *   }
  * `
+ * ```
  */
 export function unindent(str: TemplateStringsArray | string) {
   const lines = (typeof str === 'string' ? str : str[0]).split('\n')

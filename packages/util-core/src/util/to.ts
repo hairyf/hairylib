@@ -9,6 +9,7 @@ import { isFunction } from 'lodash-es'
  * ```ts
  * to(Promise.resolve('data')) // Promise<[null, 'data']>
  * to(Promise.reject(new Error('error'))) // Promise<[Error, undefined]>
+ * ```
  */
 export async function to<T, U = Error>(promise: Promise<T> | (() => Promise<T>), error?: object): Promise<[U, undefined] | [null, T]> {
   return (isFunction(promise) ? promise() : promise)

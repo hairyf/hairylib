@@ -40,6 +40,7 @@ export const riposte = select
  * ```ts
  * unwrap({ name: 'John' }) // { name: 'John' }
  * unwrap(() => { return { name: 'John' } }) // { name: 'John' }
+ * ```
  */
 export function unwrap<T extends object>(value: T | (() => T)) {
   return typeof value === 'function' ? value() : value
@@ -53,6 +54,7 @@ export function unwrap<T extends object>(value: T | (() => T)) {
  * @example
  * ```ts
  * whenever(value, (value) => { return 'value' }) // value
+ * ```
  */
 export function whenever<T, C extends (value: Exclude<T, null | undefined>) => any>(value: T, callback: C): ReturnType<C> | undefined {
   return value ? callback(value as any) : undefined

@@ -5,6 +5,7 @@
  * @example
  * ```ts
  * delay(1000).then(() => { console.log('1 second') })
+ * ```
  */
 export function delay(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms))

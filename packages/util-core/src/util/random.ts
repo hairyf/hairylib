@@ -5,6 +5,7 @@
  * @example
  * ```ts
  * randomItem(['a', 'b', 'c']) // 'a' | 'b' | 'c'
+ * ```
  */
 export function randomItem<T>(array: T[]) {
   return array[Math.floor(Math.random() * array.length)]
@@ -18,6 +19,7 @@ export function randomItem<T>(array: T[]) {
  * @example
  * ```ts
  * randomNumber(0, 100) // 0-100
+ * ```
  */
 export function randomNumber(min: number, max: number) {
   return Math.random() * (max - min) + min
@@ -35,6 +37,7 @@ const urlAlphabet = 'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwy
  * randomString() // 10 characters long
  * randomString(20) // 20 characters long
  * randomString(20, 'abcdefghijklmnopqrstuvwxyz') // 20 characters long
+ * ```
  */
 export function randomString(size: number = 10, chars = urlAlphabet) {
   let id = ''

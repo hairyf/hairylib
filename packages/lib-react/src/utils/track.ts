@@ -12,6 +12,7 @@ import { Trigger } from '../components'
  * import { track } from '@hairy/lib-react'
  * const context = await track(() => useContext(YourContext))
  * console.log(context) // { ... }
+ * ```
  */
 export function track<T extends AnyFn>(fn: T, ...args: Parameters<T>): Promise<ReturnType<T>> {
   const deferred = ref(new Deferred<any>())

@@ -546,6 +546,7 @@ Convert a promise to a tuple of [error, data].
 ```ts
 to(Promise.resolve('data')) // Promise<[null, 'data']>
 to(Promise.reject(new Error('error'))) // Promise<[Error, undefined]>
+```
 
 ### `toArray(value?, required)`
 
@@ -556,6 +557,7 @@ Convert a value to an array.
 ```ts
 toArray(arrorOrItemOrUndefined) // item[] | undefined
 toArray(arrayOrItemOrUndefined, true) // item[]
+```
 
 ### `trainCase()`
 
@@ -575,6 +577,7 @@ const str = unindent`
     b()
   }
 `
+```
 
 ### `uniq()`
 
@@ -593,6 +596,7 @@ Unwrap a value or a function that returns a value.
 ```ts
 unwrap({ name: 'John' }) // { name: 'John' }
 unwrap(() => { return { name: 'John' } }) // { name: 'John' }
+```
 
 ### `values()`
 
