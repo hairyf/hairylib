@@ -32,20 +32,20 @@ What are the benefits of a Monorepo?
 - **Build & runtime**: [tsdown](https://tsdown.dev/) outputs both `esm` and `cjs` bundles; [tsx](https://tsx.is) is used to run TypeScript directly during development.
 - **Monorepo DX**: Uses [pnpm catalog](https://pnpm.io/catalogs) for centralized dependency management and hoisting; during development packages import each other's `index.ts` directly to simplify cross-package references.
 - **Testing**: [vitest](https://vitest.dev/) with built-in workspace support for fast, isolated tests.
+
 ## Packages in this monorepo
 
 These are the packages currently maintained in this repository:
 
-- `@hairy/utils` – core utility library used by all other packages.
-- `@hairy/wechat-jssdk` – helpers around the WeChat JSSDK.
-- `@hairy/palette` – utilities for building and working with color palettes.
-- `@hairy/vue-lib` – Vue composables and helpers (Vue 2 + 3 via `vue-demi`).
-- `@hairy/uni-lib` – shared utilities targeting Uni-app / Vue-based runtimes.
-- `@hairy/react-lib` – React hooks and utilities built on top of `@hairy/utils`.
-- `@hairy/react-lib-composition` – React reactivity layer using `@vue/reactivity` and Valtio.
-- `@hairy/react-i18-lib` – small helpers for `react-i18next`-based i18n.
-- `@hairy/ether-lib` – utilities built around `ethers@6`.
-- `lib-placeholder` – private internal playground package for experimenting with new setups.
+- [@hairy/utils](./packages/util-core) – core utility library used by all other packages.
+- [@hairy/wechat-jssdk](./packages/util-wechat) – helpers around the WeChat JSSDK.
+- [@hairy/palette](./packages/util-palette) – utilities for building and working with color palettes.
+- [@hairy/vue-lib](./packages/lib-vue) – Vue composables and helpers (Vue 2 + 3 via `vue-demi`).
+- [@hairy/uni-lib](./packages/lib-uni) – shared utilities targeting Uni-app / Vue-based runtimes.
+- [@hairy/react-lib](./packages/lib-react) – A utility tool library based on React.
+- [@hairy/react-lib-composition](./packages/lib-react-composition) – React reactivity layer using `@vue/reactivity`.
+- [@hairy/react-i18-lib](./packages/lib-react-i18) – small helpers for `react-i18next`-based i18n.
+- [lib-placeholder](./packages/util-placeholder) – A empty template.
 
 All publishable packages share the same toolchain: `tsdown` for builds, `vitest` for tests, `tsx` for quick scripts, and `pnpm` workspaces with `catalog:` hoisting for consistent dependency versions.
 

@@ -21,6 +21,7 @@
     "@dcloudio/types": "catalog:types",
     "@types/node": "catalog:types",
     "@vitest/coverage-v8": "catalog:testing",
+    "automd": "^0.4.3",
     "bumpp": "catalog:cli",
     "eslint": "catalog:cli",
     "lib-placeholder": "workspace:*",

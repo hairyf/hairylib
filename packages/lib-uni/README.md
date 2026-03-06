@@ -1,36 +1,114 @@
-# @hairy/vue-lib
+# @hairy/uni-lib
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![bundle][bundle-src]][bundle-href]
-[![JSDocs][jsdocs-src]][jsdocs-href]
-[![License][license-src]][license-href]
+<!-- automd:badges name="@hairy/uni-lib" github="hairyf/hairylib" license bundlephobia -->
+
+[![npm version](https://img.shields.io/npm/v/@hairy/uni-lib)](https://npmjs.com/package/@hairy/uni-lib)
+[![npm downloads](https://img.shields.io/npm/dm/@hairy/uni-lib)](https://npm.chart.dev/@hairy/uni-lib)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@hairy/uni-lib)](https://bundlephobia.com/package/@hairy/uni-lib)
+[![license](https://img.shields.io/github/license/hairyf/hairylib)](https://github.com/hairyf/hairylib/blob/main/LICENSE)
+
+<!-- /automd -->
+
+Shared utilities targeting Uni-app / Vue runtimes.
 
 ## Install
 
-```
-ni @hairy/vue-lib
+<!-- automd:pm-install name="@hairy/uni-lib" -->
+
+```sh
+# ✨ Auto-detect
+npx nypm install @hairy/uni-lib
+
+# npm
+npm install @hairy/uni-lib
+
+# yarn
+yarn add @hairy/uni-lib
+
+# pnpm
+pnpm add @hairy/uni-lib
+
+# bun
+bun install @hairy/uni-lib
+
+# deno
+deno install npm:@hairy/uni-lib
 ```
 
-## CDN
+<!-- /automd -->
 
-```html
-<script src="https://unpkg.com/@hairy/vue-lib"></script>
+## Usage
+
+<!-- automd:jsimport name="@hairy/uni-lib" src -->
+
+<!-- ⚠️  (jsimport) input must be a `string` or `URL` -->
+
+<!-- /automd -->
+
+## API
+
+<!-- automd:jsdocs src="./src/index" -->
+
+### `createQuerySelector(type, mode)`
+
+### `useQuerySelector()`
+
+### `useQuerySelectorAll()`
+
+<!-- /automd -->
+
+## Directory structure
+
+<!-- automd:dir-tree src="./src" maxDepth=2 -->
+
 ```
+├── hooks/
+│   ├── index.ts
+│   ├── useQuerySelector.ts
+│   └── useQuerySelectorAll.ts
+├── utils/
+│   └── index.ts
+└── index.ts
+```
+
+<!-- /automd -->
+
+## Source
+
+<!-- automd:file src="./src/index.ts" code lang="ts" -->
+
+```ts [index.ts]
+export * from './hooks'
+export * from './utils'
+```
+
+<!-- /automd -->
+
+## Contributors
+
+<!-- automd:contributors github="hairyf/hairylib" author="Hairyf" license="MIT" -->
+
+Published under the [MIT](https://github.com/hairyf/hairylib/blob/main/LICENSE) license.
+Made by [@Hairyf](https://github.com/Hairyf) and [community](https://github.com/hairyf/hairylib/graphs/contributors) 💛
+<br><br>
+<a href="https://github.com/hairyf/hairylib/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=hairyf/hairylib" />
+</a>
+
+<!-- /automd -->
 
 ## License
 
-[MIT](./LICENSE) License © [Hairyf](https://github.com/hairyf)
+<!-- automd:fetch url="gh:hairyf/hairylib/main/LICENSE" -->
 
-<!-- Badges -->
+<!-- ⚠️  (fetch) [GET] "https://raw.githubusercontent.com/hairyf/hairylib/main/LICENSE": 404 Not Found -->
 
-[npm-version-src]: https://img.shields.io/npm/v/@hairy/vue-lib?style=flat&colorA=080f12&colorB=1fa669
-[npm-version-href]: https://npmjs.com/package/@hairy/vue-lib
-[npm-downloads-src]: https://img.shields.io/npm/dm/@hairy/vue-lib?style=flat&colorA=080f12&colorB=1fa669
-[npm-downloads-href]: https://npmjs.com/package/@hairy/vue-lib
-[bundle-src]: https://img.shields.io/bundlephobia/minzip/@hairy/vue-lib?style=flat&colorA=080f12&colorB=1fa669&label=minzip
-[bundle-href]: https://bundlephobia.com/result?p=@hairy/vue-lib
-[license-src]: https://img.shields.io/github/license/hairyf/hairylib.svg?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/hairyf/hairylib/blob/main/LICENSE
-[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
-[jsdocs-href]: https://www.jsdocs.io/package/@hairy/vue-lib
+<!-- /automd -->
+
+<!-- automd:with-automd -->
+
+---
+
+_🤖 auto updated with [automd](https://automd.unjs.io)_
+
+<!-- /automd -->
