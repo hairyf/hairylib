@@ -227,7 +227,7 @@ Made by [@Hairyf](https://github.com/Hairyf) and [community](https://github.com/
 
 MIT License
 
-Copyright (c) 2025-PRESENT Hairyf <https://github.com/antfu>
+Copyright (c) 2025-PRESENT Hairyf <https://github.com/hairyf>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
