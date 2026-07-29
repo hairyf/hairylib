@@ -2,7 +2,7 @@ import type { MaybeRef } from '@vueuse/core'
 
 import type { ComputedRef, UnwrapRef } from 'vue'
 import { computed, ref, unref, watch } from 'vue'
-import { extendSelected } from '../utils/extendSelected'
+import { extendSelected } from './utils/extendSelected'
 
 export type SelectedSingleArray = MaybeRef<{ [key: string]: any }[]>
 export interface SelectedSingleOptions {

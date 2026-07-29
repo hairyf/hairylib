@@ -1,7 +1,7 @@
 import type { AnyFn, PromiseFn, PromiseType } from '@hairy/utils'
 import type { AsyncStateReturn } from './types'
 import { useEffect, useState } from 'react'
-import { useAsyncCallback } from './useAsyncCallback'
+import { useAsyncCallback } from './use-async-callback'
 
 export type UseAsyncStateOptions<T extends AnyFn> = {
   immediate?: boolean

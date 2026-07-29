@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useWatch } from './useWatch'
+import { useWatch } from './use-watch'
 
 export interface UseOffsetPaginationOptions {
   total?: number

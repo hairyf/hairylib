@@ -1,13 +1,12 @@
 import { createContext, createElement } from 'react'
 
 export interface Scope<T> {
-  Provider: React.FC<{
-    children: React.ReactNode | ((value: T) => React.ReactNode)
-  }>
+  Provider: React.FC<{ children: React.ReactNode | ((value: T) => React.ReactNode) }>
   Context: React.Context<T | undefined>
+  name: string
 }
 
-export function defineScope<T>(useSetup: () => T): Scope<T> {
+export function defineScope<T>(name: string, useSetup: () => T): Scope<T> {
   const Context = createContext<T | undefined>(undefined)
 
   function Provider({ children }: any) {
@@ -16,5 +15,5 @@ export function defineScope<T>(useSetup: () => T): Scope<T> {
     return createElement(Context.Provider, { value }, child)
   }
 
-  return { Provider, Context }
+  return { Provider, Context, name }
 }

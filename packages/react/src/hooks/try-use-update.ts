@@ -1,4 +1,4 @@
-import { useUpdate } from './useUpdate'
+import { useUpdate } from './use-update'
 
 export function tryUseUpdate() {
   try {

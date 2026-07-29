@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
-import usePrevious from './usePrevious'
+import usePrevious from './use-previous'
 
 export interface UseWatchCallback<T = any> {
   (value: T, oldValue: T): void
